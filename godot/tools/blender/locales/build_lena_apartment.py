@@ -130,12 +130,14 @@ def build_shell():
     # tscn's Entry_Flushmount light hangs from this fixture.
     make_cyl("Entry_Flushmount_Base", (0.30, 0.90, CEIL - 0.015), 0.16, 0.03, COL_FRAME, segments=14)
     make_cyl("Entry_Flushmount_Glow", (0.30, 0.90, CEIL - 0.055), 0.13, 0.05, (1.0, 0.92, 0.74, 1.0), segments=14)
-    # Four hooks, four coats — by the door
+    # Four hooks — and ONE coat, hers: the row "had, in three years, never had
+    # more than one coat on it at a time. Four hooks, four coats" (ch8, when
+    # the three come in). (pass 403) the other three are ch8's (la_coats4).
     for i, hx in enumerate((-2.35, -2.15, -1.95, -1.75)):   # (2026-09-22: three of four hung in the door gap; Wall_S_W is x -2.5..-1.0)
         make_cyl(f"Coat_Hook_{i}", (hx, 0.10, 1.70), 0.015, 0.06, COL_FRAME, axis='Y', segments=6)
         coat_cols = [(0.30, 0.34, 0.40, 1.0), (0.44, 0.30, 0.22, 1.0),
                      (0.26, 0.36, 0.30, 1.0), (0.52, 0.44, 0.30, 1.0)]
-        make_box(f"Coat_{i}", (hx, 0.16, 1.32), (0.16, 0.10, 0.72), coat_cols[i])
+        make_box(f"Coat_{i}" + ("__la_coats4" if i else ""), (hx, 0.16, 1.32), (0.16, 0.10, 0.72), coat_cols[i])
     # Bedroom partition at y=3.6 (2026-10-09: 3.05 — the bedroom is 2.8 m
     # deep now) with its own door at x -1.30; west of the door the wall to
     # the W wall, east of it a mullion, then the CASED OPENING to the couch
@@ -356,13 +358,10 @@ def build_bedroom():
                  blanket_col=(0.72, 0.46, 0.52, 1.0), pillow_col=(0.98, 0.94, 0.90, 1.0), pillows=2, made=True, headboard=False)
         make_chamfer_box("Bed_Headboard", (bx, by+1.01, 0.66), (1.54, 0.08, 0.66), (0.40, 0.28, 0.18, 1.0), chamfer=0.012)
         make_chamfer_box("Bed_Footboard", (bx, by-0.98, 0.42), (1.54, 0.08, 0.34), (0.40, 0.28, 0.18, 1.0), chamfer=0.012)
-        # vol7 interlude ii (2026-09-03): "Her thigh has charcoal on it in the
-        # shape of three letters: S U N ... There is no charcoal in the
-        # apartment." The residue it left on the duvet where she slept.
-        for ci, (dx, w) in enumerate(((-0.16, 0.06), (0.0, 0.05), (0.16, 0.06))):
-            # on the blanket's top (0.60): they sat 8 mm under it (2026-10-26)
-            make_box("Charcoal_Letter_%d" % ci, (bx - 0.10 + dx, by - 0.36, 0.6015), (w, 0.07, 0.003), (0.16, 0.15, 0.15, 1.0))
-        make_box("Charcoal_Smudge", (bx - 0.10, by - 0.30, 0.6011), (0.40, 0.06, 0.001), (0.36, 0.34, 0.34, 1.0))
+        # (pass 403) no charcoal on the duvet: interlude ii — "Her thigh has
+        # charcoal on it in the shape of three letters … There is no charcoal
+        # in the apartment." The letters are on HER, from nowhere; residue here
+        # was charcoal in the apartment.
         make_chamfer_box("Nightstand", (bx+0.95, by+0.7, 0.30), (0.42, 0.42, 0.60), COL_WOOD, chamfer=0.01)
         make_box("Nightstand_Drawer_Seam", (bx+0.95, by+0.7-0.212, 0.44), (0.34, 0.004, 0.006), (0.34, 0.24, 0.16, 1.0))
         make_lathe("Nightstand_Pull", (bx+0.95, by+0.7-0.215, 0.36), [(0.0, 0.0), (0.012, 0.0), (0.014, 0.01), (0.008, 0.02), (0.0, 0.02)],
@@ -597,10 +596,8 @@ def build_wear_personality_2026_08():
             make_cyl("Wear_PaintDrip_%d" % di, (dx, dy, 0.007), dr, 0.004, col, segments=6)
         _det.make_floor_stain("Wear_SolventBloom", (-1.80, 2.75), radius=0.14,
                          tint=(0.38, 0.35, 0.30, 1.0), segments=9)
-    # Charcoal smudge on the wall at hand height, where she steadies herself
-    # leaning in to the board (the E wall now, by the easel)
-    make_box("Wear_CharcoalSmudge", (ROOM_W/2.0 - 0.106, 1.30, 1.32), (0.012, 0.16, 0.10),
-             (0.24, 0.23, 0.22, 1.0))
+    # (pass 403) no charcoal smudge on the wall: "There is no charcoal in the
+    # apartment" (interlude ii).
     # ── SIXTY-ONE DEGREES ──────────────────────────────────────
     # The thermostat reads what it reads; the draft towel at the
     # door base is how a cold apartment answers its own door.
@@ -618,11 +615,11 @@ def build_wear_personality_2026_08():
         make_box("Wear_Cushion_Flat", (0.67, 3.51, 0.545), (0.74, 0.58, 0.030),
                  (0.45, 0.41, 0.35, 1.0))
     with shifted(globals(), 0.6, 0.55, ROOM_W=OLD_W, ROOM_D=OLD_D):   # by the nook's opening
-        # Kai's floor bed, folded and stacked by the couch arm each
-        # morning — a guest who folds is a guest who knows he's one.
-        make_box("Wear_FloorBed_Folded", (1.55, 2.55, 0.09), (0.55, 0.42, 0.18),
+        # Kai's floor bed, folded by the couch arm — ch10's morning only
+        # (pass 403): he "had not, in three years, slept on the floor" before.
+        make_box("Wear_FloorBed_Folded__lena_apartment_night_ch10", (1.55, 2.55, 0.09), (0.55, 0.42, 0.18),
                  (0.50, 0.44, 0.36, 1.0))
-        make_box("Wear_FloorBed_Pillow", (1.55, 2.55, 0.225), (0.42, 0.30, 0.09),
+        make_box("Wear_FloorBed_Pillow__lena_apartment_night_ch10", (1.55, 2.55, 0.225), (0.42, 0.30, 0.09),
                  (0.82, 0.78, 0.70, 1.0))
 
 
@@ -668,10 +665,13 @@ def build_hero_props_2026_09():
     paper_col = (0.94, 0.92, 0.86, 1.0)
 
     with shifted(globals(), 0.25, 0.3, ROOM_W=OLD_W, ROOM_D=OLD_D):   # the window side table
-        # ── THE ESTUARY 7 STICK · side table (1.40, 0.95), top 0.54 ──
-        make_box("Estuary_Stick_Sleeve", (1.44, 0.95, 0.551), (0.26, 0.09, 0.020), waxpaper)
-        make_box("Estuary_Stick", (1.258, 0.95, 0.549), (0.10, 0.05, 0.016), (0.30, 0.26, 0.22, 1.0))
-        make_box("Stick_Label", (1.44, 0.95, 0.563), (0.10, 0.05, 0.002), (0.96, 0.95, 0.92, 1.0))
+        # ── HER PHONE · the side table (1.40, 0.95), top 0.54 ──
+        # (pass 403) "Lena looked at her phone on the side table" (ch8). The
+        # Estuary 7 stick lay here in every chapter; the text keeps it in her
+        # coat — "in the inside pocket of the coat hanging on the hook by the
+        # door" (ch8) — and lays it here once, in a memory.
+        make_box("Lena_Phone", (1.40, 0.95, 0.546), (0.070, 0.140, 0.012), (0.16, 0.16, 0.18, 1.0))
+        make_box("Lena_Phone_Screen", (1.40, 0.95, 0.553), (0.058, 0.124, 0.002), (0.30, 0.36, 0.44, 1.0))
 
     # (pass 400) the hexagon itself: _props/charred_wood (outside the shift,
     # so its place is given shifted: the cloth's centre, (-0.90, 0.85) + (-0.3, 0.3))
@@ -688,38 +688,44 @@ def build_hero_props_2026_09():
         make_box("Hexagon_Cloth__lena_apartment_hexagon", (hx, hy, 0.770), (0.40, 0.36, 0.004), cloth_col)
 
         # ── THE LETTER TO JORGEN · table south-east, one sheet ──
-        make_box("Letter_Paper", (-0.55, 1.35, 0.769), (0.21, 0.28, 0.003), paper_col)
-        make_box("Letter_Name_Line", (-0.55, 1.46, 0.771), (0.12, 0.010, 0.001),
+        # (pass 403) ch6's Sunday only: she "slid the sheet with the one word
+        # into the kitchen drawer" before she left.
+        make_box("Letter_Paper__lena_apartment_letter", (-0.55, 1.35, 0.769), (0.21, 0.28, 0.003), paper_col)
+        make_box("Letter_Name_Line__lena_apartment_letter", (-0.55, 1.46, 0.771), (0.12, 0.010, 0.001),
                  (0.30, 0.30, 0.34, 1.0))
-        make_cyl("Letter_Pen_Dry", (-0.42, 1.28, 0.7735), 0.005, 0.13,
+        make_cyl("Letter_Pen_Dry__lena_apartment_letter", (-0.42, 1.28, 0.7735), 0.005, 0.13,
                  (0.24, 0.24, 0.28, 1.0), axis='Y', segments=6)
-        make_cyl("Letter_Pen_Second", (-0.46, 1.44, 0.7735), 0.005, 0.13,
+        make_cyl("Letter_Pen_Second__lena_apartment_letter", (-0.46, 1.44, 0.7735), 0.005, 0.13,
                  (0.52, 0.30, 0.24, 1.0), axis='Y', segments=6)
-        make_cyl("Letter_Coffee_Cup", (-0.76, 1.30, 0.813), 0.040, 0.088,
+        make_cyl("Letter_Coffee_Cup__lena_apartment_letter", (-0.76, 1.30, 0.813), 0.040, 0.088,
                  (0.86, 0.82, 0.76, 1.0), segments=10)
 
-        # ── LENA'S PHONE · by her place at the table ──
-        make_box("Lena_Phone", (-0.95, 1.30, 0.774), (0.070, 0.140, 0.012),
-                 (0.16, 0.16, 0.18, 1.0))
-        make_box("Lena_Phone_Screen", (-0.95, 1.30, 0.781), (0.058, 0.124, 0.002),
-                 (0.30, 0.36, 0.44, 1.0))
 
     with shifted(globals(), -1.0, 0.0, ROOM_W=OLD_W, ROOM_D=OLD_D):   # the counter
         # ── THE BREAD · counter between drainer and grinder ──
-        make_box("Bread_Board", (-2.14, 2.08, 0.935), (0.30, 0.20, 0.018), COL_WOOD)
-        make_box("Bread_Loaf", (-2.18, 2.10, 0.979), (0.150, 0.095, 0.070),
+        make_box("Bread_Board__la_bread", (-2.14, 2.08, 0.935), (0.30, 0.20, 0.018), COL_WOOD)
+        make_box("Bread_Loaf__la_bread", (-2.18, 2.10, 0.979), (0.150, 0.095, 0.070),
                  (0.76, 0.58, 0.34, 1.0))
-        make_box("Bread_Slice", (-2.03, 2.04, 0.951), (0.020, 0.090, 0.014),
+        make_box("Bread_Slice__la_bread", (-2.03, 2.04, 0.951), (0.020, 0.090, 0.014),
                  (0.88, 0.78, 0.58, 1.0))
-        make_box("Bread_Knife", (-2.10, 1.99, 0.947), (0.190, 0.024, 0.006), COL_STEEL)
-        make_box("Bread_Knife_Handle", (-1.985, 1.99, 0.947), (0.040, 0.028, 0.014), COL_WOOD)
+        make_box("Bread_Knife__la_bread", (-2.10, 1.99, 0.947), (0.190, 0.024, 0.006), COL_STEEL)
+        make_box("Bread_Knife_Handle__la_bread", (-1.985, 1.99, 0.947), (0.040, 0.028, 0.014), COL_WOOD)
 
     with shifted(globals(), -0.3, 0.3, ROOM_W=OLD_W, ROOM_D=OLD_D):   # the table
-        # ── THE BOWL · the east place setting, an inch off true ──
-        make_cyl("Table_Place_Bowl", (-0.40, 1.450, 0.790), 0.075, 0.044,
-                 (0.58, 0.52, 0.46, 1.0), segments=12)
-        make_cyl("Table_Place_Bowl_Inner", (-0.40, 1.450, 0.8145), 0.058, 0.005,
-                 (0.42, 0.36, 0.30, 1.0), segments=12)
+        # ── THE BOWLS · ch8's supper (pass 403): "found four bowls and four
+        # spoons in the second drawer down, and set the table" — one bowl at
+        # one place, in every chapter, before. Tem's (west, across from
+        # Lena's) "pushed … an inch away from her". The table centre is
+        # (-0.80, 1.11) in this block's frame.
+        for k, (px, py, dx, dy) in enumerate(((-0.80, 1.43, 0.0, 0.0), (-0.48, 1.11, 0.0, 0.0),
+                                              (-0.80, 0.79, 0.0, 0.0), (-1.12, 1.11, 0.025, 0.0))):
+            make_cyl(f"Table_Place_Bowl_{k}__lena_apartment_supper", (px + dx, py + dy, 0.790), 0.075, 0.044,
+                     (0.58, 0.52, 0.46, 1.0), segments=12)
+            make_cyl(f"Table_Place_Bowl_{k}_Inner__lena_apartment_supper", (px + dx, py + dy, 0.8145), 0.058, 0.005,
+                     (0.42, 0.36, 0.30, 1.0), segments=12)
+            sx, sy = (px + 0.11, py) if abs(px + 0.80) < 0.01 else (px, py + 0.11)
+            make_box(f"Table_Place_Spoon_{k}__lena_apartment_supper", (sx, sy, 0.7695),
+                     (0.016, 0.15, 0.004) if abs(px + 0.80) < 0.01 else (0.15, 0.016, 0.004), (0.72, 0.72, 0.74, 1.0))
 
 
 def build_draft4_2026_09():
@@ -871,13 +877,14 @@ def build_draft8_2026_11():
                (0.80, 0.78, 0.72, 1.0), segments=10)
     make_cyl("Stove_Shelf_Tin", (-3.30, 0.72, 1.8725), 0.045, 0.12, (0.30, 0.40, 0.44, 1.0), segments=10)
 
-    # ── the apron over the back of the kitchen chair (KChair_0: its back rail
+    # ── the apron over the back of the kitchen chair — ch12 only (pass 403):
+    #    "the apron was over the back of the kitchen chair" (KChair_0: its back rail
     #    is at x -2.06, y 1.20 .. 1.62, top 0.905) ──
     apron = (0.22, 0.26, 0.34, 1.0)
-    make_box("Apron_Out", (-2.085, 1.41, 0.67), (0.012, 0.30, 0.48), apron)
-    make_box("Apron_Over", (-2.058, 1.41, 0.913), (0.066, 0.30, 0.012), apron)
-    make_box("Apron_In", (-2.020, 1.41, 0.81), (0.012, 0.30, 0.20), apron)
-    make_box("Apron_String", (-2.085, 1.585, 0.50), (0.012, 0.012, 0.30), (0.74, 0.70, 0.62, 1.0))
+    make_box("Apron_Out__lena_apartment_hexagon", (-2.085, 1.41, 0.67), (0.012, 0.30, 0.48), apron)
+    make_box("Apron_Over__lena_apartment_hexagon", (-2.058, 1.41, 0.913), (0.066, 0.30, 0.012), apron)
+    make_box("Apron_In__lena_apartment_hexagon", (-2.020, 1.41, 0.81), (0.012, 0.30, 0.20), apron)
+    make_box("Apron_String__lena_apartment_hexagon", (-2.085, 1.585, 0.50), (0.012, 0.012, 0.30), (0.74, 0.70, 0.62, 1.0))
 
     # ── the boots by the door, on their tray, west of the leaf's swing ──
     make_box("Boot_Tray", (-0.64, 0.29, 0.006), (0.44, 0.36, 0.012), (0.20, 0.20, 0.21, 1.0))

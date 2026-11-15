@@ -65,6 +65,13 @@ const VIEW_GROUPS := {
 	"cab_sticks": ["cabin_interior_day_breakfast", "cabin_interior_day_sticks"],
 	"cab_hex": ["cabin_interior_day_hexagon", "cabin_interior_hexagon"],
 	"cab_disc": ["cabin_interior_day_disc", "cabin_interior_day_headset"],
+	# (pass 403) LENA'S APARTMENT by chapter (twins of lena_apartment /
+	# _night by tools/view_twin.py): the rigs, ch8's four coats ("Four hooks,
+	# four coats"), the bread ch8 cuts and ch10 finishes
+	"la_day": ["lena_apartment", "lena_apartment_hexagon", "lena_apartment_letter", "lena_apartment_ch8", "lena_apartment_supper"],
+	"la_night": ["lena_apartment_night", "lena_apartment_night_ch8", "lena_apartment_night_ch10"],
+	"la_coats4": ["lena_apartment_ch8", "lena_apartment_supper", "lena_apartment_night_ch8"],
+	"la_bread": ["lena_apartment_ch8", "lena_apartment_supper", "lena_apartment_night_ch8", "lena_apartment_night_ch10"],
 	# (pass 399) the Chau house by day, its two vol 3 ch8 views included
 	"chau_day": ["chau_hall_noon", "chau_entry_morning", "chau_living", "chau_bath", "chau_game_room",
 		"chau_steven_room", "chau_steven_desk", "chau_mom_room"],
@@ -3461,6 +3468,67 @@ const CAMERA_PRESETS := {
 		"fov": 60.0,
 		"suppress_input": true,
 	},
+	"lena_apartment_supper": {
+		# (pass 403) ch8's supper: "four bowls and four spoons … set the table"; Tem's
+		# pushed "an inch away from her"; four coats, the bread.
+		"scene": "res://scenes/locales/lena_apartment.tscn",
+		"requires_glb": "res://assets/3d/locales/lena_apartment.glb",
+		# (2026-11-10: this comment still described the 5 x 5 dorm studio.)
+		# A one-bedroom over the Salty Tome, 7 x 6.6 (godot x∈[-3.5,3.5],
+		# z∈[0,-6.6], ceil 2.6): the front door in the S wall; the kitchen
+		# down the W wall behind its own partition (godot x -0.1) with a
+		# cased doorway; the front room E of it — the window chair, the
+		# easel in the SE corner, the bathroom door in the E wall; behind
+		# the partition at godot z -3.6 the bedroom (W) and the couch nook
+		# (E) with its two back windows. Camera in the front room looking
+		# NW through the kitchen doorway: the table, the counter, the
+		# mural window; the bedroom door and her pinned studies beside it.
+		"camera_origin": Vector3(1.5, 1.58, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(50.0), 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"lena_apartment_ch8": {
+		# (pass 403) ch8's evening before supper: "Four hooks, four coats" (la_coats4), the
+		# bread on the board (la_bread).
+		"scene": "res://scenes/locales/lena_apartment.tscn",
+		"requires_glb": "res://assets/3d/locales/lena_apartment.glb",
+		# (2026-11-10: this comment still described the 5 x 5 dorm studio.)
+		# A one-bedroom over the Salty Tome, 7 x 6.6 (godot x∈[-3.5,3.5],
+		# z∈[0,-6.6], ceil 2.6): the front door in the S wall; the kitchen
+		# down the W wall behind its own partition (godot x -0.1) with a
+		# cased doorway; the front room E of it — the window chair, the
+		# easel in the SE corner, the bathroom door in the E wall; behind
+		# the partition at godot z -3.6 the bedroom (W) and the couch nook
+		# (E) with its two back windows. Camera in the front room looking
+		# NW through the kitchen doorway: the table, the counter, the
+		# mural window; the bedroom door and her pinned studies beside it.
+		"camera_origin": Vector3(1.5, 1.58, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(50.0), 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"lena_apartment_letter": {
+		# (pass 403) ch6's Sunday: the letter to Jorgen on the kitchen table — "sat at the
+		# kitchen table with the cup and a sheet of paper and a pen" — until she slides it
+		# into the drawer.
+		"scene": "res://scenes/locales/lena_apartment.tscn",
+		"requires_glb": "res://assets/3d/locales/lena_apartment.glb",
+		# (2026-11-10: this comment still described the 5 x 5 dorm studio.)
+		# A one-bedroom over the Salty Tome, 7 x 6.6 (godot x∈[-3.5,3.5],
+		# z∈[0,-6.6], ceil 2.6): the front door in the S wall; the kitchen
+		# down the W wall behind its own partition (godot x -0.1) with a
+		# cased doorway; the front room E of it — the window chair, the
+		# easel in the SE corner, the bathroom door in the E wall; behind
+		# the partition at godot z -3.6 the bedroom (W) and the couch nook
+		# (E) with its two back windows. Camera in the front room looking
+		# NW through the kitchen doorway: the table, the counter, the
+		# mural window; the bedroom door and her pinned studies beside it.
+		"camera_origin": Vector3(1.5, 1.58, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(50.0), 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
 	"lena_apartment_hexagon": {
 		# (pass 400) lena_apartment with the hexagon on her kitchen table (parts
 		# tagged __lena_apartment_hexagon): vol 7 ch12, "He laid the eight pieces on
@@ -3483,6 +3551,64 @@ const CAMERA_PRESETS := {
 		"suppress_input": true,
 	},
 	"lena_apartment_night": {
+		"scene": "res://scenes/locales/lena_apartment.tscn",
+		"requires_glb": "res://assets/3d/locales/lena_apartment.glb",
+		# (2026-10-10) THE SAME ROOM AFTER DARK: ch7 Night, the ch8 chain after
+		# nine (dark, goodnight, the_vessel, roy) and ch10 Morning at 5:40 played
+		# on the day key. The daylight rig and the kitchen-window practical are
+		# suffixed to lena_apartment; this preset brings the street lamp's spill
+		# through the window and a night env; the floor lamp and the fairy
+		# lights serve both.
+		# (2026-11-10: this comment still described the 5 x 5 dorm studio.)
+		# A one-bedroom over the Salty Tome, 7 x 6.6 (godot x∈[-3.5,3.5],
+		# z∈[0,-6.6], ceil 2.6): the front door in the S wall; the kitchen
+		# down the W wall behind its own partition (godot x -0.1) with a
+		# cased doorway; the front room E of it — the window chair, the
+		# easel in the SE corner, the bathroom door in the E wall; behind
+		# the partition at godot z -3.6 the bedroom (W) and the couch nook
+		# (E) with its two back windows. Camera in the front room looking
+		# NW through the kitchen doorway: the table, the counter, the
+		# mural window; the bedroom door and her pinned studies beside it.
+		"camera_origin": Vector3(1.5, 1.58, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(50.0), 0.0),
+		"fov": 60.0,
+		"env": {"sky_top": Color(0.05, 0.06, 0.12, 1), "sky_horizon": Color(0.16, 0.14, 0.20, 1),
+			"ground_horizon": Color(0.10, 0.09, 0.11, 1), "ground_bottom": Color(0.04, 0.04, 0.05, 1),
+			"ambient_color": Color(0.36, 0.34, 0.44, 1), "ambient_energy": 0.52, "fog_color": Color(0.14, 0.12, 0.18, 1)},
+		"suppress_input": true,
+	},
+	"lena_apartment_night_ch10": {
+		# (pass 403) ch10 at 5:40: Kai's floor bed, folded ("had not, in three years, slept on
+		# the floor" — this night only); the heel of the loaf.
+		"scene": "res://scenes/locales/lena_apartment.tscn",
+		"requires_glb": "res://assets/3d/locales/lena_apartment.glb",
+		# (2026-10-10) THE SAME ROOM AFTER DARK: ch7 Night, the ch8 chain after
+		# nine (dark, goodnight, the_vessel, roy) and ch10 Morning at 5:40 played
+		# on the day key. The daylight rig and the kitchen-window practical are
+		# suffixed to lena_apartment; this preset brings the street lamp's spill
+		# through the window and a night env; the floor lamp and the fairy
+		# lights serve both.
+		# (2026-11-10: this comment still described the 5 x 5 dorm studio.)
+		# A one-bedroom over the Salty Tome, 7 x 6.6 (godot x∈[-3.5,3.5],
+		# z∈[0,-6.6], ceil 2.6): the front door in the S wall; the kitchen
+		# down the W wall behind its own partition (godot x -0.1) with a
+		# cased doorway; the front room E of it — the window chair, the
+		# easel in the SE corner, the bathroom door in the E wall; behind
+		# the partition at godot z -3.6 the bedroom (W) and the couch nook
+		# (E) with its two back windows. Camera in the front room looking
+		# NW through the kitchen doorway: the table, the counter, the
+		# mural window; the bedroom door and her pinned studies beside it.
+		"camera_origin": Vector3(1.5, 1.58, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(50.0), 0.0),
+		"fov": 60.0,
+		"env": {"sky_top": Color(0.05, 0.06, 0.12, 1), "sky_horizon": Color(0.16, 0.14, 0.20, 1),
+			"ground_horizon": Color(0.10, 0.09, 0.11, 1), "ground_bottom": Color(0.04, 0.04, 0.05, 1),
+			"ambient_color": Color(0.36, 0.34, 0.44, 1), "ambient_energy": 0.52, "fog_color": Color(0.14, 0.12, 0.18, 1)},
+		"suppress_input": true,
+	},
+	"lena_apartment_night_ch8": {
+		# (pass 403) ch8's night, the four still there until "Kai and Finn took their coats
+		# off the hooks"; the bowls cleared, the bread.
 		"scene": "res://scenes/locales/lena_apartment.tscn",
 		"requires_glb": "res://assets/3d/locales/lena_apartment.glb",
 		# (2026-10-10) THE SAME ROOM AFTER DARK: ch7 Night, the ch8 chain after

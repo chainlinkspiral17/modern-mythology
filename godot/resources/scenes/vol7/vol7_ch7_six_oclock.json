@@ -6,7 +6,7 @@
   "title": "Six O'Clock",
   "nodes": [
     {
-      "src": "3d:lena_apartment",
+      "src": "3d:lena_apartment_supper",
       "t": "bg"
     },
     {
@@ -42,7 +42,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert stick]She had run the small portable space heater because the apartment did not warm up otherwise.",
+      "text": "She had run the small portable space heater because the apartment did not warm up otherwise.",
       "t": "narrate"
     },
     {

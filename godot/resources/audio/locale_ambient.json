@@ -305,11 +305,31 @@
       "bed": "assets/audio/bgm/vol7_apartment_rain.wav",
       "gain": 0.88
     },
+    "lena_apartment_supper": {
+      "bed": "assets/audio/bgm/vol7_apartment_rain.wav",
+      "gain": 0.88
+    },
+    "lena_apartment_ch8": {
+      "bed": "assets/audio/bgm/vol7_apartment_rain.wav",
+      "gain": 0.88
+    },
+    "lena_apartment_letter": {
+      "bed": "assets/audio/bgm/vol7_apartment_rain.wav",
+      "gain": 0.88
+    },
     "lena_apartment_hexagon": {
       "bed": "assets/audio/bgm/vol7_apartment_rain.wav",
       "gain": 0.88
     },
     "lena_apartment_night": {
+      "bed": "assets/audio/bgm/vol7_apartment_rain.wav",
+      "gain": 0.88
+    },
+    "lena_apartment_night_ch10": {
+      "bed": "assets/audio/bgm/vol7_apartment_rain.wav",
+      "gain": 0.88
+    },
+    "lena_apartment_night_ch8": {
       "bed": "assets/audio/bgm/vol7_apartment_rain.wav",
       "gain": 0.88
     },

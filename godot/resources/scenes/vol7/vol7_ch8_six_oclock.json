@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "3d:lena_apartment"
+      "src": "3d:lena_apartment_ch8"
     },
     {
       "t": "bgm",
@@ -31,7 +31,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert stick]She had pulled the Estuary 7 stick out of her inside coat pocket and set it on the small wooden side table by the chair and looked at it for a long minute and put it back in her coat pocket."
+      "text": "[shot:insert side_table]She had pulled the Estuary 7 stick out of her inside coat pocket and set it on the small wooden side table by the chair and looked at it for a long minute and put it back in her coat pocket."
     },
     {
       "t": "narrate",
@@ -43,7 +43,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert stick]She had waited. She had a reason now and still no reader, and the stick was a wax-paper sleeve with a name on it sitting in her coat pocket against her hip."
+      "text": "She had waited. She had a reason now and still no reader, and the stick was a wax-paper sleeve with a name on it sitting in her coat pocket against her hip."
     },
     {
       "t": "narrate",

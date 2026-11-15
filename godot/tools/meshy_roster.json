@@ -48948,7 +48948,7 @@
         }
       ],
       "prompt_mode": "append",
-      "notes": "(2026-10-19, written from the insert cue and its scene) The one word and the dried pen are the text's (the same lines appear in vol7_ch6_cale_opening.json); ink colour and the cup ring are invented. Merged rows: shot_insert_paper + shot_insert_letter both frame this sheet (the audit's 'letter' subject Letter_Coffee_Cup was the wrong part). Continuity: the text puts the sheet in the kitchen drawer after that morning; the set leaves it on the table.",
+      "notes": "(2026-10-19, written from the insert cue and its scene) The one word and the dried pen are the text's (the same lines appear in vol7_ch6_cale_opening.json); ink colour and the cup ring are invented. Merged rows: shot_insert_paper + shot_insert_letter both frame this sheet (the audit's 'letter' subject Letter_Coffee_Cup was the wrong part). Continuity: the text puts the sheet in the kitchen drawer after that morning; the set leaves it on the table. (2026-11-15, pass 403) The letter is on the table on ch6's Sunday only (\"slid the sheet with the one word into the kitchen drawer\"): the picture skips every other view of the room.",
       "art_cat": "PICTURE",
       "apply": [
         {
@@ -48967,6 +48967,15 @@
           "hide": [
             "Letter_Paper",
             "Letter_Name_Line"
+          ],
+          "not_presets": [
+            "lena_apartment",
+            "lena_apartment_ch8",
+            "lena_apartment_supper",
+            "lena_apartment_hexagon",
+            "lena_apartment_night",
+            "lena_apartment_night_ch8",
+            "lena_apartment_night_ch10"
           ]
         }
       ],
@@ -61133,7 +61142,9 @@
           "facing": "+y",
           "hide": [],
           "not_presets": [
-            "lena_apartment_night"
+            "lena_apartment_night",
+            "lena_apartment_night_ch8",
+            "lena_apartment_night_ch10"
           ]
         }
       ]
@@ -61173,7 +61184,9 @@
           "facing": "-y",
           "hide": [],
           "not_presets": [
-            "lena_apartment_night"
+            "lena_apartment_night",
+            "lena_apartment_night_ch8",
+            "lena_apartment_night_ch10"
           ]
         }
       ]
@@ -61213,7 +61226,9 @@
           "facing": "-y",
           "hide": [],
           "not_presets": [
-            "lena_apartment_night"
+            "lena_apartment_night",
+            "lena_apartment_night_ch8",
+            "lena_apartment_night_ch10"
           ]
         }
       ]
@@ -62700,7 +62715,10 @@
           "hide": [],
           "not_presets": [
             "lena_apartment",
-            "lena_apartment_hexagon"
+            "lena_apartment_hexagon",
+            "lena_apartment_letter",
+            "lena_apartment_ch8",
+            "lena_apartment_supper"
           ]
         }
       ]
@@ -62750,7 +62768,10 @@
           "hide": [],
           "not_presets": [
             "lena_apartment",
-            "lena_apartment_hexagon"
+            "lena_apartment_hexagon",
+            "lena_apartment_letter",
+            "lena_apartment_ch8",
+            "lena_apartment_supper"
           ]
         }
       ]
@@ -62800,7 +62821,10 @@
           "hide": [],
           "not_presets": [
             "lena_apartment",
-            "lena_apartment_hexagon"
+            "lena_apartment_hexagon",
+            "lena_apartment_letter",
+            "lena_apartment_ch8",
+            "lena_apartment_supper"
           ]
         }
       ]

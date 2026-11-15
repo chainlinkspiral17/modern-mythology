@@ -3835,6 +3835,50 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-15 · pass 403: Lena's apartment, chapter by chapter.**
+- A reader (node-cited, spot-checked) set the room's dressing against its
+  ~20 segments. What the text contradicted:
+  - THE STICK on the side table in every chapter. The text keeps Estuary 7
+    in her coat — "in the inside pocket of the coat hanging on the hook by
+    the door" (ch8) — and sets it on the side table once, in a memory. Gone;
+    her phone lies there now ("Lena looked at her phone on the side table").
+    The memory line cuts to `shot_insert_side_table`; ch8's dark line to the
+    coat on the hook (a night frame for it); "sitting in her coat pocket
+    against her hip" lost its cue.
+  - THE LETTER to Jorgen, its pens and cup, on the table in every chapter:
+    it is there ch6's Sunday, until she "slid the sheet … into the kitchen
+    drawer" — view `lena_apartment_letter`. Your picture of it
+    (`lena_apartment_jorgen_letter`) skips the other views.
+  - ONE BOWL "at the east place": ch8's supper has "four bowls and four
+    spoons" — view `lena_apartment_supper`, Tem's "an inch away".
+  - FOUR COATS on four hooks always: the row "had, in three years, never
+    had more than one coat on it at a time. Four hooks, four coats" — one
+    coat now; three more in ch8's views (group la_coats4).
+  - CHARCOAL letters on the duvet and a charcoal smudge on the wall:
+    "There is no charcoal in the apartment" (interlude ii). Gone, with the
+    charcoal close-up (the letters are on her thigh — a person, not a frame).
+- Staged by chapter (view_twin.py, five twins): the bread on its board (ch8
+  cuts it, ch10 finishes the heel: la_bread), the apron over the chair
+  (ch12), Kai's folded floor bed (ch10 only: he "had not, in three years,
+  slept on the floor"). Rigs on groups la_day / la_night first.
+- The coffee frames aimed at the letter's cup; the lines make coffee ("She
+  made the coffee"): the pour-over cone. marker_reaim.py --tight swung the
+  kitchen-table frames onto the side table again — splice only the frames
+  you mean.
+- Kept although the text never names them (no line contradicts them, and
+  several carry your pictures): the easel and canvases, the five pinned
+  studies, the boots' tray.
+- The two older ch7 files (not in index.json, superseded by ch6/ch8) still
+  cue the bowls, bread and stick; shot_marker_audit reads them: they play
+  on the supper / night-ch8 twins now, with the frames they cue.
+- NEXT: the stick's line "sitting in her coat pocket against her hip" (she
+  wears it); ch10 runs 5:40-6:51 a.m. on the night view; the end table by
+  the couch (ch3), the soup pot (ch8), the cast iron (ch10) are named and
+  not built. For Andy (do not fix): ch8_kitchen #18's line is Tem's in the
+  older ch7 file; ch10 #10-11 vs #96 (midnight); ch10 #169 vs ch21_cabin
+  #47 (three weeks / August); the ch8 files are titled "Ch 7".
+- Deck must REBUILD lena_apartment.
+
 **2026-11-15 · pass 402: no carved bowl on the cabin table before ch11.**
 - Olaf's two bowls (Marit's, the substrate's) stood on Tem's table from
   vol 7 ch1. The text: Marit's comes out of Per's box in ch11 (ch11_per),

@@ -169,19 +169,19 @@ glow_hdr_scale = 2.4
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Locale")
 
-[node name="Key__lena_apartment__lena_apartment_hexagon" type="DirectionalLight3D" parent="."]
+[node name="Key__la_day" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 3, 3, 1)
 light_color = Color(0.96, 0.78, 0.46, 1)
 light_energy = 1.05
 shadow_enabled = false
 
-[node name="Fill__lena_apartment__lena_apartment_hexagon" type="DirectionalLight3D" parent="."]
+[node name="Fill__la_day" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 4, -6)
 light_color = Color(0.86, 0.92, 0.98, 1)
 light_energy = 0.45
 shadow_enabled = false
 
-[node name="Back__lena_apartment__lena_apartment_hexagon" type="DirectionalLight3D" parent="."]
+[node name="Back__la_day" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866, 0.354, -0.354, 0, 0.707, 0.707, 0.5, 0.612, -0.612, -3, 4, 2)
 light_color = Color(0.86, 0.62, 0.96, 1)
 light_energy = 0.28
@@ -225,14 +225,14 @@ metadata/fov = 40.0
 ; the window; the floor lamp and the fairy lights (unsuffixed) are the room's light
 ; the lamp's spill across the whole room at night (the day's three directionals are gone;
 ; 1.4 at 3.2 m reaches the sofa, not the table): a wide, dim second omni at the floor lamp
-[node name="Floor_Lamp_Room_Spill__lena_apartment_night" type="OmniLight3D" parent="."]
+[node name="Floor_Lamp_Room_Spill__la_night" type="OmniLight3D" parent="."]
 position = Vector3(2.180, 1.400, -4.900)
 light_color = Color(0.950, 0.800, 0.560, 1)
 light_energy = 0.70
 shadow_enabled = false
 omni_range = 7.50
 
-[node name="Street_Window__lena_apartment_night" type="DirectionalLight3D" parent="."]
+[node name="Street_Window__la_night" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.3420, 0.3971, -0.8517, 0.0000, 0.9063, 0.4226, 0.9397, 0.1445, -0.3100, -6, 5, -6)
 light_color = Color(0.70, 0.76, 0.92, 1)
 light_energy = 0.35
@@ -368,7 +368,8 @@ rotation = Vector3(-0.6900, -0.5517, 0.0)
 metadata/fov = 38.0
 
 ; insert: the Estuary 7 stick on the side table (ch7/ch8 six-oclock)
-[node name="shot_insert_stick" type="Marker3D" parent="." groups=["vn_shot"]]
+; (pass 403) the side table, where she once set the stick down (a memory, ch8)
+[node name="shot_insert_side_table" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.200, 1.050, -0.850)
 rotation = Vector3(-0.7014, -0.8208, 0.0)
 metadata/fov = 42.0
@@ -388,21 +389,22 @@ rotation = Vector3(-0.3970, 1.1380, 0.0)
 metadata/fov = 30.0
 
 ; insert: the sheet of paper, "Jorgen" at the top (ch6)
-[node name="shot_insert_paper" type="Marker3D" parent="." groups=["vn_shot"]]
+[node name="shot_insert_paper__lena_apartment_letter" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.650, 1.200, -1.250)
 rotation = Vector3(-0.7669, 0.4636, 0.0)
 metadata/fov = 42.0
 
 ; insert: the letter attempt from over her shoulder (ch6)
-[node name="shot_insert_letter" type="Marker3D" parent="." groups=["vn_shot"]]
+[node name="shot_insert_letter__lena_apartment_letter" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.150, 1.250, -1.150)
 rotation = Vector3(-0.6662, -0.5295, 0.0)
 metadata/fov = 42.0
 
 ; insert: Lena's phone, Tem's twelve-fourteen message (ch6)
+; (pass 403) her phone is on the side table ("her phone on the side table", ch8)
 [node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.550, 1.150, -1.200)
-rotation = Vector3(-0.6403, -0.6435, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.200, 1.050, -0.850)
+rotation = Vector3(-0.7014, -0.8208, 0.0)
 metadata/fov = 42.0
 
 ; insert: the deadbolt, locked for the first time in three years (ch7)
@@ -412,15 +414,29 @@ rotation = Vector3(-0.2067, -3.1416, 0.0)
 metadata/fov = 42.0
 
 ; insert: Kai cutting bread on the small wooden board (ch7)
-[node name="shot_insert_bread" type="Marker3D" parent="." groups=["vn_shot"]]
+; (pass 403) the bread is ch8's and ch10's; ch10 cues it ("the heel of a loaf")
+[node name="shot_insert_bread__lena_apartment_night_ch10" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.700, 1.320, -1.660)
+rotation = Vector3(-0.5964, 0.7945, 0.0)
+metadata/fov = 36.0
+
+; (pass 403) the bread in ch8's views (the older ch7 files cue it)
+[node name="shot_insert_bread__lena_apartment_night_ch8" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.700, 1.320, -1.660)
+rotation = Vector3(-0.5964, 0.7945, 0.0)
+metadata/fov = 36.0
+
+; (pass 403) the bread in ch8's views (the older ch7 files cue it)
+[node name="shot_insert_bread__lena_apartment_supper" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.700, 1.320, -1.660)
 rotation = Vector3(-0.5964, 0.7945, 0.0)
 metadata/fov = 36.0
 
 ; insert: the bowl pushed an inch away from her (ch8 the_table)
-[node name="shot_insert_bowl" type="Marker3D" parent="." groups=["vn_shot"]]
+; (pass 403) ch8's supper, the four bowls
+[node name="shot_insert_bowl__lena_apartment_supper" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.400, 1.150, -1.550)
-rotation = Vector3(-0.7673, 0.9828, 0.0)
+rotation = Vector3(-0.4654, 1.6190, 0.0)
 metadata/fov = 42.0
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
@@ -439,12 +455,6 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
-
-; insert: the charcoal — S U N — left on the duvet where her thigh was (vol7 interlude ii)
-[node name="shot_insert_charcoal" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-2.300, 1.400, -4.720)
-rotation = Vector3(-1.0479, 0.6683, 0.0)
-metadata/fov = 30.0
 
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
@@ -481,21 +491,21 @@ omni_range = 3.60
 
 ; The laundromat's sodium through the kitchen window over the sink: blender (-2.30, 1.30, 1.50) → godot (-2.30, 1.50, -1.30).
 ; the entry's flush-mount (build_lena_apartment Entry_Flushmount_*), 2026-11-08
-[node name="Entry_Flushmount__lena_apartment_night" type="OmniLight3D" parent="."]
+[node name="Entry_Flushmount__la_night" type="OmniLight3D" parent="."]
 position = Vector3(0.300, 2.420, -0.900)
 light_color = Color(1.0, 0.86, 0.64, 1)
 light_energy = 0.9
 shadow_enabled = false
 omni_range = 3.0
 
-[node name="Kitchen_Dome_Practical__lena_apartment_night" type="OmniLight3D" parent="."]
+[node name="Kitchen_Dome_Practical__la_night" type="OmniLight3D" parent="."]
 position = Vector3(-3.100, 2.400, -2.000)
 light_color = Color(0.98, 0.84, 0.62, 1)
 light_energy = 1.10
 shadow_enabled = false
 omni_range = 3.60
 
-[node name="Kitchen_Window_Practical__lena_apartment__lena_apartment_hexagon" type="OmniLight3D" parent="."]
+[node name="Kitchen_Window_Practical__la_day" type="OmniLight3D" parent="."]
 position = Vector3(-3.300, 1.500, -1.300)
 light_color = Color(1.000, 0.620, 0.260, 1)
 light_energy = 1.00
@@ -532,8 +542,26 @@ position = Vector3(1.623, 0.965, -2.469)
 rotation = Vector3(-0.2899, -0.1914, 0.0)
 metadata/fov = 35.0
 
+; (view_twin) lena_apartment_night's frame in lena_apartment_night_ch10
+[node name="shot_insert_couch__lena_apartment_night_ch10" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.623, 0.965, -2.469)
+rotation = Vector3(-0.2899, -0.1914, 0.0)
+metadata/fov = 35.0
+
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_door__lena_apartment_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.205, 1.662, -1.688)
+rotation = Vector3(-0.3347, 2.4158, 0.0)
+metadata/fov = 35.0
+
+; (view_twin) lena_apartment_night's frame in lena_apartment_night_ch10
+[node name="shot_insert_door__lena_apartment_night_ch10" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.205, 1.662, -1.688)
+rotation = Vector3(-0.3347, 2.4158, 0.0)
+metadata/fov = 35.0
+
+; (view_twin) lena_apartment_night's frame in lena_apartment_night_ch8
+[node name="shot_insert_door__lena_apartment_night_ch8" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(2.205, 1.662, -1.688)
 rotation = Vector3(-0.3347, 2.4158, 0.0)
 metadata/fov = 35.0
@@ -544,8 +572,20 @@ position = Vector3(-2.000, 1.450, -1.000)
 rotation = Vector3(-0.4296, 1.3135, 0.0)
 metadata/fov = 36.0
 
+; (view_twin) lena_apartment_night's frame in lena_apartment_night_ch10
+[node name="shot_insert_sink__lena_apartment_night_ch10" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.000, 1.450, -1.000)
+rotation = Vector3(-0.4296, 1.3135, 0.0)
+metadata/fov = 36.0
+
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_grinder__lena_apartment_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.376, 1.303, -2.011)
+rotation = Vector3(-0.2618, 1.2446, 0.0)
+metadata/fov = 35.0
+
+; (view_twin) lena_apartment_night's frame in lena_apartment_night_ch10
+[node name="shot_insert_grinder__lena_apartment_night_ch10" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-2.376, 1.303, -2.011)
 rotation = Vector3(-0.2618, 1.2446, 0.0)
 metadata/fov = 35.0
@@ -556,8 +596,20 @@ position = Vector3(1.962, 1.272, -3.552)
 rotation = Vector3(-0.2618, -0.1605, 0.0)
 metadata/fov = 35.0
 
+; (view_twin) lena_apartment_night's frame in lena_apartment_night_ch10
+[node name="shot_insert_lamp__lena_apartment_night_ch10" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.962, 1.272, -3.552)
+rotation = Vector3(-0.2618, -0.1605, 0.0)
+metadata/fov = 35.0
+
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_table__lena_apartment_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.390, 0.650, -0.296)
+rotation = Vector3(-0.2618, -0.2663, 0.0)
+metadata/fov = 35.0
+
+; (view_twin) lena_apartment_night's frame in lena_apartment_night_ch10
+[node name="shot_insert_table__lena_apartment_night_ch10" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.390, 0.650, -0.296)
 rotation = Vector3(-0.2618, -0.2663, 0.0)
 metadata/fov = 35.0
@@ -582,10 +634,32 @@ position = Vector3(1.390, 0.650, -0.296)
 rotation = Vector3(-0.2618, -0.2663, 0.0)
 metadata/fov = 35.0
 
+; (view_twin) lena_apartment's frame in lena_apartment_supper
+[node name="shot_insert_table__lena_apartment_supper" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.390, 0.650, -0.296)
+rotation = Vector3(-0.2618, -0.2663, 0.0)
+metadata/fov = 35.0
+
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+; (pass 403) "She made the coffee": the pour-over cone on the counter (the
+; cup on the table it framed is ch6's letter's, on that view alone)
 [node name="shot_insert_coffee__lena_apartment" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.492, 1.141, -1.606)
-rotation = Vector3(-0.5236, 1.5818, 0.0)
+position = Vector3(-2.350, 1.350, -2.050)
+rotation = Vector3(-0.3511, 1.2849, 0.0)
+metadata/fov = 35.0
+
+; (pass 403) the older ch7 six o'clock file plays on the supper view
+[node name="shot_insert_coffee__lena_apartment_supper" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.350, 1.350, -2.050)
+rotation = Vector3(-0.3511, 1.2849, 0.0)
+metadata/fov = 35.0
+
+; (view_twin) lena_apartment's frame in lena_apartment_ch8
+; (pass 403) "She made the coffee": the pour-over cone on the counter (the
+; cup on the table it framed is ch6's letter's, on that view alone)
+[node name="shot_insert_coffee__lena_apartment_ch8" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.350, 1.350, -2.050)
+rotation = Vector3(-0.3511, 1.2849, 0.0)
 metadata/fov = 35.0
 
 ; insert: the radiator pipe in its corner, the corner in the frame
@@ -600,14 +674,38 @@ position = Vector3(2.205, 1.662, -1.688)
 rotation = Vector3(-0.3347, 2.4158, 0.0)
 metadata/fov = 35.0
 
+; (pass 403) the older ch7 six o'clock file plays on the supper view
+[node name="shot_insert_door__lena_apartment_supper" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.205, 1.662, -1.688)
+rotation = Vector3(-0.3347, 2.4158, 0.0)
+metadata/fov = 35.0
+
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_coat__lena_apartment" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-0.852, 1.878, -0.798)
 rotation = Vector3(-0.2494, 2.0975, 0.0)
 metadata/fov = 35.0
 
+; (pass 403) the coat on the hook by the door at night (ch8: the stick in its pocket)
+[node name="shot_insert_coat__lena_apartment_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.852, 1.878, -0.798)
+rotation = Vector3(-0.2494, 2.0975, 0.0)
+metadata/fov = 35.0
+
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_couch__lena_apartment" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.623, 0.965, -2.469)
+rotation = Vector3(-0.2899, -0.1914, 0.0)
+metadata/fov = 35.0
+
+; (pass 403) the older ch7 six o'clock file plays on the supper view
+[node name="shot_insert_couch__lena_apartment_supper" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.623, 0.965, -2.469)
+rotation = Vector3(-0.2899, -0.1914, 0.0)
+metadata/fov = 35.0
+
+; (view_twin) lena_apartment's frame in lena_apartment_ch8
+[node name="shot_insert_couch__lena_apartment_ch8" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.623, 0.965, -2.469)
 rotation = Vector3(-0.2899, -0.1914, 0.0)
 metadata/fov = 35.0
