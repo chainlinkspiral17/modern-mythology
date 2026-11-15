@@ -531,7 +531,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert chest]Per set the wooden box on the table, between the bowls, and did not open it. Nobody asked him to. The kettle ticked toward its whistle."
+      "text": "[shot:insert wooden_box]Per set the wooden box on the table, between the bowls, and did not open it. Nobody asked him to. The kettle ticked toward its whistle."
     },
     {
       "t": "choice",

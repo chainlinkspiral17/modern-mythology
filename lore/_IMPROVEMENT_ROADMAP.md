@@ -3835,6 +3835,75 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-15 · pass 408: the bowls, draft 3 (Tem's cabin).**
+- The spiral is one carved line now, not three rings: "A spiral was cut
+  into the outside that ran from the rim down to the base in a single
+  continuous curve" (ch11_per n13). It winds two and a half turns on every
+  bowl Olaf made. The figures are "Risen" (n14): three totems a quarter-turn
+  apart from the rim ("A crow on a fencepost at the level of the rim … An
+  octopus a quarter of the way around … A ferret on a stair-rail another
+  quarter around", n15-16) and three smaller ones between them (n17), as
+  reliefs the lamplight catches. The substrate-bowl carries the same at
+  its palm size. On that bowl the line and figures first ran inside its
+  wall (the radius formula did not scale a denominator; lesson in the
+  modeling playbook). The carving keeps a floor size (`max(s, 0.85)`) so
+  it still reads at palm size.
+- ch11_per is its own view (`cabin_interior_marit`): Per's box and
+  Marit's bowl alone. The substrate-bowl comes out of Finn's shirt pocket
+  in ch11_bowl (n22). Marit's bowl, its face inlay and Per's box moved to
+  groups (`cab_marit`, `cab_box`). Per's box stands on the table in
+  ch10-11's day view too ("Per set the wooden box on the table", ch10 n99).
+- EDDVARD'S BOWL lives "on the shelf above the kerosene lamp" (ch4_finn
+  n43/n132), "where Eddvard's bowl has been since '11" (ch17_aria n118).
+  The set had neither shelf nor bowl, so ch4's "He lifted the small cedar
+  bowl off the shelf" cut to an empty table. Now a cedar wall shelf on the
+  N wall, the stretch that shows above the lamp from the room's lens,
+  holds the small bowl in every view but ch4's night (on the table,
+  n132-137) and ch21 on (one of "The two remaining bowls", cab_late). The
+  frame `shot_insert_bowl__cabin_interior_day_package` is new.
+- Cues read for meaning (a scan for insert cues whose line names another
+  framed object and not their own; its other 79 rows are the next pass):
+  ch10's "[shot:insert
+  chest]" on "Per set the wooden box on the table" cut to the blanket
+  chest by the bed. It cuts to the box now (a new `shot_insert_wooden_box`
+  at Per's elbow, where all three boxes stand); the chest frame had no
+  other cue and is gone. ch4's bowl cue moves from "She washed the cups"
+  to the line that takes the bowl down (n131 → n132). ch21's bowl cue on
+  "Cale arrived … the disc-case in his coat" becomes a disc-case cue on
+  "He set the disc-case on the kitchen table" (n8 → n9). ch17_dawn's bowl
+  cue on the bedtimes line ("Marina at ten in the loft …") is dropped; its
+  bowls have their own cues two lines on. Frames re-read by render: the
+  single-bowl insert stood behind the hurricane lantern (the lamp filled
+  half the frame) and now looks from the table's south-west, across the
+  substrate-bowl; ch4's night insert of Eddvard's bowl saw only its
+  shadowed side (a lit ring over black) and now looks from the lamp's side.
+- THE SUBSTRATE-BOWL has its own frame (`shot_insert_substrate_bowl`, cue
+  id `substrate_bowl`, synonym `bowl_substrate` in shot_marker_audit).
+  ch11_bowl's bowl cues alternate between the two bowls; n22, n47, n52 and
+  n54 are the substrate-bowl's ("the ferret on the substrate's bowl was on
+  a cedar floor") and cut to it now, while n43 and n46 (Marit's) keep the
+  single-bowl frame. Its hooded woman is the one coloured figure: "the
+  woman's slicker was the yellow of a slicker Kai had not … seen carved
+  into any bowl" (n55).
+- To generate (you make it; Claude does not): `cabin_interior_marit_bowl_
+  face` — the young woman's face carved inside Marit's bowl, filling it
+  "the way a face fills a coin", hair curling, eyes and mouth closed
+  (ch11_per n120-121). Its row is in the roster; it lays in the seven
+  views that have Marit's bowl.
+- NEXT: ch11_bowl's first 21 nodes show the substrate-bowl still in
+  Finn's pocket (needs the inline `[view:]` tag); the crow relief turning
+  "another small turn" (ch11_bowl n158, ch17_dawn n22); the bearded man
+  with the piece of wood on Marina's grandfather's bowl (ch13_marina
+  n136), his eyes above the rim looking at the lamp (ch14_painting
+  n16-19); the woman in the yellow slicker on the substrate-bowl; the
+  face inside the substrate-bowl (ch16_aud n151); the bell-piece's
+  handkerchief. For Andy (do not fix): the kerosene lamp "on the table"
+  (ch14, ch19) vs "the small wooden table beside the kerosene lamp" (ch1,
+  ch2, ch4) and a shelf above it; Per's box "between the bowls" in ch10,
+  before any bowl is in the cabin; the lid "hinged" (ch11_per n10) vs
+  "by weight" (ch10 n101); the bowls' other knots are in pass 404.
+- Deck must REBUILD cabin_interior.
+
 **2026-11-15 · pass 407: Board Lords and the sanderling, chapter by chapter.**
 - The same reading (node-cited, spot-checked) for Kai's shop and Main
   Street across from it, seven interior segments and ten street ones. The

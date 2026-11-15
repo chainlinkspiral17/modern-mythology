@@ -399,6 +399,22 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-11-15 · a scale parameter scales every term, including the ones you divide by (pass 408)
+
+**What happened.** The cabin's bowl helper takes `s` (the substrate-bowl
+is Marit's at 0.62). The new spiral computed the body's radius at a
+height as `(0.058 + 0.057 * h / 0.096) * s`, with `h` already scaled. At
+s = 1 that is right. At 0.62 the spiral and its six figures ran inside the
+small bowl's wall, and the render showed a plain bowl. No gate fires on a
+part buried inside its own assembly.
+
+**The rule.** In a helper with a scale, write every length in the
+formula with `* s`, denominators too (`h / (0.096 * s)`). Then read one
+scaled copy from the recorder: compare the added part's bbox with the
+body's (`Bowl_Substrate_Spiral` h 0.055 against `_Body` 0.071 gave it
+away). Detail that must read at any size (a carved line, a relief) gets a
+floor (`max(s, 0.85)`), not the full scale.
+
 ### 2026-11-15 · name the SURFACE, and measure small things from it (pass 386)
 - `top = 0.95`, `desk_top_z`, `TABLE_TOP_Z`, `floor_z=5.02`: in a third
   of the sets the constant a prop is placed from is the slab's centre or

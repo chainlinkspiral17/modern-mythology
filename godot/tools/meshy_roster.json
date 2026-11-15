@@ -8470,7 +8470,8 @@
             "cabin_interior_early",
             "cabin_interior_eddvard",
             "cabin_interior_three",
-            "cabin_interior_four"
+            "cabin_interior_four",
+            "cabin_interior_marit"
           ]
         },
         {
@@ -8711,7 +8712,8 @@
             "cabin_interior_early",
             "cabin_interior_eddvard",
             "cabin_interior_three",
-            "cabin_interior_four"
+            "cabin_interior_four",
+            "cabin_interior_marit"
           ]
         }
       ]
@@ -8762,7 +8764,8 @@
             "cabin_interior_early",
             "cabin_interior_eddvard",
             "cabin_interior_three",
-            "cabin_interior_four"
+            "cabin_interior_four",
+            "cabin_interior_marit"
           ]
         }
       ]
@@ -48121,6 +48124,73 @@
       "text_body": "Left-hand page (the close of the thirty-seventh entry):\n... Maria at the pool again. She sat on the near side this time, where the kelp is. I told her about the crow. I do not know if she heard. I left at the end of the playing.\n\nRight-hand page:\nOctober 4, 2050. The thirty-eighth playing. I went to the second pool. The old man was there. I sat with him. He turned to me — for the first time in thirty-eight playings, he turned to me. He said: Brandon. I said: yes.\nHe said: there is going to be a person who comes here in some number of years who has been carrying my crow. I said: Aria. He said: no. The person carrying the crow. I said: the crow is yours. He said: the crow is mine.\nI am going to need you to give the crow to the person who comes. The crow is going to need to be at this pool with him. The crow is going to need to see what is at the bottom of the pool.\nThe crow is going to need to take what is at the bottom to him. Do you understand. I said: yes. He said: it will not be soon. It will be after you are gone. I said: I am gone. He said: when. I said: I do not know.\nHe said: soon enough. Give the crow now. I said: I will. He turned back to the pool."
     },
     {
+      "slug": "cabin_interior_marit_bowl_face",
+      "kind": "art",
+      "name": "the face inside Marit's bowl, carved in the cedar",
+      "file": "cabin_interior_marit_bowl_face.png",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "cabin_interior_marit_bowl_face"
+      ],
+      "tag": "picture · cabin_interior · 0.146 x 0.146 m · insert",
+      "aspect": "1:1",
+      "prompt": "Seen from directly above, looking straight down into a small hand-carved bowl of western red cedar, the round interior filling the frame and touching all four edges: carved in low relief across the whole inside of the bowl, a single young woman's face, the way a face fills a coin — eyes closed, mouth closed, the hair carved as if curling around the face out to the rim. The wood is warm red-brown, hand-oiled, worn smooth by fifty years of hands, with the fine straight grain of the cedar running through the carving. Soft even light from above, the deepest cuts a little darker. In the four corners, beyond the round interior, the inner wall of the bowl curving up in the same cedar. No paint, no colour but the wood's own.",
+      "canon": [
+        {
+          "src": "vol7/vol7_ch11_per.json",
+          "text": "What was on the inside was, by what Kai could see at the angle Per held it: a single face. A young woman's face. The face filled the bowl's interior in the way a face fills a coin. The hair on the face was carved as if curling."
+        },
+        {
+          "src": "vol7/vol7_ch11_per.json",
+          "text": "The bowl was cedar, the wood the warm red-brown that western red cedar goes when it has been carried by hand for fifty years and oiled with the small oil a person uses on a thing he intends to keep."
+        },
+        {
+          "src": "vol7/vol7_ch11_per.json",
+          "text": "The eyes were closed. The mouth was closed."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-11-15, pass 408) Marit's bowl stands on Tem's table from ch11 to ch20 (cab_marit); its interior was a dark disc. The face, the coin, the curling hair and the closed eyes and mouth are the text's (ch11_per n120-121); the light and grain are invented. The picture is the square inside the round interior: its corners reach the rim, so the corners show the bowl's wall.",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "cabin_interior",
+          "label": "Bowl_Marit_Hollow",
+          "center": [
+            0.0,
+            4.06,
+            0.908
+          ],
+          "size": [
+            0.146,
+            0.146
+          ],
+          "facing": "up",
+          "hide": [
+            "Bowl_Marit_Hollow",
+            "Bowl_Face_Inlay"
+          ],
+          "not_presets": [
+            "cabin_interior_eddvard",
+            "cabin_interior_early",
+            "cabin_interior_piece",
+            "cabin_interior_day",
+            "cabin_interior_day_early",
+            "cabin_interior_day_headset",
+            "cabin_interior_day_disc",
+            "cabin_interior_day_package",
+            "cabin_interior_day_sticks",
+            "cabin_interior_day_breakfast",
+            "cabin_porch",
+            "cabin_porch_dawn",
+            "cabin_porch_day"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "caldwell_porch_night_framed_print",
       "kind": "art",
       "name": "the framed print on the porch side table, one of her grandfather's",
@@ -60808,7 +60878,8 @@
             "cabin_interior_early",
             "cabin_interior_eddvard",
             "cabin_interior_three",
-            "cabin_interior_four"
+            "cabin_interior_four",
+            "cabin_interior_marit"
           ]
         }
       ]
@@ -60865,7 +60936,8 @@
             "cabin_interior_early",
             "cabin_interior_eddvard",
             "cabin_interior_three",
-            "cabin_interior_four"
+            "cabin_interior_four",
+            "cabin_interior_marit"
           ]
         }
       ]
@@ -60923,7 +60995,8 @@
             "cabin_interior_early",
             "cabin_interior_eddvard",
             "cabin_interior_three",
-            "cabin_interior_four"
+            "cabin_interior_four",
+            "cabin_interior_marit"
           ]
         }
       ]
@@ -60974,7 +61047,8 @@
             "cabin_interior_early",
             "cabin_interior_eddvard",
             "cabin_interior_three",
-            "cabin_interior_four"
+            "cabin_interior_four",
+            "cabin_interior_marit"
           ]
         }
       ]
@@ -61025,7 +61099,8 @@
             "cabin_interior_early",
             "cabin_interior_eddvard",
             "cabin_interior_three",
-            "cabin_interior_four"
+            "cabin_interior_four",
+            "cabin_interior_marit"
           ]
         }
       ]
@@ -61076,7 +61151,8 @@
             "cabin_interior_early",
             "cabin_interior_eddvard",
             "cabin_interior_three",
-            "cabin_interior_four"
+            "cabin_interior_four",
+            "cabin_interior_marit"
           ]
         }
       ]
@@ -61132,7 +61208,8 @@
             "cabin_interior_early",
             "cabin_interior_eddvard",
             "cabin_interior_three",
-            "cabin_interior_four"
+            "cabin_interior_four",
+            "cabin_interior_marit"
           ]
         }
       ]

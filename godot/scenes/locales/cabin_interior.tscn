@@ -475,11 +475,13 @@ position = Vector3(-2.994, 1.307, -6.300)
 rotation = Vector3(-0.5236, 0.5236, 0.0)
 metadata/fov = 36.0
 
-; insert: the cedar chest
-[node name="shot_insert_chest" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.600, 1.000, -4.700)
-rotation = Vector3(-0.393564, -0.844154, 0)
-metadata/fov = 38.0
+; (pass 408) the wooden box at the head of the table, Per's elbow (ch13_cale:
+; "Per at the head, with the wooden box at his elbow"): Per's (ch10-13),
+; Marina's (ch13 night), Roy's (ch19-20) stand in the same place
+[node name="shot_insert_wooden_box" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.050, 1.220, -3.550)
+rotation = Vector3(-0.4114, 0.6260, 0.0)
+metadata/fov = 40.0
 
 ; ── (2026-08-12) markers the SCRIPTS ALREADY CUE ───────────────
 ; Census of the 46 vol7 chapters on this bg: [shot:insert bowls]
@@ -493,10 +495,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000, 1.060, -3.060)
 rotation = Vector3(-0.2502, 0.0000, 0.0)
 
 ; The single bowl — closer, off-axis, so "insert bowl" is not the
+; (pass 408) the substrate-bowl, "the size of his palm" (ch11_bowl n22): its
+; crow, its ferret "on a cedar floor", its woman in the slicker (n47-54)
+[node name="shot_insert_substrate_bowl" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.550, 1.020, -3.400)
+rotation = Vector3(-0.3227, -0.6138, 0.0)
+metadata/fov = 36.0
+
 ; same frame as "insert bowls".
 [node name="shot_insert_bowl" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.300, 1.000, -3.300)
-rotation = Vector3(-0.2505, 0.1471, 0.0)
+position = Vector3(-0.320, 1.060, -3.420)
+rotation = Vector3(-0.2726, -0.4636, 0.0)
 
 ; [shot:insert coffee] (3x) — the stove-side table where the pot sits
 [node name="shot_insert_coffee" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -554,10 +563,18 @@ rotation = Vector3(-0.5595, -0.7854, 0.0)
 metadata/fov = 42.0
 
 ; (pass 402) ch4's night: Eddvard's small cedar bowl, "set it on the table
+
+; (pass 408) ch4's day: "He lifted the small cedar bowl off the shelf" (n46)
+; — Eddvard's bowl on the shelf above the lamp, the shelf's two brackets
+[node name="shot_insert_bowl__cabin_interior_day_package" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.340, 1.820, -6.920)
+rotation = Vector3(-0.2214, 0.3048, 0.0)
+metadata/fov = 38.0
+
 ; where the wood had been" (the package's place)
 [node name="shot_insert_bowl__cabin_interior_eddvard" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.850, 1.200, -2.950)
-rotation = Vector3(-0.5595, -0.7854, 0.0)
+position = Vector3(-0.050, 1.150, -2.850)
+rotation = Vector3(-0.4635, 0.6747, 0.0)
 metadata/fov = 42.0
 
 ; insert: the desk, the notebook, three pieces of cedar
@@ -1231,6 +1248,12 @@ metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_kettle__cabin_interior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.737, 1.465, -6.520)
+rotation = Vector3(-0.2618, -0.4092, 0.0)
+metadata/fov = 35.0
+
+; (view_twin) cabin_interior's frame in cabin_interior_marit
+[node name="shot_insert_kettle__cabin_interior_marit" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(2.737, 1.465, -6.520)
 rotation = Vector3(-0.2618, -0.4092, 0.0)
 metadata/fov = 35.0

@@ -45,11 +45,11 @@
       "t": "show"
     },
     {
-      "text": "[shot:insert bowl][mood:day_bright]Cale arrived at the cabin at two-oh-five. He had the disc-case in his coat. He came up the porch steps. He came in. He did not take off the coat.",
+      "text": "[mood:day_bright]Cale arrived at the cabin at two-oh-five. He had the disc-case in his coat. He came up the porch steps. He came in. He did not take off the coat.",
       "t": "narrate"
     },
     {
-      "text": "He set the disc-case on the kitchen table beside the two bowls and the cedar bell-piece. He looked at the three of them.",
+      "text": "[shot:insert disc_case]He set the disc-case on the kitchen table beside the two bowls and the cedar bell-piece. He looked at the three of them.",
       "t": "narrate"
     },
     {

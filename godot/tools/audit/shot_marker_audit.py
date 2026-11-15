@@ -161,7 +161,8 @@ SYNONYMS = {
     "ceiling_fan": ["fan", "blade"], "bourbon": ["bourbon", "bottle", "whiskey"],
     "longboxes": ["longbox", "long_box"], "scoreboard": ["score_panel", "score", "scoreboard"],
     "bleachers": ["bleacher", "bench", "stand"], "radio": ["radio", "receiver", "transceiver", "morse_key", "freq_card", "reel"],
-    "bowls": ["bowl"], "phone": ["phone", "handset", "landline"],
+    "bowls": ["bowl"], "substrate_bowl": ["bowl_substrate"],   # (pass 408) Finn's palm-size bowl from the substrate
+    "phone": ["phone", "handset", "landline"],
     # (2026-10-10) the prose says "porch light"; the porch builders name it PorchLamp
     "porch_light": ["porch_light", "porch_lamp", "porchlamp"],
     "charred_wood": ["char", "burn", "ember", "ash"],

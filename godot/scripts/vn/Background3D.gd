@@ -58,12 +58,25 @@ const VIEW_GROUPS := {
 	# cabin_interior_day / cabin_interior, made by tools/view_twin.py); the
 	# rigs belong to every twin of their hour
 	"cab_day": ["cabin_interior_day", "cabin_interior_day_breakfast", "cabin_interior_day_sticks", "cabin_interior_day_package", "cabin_interior_day_hexagon", "cabin_interior_day_disc", "cabin_interior_day_headset", "cabin_interior_day_early", "cabin_interior_day_four"],
-	"cab_night": ["cabin_interior", "cabin_interior_hexagon", "cabin_interior_piece", "cabin_interior_early", "cabin_interior_eddvard", "cabin_interior_three", "cabin_interior_four"],
+	"cab_night": ["cabin_interior", "cabin_interior_marit", "cabin_interior_hexagon", "cabin_interior_piece", "cabin_interior_early", "cabin_interior_eddvard", "cabin_interior_three", "cabin_interior_four"],
 	# (pass 404) the bowls by count (pass 402: none before ch11). Marit's and
 	# the substrate-bowl ch11-ch20; Marina's grandfather's from ch13's night;
 	# Roy's, the notebook and Roy's box ch19-20; the bell-piece ch19-22; ch21
 	# on, "Lindholm-Marina's and Eddvard's-by-Tem"
 	"cab_bowls": ["cabin_interior", "cabin_interior_hexagon", "cabin_interior_day_hexagon", "cabin_interior_three", "cabin_interior_four", "cabin_interior_day_four"],
+	# (pass 408) Marit's bowl comes out of Per's box in ch11_per, before the
+	# substrate-bowl comes out of Finn's pocket (ch11_bowl n22): ch11_per is
+	# its own view. Per's box stands at his elbow in both (ch10-ch13).
+	"cab_marit": ["cabin_interior", "cabin_interior_marit", "cabin_interior_hexagon", "cabin_interior_day_hexagon", "cabin_interior_three", "cabin_interior_four", "cabin_interior_day_four"],
+	"cab_box": ["cabin_interior", "cabin_interior_marit", "cabin_interior_day_sticks"],
+	# (pass 408) EDDVARD'S BOWL on "the shelf above the kerosene lamp" (ch4_finn
+	# n43/n132), "where Eddvard's bowl has been since '11" (ch17_aria n118):
+	# every view of the cabin but ch4's night (on the table, n132-137) and ch21
+	# on, when it is one of "The two remaining bowls" on the table (cab_late)
+	"cab_shelf": ["cabin_interior", "cabin_interior_marit", "cabin_interior_four", "cabin_interior_three", "cabin_interior_early",
+		"cabin_interior_piece", "cabin_interior_hexagon", "cabin_interior_day_four", "cabin_interior_day_early",
+		"cabin_interior_day_hexagon", "cabin_interior_day_package", "cabin_interior_day_sticks", "cabin_interior_day_breakfast",
+		"cabin_porch", "cabin_porch_dawn", "cabin_porch_day"],
 	"cab_third": ["cabin_interior_hexagon", "cabin_interior_three", "cabin_interior_four", "cabin_interior_day_four"],
 	"cab_ch19": ["cabin_interior_four", "cabin_interior_day_four"],
 	"cab_bell": ["cabin_interior_four", "cabin_interior_day_four", "cabin_interior_day", "cabin_interior_day_disc"],
@@ -3921,6 +3934,23 @@ const CAMERA_PRESETS := {
 		"suppress_input": true,
 	},
 	"cabin_interior": {
+		"scene": "res://scenes/locales/cabin_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
+		# SURVEYED 2026-07-12: old vantage sat blender y=-0.5 OUTSIDE
+		# the south door. RE-SURVEYED 2026-09-03 (user: "first view of
+		# the cabin, 90 percent obstructed/wall"): x=2.0 stood INSIDE
+		# the bed alcove east of the East_Part partition (x 1.0,
+		# y 0..2.6), so the partition filled the left of frame. Now just
+		# inside the door WEST of the partition (blender 0.3, 0.9),
+		# looking NNW across the table + rockers to the kitchenette
+		# counter and the wood stove. Eye 1.62 (ceiling 3.4).
+		"camera_origin": Vector3(0.3, 1.62, -0.9),
+		"camera_rotation": Vector3(-0.04, 0.35, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"cabin_interior_marit": {
+		# (pass 408) ch11_per: Per's box and Marit's bowl alone — the substrate-bowl comes out of Finn's shirt pocket in ch11_bowl (n22)
 		"scene": "res://scenes/locales/cabin_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
 		# SURVEYED 2026-07-12: old vantage sat blender y=-0.5 OUTSIDE

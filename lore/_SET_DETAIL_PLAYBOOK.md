@@ -84,6 +84,22 @@ henderson) got there by accumulating exactly these layers.
 
 ## Recent lessons
 
+### 2026-11-15 · a thing that moves needs its HOME built too (pass 408)
+
+**What happened.** Pass 402 put Eddvard's small bowl on Tem's table for
+ch4's night, the one evening she takes it down. The text says where it
+lives the rest of the time: "the shelf above the kerosene lamp", "where
+Eddvard's bowl has been since '11". Neither the shelf nor the bowl on it
+was built. ch4's day line "He lifted the small cedar bowl off the shelf"
+cut to an empty table, and no gate could see it: the cue's word matched
+the table bowls in other views.
+
+**The rule.** When a timeline pass gives an object a moment somewhere,
+read where the text keeps it the rest of the time, and build that place
+with the object on it, tagged to every view where it is home (a group:
+all the set's views minus the ones where it is elsewhere). Then give the
+home its own frame in the views whose lines go to it.
+
 ### 2026-11-15 · a home base's table is a TIMELINE: read it chapter by chapter, then twin the views (passes 397 - 401)
 
 - **What happened:** pass 396's rule, applied room by room, kept finding
