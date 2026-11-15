@@ -52,6 +52,7 @@ if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_chamfer_box, make_cyl, make_lathe, make_tube, make_rot_box, make_blob, export_glb
 from _props.furniture import make_chair, make_stool, make_bench
+from _props.charred_wood import make_hexagon
 from _props.detail import make_traffic_wear, make_floor_stain, make_light_switch, make_wall_outlet
 from _props.vehicles import make_car
 from _props.structure import make_floor, make_wall, make_ceiling, make_window, make_wall_with_openings
@@ -288,15 +289,13 @@ def build_office():
     make_box("Devon_Desk_Lamp_Head", (dx + 0.10, dy + 0.44, 1.08), (0.14, 0.12, 0.08), (0.30, 0.30, 0.32, 1.0))
     make_box("Devon_Desk_Lamp_Bulb", (dx + 0.10, dy + 0.44, 1.035), (0.08, 0.07, 0.01), (1.0, 0.92, 0.72, 1.0))
     # ── THE HEXAGON on its cloth, on the desk ("He laid the hexagon on the desk") ──
+    # (pass 400) vol 7 ch12, the back office only (board_lords_office); one
+    # look in every room (_props/charred_wood), ~25 cm across ("about ten
+    # inches") — it was drawn twice that here, on a cloth 0.6 m wide.
     top = 0.74
     hx0, hy0 = dx - 0.02, dy - 0.10
-    make_box("Hexagon_Cloth", (hx0, hy0, top + 0.006), (0.60, 0.64, 0.012), (0.82, 0.78, 0.70, 1.0))
-    for hi in range(6):
-        a = _m.pi / 3.0 * hi + _m.pi / 6.0
-        make_box(f"Hexagon_Ring_{hi}", (hx0 + 0.19 * _m.cos(a), hy0 + 0.19 * _m.sin(a), top + 0.03), (0.085, 0.07, 0.036), (0.60, 0.44, 0.28, 1.0))
-    make_box("Hexagon_Center_Face", (hx0, hy0, top + 0.037), (0.10, 0.10, 0.05), (0.66, 0.48, 0.30, 1.0))
-    make_box("Hexagon_Face_Inlay", (hx0, hy0 + 0.02, top + 0.066), (0.06, 0.05, 0.008), (0.38, 0.26, 0.16, 1.0))
-    make_box("Hexagon_Aria_Piece", (hx0 - 0.20, hy0 - 0.27, top + 0.03), (0.06, 0.16, 0.036), (0.60, 0.44, 0.28, 1.0))
+    make_box("Hexagon_Cloth__board_lords_office", (hx0, hy0, top + 0.004), (0.46, 0.36, 0.008), (0.82, 0.78, 0.70, 1.0))
+    make_hexagon(hx0, hy0, top + 0.008, tag="board_lords_office", aria=(-0.17, -0.12), aria_yaw=-0.35)
     # ── the two cardboard boxes of bearings, on the floor by the desk's
     # north end (Kai sits on one and looks at the hexagon) ──
     for bi, bx in enumerate((3.00, 3.42)):

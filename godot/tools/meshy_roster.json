@@ -21941,6 +21941,9 @@
           "facing": "up",
           "hide": [
             "Canvas_Bag"
+          ],
+          "not_presets": [
+            "cape_perpetua_trail"
           ]
         }
       ],
@@ -61434,7 +61437,8 @@
             "S_Window_Glass"
           ],
           "not_presets": [
-            "finn_apartment_night"
+            "finn_apartment_night",
+            "finn_apartment_night_stick"
           ]
         }
       ]
@@ -61481,7 +61485,8 @@
             "Kitchen_Window_Glass"
           ],
           "not_presets": [
-            "finn_apartment_night"
+            "finn_apartment_night",
+            "finn_apartment_night_stick"
           ]
         }
       ]
@@ -62591,7 +62596,8 @@
           "facing": "+y",
           "hide": [],
           "not_presets": [
-            "lena_apartment"
+            "lena_apartment",
+            "lena_apartment_hexagon"
           ]
         }
       ]
@@ -62640,7 +62646,8 @@
           "facing": "-y",
           "hide": [],
           "not_presets": [
-            "lena_apartment"
+            "lena_apartment",
+            "lena_apartment_hexagon"
           ]
         }
       ]
@@ -62689,7 +62696,8 @@
           "facing": "-y",
           "hide": [],
           "not_presets": [
-            "lena_apartment"
+            "lena_apartment",
+            "lena_apartment_hexagon"
           ]
         }
       ]
@@ -62977,7 +62985,9 @@
           ],
           "not_presets": [
             "finn_apartment",
-            "finn_apartment_day"
+            "finn_apartment_day",
+            "finn_apartment_hexagon",
+            "finn_apartment_stick"
           ]
         }
       ]
@@ -63025,7 +63035,9 @@
           ],
           "not_presets": [
             "finn_apartment",
-            "finn_apartment_day"
+            "finn_apartment_day",
+            "finn_apartment_hexagon",
+            "finn_apartment_stick"
           ]
         }
       ]

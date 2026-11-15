@@ -2385,6 +2385,24 @@ const CAMERA_PRESETS := {
 		"suppress_input": true,
 		"far": 550.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
+	"cape_perpetua_trail": {
+		# (pass 400) the overlook without ch12's morning: no canvas bag on the
+		# bench, no hexagon at his feet, no boot prints (tagged __cape_perpetua_overlook).
+		# vol 7 Interlude II, "Cape Perpetua trail, 6:42 AM, fog bank approaching".
+		"scene": "res://scenes/locales/cape_perpetua_overlook.tscn",
+		"requires_glb": "res://assets/3d/locales/cape_perpetua_overlook.glb",
+		# The platform (blender -4,12; earthen disc r1.55), the rail on
+		# its seaward edge (x -5.35), the bench at the inner edge (x
+		# -2.85), the hexagon on the earth at (-4.75,12.15), the fog bank
+		# west below the bluff. Camera at the spur trail's last bend
+		# (blender -1.5, 9.5) looking north-west: bench near-right, rail
+		# + crow mid, the fog in the trees beyond.
+		"camera_origin": Vector3(-1.5, 1.65, -9.5),
+		"camera_rotation": Vector3(-0.06, 0.785, 0.0),
+		"fov": 58.0,
+		"suppress_input": true,
+		"far": 550.0,   # (2026-10-31) its far scenery stood past the 200 m default
+	},
 	# ── VOL 7 — Main Street, Smolvud (re-homed off cabin_road
 	# 2026-09-01): the sidewalk in front of Board Lords, the sanderling
 	# mural + patch on the laundromat wall across Main ────────────────
@@ -3415,6 +3433,27 @@ const CAMERA_PRESETS := {
 		"suppress_input": true,
 	},
 	"lena_apartment": {
+		"scene": "res://scenes/locales/lena_apartment.tscn",
+		"requires_glb": "res://assets/3d/locales/lena_apartment.glb",
+		# (2026-11-10: this comment still described the 5 x 5 dorm studio.)
+		# A one-bedroom over the Salty Tome, 7 x 6.6 (godot x∈[-3.5,3.5],
+		# z∈[0,-6.6], ceil 2.6): the front door in the S wall; the kitchen
+		# down the W wall behind its own partition (godot x -0.1) with a
+		# cased doorway; the front room E of it — the window chair, the
+		# easel in the SE corner, the bathroom door in the E wall; behind
+		# the partition at godot z -3.6 the bedroom (W) and the couch nook
+		# (E) with its two back windows. Camera in the front room looking
+		# NW through the kitchen doorway: the table, the counter, the
+		# mural window; the bedroom door and her pinned studies beside it.
+		"camera_origin": Vector3(1.5, 1.58, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(50.0), 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"lena_apartment_hexagon": {
+		# (pass 400) lena_apartment with the hexagon on her kitchen table (parts
+		# tagged __lena_apartment_hexagon): vol 7 ch12, "He laid the eight pieces on
+		# her kitchen table". Every other chapter in the room sees the table without it.
 		"scene": "res://scenes/locales/lena_apartment.tscn",
 		"requires_glb": "res://assets/3d/locales/lena_apartment.glb",
 		# (2026-11-10: this comment still described the 5 x 5 dorm studio.)

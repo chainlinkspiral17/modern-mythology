@@ -66,6 +66,7 @@ from _props.structure import make_floor, make_wall, make_ceiling, make_window, m
 from _props.decor import make_floor_plant, make_faded_poster
 from _props.safety import make_smoke_detector
 from _props.plan import shifted
+from _props.charred_wood import make_hexagon
 
 ROOM_W = 7.0; ROOM_D = 6.6; CEIL = 2.6
 NOOK_WIN_X = (0.75, 2.35)                 # (2026-10-21) the couch nook's back windows
@@ -672,24 +673,19 @@ def build_hero_props_2026_09():
         make_box("Estuary_Stick", (1.258, 0.95, 0.549), (0.10, 0.05, 0.016), (0.30, 0.26, 0.22, 1.0))
         make_box("Stick_Label", (1.44, 0.95, 0.563), (0.10, 0.05, 0.002), (0.96, 0.95, 0.92, 1.0))
 
+    # (pass 400) the hexagon itself: _props/charred_wood (outside the shift,
+    # so its place is given shifted: the cloth's centre, (-0.90, 0.85) + (-0.3, 0.3))
+    make_hexagon(-1.20, 1.15, 0.772, tag="lena_apartment_hexagon", aria=(0.155, -0.145))
     with shifted(globals(), -0.3, 0.3, ROOM_W=OLD_W, ROOM_D=OLD_D):   # the table
         # ── THE HEXAGON · kitchen table north half, tabletop 0.7675 ──
-        hx, hy = -0.80, 1.78
-        make_box("Hexagon_Cloth", (hx, hy, 0.770), (0.40, 0.36, 0.004), cloth_col)
-        import math as _m
-        for hi in range(6):
-            ang = _m.pi / 3.0 * hi + _m.pi / 6.0
-            make_box(f"Hexagon_Ring_{hi}",
-                     (hx + 0.13 * _m.cos(ang), hy + 0.13 * _m.sin(ang), 0.781),
-                     (0.085, 0.085, 0.018), cedar)
-        make_cyl("Hexagon_Center_Face", (hx, hy, 0.780), 0.055, 0.016, cedar_dk, segments=12)
-        make_cyl("Hexagon_Face_Inlay", (hx, hy, 0.7895), 0.030, 0.003,
-                 (0.62, 0.46, 0.32, 1.0), segments=10)
-        # The ARIA piece beside the ring, still on the cloth
-        make_box("Hexagon_Aria_Piece", (-0.645, 1.635, 0.782), (0.070, 0.050, 0.020), cedar)
-        # The eighth piece — the one she holds in her palm — on the
-        # cloth's far corner, apart from the configuration
-        make_box("Eighth_Piece", (-0.955, 1.920, 0.782), (0.070, 0.050, 0.020), cedar_dk)
+        # (pass 400) vol 7 ch12 only — "He laid the eight pieces on her
+        # kitchen table" — the view lena_apartment_hexagon. It lay here in
+        # every chapter of the room, with a ninth piece ("Eighth_Piece")
+        # beside the centre one, which IS the eighth. And it hung off the
+        # table's north edge (the cloth at y 1.90-2.26, the top ending at
+        # 1.96): the south half, clear of the letter, the cup, the phone.
+        hx, hy = -0.90, 0.85
+        make_box("Hexagon_Cloth__lena_apartment_hexagon", (hx, hy, 0.770), (0.40, 0.36, 0.004), cloth_col)
 
         # ── THE LETTER TO JORGEN · table south-east, one sheet ──
         make_box("Letter_Paper", (-0.55, 1.35, 0.769), (0.21, 0.28, 0.003), paper_col)

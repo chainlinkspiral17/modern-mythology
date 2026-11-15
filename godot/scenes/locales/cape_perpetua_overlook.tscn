@@ -308,7 +308,7 @@ script = ExtResource("14_dbgm")
 
 ; ── vn_shot · cape_perpetua_overlook (2026-09-01) ─────────────────
 ; insert: the hexagon on the platform's earthen floor, between the boots and the rail
-[node name="shot_insert_hexagon" type="Marker3D" parent="." groups=["vn_shot"]]
+[node name="shot_insert_hexagon__cape_perpetua_overlook" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2, 0.9, -11.55)
 rotation = Vector3(-0.7819, 0.7399, 0.0)
 metadata/fov = 42.0

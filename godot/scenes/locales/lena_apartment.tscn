@@ -169,19 +169,19 @@ glow_hdr_scale = 2.4
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Locale")
 
-[node name="Key__lena_apartment" type="DirectionalLight3D" parent="."]
+[node name="Key__lena_apartment__lena_apartment_hexagon" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 3, 3, 1)
 light_color = Color(0.96, 0.78, 0.46, 1)
 light_energy = 1.05
 shadow_enabled = false
 
-[node name="Fill__lena_apartment" type="DirectionalLight3D" parent="."]
+[node name="Fill__lena_apartment__lena_apartment_hexagon" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 4, -6)
 light_color = Color(0.86, 0.92, 0.98, 1)
 light_energy = 0.45
 shadow_enabled = false
 
-[node name="Back__lena_apartment" type="DirectionalLight3D" parent="."]
+[node name="Back__lena_apartment__lena_apartment_hexagon" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866, 0.354, -0.354, 0, 0.707, 0.707, 0.5, 0.612, -0.612, -3, 4, 2)
 light_color = Color(0.86, 0.62, 0.96, 1)
 light_energy = 0.28
@@ -374,15 +374,17 @@ rotation = Vector3(-0.7014, -0.8208, 0.0)
 metadata/fov = 42.0
 
 ; insert: the hexagon laid out on the kitchen table (ch12_lena)
-[node name="shot_insert_hexagon" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.100, 1.450, -1.450)
-rotation = Vector3(-0.8271, -0.0252, 0.0)
+; (pass 400) the hexagon on the table's south half (godot -1.20, -1.15)
+[node name="shot_insert_hexagon__lena_apartment_hexagon" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.200, 1.450, -0.550)
+rotation = Vector3(-0.8250, 0.0, 0.0)
 metadata/fov = 42.0
 
 ; insert: the eighth piece on the cloth's far corner (ch12_lena)
-[node name="shot_insert_eighth_piece" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.600, 1.080, -1.600)
-rotation = Vector3(-0.3191, 0.8128, 0.0)
+; (pass 400) the eighth piece is the hexagon's centre (the ninth beside it is gone)
+[node name="shot_insert_eighth_piece__lena_apartment_hexagon" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.550, 1.100, -0.850)
+rotation = Vector3(-0.3970, 1.1380, 0.0)
 metadata/fov = 30.0
 
 ; insert: the sheet of paper, "Jorgen" at the top (ch6)
@@ -493,7 +495,7 @@ light_energy = 1.10
 shadow_enabled = false
 omni_range = 3.60
 
-[node name="Kitchen_Window_Practical__lena_apartment" type="OmniLight3D" parent="."]
+[node name="Kitchen_Window_Practical__lena_apartment__lena_apartment_hexagon" type="OmniLight3D" parent="."]
 position = Vector3(-3.300, 1.500, -1.300)
 light_color = Color(1.000, 0.620, 0.260, 1)
 light_energy = 1.00

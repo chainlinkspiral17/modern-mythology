@@ -28,6 +28,7 @@ if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, make_blob, export_glb
 from _props.creatures import make_crow
+from _props.charred_wood import make_hexagon
 from _props.detail import make_far_bands
 
 EARTH = (0.30, 0.24, 0.18, 1.0)
@@ -176,25 +177,23 @@ def build_platform():
     for li, ly in enumerate((py - 0.6, py + 0.6)):
         make_box(f"Overlook_Bench_Leg_{li}", (-2.85, ly, 0.215), (0.34, 0.08, 0.43), WOOD_WET)
     make_box("Bench_Wet_Sheen", (-2.85, py, 0.4915), (0.30, 1.30, 0.003), (0.42, 0.36, 0.28, 1.0))
-    # the canvas bag on the bench, the cloth beside it
-    make_box("Canvas_Bag", (-2.85, py - 0.45, 0.58), (0.28, 0.20, 0.18), (0.62, 0.58, 0.48, 1.0))
-    make_box("Canvas_Bag_Strap", (-2.85, py - 0.45, 0.682), (0.24, 0.05, 0.024), (0.48, 0.44, 0.36, 1.0))
+    # (pass 400) ch12's morning only (tagged to the base view): the canvas bag,
+    # the hexagon at his feet, his boot prints. Interlude II's walk on the
+    # trail at 6:42 (cape_perpetua_trail) has his pack and none of them.
+    O = "cape_perpetua_overlook"
+    # the canvas bag on the bench
+    make_box("Canvas_Bag__" + O, (-2.85, py - 0.45, 0.58), (0.28, 0.20, 0.18), (0.62, 0.58, 0.48, 1.0))
+    make_box("Canvas_Bag_Strap__" + O, (-2.85, py - 0.45, 0.682), (0.24, 0.05, 0.024), (0.48, 0.44, 0.36, 1.0))
     # THE HEXAGON on the platform's earthen floor between the boots and the rail
     hx, hy = -4.75, py + 0.15
     T = 0.10
-    make_box("Hexagon_Cloth", (hx, hy, T + 0.002), (0.40, 0.36, 0.004), (0.78, 0.74, 0.64, 1.0))
-    for hi in range(6):
-        ang = math.pi / 3.0 * hi + math.pi / 6.0
-        make_box(f"Hexagon_Ring_{hi}", (hx + 0.13 * math.cos(ang), hy + 0.13 * math.sin(ang), T + 0.013),
-                 (0.085, 0.085, 0.018), CEDAR)
-    make_cyl("Hexagon_Center_Face", (hx, hy, T + 0.012), 0.055, 0.016, CEDAR_DK, segments=12)
-    make_cyl("Hexagon_Face_Inlay", (hx, hy, T + 0.0215), 0.030, 0.003, (0.62, 0.46, 0.32, 1.0), segments=10)
-    make_box("Hexagon_Aria_Piece", (hx + 0.155, hy - 0.145, T + 0.014), (0.070, 0.050, 0.020), CEDAR)
+    make_box("Hexagon_Cloth__" + O, (hx, hy, T + 0.002), (0.40, 0.36, 0.004), (0.78, 0.74, 0.64, 1.0))
+    make_hexagon(hx, hy, T + 0.004, tag=O, aria=(0.155, -0.145))
     # the crow, landed on the rail beside him
     make_crow("Crow", -5.35, py - 0.55, 1.16, facing=1.0)
     # boot prints in the wet earth where he stood
     for bi, (bx, by) in enumerate(((-4.45, py + 0.32), (-4.45, py - 0.05))):
-        make_box(f"Boot_Print_{bi}", (bx, by, 0.1015), (0.11, 0.30, 0.003), (0.20, 0.16, 0.12, 1.0))
+        make_box(f"Boot_Print_{bi}__" + O, (bx, by, 0.1015), (0.11, 0.30, 0.003), (0.20, 0.16, 0.12, 1.0))
 
 
 def main():

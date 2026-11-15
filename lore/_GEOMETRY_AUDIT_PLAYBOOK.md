@@ -158,6 +158,23 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-15 · a new shared prop module is invisible until the recorder runs it (pass 400)
+
+**What happened.** Pass 400 moved Finn's hexagon into a shared helper,
+`_props/charred_wood.py`, so five rooms build it one way. The obstruction
+gate at once called both hexagon close-ups "the cloth fills the frame": the
+recorder STUBS every `_props` module except the ones on
+locale_geometry_audit's real-module list (detail, creatures, figures,
+furniture …), and a stubbed `make_hexagon` records nothing — no subject for
+the close-up, no part for the overlap, sunk, buried or overhang gates.
+
+**The rule.** A new `_props` module that builds geometry goes on the
+real-module list in `install_stubs()` in the same commit. Check it the way
+pass 400 did: record the builder and print the helper's parts (a shared
+helper that records zero parts is stubbed). Once it ran for real, the
+overhang gate found Lena's hexagon hanging off her table's north edge — as
+it had for weeks under the old hand-built version.
+
 ### 2026-11-15 · a height function only knows what is built before it is called (passes 393 - 394)
 
 - **What happened:** Harmony Creek's people were placed at `mesh_z()`,

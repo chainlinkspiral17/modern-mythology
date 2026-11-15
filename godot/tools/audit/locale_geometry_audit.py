@@ -372,6 +372,9 @@ def install_stubs():
                      "creatures", "figures", "vehicles", "buildings", "furniture", "structure", "merch", "shelving", "decor",
                      "food_service", "cleaning", "coolers_drinks",
                      "signage", "store_fixtures", "safety",
+                     # (pass 400) Finn's wood, one look in five rooms: stubbed,
+                     # the hexagon was nobody's subject and nobody's clip
+                     "charred_wood",
                      # whole ROOMS shared by two locales (2026-10-06: the
                      # Ramos kitchen is one room dressed twice) — last, as
                      # they import the modules above

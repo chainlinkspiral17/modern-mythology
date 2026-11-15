@@ -305,6 +305,10 @@
       "bed": "assets/audio/bgm/vol7_apartment_rain.wav",
       "gain": 0.88
     },
+    "lena_apartment_hexagon": {
+      "bed": "assets/audio/bgm/vol7_apartment_rain.wav",
+      "gain": 0.88
+    },
     "lena_apartment_night": {
       "bed": "assets/audio/bgm/vol7_apartment_rain.wav",
       "gain": 0.88
@@ -530,6 +534,10 @@
       "gain": 0.82
     },
     "cape_perpetua_overlook": {
+      "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
+      "gain": 0.9
+    },
+    "cape_perpetua_trail": {
       "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
       "gain": 0.9
     },

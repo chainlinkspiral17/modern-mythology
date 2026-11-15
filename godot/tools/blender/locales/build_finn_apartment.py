@@ -66,6 +66,7 @@ from _props.structure import make_floor, make_wall, make_ceiling, make_crown_mol
 from _props.decor import make_floor_plant, make_faded_poster
 from _props.safety import make_smoke_detector
 from _props.creatures import make_crow
+from _props.charred_wood import make_hexagon, make_charred_pieces
 from _props.detail import (make_traffic_wear, make_floor_stain, make_threshold,
                            make_wall_outlet, make_light_switch)
 
@@ -226,39 +227,16 @@ def build_kitchen_table():
     #        the bakery and at noon): six in the ring, the cedar face in the
     #        centre, the AR I A piece beside it (group fa_hex)
     #   ch18 (the stick views): none — "the stick and the sleeve and the crow"
-    char, grain = (0.075, 0.065, 0.058, 1.0), (0.74, 0.60, 0.30, 1.0)
     cx, cy, C = tx + 0.10, ty, T + 0.008          # the cloth's centre and top
     make_chamfer_box("Wood_Cloth__fa_wood", (cx, cy, T + 0.004), (0.46, 0.36, 0.008), (0.82, 0.78, 0.68, 1.0))
-    RING_A = 0.105                                 # the ring's apothem: ~25 cm across
-
-    def ring_piece(base, tag, k, gap=0.0, turn=0.0):
-        d = math.radians(30.0 + 60.0 * k)
-        px, py = cx + (RING_A + gap) * math.cos(d), cy + (RING_A + gap) * math.sin(d)
-        yaw = d + math.pi / 2.0 + turn
-        make_rot_box(f"{base}__{tag}", (px, py, C + 0.011), (0.100, 0.036, 0.022), char, yaw=yaw)
-        make_rot_box(f"{base}_Grain__{tag}", (px, py, C + 0.0225), (0.066, 0.016, 0.001), grain, yaw=yaw)
-
     # ch5: three, fitted — one arc of the ring, a little uneven
-    for k, (gap, turn) in enumerate(((0.004, 0.04), (0.0, 0.0), (0.003, -0.05))):
-        ring_piece(f"Charred_Wood3_{k}", "finn_apartment_day", k, gap, turn)
+    make_charred_pieces("Charred_Wood3", "finn_apartment_day", cx, cy, C,
+                        ((0, 0.004, 0.04), (1, 0.0, 0.0), (2, 0.003, -0.05)))
     # ch9: five — two runs that fit, a side missing, one join left open
-    for k, gap, turn in ((0, 0.003, 0.03), (1, 0.0, 0.0), (2, 0.002, -0.04), (4, 0.004, 0.05), (5, 0.016, -0.08)):
-        ring_piece(f"Charred_Wood5_{k}", "finn_apartment", k, gap, turn)
-    # ch12: the hexagon — the ring, the eighth piece in the hole (cedar,
-    # carved: "The face filled the unburnt portion of the wood … The hair
-    # on the face was curling. The eyes were closed"), AR I A beside it
-    for k in range(6):
-        ring_piece(f"Hexagon_Ring_{k}", "fa_hex", k)
-    make_cyl("Hexagon_Eighth__fa_hex", (cx, cy, C + 0.012), 0.096, 0.024, char, segments=6)
-    make_cyl("Hexagon_Face__fa_hex", (cx, cy, C + 0.0245), 0.056, 0.001, (0.72, 0.52, 0.34, 1.0), segments=12)
-    face_ink = (0.54, 0.37, 0.24, 1.0)
-    for ex in (-0.016, 0.016):
-        make_box(f"Hexagon_Face_Eye_{'L' if ex < 0 else 'R'}__fa_hex", (cx + ex, cy + 0.008, C + 0.0252), (0.014, 0.002, 0.0004), face_ink)
-    make_box("Hexagon_Face_Mouth__fa_hex", (cx, cy - 0.020, C + 0.0252), (0.012, 0.002, 0.0004), face_ink)
-    for hk, (hx_, hy_) in enumerate(((-0.034, 0.026), (-0.040, 0.004), (0.034, 0.026), (0.040, 0.004))):
-        make_cyl(f"Hexagon_Face_Curl_{hk}__fa_hex", (cx + hx_, cy + hy_, C + 0.0252), 0.006, 0.0004, face_ink, segments=6)
-    make_rot_box("Hexagon_Aria__fa_hex", (cx + 0.17, cy - 0.12, C + 0.011), (0.078, 0.048, 0.022), char, yaw=0.35)
-    make_rot_box("Hexagon_Aria_Grain__fa_hex", (cx + 0.17, cy - 0.12, C + 0.0225), (0.044, 0.022, 0.001), grain, yaw=0.35)
+    make_charred_pieces("Charred_Wood5", "finn_apartment", cx, cy, C,
+                        ((0, 0.003, 0.03), (1, 0.0, 0.0), (2, 0.002, -0.04), (4, 0.004, 0.05), (5, 0.016, -0.08)))
+    # ch12: the hexagon (_props/charred_wood.py)
+    make_hexagon(cx, cy, C, tag="fa_hex")
     # THE STICK in its waxed-paper sleeve, east end
     # (pass 397) the stick, its sleeve and Hans's brown paper bag reach this
     # table in vol 7 ch18 ("He set the bag on the kitchen table … The stick

@@ -3835,6 +3835,53 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-15 · pass 400: the hexagon in the other rooms.**
+- Pass 399's NEXT. Finn's assembled hexagon stood in four more rooms in
+  every chapter that uses them; the text puts it in each for one stretch:
+  - Lena's kitchen table — vol 7 ch12 only ("He laid the eight pieces on
+    her kitchen table"): new view `lena_apartment_hexagon` for ch12_lena.
+    It had a NINTH piece ("Eighth_Piece", beside the centre one that IS
+    the eighth — gone), and it hung off the table's north edge (cloth at
+    y 1.90-2.26, the top ending at 1.96): on the south half now, clear of
+    the letter, cup, phone and bowl. Both close-ups re-aimed and tagged.
+  - Devon's desk in the Board Lords back office — tagged to
+    `board_lords_office` (ch12 only), and drawn at its real size: it was
+    twice the "about ten inches", on a cloth 0.6 m wide.
+  - The Cape Perpetua overlook — ch12's morning there (the canvas bag on
+    the bench, the hexagon at his feet, the boot prints) is tagged to the
+    base view; Interlude II's walk ("Cape Perpetua trail, 6:42 AM") has its
+    own view, `cape_perpetua_trail`, without them.
+  - (The cabin: pass 401.)
+- ONE LOOK: `_props/charred_wood.py` builds the wood in every room —
+  `make_hexagon` (the ring of six charred sides, the eighth piece with
+  Aria's carved face in the hole, AR I A beside) and `make_charred_pieces`
+  (a stage before it: Finn's three and five). Names keep the close-ups'
+  subject words (Hexagon_*, Hexagon_Eighth_Piece, Charred_Wood*).
+- The recorder STUBS every `_props` module it does not run for real: the
+  helper's parts were invisible to every gate (the hexagon close-ups read
+  as "the cloth fills the frame"). `charred_wood` is on
+  locale_geometry_audit's real-module list — a new shared prop module must
+  be added there, or nothing it builds is audited.
+- NEW TOOL `godot/tools/view_twin.py FROM TO --scenes file:node --note …`:
+  the chapter-state view copy, done one way — the preset on its own lines
+  after FROM's, the ambient bed and wide-view entry, `__TO` added to every
+  tscn node tagged FROM (the rig, practicals), FROM's establishing and face
+  frames copied, inserts only when a moved segment cues them, the bg nodes
+  re-pointed, builder parts tagged FROM listed for a hand tag. Passes
+  396-399 made those copies by hand and each lost something.
+- PICTURES SKIP VIEWS BY NAME. A hero-art row's `not_presets` lists the
+  views it skips: the night window pictures skipped `finn_apartment` and
+  `finn_apartment_day`, so every twin of those views showed the night
+  picture over the day one — Finn's ch18 afternoon (pass 397's twin) had
+  the night windows since that pass (hero_art DUPLICATE, 2 → 5 with this
+  pass's twins). Ten rows now name the twins; the canvas bag's picture
+  skips the trail. view_twin.py adds TO wherever a row skips FROM.
+- NEXT: Lena's table carries more chapter state (the letter to Jorgen, its
+  pens, her phone and cup, the Estuary 7 stick on the side table) — read
+  them by chapter; the crow on Finn's cloth in ch12 (node 106).
+- Deck must REBUILD lena_apartment, board_lords_interior,
+  cape_perpetua_overlook, finn_apartment.
+
 **2026-11-15 · pass 399: Finn's wood counts the chapters; views that lost their lights.**
 - THE WOOD. Finn's kitchen table held five charred pieces on one cloth
   AND the finished hexagon on another, in all six chapters. The text
