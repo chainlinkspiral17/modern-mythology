@@ -3835,6 +3835,41 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-15 · pass 393: Harmony Creek's shopkeepers stood inside their shop floors; buried flats 314 → 0.**
+- The strip-mall shopkeepers (Sam at the Kwik Shop register, the arcade
+  attendant, the comics clerk, the laundromat clerk, the diner's cook and
+  waiter, Skip, Diego, Roy) and their stand discs used `mesh_z()`, the
+  ground UNDER the shop: the shops stand on 10 cm floor slabs, so every
+  one of them stood 6 - 8 cm down inside the floor. A floor registry
+  now: every `*Slab` box records its footprint and top as it is made,
+  and `stand_z(x, y)` is the ground or the slab over it, whichever is
+  higher. The cast and the discs stand on it.
+  - The recorder REPLACES `_make_box_local`, so it skipped the
+    registration and every gate measured the cast at ground level. It
+    now keeps that one side effect (`_keep_slabs`), for the set and for
+    builders that import it (Graustark).
+- The rest of the 23: the Kwik Shop had two entry mats under one name,
+  one inside the floor under the other (the plain one is gone; the
+  branded mat and its border lie on the floor); the clerk's mat; Sam's
+  phone, 3.4 cm inside the counter; the coffee pots' lids inside the
+  brew head; Cosmic Comics' DO NOT SORT YET piles; the NexCorp HQ door
+  mat inside its plaza.
+- **Buried flats: 314 in 49 sets (pass 386) → 0.** The baseline is empty.
+- Deck must REBUILD harmony_terrain and graustark.
+- NEXT: read the Kwik Shop through its glass at the overworld's shop
+  frames (Sam at the register now stands on her floor); the same
+  slab-aware height for the ambient NPCs and the cars in shop lots.
+- NEXT (direction): **237 insert cues whose object word is not in their
+  own line** (scan written in pass 393, not yet a gate). Read four with
+  their neighbours: most are RIGHT — "The motion was denied." cuts to the
+  monitor Erica reads it on one line later; "His name was Arthur Finch"
+  to the deejay's decks; "the husband father was not a bad man" to his
+  recliner (the object standing for the absent man). So the scan is
+  noisy and its cases are judgment calls, not defects by rule; read the
+  rest by volume for the pass-388 kind only (a cut on a VERB, or on a
+  thing the line's person is merely near), and leave deliberate
+  cutaways alone.
+
 **2026-11-15 · pass 392: the riverfront's park was on River Road.**
 - Rendered (pass 391): the "chipped park bench" stood on River Road's
   asphalt by the lane line, the bandstand straddled the sidewalk and the

@@ -216,6 +216,11 @@ posters, screens with no picture: `empty_frame_audit`).
   cues cut to another area of a shared set — a bathroom line to another room's mirror, an upstairs bedroom
   to the television a floor down) and ORPHAN MARKERS (pass 367: 223 authored insert frames no line cut to;
   39 now have their line, 186 remain under a ratchet).
+- **passes 390 - 393 (2026-11-15).** Buried flat things 314 → 0 across all sets (the last: Harmony Creek's
+  shops, whose shopkeepers stood 6 - 8 cm inside their floors). The Pit Stop's corner booth has the two coffees
+  the text pours. Six close-ups re-taken (jukebox, back office, dumpster, truck, crow, wagon; the flame-mark line
+  cuts to the bowl); the jukebox stands "in the corner" of the dining room now. The riverfront park view looks
+  at the riverfront's own park: the copy of vol 5's Hierophant park that stood on River Road is gone.
 - **20 sets — passes 388 - 389 (2026-11-15), things standing inside their furniture.** The Kwik Stop's hot
   case and pizza warmer stood 7 - 8 cm into the counter, the receipt printer floated over it, and an open till
   nobody opens sat inside the counter body: seated or removed; a roller grill with hot dogs; a Post-it pad

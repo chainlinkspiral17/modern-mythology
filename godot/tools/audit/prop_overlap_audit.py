@@ -162,6 +162,23 @@ def record_builder(path):
     except Exception as e:
         return None, "%s: %s" % (type(e).__name__, e)
 
+    def _keep_slabs(ns, rec):
+        """(pass 393) harmony_terrain's `_make_box_local` also REGISTERS
+        every "*Slab" box in its FLOOR_SLABS (stand_z() stands people on
+        them). The recorder replaces the helper, so it keeps that side
+        effect, or every gate measures the shopkeepers at ground level."""
+        reg = ns.get("FLOOR_SLABS")
+        if not isinstance(reg, list):
+            return rec
+
+        def w(name, center, size, *a, **k):
+            if str(name).endswith("Slab"):
+                cx, cy, cz = (float(c) for c in center)
+                hx, hy, hz = (abs(float(v)) / 2.0 for v in size)
+                reg.append((cx - hx, cy - hy, cx + hx, cy + hy, cz + hz))
+            return rec(name, center, size, *a, **k)
+        return w
+
     def rec_box(name, center, size, base_color=None, *a, **k):
         A.BOXES.append((str(name), tuple(float(c) for c in center),
                         tuple(abs(float(s)) / 2.0 for s in size)))
@@ -204,7 +221,7 @@ def record_builder(path):
     # distinct names — without these hooks its 6 highway9 presets
     # audited against ZERO recorded geometry.
     if "_make_box_local" in g:
-        g["_make_box_local"] = rec_box
+        g["_make_box_local"] = _keep_slabs(g, rec_box)
     if "_make_cyl_local" in g:
         g["_make_cyl_local"] = rec_cyl
 
@@ -238,7 +255,7 @@ def record_builder(path):
         if not mod_name.startswith("build_") or mod is None:
             continue
         for attr, repl in (("make_box", rec_box), ("make_cyl", rec_cyl),
-                           ("_make_box_local", rec_box),
+                           ("_make_box_local", _keep_slabs(vars(mod), rec_box)),
                            ("_make_cyl_local", rec_cyl),
                            ("_finalize_mesh", rec_mesh)):
             if hasattr(mod, attr):

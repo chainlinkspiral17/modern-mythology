@@ -1020,6 +1020,24 @@ def _cached_hce_elevation(x, y):
     return z
 
 
+# (pass 393) FLOOR SLABS: every box whose name ends in "Slab" (a shop's
+# floor, a patio, a plaza) records its footprint and top here as it is made
+# (`_make_box_local`), and stand_z() stands people ON them: the shopkeepers
+# and their stand discs used mesh_z(), the ground under the shop, and stood
+# 6 - 8 cm down inside the 10 cm shop floors.
+FLOOR_SLABS = []
+
+
+def stand_z(px, py):
+    """The height a person or a thing set down at (px, py) stands on: the
+    ground, or the top of a floor slab over it, whichever is higher."""
+    z = mesh_z(px, py)
+    for x0, y0, x1, y1, top in FLOOR_SLABS:
+        if x0 <= px <= x1 and y0 <= py <= y1 and top > z:
+            z = top
+    return z
+
+
 def mesh_z(px, py):
     """Returns the z that the ground mesh ACTUALLY renders at
     (px, py). Matches Godot's triangle rasterisation, not analytic
@@ -5417,11 +5435,9 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
                          ground_z + 0.30 + k * 0.25),
                         (0.30, 0.04, 0.22),
                         mag_colours[k % len(mag_colours)])
-    # Floor entry mat (interior side)
-    _make_box_local("KwikShop_KwikStop_FloorMat",
-                    (kw_cx, cy - depth / 2 + 0.6,
-                     ground_z + 0.06),
-                    (2.4, 1.2, 0.02), col_floor_mat)
+    # (pass 393) the plain entry mat that stood here lay inside the floor
+    # slab (top ground_z + 0.10) under the branded KwikStop mat, and had
+    # its name: the branded one (below) is the entry mat.
     # (Ceiling fluorescents live in the later FloLight pass —
     # housing + glow tube. The original 4 plain "Fluo" boxes here
     # were a DUPLICATE light grid overlapping the FloLight tubes.)
@@ -5767,7 +5783,7 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
     _make_box_local("KwikShop_KwikStop_ClerkMat",
                     (counter_x,
                      counter_y + counter_d / 2 + 0.35,
-                     ground_z + 0.06),
+                     ground_z + 0.11),        # (pass 393) on the floor (ground_z + 0.10), not inside it
                     (counter_w + 0.2, 0.50, 0.02),
                     (0.30, 0.22, 0.18, 1.0))
 
@@ -5776,15 +5792,15 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
     _make_box_local("KwikShop_KwikStop_FloorMat",
                     (kw_cx + 0.2,
                      cy - depth / 2 + 1.0,
-                     ground_z + 0.04),
-                    (1.40, 1.40, 0.02),
+                     ground_z + 0.116),          # (pass 393) on its border, on the floor (ground_z + 0.10)
+                    (1.40, 1.40, 0.012),
                     (0.55, 0.18, 0.16, 1.0))
     # Cream border around the mat (slightly larger square below)
     _make_box_local("KwikShop_KwikStop_FloorMat_Border",
                     (kw_cx + 0.2,
                      cy - depth / 2 + 1.0,
-                     ground_z + 0.035),
-                    (1.50, 1.50, 0.02),
+                     ground_z + 0.105),
+                    (1.50, 1.50, 0.01),
                     (0.92, 0.88, 0.78, 1.0))
 
     # ── MAGAZINE / TABLOID RACK · 3-tier wire rack on the customer
@@ -5886,14 +5902,14 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
     _make_box_local("KwikShop_KwikStop_SamPhone_Body",
                     (counter_x + counter_w / 2 - 0.45,
                      counter_y - counter_d / 2 + 0.18,
-                     ground_z + counter_h + 0.01),
+                     ground_z + counter_h + 0.056),    # (pass 393) on the top (counter_h + 0.05), not 3.4 cm in it
                     (0.08, 0.16, 0.012),
                     (0.10, 0.10, 0.12, 1.0))
     # Screen lit cyan-ish (active call / message screen)
     _make_box_local("KwikShop_KwikStop_SamPhone_Screen",
                     (counter_x + counter_w / 2 - 0.45,
                      counter_y - counter_d / 2 + 0.18,
-                     ground_z + counter_h + 0.018 - 0.0196),
+                     ground_z + counter_h + 0.063),    # on the phone's face
                     (0.06, 0.14, 0.002),
                     (0.42, 0.68, 0.78, 1.0))
 
@@ -6520,7 +6536,7 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
         # Pot lid
         _make_cyl_local(
             f"KwikStop_CoffeePot_Lid_{k}",
-            (cpx, cof_y, cof_z + 0.42),
+            (cpx, cof_y, cof_z + 0.40),    # (pass 393) on the pot (its top cof_z + 0.39), not in the brew head
             0.075, 0.02,
             (0.20, 0.20, 0.22, 1.0), segments=6)
     # Coffee cup stack beside the maker (cream paper cups)
@@ -7125,7 +7141,7 @@ def _build_cosmic_comics(cx, cy, ground_z):
                 f"{name_prefix}_DoNotSortYet_{k_pile}_{j}",
                 (pile_x + (k_pile % 2) * 0.30,
                  pile_y + (k_pile // 2) * 0.30,
-                 ground_z + 0.08 + j * 0.012),
+                 ground_z + 0.106 + j * 0.012),   # (pass 393) on the floor (ground_z + 0.10)
                 (0.25, 0.34, 0.012), col_p)
 
     # ── "THE FUND" JAR · small glass jar on the back counter
@@ -8050,7 +8066,7 @@ def build_commercial_cluster():
         ("NPC_Comics_Clerk",     cc_x + 3.1, cc_y - 1.3),
     ]
     for name, mx_, my_ in npc_markers:
-        mz = mesh_z(mx_, my_)
+        mz = stand_z(mx_, my_)
         _make_cyl_local(name,
                         (mx_, my_, mz + 0.01),
                         0.30, 0.02,
@@ -8109,7 +8125,7 @@ def build_commercial_cluster():
             "hands_on_counter", SKIN_LIGHT, "none", 'teen'),
     ]
     for tag, fx, fy, sc, hair, jacket, pants, pose, skin, beard, body in chapter_one_cast:
-        fz = mesh_z(fx, fy)
+        fz = stand_z(fx, fy)
         human_figure(
             name=f"NPC_{tag}",
             base_x=fx, base_y=fy, base_z=fz,
@@ -8566,6 +8582,8 @@ def _make_box_local(name, center, size, color):
     cx, cy, cz = center
     sx, sy, sz = size
     hx, hy, hz = sx/2, sy/2, sz/2
+    if name.endswith("Slab"):
+        FLOOR_SLABS.append((cx - hx, cy - hy, cx + hx, cy + hy, cz + hz))
     verts = [
         (cx-hx, cy-hy, cz-hz), (cx+hx, cy-hy, cz-hz),
         (cx+hx, cy+hy, cz-hz), (cx-hx, cy+hy, cz-hz),
@@ -16791,7 +16809,7 @@ def build_nexcorp_hq():
                         (0.10, 0.18, 0.32, 1.0))
     # Welcome mat outside
     _make_box_local(f"{name_prefix}_DoorMat",
-                    (cx, entry_y - 1.2, ground_z + 0.07),
+                    (cx, entry_y - 1.2, ground_z + 0.11),   # (pass 393) on the plaza (ground_z + 0.10)
                     (door_w + 0.40, 1.20, 0.02),
                     (0.18, 0.32, 0.55, 1.0))
 
