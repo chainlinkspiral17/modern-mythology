@@ -340,7 +340,8 @@ rotation = Vector3(-0.0645, -0.9505, 0.0)
 metadata/fov = 58.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+; (pass 394) "halfway to the door": the open front door from inside, by the counter (it framed the lettering on the outside face, through the lintel)
 [node name="shot_insert_door__graustark_post_office" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(3.602, 2.414, -1.533)
-rotation = Vector3(-0.1406, 2.1359, 0.0)
-metadata/fov = 35.0
+position = Vector3(-1.000, 1.600, -4.400)
+rotation = Vector3(-0.0817, -2.5309, 0.0)
+metadata/fov = 46.0

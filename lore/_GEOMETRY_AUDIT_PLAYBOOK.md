@@ -158,6 +158,23 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-15 · a height function only knows what is built before it is called (passes 393 - 394)
+
+- **What happened:** Harmony Creek's people were placed at `mesh_z()`,
+  the terrain, and stood inside their shop floors. `stand_z()` (terrain
+  or the slab over it) fixed the shop staff — and missed a clerk,
+  because her minimart is built AFTER `build_ambient_npcs()`; the
+  registry was empty there when she was placed. And the audit recorder
+  replaced the helper that registers slabs, so every gate measured the
+  cast at ground level until it learned to keep that side effect.
+- **Rules:** (1) things that stand ON the world are placed after the
+  world (people, cars and dressing go last in `main()`); (2) when a
+  builder helper has a side effect other code reads, the recorder that
+  replaces the helper must keep it (`_keep_slabs`); (3) "touches the
+  floor" is not "stands on the floor" — feet in a floor needed their own
+  question (`figure_floor_audit`), like flats (`buried_flat`) and thick
+  things (`sunk_thing`) before them.
+
 ### 2026-11-15 · a part's view can come from its PARENT (pass 390)
 
 - **What happened:** buried_flat_audit held ten plank seams of the

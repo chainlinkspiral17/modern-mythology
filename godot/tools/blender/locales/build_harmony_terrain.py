@@ -8182,7 +8182,7 @@ def build_commercial_cluster():
             "standing", 'male_heavy', SKIN_LIGHT),
     ]
     for tag, fx, fy, facing, sc, hair, jacket, pants, pose, body, skin in customers:
-        fz = mesh_z(fx, fy)
+        fz = stand_z(fx, fy)      # (pass 394) on the shop floor, not 7.5 - 10 cm inside it
         human_figure(
             name=f"NPC_{tag}",
             base_x=fx, base_y=fy, base_z=fz,
@@ -11463,7 +11463,7 @@ def build_ambient_npcs():
             'male_avg', SKIN_FAIR, HAIR_BROWN, 1.0),
     ]
     for tag, fx, fy, facing, hair, jacket, pants, body, skin, haircol, scale_factor in ambient:
-        fz = mesh_z(fx, fy)
+        fz = stand_z(fx, fy)      # (pass 394) on a slab where one lies (the garage attendant, the clerk)
         human_figure(
             name=f"AmbientNPC_{tag}",
             base_x=fx, base_y=fy, base_z=fz,
@@ -13412,7 +13412,7 @@ def build_taqueria_el_rancho():
     # Cook NPC marker (behind the counter)
     cook_x = ct_x + 0.8
     cook_y = ct_y + ct_d / 2 + 0.4
-    cook_z = mesh_z(cook_x, cook_y)
+    cook_z = stand_z(cook_x, cook_y)      # (pass 394) on the kitchen floor slab
     human_figure(
         name=f"NPC_{name_prefix}_Cook",
         base_x=cook_x, base_y=cook_y, base_z=cook_z,
@@ -13430,7 +13430,7 @@ def build_taqueria_el_rancho():
     # Drive-thru order taker NPC (just inside the window) — teen
     dt_npc_x = cx + w / 2 - 0.6
     dt_npc_y = dt_centre_y
-    dt_npc_z = mesh_z(dt_npc_x, dt_npc_y)
+    dt_npc_z = stand_z(dt_npc_x, dt_npc_y)
     human_figure(
         name=f"NPC_{name_prefix}_DTOrder",
         base_x=dt_npc_x, base_y=dt_npc_y, base_z=dt_npc_z,
@@ -17985,7 +17985,6 @@ def main():
     build_crosswalks_and_stops()
     build_street_name_signs()
     build_school_zone_signs()
-    build_ambient_npcs()
     build_self_storage()
     build_auto_dealership()
     build_midway_minimart()
@@ -17998,6 +17997,10 @@ def main():
     build_high_school_field()
     build_strip_mall_nightclub()
     build_nexcorp_hq()
+    # (pass 394) the ambient people LAST: stand_z() stands them on the floor
+    # slabs, and the minimart, the plaza and the storage lot were built after
+    # them (the MM clerk stood 4.6 cm inside the minimart's floor)
+    build_ambient_npcs()
     export_glb()
 
 

@@ -3835,6 +3835,28 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-15 · pass 394: thirteen more people stood inside floors; a gate for it.**
+- Pass 393 seated Harmony's shop staff. Measured over every set (a
+  person's leg bottom vs the flat box under it): 13 more —
+  - Harmony Creek's shop CUSTOMERS (the arcade kid, a diner patron, a
+    comics browser, three Kwik Shop customers) and the taqueria's cook
+    and drive-thru orderer, 7.5 - 10 cm down in their floors; two
+    ambient townspeople in a garage slab and in the minimart's floor —
+    and the minimart is built AFTER the ambient people, so `stand_z()`
+    could not see its floor: the ambient people are placed last now.
+  - Graustark: two "suburb kids" stood INSIDE West House R2 C1, 3.7 m
+    behind its front door (in the front yard now); the St. Jude couple
+    leaving the service, 10 cm inside the north sidewalk (on it now).
+- **New gate `figure_floor_audit`** (zero, no baseline): a figure's leg
+  more than 2 cm below the top of a flat exact box under it.
+- The Graustark post office's "halfway to the door" frame looks at the
+  open door from inside by the counter (it framed the lettering on the
+  door's outside face, through the lintel).
+- Deck must REBUILD harmony_terrain and graustark.
+- NEXT: the six listed frames no line reaches (cosmic safe ×2, editing
+  suite cables, Foxhole set list, Lena's patch, the cab windshield): cue
+  or delete; the cue-subject reading (pass 393's note).
+
 **2026-11-15 · pass 393: Harmony Creek's shopkeepers stood inside their shop floors; buried flats 314 → 0.**
 - The strip-mall shopkeepers (Sam at the Kwik Shop register, the arcade
   attendant, the comics clerk, the laundromat clerk, the diner's cook and

@@ -555,6 +555,18 @@ BFOUT="$(python3 buried_flat_audit.py 2>/dev/null)" || {
 echo "$BFOUT" | tail -1
 echo ""
 
+# ── Figure-floor gate (2026-11-15, pass 394) ──────────────────
+# A person (human_figure: legs, torso, head) standing with their feet
+# inside the floor under them: set at the ground height where a slab lies
+# over the ground (Harmony Creek's shop staff and customers, 6 - 10 cm down
+# in their shop floors). Zero, no baseline.
+echo "── figure_floor_audit.py ── t+${SECONDS}s"
+FFOUT="$(python3 figure_floor_audit.py 2>/dev/null)" || {
+    echo "$FFOUT" | grep "^SUNK" | head -20
+    DEFERRED="$DEFERRED figure_floor_audit"; }
+echo "$FFOUT" | tail -1
+echo ""
+
 # ── Sunk-thing gate (2026-11-15, pass 388) ────────────────────
 # The THICK half of the question: a loose thing standing partly inside the
 # furniture top it stands on (the Kwik Stop's hot case, 7 cm into the

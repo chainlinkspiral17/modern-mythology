@@ -4419,8 +4419,11 @@ NPC_SPAWNS = [
     ("Cath_Frasier",     +318.5, +376.0, '-X', 'male_tall'),
     ("Cath_apprentice",  +318.5, +379.0, '-X', 'teen'),
     # ── Suburban kids playing on the SW residential road ──
-    ("Suburb_kid_1",     -480.0, +220.0, '+X', 'child'),
-    ("Suburb_kid_2",     -478.0, +220.0, '-X', 'child'),
+    # (pass 394) in the front yard, beside the walk: at y 220 they stood
+    # INSIDE West House R2 C1 (its slab runs y 216.3 - 223.7; the front
+    # door is at 216.5), feet 10 cm in its floor
+    ("Suburb_kid_1",     -478.6, +212.6, '+X', 'child'),
+    ("Suburb_kid_2",     -476.6, +212.6, '-X', 'child'),
     ("Suburb_parent",    -474.0, +218.0, '+Y', 'female_avg'),
     # ── Cane field worker ──
     ("Cane_field_1",     -580.0, -160.0, '-Y', 'male_heavy'),
@@ -6064,7 +6067,10 @@ def build_st_jude_sunday_2026_10():
         ("StJude_Boy", -194.9, 178.8, '-Y', 'child', (0.86, 0.86, 0.84, 1.0), (0.20, 0.22, 0.30, 1.0), (0.24, 0.16, 0.10, 1.0)),
     )
     for fi, (nm, fx, fy, face, body, jacket, pants, hair) in enumerate(people):
-        human_figure(nm, base_x=fx, base_y=fy, base_z=0.02, scale=1.0, facing=face,
+        # (pass 394) the leaving couple stand ON the north sidewalk (its top
+        # is 0.12); at 0.02 their shoes were 10 cm inside the concrete
+        _on_walk = -236.0 <= fx <= -183.2 and 175.2 <= fy <= 177.6
+        human_figure(nm, base_x=fx, base_y=fy, base_z=0.12 if _on_walk else 0.02, scale=1.0, facing=face,
                      body_type=body, skin_color=(0.74, 0.58, 0.46, 1.0) if fi % 2 else (0.58, 0.42, 0.32, 1.0),
                      hair_style='bowl' if 'Lady' in nm or nm in ('StJude_Couple_1', 'StJude_Mother') else 'short',
                      hair_color=hair, jacket_color=jacket, pants_color=pants, shoe_color=(0.12, 0.10, 0.09, 1.0))
