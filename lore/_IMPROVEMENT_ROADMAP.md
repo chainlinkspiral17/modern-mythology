@@ -3835,6 +3835,32 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-15 · pass 402: no carved bowl on the cabin table before ch11.**
+- Olaf's two bowls (Marit's, the substrate's) stood on Tem's table from
+  vol 7 ch1. The text: Marit's comes out of Per's box in ch11 (ch11_per),
+  the substrate's after it (ch11_bowl); the only carved bowl before that is
+  Eddvard's, ch4's night: "She took down the small cedar bowl from the
+  shelf above the kerosene lamp and set it on the table where the wood had
+  been … It was warm."
+- Olaf's bowls belong to group `cab_bowls` (the ch11-on views). Three more
+  twins carry the early chapters: `cabin_interior_day_early` (ch1's
+  afternoon, ch2's morning), `cabin_interior_early` (ch4, Tem alone),
+  `cabin_interior_eddvard` (ch4's night: Eddvard's bowl, smaller and
+  plainer, at the wood's place; its own `insert bowl` frame). With pass
+  401's four early twins (breakfast, piece, package, sticks) no view before
+  ch11 shows them.
+- A cue read for what it meant: ch4's "[shot:insert substrate]Substrate
+  did not respect interior walls" (the substrate as an idea; an auto pass
+  aimed it at the bowl by the word) — cue gone.
+- view_twin.py's builder listing read `__cabin_interior_day_breakfast` as a
+  `cabin_interior_day` tag; a tag now ends at a quote, a brace or `__`.
+- NEXT (bowls, draft 2): three bowls ch13-17 (Marina's grandfather's), four
+  ch19-20 (Olaus's/Roy's), two from ch21 (not Marit's: "Lindholm-Marina's
+  and Eddvard's-by-Tem", a contradiction with ch20's list — Andy); the
+  boxes (Per's, Marina's, Roy's), the bell-piece, Brandon's notebook; the
+  shelf above the lamp holds Eddvard's bowl in the other views.
+- Deck must REBUILD cabin_interior.
+
 **2026-11-15 · pass 401: Tem's cabin table, chapter by chapter.**
 - The cabin is vol 7's home base (~30 segments). Its table held every
   chapter's things at once: the three sticks, ch4's package, ch1's eggs,

@@ -57,8 +57,11 @@ const VIEW_GROUPS := {
 	# (pass 401) TEM'S CABIN TABLE by chapter: each state its own view (twins of
 	# cabin_interior_day / cabin_interior, made by tools/view_twin.py); the
 	# rigs belong to every twin of their hour
-	"cab_day": ["cabin_interior_day", "cabin_interior_day_breakfast", "cabin_interior_day_sticks", "cabin_interior_day_package", "cabin_interior_day_hexagon", "cabin_interior_day_disc", "cabin_interior_day_headset"],
-	"cab_night": ["cabin_interior", "cabin_interior_hexagon", "cabin_interior_piece"],
+	"cab_day": ["cabin_interior_day", "cabin_interior_day_breakfast", "cabin_interior_day_sticks", "cabin_interior_day_package", "cabin_interior_day_hexagon", "cabin_interior_day_disc", "cabin_interior_day_headset", "cabin_interior_day_early"],
+	"cab_night": ["cabin_interior", "cabin_interior_hexagon", "cabin_interior_piece", "cabin_interior_early", "cabin_interior_eddvard"],
+	# (pass 402) Olaf's two bowls (Marit's, the substrate's) from ch11 on: no
+	# carved bowl stands on the table before Per opens his box
+	"cab_bowls": ["cabin_interior", "cabin_interior_day", "cabin_interior_day_hexagon", "cabin_interior_hexagon", "cabin_interior_day_disc", "cabin_interior_day_headset"],
 	"cab_sticks": ["cabin_interior_day_breakfast", "cabin_interior_day_sticks"],
 	"cab_hex": ["cabin_interior_day_hexagon", "cabin_interior_hexagon"],
 	"cab_disc": ["cabin_interior_day_disc", "cabin_interior_day_headset"],
@@ -3554,6 +3557,43 @@ const CAMERA_PRESETS := {
 		"fov": 62.0,
 		"suppress_input": true,
 	},
+	"cabin_interior_eddvard": {
+		# (pass 402) ch4's night: "She took down the small cedar bowl from the shelf
+		# above the kerosene lamp and set it on the table where the wood had been" —
+		# Eddvard's bowl, warm, the only carved bowl before ch11.
+		"scene": "res://scenes/locales/cabin_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
+		# SURVEYED 2026-07-12: old vantage sat blender y=-0.5 OUTSIDE
+		# the south door. RE-SURVEYED 2026-09-03 (user: "first view of
+		# the cabin, 90 percent obstructed/wall"): x=2.0 stood INSIDE
+		# the bed alcove east of the East_Part partition (x 1.0,
+		# y 0..2.6), so the partition filled the left of frame. Now just
+		# inside the door WEST of the partition (blender 0.3, 0.9),
+		# looking NNW across the table + rockers to the kitchenette
+		# counter and the wood stove. Eye 1.62 (ceiling 3.4).
+		"camera_origin": Vector3(0.3, 1.62, -0.9),
+		"camera_rotation": Vector3(-0.04, 0.35, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"cabin_interior_early": {
+		# (pass 402) the cabin at night before ch11: no carved bowl on the table.
+		# vol 7 ch4, Tem alone.
+		"scene": "res://scenes/locales/cabin_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
+		# SURVEYED 2026-07-12: old vantage sat blender y=-0.5 OUTSIDE
+		# the south door. RE-SURVEYED 2026-09-03 (user: "first view of
+		# the cabin, 90 percent obstructed/wall"): x=2.0 stood INSIDE
+		# the bed alcove east of the East_Part partition (x 1.0,
+		# y 0..2.6), so the partition filled the left of frame. Now just
+		# inside the door WEST of the partition (blender 0.3, 0.9),
+		# looking NNW across the table + rockers to the kitchenette
+		# counter and the wood stove. Eye 1.62 (ceiling 3.4).
+		"camera_origin": Vector3(0.3, 1.62, -0.9),
+		"camera_rotation": Vector3(-0.04, 0.35, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
 	"cabin_interior_piece": {
 		# (pass 401) ch1's night: the one piece Finn brought, "on the table … on the small folded
 		# cloth Tem had set down for it".
@@ -3591,6 +3631,39 @@ const CAMERA_PRESETS := {
 		"suppress_input": true,
 	},
 	"cabin_interior_day": {
+		"scene": "res://scenes/locales/cabin_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
+		# SURVEYED 2026-07-12: old vantage sat blender y=-0.5 OUTSIDE
+		# the south door. RE-SURVEYED 2026-09-03 (user: "first view of
+		# the cabin, 90 percent obstructed/wall"): x=2.0 stood INSIDE
+		# the bed alcove east of the East_Part partition (x 1.0,
+		# y 0..2.6), so the partition filled the left of frame. Now just
+		# inside the door WEST of the partition (blender 0.3, 0.9),
+		# looking NNW across the table + rockers to the kitchenette
+		# counter and the wood stove. Eye 1.62 (ceiling 3.4).
+		# (2026-10-11) THE SAME ROOM BY DAY: vol7 plays fourteen cabin cuts in
+		# daylight (ch1 Morning, ch1 Finn, ch2, ch10, ch11 Stick, ch13 Marina,
+		# ch19 Cedar/Per, ch21, ch22, ch4 Finn, the epilogue) on the lamp-lit
+		# dusk rig. The night directionals are suffixed to cabin_interior; this
+		# preset brings the sun through the south windows, a sky fill, the
+		# windows' light on the floor, and a day sky. Lamps and stove serve both.
+		"camera_origin": Vector3(0.3, 1.62, -0.9),
+		"camera_rotation": Vector3(-0.04, 0.35, 0.0),
+		"fov": 62.0,
+		# (2026-11-12, pass 347) an overcast coast morning, not a lamp-lit
+		# room: "the gray hour before the rain became visible". The warm
+		# pine read deep orange and dark under a near-white ambient at 0.95
+		# with every oil lamp lit; the ambient is the cool grey of the sky
+		# through four windows now, brighter, and the fog grey with it.
+		"env": {"sky_top": Color(0.52, 0.58, 0.66, 1), "sky_horizon": Color(0.80, 0.82, 0.84, 1),
+			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.74, 0.80, 0.88, 1), "ambient_energy": 1.60, "fog_color": Color(0.70, 0.74, 0.78, 1)},
+		"style_pack": "raw_observation",
+		"suppress_input": true,
+	},
+	"cabin_interior_day_early": {
+		# (pass 402) the cabin by day before ch11: no carved bowl on the table yet
+		# (Marit's comes out of Per's box in ch11). vol 7 ch1's afternoon, ch2's morning.
 		"scene": "res://scenes/locales/cabin_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
 		# SURVEYED 2026-07-12: old vantage sat blender y=-0.5 OUTSIDE

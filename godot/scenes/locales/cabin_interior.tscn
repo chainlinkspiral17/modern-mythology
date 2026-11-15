@@ -546,6 +546,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.850, 1.200, -2.950)
 rotation = Vector3(-0.5595, -0.7854, 0.0)
 metadata/fov = 42.0
 
+; (pass 402) ch4's night: Eddvard's small cedar bowl, "set it on the table
+; where the wood had been" (the package's place)
+[node name="shot_insert_bowl__cabin_interior_eddvard" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.850, 1.200, -2.950)
+rotation = Vector3(-0.5595, -0.7854, 0.0)
+metadata/fov = 42.0
+
 ; insert: the desk, the notebook, three pieces of cedar
 [node name="shot_insert_desk" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.000, 1.250, -1.250)

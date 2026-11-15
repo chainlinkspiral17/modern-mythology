@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "3d:cabin_interior_day"
+      "src": "3d:cabin_interior_day_early"
     },
     {
       "t": "hide",

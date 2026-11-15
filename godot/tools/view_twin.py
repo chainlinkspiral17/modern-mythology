@@ -165,7 +165,8 @@ def main():
     bpath = os.path.join(LOCALES, "build_%s.py" % loc)
     if os.path.exists(bpath):
         for i, ln in enumerate(open(bpath, encoding="utf-8"), 1):
-            if re.search(r'__%s["\'_]' % re.escape(FROM), ln) or ('"%s"' % FROM in ln and "make_" in ln):
+            # a tag ends at a quote, a brace, or the next tag: `__FROM_more` is another view
+            if re.search(r'__%s(?=["\'{]|__)' % re.escape(FROM), ln) or ('"%s"' % FROM in ln and "make_" in ln):
                 log.append("   BUILDER %s:%d tags %s — add %s by hand: %s" % (os.path.basename(bpath), i, FROM, TO, ln.strip()[:90]))
 
     # the roster's skip lists
