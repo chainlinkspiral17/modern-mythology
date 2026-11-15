@@ -226,12 +226,16 @@ def build_kitchen_table():
     make_cyl("Hexagon_Face_Inlay", (hx, hy, T + 0.0215), 0.022, 0.003, (0.62, 0.46, 0.32, 1.0), segments=10)
     make_box("Hexagon_Aria_Piece", (hx + 0.115, hy - 0.11, T + 0.014), (0.060, 0.045, 0.020), cedar)
     # THE STICK in its waxed-paper sleeve, east end
-    make_box("Stick_Sleeve", (tx + 0.44, ty + 0.18, T + 0.010), (0.26, 0.09, 0.020), (0.88, 0.84, 0.72, 1.0))
-    make_box("Stick_Label", (tx + 0.44, ty + 0.18, T + 0.021), (0.10, 0.05, 0.002), (0.96, 0.95, 0.92, 1.0))
-    # "You eat?" — the plate Kai put in front of him (ch9), and the paper bag (ch18)
-    make_cyl("Food_Plate", (tx + 0.25, ty - 0.25, T + 0.006), 0.12, 0.012, (0.92, 0.90, 0.86, 1.0), segments=14)
-    make_box("Food_Sandwich", (tx + 0.25, ty - 0.25, T + 0.032), (0.12, 0.09, 0.04), (0.82, 0.66, 0.40, 1.0))
-    make_box("Paper_Bag", (tx + 0.50, ty + 0.30, T + 0.11), (0.16, 0.10, 0.22), (0.68, 0.54, 0.36, 1.0))
+    # (pass 397) the stick, its sleeve and Hans's brown paper bag reach this
+    # table in vol 7 ch18 ("He set the bag on the kitchen table … The stick
+    # was inside. In its waxed-paper sleeve"): the ch18 views only (group
+    # fa_stick). They stood here in ch5, ch9 and ch12, months before.
+    make_box("Stick_Sleeve__fa_stick", (tx + 0.44, ty + 0.18, T + 0.010), (0.26, 0.09, 0.020), (0.88, 0.84, 0.72, 1.0))
+    make_box("Stick_Label__fa_stick", (tx + 0.44, ty + 0.18, T + 0.021), (0.10, 0.05, 0.002), (0.96, 0.95, 0.92, 1.0))
+    make_box("Paper_Bag__fa_stick", (tx + 0.50, ty + 0.30, T + 0.11), (0.16, 0.10, 0.22), (0.68, 0.54, 0.36, 1.0))
+    # (pass 397) no plate: in ch9 Finn has "forgot to eat since yesterday
+    # morning" and Kai takes him OUT to eat ("Get up … they went down to the
+    # truck"). The plate and sandwich "Kai put in front of him" were invented.
     # THE CROW ON THE CHAIR ACROSS FROM HIM (draft 5): the kitchen bird, on
     # the N chair's back, looking at the wood
     make_cyl("KT_Chair_N_Perch_Rail", (tx, ty + 0.72 + 0.17, 0.93), 0.022, 0.40, (0.36, 0.26, 0.17, 1.0), segments=6, axis='X')

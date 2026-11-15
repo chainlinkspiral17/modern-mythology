@@ -3835,6 +3835,29 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-15 · pass 397: Finn's table had a plate nobody served and a stick that had not come yet.**
+- Pass 396's lesson, applied: a scan of shared sets for dressing a
+  builder comment ties to one chapter. Finn's apartment (vol 7, six
+  chapters) had, on the kitchen table in all of them:
+  - a plate with a sandwich, "the plate Kai put in front of him (ch9)".
+    The text: Finn has "forgot to eat since yesterday morning" and Kai
+    takes him OUT ("Get up … they went down to the truck"). Invented;
+    gone, with its orphan frame.
+  - the stick in its waxed-paper sleeve and Hans's brown paper bag, which
+    reach the table in ch18 ("He set the bag on the kitchen table … The
+    stick was inside"), months after ch5, ch9 and ch12. They are tagged to
+    two ch18 views (`finn_apartment_stick`, `finn_apartment_night_stick`,
+    group `fa_stick`); ch18's afternoon and night open on them. The ch18
+    frames (stick, bag, sleeve, blanket, crow, and a copy of the table)
+    moved with them.
+- Orphan frames 104 → 103 (ceiling ratchets).
+- NEXT: the charred wood on Finn's cloth is the same in every chapter
+  (the text counts it: three pieces in ch5, five in ch9, the assembled
+  hexagon of eight in ch12) — views per stage; the vehicle cab's folded
+  map (commented "ch14") in all fifteen cab chapters — read whether it
+  stays on Ben's dash.
+- Deck must REBUILD finn_apartment.
+
 **2026-11-15 · pass 396: the Hendersons' supper was on the table in every chapter.**
 - The pot roast, the four place settings and the table mug (dressing for
   vol 6 ch7: "She sets the table for four" … "She sets it on the table")

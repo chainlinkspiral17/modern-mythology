@@ -84,6 +84,22 @@ henderson) got there by accumulating exactly these layers.
 
 ## Recent lessons
 
+### 2026-11-15 · one chapter's moment belongs to that chapter's VIEW, not to the set (pass 396)
+
+- **What happened:** the Hendersons' pot roast, the four place settings
+  and the table mug — vol 6 ch7's supper — stood on the kitchen table in
+  every chapter that uses the room (seven), among them ch20's morning
+  coffee over the contact prints. ch23 is the only other supper.
+- **Rule:** when dressing is for one moment (a meal, a delivery, a mess,
+  a car in the lot, a crowd), give it a view: tag the parts
+  (`__<view>`, or a VIEW_GROUP for several) and point those chapters'
+  `bg` at that view; everything else sees the room as it usually is.
+  Copy the view's ambient bed and panorama entry with it. Before dressing
+  a shared set, list the chapters that use it (`grep -l 3d:<view>`).
+- A frame whose subject is that moment's dressing moves to the view with
+  it (`shot_insert_fork__henderson_kitchen_supper`), or every other
+  chapter's gate sees a frame aimed at nothing.
+
 ### 2026-11-15 · a prop the text describes is built from the text's words; a setting faces its diner (pass 387)
 
 - **The flyer:** the text gives its size, stock and ink ("Half-letter,

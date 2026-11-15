@@ -43,6 +43,8 @@ const ArtMaskScript := preload("res://scripts/vn/ArtMask.gd")
 ## their groups against this table (a tag that names nothing would put the
 ## part in EVERY view); tools/audit/view_tags.py reads it for the gates.
 const VIEW_GROUPS := {
+	# (pass 397) Finn's table once the stick has come home (vol 7 ch18)
+	"fa_stick": ["finn_apartment_stick", "finn_apartment_night_stick"],
 	# vol 7 ch20-21, the alley behind the Salty Tome by the clock:
 	# g 6:59 gather · v 7:15 vigil · a 10:45 leaving · b 11:00 thinning · c 11:30 twelve
 	"st_gv": ["salty_tome_gather", "salty_tome_vigil"],
@@ -3621,7 +3623,47 @@ const CAMERA_PRESETS := {
 		"fov": 62.0,
 		"suppress_input": true,
 	},
+	"finn_apartment_stick": {
+		# (pass 397) finn_apartment with the stick, its sleeve and the bag on the
+		# table (parts tagged __fa_stick): vol 7 ch18.
+		"scene": "res://scenes/locales/finn_apartment.tscn",
+		"requires_glb": "res://assets/3d/locales/finn_apartment.glb",
+		# DRAFT 4 (2026-10-09): one-bedroom over the kayak shop, 8.4 x 7.6
+		# (godot x in [-4.2,4.2], z in [0,-7.6], ceil 2.7). Kitchen S: the run
+		# on the W wall under the alley window, the table with the charred
+		# wood (godot 0.3,-1.95), Finn's desk SW, the space heater + duffel
+		# E; bedroom N through the doorway (godot 1.6,-3.9). Camera inside
+		# the entry door (E wall) looking W across the kitchen.
+		"camera_origin": Vector3(3.60, 1.62, -2.00),
+		"camera_rotation": Vector3(-0.109, deg_to_rad(83.5), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
 	"finn_apartment_night": {
+		"scene": "res://scenes/locales/finn_apartment.tscn",
+		"requires_glb": "res://assets/3d/locales/finn_apartment.glb",
+		# DRAFT 4 (2026-10-09): one-bedroom over the kayak shop, 8.4 x 7.6
+		# (godot x in [-4.2,4.2], z in [0,-7.6], ceil 2.7). Kitchen S: the run
+		# on the W wall under the alley window, the table with the charred
+		# wood (godot 0.3,-1.95), Finn's desk SW, the space heater + duffel
+		# E; bedroom N through the doorway (godot 1.6,-3.9). Camera inside
+		# the entry door (E wall) looking W across the kitchen.
+		# (2026-10-11, pass 60) THE SAME ROOM at the other hour: ch18 Aria (mood:night) and ch12 Morning's 4:42 on the dusk rig.
+		# The authored rig is suffixed to finn_apartment; this twin has its own lights and env.
+		# (2026-11-10, pass 331) the crow is on the chair beside the bed in
+		# these chapters: the kitchen bird leaves this view.
+		"strip": ["Kitchen_Crow_", "HP_Kitchen_Crow"],
+		"camera_origin": Vector3(3.60, 1.62, -2.00),
+		"camera_rotation": Vector3(-0.109, deg_to_rad(83.5), 0.0),
+		"fov": 62.0,
+		"env": {"sky_top": Color(0.05, 0.06, 0.13, 1), "sky_horizon": Color(0.16, 0.15, 0.21, 1),
+			"ground_horizon": Color(0.08, 0.08, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.36, 0.36, 0.46, 1), "ambient_energy": 0.40, "fog_color": Color(0.12, 0.12, 0.16, 1)},
+		"suppress_input": true,
+	},
+	"finn_apartment_night_stick": {
+		# (pass 397) finn_apartment_night with the stick, its sleeve and the bag on the
+		# table (parts tagged __fa_stick): vol 7 ch18.
 		"scene": "res://scenes/locales/finn_apartment.tscn",
 		"requires_glb": "res://assets/3d/locales/finn_apartment.glb",
 		# DRAFT 4 (2026-10-09): one-bedroom over the kayak shop, 8.4 x 7.6

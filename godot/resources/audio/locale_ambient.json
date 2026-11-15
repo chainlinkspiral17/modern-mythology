@@ -245,7 +245,15 @@
       "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
       "gain": 0.88
     },
+    "finn_apartment_stick": {
+      "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
+      "gain": 0.88
+    },
     "finn_apartment_night": {
+      "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
+      "gain": 0.88
+    },
+    "finn_apartment_night_stick": {
       "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
       "gain": 0.88
     },

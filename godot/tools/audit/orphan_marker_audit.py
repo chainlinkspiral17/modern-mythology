@@ -42,7 +42,7 @@ import wrong_room_audit as W  # noqa: E402
 GODOT = os.path.normpath(os.path.join(HERE, "..", ".."))
 SCENES = os.path.join(GODOT, "resources", "scenes")
 CUE = re.compile(r"\[shot:(\w+)\s+(\w+)~?\]")
-CEILING = 104       # 2026-11-15, pass 392: the riverfront notebook frame (John's, vol 5: its scene plays in graustark_armory_park) deleted; pass 380: 25 more given their line (130 after pass 370; 223 at the first count; 367: 39 cued; 368: 12 cued, 42 dead deleted; 370: 3 lit and cued)
+CEILING = 103       # 2026-11-15, pass 392: the riverfront notebook frame (John's, vol 5: its scene plays in graustark_armory_park) deleted; pass 380: 25 more given their line (130 after pass 370; 223 at the first count; 367: 39 cued; 368: 12 cued, 42 dead deleted; 370: 3 lit and cued)
 
 
 def survey():
