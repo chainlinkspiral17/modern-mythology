@@ -50,6 +50,12 @@ from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_
 
 # 2026-09-25: the counter run and the stove stood at ROOM_D-0.45 — 0.55 m off the N wall in every kitchen from this template; ROOM_D-0.45 puts their backs on the wall face
 ROOM_W = 6.5; ROOM_D = 5.5; CEIL = 2.6
+# (pass 396) the SUPPER (the pot roast, the place settings, the table mug)
+# is in the suppers only — vol 6 ch7 ("She sets the table for four" … "She
+# sets it on the table") and ch23 ("Eileen has made a pot roast") — through
+# the view henderson_kitchen_supper. It stood on the table in every chapter
+# that uses this kitchen: ch3, ch14, ch20's morning coffee, ch22.
+SUPPER = "__henderson_kitchen_supper"
 PAL_WALL = {"wall": (0.92, 0.86, 0.74, 1.0), "baseboard": (0.42, 0.32, 0.22, 1.0)}
 COL_FLOOR = (0.74, 0.58, 0.38, 1.0); COL_SEAM = (0.42, 0.30, 0.18, 1.0); COL_WOOD = (0.46, 0.34, 0.22, 1.0)
 COL_ACCENT = (0.62, 0.42, 0.22, 1.0)
@@ -271,38 +277,38 @@ def build_hero_props():
     carrot = (0.78, 0.42, 0.16, 1.0)
     tater = (0.80, 0.72, 0.52, 1.0)
     # Dutch oven: body, a proud rolled rim, two lug handles
-    make_cyl("PotRoast_Pot", (tx0, ty0, 0.855),
+    make_cyl("PotRoast_Pot" + SUPPER, (tx0, ty0, 0.855),
              0.155, 0.19, enamel, segments=16)
     # (pass 386) a RING: as a disc it lidded the pot — the gravy and the
     # vegetables lay under it
     from _props.geometry import make_lathe as _ring
-    _ring("PotRoast_Pot_Rim", (tx0, ty0, 0.937),
+    _ring("PotRoast_Pot_Rim" + SUPPER, (tx0, ty0, 0.937),
           [(0.146, 0.0), (0.166, 0.0), (0.166, 0.022), (0.146, 0.022)], enamel_dk, segments=20)
-    make_cyl("PotRoast_Pot_Inner", (tx0, ty0, 0.944),
+    make_cyl("PotRoast_Pot_Inner" + SUPPER, (tx0, ty0, 0.944),
              0.140, 0.010, cream, segments=16)
     for sgn in (-1, 1):
-        make_box("PotRoast_Lug_%d" % sgn,
+        make_box(("PotRoast_Lug_%d" % sgn) + SUPPER,
                  (tx0 + sgn * 0.175, ty0, 0.930),
                  (0.055, 0.085, 0.030), enamel_dk)
     # The roast itself, proud of the rim, with vegetables around it
-    make_blob("PotRoast_Meat", (tx0, ty0, 0.975), 0.105,
+    make_blob("PotRoast_Meat" + SUPPER, (tx0, ty0, 0.975), 0.105,
               roast, noise=0.16, seed=5, squash=0.62)
-    make_cyl("PotRoast_Gravy", (tx0, ty0, 0.950),
+    make_cyl("PotRoast_Gravy" + SUPPER, (tx0, ty0, 0.950),
              0.132, 0.012, gravy, segments=14)
     for vi, (vx, vy) in enumerate(((-0.085, 0.055), (0.080, 0.040),
                                    (-0.050, -0.075), (0.065, -0.065))):
         col = carrot if vi % 2 == 0 else tater
-        make_blob("PotRoast_Veg_%d" % vi,
+        make_blob(("PotRoast_Veg_%d" % vi) + SUPPER,
                   (tx0 + vx, ty0 + vy, 0.962), 0.036,
                   col, noise=0.20, seed=11 + vi, squash=0.80)
     # The lid, OFF — leaning against the pot, which is the detail
     # that says it was served just now.
-    make_cyl("PotRoast_Lid", (tx0 - 0.235, ty0 + 0.20, 0.815),
+    make_cyl("PotRoast_Lid" + SUPPER, (tx0 - 0.235, ty0 + 0.20, 0.815),
              0.150, 0.030, enamel, segments=16)
-    make_cyl("PotRoast_Lid_Knob", (tx0 - 0.235, ty0 + 0.20, 0.845),
+    make_cyl("PotRoast_Lid_Knob" + SUPPER, (tx0 - 0.235, ty0 + 0.20, 0.845),
              0.024, 0.030, enamel_dk, segments=8)
     # A trivet under the pot — nobody puts a hot dutch oven on oak
-    make_box("PotRoast_Trivet", (tx0, ty0, 0.768),
+    make_box("PotRoast_Trivet" + SUPPER, (tx0, ty0, 0.768),
              (0.36, 0.36, 0.016), (0.36, 0.28, 0.20, 1.0))
 
     # Four place settings — the head setting is the shot
@@ -312,7 +318,7 @@ def build_hero_props():
     # whichever way the seat faced (the head's between its plate and the
     # pot, the west seat's on the table's edge), 8 mm in the air
     for si, (dx, dy) in enumerate(((-0.45, 0.0), (0.0, -0.32), (0.0, 0.32), (0.45, 0.0))):
-        make_cyl(f"Setting_{si}_Plate", (tx+dx, ty+dy, 0.7665), 0.11, 0.012, (0.90, 0.88, 0.84, 1.0), segments=12)
+        make_cyl(f"Setting_{si}_Plate" + SUPPER, (tx+dx, ty+dy, 0.7665), 0.11, 0.012, (0.90, 0.88, 0.84, 1.0), segments=12)
         if dx:      # the end seats face along x: the fork lies along x, on the diner's left
             fx, fy = dx, dy + (0.15 if dx < 0 else -0.15)
         else:       # the side seats face along y
@@ -325,15 +331,15 @@ def build_hero_props():
             cx, cy = tx + fx + ux * along - uy * across, ty + fy + uy * along + ux * across
             sz = (ln, wd, th) if ux else (wd, ln, th)
             make_box(nm, (cx, cy, 0.7625), sz, steel)
-        _fk(f"Setting_{si}_Fork", -0.022, 0.0, 0.076, 0.010)              # the handle
-        _fk(f"Setting_{si}_Fork_Head", 0.025, 0.0, 0.018, 0.024)
+        _fk(f"Setting_{si}_Fork" + SUPPER, -0.022, 0.0, 0.076, 0.010)              # the handle
+        _fk(f"Setting_{si}_Fork_Head" + SUPPER, 0.025, 0.0, 0.018, 0.024)
         for k in range(4):
-            _fk(f"Setting_{si}_Fork_Tine_{k}", 0.047, -0.0105 + k * 0.007, 0.028, 0.0034)
+            _fk(f"Setting_{si}_Fork_Tine_{k}" + SUPPER, 0.047, -0.0105 + k * 0.007, 0.028, 0.0034)
     # Coffee mugs by the pot: three poured, one never drunk
     # (pass 387) the table's mug stood ON the head setting's fork and plate
     # rim, 1.5 cm into the top: above the plate on the diner's right now
     for mi, (mx, my) in enumerate(((-2.98, Y_BACK-0.20), (-2.36, Y_BACK-0.45), (0.36, ty+0.16))):   # on the counter, which is on the wall now (2026-09-25)
-        make_cyl(f"Mug_{mi}", (mx, my, TOP_Z+0.045 if mi < 2 else 0.8055), 0.04, 0.09,
+        make_cyl(f"Mug_{mi}" + ("" if mi < 2 else SUPPER), (mx, my, TOP_Z+0.045 if mi < 2 else 0.8055), 0.04, 0.09,
                  [(0.72, 0.30, 0.22, 1.0), (0.30, 0.40, 0.52, 1.0), (0.86, 0.82, 0.74, 1.0)][mi], segments=10)
 
 

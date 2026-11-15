@@ -3835,6 +3835,30 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-15 · pass 396: the Hendersons' supper was on the table in every chapter.**
+- The pot roast, the four place settings and the table mug (dressing for
+  vol 6 ch7: "She sets the table for four" … "She sets it on the table")
+  stood on the Henderson kitchen table in all seven chapters that use the
+  room — ch3, ch14, ch20's morning coffee over the contact prints, ch22.
+  Only two are suppers: ch7 and ch23 ("Eileen has made a pot roast …
+  halfway through his second helping").
+- New view `henderson_kitchen_supper` (same camera; its ambient bed and
+  panorama entry copied); the supper parts are tagged to it
+  (`__henderson_kitchen_supper`). ch7 and ch23's supper open on it; ch23's
+  11:18 PM return (lights going off) keeps the cleared table. The fork and
+  pot-roast close-ups moved to the supper view with their subjects.
+- **vol 6 ch20 node 32 "He turns one of the contact prints toward Jesse"
+  cut to the dutch oven** (`insert pot`): the pot is in the PHOTOGRAPH —
+  "the small empty terra-cotta pot Eileen had put there in 2019". It cuts
+  to the prints; the dead pot frame is gone.
+- Still not right in ch7: the pot roast is on the table from the first
+  line, but it is in the oven until node 53 ("She gets the pot roast from
+  the oven"). A view change mid-scene needs a `bg` node, and inserting a
+  node renumbers the voiced lines after it (voice files are named by
+  node). NEXT: an inline view change on a line (`[view:…]`) so a voiced
+  chapter can change its room's state without new nodes.
+- Deck must REBUILD henderson_kitchen.
+
 **2026-11-15 · pass 395: the set list under a wedge; the patch above the window; the windshield's line.**
 - **The Foxhole set list** ("at his feet, taped to the floor with masking
   tape") lay under Jesse's floor wedge — the close-up saw four bits of

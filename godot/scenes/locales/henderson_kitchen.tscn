@@ -208,7 +208,7 @@ shadow_enabled = false
 ; object — the chapter's hero image framed bare table. The pot now
 ; sits at the table head, blender (0.0, ROOM_D/2+0.22, ~0.9) with
 ; ROOM_D=5.0 → godot (0.0, 0.90, -2.72).
-[node name="shot_insert_pot_roast" type="Marker3D" parent="." groups=["vn_shot"]]
+[node name="shot_insert_pot_roast__henderson_kitchen_supper" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.28, -1.96)
 rotation = Vector3(-0.3440, -0.0358, 0.0)
 
@@ -375,12 +375,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 1.1, -2.65)
 rotation = Vector3(-0.5531, -0.7507, 0.0)
 metadata/fov = 42.0
 
-; insert: the pot (Eileen's pot roast)
-[node name="shot_insert_pot" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 1.25, -2.55)
-rotation = Vector3(-0.6955, 0.9738, 0.0)
-metadata/fov = 42.0
-
 ; insert: the sheet of paper Jesse recognizes
 [node name="shot_insert_lyric_sheet" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 1.1, -2.65)
@@ -460,7 +454,7 @@ rotation = Vector3(-0.2618, 0.1335, 0.0)
 metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_fork__henderson_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+[node name="shot_insert_fork__henderson_kitchen_supper" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.880, 1.080, -2.360)
 rotation = Vector3(-0.5691, 1.0617, 0.0)
 metadata/fov = 30.0
