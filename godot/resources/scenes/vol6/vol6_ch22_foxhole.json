@@ -528,12 +528,12 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert setlist]He gets to his position. The Telecaster is on the strap. The amp is at his right. The cord is at his left.",
+   "text": "He gets to his position. The Telecaster is on the strap. The amp is at his right. The cord is at his left.",
    "voice": "assets/audio/voice/vol6_ch22_foxhole/094.mp3"
   },
   {
    "t": "narrate",
-   "text": "The set list — written on the back of the same flyer the bridge is on — is at his feet, taped to the floor with masking tape Ricky put down at six forty-eight.",
+   "text": "[shot:insert setlist]The set list — written on the back of the same flyer the bridge is on — is at his feet, taped to the floor with masking tape Ricky put down at six forty-eight.",
    "voice": "assets/audio/voice/vol6_ch22_foxhole/095.mp3"
   },
   {

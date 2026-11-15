@@ -3835,6 +3835,24 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-15 · pass 395: the set list under a wedge; the patch above the window; the windshield's line.**
+- **The Foxhole set list** ("at his feet, taped to the floor with masking
+  tape") lay under Jesse's floor wedge — the close-up saw four bits of
+  tape — and its "lines" were one solid dark box covering most of the
+  sheet, so even uncovered it read as an empty white frame (the bridge
+  lyrics' sheet beside it the same). Beside the wedge now, with five
+  lines of songs (the lyrics with seven); the cue moved from "He gets to
+  his position" to the line that names the set list.
+- **Lena's mural patch** ("The fourth one", vol 7 ch8): the lens sat in
+  the wall's top corner above the window head and the lintel hid the
+  mural; it looks through the window at eye height now.
+- **"The morning sun through the windshield"** (vol 6 ch22, Diego's drive
+  home) had no cut; it cuts to the windshield frame, which holds through
+  "He pulls the visor down."
+- Left on the half-hidden list: three frames no line reaches (the Cosmic
+  safe ×2, the editing suite's cables).
+- Deck must REBUILD foxhole_bar.
+
 **2026-11-15 · pass 394: thirteen more people stood inside floors; a gate for it.**
 - Pass 393 seated Harmony's shop staff. Measured over every set (a
   person's leg bottom vs the flat box under it): 13 more —

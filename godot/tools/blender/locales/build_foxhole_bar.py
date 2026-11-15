@@ -179,11 +179,20 @@ def build_backline():
             make_cyl(f"{prefix}_Knob_{k}", (ax - 0.24 + k * 0.16, 14.3 - 0.205, STAGE_TOP + 0.95), 0.018, 0.02, (0.86, 0.80, 0.62, 1.0), axis='Y', segments=6)
     # the bridge lyrics on the back of last week's flyer, flat by Jesse's amp
     make_box("Bridge_Lyrics", (-1.95, 13.75, STAGE_TOP + 0.002), (0.21, 0.28, 0.003), (0.92, 0.90, 0.84, 1.0))
-    make_box("Bridge_Lyrics_Lines", (-1.95, 13.77, STAGE_TOP + 0.0045), (0.15, 0.18, 0.001), (0.32, 0.32, 0.36, 1.0))
+    # (pass 395) lines of handwriting, not one dark block (it read as a frame)
+    for li in range(7):
+        make_box(f"Bridge_Lyrics_Line_{li}", (-1.95 - 0.01 * (li % 2), 13.85 - li * 0.026, STAGE_TOP + 0.0039),
+                 (0.15 - 0.02 * (li % 3), 0.006, 0.0008), (0.32, 0.32, 0.36, 1.0))
     # THE SET LIST, taped to the floor at Jesse's feet (masking tape at the corners)
-    make_box("Setlist", (-1.6, 12.55, STAGE_TOP + 0.002), (0.21, 0.28, 0.003), (0.94, 0.92, 0.86, 1.0))
-    make_box("Setlist_Lines", (-1.6, 12.56, STAGE_TOP + 0.0045), (0.15, 0.20, 0.001), (0.20, 0.20, 0.24, 1.0))
-    for ti, (tx, ty) in enumerate(((-1.70, 12.68), (-1.50, 12.68), (-1.70, 12.42), (-1.50, 12.42))):
+    # (pass 395) beside the wedge, not under it: at (-1.6, 12.55) Wedge_0
+    # stood on most of the sheet and the close-up saw four bits of tape
+    sx_, sy_ = -1.35, 12.62
+    make_box("Setlist", (sx_, sy_, STAGE_TOP + 0.002), (0.21, 0.28, 0.003), (0.94, 0.92, 0.86, 1.0))
+    # the five songs (pass 395: lines, not one dark block — the sheet read as an empty frame)
+    for li in range(5):
+        make_box(f"Setlist_Line_{li}", (sx_ - 0.01 * (li % 2), sy_ + 0.08 - li * 0.04, STAGE_TOP + 0.0039),
+                 (0.15 - 0.025 * (li % 3), 0.010, 0.0008), (0.20, 0.20, 0.24, 1.0))
+    for ti, (tx, ty) in enumerate(((sx_ - 0.10, sy_ + 0.13), (sx_ + 0.10, sy_ + 0.13), (sx_ - 0.10, sy_ - 0.13), (sx_ + 0.10, sy_ - 0.13))):
         make_box(f"Setlist_Tape_{ti}", (tx, ty, STAGE_TOP + 0.005), (0.06, 0.03, 0.002), (0.86, 0.80, 0.58, 1.0))
     # three mic stands: Em centre, Jesse and Nate either side
     for mi, (mx, my) in enumerate(((0.0, 12.75), (-1.9, 12.85), (1.9, 12.85))):

@@ -3,16 +3,14 @@
  "to_read": [
   "cosmic_comics_back_office:shot_insert_safe",
   "cosmic_comics_interior:shot_insert_safe__cosmic_comics_back_office",
-  "editing_suite:shot_insert_cables__suite_4am",
-  "foxhole_bar:shot_insert_setlist",
-  "lena_apartment:shot_insert_patch",
-  "vehicle_cab:shot_insert_windshield__vehicle_cab"
+  "editing_suite:shot_insert_cables__suite_4am"
  ],
  "judged": {
   "foxhole_bar:shot_insert_stage__foxhole_bar": "pass 390: the venue wide, stage lit; the console in the foreground is the room",
   "cosmic_comics_interior:shot_insert_bars__cosmic_comics_interior": "pass 390: the purple light bars read on the floor past the bin",
   "cabin_interior_bed:shot_insert_blanket__cabin_interior_bed": "pass 390: the wool blanket fills the frame",
   "cabin_interior:shot_insert_coat__cabin_interior": "pass 390: the coat on its peg by the window reads",
-  "cabin_interior:shot_insert_coat__cabin_interior_day": "pass 390: as the night frame"
+  "cabin_interior:shot_insert_coat__cabin_interior_day": "pass 390: as the night frame",
+  "vehicle_cab:shot_insert_windshield__vehicle_cab": "pass 395: the visor is the next line (\"He pulls the visor down. The visor cuts about a third of it.\"); the road reads through the glass"
  }
 }
