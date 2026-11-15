@@ -1,7 +1,6 @@
 {
  "_doc": "buried_flat_audit.py: flat things lying inside (or flush with) the slab they lie on, per set; lower only",
  "counts": {
-  "harmony_terrain": 23,
-  "riverfront": 9
+  "harmony_terrain": 23
  }
 }

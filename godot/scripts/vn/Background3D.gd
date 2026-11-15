@@ -109,17 +109,20 @@ const CAMERA_PRESETS := {
 	"riverfront_park": {
 		"scene": "res://scenes/locales/riverfront.tscn",
 		"requires_glb": "res://assets/3d/locales/riverfront.glb",
-		# The riverside PARK west of the boardwalk (vol1_ch2 / the
-		# Hierophant's bench scenes): chipped bench godot (-50.5,-22),
-		# bandstand (-48,-26), the black car at the curb (-54,-24), the
-		# Old Armory mass rising behind (-62,-34). Camera on the jog
-		# path SE of the bench looking NW across the lawn so bench,
-		# bandstand and armory silhouette stack in one frame.
-		"camera_origin": Vector3(-45.5, 1.7, -16.5),
-		"camera_rotation": Vector3(-0.02, 0.49, 0.0),
+		# The riverfront's PARK, west of River Road and south (blender
+		# PARK_X -77.2, PARK_Y -70): lawn, jogging path, picnic table, swing
+		# set, oaks and cypresses with moss. (pass 392) It looked at a copy of
+		# the Hierophant's park (vol 5 — its own set, graustark_armory_park)
+		# laid on River Road's east lane. Camera on the lawn's east edge
+		# looking W across the picnic table to the swings and the trees
+		# (from the SE corner the near oak split the frame).
+		# Played by vol 1's grandparents montage and vol 4's dead park
+		# (bg_places).
+		"camera_origin": Vector3(-65.20, 1.70, 72.50),
+		"camera_rotation": Vector3(-0.036, 1.336, 0.0),
 		"fov": 55.0,
 		"suppress_input": true,
-		"far": 500.0,   # (2026-10-31) its far scenery stood past the 200 m default
+		"far": 600.0,   # (2026-10-31) its far scenery stood past the 200 m default; (pass 392) 600 from the park at PARK_X, PARK_Y
 	},
 	"highway9_long": {
 		"scene": "res://scenes/locales/harmony_terrain.tscn",

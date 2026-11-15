@@ -489,14 +489,8 @@ theme_override_colors/font_color = Color(1.0, 0.78, 0.36, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 
-; insert: John scribbled in his notebook: Hierophant
-[node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-51.046, 0.901, -21.860)
-rotation = Vector3(-0.5236, -1.3717, 0.0)
-metadata/fov = 42.0
-
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
-; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+; every closeup of a person cued here cuts to it (the scene had no closeup marker). (pass 392) moved with the view to the park at PARK_X, PARK_Y
 [node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-20.625, 1.612, 17.069)
 rotation = Vector3(-0.2618, -0.7854, 0.0)
@@ -510,16 +504,16 @@ rotation = Vector3(-0.2618, 2.3562, 0.0)
 metadata/fov = 45.0
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10)
-; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+; every closeup of a person cued here cuts to it (the scene had no closeup marker). (pass 392) moved with the view to the park at PARK_X, PARK_Y
 [node name="shot_closeup_person__riverfront_park" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-46.235, 1.612, -17.975)
+position = Vector3(-73.535, 1.612, 73.175)
 rotation = Vector3(-0.2618, 0.5236, 0.0)
 metadata/fov = 45.0
 
 ; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
 ; the far side of the same spot, so two speakers alternate sides
 [node name="shot_closeup_person_b__riverfront_park" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-47.588, 1.612, -20.318)
+position = Vector3(-74.888, 1.612, 70.832)
 rotation = Vector3(-0.2618, -2.6180, 0.0)
 metadata/fov = 45.0
 

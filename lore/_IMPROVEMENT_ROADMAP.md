@@ -3835,6 +3835,34 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-15 · pass 392: the riverfront's park was on River Road.**
+- Rendered (pass 391): the "chipped park bench" stood on River Road's
+  asphalt by the lane line, the bandstand straddled the sidewalk and the
+  road. An August pass laid a park "in the green buffer between River
+  Road (x=-55) and the lot curb (x=-41)" — x −55 is the road's CENTRE
+  LINE; its east lane, its east sidewalk and the driveway aprons are
+  that "buffer". Its draft 2 added a hedge, an iron fence (on the centre
+  line), lamp posts and trees, all in the road.
+- And it was the wrong park. The bench, the bandstand, the long black car
+  and John's notebook are vol 5 ch5 §IV (the Hierophant), which plays in
+  its own set, `graustark_armory_park`. The riverfront park view is
+  played (through bg_places) by vol 1's grandparents montage and vol 4's
+  "park, square and dead"; vol 1's jog itself plays in houston_park_day.
+- The riverfront already had a park: west of the road and south (PARK_X
+  −77.2, PARK_Y −70), lawn, picnic table, swing set, a bench, oaks and
+  cypresses with moss. The view looks at it now, from the lawn's SE
+  corner, and it has a jogging path (a loop 1.5 m inside the lawn,
+  clear of the trees, swings, bench and sign). Its two close-up frames
+  moved with it as a pair. The road copy is gone (its duplicate part
+  names — `Park_Lawn`, `Park_Bench_*`, `Park_Tree_*` — with it); the
+  armory and church silhouettes and the skyline stay as far scenery.
+- Buried flats 32 → 23 (Harmony Creek's shops only); orphan frames 105 →
+  104 (the notebook frame; the ceiling ratchets).
+- Deck must REBUILD riverfront.
+- NEXT: Harmony Creek's shop floors (slab-aware heights for the
+  shopkeepers, their stand discs and the dressing); read the new park
+  view wide on the Deck.
+
 **2026-11-15 · pass 391: six close-ups that framed the wrong thing, re-taken and read.**
 - **The jukebox** ("in the corner … blinking through its red eye", vol 1
   and vol 5 ch0) stood in the bartender's aisle between the west bar and

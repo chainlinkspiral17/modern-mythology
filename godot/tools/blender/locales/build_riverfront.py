@@ -2499,6 +2499,16 @@ def build_road_network():
         # Seat slab
         make_box(f"Park_Swing_{swi}_Seat", (ss_x, ss_y + sw_y_o, 0.50),
                  (0.50, 0.18, 0.06), (0.42, 0.30, 0.20, 1.0))
+    # (pass 392) the jogging path, a loop 1.5 m inside the lawn's edge (vol 1:
+    # "Faust is jogging with his friend, Jacob"; vol 4's "park, square"),
+    # clear of the trees, the swings, the bench and the sign. The lawn's
+    # top is 0.01.
+    path_col = (0.60, 0.54, 0.44, 1.0)
+    lx, ly, pw = park_w / 2 - 1.5, park_l / 2 - 1.5, 1.6
+    make_box("Park_JogPath_N", (PARK_X, PARK_Y + ly, 0.015), (2 * lx + pw, pw, 0.01), path_col)
+    make_box("Park_JogPath_S", (PARK_X, PARK_Y - ly, 0.015), (2 * lx + pw, pw, 0.01), path_col)
+    make_box("Park_JogPath_W", (PARK_X - lx, PARK_Y, 0.015), (pw, 2 * ly - pw, 0.01), path_col)
+    make_box("Park_JogPath_E", (PARK_X + lx, PARK_Y, 0.015), (pw, 2 * ly - pw, 0.01), path_col)
     # Cluster of shade trees in the park — oak + cypress
     park_tree_positions = [
         (PARK_X + park_w/2 - 5.0, PARK_Y - park_l/2 + 4.0, "oak"),
@@ -4332,28 +4342,9 @@ def build_park_draft2_2026_08():
     """
     from _props.geometry import make_box as _mb, make_cyl as _mc
     import math as _m
-    # ── Near band: park furniture beyond the bench ──
-    _mc("Park_Bin", (-47.2, 21.0, 0.45), 0.28, 0.9, (0.24, 0.30, 0.26, 1.0), segments=10)
-    _mb("Park_Bin_Rim", (-47.2, 21.0, 0.92), (0.62, 0.62, 0.05), (0.20, 0.24, 0.20, 1.0))
-    _mb("Park_Sign_Post", (-51.5, 16.5, 1.0), (0.10, 0.10, 2.0), (0.30, 0.30, 0.32, 1.0))
-    _mb("Park_Sign_Board", (-51.5, 16.5, 2.15), (0.9, 0.06, 0.55), (0.32, 0.40, 0.30, 1.0))
-    # Lamp posts pacing the jog path arc.
-    for li, (lx, ly) in enumerate(((-52.5, 18.0), (-47.5, 30.0), (-44.5, 24.0))):
-        _mc(f"Park_Lamp_{li}_Post", (lx, ly, 1.9), 0.07, 3.8, (0.26, 0.26, 0.28, 1.0), segments=8)
-        _mc(f"Park_Lamp_{li}_Head", (lx, ly, 3.95), 0.18, 0.3, (0.92, 0.86, 0.66, 1.0), segments=10)
-    # ── Mid-ground band: tree clumps + hedge + park fence ──
-    for ti, (tx, ty, th) in enumerate(((-54.0, 30.0, 4.2), (-44.0, 33.5, 3.6),
-                                       (-55.0, 13.0, 3.8), (-43.5, 15.5, 3.2))):
-        _mc(f"Park_Tree_{ti}_Trunk", (tx, ty, th * 0.25), 0.16, th * 0.5, (0.30, 0.24, 0.18, 1.0), segments=8)
-        _mc(f"Park_Tree_{ti}_Crown", (tx, ty, th * 0.75), th * 0.35, th * 0.6, (0.22, 0.32, 0.20, 1.0), segments=10)
-    # Hedge along the armory side — the park's mid-ground floor line.
-    for hi in range(6):
-        _mb(f"Park_Hedge_{hi}", (-58.5, 16.0 + hi * 3.4, 0.6), (1.2, 3.0, 1.2), (0.24, 0.34, 0.22, 1.0))
-    # Low iron fence along River Road (west edge treatment).
-    for fi in range(9):
-        fy = 12.0 + fi * 3.0
-        _mb(f"Park_Fence_Rail_{fi}", (-55.6, fy, 0.85), (0.05, 3.0, 0.06), (0.18, 0.18, 0.20, 1.0))
-        _mb(f"Park_Fence_Post_{fi}", (-55.6, fy - 1.4, 0.5), (0.08, 0.08, 1.0), (0.16, 0.16, 0.18, 1.0))
+    # (pass 392) its near and mid bands (bin, sign, lamps, trees, the hedge
+    # and the iron fence) stood on River Road and its east sidewalk, with
+    # the park they dressed: gone. The skyline band stays.
     # ── Skyline band: shape the armory + add rooftops behind ──
     _mb("Armory_Tower", (-88.5, 30.0, 6.5), (5.0, 5.0, 13.0), (0.42, 0.30, 0.24, 1.0))
     _mb("Armory_Tower_Cap", (-88.5, 30.0, 13.4), (5.6, 5.6, 0.8), (0.38, 0.27, 0.22, 1.0))
@@ -4368,35 +4359,21 @@ def build_park_draft2_2026_08():
 
 
 def build_park_2026_08():
-    """2026-08-03 tail pass: the park the Hierophant's §IV and
-    vol1's jog play in — lawn, jogging path, the chipped bench, the
-    bandstand, the armory silhouette, the old-church steeple, the
-    idling black car. World coords in the green buffer between
-    River Road (x=-55) and the lot curb (x=-41)."""
+    """2026-08-03 tail pass, reduced (pass 392): the armory and old-church
+    silhouettes west of the strip mall, kept as far scenery.
+
+    The rest of this pass laid the Hierophant's park (vol 5 ch5 §IV — the
+    chipped bench, the bandstand, the long black car) here, "in the green
+    buffer between River Road (x=-55) and the lot curb (x=-41)". x -55 is
+    River Road's CENTRE LINE (its east edge is -49): the bench, half the
+    bandstand, the jogging path and the lawn stood in the road's east lane
+    and over its east sidewalk (rendered: the bench on the asphalt by the
+    lane line). And that scene has its own set (graustark_armory_park).
+    The riverfront's park is the one at PARK_X, PARK_Y (west of the road,
+    south): the riverfront_park view looks at it now.
+    """
     from _props.geometry import make_box as _mb, make_cyl as _mc
     import math as _m
-    _mb("Park_Lawn", (-49.0, 24.0, 0.01), (13.0, 26.0, 0.04), (0.40, 0.50, 0.30, 1.0))
-    # Jogging path arc (segments)
-    for i in range(7):
-        t = i / 6.0
-        px = -52.0 + 6.0 * t
-        py = 14.0 + 20.0 * t
-        _mb(f"Jog_Path_{i}", (px, py, 0.03), (3.0, 3.6, 0.04), (0.60, 0.54, 0.44, 1.0))
-    # The chipped park bench, facing the bandstand
-    _mb("Park_Bench_Seat", (-50.5, 22.0, 0.45), (0.5, 1.6, 0.06), (0.48, 0.38, 0.26, 1.0))
-    _mb("Park_Bench_Back", (-50.24, 22.0, 0.75), (0.06, 1.6, 0.5), (0.44, 0.34, 0.23, 1.0))
-    _mb("Park_Bench_Chip", (-50.5, 22.6, 0.48), (0.2, 0.12, 0.04), (0.62, 0.55, 0.44, 1.0))
-    for ly in (21.4, 22.6):
-        _mb(f"Park_Bench_Leg_{ly:.1f}", (-50.4, ly, 0.22), (0.4, 0.08, 0.44), (0.30, 0.30, 0.32, 1.0))
-    # The bandstand (octagonal-read deck + posts + roof)
-    bx, by = -48.0, 26.0
-    _mc("Bandstand_Deck", (bx, by, 0.45), 3.0, 0.25, (0.55, 0.44, 0.30, 1.0), segments=8)
-    for pi in range(8):
-        a = pi * (_m.pi / 4.0)
-        _mc(f"Bandstand_Post_{pi}", (bx + _m.cos(a) * 2.6, by + _m.sin(a) * 2.6, 2.0),
-            0.08, 3.0, (0.70, 0.66, 0.58, 1.0), segments=6)
-    _mc("Bandstand_Roof", (bx, by, 3.9), 3.4, 0.6, (0.38, 0.30, 0.24, 1.0), segments=8)
-    _mc("Bandstand_Finial", (bx, by, 4.6), 0.5, 0.8, (0.32, 0.26, 0.20, 1.0), segments=8)
     # The Old Armory silhouette behind the park
     _mb("Armory_Mass", (-82.0, 34.0, 4.5), (18.0, 12.0, 9.0), (0.44, 0.32, 0.26, 1.0))
     for ci in range(7):
@@ -4404,19 +4381,7 @@ def build_park_2026_08():
     # The old church three blocks off
     _mb("Old_Church_Mass", (-90.0, 12.0, 3.75), (8.0, 12.0, 7.5), (0.72, 0.70, 0.62, 1.0))
     _mb("Old_Church_Steeple", (-90.0, 8.5, 10.5), (1.6, 1.6, 6.5), (0.66, 0.64, 0.56, 1.0))
-    # The long black car idling on the River Road shoulder
-    _mb("Black_Car_Body", (-54.0, 24.0, 0.55), (1.75, 4.6, 0.55), (0.08, 0.08, 0.10, 1.0))
-    _mb("Black_Car_Cabin", (-54.0, 23.7, 1.02), (1.6, 2.4, 0.45), (0.08, 0.08, 0.10, 1.0))
 
-
-def build_park_notebook_2026_09():
-    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
-
-    JOHN'S NOTEBOOK ("John scribbled in his notebook: Hierophant.
-    Tradition. Institution.") on the park bench the riverfront_park
-    preset already frames."""
-    make_box("Johns_Notebook", (-50.35, 22.0, 0.487), (0.15, 0.20, 0.012), (0.24, 0.22, 0.20, 1.0))
-    make_box("Johns_Notebook_Page", (-50.35, 22.0, 0.4945), (0.13, 0.18, 0.003), (0.92, 0.90, 0.84, 1.0))
 
 
 def main():
@@ -4441,7 +4406,6 @@ def main():
     build_park_2026_08()
     build_park_draft2_2026_08()
     build_park_horizon_2026_08()
-    build_park_notebook_2026_09()
     export_glb()
 
 
