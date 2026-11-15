@@ -5,7 +5,7 @@
  "type": "scene",
  "nodes": [
   {
-   "src": "3d:board_lords_interior",
+   "src": "3d:board_lords_interior_late",
    "t": "bg"
   },
   {
@@ -33,7 +33,7 @@
    "t": "show"
   },
   {
-   "text": "[shot:insert ring][mood:morning_bright]Kai opened Board Lords at nine twenty-eight. The shop had been sitting since Wednesday morning at seven twenty, holding the dust, waiting for the bell to ring. The bell rang when he unlocked it.",
+   "text": "[shot:insert bell][mood:morning_bright]Kai opened Board Lords at nine twenty-eight. The shop had been sitting since Wednesday morning at seven twenty, holding the dust, waiting for the bell to ring. The bell rang when he unlocked it.",
    "t": "narrate"
   },
   {

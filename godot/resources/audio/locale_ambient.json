@@ -25,6 +25,14 @@
       "bed": "assets/audio/bgm/vol7_shop_signal_bell.wav",
       "gain": 0.82
     },
+    "board_lords_interior_late": {
+      "bed": "assets/audio/bgm/vol7_shop_signal_bell.wav",
+      "gain": 0.82
+    },
+    "board_lords_interior_early": {
+      "bed": "assets/audio/bgm/vol7_shop_signal_bell.wav",
+      "gain": 0.82
+    },
     "board_lords_office": {
       "bed": "assets/audio/bgm/vol7_shop_signal_bell.wav",
       "gain": 0.82
@@ -218,6 +226,18 @@
       "gain": 0.9
     },
     "hans_bakery_back_kitchen": {
+      "bed": "assets/audio/bgm/vol7_bread_table.wav",
+      "gain": 0.9
+    },
+    "hans_bakery_bowls": {
+      "bed": "assets/audio/bgm/vol7_bread_table.wav",
+      "gain": 0.9
+    },
+    "hans_bakery_sunday": {
+      "bed": "assets/audio/bgm/vol7_bread_table.wav",
+      "gain": 0.9
+    },
+    "hans_bakery_breakfast": {
       "bed": "assets/audio/bgm/vol7_bread_table.wav",
       "gain": 0.9
     },
@@ -650,6 +670,14 @@
       "gain": 0.9
     },
     "main_street": {
+      "bed": "assets/audio/bgm/vol5_store_ambient.wav",
+      "gain": 0.82
+    },
+    "main_street_late": {
+      "bed": "assets/audio/bgm/vol5_store_ambient.wav",
+      "gain": 0.82
+    },
+    "main_street_early": {
       "bed": "assets/audio/bgm/vol5_store_ambient.wav",
       "gain": 0.82
     },

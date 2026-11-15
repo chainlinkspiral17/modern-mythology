@@ -11846,7 +11846,11 @@
           "not_presets": [
             "board_lords_interior",
             "board_lords_office",
-            "main_street"
+            "main_street",
+            "board_lords_interior_early",
+            "board_lords_interior_late",
+            "main_street_early",
+            "main_street_late"
           ]
         }
       ],

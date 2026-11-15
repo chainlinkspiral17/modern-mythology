@@ -5,7 +5,7 @@
   "type": "scene",
   "nodes": [
     {
-      "src": "3d:hans_bakery_back_kitchen",
+      "src": "3d:hans_bakery_sunday",
       "t": "bg"
     },
     {
@@ -443,7 +443,7 @@
     },
     {
       "char": "roy",
-      "text": "[shot:insert bowl]I opened the box at six. The bowl was inside. I had seen Olaus's bowl twice in my life.",
+      "text": "[shot:insert wooden_box]I opened the box at six. The bowl was inside. I had seen Olaus's bowl twice in my life.",
       "t": "say"
     },
     {

@@ -3835,6 +3835,93 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-15 · pass 407: Board Lords and the sanderling, chapter by chapter.**
+- The same reading (node-cited, spot-checked) for Kai's shop and Main
+  Street across from it, seven interior segments and ten street ones. The
+  patch grows by the calendar, so the mural takes the views:
+  - `board_lords_interior_early` / `main_street_early` (ch2 Friday): "a
+    flat black square in the center of its body about three feet on a
+    side" — a 0.92 m patch, the bird whole around it.
+  - the base views (ch5-ch12): the patch as it was built, body and head.
+  - `board_lords_interior_late` / `main_street_late` (ch16 Saturday): "The
+    sanderling's bird-shape was gone." The bird leaves; the beach bands
+    stay. (A bare-brick panel in its place stood 4-8 cm in front of your
+    wet-band picture and tripped FACES-IN; the late wall wants a picture
+    instead — see the list below.)
+- Gone: the crow on the truck's cab roof (the text has it on Finn's
+  shoulder, on the road, on the dashboard, never on a roof); old Tess in
+  the rack (she comes in under Mateo's arm in ch9 and goes home with him);
+  the drone wrapped in its view (at the downspout Tuesday only).
+- ch16's opener "[shot:insert ring]" cut to the clothes rounder's steel
+  ring; the line is "The bell rang when he unlocked it". It cuts to the
+  door bell now, and the rounder's two frames are gone (orphans 102).
+- The bakery (pass 406's set): the bowl shelf on the W wall ran 0.28 m
+  across the back door's opening at 1.7 m since pass 69 — pass 406's shut
+  leaf brought the door's clearance check to it — and its bowls hung off
+  a 10 cm board. Now 54 cm of shelf, 28 cm deep, between the window's
+  casing and the door's S jamb, two bowls standing on it. (The shelf is
+  authored in the old 6 x 5 plan inside `_in(SH_W)`; a first move in the
+  new plan's numbers landed in the doorway again.)
+- NEXT: the taped note (made ch10 n64, gone ch16 n9), the Closed sign on
+  the street side (ch5_cabin n92), the bread and its cloth (ch9 n53+,
+  ch10); the kettle on the burner by segment; the broken and new decks on
+  the counter (ch2 n98/106); Mateo's Tess clamped on the bench (ch9). A
+  picture-with-a-hole rule in hero_art so a bird picture can stand behind
+  the patch. For Andy (do not fix): the mural 2048 (ch2 n120) vs '46
+  (ch16 n14); brick wall vs small window; kettle in the back room vs under
+  the counter; the "Tuesday note" written on Wednesday (ch10); the shop
+  open Thursday (ch12) vs ch16's dates; four vs three kids (ch9 n30/31);
+  Hans 68 and a baker since 1991 in 2052.
+- To generate (you make these; Claude does not): `board_lords_interior_
+  sanderling_bird` — the painted sanderling itself, the bird alone on the
+  wet band (it is a chamfered box now and does not read as a bird); and
+  `board_lords_interior_bare_brick` — ch16's cleared section, the brick
+  under the patch bare where the bird was. Both need the hole rule above
+  before they can go in the roster.
+- Deck must REBUILD board_lords_interior, hans_bakery_back_kitchen.
+
+**2026-11-15 · pass 406: Hans's bakery, chapter by chapter.**
+- The same reading (node-cited, spot-checked) for vol 7's bakery, eight
+  segments (ch10's ovens, ch15 Saturday, ch17 Sunday, ch18's back door).
+  Twins of `hans_bakery_back_kitchen` (view_twin.py):
+  - `hans_bakery_breakfast` (ch15's breakfast): "coffee in a press for the
+    table", the basket of brötchen "in the center of the table", the plum
+    preserves, the butter. ch15's loft hour and the wagon line ("The dining
+    table had to be cleared") see the table bare.
+  - `hans_bakery_sunday` (ch17 bakery, Roy): the brioche "made
+    specifically for today", the press, the box "on the long table at the
+    end nearest the back door" — the bowls still inside it.
+  - `hans_bakery_bowls` (ch17, Aria): the four bowls IN A ROW, as the text
+    lays them — "Roy's at the head, Marit's beside it, then the
+    substrate-bowl, then Marina's grandfather's bowl" (they stood in a
+    loose cluster), the substrate-bowl "the size of his palm", the crow on
+    its rim, the cups by the kitchenette sink.
+- Gone or moved: floured hand-prints no line names (the touch was at
+  another seat); Greta's cloth sticking out of its drawer (she "folded the
+  cloth back into the drawer"); the back door standing open in every view
+  (shut inside now; open in ch18's back-door view only); Finn's truck,
+  the wagon and the paper bag on ch18's view only (ch15 has Cale's F-150 and
+  Kai's truck). The canvas bag on the door bench stays as plain dressing
+  (your picture of it) — the bag Tem hands Finn is paper.
+- Cues read for meaning: ch17's "The crow on Kai's shoulder tapped" and
+  "Aud put her hand briefly on Marit's hand" (people, not a close-up);
+  "the dish towels Greta had set out" (none built); Roy's "I opened the
+  box at six. The bowl was inside" cuts to the box.
+- `Views.tagged()` (_props/view_tags) tags every part a shared helper
+  builds inside the block — how a whole car takes a view.
+- NEXT: Roy's box with its spiral lid (ch17_roy n14/29) and Per's coat on
+  the peg (ch10); the place settings (ten Saturday, thirteen Sunday); the
+  seeded rye and the dark country; the folder and the chapbook "Bowls";
+  the window onto the street and the Daily Grind across it (B87-88: the
+  set shows a hemlock and houses); Tem's and Roy's chairs at the same end
+  (K96, R22); the clock at 6:01 in every segment. For Andy (do not
+  fix): Per's coat on vs off (ch10 n7/n24); the 6:06 / 6:12 arrivals;
+  Marina's seat (K93 vs K97); the "four young people" with three named;
+  the eighth poem (R59 vs B51/K109); 31 vs 53 years (K73 vs A177); the
+  wagon at the cabin vs with Tem (L32 vs W16); ch18 "Sunday Afternoon" vs
+  "eight-thirty on a Sunday morning".
+- Deck must REBUILD hans_bakery_back_kitchen.
+
 **2026-11-15 · pass 405: the Miller kitchen, chapter by chapter.**
 - The same reading (node-cited, spot-checked) for vol 6's Miller kitchen,
   17 segments. Every chapter's moment stood in all of them; each is on its

@@ -5,7 +5,7 @@
   "type": "scene",
   "nodes": [
     {
-      "src": "3d:hans_bakery_back_kitchen",
+      "src": "3d:hans_bakery_bowls",
       "t": "bg"
     },
     {
@@ -779,7 +779,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert dish]They cleared. They wiped. Aud and Marit folded the dish towels Greta had set out. Cale stacked the chairs. Roy helped Hans with the bread that needed to be brought to the front for the morning's customers.",
+      "text": "They cleared. They wiped. Aud and Marit folded the dish towels Greta had set out. Cale stacked the chairs. Roy helped Hans with the bread that needed to be brought to the front for the morning's customers.",
       "t": "narrate"
     },
     {

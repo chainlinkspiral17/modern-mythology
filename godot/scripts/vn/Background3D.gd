@@ -84,6 +84,21 @@ const VIEW_GROUPS := {
 	"mk_day": ["miller_kitchen", "miller_kitchen_ch0", "miller_kitchen_ch3", "miller_kitchen_ch4", "miller_kitchen_ch5", "miller_kitchen_ch9", "miller_kitchen_ch11", "miller_kitchen_ch11e", "miller_kitchen_ch17"],
 	"mk_night": ["miller_kitchen_night"],
 	"mk_mike": ["miller_kitchen_ch0", "miller_kitchen_ch3", "miller_kitchen_ch4", "miller_kitchen_ch5", "miller_kitchen_night"],
+	# (pass 406) HANS'S BAKERY by chapter (twins of hans_bakery_back_kitchen):
+	# the coffee press at Saturday's breakfast and on Sunday, the box from
+	# Sunday at six on; the back door shut except in ch18's view
+	"hb_press": ["hans_bakery_breakfast", "hans_bakery_sunday", "hans_bakery_bowls"],
+	"hb_box": ["hans_bakery_sunday", "hans_bakery_bowls"],
+	"hb_inside": ["hans_bakery_back_kitchen", "hans_bakery_ovens", "hans_bakery_breakfast", "hans_bakery_sunday", "hans_bakery_bowls"],
+	# (pass 407) THE SANDERLING AND ITS PATCH by chapter (Board Lords' window
+	# and Main Street): "about three feet on a side, in the center of the
+	# sanderling's body" (ch2, ch6); "taken the head this week" (ch9-ch12, the
+	# base views); "The sanderling's bird-shape was gone. The brick under the
+	# patch was bare" (ch16)
+	"bl_bird": ["board_lords_interior", "main_street", "board_lords_interior_early", "main_street_early"],
+	"bl_mid": ["board_lords_interior", "main_street"],
+	"bl_early": ["board_lords_interior_early", "main_street_early"],
+	"bl_late": ["board_lords_interior_late", "main_street_late"],
 	# (pass 399) the Chau house by day, its two vol 3 ch8 views included
 	"chau_day": ["chau_hall_noon", "chau_entry_morning", "chau_living", "chau_bath", "chau_game_room",
 		"chau_steven_room", "chau_steven_desk", "chau_mom_room"],
@@ -2553,6 +2568,35 @@ const CAMERA_PRESETS := {
 		"fov": 62.0,
 		"suppress_input": true,
 	},
+	"main_street_late": {
+		# (pass 407) Main Street in ch16: the bird gone, the brick bare where the patch was.
+		"scene": "res://scenes/locales/board_lords_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/board_lords_interior.glb",
+		# board_lords_interior's street: near sidewalk blender y -0.2..-2.0,
+		# Main to -8.65, far sidewalk, Across_Facade at y -9.05 with the
+		# mural at (-2.75, -8.9). Camera on the near sidewalk (blender
+		# -1.0, -1.2) looking across the street at the mural, Board Lords'
+		# awning just out of frame above-left.
+		"camera_origin": Vector3(-1.0, 1.60, 1.2),
+		"camera_rotation": Vector3(0.03, 2.918, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"main_street_early": {
+		# (pass 407) Main Street in ch2-ch6: the patch "about three feet square", the bird's head,
+		# tail and feet intact.
+		"scene": "res://scenes/locales/board_lords_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/board_lords_interior.glb",
+		# board_lords_interior's street: near sidewalk blender y -0.2..-2.0,
+		# Main to -8.65, far sidewalk, Across_Facade at y -9.05 with the
+		# mural at (-2.75, -8.9). Camera on the near sidewalk (blender
+		# -1.0, -1.2) looking across the street at the mural, Board Lords'
+		# awning just out of frame above-left.
+		"camera_origin": Vector3(-1.0, 1.60, 1.2),
+		"camera_rotation": Vector3(0.03, 2.918, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
 	# ── VOL 6 — Meadowlark Circle, Harmony Creek Estates (re-homed off
 	# louisiana_road 2026-09-01): the prelude's 6:12 sprinklers and the
 	# closing night's porch lights ────────────────────────────────────
@@ -3227,6 +3271,42 @@ const CAMERA_PRESETS := {
 		"fov": 66.0,
 		"suppress_input": true,
 	},
+	"board_lords_interior_late": {
+		# (pass 407) the shop in ch16: the patch stopped, "The sanderling's bird-shape was gone.
+		# The brick under the patch was bare."
+		"scene": "res://scenes/locales/board_lords_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/board_lords_interior.glb",
+		# Board Lords, Kai's skate shop (vol 7) 9×7.6 (godot x∈[-4.5,4.5],
+		# z∈[0,-7.6], ceil 2.8). "The wall of decks" behind its glass on the
+		# W wall, the board rack mid-floor, the repair bench and lathe on the
+		# N wall, the counter NE with the back office behind it, the bench
+		# under the front window SW. (2026-10-22: the lens was in the SW
+		# corner looking NE — from the board-game shop this set used to be —
+		# with the deck wall behind it; now from the SE by the wheel bin
+		# looking NW: the deck wall, the rack, the repair bench, the counter.)
+		"camera_origin": Vector3(3.4, 1.70, -0.9),
+		"camera_rotation": Vector3(-0.07, deg_to_rad(50.0), 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	"board_lords_interior_early": {
+		# (pass 407) the shop in ch2 and ch5: the patch "about three feet on a side, in the center
+		# of the sanderling's body. The bird's head and tail and feet were intact".
+		"scene": "res://scenes/locales/board_lords_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/board_lords_interior.glb",
+		# Board Lords, Kai's skate shop (vol 7) 9×7.6 (godot x∈[-4.5,4.5],
+		# z∈[0,-7.6], ceil 2.8). "The wall of decks" behind its glass on the
+		# W wall, the board rack mid-floor, the repair bench and lathe on the
+		# N wall, the counter NE with the back office behind it, the bench
+		# under the front window SW. (2026-10-22: the lens was in the SW
+		# corner looking NE — from the board-game shop this set used to be —
+		# with the deck wall behind it; now from the SE by the wheel bin
+		# looking NW: the deck wall, the rack, the repair bench, the counter.)
+		"camera_origin": Vector3(3.4, 1.70, -0.9),
+		"camera_rotation": Vector3(-0.07, deg_to_rad(50.0), 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
 	# THE SAME BUILDING IN THE 1990s (2026-10-28; Andy: the vol 2 bookstores
 	# "can be 1990s Salty Tome"): Frances's Blue Heron on the sea wall (ch5,
 	# "a reader's store", the store room "a very well furnished lounge and study
@@ -3456,6 +3536,63 @@ const CAMERA_PRESETS := {
 		"suppress_input": true,
 	},
 	"hans_bakery_back_kitchen": {
+		"scene": "res://scenes/locales/hans_bakery_back_kitchen.tscn",
+		"requires_glb": "res://assets/3d/locales/hans_bakery_back_kitchen.glb",
+		# DRAFT 6 (2026-11-10): THE MAIN ROOM (the id is historical: 664 of
+		# its 695 lines are at the dining table, not in a back kitchen).
+		# godot x in [-4.5,4.5], z from +4.4 (the street wall: the belled
+		# door, the front window, the front counter) to -7.6 (the
+		# kitchenette wall, the wedding photograph, the doorway to the back
+		# kitchen at x 3.05). The dining table mid-room (godot 0,-1.8..-5.2),
+		# the worktable in the E aisle, the cooling rack table on the E
+		# wall, the Hemlock window and the back door W. Camera SE, just W of
+		# the cooling rack table, looking NW across the dining table.
+		"camera_origin": Vector3(3.20, 1.62, -0.90),
+		"camera_rotation": Vector3(-0.093, deg_to_rad(46.6), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"hans_bakery_bowls": {
+		# (pass 406) ch17, Aria: "The four bowls were on the table … Roy's at the head, Marit's
+		# beside it, then the substrate-bowl, then Marina's grandfather's bowl".
+		"scene": "res://scenes/locales/hans_bakery_back_kitchen.tscn",
+		"requires_glb": "res://assets/3d/locales/hans_bakery_back_kitchen.glb",
+		# DRAFT 6 (2026-11-10): THE MAIN ROOM (the id is historical: 664 of
+		# its 695 lines are at the dining table, not in a back kitchen).
+		# godot x in [-4.5,4.5], z from +4.4 (the street wall: the belled
+		# door, the front window, the front counter) to -7.6 (the
+		# kitchenette wall, the wedding photograph, the doorway to the back
+		# kitchen at x 3.05). The dining table mid-room (godot 0,-1.8..-5.2),
+		# the worktable in the E aisle, the cooling rack table on the E
+		# wall, the Hemlock window and the back door W. Camera SE, just W of
+		# the cooling rack table, looking NW across the dining table.
+		"camera_origin": Vector3(3.20, 1.62, -0.90),
+		"camera_rotation": Vector3(-0.093, deg_to_rad(46.6), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"hans_bakery_sunday": {
+		# (pass 406) ch17's Sunday: the brioche "made specifically for today", the press, the box
+		# "on the long table at the end nearest the back door" (the bowls still in it).
+		"scene": "res://scenes/locales/hans_bakery_back_kitchen.tscn",
+		"requires_glb": "res://assets/3d/locales/hans_bakery_back_kitchen.glb",
+		# DRAFT 6 (2026-11-10): THE MAIN ROOM (the id is historical: 664 of
+		# its 695 lines are at the dining table, not in a back kitchen).
+		# godot x in [-4.5,4.5], z from +4.4 (the street wall: the belled
+		# door, the front window, the front counter) to -7.6 (the
+		# kitchenette wall, the wedding photograph, the doorway to the back
+		# kitchen at x 3.05). The dining table mid-room (godot 0,-1.8..-5.2),
+		# the worktable in the E aisle, the cooling rack table on the E
+		# wall, the Hemlock window and the back door W. Camera SE, just W of
+		# the cooling rack table, looking NW across the dining table.
+		"camera_origin": Vector3(3.20, 1.62, -0.90),
+		"camera_rotation": Vector3(-0.093, deg_to_rad(46.6), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"hans_bakery_breakfast": {
+		# (pass 406) ch15's Saturday breakfast: "coffee in a press for the table", the basket of
+		# brötchen "in the center of the table", the plum preserves, the butter.
 		"scene": "res://scenes/locales/hans_bakery_back_kitchen.tscn",
 		"requires_glb": "res://assets/3d/locales/hans_bakery_back_kitchen.glb",
 		# DRAFT 6 (2026-11-10): THE MAIN ROOM (the id is historical: 664 of

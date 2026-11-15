@@ -158,6 +158,38 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-15 · inside shifted(), a number is in the OLD plan (pass 407)
+
+**What happened.** The bakery's bowl shelf ran 0.28 m across the back
+door's opening at 1.7 m from pass 69 on. Nothing saw it while the leaf
+stood open outside; pass 406's shut leaf brought the door's clearance
+check indoors and it reported `BowlShelf`. The first fix moved the shelf
+"north of the door" in the new 9 x 7.6 room's numbers. But the function
+runs inside `_in(SH_W)`: `ROOM_D` there is the old plan's 5.0 and the block
+is moved by (-1.5, +1.2). The shelf landed in the doorway again. The same
+check showed its bowls hanging 25 cm off a 10 cm board; no gate had read
+the shelf as their surface.
+
+**The rule.** Before moving a part, find the `with _in(...)` / `shifted()`
+block its function is called from, and work in that plan. Then read where
+it really landed from the recorder (`P.record_builder(...)`), never from
+the source line. A wall fixture is placed between the openings on its
+wall (window casing, door jambs), with the gap measured in the plan the
+part is built in.
+
+### 2026-11-15 · a cue word can name a part of another thing (pass 407)
+
+**What happened.** ch16's "[shot:insert ring]" sat on the line "The bell
+rang when he unlocked it". The set had a `shot_insert_ring` frame, aimed
+at the clothes rounder's `Rounder_Ring`. The aim, obstruction and
+blind-cue gates all passed: the frame saw a ring. The render showed a
+steel hoop over a rack of decks.
+
+**The rule.** A gate can confirm that a frame sees its subject word. It
+cannot confirm that the word means that thing in that line. Read the
+cue's own sentence for its verb and object ("rang" → the bell). When the
+word is a verb or a sound, cue the thing that makes it.
+
 ### 2026-11-15 · a part never carries a character's name, not even in its tag (pass 404)
 
 **What happened.** Marina's grandfather's bowl was built as `Bowl_Marina`,

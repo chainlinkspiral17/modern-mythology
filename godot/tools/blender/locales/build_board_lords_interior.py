@@ -52,6 +52,9 @@ if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_chamfer_box, make_cyl, make_lathe, make_tube, make_rot_box, make_blob, export_glb
 from _props.furniture import make_chair, make_stool, make_bench
+import _props.drones as _DRN
+from _props.view_tags import Views as _Views
+_VT = _Views("bl", {"m": "bl_mid"})
 from _props.charred_wood import make_hexagon
 from _props.detail import make_traffic_wear, make_floor_stain, make_light_switch, make_wall_outlet
 from _props.vehicles import make_car
@@ -420,13 +423,13 @@ def build_hero_props():
              (0.56, 0.62, 0.64, 1.0))
     make_box("Sanderling_Mural_Sand", (-2.75, -8.90, 1.02), (6.0, 0.06, 0.65),
              (0.74, 0.68, 0.56, 1.0))
-    make_chamfer_box("Sanderling_Body", (-3.30, -8.845, 1.80), (1.60, 0.05, 0.78),
+    make_chamfer_box("Sanderling_Body__bl_bird", (-3.30, -8.845, 1.80), (1.60, 0.05, 0.78),
                      (0.88, 0.87, 0.84, 1.0))
-    make_chamfer_box("Sanderling_Head", (-2.32, -8.845, 2.24), (0.46, 0.05, 0.42),
+    make_chamfer_box("Sanderling_Head__bl_bird", (-2.32, -8.845, 2.24), (0.46, 0.05, 0.42),
                      (0.88, 0.87, 0.84, 1.0))
-    make_box("Sanderling_Beak", (-1.98, -8.85, 2.22), (0.30, 0.04, 0.07),
+    make_box("Sanderling_Beak__bl_bird", (-1.98, -8.85, 2.22), (0.30, 0.04, 0.07),
              (0.28, 0.26, 0.24, 1.0))
-    make_box("Sanderling_Leg", (-3.05, -8.85, 1.22), (0.06, 0.04, 0.44),
+    make_box("Sanderling_Leg__bl_bird", (-3.05, -8.85, 1.22), (0.06, 0.04, 0.44),
              (0.30, 0.28, 0.26, 1.0))
     # the patch · "a hole in the wall that opened onto nothing", "at its
     # edges, a small shimmer" · body first, the head this week. (2026-11-08)
@@ -434,10 +437,19 @@ def build_hero_props():
     # the sanderling's (front -8.82), so the bird showed through the hole.
     # LocaleVoid makes it a void at load (unlit black, a far starfield, the
     # shimmer at its rim); the builder colour is only the fallback.
-    make_box("Mural_Patch", (-3.30, -8.805, 1.80), (1.15, 0.03, 1.02),
+    make_box("Mural_Patch__bl_mid", (-3.30, -8.805, 1.80), (1.15, 0.03, 1.02),
              (0.0, 0.0, 0.0, 1.0))
-    make_box("Mural_Patch_Head", (-2.32, -8.805, 2.24), (0.52, 0.03, 0.46),
+    make_box("Mural_Patch_Head__bl_mid", (-2.32, -8.805, 2.24), (0.52, 0.03, 0.46),
              (0.0, 0.0, 0.0, 1.0))
+    # (pass 407) THE PATCH BY CHAPTER. The two above are the ch9-ch12 state
+    # (the base views: "taken the head this week"). Earlier, ch2-ch6: "about
+    # three feet on a side, in the center of the sanderling's body. The bird's
+    # head and tail and feet were intact." In ch16 it has stopped, and "The
+    # sanderling's bird-shape was gone. The brick under the patch was bare."
+    make_box("Mural_Patch_Small__bl_early", (-3.30, -8.805, 1.80), (0.92, 0.03, 0.92), (0.0, 0.0, 0.0, 1.0))
+    # ch16: the bird is gone (bl_bird leaves the late views). The bare brick
+    # itself is not drawn: a panel there stood in front of the beach-band
+    # pictures (FACES-IN) — a late-state picture of the wall is the way.
 
     # ── the counter still life ──
     # (pass 386) the counter's SURFACE. 0.95 is the underside of its 6 cm
@@ -506,14 +518,14 @@ def build_main_street_2026_09():
     make_lathe("Streetlamp_Pole", (-4.0, -1.6, 0.07), [(0.14, 0.0), (0.14, 0.06), (0.08, 0.10), (0.06, 0.6), (0.05, 4.3), (0.0, 4.3)], (0.28, 0.28, 0.30, 1.0), segments=8)
     make_tube("Streetlamp_Arm", [(-4.0, -1.6, 4.30), (-3.7, -1.6, 4.36), (-3.3, -1.6, 4.36)], 0.03, (0.28, 0.28, 0.30, 1.0), segments=6)
     make_box("Streetlamp_Head", (-3.2, -1.6, 4.25), (0.40, 0.22, 0.14), (0.92, 0.88, 0.72, 1.0))
-    # Finn's truck in the parking lane along Main (draft 3: the kit
+    # (pass 407) a pickup at the curb — Kai's in ch5 ("Your truck's at the
+    # shop"); Finn's is "in your parking lot" (ch12). Was: Finn's truck in the
+    # parking lane along Main (draft 3: the kit
     # pickup; the 09-07 move to "the curb" put the old box body on the
     # sidewalk, y -2.15..-0.35 — the sidewalk is -2.0..-0.2)
     make_car("Toyota_Truck", 4.6, -3.25, 4.9, (0.44, 0.48, 0.42, 1.0), pickup=True, along="X")
-    # the crow rides the cab roof while they get in (ch5: "The crow
-    # stayed on Finn's shoulder" — then the truck)
-    from _props.creatures import make_crow
-    make_crow("Crow", CROW_X, -3.25, 1.70, facing=1.0)
+    # (pass 407) no crow on the cab roof: "The crow stayed on Finn's shoulder"
+    # (ch5) — and on the road (ch2), at Finn's (ch9), on the dashboard (ch12).
     # ── draft 3 · the block ──
     # the far facade's corner buildings (taller, other brick), the
     # bookstore window west of the shoe repair
@@ -598,8 +610,8 @@ def build_draft4_2026_10():
             make_box(f"Rack_Board_{bi}_Truck_{ti}", (bx, ry + 0.135, tz), (0.16, 0.035, 0.04), steel_dk)
             for wi, wx in enumerate((-0.09, 0.09)):
                 make_cyl(f"Rack_Board_{bi}_Wheel_{ti}_{wi}", (bx + wx, ry + 0.165, tz), 0.026, 0.028, urethane, axis='X', segments=10)
-    # the bottom board — the old Tess Mariana from 2034, the crack in its deck
-    make_box("Rack_Board_0_Crack", (rx0 + 0.18, ry + 0.102, 0.62), (0.006, 0.002, 0.22), (0.30, 0.22, 0.14, 1.0))
+    # (pass 407) no cracked Tess in the rack: Mateo's board comes in "under his
+    # arm" (ch9) and goes home with him ("Mateo had the board"; he skates it, ch16).
     # ── the new decks behind the counter (draft 5: on the N wall — the
     # partition they hung on is gone with the office nook) ──
     ny = ROOM_D - 0.10 - 0.015
@@ -639,7 +651,10 @@ def build_draft4_2026_10():
     make_box("Griptape_Sheet", (-0.85, 6.02, 0.948), (0.24, 0.40, 0.003), (0.12, 0.12, 0.13, 1.0))
     # ── across Main: the laundromat's downspout and the drone at it ──
     make_tube("Laundromat_Downspout", [(5.6, -8.88, 4.35), (5.6, -8.88, 0.30), (5.6, -8.70, 0.14)], 0.05, (0.46, 0.46, 0.46, 1.0), segments=8)
-    make_drone("Drone_Laundromat", 5.6, -8.15, 3.30, arm_down=True)
+    # (pass 407) on the base views (ch9-ch12) only: the downspout "had come off
+    # in the wind on Sunday night" (ch9), so not in ch2 or ch5; gone by ch16
+    with _VT.tagged("m", _DRN):
+        make_drone("Drone_Laundromat", 5.6, -8.15, 3.30, arm_down=True)
 
 
 def main():

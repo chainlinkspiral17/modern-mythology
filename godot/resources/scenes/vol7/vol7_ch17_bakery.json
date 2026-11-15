@@ -5,7 +5,7 @@
  "type": "scene",
  "nodes": [
   {
-   "src": "3d:hans_bakery_back_kitchen",
+   "src": "3d:hans_bakery_sunday",
    "t": "bg"
   },
   {
@@ -396,7 +396,7 @@
    "t": "say"
   },
   {
-   "text": "[shot:insert crow]The crow on Kai's shoulder tapped the shoulder once with its beak.",
+   "text": "The crow on Kai's shoulder tapped the shoulder once with its beak.",
    "t": "narrate"
   },
   {
@@ -444,7 +444,7 @@
    "t": "narrate"
   },
   {
-   "text": "[shot:insert hands~]Aud put her hand briefly on Marit's hand on the table. Marit kept her hand under Aud's.",
+   "text": "Aud put her hand briefly on Marit's hand on the table. Marit kept her hand under Aud's.",
    "t": "narrate"
   },
   {
