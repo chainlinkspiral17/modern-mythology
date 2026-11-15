@@ -741,10 +741,13 @@ position = Vector3(-5.600, 1.500, -3.750)
 rotation = Vector3(-0.1745, 1.7301, 0.0)
 metadata/fov = 44.0
 
+; (pass 385) from over the south bench, not from the aisle: the napkin
+; dispenser stands at the aisle end of the table now (pass 384) and the
+; aisle camera looked at the cup across its back
 [node name="shot_insert_coffee" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-6.7, 1.45, -3.55)
-rotation = Vector3(-0.4046, 1.3695, 0.0)
-metadata/fov = 32.0
+position = Vector3(-7.800, 1.300, -3.300)
+rotation = Vector3(-0.6462, 0.5922, 0.0)
+metadata/fov = 40.0
 
 [node name="shot_insert_napkin" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-8.782, 2.257, -5.100)

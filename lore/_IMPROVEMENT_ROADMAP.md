@@ -3835,6 +3835,15 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-15 · pass 385: booth six's coffee cup, from over the bench.**
+- Pass 384 put the napkin dispenser on the aisle end of the table, which
+  is where the cup's close-up was looking from: it framed the cup across
+  the dispenser's back. The frame is taken from over the south bench now
+  (the cup and its place setting, the condiments at the edge). Read by
+  render.
+- NEXT: it is a steep look down at a small cup; "still steaming" has no
+  steam.
+
 **2026-11-15 · pass 384: "the thing sticking out from the end of the table, hovering in the air".**
 - The user, of a frame of booth six: *"What's the thing sticking out from
   the end of the table, hovering in the air?"* The napkin dispenser. The
@@ -3875,10 +3884,8 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 - Deck must REBUILD diner, cosmic_comics_interior, darkroom,
   dean_offices, missing_link_interior.
 - NEXT: a round top is read by its bounding box, so a thing past the arc
-  but inside the box is not seen; the dispenser now stands between the
-  booth-six insert's camera and the cup (it frames the cup above it — a
-  lower camera would clear it); the tutorial lobby (dean_offices) renders
-  as a white room with a pale couch — read it against its text.
+  but inside the box is not seen; the tutorial lobby (dean_offices)
+  renders as a white room with a pale couch — read it against its text.
 
 **2026-11-14 · pass 383: a look at an object is the object; a speaker stands in the room.**
 - Pass 380 made the cast's fades real. Reading what that showed, on the
