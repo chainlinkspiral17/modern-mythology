@@ -53,6 +53,7 @@ D_D = 12.0   # north-south
 D_H = 3.4    # ceiling height
 WEST_EXT_W = 6.0   # portside extension width (X=-15..-9)
 WEST_EXT_DOOR_W = 2.0   # opening from main floor → west extension corridor
+JUKEBOX_XY = (-7.55, 5.70)   # (pass 391) the main room's NW corner — build_jukebox and its quarters
 
 # the back hallway (a small corridor at +Y end, containing payphone + bathroom + card wall)
 HALL_W = 5.0   # east-west span of the hallway
@@ -944,12 +945,12 @@ def build_rush_and_service_dressing():
                  segments=4, axis='Z')
 
     # ── Quarters stack on the jukebox top ──
-    # Jukebox is at (-10.5, +5.0) per build_jukebox.
+    # on the jukebox (JUKEBOX_XY)
     jb_top_z = 1.3611  # ON the marquee top (1.36) — 2026-09-22: they hovered 9 cm over it
     # A small stack of 6 quarters
     for q in range(6):
         make_cyl("Jukebox_Quarter_%d" % q,
-                 (-10.40, 5.20 - 0.10, jb_top_z + q * 0.0025),
+                 (JUKEBOX_XY[0] + 0.10, JUKEBOX_XY[1] - 0.10, jb_top_z + q * 0.0025),
                  0.012, 0.0022,
                  (0.74, 0.72, 0.68, 1.0),
                  segments=8, axis='Z')
@@ -958,9 +959,8 @@ def build_rush_and_service_dressing():
 def build_jukebox(cx, cy, base_z=0.0):
     """A standing diner-style jukebox · the Wurlitzer-shaped silhouette
     referenced in setup_evening_service.json ("the jukebox skipping")
-    and the host script SPACE_MAP 'jukebox' vantage at (-10.5, +5.0).
-    Stands ~1.5m tall, faces SOUTH so the patron reads the marquee
-    walking up from the bar room's south doorway.
+    and the host script SPACE_MAP 'jukebox' vantage (DinerGauntletHost).
+    Stands ~1.5m tall, faces SOUTH into the dining room.
     """
     # Base cabinet — wood with rounded shoulders. Three stacked boxes
     # of decreasing width fake the Wurlitzer shoulder curve.
@@ -3410,6 +3410,13 @@ def build_hull_extensions():
     # ── New North-Annex Bar: X=-9..-2.5, Y=+6..+10 ──
     BX_W, BX_E = -D_W / 2, -HALL_W / 2
     BY_S, BY_N = D_D / 2, D_D / 2 + 4.0
+    # (pass 391) its FLOOR and ceiling: the main room's north bar door
+    # (x -6.7..-5.3) opened onto skins with nothing under them — a hole,
+    # seen past the jukebox in its corner beside the door
+    make_box("Hull_BarAnnex_Floor", ((BX_W + BX_E) / 2, (BY_S + BY_N) / 2, -0.05),
+             (BX_E - BX_W, BY_N - BY_S, 0.10), COL_FLOOR_TILE, open_faces={'-Z'})
+    make_box("Hull_BarAnnex_Ceiling", ((BX_W + BX_E) / 2, (BY_S + BY_N) / 2, D_H + 0.05),
+             (BX_E - BX_W, BY_N - BY_S, 0.10), COL_CEILING, open_faces={'+Z'})
     # West skin (river side — covered separately by bar room's
     # picture window. Skin around the window)
     bar_win_base = 0.9
@@ -6150,7 +6157,12 @@ def main():
     # in the west-extension bar room. Per setup_evening_service.json
     # flavor: "the jukebox skipping". Facing south so the marquee
     # reads from the bar's south doorway approach.
-    build_jukebox(-10.5, 5.20)   # clear of the bar top (2026-09-22: its base sat 10 cm inside the counter)
+    # (pass 391) "a jukebox in the corner" (vol 1, vol 5 ch0): the main
+    # room's NW corner, against the north wall, by the doorway into the bar
+    # ("at the dark end of the bar"). At (-10.5, 5.20) it stood in the
+    # bartender's aisle between the bar and the back-bar, and the close-up
+    # saw its marquee over the bar top.
+    build_jukebox(*JUKEBOX_XY)
     # Scene-description specifics from setup_the_leap.json — the
     # Booth_6 fluorescent, the brass plaque, John Frank's rag, the
     # empty mug and the ring it left, the brass door bell. Always

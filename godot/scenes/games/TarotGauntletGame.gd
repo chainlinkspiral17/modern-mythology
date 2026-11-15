@@ -2956,7 +2956,7 @@ const _STANDALONE_SPACE_VANTAGES := {
 		                                            # User-captured 2026-06-21.
 		"bar_stools":     [-10.5,  +3.5, 270.0],
 		"under_counter":  [+0.0,   -3.5,  90.0],
-		"jukebox":        [-10.5,  +5.0,  90.0],
+		"jukebox":        [-7.55,  +4.2,  90.0],   # (pass 391) with the jukebox, the main room's NW corner
 		"bell":           [-4.5,   -3.5,  90.0],
 		"pay_phone":      [+2.32,  +7.27, 180.0],
 		"cig_machine":    [+2.32,  +7.5,  180.0],

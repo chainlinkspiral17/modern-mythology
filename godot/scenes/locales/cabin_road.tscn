@@ -408,10 +408,11 @@ rotation = Vector3(-0.7043, -1.1071, 0.0)
 metadata/fov = 40.0
 
 ; insert: the crow on the dashboard, the rain on the glass beyond it
+; (pass 391) from the passenger side: from the driver's the phone in its cradle stood in front of the crow
 [node name="shot_insert_crow__cabin_road_truck" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-3.900, 1.350, 7.950)
-rotation = Vector3(0.0000, -0.4836, 0.0)
-metadata/fov = 42.0
+position = Vector3(-3.150, 1.400, 7.900)
+rotation = Vector3(-0.1538, 0.2400, 0.0)
+metadata/fov = 40.0
 
 ; closeup: Finn at the wheel, from off the left fender in the rain
 [node name="shot_closeup_finn__cabin_road_truck" type="Marker3D" parent="." groups=["vn_shot"]]

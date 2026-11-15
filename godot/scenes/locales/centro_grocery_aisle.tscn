@@ -440,9 +440,10 @@ metadata/fov = 45.0
 
 ; (2026-10-07) insert: the manager's office window over the front — the
 ; blinds half down, the lamp lit behind them, seen from the checkout lanes
+; (pass 391) up at the office window over the floor (it framed the foot of the office column and the checkouts)
 [node name="shot_insert_office" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(10.000, 1.650, -6.500)
-rotation = Vector3(-0.2020, -2.8060, 0.0)
+position = Vector3(12.600, 1.620, -7.400)
+rotation = Vector3(0.4536, -3.0354, 0.0)
 metadata/fov = 46.0
 
 ; the EXIT sign over the entrance

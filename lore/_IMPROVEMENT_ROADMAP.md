@@ -3835,6 +3835,46 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-15 · pass 391: six close-ups that framed the wrong thing, re-taken and read.**
+- **The jukebox** ("in the corner … blinking through its red eye", vol 1
+  and vol 5 ch0) stood in the bartender's aisle between the west bar and
+  its back-bar; the close-up saw its marquee over the bar top. It stands
+  in the main room's NW corner now, against the north wall beside the
+  doorway into the bar (the gauntlet's "dark end of the bar" still
+  holds; `DinerGauntletHost` SPACE_MAP and the board's standalone mirror
+  in `TarotGauntletGame` moved with it; the quarters on its top follow
+  `JUKEBOX_XY`). Its wrong-room exception is gone.
+  - Found by the wide-frame gate on the new frame: **the main room's north
+    "bar door" opened onto the North-Annex hull with no floor and no
+    ceiling** — a hole past the doorway. The annex has both now.
+- **"Jessa is at the back office"** framed the foot of the office's steel
+  column and the checkouts: it looks up at the mezzanine office's
+  blinded window now.
+- **The dumpster** frame looked through its enclosure's wall; it looks in
+  through the open side. And the line that plays when the player has NOT
+  brought the Powerades (node 11) had no cue at all — only the
+  Powerade branch (node 10) did. Both cut to the dumpster.
+- **The truck** was half behind the grease bin; the lens is east of it.
+- **"a flame-shape pressed into the wood with a heated iron"** framed the
+  kettle on the stove (aimed at a marking iron on the wall). The line is
+  about the MARK on the bowl's base: it cuts to the bowl. The iron frame
+  is gone.
+- **The crow on Finn's dashboard** stood behind his phone in its cradle:
+  taken from the passenger side. **The wagon** that "came up the road"
+  was behind a porch post from every point inside the window that could
+  see it: taken from the porch, where Tem steps out three sentences on.
+- Left on the list: the Graustark post-office door (vol 5 ch20: a door
+  too close), and six frames no line reaches.
+- KNOT for Andy (not fixed): vol 6 ch2 node 11 reads "…because Jesse has
+  a fastidious relationship to surfaces that his leaning against it now,
+  Ben registers, is its own kind of tell." — node 10's clause and node
+  12's sentence look merged; node 12 then repeats it.
+- Deck must REBUILD diner.
+- NEXT: **the riverfront park** (rendered: the "chipped bench" stands on
+  River Road's asphalt by the lane line, the bandstand straddles the
+  sidewalk and the road — the August park was laid on the road's centre
+  line, x −55, as if it were its edge); Harmony Creek's shop floors.
+
 **2026-11-15 · pass 390: the coffees at the corner booth; the half-hidden frames read; four buried sets closed.**
 - **The Pit Stop's corner booth had no coffee.** "Eileen orders the
   egg-white scramble and a coffee. Ben orders the short stack and a

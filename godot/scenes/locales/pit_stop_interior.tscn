@@ -544,10 +544,11 @@ rotation = Vector3(-0.2697, 2.4201, 0.0)
 metadata/fov = 42.0
 
 ; insert (back lot): Ben's truck in the employee spots
+; (pass 391) east of the grease bin, which stood in front of the truck
 [node name="shot_insert_truck__pit_stop_back_lot" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.600, 1.500, -13.200)
-rotation = Vector3(-0.1354, -0.6889, 0.0)
-metadata/fov = 42.0
+position = Vector3(4.800, 1.650, -12.600)
+rotation = Vector3(-0.1610, 0.3081, 0.0)
+metadata/fov = 44.0
 
 ; ── named closeups (pass 93): the back corner booth and the kitchen line, per preset
 ; closeup: Eileen in the back corner booth, from the aisle
@@ -578,10 +579,11 @@ rotation = Vector3(-0.6960, 2.9563, 0.0)
 metadata/fov = 40.0
 
 ; insert: the dumpster Jesse leans on, whole, from across the back lot (2026-11-04: it looked down at a skid and its side filled the frame)
+; (pass 391) into the enclosure's open (south) side: from the east it looked through its wall
 [node name="shot_insert_dumpster__pit_stop_back_lot" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.600, 1.500, -12.200)
-rotation = Vector3(-0.1962, 1.1071, 0.0)
-metadata/fov = 44.0
+position = Vector3(0.550, 1.620, -11.450)
+rotation = Vector3(-0.2525, 0.5462, 0.0)
+metadata/fov = 46.0
 
 [node name="shot_insert_station__pit_stop_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(2.194, 1.727, -5.044)

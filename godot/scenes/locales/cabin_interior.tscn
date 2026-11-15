@@ -214,7 +214,7 @@ rotation = Vector3(-0.0996, -1.4371, 0.0)
 ; The big table: blender (0.0, 2.9, 0.76) → godot (0, 0.76, -2.9).
 [node name="shot_insert_table" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.550, 1.350, -3.050)
-rotation = Vector3(-0.6447, 0.5743, 0.0)
+rotation = Vector3(-0.5276, 0.5743, 0.0)
 
 ; The cedar chest: blender (2.55, 3.55, 0.26) → godot (2.55, 0.26, -3.55).
 [node name="shot_insert_cedar" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -530,9 +530,10 @@ rotation = Vector3(-0.2256, 2.3630, 0.0)
 metadata/fov = 40.0
 
 ; insert: the wagon came up the road at nine fifty-two (east south window)
+; (pass 391) from the porch, west of its corner post: "the wagon came up the road … She stepped out onto the porch" (through the window a porch post stood in front of it)
 [node name="shot_insert_wagon" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.550, 1.800, -0.700)
-rotation = Vector3(-0.3141, -2.9546, 0.0)
+position = Vector3(2.250, 1.620, 1.300)
+rotation = Vector3(-0.2261, -2.7533, 0.0)
 metadata/fov = 42.0
 
 ; insert: the package on the table
@@ -1181,12 +1182,6 @@ metadata/fov = 35.0
 [node name="shot_insert_kettle__cabin_interior" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(2.737, 1.465, -6.520)
 rotation = Vector3(-0.2618, -0.4092, 0.0)
-metadata/fov = 35.0
-
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_iron__cabin_interior" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.710, 1.297, -5.994)
-rotation = Vector3(-0.0567, -0.4969, 0.0)
 metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
