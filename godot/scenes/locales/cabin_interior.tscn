@@ -225,6 +225,13 @@ rotation = Vector3(-0.5276, 0.5743, 0.0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.850, 0.820, -4.950)
 rotation = Vector3(-0.4252, -0.8622, 0.0)
 
+; (pass 404) ch19's "the cedar" is the bell-piece Finn unwraps from the
+; handkerchief and sets "beside the four bowls" (godot 0.30, 0.80, -4.12)
+[node name="shot_insert_cedar__cabin_interior_day_four" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.620, 1.150, -3.780)
+rotation = Vector3(-0.6430, 0.7550, 0.0)
+metadata/fov = 30.0
+
 ; ── THE DAY (2026-10-11, preset cabin_interior_day): ch1 Morning ("the light at this hour
 ; in this room"), ch1 Finn (ten-thirty to two), ch2 (Finn at the cabin until eleven), ch10
 ; (the morning, the rain), ch11 Stick (lunch), ch13 Marina (seven, eggs), ch19 Cedar / Per
@@ -560,8 +567,9 @@ rotation = Vector3(-0.6602, -3.0972, 0.0)
 metadata/fov = 42.0
 
 ; insert: the face inside Marit's bowl, tilted into the lamp
+; (pass 404) the face inside Marit's bowl, at the triangle's apex now
 [node name="shot_insert_face" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.450, 1.250, -3.450)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.230, 1.245, -3.670)
 rotation = Vector3(-0.6363, -0.5328, 0.0)
 metadata/fov = 42.0
 
@@ -1215,6 +1223,12 @@ position = Vector3(-0.238, 0.540, -0.713)
 rotation = Vector3(-0.2618, 1.9048, 0.0)
 metadata/fov = 35.0
 
+; (view_twin) cabin_interior's frame in cabin_interior_four
+[node name="shot_insert_kerosene__cabin_interior_four" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.238, 0.540, -0.713)
+rotation = Vector3(-0.2618, 1.9048, 0.0)
+metadata/fov = 35.0
+
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_kettle__cabin_interior" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(2.737, 1.465, -6.520)
@@ -1251,7 +1265,19 @@ position = Vector3(0.165, 1.921, -0.812)
 rotation = Vector3(-0.2618, 2.1466, 0.0)
 metadata/fov = 35.0
 
+; (view_twin) cabin_interior's frame in cabin_interior_three
+[node name="shot_insert_coat__cabin_interior_three" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.165, 1.921, -0.812)
+rotation = Vector3(-0.2618, 2.1466, 0.0)
+metadata/fov = 35.0
+
 [node name="shot_insert_sweater__cabin_interior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.725, 2.501, -4.824)
+rotation = Vector3(-0.0873, 0.4765, 0.0)
+metadata/fov = 35.0
+
+; (view_twin) cabin_interior's frame in cabin_interior_three
+[node name="shot_insert_sweater__cabin_interior_three" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-1.725, 2.501, -4.824)
 rotation = Vector3(-0.0873, 0.4765, 0.0)
 metadata/fov = 35.0
@@ -1262,29 +1288,17 @@ position = Vector3(-2.332, 2.046, -2.434)
 rotation = Vector3(-0.1642, 0.4299, 0.0)
 metadata/fov = 35.0
 
+; (view_twin) cabin_interior's frame in cabin_interior_three
+[node name="shot_insert_ladder__cabin_interior_three" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.332, 2.046, -2.434)
+rotation = Vector3(-0.1642, 0.4299, 0.0)
+metadata/fov = 35.0
+
 
 
 [node name="shot_insert_kerosene__cabin_porch" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-1.894, 0.540, 0.106)
 rotation = Vector3(-0.2618, -0.9857, 0.0)
-metadata/fov = 35.0
-
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_substrate__cabin_interior_day" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.242, 1.081, -3.017)
-rotation = Vector3(-0.2618, 0.0272, 0.0)
-metadata/fov = 35.0
-
-; (view_twin) cabin_interior_day's frame in cabin_interior_day_disc
-[node name="shot_insert_substrate__cabin_interior_day_disc" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.242, 1.081, -3.017)
-rotation = Vector3(-0.2618, 0.0272, 0.0)
-metadata/fov = 35.0
-
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_substrate__cabin_interior" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.242, 1.081, -3.017)
-rotation = Vector3(-0.2618, 0.0272, 0.0)
 metadata/fov = 35.0
 
 ; (view_twin) cabin_interior_day's frame in cabin_interior_day_headset

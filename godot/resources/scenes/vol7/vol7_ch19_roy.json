@@ -5,7 +5,7 @@
  "type": "scene",
  "nodes": [
   {
-   "src": "3d:cabin_interior",
+   "src": "3d:cabin_interior_four",
    "t": "bg"
   },
   {
@@ -321,7 +321,7 @@
    "t": "narrate"
   },
   {
-   "src": "3d:cabin_interior",
+   "src": "3d:cabin_interior_four",
    "t": "bg"
   },
   {

@@ -158,6 +158,18 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-15 · a part never carries a character's name, not even in its tag (pass 404)
+
+**What happened.** Marina's grandfather's bowl was built as `Bowl_Marina`,
+then `Bowl_Lindholm`, tagged to the group `cab_marina`. Each time the aim
+gate sent `shot_closeup_marina` — her FACE frame — to the bowl, 133° off
+axis: close-up subjects are matched by name, a person's frame reads her
+surname as a synonym, and the matcher splits the `__group` suffix too.
+
+**The rule.** Name a thing for what it is or where it sits (`Bowl_Third`,
+`Box_Olaus` for a bowl's maker, `cab_third` for a group), never for a
+character the set has a face frame for — part name, family name or tag.
+
 ### 2026-11-15 · a new shared prop module is invisible until the recorder runs it (pass 400)
 
 **What happened.** Pass 400 moved Finn's hexagon into a shared helper,

@@ -582,48 +582,84 @@ def build_table():
     cedar_dk = (0.44, 0.29, 0.18, 1.0)   # shadowed inside
     char = (0.20, 0.13, 0.09, 1.0)       # the heated-iron flame-mark
     top_z = 0.785
-    for bi, bx_off in enumerate((-0.22, +0.22)):
-        bx, by = tx + bx_off, ty - 0.06
-        pfx = "Bowl_%s" % ("Marit" if bi == 0 else "Substrate")
-        # Foot ring — a turned bowl sits on a small ring, not flat
-        make_cyl(f"{pfx}_Foot__cab_bowls", (bx, by, top_z + 0.012),
-                 0.052, 0.024, cedar_dk, segments=14)
-        # The flame-mark, pressed into the base beside the foot
-        make_cyl(f"{pfx}_FlameMark__cab_bowls", (bx, by, top_z + 0.003),
-                 0.026, 0.004, char, segments=8)
-        # Body: flares from foot to rim (the bowl silhouette)
-        make_taper_cyl(f"{pfx}_Body__cab_bowls", (bx, by, top_z + 0.072),
-                       0.058, 0.115, 0.096, cedar_md, segments=16)
-        # THE SPIRAL, cut into the outside — three shallow relief
-        # bands at rising radius read as one turned spiral at
-        # insert distance ("the depth of the spiral was the same").
-        for si, (sz, sr) in enumerate(((0.040, 0.079), (0.072, 0.098),
-                                       (0.104, 0.114))):
-            make_cyl(f"{pfx}_Spiral_{si}__cab_bowls", (bx, by, top_z + sz),
-                     sr, 0.007, cedar_dk, segments=16)
-        # Rim lip as a RING on the body's top, the hollow a darker disc
-        # inside it (2026-09-25: the rim was a solid disc and the hollow
-        # sat under it, inside the body — the bowls read as flat-topped
-        # cylinders and the water lay buried)
-        make_lathe(f"{pfx}_Rim__cab_bowls", (bx, by, top_z + 0.120),
-                   [(0.104, 0.0), (0.122, 0.0), (0.122, 0.020), (0.104, 0.020), (0.104, 0.0)],
+    # (pass 404) THE BOWLS BY COUNT. The text adds and takes them chapter by
+    # chapter (node-cited reading, lore note in the roadmap):
+    #   ch11-ch13: Marit's and the substrate-bowl (+ Per's box)      cab_bowls
+    #   ch13 night: + Marina's grandfather's ("a rough triangle … Marit's
+    #     bowl in the middle. The substrate-bowl to the left. Marina's
+    #     grandfather's bowl now to the right") (+ Marina's box)     cab_third
+    #   ch14-ch17: the three; ch19-ch20: + Roy's (Olaus's), the cedar
+    #     bell-piece "beside the four bowls" and Brandon's notebook "beside
+    #     the cedar" (+ Roy's box)                                     cab_ch19
+    #   ch21 on: "The two remaining bowls — Lindholm-Marina's and
+    #     Eddvard's-by-Tem" and the bell-piece                         cab_late
+    # Each is cedar, "the size of two cupped hands", the spiral on the
+    # outside and the flame-mark on the base — but the substrate-bowl is "the
+    # size of his palm" (it stood here at Marit's size). The water in it was
+    # invented (no line puts water in a bowl).
+    def olaf_bowl(pfx, bx, by, tag, s=1.0, mark=True):
+        T_ = lambda nm: "%s_%s__%s" % (pfx, nm, tag)
+        make_cyl(T_("Foot"), (bx, by, top_z + 0.012 * s), 0.052 * s, 0.024 * s, cedar_dk, segments=14)
+        if mark:
+            make_cyl(T_("FlameMark"), (bx, by, top_z + 0.003), 0.026 * s, 0.004, char, segments=8)
+        make_taper_cyl(T_("Body"), (bx, by, top_z + 0.072 * s), 0.058 * s, 0.115 * s, 0.096 * s, cedar_md, segments=16)
+        for si, (sz, sr) in enumerate(((0.040, 0.079), (0.072, 0.098), (0.104, 0.114))):
+            make_cyl(T_("Spiral_%d" % si), (bx, by, top_z + sz * s), sr * s, 0.007 * s, cedar_dk, segments=16)
+        make_lathe(T_("Rim"), (bx, by, top_z + 0.120 * s),
+                   [(0.104 * s, 0.0), (0.122 * s, 0.0), (0.122 * s, 0.020 * s), (0.104 * s, 0.020 * s), (0.104 * s, 0.0)],
                    cedar_lt, segments=16)
-        make_cyl(f"{pfx}_Hollow__cab_bowls", (bx, by, top_z + 0.121),
-                 0.104, 0.002, cedar_dk, segments=16)
+        make_cyl(T_("Hollow"), (bx, by, top_z + 0.121 * s), 0.104 * s, 0.002, cedar_dk, segments=16)
+
+    def eddvard_bowl(pfx, ex, ey, tag):
+        # Eddvard's: "the small cedar bowl" — smaller and plainer than Olaf's
+        make_cyl("%s_Foot__%s" % (pfx, tag), (ex, ey, top_z + 0.008), 0.036, 0.016, cedar_dk, segments=12)
+        make_taper_cyl("%s_Body__%s" % (pfx, tag), (ex, ey, top_z + 0.044), 0.042, 0.078, 0.056, cedar_md, segments=14)
+        make_lathe("%s_Rim__%s" % (pfx, tag), (ex, ey, top_z + 0.072),
+                   [(0.068, 0.0), (0.080, 0.0), (0.080, 0.012), (0.068, 0.012), (0.068, 0.0)], cedar_lt, segments=14)
+        make_cyl("%s_Hollow__%s" % (pfx, tag), (ex, ey, top_z + 0.073), 0.068, 0.002, cedar_dk, segments=14)
+
+    # From the room's camera, as the text lays them: "Marit's bowl on the
+    # right. The substrate-bowl on the left" (ch13); then "Marit's bowl in the
+    # middle. The substrate-bowl to the left. Marina's grandfather's bowl now
+    # to the right" — Marit's at the apex of the triangle; Roy's in front.
+    olaf_bowl("Bowl_Marit", tx, ty + 0.16, "cab_bowls")
+    olaf_bowl("Bowl_Substrate", tx - 0.24, ty - 0.06, "cab_bowls", s=0.62)
+    olaf_bowl("Bowl_Third", tx + 0.24, ty - 0.06, "cab_third")
+    olaf_bowl("Bowl_Olaus", tx, ty - 0.32, "cab_ch19")
+    # ch21 on: the two that stay, on the two front places
+    olaf_bowl("Bowl_Third_Late", tx + 0.24, ty - 0.06, "cab_late")
+    eddvard_bowl("Bowl_Eddvard_Late", tx - 0.24, ty - 0.06, "cab_late")
     # (pass 402) EDDVARD'S BOWL, ch4's night only: "She took down the small
     # cedar bowl from the shelf above the kerosene lamp and set it on the
-    # table where the wood had been" (the package's place, south-west) —
-    # "It was warm." Smaller and plainer than Olaf's two: no spiral, no mark.
-    ex, ey = tx - 0.45, ty - 0.55
-    make_cyl("Bowl_Eddvard_Foot__cabin_interior_eddvard", (ex, ey, top_z + 0.008), 0.036, 0.016, cedar_dk, segments=12)
-    make_taper_cyl("Bowl_Eddvard_Body__cabin_interior_eddvard", (ex, ey, top_z + 0.044), 0.042, 0.078, 0.056, cedar_md, segments=14)
-    make_lathe("Bowl_Eddvard_Rim__cabin_interior_eddvard", (ex, ey, top_z + 0.072),
-               [(0.068, 0.0), (0.080, 0.0), (0.080, 0.012), (0.068, 0.012), (0.068, 0.0)], cedar_lt, segments=14)
-    make_cyl("Bowl_Eddvard_Hollow__cabin_interior_eddvard", (ex, ey, top_z + 0.073), 0.068, 0.002, cedar_dk, segments=14)
-    # One bowl holds a little water from the wash; the other is dry —
-    # the difference the chapter turns on, stated in one highlight.
-    make_cyl("Bowl_Substrate_Water__cab_bowls", (tx + 0.22, ty - 0.06, top_z + 0.124),
-             0.094, 0.004, (0.58, 0.62, 0.60, 0.85), segments=14)
+    # table where the wood had been" (the package's place, south-west).
+    eddvard_bowl("Bowl_Eddvard", tx - 0.45, ty - 0.55, "cabin_interior_eddvard")
+    # THE BELL-PIECE: "The size of his thumb. Cedar" — an open hand, "The
+    # palm was up", holding "a bell the size of a thimble" (ch18); "beside
+    # the four bowls" (ch19), "beside the two bowls" (ch21). cab_bell
+    bpx, bpy = tx + 0.30, ty + 0.22
+    make_box("Cedar_Bell_Palm__cab_bell", (bpx, bpy, top_z + 0.007), (0.030, 0.024, 0.014), cedar_lt)
+    for fi, fx in enumerate((-0.009, -0.003, 0.003, 0.009)):
+        make_box("Cedar_Bell_Finger_%d__cab_bell" % fi, (bpx + fx, bpy + 0.019, top_z + 0.006), (0.005, 0.016, 0.009), cedar_lt)
+    make_cyl("Cedar_Bell_Thimble__cab_bell", (bpx, bpy, top_z + 0.0185), 0.0065, 0.009, cedar_md, segments=8)
+    # BRANDON'S NOTEBOOK: "leather-bound, palm-sized", with its pencil,
+    # "beside the cedar" (ch19-20; Cale keeps it in ch21). cab_ch19
+    make_box("Brandon_Notebook__cab_ch19", (tx + 0.40, ty + 0.40, top_z + 0.009), (0.090, 0.130, 0.018), (0.30, 0.20, 0.13, 1.0))
+    make_box("Brandon_Notebook_Band__cab_ch19", (tx + 0.40, ty + 0.40, top_z + 0.0185), (0.091, 0.008, 0.001), (0.18, 0.12, 0.08, 1.0))
+    make_cyl("Brandon_Notebook_Pencil__cab_ch19", (tx + 0.46, ty + 0.40, top_z + 0.004), 0.0035, 0.15, (0.80, 0.62, 0.20, 1.0), axis='Y', segments=6)
+    # THE BOXES the bowls came in: Per's "about a foot long and six inches
+    # deep, with a hinged lid … a spiral carved into" it, "A pale stripe down
+    # one side" (ch10); Marina's "the size of Per's wooden box" (ch13); Roy's
+    # "the size of Per's box … a spiral carved into the lid" (ch17). Per's at
+    # his elbow at the head (ch13: "Per at the head, with the wooden box at
+    # his elbow"); each on its own chapters, in the same place.
+    for bxn, btag, stripe in (("Box_Per", "cabin_interior", True), ("Box_Third", "cabin_interior_hexagon", False),
+                              ("Box_Olaus", "cab_ch19", False)):
+        cx_, cy_ = tx - 0.52, ty + 0.30
+        make_box("%s_Body__%s" % (bxn, btag), (cx_, cy_, top_z + 0.065), (0.30, 0.16, 0.130), cedar_md)
+        make_box("%s_Lid__%s" % (bxn, btag), (cx_, cy_, top_z + 0.139), (0.31, 0.17, 0.018), cedar_lt)
+        make_cyl("%s_Lid_Spiral__%s" % (bxn, btag), (cx_, cy_, top_z + 0.1485), 0.045, 0.001, cedar_dk, segments=14)
+        if stripe:
+            make_box("%s_Stripe__%s" % (bxn, btag), (cx_, cy_ - 0.0805, top_z + 0.065), (0.30, 0.001, 0.022), (0.84, 0.70, 0.52, 1.0))
 
     # Braided oval rug under the table
     for i, (rr, col) in enumerate([(1.6, (0.46, 0.30, 0.24, 1.0)),
@@ -1430,7 +1466,7 @@ def build_hero_props_2026_09():
             make_cyl(f"Egg_White_{ei}__cabin_interior_day_breakfast", (ex2, ey2, T + 0.049), 0.030, 0.012, (0.96, 0.94, 0.90, 1.0), segments=8)
             make_cyl(f"Egg_Yolk_{ei}__cabin_interior_day_breakfast", (ex2, ey2, T + 0.058), 0.013, 0.006, (0.94, 0.72, 0.20, 1.0), segments=8)
         # ── THE FACE · relief inside Marit's bowl, flush on the rim disc ──
-        make_cyl("Bowl_Face_Inlay__cab_bowls", (-0.22, 2.84, 0.9155), 0.040, 0.003, (0.60, 0.44, 0.30, 1.0), segments=10)
+        make_cyl("Bowl_Face_Inlay__cab_bowls", (0.0, 3.06, 0.9155), 0.040, 0.003, (0.60, 0.44, 0.30, 1.0), segments=10)
     with _shift(-1.0, 0.6):   # the daybed
         # ── THE CAP · folded on the daybed bolster (top 0.73) ──
         make_box("Fabric_Cap", (-2.78, 1.55, 0.7425), (0.14, 0.18, 0.025), (0.62, 0.30, 0.28, 1.0))

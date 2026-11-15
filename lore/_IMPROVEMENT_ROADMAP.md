@@ -3835,6 +3835,48 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-15 · pass 404: the cabin's bowls by count.**
+- Pass 402 took Olaf's two bowls off the table before ch11; the text then
+  adds and takes them chapter by chapter (node-cited reading, spot-checked):
+  - ch11-ch13: Marit's and the substrate-bowl, Per's box "at his elbow".
+  - ch13's night: + Marina's grandfather's ("a rough triangle … Marit's
+    bowl in the middle. The substrate-bowl to the left. Marina's
+    grandfather's bowl now to the right"), Marina's box.
+  - ch14-ch17: the three — view `cabin_interior_three`.
+  - ch19-ch20: + Roy's (Olaus's), the cedar bell-piece "beside the four
+    bowls", Brandon's notebook "beside the cedar", Roy's box — views
+    `cabin_interior_four`, `cabin_interior_day_four`.
+  - ch21 on: "The two remaining bowls — Lindholm-Marina's and
+    Eddvard's-by-Tem", the bell-piece — on the ch21 views, where the two
+    stood before (so ch21's "insert bowls" frames them).
+- The objects from their words: every bowl cedar, "the size of two cupped
+  hands", spiral and flame-mark; the substrate-bowl "the size of his palm"
+  (it stood at Marit's size); the bell-piece "The size of his thumb. Cedar",
+  an open palm-up hand holding "a bell the size of a thimble"; the notebook
+  "leather-bound, palm-sized", with its pencil; the boxes "about a foot long
+  and six inches deep, with a hinged lid", a spiral on the lid, Per's with
+  "A pale stripe down one side". The water in the substrate-bowl was
+  invented — gone. One `olaf_bowl()` builds them all.
+- Close-up subjects are found by NAME, and a person's frame reads a
+  surname too: `shot_closeup_marina` aimed at "Bowl_Lindholm" and at the
+  group tag `__cab_marina`. Parts and groups never carry a character's name
+  (the bowl is `Bowl_Third`, the group `cab_third`; Roy's are `Olaus`).
+- ch22's "[shot:insert substrate]The substrate at the tower forty-three
+  miles north …" (the idea) lost its cue; three substrate frames no cue
+  reached went.
+- NEXT: the figures risen on the bowls' spirals (the crow on its
+  fencepost, the octopus, the ferret, the hooded woman — the substrate's
+  in a yellow slicker; the bearded man with his piece of wood on Marina's)
+  and the face inside Marit's; ch11_per has Marit's alone (the substrate's
+  comes in ch11_bowl). For Andy (do not fix): Roy's bowl cedar (ch17) vs
+  walnut (ch20); boxed by Tem vs brought by Roy; Per's lid hinged vs by
+  weight; the substrate-bowl's tower six vs seven floors; the fourth bowl
+  at the crate (ch20) vs Eddvard's (ch21); Eddvard's carved by Olaf vs by
+  Eddvard; Marit's bowl at Hans's vs the cabin; from her mother 2003 vs
+  Olaf 2006; the bell-piece in Finn's pocket vs on the table; the kitchen
+  vs the dining table (ch21-22).
+- Deck must REBUILD cabin_interior.
+
 **2026-11-15 · pass 403: Lena's apartment, chapter by chapter.**
 - A reader (node-cited, spot-checked) set the room's dressing against its
   ~20 segments. What the text contradicted:

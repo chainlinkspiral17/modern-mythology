@@ -8468,7 +8468,9 @@
             "cabin_interior_hexagon",
             "cabin_interior_piece",
             "cabin_interior_early",
-            "cabin_interior_eddvard"
+            "cabin_interior_eddvard",
+            "cabin_interior_three",
+            "cabin_interior_four"
           ]
         },
         {
@@ -8707,7 +8709,9 @@
             "cabin_interior_hexagon",
             "cabin_interior_piece",
             "cabin_interior_early",
-            "cabin_interior_eddvard"
+            "cabin_interior_eddvard",
+            "cabin_interior_three",
+            "cabin_interior_four"
           ]
         }
       ]
@@ -8756,7 +8760,9 @@
             "cabin_interior_hexagon",
             "cabin_interior_piece",
             "cabin_interior_early",
-            "cabin_interior_eddvard"
+            "cabin_interior_eddvard",
+            "cabin_interior_three",
+            "cabin_interior_four"
           ]
         }
       ]
@@ -60785,7 +60791,9 @@
             "cabin_interior_hexagon",
             "cabin_interior_piece",
             "cabin_interior_early",
-            "cabin_interior_eddvard"
+            "cabin_interior_eddvard",
+            "cabin_interior_three",
+            "cabin_interior_four"
           ]
         }
       ]
@@ -60840,7 +60848,9 @@
             "cabin_interior_hexagon",
             "cabin_interior_piece",
             "cabin_interior_early",
-            "cabin_interior_eddvard"
+            "cabin_interior_eddvard",
+            "cabin_interior_three",
+            "cabin_interior_four"
           ]
         }
       ]
@@ -60896,7 +60906,9 @@
             "cabin_interior_hexagon",
             "cabin_interior_piece",
             "cabin_interior_early",
-            "cabin_interior_eddvard"
+            "cabin_interior_eddvard",
+            "cabin_interior_three",
+            "cabin_interior_four"
           ]
         }
       ]
@@ -60945,7 +60957,9 @@
             "cabin_interior_hexagon",
             "cabin_interior_piece",
             "cabin_interior_early",
-            "cabin_interior_eddvard"
+            "cabin_interior_eddvard",
+            "cabin_interior_three",
+            "cabin_interior_four"
           ]
         }
       ]
@@ -60994,7 +61008,9 @@
             "cabin_interior_hexagon",
             "cabin_interior_piece",
             "cabin_interior_early",
-            "cabin_interior_eddvard"
+            "cabin_interior_eddvard",
+            "cabin_interior_three",
+            "cabin_interior_four"
           ]
         }
       ]
@@ -61043,7 +61059,9 @@
             "cabin_interior_hexagon",
             "cabin_interior_piece",
             "cabin_interior_early",
-            "cabin_interior_eddvard"
+            "cabin_interior_eddvard",
+            "cabin_interior_three",
+            "cabin_interior_four"
           ]
         }
       ]
@@ -61097,7 +61115,9 @@
             "cabin_interior_hexagon",
             "cabin_interior_piece",
             "cabin_interior_early",
-            "cabin_interior_eddvard"
+            "cabin_interior_eddvard",
+            "cabin_interior_three",
+            "cabin_interior_four"
           ]
         }
       ]
@@ -62138,7 +62158,8 @@
             "cabin_interior_day_hexagon",
             "cabin_interior_day_disc",
             "cabin_interior_day_headset",
-            "cabin_interior_day_early"
+            "cabin_interior_day_early",
+            "cabin_interior_day_four"
           ]
         }
       ]
@@ -62205,7 +62226,8 @@
             "cabin_interior_day_hexagon",
             "cabin_interior_day_disc",
             "cabin_interior_day_headset",
-            "cabin_interior_day_early"
+            "cabin_interior_day_early",
+            "cabin_interior_day_four"
           ]
         }
       ]
@@ -62269,7 +62291,8 @@
             "cabin_interior_day_hexagon",
             "cabin_interior_day_disc",
             "cabin_interior_day_headset",
-            "cabin_interior_day_early"
+            "cabin_interior_day_early",
+            "cabin_interior_day_four"
           ]
         }
       ]
@@ -62335,7 +62358,8 @@
             "cabin_interior_day_hexagon",
             "cabin_interior_day_disc",
             "cabin_interior_day_headset",
-            "cabin_interior_day_early"
+            "cabin_interior_day_early",
+            "cabin_interior_day_four"
           ]
         }
       ]
@@ -62401,7 +62425,8 @@
             "cabin_interior_day_hexagon",
             "cabin_interior_day_disc",
             "cabin_interior_day_headset",
-            "cabin_interior_day_early"
+            "cabin_interior_day_early",
+            "cabin_interior_day_four"
           ]
         }
       ]
@@ -62467,7 +62492,8 @@
             "cabin_interior_day_hexagon",
             "cabin_interior_day_disc",
             "cabin_interior_day_headset",
-            "cabin_interior_day_early"
+            "cabin_interior_day_early",
+            "cabin_interior_day_four"
           ]
         }
       ]
@@ -62533,7 +62559,8 @@
             "cabin_interior_day_hexagon",
             "cabin_interior_day_disc",
             "cabin_interior_day_headset",
-            "cabin_interior_day_early"
+            "cabin_interior_day_early",
+            "cabin_interior_day_four"
           ]
         }
       ]
@@ -62599,7 +62626,8 @@
             "cabin_interior_day_hexagon",
             "cabin_interior_day_disc",
             "cabin_interior_day_headset",
-            "cabin_interior_day_early"
+            "cabin_interior_day_early",
+            "cabin_interior_day_four"
           ]
         }
       ]
@@ -62665,7 +62693,8 @@
             "cabin_interior_day_hexagon",
             "cabin_interior_day_disc",
             "cabin_interior_day_headset",
-            "cabin_interior_day_early"
+            "cabin_interior_day_early",
+            "cabin_interior_day_four"
           ]
         }
       ]
