@@ -253,11 +253,14 @@ def make_prism(name, center, size, base_color):
 
 
 # ── Gauntlet station marker ──────────────────────────────────────
-def gauntlet_marker(label, cx, cy, w, d, numeral):
+def gauntlet_marker(label, cx, cy, w, d, numeral, floor_top=0.015):
     """Paint a brass-stencil rectangle on the floor + a numeral
     plate. Mirrors build_cathedral_interior._zone_marker style so
     the two locations read as the same gauntlet system."""
-    Z_PAINT = 0.008   # ON the floor (2026-09-22: the stencils hovered 6 cm up)
+    # (pass 386) ON the floor that is there: 0.008 is inside the hardwood
+    # (its top is 0.015) and 9 cm under the porch deck — every stencil,
+    # plate and numeral of the eleven zones was buried.
+    Z_PAINT = floor_top + 0.003
     for sgn in (-1, +1):
         make_box(f"{label}_outline_x{sgn:+d}",
                  (cx + sgn * w / 2, cy, Z_PAINT),
@@ -1227,7 +1230,7 @@ def build_porch():
                  (0.16, 0.16, 2.60), COL_DOORFRAME)
 
     # Gauntlet marker on porch
-    gauntlet_marker("Z_Porch", PORCH_CX, PORCH_CY, 2.4, 1.6, "II")
+    gauntlet_marker("Z_Porch", PORCH_CX, PORCH_CY, 2.4, 1.6, "II", floor_top=0.10)
 
     # ── Two wicker chairs, one missing left arm ──
     # Chair A (west — has both arms)
@@ -1322,8 +1325,8 @@ def build_back_yard():
         yx = math.cos(ang) * 3.0
         yy = +7.5 + math.sin(ang) * 1.2
         make_box(f"Yard_PatchDying_{i}",
-                 (yx, yy, -0.01),
-                 (1.20, 0.80, 0.012), (0.48, 0.44, 0.22, 1.0))
+                 (yx, yy, 0.0025),                 # (pass 386) on the lawn: at -0.01 the dying patches were under it
+                 (1.20, 0.80, 0.004), (0.48, 0.44, 0.22, 1.0))
     # Back fence
     make_box("Yard_Fence_N",
              (0.0, +10.0, 0.85),
@@ -1340,7 +1343,7 @@ def build_back_yard():
                  (0.08, 4.0, 1.70), (0.62, 0.46, 0.28, 1.0))
 
     # Gauntlet marker
-    gauntlet_marker("Z_BackYard", YARD_CX, YARD_CY, 3.0, 2.0, "II")
+    gauntlet_marker("Z_BackYard", YARD_CX, YARD_CY, 3.0, 2.0, "II", floor_top=0.0)   # the lawn
 
     # ── Rosemary bush (alive, scruffy) ──
     rsm_x, rsm_y = +3.2, +7.6
@@ -1446,7 +1449,9 @@ def build_back_yard():
 def build_roof_features():
     """Mark the ROOF threshold and add a small skylight + chimney
     on the flat roof so the player has things to read up there."""
-    gauntlet_marker("Z_Roof", -1.0, +1.0, 2.0, 1.5, "II")
+    # (pass 386) ON THE ROOF. It was painted at floor height — under the
+    # hardwood of the room below — and has never been on the roof.
+    gauntlet_marker("Z_Roof", -1.0, +1.0, 2.0, 1.5, "II", floor_top=ROOF_Z + 0.05)
     # Skylight — a glass panel over the kitchen
     make_box("Roof_Skylight_Frame",
              (+2.8, +4.0, ROOF_Z + 0.10),
@@ -1719,9 +1724,11 @@ def build_packing_dressing():
     cardboard = (0.55, 0.42, 0.26, 1.0)
     tape      = (0.72, 0.62, 0.40, 1.0)
     # Braided rug under the living strip
-    make_cyl("LR_Rug", (-1.7, 1.35, 0.008), 0.85, 0.012,
+    # (pass 386) ON the floor (the hardwood's top is 0.015): at 0.008 the
+    # braided rug lay inside the boards, only its inner ring showing
+    make_cyl("LR_Rug", (-1.7, 1.35, 0.0215), 0.85, 0.012,
              (0.40, 0.28, 0.22, 1.0), segments=14)
-    make_cyl("LR_Rug_Ring", (-1.7, 1.35, 0.015), 0.62, 0.008,
+    make_cyl("LR_Rug_Ring", (-1.7, 1.35, 0.0305), 0.62, 0.008,
              (0.30, 0.20, 0.18, 1.0), segments=14)
     # Two more box stacks south of the chair (by the front window)
     # (draft N+1: north of the chair by the west wall — at (-1.55, 0.45)
@@ -1915,7 +1922,7 @@ def build_lr_studio_draft_2026_09():
     make_box("Wear_Chair_Dent", (ch_x + 0.05, ch_y - 0.05, 0.5015), (0.36, 0.34, 0.003), (0.44, 0.34, 0.27, 1.0))
     make_box("Wear_Arm_Shine", (ch_x + 0.32, ch_y - 0.10, 0.8215), (0.08, 0.30, 0.003), (0.50, 0.40, 0.33, 1.0))
     make_floor_stain("Wear_Feet", (ch_x, ch_y - 0.55), radius=0.22, floor_z=0.02, tint=floor_dk, segments=10)
-    make_floor_stain("Wear_Anya", (STUDIO_CX - 0.6, STUDIO_CY - 0.75), radius=0.22, floor_z=0.0, tint=floor_dk, segments=10)
+    make_floor_stain("Wear_Anya", (STUDIO_CX - 0.6, STUDIO_CY - 0.75), radius=0.22, floor_z=0.015, tint=floor_dk, segments=10)   # (pass 386) the floor's top, not its underside
     make_box("Wear_Elbow", (STUDIO_CX + 0.5, STUDIO_CY - 0.80, 0.7415), (1.10, 0.05, 0.003), (0.30, 0.22, 0.15, 1.0))
     # D3 · the chair lamp's cord: along the floor east, then to the
     # south-wall outlet (two straight runs — the recorder boxes a

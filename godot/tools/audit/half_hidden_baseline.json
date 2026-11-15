@@ -1,0 +1,27 @@
+{
+ "_": "Frames vantage_obstruction's HALF HIDDEN reading flagged when it was written (pass 387). Read each by render; remove it when fixed. Never add.",
+ "to_read": [
+  "cabin_interior:shot_insert_coat__cabin_interior",
+  "cabin_interior:shot_insert_coat__cabin_interior_day",
+  "cabin_interior:shot_insert_iron__cabin_interior",
+  "cabin_interior:shot_insert_wagon",
+  "cabin_interior_bed:shot_insert_blanket__cabin_interior_bed",
+  "cabin_road:shot_insert_crow__cabin_road_truck",
+  "centro_grocery_aisle:shot_insert_office",
+  "cosmic_comics_back_office:shot_insert_safe",
+  "cosmic_comics_interior:shot_insert_bars__cosmic_comics_interior",
+  "cosmic_comics_interior:shot_insert_safe__cosmic_comics_back_office",
+  "diner:shot_insert_jukebox",
+  "editing_suite:shot_insert_cables__suite_4am",
+  "foxhole_bar:shot_insert_setlist",
+  "foxhole_bar:shot_insert_stage__foxhole_bar",
+  "graustark_post_office:shot_insert_door__graustark_post_office",
+  "kwik_stop:shot_insert_cash__kwik_stop_hood",
+  "kwik_stop:shot_insert_roller__kwik_stop_interior",
+  "lena_apartment:shot_insert_patch",
+  "pit_stop_interior:shot_insert_coffee__pit_stop_back_booth",
+  "pit_stop_interior:shot_insert_dumpster__pit_stop_back_lot",
+  "pit_stop_interior:shot_insert_truck__pit_stop_back_lot",
+  "vehicle_cab:shot_insert_windshield__vehicle_cab"
+ ]
+}

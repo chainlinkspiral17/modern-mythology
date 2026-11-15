@@ -319,7 +319,7 @@ def build_desk_and_props():
     # ── Stack of papers (voicemail call logs etc.) ──
     for s in range(3):
         make_box("Desk_PaperStack_%d" % s,
-                 (desk_cx + 0.50, desk_cy - 0.18, desk_top_z + 0.005 + s * 0.004),
+                 (desk_cx + 0.50, desk_cy - 0.18, desk_top_z + 0.0225 + s * 0.004),   # (pass 386) desk_top_z is the top's centre: they lay inside it
                  (0.20, 0.28, 0.004),
                  (0.94, 0.90 - s * 0.02, 0.82 - s * 0.02, 1.0))
 

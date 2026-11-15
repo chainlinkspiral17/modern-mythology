@@ -161,10 +161,18 @@ def build_finished_room():
     # (pass 370) ON the grille: at y 5.835 the sheet lay INSIDE the grille's
     # 2 cm slab (5.83..5.85) and had never been seen — a sheet 4 mm thick
     # is under prop_overlap's depth floor. Its face is 3 mm proud now.
-    make_box("Flyer", (-2.05, 5.826, 0.30), (0.22, 0.004, 0.28), (0.90, 0.88, 0.80, 1.0))
-    make_box("Flyer_Tape", (-2.05, 5.8225, 0.45), (0.06, 0.003, 0.03), (0.86, 0.84, 0.70, 0.8))
-    for k, zz in enumerate((0.38, 0.34, 0.30, 0.26, 0.22)):      # the set order, five lines in ballpoint
-        make_box(f"Flyer_Line_{k}", (-2.05 - 0.01 * (k % 2), 5.8235, zz), (0.15 - 0.02 * (k % 3), 0.001, 0.008), (0.16, 0.18, 0.34, 1.0))
+    # (pass 386) the amp went up 2.4 cm onto the carpet; what is taped to
+    # it goes with it (FLY).
+    # (pass 387) the SAME flyer as Jesse's garage, by the text: half-letter
+    # height, faded mustard paper (it was a cream letter sheet). Its back, with the
+    # five songs of the set order in Nate's ballpoint.
+    FLY = 0.024
+    FZ = 0.30 + FLY
+    make_box("Flyer", (-2.05, 5.826, FZ), (0.172, 0.004, 0.216), (0.80, 0.68, 0.30, 1.0))
+    make_box("Flyer_Tape", (-2.05, 5.8225, FZ + 0.108), (0.05, 0.003, 0.03), (0.90, 0.88, 0.76, 0.8))
+    for k, dz in enumerate((0.066, 0.036, 0.006, -0.024, -0.054)):      # the set order, five lines in ballpoint
+        w = 0.120 - 0.018 * (k % 3)
+        make_box(f"Flyer_Line_{k}", (-2.05 - (0.120 - w) / 2.0, 5.8235, FZ + dz), (w, 0.001, 0.007), (0.16, 0.18, 0.34, 1.0))
     # the power strip and the cable run along the N wall's base
     make_box("Power_Strip", (0.6, ROOM_D - 0.10 - 0.05, 0.03), (0.34, 0.06, 0.05), (0.86, 0.86, 0.84, 1.0))
 
@@ -179,7 +187,10 @@ def build_band_gear_from_jesses():
         def w(name, center, *a, **k):
             cx, cy, cz = center
             dy = DY + (1.1 if name.startswith("Mic") else 0.0)
-            return fn(name, (cx, cy + dy, cz), *a, **k)
+            # (pass 386) and UP onto this room's carpet (its top is 0.024):
+            # Jesse's garage is bare concrete, and here the cables lay
+            # inside the pile
+            return fn(name, (cx, cy + dy, cz + 0.024), *a, **k)
         return w
     orig_box, orig_cyl = HG.make_box, HG.make_cyl
     HG.make_box, HG.make_cyl = shifted(orig_box), shifted(orig_cyl)

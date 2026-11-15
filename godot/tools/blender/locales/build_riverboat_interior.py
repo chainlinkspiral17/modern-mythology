@@ -250,6 +250,8 @@ def gauntlet_marker(label, cx, cy, cz, w, d, numeral):
     """Brass-stencil rectangle painted onto the deck at height cz +
     a small numeral plate. Same style as cathedral + bungalow."""
     z = cz + 0.010   # plates ON the deck (2026-09-22: 1.25 cm over it)
+    if label == "Z_StaffExit":
+        z = cz + 0.0225   # (pass 386) the outside walkway is a 2 cm slab over cz: its plate lay inside it
     for sgn in (-1, +1):
         make_box(f"{label}_outline_x{sgn:+d}",
                  (cx + sgn * w / 2, cy, z),
@@ -1621,10 +1623,12 @@ def build_card_room():
     make_cyl("Card_Table_Top",
              (tb_x, tb_y, cz + 0.75),
              0.90, 0.04, COL_FELT_GREEN, segments=16)
-    # Rail around the table (oxblood leather)
-    make_cyl("Card_Table_Rail",
-             (tb_x, tb_y, cz + 0.79),
-             0.94, 0.04, COL_LEATHER_OX, segments=16)
+    # Rail around the table (oxblood leather). (pass 386) A RING: it was a
+    # solid disc 0.94 m across laid over the whole felt — the "round felt
+    # table" was a leather lid, and the deck and the chips lay inside it.
+    from _props.geometry import make_lathe as _ring
+    _ring("Card_Table_Rail", (tb_x, tb_y, cz + 0.77),
+          [(0.86, 0.0), (0.94, 0.0), (0.94, 0.04), (0.86, 0.04)], COL_LEATHER_OX, segments=24)
     # Pedestal
     make_cyl("Card_Table_Pedestal",
              (tb_x, tb_y, cz + 0.36),
@@ -1660,7 +1664,7 @@ def build_card_room():
     # Cards + chips on the table
     # Card deck
     make_box("Card_Deck_Stack",
-             (tb_x, tb_y, cz + 0.79),
+             (tb_x, tb_y, cz + 0.78),      # on the felt (its top is cz + 0.77)
              (0.06, 0.10, 0.02), COL_LINEN)
     # 5 chip stacks
     for i in range(5):
@@ -1672,7 +1676,7 @@ def build_card_room():
                    (0.62, 0.18, 0.18, 1.0),
                    (0.18, 0.32, 0.62, 1.0)][i % 3]
             make_cyl(f"Card_Chip_{i}_{j}",
-                     (stk_x, stk_y, cz + 0.78 + j * 0.010),
+                     (stk_x, stk_y, cz + 0.774 + j * 0.008),   # stacked on the felt
                      0.020, 0.008, col, segments=8)
     # Pendant lamp over table (low, intimate)
     make_box("Card_Pendant_Cord",
@@ -1694,9 +1698,10 @@ def build_back_room():
     make_cyl("Back_Table_Top",
              (tb_x, tb_y, cz + 0.75),
              0.80, 0.04, (0.22, 0.42, 0.30, 1.0), segments=14)
-    make_cyl("Back_Table_Rail",
-             (tb_x, tb_y, cz + 0.79),
-             0.84, 0.04, COL_LEATHER_BLACK, segments=14)
+    # (pass 386) a ring, as the card table's: the disc covered the felt and the cash
+    from _props.geometry import make_lathe as _ring
+    _ring("Back_Table_Rail", (tb_x, tb_y, cz + 0.77),
+          [(0.76, 0.0), (0.84, 0.0), (0.84, 0.04), (0.76, 0.04)], COL_LEATHER_BLACK, segments=24)
     make_cyl("Back_Table_Pedestal",
              (tb_x, tb_y, cz + 0.36),
              0.14, 0.74, COL_WALL_DARK)
@@ -1722,7 +1727,7 @@ def build_back_room():
     # Huge stack of $100s in the middle (the high-stakes feel)
     for i in range(10):
         make_box(f"Back_Cash_Stack_{i}",
-                 (tb_x, tb_y, cz + 0.78 + i * 0.008),
+                 (tb_x, tb_y, cz + 0.773 + i * 0.006),     # stacked on the felt
                  (0.16, 0.06, 0.006), (0.42, 0.62, 0.42, 1.0))
     # Black-shaded pendant (more intimate, more shadow)
     make_box("Back_Pendant_Cord",
@@ -2069,8 +2074,11 @@ def build_emperor_props():
     make_box("Helm_Ashtray_Bent", (0.86, -1.10, 5.925), (0.035, 0.02, 0.015), (0.60, 0.46, 0.22, 1.0))
     make_box("Helm_Lighter", (0.68, -1.22, 5.905), (0.03, 0.05, 0.02), (0.55, 0.57, 0.58, 1.0))
     # Dean's note + the hundred, Table 14 (main deck)
-    make_box("Dean_Note", (0.15, -3.42, 3.264), (0.10, 0.07, 0.004), (0.90, 0.88, 0.80, 1.0))
-    make_box("Dean_Hundred", (0.15, -3.42, 3.269), (0.156, 0.066, 0.003), (0.62, 0.66, 0.54, 1.0))
+    # (pass 386) ON Table 14 (its top is at 3.30): at 3.264 the note and the
+    # hundred lay 3 cm inside the table — never drawn
+    # the folded note shows past the bill that weights it (it was smaller than the bill)
+    make_box("Dean_Note", (0.15, -3.42, 3.3025), (0.11, 0.15, 0.004), (0.90, 0.88, 0.80, 1.0))
+    make_box("Dean_Hundred", (0.15, -3.42, 3.3063), (0.156, 0.066, 0.003), (0.62, 0.66, 0.54, 1.0))
     # The office door at the helm's south partition — in its W half (2026-10-30:
     # in the E half the outside stair came up through its clearance)
     make_box("Helm_Office_Door", (-2.2, -2.95, 6.10), (0.86, 0.06, 1.98), (0.34, 0.24, 0.16, 1.0))

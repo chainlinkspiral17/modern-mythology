@@ -323,6 +323,23 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-11-15 · cut to a thing when the text has it in the room (pass 387)
+
+- **What happened:** vol 6 ch14 cued `insert flyer` on "The kid coming up
+  the driveway is… with a stack of paper flyers held against his chest"
+  — seven lines before the kid hands Jesse one — and the set kept the
+  flyer pinned by the door, where the text never puts it ("He sets the
+  flyer on the workbench"). The cut showed an object the scene did not
+  have yet, in a place it never is.
+- **Rule:** a cue's object word is not enough; ask WHO HOLDS IT on that
+  line. Before the hand-over the picture is the kid and the driveway;
+  after it, the flyer. And the prop stands where the text last leaves it.
+- **Same pass:** "The garage door is open because…" framed a jamb and a
+  shelf (a marker written from the word "door", aimed at the nearest
+  part named Door_*). The line's picture is the open garage; it is taken
+  from the driveway now. A sentence about a whole thing wants the whole
+  thing in the frame.
+
 ### 2026-11-14 · a frame's name is not its picture: read what it frames, then read the frame (pass 380)
 - Before giving a line an unused insert, ask the aim gate what the marker
   frames (`subject` of the part it resolves to) and read the builder's
@@ -342,6 +359,9 @@ stillness is the player's own camera.
 - (pass 383) The whole cast steps OUT for an insert — a translucent face
   over a tabletop is worse than in or out — and a spoken line that does
   not name the object ends the look: the speaker stands in the room.
+  **The user, 2026-11-15: "No ghosts on objects."** Settled: nothing
+  translucent of a person is ever laid over an object the camera has
+  cut to. Do not bring back a partial step-back.
   Read a rule as a RUN of lines (room · object · room · object · room),
   not as one frame.
 

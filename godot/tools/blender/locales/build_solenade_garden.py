@@ -34,8 +34,9 @@ def build_ground():
     # Brick seam stripes (subtle parallel lines)
     for si in range(11):
         sx = -GARDEN_R + 0.4 + si * 1.40
-        make_box(f"Path_Seam_NS_{si}", (sx, 0.0, 0.025), (0.04, 1.20, 0.005), COL_BRICK_SEAM)
-        make_box(f"Path_Seam_EW_{si}", (0.0, sx, 0.025), (1.20, 0.04, 0.005), COL_BRICK_SEAM)
+        # (pass 386) the paths' tops are at 0.04: at 0.025 every seam lay inside the brick
+        make_box(f"Path_Seam_NS_{si}", (sx, 0.0, 0.0395), (0.04, 1.20, 0.005), COL_BRICK_SEAM)
+        make_box(f"Path_Seam_EW_{si}", (0.0, sx, 0.0395), (1.20, 0.04, 0.005), COL_BRICK_SEAM)
     # Central plaza (slightly larger brick circle)
     make_cyl("Plaza", (0.0, 0.0, 0.025), 1.80, 0.005, COL_BRICK_PATH, segments=20)
 

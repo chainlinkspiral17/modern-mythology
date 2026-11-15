@@ -305,7 +305,7 @@ def build_back_annex_2026_08():
     # out of the door's swing (2026-09-24, the user: doorways obstructed)
     make_box("Kitch_Counter", (-3.55, 6.960, 0.45), (0.60, 1.8, 0.90), COL_WOOD)
     make_box("Kitch_Counter_Top", (-3.55, 6.960, 0.92), (0.66, 1.9, 0.05), (0.72, 0.68, 0.60, 1.0))
-    make_box("Kitch_Sink", (-3.55, 6.560, 0.93), (0.40, 0.34, 0.03), (0.60, 0.62, 0.64, 1.0))
+    make_box("Kitch_Sink", (-3.55, 6.560, 0.9315), (0.40, 0.34, 0.03), (0.60, 0.62, 0.64, 1.0))   # (pass 386) 1.5 mm proud of the counter top
     make_cyl("Kitch_Faucet", (-3.72, 6.560, 1.05), 0.015, 0.20, (0.62, 0.64, 0.66, 1.0), segments=6)
     # Petra's KETTLE on a two-ring hob.
     make_box("Kitch_Hob", (-3.55, 7.410, 0.95), (0.44, 0.36, 0.04), COL_BLACK)

@@ -503,6 +503,71 @@ def _occlusion(origin_b, target_b, boxes, subj):
     return None
 
 
+HALF_HIDDEN = 0.40
+_HALF_KNOWN = None
+
+
+def _half_known():
+    """half_hidden_baseline.json: the frames the reading flagged on the day
+    it was written (pass 387), each still to be READ by render: fixed, or
+    judged and noted. A list to read down, not a number to hold: a frame
+    leaves it when it is fixed, and nothing is ever added to it."""
+    global _HALF_KNOWN
+    if _HALF_KNOWN is None:
+        import json as _j
+        fp = os.path.join(os.path.dirname(os.path.abspath(__file__)), "half_hidden_baseline.json")
+        try:
+            _HALF_KNOWN = set(_j.load(open(fp)).get("to_read", []))
+        except (OSError, ValueError):
+            _HALF_KNOWN = set()
+    return _HALF_KNOWN
+
+
+def _hidden_share(origin_b, pos_g, hits, boxes, subj):
+    """(pass 387) How much of the subject can the lens SEE? `_occlusion`
+    asks five rays at the cluster's centre, 6 cm apart, and passes when
+    three arrive. Nate's set order (vol 6 ch14) is a sheet taped to an
+    amp's grille with a second amp standing 0.7 m in front of it: the
+    rays at the tape cleared that amp's top and the gate passed, with the
+    lower half of the sheet behind the amp in the frame. Here every part
+    of the subject cluster is sampled across its own face (centre and
+    four points 70% of the way to its edges); returns (blocked, asked,
+    the commonest blocker)."""
+    import marker_aim_audit as M
+    byname = {b[0]: b for b in boxes}
+    def gd(a, b):
+        return sum((x - y) ** 2 for x, y in zip(a, b)) ** 0.5
+    nearest = min(hits, key=lambda h: gd(h[1], pos_g))
+    r = M.cluster_radius(gd(nearest[1], pos_g))
+    parts = [h[0] for h in hits if gd(h[1], nearest[1]) < r]
+    subj_boxes = [byname[x] for x in subj if x in byname]
+    asked, blocked, who_n = 0, 0, {}
+    for nm in parts:
+        b = byname.get(nm)
+        if b is None:
+            continue
+        c, h = b[1], b[2]
+        ax = sorted(range(3), key=lambda i: -h[i])[:2]
+        pts = [tuple(c)]
+        for sa in (-0.7, 0.7):
+            for sb in (-0.7, 0.7):
+                q = list(c)
+                q[ax[0]] += sa * h[ax[0]]
+                q[ax[1]] += sb * h[ax[1]]
+                pts.append(tuple(q))
+        for q in pts:
+            v = tuple(q[i] - origin_b[i] for i in range(3))
+            vl = math.sqrt(sum(a * a for a in v)) or 1e-6
+            t, who = cast(origin_b, tuple(a / vl for a in v), boxes)
+            asked += 1
+            if t is not None and who not in subj and t < vl - EMBED_TOL and not _holds(who, subj) \
+                    and not _rests_on(byname.get(who), subj_boxes):
+                blocked += 1
+                who_n[who] = who_n.get(who, 0) + 1
+    top = max(who_n, key=who_n.get) if who_n else None
+    return blocked, asked, top
+
+
 def _near_fraction_owned(origin_b, pitch, yaw, fov, boxes, subj):
     vf = math.radians(fov)
     hf = 2.0 * math.atan(math.tan(vf / 2.0) * ASPECT)
@@ -553,6 +618,7 @@ def markers_pass(only, show_all):
     PRESET_IDS.update(p[0] for p in presets())
     STRIPS.update(_strips())
     flagged = []
+    known = []
     n = 0
     for fn in sorted(os.listdir(M.LOCALES_TSCN)):
         if not fn.endswith(".tscn"):
@@ -610,6 +676,15 @@ def markers_pass(only, show_all):
                 occl = _occlusion(o_b, (tgt_g[0], -tgt_g[2], tgt_g[1]), boxes, subj)
                 if occl:
                     why.append("OCCLUDED: %s stands between the lens and %s" % (occl, anchor_name))
+                elif name.startswith("shot_insert_"):
+                    hb, ha, hw = _hidden_share(o_b, pos, hits, boxes, subj)
+                    # three points at least: two corners of a one-part subject
+                    # (a water tower's leg behind a fence rail) is a foreground
+                    if ha >= 5 and hb >= 3 and hb >= HALF_HIDDEN * ha:
+                        if "%s:%s" % (locale, name) in _half_known():
+                            known.append((locale, name, hw, hb, ha, anchor_name))
+                        else:
+                            why.append("HALF HIDDEN: %s covers %d of %d points of %s" % (hw, hb, ha, anchor_name))
                 if st["escape"] >= EMPTY_FRAC and glb not in NO_EMPTY:
                     why.append("EMPTY: %.0f%% of the frame sees only sky" % (st["escape"] * 100))
             else:
@@ -621,6 +696,8 @@ def markers_pass(only, show_all):
             if why or show_all:
                 flagged.append((locale, name, why, st))
     print("vantage_obstruction_audit --markers · %d marker(s) cast" % n)
+    for locale, name, hw, hb, ha, an in known:
+        print("to read    %-22s %-30s HALF HIDDEN (listed): %s covers %d of %d points of %s" % (locale, name, hw, hb, ha, an))
     bad = 0
     for locale, name, why, st in flagged:
         if why:

@@ -441,7 +441,11 @@ def build_hero_props():
              (0.0, 0.0, 0.0, 1.0))
 
     # ── the counter still life ──
-    top = 0.95
+    # (pass 386) the counter's SURFACE. 0.95 is the underside of its 6 cm
+    # top: the bread board, the knife, the bearings tray and the phone lay
+    # wholly inside the slab, the loaf and the bearing sets up to their
+    # waists in it (buried_flat_audit).
+    top = 1.01
     make_box("Bread_Board", (1.45, 5.35, top + 0.015), (0.46, 0.32, 0.03),
              (0.56, 0.42, 0.26, 1.0))
     make_chamfer_box("Bread_Loaf", (1.42, 5.38, top + 0.10), (0.32, 0.17, 0.13),
@@ -462,7 +466,7 @@ def build_hero_props():
                  DECK_TINTS[(bi * 3 + 1) % len(DECK_TINTS)])
     make_box("Shop_Phone", (1.90, 5.78, top + 0.008), (0.16, 0.075, 0.014),
              (0.10, 0.10, 0.12, 1.0))
-    make_box("Shop_Phone_Screen", (1.90, 5.78, top + 0.017 - 0.0196), (0.14, 0.062, 0.004),
+    make_box("Shop_Phone_Screen", (1.90, 5.78, top + 0.0165), (0.14, 0.062, 0.004),
              (0.42, 0.50, 0.58, 1.0))
 
 
@@ -625,9 +629,10 @@ def build_draft4_2026_10():
                                                  (hx + 0.56 * _cm.cos(a), hy + 0.56 * _cm.sin(a), 1.32),
                                                  (hx + 0.56 * _cm.cos(a), hy + 0.56 * _cm.sin(a), 1.25)], 0.005, COL_STEEL, segments=4)
     # ── the counter's things ──
-    make_lathe("Tidewater_Mug", (1.55, 5.10, 0.95), [(0.040, 0.0), (0.043, 0.01), (0.045, 0.10), (0.0, 0.095)], (0.88, 0.86, 0.80, 1.0), segments=12)
-    make_box("Tidewater_Mug_Chip", (1.55 - 0.044, 5.10, 1.045), (0.008, 0.02, 0.012), (0.70, 0.56, 0.40, 1.0))
-    make_box("Tidewater_Mug_Band", (1.55, 5.10, 1.00), (0.092, 0.092, 0.012), (0.24, 0.40, 0.52, 1.0))
+    # (pass 386) on the counter's surface (1.01): it stood 6 cm into the top
+    make_lathe("Tidewater_Mug", (1.55, 5.10, 1.01), [(0.040, 0.0), (0.043, 0.01), (0.045, 0.10), (0.0, 0.095)], (0.88, 0.86, 0.80, 1.0), segments=12)
+    make_box("Tidewater_Mug_Chip", (1.55 - 0.044, 5.10, 1.105), (0.008, 0.02, 0.012), (0.70, 0.56, 0.40, 1.0))
+    make_box("Tidewater_Mug_Band", (1.55, 5.10, 1.06), (0.092, 0.092, 0.012), (0.24, 0.40, 0.52, 1.0))
     make_box("Token_Box", (0.52, 5.66, 0.33), (0.16, 0.10, 0.07), (0.50, 0.34, 0.20, 1.0))
     make_box("Token_Box_Lid", (0.52, 5.66, 0.37), (0.17, 0.11, 0.01), (0.42, 0.28, 0.16, 1.0))
     # ── griptape on the repair bench ──

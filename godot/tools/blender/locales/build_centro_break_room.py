@@ -112,7 +112,7 @@ def build_kitchenette():
         make_box(f"Counter_Pull_{di}", (cx+0.29, dy+0.20, 0.46), (0.02, 0.03, 0.12), P.METAL_BLACK)
     # Sink basin (recessed dark box + rim) at the S third
     sy = cy0 - 0.80
-    make_box("Sink_Rim", (cx, sy, 0.93), (0.42, 0.44, 0.03), P.METAL_STEEL)
+    make_box("Sink_Rim", (cx, sy, 0.9315), (0.42, 0.44, 0.03), P.METAL_STEEL)   # (pass 386) 1.5 mm proud: its top shared the counter's plane (flicker)
     make_box("Sink_Basin", (cx, sy, 0.86), (0.34, 0.36, 0.14), (0.30, 0.32, 0.34, 1.0))
     # Faucet (riser + gooseneck spout)
     make_cyl("Faucet_Riser", (cx+0.10, sy+0.16, 1.02), 0.02, 0.18, P.METAL_STEEL, segments=8, axis='Z')

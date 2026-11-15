@@ -3835,6 +3835,98 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-15 · pass 387: the Foxhole flyer, by the text; the Hendersons' forks; a frame that passed its gate half hidden.**
+- Found reading pass 386's own check renders (the suite had failed two
+  sightlines after the pot roast and the amps moved):
+  - **The flyer (vol 6 ch14).** The text: *"Half-letter, photocopied, two
+    colors — black ink on a paper that is, today, a faded mustard
+    yellow"*, the venue name in block lettering across the top, and *"He
+    sets the flyer on the workbench."* The set had a cream LETTER-size
+    slab 2 cm thick pinned by the door jamb with a steel band; its
+    close-up read as a switch plate. It is a mustard half-letter sheet on
+    the workbench beside the map now (title block, four print lines), and
+    the same sheet in Nate's garage (its back, the five songs of the set
+    order). The generated flyer art (`henderson_garage_flyer`, 4:5) lies
+    flat over it on the bench (roster: facing `up`); the sheet is the
+    art's 4:5 at half-letter height (17.2 x 21.6 cm) so the picture is
+    not stretched. Half-letter proper is nearer 2:3 — if the user wants
+    it exact, the art would be made again at 2:3 (theirs to make).
+  - **Node 12 cut to the flyer before Jesse had it** ("The kid coming up
+    the driveway is…"). It cuts to the driveway now, out the open door
+    from where he sits (`shot_insert_driveway__henderson_garage`, new).
+  - **"The garage door is open…" (node 7)** framed a door jamb and a
+    shelf from outside. It is the open garage from the foot of the
+    driveway now: the door panels up under the ceiling, the kit, the
+    bench, the dusk.
+  - **Nate's set order was half behind the second amp.** Re-framed from
+    between the amps.
+  - **The Hendersons' table.** The mug stood ON the head setting's fork
+    and plate rim, 1.5 cm into the top; all four forks lay 15 cm west of
+    their plate whichever way the seat faced, 8 mm in the air, each a
+    bare bar. Each fork lies to its own diner's left now, on the top,
+    with a shoulder and four tines; the mug above the plate on the right;
+    "sets down his fork" frames the head setting's fork.
+- **Why the gate passed a half-hidden frame:** `vantage_obstruction`
+  asks five rays at the subject cluster's centre, 6 cm apart. After pass
+  386 lifted the amp, I lifted the tape with it, three rays cleared the
+  amp in front and the gate went green with the lower half of the sheet
+  behind that amp. New reading, **HALF HIDDEN**: every part of an
+  insert's subject is sampled across its own face (centre + four points
+  70% out); 40% blocked fails.
+- Deck must REBUILD henderson_kitchen, henderson_garage, nate_garage
+  (covered by the `--stale` rebuild already owed).
+- NEXT: the pot roast is on the table from the chapter's first line (the
+  text serves it at node 53: it wants a view tag); Ben's truck stands at
+  the Hendersons' curb in every chapter; the flyer lies on the bench
+  before the kid hands it over (same); the kitchen's plates are bare.
+
+**2026-11-15 · pass 386: 314 flat things lay INSIDE the surface they were put on — never drawn.**
+- The user, 2026-11-15, on the cast over object close-ups: *"No ghosts on
+  objects."* Settled (see pass 383); recorded in the direction playbook.
+- From pass 384's saucers (wholly inside the diner's tabletops): asked of
+  every set, **314 flat things in 49 sets** lay inside the slab they were
+  set on, most because a constant named `top` or `*_TOP_Z` was the slab's
+  centre or underside. No camera has ever seen them:
+  - **Dean's hundred and his note**, 3 cm inside Table 14 on the riverboat;
+    the hundred on the D'Ambrosio's table; the hospice's unsent envelope;
+    Miller's checkbook; the Henderson garage's map; Ember & Ash's papers.
+  - Board Lords' whole counter (`top = 0.95` was its underside): phone,
+    bread board, knife, bearings tray buried; loaf, mug and bearing sets
+    up to their waists. The Kwik Stop's pizzas. Lena's stove burners.
+  - **The riverboat's card tables were leather lids**: the "rail" was a
+    solid disc over the whole felt, deck and chips inside it. Rings now.
+    The Hendersons' dutch oven had the same disc for a rim.
+  - The bungalow's living-room rug (inside the floorboards) and **all
+    eleven gauntlet zone stencils** — the roof's had been painted under
+    the room below and has never been on the roof. Cedar tower's wear
+    marks, eight car floor mats, the Roberts' door mat, garden path seams,
+    cemetery lamp pools, the carnival wagon's feed, cables in Nate's
+    carpet, six sinks sharing their counter's plane (flicker).
+  - Two layout faults it exposed: the asylum's chart binder sat ON the
+    Bishop's letter; the Hendersons' pot roast stood on a place setting
+    (it is in the middle of the table now, the napkin holder and the salt
+    and pepper moved aside).
+- A frame for a line that never had one: "The man left a folded note on
+  the table. He left a hundred-dollar bill weighted on top of it" (vol 5
+  ch4) cuts to the note and the bill on Table 14 (`insert hundred`).
+- **`buried_flat_audit`** (new gate, 10 s): both the thing and its host
+  must be a plain box or an upright cylinder, so the planes are exact;
+  INSIDE (top below the host's top) and FLUSH (top in its plane). Marks
+  under a covering or under furniture are not judged. The recorder now
+  remembers upright cylinders (`Z_CYLS`).
+- 314 → 59, held under a baseline. What is left wants a decision each,
+  not a lift: the pharmacy's lot slab lies over its dock (10 plank
+  seams); the riverfront's park lawn over the east sidewalk (9); the
+  roulette wheel's bearings inside its bowl (9); Louisiana's lily pads
+  under the grass bank (4); vol 3's pepperoni under a plate pile (4);
+  harmony_terrain's shop shells (23: mats, a phone, NPC plates).
+- Deck must REBUILD the 27 sets edited (the full `--stale` rebuild
+  already owed from pass 379 covers them).
+- NEXT: the same question for THICK things — a loaf sunk 6 cm into a
+  counter is not flat and is not asked yet (a SUNK reading for rigid
+  slabs); the 59; the asylum's letter and binder ride 2.6 cm above the
+  nurse counter (`desk_z` 1.15, top 1.13) — held by something, read it.
+
 **2026-11-15 · pass 385: booth six's coffee cup, from over the bench.**
 - Pass 384 put the napkin dispenser on the aisle end of the table, which
   is where the cup's close-up was looking from: it framed the cup across
@@ -3909,8 +4001,10 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
     coffee cup, then "He had not, he was almost certain, told the man
     it was night" — no figure across the table).
 - **The user's calls:** (1) cast fully out on an object close-up, or a
-  faint presence kept? (2) should whoever is listening recede a little
-  when another speaks (off today; it never rendered on the 3D cast)?
+  faint presence kept? — ANSWERED 2026-11-15: "No ghosts on objects."
+  Fully out stays. (2) should whoever is listening recede a little
+  when another speaks (off today; it never rendered on the 3D cast)? —
+  still open.
 - NEXT: the insert still holds through NARRATED lines that keep naming
   its subject after the subject has left the text ("Then it took off");
   three frames want light before they can be cued (the barn's lean,

@@ -216,6 +216,16 @@ posters, screens with no picture: `empty_frame_audit`).
   cues cut to another area of a shared set — a bathroom line to another room's mirror, an upstairs bedroom
   to the television a floor down) and ORPHAN MARKERS (pass 367: 223 authored insert frames no line cut to;
   39 now have their line, 186 remain under a ratchet).
+- **henderson_garage · nate_garage · henderson_kitchen — pass 387 (2026-11-15).** The Foxhole flyer is the
+  text's flyer now (half-letter, mustard, black ink; on Jesse's workbench, and its back with the set order in
+  Nate's garage). The Hendersons' forks lie beside their own diner and have tines; the mug is off the fork.
+  Four frames re-taken (the open garage from the driveway, the driveway from the garage, the set order, the
+  fork). The sightline gate reads HOW MUCH of a close-up's subject is hidden; 22 older frames it flags are
+  listed to be read.
+- **27 sets — pass 386 (2026-11-15), things buried in their surface.** 255 flat props that lay inside the
+  table, counter or floor they were set on are on it now (Dean's hundred and note, the riverboat's card tables,
+  Board Lords' counter, the bungalow's rug and zone stencils, car floor mats, path seams). 59 remain, listed in
+  the roadmap. A new gate holds it.
 - **diner + four more — pass 384 (2026-11-15).** The napkin dispensers hung off the end of every booth table
   (the user: "the thing sticking out from the end of the table, hovering in the air"). Re-seated; a new gate
   for things resting mostly off their surface found five more (Cosmic's grail dome off its counter, the

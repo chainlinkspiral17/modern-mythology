@@ -84,6 +84,22 @@ henderson) got there by accumulating exactly these layers.
 
 ## Recent lessons
 
+### 2026-11-15 · a prop the text describes is built from the text's words; a setting faces its diner (pass 387)
+
+- **The flyer:** the text gives its size, stock and ink ("Half-letter,
+  photocopied, two colors — black ink on a paper that is, today, a faded
+  mustard yellow") and where it ends up ("on the workbench"). The prop
+  was letter-size, cream, 2 cm thick, on the door jamb. Grep the chapter
+  for the prop's noun BEFORE modelling it: size, colour, material and
+  resting place are usually all there.
+- **Paper is 2 - 4 mm in this pipeline**, never 2 cm: a sheet with a
+  visible edge reads as a plate or a box in any raking frame.
+- **The table:** a loop that lays every place setting with the same
+  offset is right for one seat in four. A setting is laid from its
+  diner: fork to their left pointing up the table, cup above the plate
+  on their right. And a utensil that a close-up names needs its
+  silhouette (shoulder + tines), not a bar.
+
 ### 2026-11-10 · a window is sized for its ROOM, not copied from the kitchen (pass 333)
 
 - **What happened.** The user: "Look at windows, if they are too small."

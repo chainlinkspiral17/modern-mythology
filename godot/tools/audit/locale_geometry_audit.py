@@ -57,6 +57,9 @@ BOXES = []
 # recorded box IS the part (a cylinder's, a sphere's, a sloped quad's is
 # only its bounds). prop_overlap_audit's BURIED check reads only these.
 TRUE_BOXES = set()
+# (pass 386) upright cylinders: their top and bottom planes are exact too
+# (a round table top, a plate, a coin) — buried_flat_audit reads them
+Z_CYLS = set()
 
 
 def _make_box(name, center, size, color=None, *a, **k):
@@ -78,6 +81,8 @@ def _make_cyl(name, center, radius=1.0, height=1.0, color=None,
     half = {'Z': (r, r, h / 2), 'Y': (r, h / 2, r),
             'X': (h / 2, r, r)}.get(str(axis).upper(), (r, r, h / 2))
     BOXES.append((str(name), tuple(float(c) for c in center), half))
+    if str(axis).upper() == 'Z':
+        Z_CYLS.add(str(name))
     return _obj_stub(name)
 
 

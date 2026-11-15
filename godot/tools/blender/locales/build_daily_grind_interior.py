@@ -309,7 +309,7 @@ def build_back_bar():
         make_box(f"Back_Bar_Door_{k}", (bx0 + (k + 0.5) * w, by - 0.305, 0.46), (w - 0.03, 0.01, 0.76), COL_FIR)
     t = BB_TOP
     # the sink and its faucet
-    make_box("Back_Bar_Sink", (0.15, by, t - 0.005), (0.50, 0.40, 0.01), COL_STEEL)
+    make_box("Back_Bar_Sink", (0.15, by, t - 0.0035), (0.50, 0.40, 0.01), COL_STEEL)   # (pass 386) 1.5 mm proud of the bar top, not in its plane
     make_cyl("Back_Bar_Faucet", (0.15, by + 0.22, t + 0.15), 0.012, 0.30, COL_CHROME, segments=6)
     make_box("Back_Bar_Faucet_Spout", (0.15, by + 0.12, t + 0.29), (0.02, 0.20, 0.02), COL_CHROME)
     # the pour-over station: a stand with three cones, the gooseneck kettle

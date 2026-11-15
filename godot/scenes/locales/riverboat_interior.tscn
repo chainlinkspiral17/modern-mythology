@@ -591,6 +591,14 @@ position = Vector3(0.550, 6.150, 1.880)
 rotation = Vector3(-0.6700, -1.5708, 0.0)
 metadata/fov = 18.0
 
+; (pass 386) "The man left a folded note on the table. He left a hundred-dollar
+; bill weighted on top of it." (vol 5 ch4) — Table 14, from its open east side.
+; The note and the bill lay 3 cm inside the table until this pass.
+[node name="shot_insert_hundred__riverboat_interior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.850, 3.750, 3.200)
+rotation = Vector3(-0.5451, 1.8753, 0.0)
+metadata/fov = 20.0
+
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_papers__riverboat_interior" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-0.100, 6.500, 0.350)

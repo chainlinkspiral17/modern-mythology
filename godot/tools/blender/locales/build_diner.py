@@ -1954,9 +1954,11 @@ def build_riverboat_galley():
                  (gx, line_cy, line_top_z + 0.05),
                  (0.04, line_d - 0.10, 0.012),
                  (0.10, 0.08, 0.06, 1.0))
+        # (pass 386) the glow shows BETWEEN the bars, on the plate: it was
+        # inside the plate (0..0.04 over line_top_z) and under each bar
         make_box(f"Galley_Charbroil_Glow_{g}",
-                 (gx, line_cy, line_top_z + 0.03),
-                 (0.04, line_d - 0.15, 0.008),
+                 (gx + 0.09, line_cy, line_top_z + 0.0425),
+                 (0.04, line_d - 0.15, 0.004),
                  (0.78, 0.32, 0.18, 1.0))
     for k in range(3):
         kx = -5.30 + k * 0.50
@@ -2293,7 +2295,7 @@ def build_riverboat_galley():
         (+2.6, (0.86, 0.74, 0.50, 1.0)),
     ]):
         make_cyl(f"Galley_ExpoPlate_{p_i}",
-                 (px, expo_cy, expo_top_z + 0.006),   # on the expo (2026-09-22: 5 cm up)
+                 (px, expo_cy, expo_top_z + 0.046),   # (pass 386) ON the expo: expo_top_z + 0.006 is inside its 4 cm top
                  0.14, 0.012, (0.92, 0.90, 0.84, 1.0),
                  segments=10, axis='Z')
         make_sphere_low(f"Galley_ExpoPlate_Food_{p_i}",
@@ -4601,13 +4603,13 @@ def build_gauntlet_decor():
     # A patron-left coffee cup beside the cards (suggests a player
     # mid-game)
     make_cyl("Gauntlet_PatronCup_Saucer",
-             (deck_x - 0.20, cy + 0.18, counter_top_z + 0.015),
+             (deck_x - 0.20, cy + 0.18, counter_top_z + 0.0565),   # (pass 386) on the counter's surface (+0.05): the saucer was inside the top
              0.08, 0.012, COL_NAPKIN, segments=10, axis='Z')
     make_cyl("Gauntlet_PatronCup_Body",
-             (deck_x - 0.20, cy + 0.18, counter_top_z + 0.06),
+             (deck_x - 0.20, cy + 0.18, counter_top_z + 0.1025),
              0.045, 0.08, COL_NAPKIN, segments=8, axis='Z')
     make_cyl("Gauntlet_PatronCup_Coffee",
-             (deck_x - 0.20, cy + 0.18, counter_top_z + 0.10),
+             (deck_x - 0.20, cy + 0.18, counter_top_z + 0.1415),
              0.040, 0.004, (0.18, 0.10, 0.06, 1.0), segments=8, axis='Z')
     # ── Three framed arcana prints relocated to the east-annex
     # partition wall (south wall is now the galley). Each lives in a
@@ -6086,7 +6088,7 @@ def build_formal_note_2026_09():
     make_cyl("Fool_Notebook_Pen", (-8.05, 3.80, 0.778), 0.005, 0.12, (0.20, 0.22, 0.30, 1.0), segments=6, axis='X')
     # (2026-10-03: on TABLE 14 — the banquet table it lay on is a floor of tables now)
     make_box("Folded_Note", (-10.15, -5.42, 0.759), (0.10, 0.07, 0.006), (0.92, 0.90, 0.84, 1.0))
-    make_box("Table14_Hundred", (-10.02, -5.30, 0.757), (0.14, 0.064, 0.002), (0.60, 0.66, 0.56, 1.0))
+    make_box("Table14_Hundred", (-10.02, -5.30, 0.7615), (0.14, 0.064, 0.002), (0.60, 0.66, 0.56, 1.0))   # (pass 386) on the cloth (0.76), not under it
 
 
 def build_far_town_2026_09():

@@ -139,7 +139,7 @@ def build_hall_and_kitchen():
     face = KY1 - 0.10
     make_box("Kitchen_Counter", (1.30, face - 0.30, 0.44), (2.00, 0.60, 0.88), (0.56, 0.46, 0.34, 1.0))
     make_box("Kitchen_Counter_Top", (1.30, face - 0.31, 0.90), (2.04, 0.64, 0.04), (0.72, 0.70, 0.64, 1.0))
-    make_box("Kitchen_Sink", (1.60, face - 0.31, 0.915), (0.60, 0.42, 0.01), (0.66, 0.68, 0.70, 1.0))
+    make_box("Kitchen_Sink", (1.60, face - 0.31, 0.9165), (0.60, 0.42, 0.01), (0.66, 0.68, 0.70, 1.0))   # (pass 386) 1.5 mm proud of the counter top
     make_cyl("Kitchen_Faucet", (1.60, face - 0.08, 1.05), 0.012, 0.26, (0.70, 0.72, 0.74, 1.0), segments=6)
     make_window("Kitchen_Win", (1.6, face, 1.55), width=1.0, height=0.90, room_dir=-1, see_through=True, palette={"frame": COL_TRIM})
     make_box("Kitchen_Win_Glass", (1.6, KY1 - 0.02, 1.55), (1.0, 0.01, 0.90), COL_GLASS)

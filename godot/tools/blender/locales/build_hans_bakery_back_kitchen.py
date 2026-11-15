@@ -748,7 +748,7 @@ def build_main_room_2026_11():
     wood, wood_dk = (0.46, 0.34, 0.22, 1.0), (0.36, 0.26, 0.16, 1.0)
     steel, steel_dk = (0.72, 0.72, 0.74, 1.0), (0.34, 0.35, 0.37, 1.0)
     crust, crust_dk = (0.74, 0.52, 0.30, 1.0), (0.50, 0.34, 0.20, 1.0)
-    top = 0.96                                       # the N counter's top (the mixer stood on it)
+    top = 0.98                                       # the N counter's top (the mixer stood on it). (pass 386) 0.98, not 0.96: the sink's rim lay under the surface
     ccx, ccy = COUNTER_CX + SH_NW[0], ROOM_D - 1.0
     # ── the sink, the cups beside it ──
     sx = ccx + 0.55

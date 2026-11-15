@@ -354,7 +354,7 @@ metadata/fov = 42.0
 ; insert: the place settings
 [node name="shot_insert_table" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.000, 1.250, -0.450)
-rotation = Vector3(-0.2016, 0.0000, 0.0)
+rotation = Vector3(-0.3353, -0.0141, 0.0)
 metadata/fov = 48.0
 
 ; insert: the Telecaster on its stand by the stairs
@@ -378,7 +378,7 @@ metadata/fov = 42.0
 ; insert: the pot (Eileen's pot roast)
 [node name="shot_insert_pot" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 1.25, -2.55)
-rotation = Vector3(-0.5748, 0.6202, 0.0)
+rotation = Vector3(-0.6955, 0.9738, 0.0)
 metadata/fov = 42.0
 
 ; insert: the sheet of paper Jesse recognizes
@@ -461,9 +461,9 @@ metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_fork__henderson_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.173, 1.233, -1.652)
-rotation = Vector3(-0.2792, 0.8185, 0.0)
-metadata/fov = 35.0
+position = Vector3(0.880, 1.080, -2.360)
+rotation = Vector3(-0.5691, 1.0617, 0.0)
+metadata/fov = 30.0
 
 ; ── draft 5 (pass 330, 2026-11-10): the house around the kitchen ──
 ; the kitchen doorway (W wall), the hall and the dining room's lamp past it

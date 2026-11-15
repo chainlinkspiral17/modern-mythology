@@ -2198,10 +2198,11 @@ def build_pizza_warmer():
     # 3 round pizzas on the case floor, side by side (28 cm pans on
     # 16 cm centres overlapped each other and the case sides)
     for pi, py_off in enumerate([-0.15, 0.0, +0.15]):
-        make_cyl(f"Pizza_Pan_{pi}", (px, py + py_off, base_z - 0.18),
+        # (pass 386) on the counter: at base_z - 0.18 pan and pizza were inside its 6 cm top
+        make_cyl(f"Pizza_Pan_{pi}", (px, py + py_off, base_z - 0.12),
                  0.07, 0.02, COL_METAL_STEEL)
         # Pizza (cheese-orange)
-        make_cyl(f"Pizza_Cheese_{pi}", (px, py + py_off, base_z - 0.164),
+        make_cyl(f"Pizza_Cheese_{pi}", (px, py + py_off, base_z - 0.104),
                  0.06, 0.012, COL_PIZZA_ORANGE)
         # 4 pepperoni dots
         for di in range(4):

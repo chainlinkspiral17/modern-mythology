@@ -240,14 +240,16 @@ def build_strength_dressing():
     # The feed bucket inside the cage — sitting upright at the back
     # of the cage where it was left when Lila walked out for the
     # last time
+    # (pass 386) ON the wagon's platform (its top is 0.40): the bucket stood
+    # 10 cm into the planks and the spilled feed lay inside them
     make_cyl("Wagon_Cage_FeedBucket_Body",
-             (wx + 0.30, wy + 0.30, 0.42),
+             (wx + 0.30, wy + 0.30, 0.52),
              0.12, 0.24,
              (0.42, 0.32, 0.20, 1.0),
              segments=10, axis='Z')
     # Bucket rim (slightly wider)
     make_cyl("Wagon_Cage_FeedBucket_Rim",
-             (wx + 0.30, wy + 0.30, 0.54),
+             (wx + 0.30, wy + 0.30, 0.64),
              0.13, 0.012,
              (0.32, 0.22, 0.14, 1.0),
              segments=10, axis='Z')
@@ -256,7 +258,7 @@ def build_strength_dressing():
         pdx = -0.10 + (pi % 3) * 0.08
         pdy = -0.16 + (pi // 3) * 0.06
         make_box("Wagon_Cage_Feed_%d" % pi,
-                 (wx + 0.20 + pdx, wy + 0.10 + pdy, 0.31),
+                 (wx + 0.20 + pdx, wy + 0.10 + pdy, 0.4105),
                  (0.04, 0.04, 0.02),
                  (0.62, 0.46, 0.22, 1.0))
 

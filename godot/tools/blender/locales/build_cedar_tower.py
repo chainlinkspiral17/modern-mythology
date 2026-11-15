@@ -555,7 +555,7 @@ def build_wear_personality_2026_08():
     # ── LOBBY (z 0) · one line, door to stairs ──
     make_traffic_wear("Wear_Lobby_Line",
                       [(0.0, 0.8), (1.2, 3.0), (2.5, 5.2)],
-                      width=0.5, floor_z=0.02, tint=cedar_dk)
+                      width=0.5, floor_z=0.05, tint=cedar_dk)   # (pass 386) the floor's TOP: 0.02 is inside the slab
     # Dust band on the empty reception desk — no chair, no hands.
     make_box("Wear_Reception_Dust", (0.0, 5.2, 1.155), (2.6, 0.7, 0.004),
              (0.58, 0.45, 0.32, 1.0))
@@ -570,7 +570,7 @@ def build_wear_personality_2026_08():
                                          (-0.75, 0.5), (0.75, 0.5))):
             make_floor_stain("Wear_Studio_Chair_%d_%d" % (ci, di),
                              (cx2 + dx2, cy2 + dy2 - 0.65), radius=0.24,
-                             floor_z=5.02, tint=cedar_dk, segments=8)
+                             floor_z=5.05, tint=cedar_dk, segments=8)
     # One desk carries coffee rings; the others don't — one person
     # on the crew drinks at their desk, and everyone knows who.
     for ri2, (rx2, ry2) in enumerate(((-2.95, 3.55), (-2.88, 3.75), (-3.05, 3.68))):
@@ -579,14 +579,14 @@ def build_wear_personality_2026_08():
     # The service line along the racks — feet that tend machines.
     make_traffic_wear("Wear_Rack_Line",
                       [(-4.6, 7.9), (0.0, 7.9), (4.6, 7.9)],
-                      width=0.4, floor_z=5.02, tint=cedar_dk)
+                      width=0.4, floor_z=5.05, tint=cedar_dk)
     # ── QUARTERS (z 10) · a table for twelve, a crew of five ──
     # Five seats worn, seven clean: the table was built for the
     # company they hoped for.
     for si2, (sx2, sy2) in enumerate(((-1.4, 3.2), (-0.7, 3.2), (0.0, 3.2),
                                       (0.7, 3.2), (-1.4, 4.4))):
         make_floor_stain("Wear_Seat_%d" % si2, (sx2, sy2), radius=0.17,
-                         floor_z=10.02, tint=cedar_dk, segments=8)
+                         floor_z=10.05, tint=cedar_dk, segments=8)
     # Kettle ring on the wood-stove top (a different household's
     # kettle than the cabin's, same physics).
     make_cyl("Wear_QStove_Ring", (5.0, 6.6, 10.8374), 0.095, 0.004,

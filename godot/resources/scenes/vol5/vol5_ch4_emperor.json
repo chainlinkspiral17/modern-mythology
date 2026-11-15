@@ -245,7 +245,7 @@
   },
   {
    "t": "narrate",
-   "text": "The man left a folded note on the table. He left a hundred-dollar bill weighted on top of it.",
+   "text": "[shot:insert hundred]The man left a folded note on the table. He left a hundred-dollar bill weighted on top of it.",
    "voice": "assets/audio/voice/vol5_ch4_emperor/048.mp3"
   },
   {

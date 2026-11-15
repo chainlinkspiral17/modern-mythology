@@ -158,6 +158,43 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-15 · a gate you nudged green has not looked at the frame (pass 387)
+
+- **What happened:** pass 386 lifted Nate's amps 2.4 cm onto the carpet;
+  `vantage_obstruction` then said the second amp stood between the lens
+  and the set order's tape. I lifted the sheet with its amp (right, it is
+  taped to it), three of the gate's five rays cleared the amp in front,
+  and the gate went green. The render showed the lower half of the sheet
+  behind that amp. It had been so before the pass too.
+- **Why:** the gate asked five rays at the subject cluster's CENTRE,
+  6 cm apart. A subject 28 cm tall whose top clears an obstacle passes.
+- **The reading:** `HALF HIDDEN` (inserts): each part of the subject
+  cluster is sampled across its own face (centre and four points 70% of
+  the way to its edges, on its two longest axes); 40% of the points
+  blocked by something that is not the subject, its mount or a thing
+  standing on it fails.
+- **Rule:** when a gate fails and a small move makes it pass, render the
+  frame before believing it. A pass bought with a nudge is the case the
+  gate's sample was too coarse to see.
+
+### 2026-11-15 · a thing inside a slab passes every contact gate; ask where its TOP is (pass 386)
+- Buried is the quietest fault there is: the part touches its host
+  (held), clips nothing it is not part of, and prop_overlap's `buried`
+  lets off anything sharing a face with its host — which a thing set on
+  the slab's underside does. 314 of them. Ask the plain question: is its
+  top above the top of what it lies on?
+- Read exact planes only. A recorded box is an AABB: a blanket, a blob,
+  a sloped road and a ring all "contain" what lies on them. The recorder
+  knows which parts are plain boxes (`TRUE_BOXES`) and upright cylinders
+  (`Z_CYLS`); judge only pairs of those. The first scan, without that,
+  said 1,487.
+- A hit is sometimes the HOST's fault: a "rail" or a "rim" modelled as a
+  solid disc lids everything inside it. Lifting the chips onto the lid
+  would have passed the gate and kept the leather table.
+- When a lift breaks a neighbour (the pot roast onto the napkin holder,
+  the grail off the landline's chain), that neighbour was wrong too.
+  Run overlap and support on every set a lift touches.
+
 ### 2026-11-15 · "held" is not "on": touching a surface and resting on it are different questions (pass 384)
 - `support_audit` asks whether a thing is connected to the room. A
   napkin dispenser with a third of its base on a table and two thirds in

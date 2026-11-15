@@ -422,7 +422,7 @@ def build_clinic():
     # the cabinet and sink on the E wall, the glass of water on a tray
     make_box("Cl_Cabinet", (CX1 - 0.10 - 0.28, 1.2, 0.45), (0.56, 1.20, 0.90), (0.92, 0.92, 0.88, 1.0))
     make_box("Cl_Cabinet_Top", (CX1 - 0.10 - 0.29, 1.2, 0.915), (0.58, 1.24, 0.03), (0.80, 0.80, 0.78, 1.0))
-    make_cyl("Cl_Sink", (CX1 - 0.10 - 0.30, 1.5, 0.92), 0.16, 0.02, (0.96, 0.96, 0.96, 1.0), segments=14)
+    make_cyl("Cl_Sink", (CX1 - 0.10 - 0.30, 1.5, 0.9215), 0.16, 0.02, (0.96, 0.96, 0.96, 1.0), segments=14)   # (pass 386) 1.5 mm proud of the cabinet top
     make_box("Cl_Tray", (CX1 - 0.10 - 0.30, 0.9, 0.937), (0.30, 0.22, 0.015), (0.74, 0.74, 0.76, 1.0))
     for k in range(3):
         make_cyl(f"Cl_Jar_{k}", (CX1 - 0.10 - 0.24, 1.35 + k * 0.14, 0.99), 0.04, 0.12, (0.86, 0.88, 0.84, 1.0), segments=10)

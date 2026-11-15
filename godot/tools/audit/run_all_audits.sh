@@ -544,6 +544,17 @@ WDOUT="$(python3 winding_audit.py 2>/dev/null)" || {
 echo "$WDOUT" | tail -1
 echo ""
 
+# ── Buried-flat gate (2026-11-15, pass 386) ───────────────────
+# A flat thing lying INSIDE the slab it lies on (Dean's hundred 3 cm inside
+# the dining table, a rug inside the floorboards) is never drawn; one whose
+# top is IN the slab's top plane flickers. Exact shapes only.
+echo "── buried_flat_audit.py ── t+${SECONDS}s"
+BFOUT="$(python3 buried_flat_audit.py 2>/dev/null)" || {
+    echo "$BFOUT" | grep "^BURIED" | head -20
+    DEFERRED="$DEFERRED buried_flat_audit"; }
+echo "$BFOUT" | tail -1
+echo ""
+
 # ── Overhang gate (2026-11-15, pass 384) ──────────────────────
 # The user, of a napkin dispenser at booth six: "What's the thing sticking
 # out from the end of the table, hovering in the air?" It touched the

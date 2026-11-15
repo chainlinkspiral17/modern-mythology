@@ -172,9 +172,13 @@ def build_dressing():
         make_box(f"DishRack_Tine_{ti}", (cw_x+0.74+ti*0.06, cw_y, TOP_Z+0.11), (0.01, 0.24, 0.16), P.METAL_STEEL)
     make_calendar("Calendar", (-ROOM_W/2.0+0.1025, 3.30, 1.6))   # north of the doorway (draft 5)
     tx, ty = 0.0, ROOM_D/2.0
-    make_box("NapkinHolder", (tx, ty, 0.82), (0.14, 0.06, 0.12), (0.86, 0.84, 0.80, 1.0))
-    make_cyl("Salt", (tx+0.16, ty, 0.80), 0.025, 0.10, (0.92, 0.92, 0.90, 1.0), segments=8)
-    make_cyl("Pepper", (tx+0.22, ty, 0.80), 0.025, 0.10, (0.28, 0.24, 0.22, 1.0), segments=8)
+    # (pass 386) off the centre, where the pot roast stands now: by the
+    # table's south-WEST corner, between the south and west settings. Not
+    # the south-east: there it stood in the fork insert's sightline (the
+    # lens looks in over that corner at the head setting)
+    make_box("NapkinHolder", (tx - 0.27, ty - 0.27, 0.82), (0.14, 0.06, 0.12), (0.86, 0.84, 0.80, 1.0))
+    make_cyl("Salt", (tx+0.27, ty+0.24, 0.81), 0.025, 0.10, (0.92, 0.92, 0.90, 1.0), segments=8)     # (pass 386) clear of the pot; on the top (0.76)
+    make_cyl("Pepper", (tx+0.33, ty+0.24, 0.81), 0.025, 0.10, (0.28, 0.24, 0.22, 1.0), segments=8)
     make_floor_plant("Plant", (0.12, 0.52, 0.0), palette={"leaf": (0.36, 0.48, 0.30, 1.0), "pot": (0.60, 0.40, 0.26, 1.0)})
 
 def build_ceiling_infra():
@@ -255,6 +259,9 @@ def build_hero_props():
     # It sits at the table's head, still in the enameled dutch oven
     # it was cooked in, lid off and leaning against its own base —
     # which is what "she made it tonight" looks like from the door.
+    # (pass 386) in the MIDDLE of the table. At +0.22 its trivet lay on the
+    # north place setting: the plate and the fork were inside it
+    # (buried_flat_audit). The lid leans against it on the north-west.
     tx0, ty0 = 0.0, ROOM_D/2.0
     enamel = (0.62, 0.16, 0.14, 1.0)      # the old red enamel
     enamel_dk = (0.46, 0.11, 0.10, 1.0)
@@ -264,45 +271,69 @@ def build_hero_props():
     carrot = (0.78, 0.42, 0.16, 1.0)
     tater = (0.80, 0.72, 0.52, 1.0)
     # Dutch oven: body, a proud rolled rim, two lug handles
-    make_cyl("PotRoast_Pot", (tx0, ty0 + 0.22, 0.855),
+    make_cyl("PotRoast_Pot", (tx0, ty0, 0.855),
              0.155, 0.19, enamel, segments=16)
-    make_cyl("PotRoast_Pot_Rim", (tx0, ty0 + 0.22, 0.948),
-             0.166, 0.022, enamel_dk, segments=16)
-    make_cyl("PotRoast_Pot_Inner", (tx0, ty0 + 0.22, 0.944),
+    # (pass 386) a RING: as a disc it lidded the pot — the gravy and the
+    # vegetables lay under it
+    from _props.geometry import make_lathe as _ring
+    _ring("PotRoast_Pot_Rim", (tx0, ty0, 0.937),
+          [(0.146, 0.0), (0.166, 0.0), (0.166, 0.022), (0.146, 0.022)], enamel_dk, segments=20)
+    make_cyl("PotRoast_Pot_Inner", (tx0, ty0, 0.944),
              0.140, 0.010, cream, segments=16)
     for sgn in (-1, 1):
         make_box("PotRoast_Lug_%d" % sgn,
-                 (tx0 + sgn * 0.175, ty0 + 0.22, 0.930),
+                 (tx0 + sgn * 0.175, ty0, 0.930),
                  (0.055, 0.085, 0.030), enamel_dk)
     # The roast itself, proud of the rim, with vegetables around it
-    make_blob("PotRoast_Meat", (tx0, ty0 + 0.22, 0.975), 0.105,
+    make_blob("PotRoast_Meat", (tx0, ty0, 0.975), 0.105,
               roast, noise=0.16, seed=5, squash=0.62)
-    make_cyl("PotRoast_Gravy", (tx0, ty0 + 0.22, 0.950),
+    make_cyl("PotRoast_Gravy", (tx0, ty0, 0.950),
              0.132, 0.012, gravy, segments=14)
     for vi, (vx, vy) in enumerate(((-0.085, 0.055), (0.080, 0.040),
                                    (-0.050, -0.075), (0.065, -0.065))):
         col = carrot if vi % 2 == 0 else tater
         make_blob("PotRoast_Veg_%d" % vi,
-                  (tx0 + vx, ty0 + 0.22 + vy, 0.962), 0.036,
+                  (tx0 + vx, ty0 + vy, 0.962), 0.036,
                   col, noise=0.20, seed=11 + vi, squash=0.80)
     # The lid, OFF — leaning against the pot, which is the detail
     # that says it was served just now.
-    make_cyl("PotRoast_Lid", (tx0 + 0.245, ty0 + 0.30, 0.815),
+    make_cyl("PotRoast_Lid", (tx0 - 0.235, ty0 + 0.20, 0.815),
              0.150, 0.030, enamel, segments=16)
-    make_cyl("PotRoast_Lid_Knob", (tx0 + 0.245, ty0 + 0.30, 0.845),
+    make_cyl("PotRoast_Lid_Knob", (tx0 - 0.235, ty0 + 0.20, 0.845),
              0.024, 0.030, enamel_dk, segments=8)
     # A trivet under the pot — nobody puts a hot dutch oven on oak
-    make_box("PotRoast_Trivet", (tx0, ty0 + 0.22, 0.768),
+    make_box("PotRoast_Trivet", (tx0, ty0, 0.768),
              (0.36, 0.36, 0.016), (0.36, 0.28, 0.20, 1.0))
 
     # Four place settings — the head setting is the shot
     tx, ty = 0.0, ROOM_D/2.0
+    # (pass 387) each fork lies to its OWN diner's left, pointing up the
+    # table, and on the top (0.76): all four lay 15 cm west of their plate
+    # whichever way the seat faced (the head's between its plate and the
+    # pot, the west seat's on the table's edge), 8 mm in the air
     for si, (dx, dy) in enumerate(((-0.45, 0.0), (0.0, -0.32), (0.0, 0.32), (0.45, 0.0))):
-        make_cyl(f"Setting_{si}_Plate", (tx+dx, ty+dy, 0.77), 0.11, 0.012, (0.90, 0.88, 0.84, 1.0), segments=12)
-        make_box(f"Setting_{si}_Fork", (tx+dx-0.15, ty+dy, 0.772), (0.02, 0.12, 0.008), (0.60, 0.62, 0.63, 1.0))
+        make_cyl(f"Setting_{si}_Plate", (tx+dx, ty+dy, 0.7665), 0.11, 0.012, (0.90, 0.88, 0.84, 1.0), segments=12)
+        if dx:      # the end seats face along x: the fork lies along x, on the diner's left
+            fx, fy = dx, dy + (0.15 if dx < 0 else -0.15)
+        else:       # the side seats face along y
+            fx, fy = (-0.15 if dy < 0 else 0.15), dy
+        # a FORK, not a bar: handle, shoulder and four tines pointing up the
+        # table (it is the subject of ch7's close-up)
+        steel = (0.80, 0.82, 0.84, 1.0)
+        ux, uy = ((1.0 if dx < 0 else -1.0), 0.0) if dx else (0.0, (1.0 if dy < 0 else -1.0))   # toward the table's middle
+        def _fk(nm, along, across, ln, wd, th=0.004):
+            cx, cy = tx + fx + ux * along - uy * across, ty + fy + uy * along + ux * across
+            sz = (ln, wd, th) if ux else (wd, ln, th)
+            make_box(nm, (cx, cy, 0.7625), sz, steel)
+        _fk(f"Setting_{si}_Fork", -0.022, 0.0, 0.076, 0.010)              # the handle
+        _fk(f"Setting_{si}_Fork_Head", 0.025, 0.0, 0.018, 0.024)
+        for k in range(4):
+            _fk(f"Setting_{si}_Fork_Tine_{k}", 0.047, -0.0105 + k * 0.007, 0.028, 0.0034)
     # Coffee mugs by the pot: three poured, one never drunk
-    for mi, (mx, my) in enumerate(((-2.98, Y_BACK-0.20), (-2.36, Y_BACK-0.45), (0.35, ty-0.05))):   # on the counter, which is on the wall now (2026-09-25)
-        make_cyl(f"Mug_{mi}", (mx, my, TOP_Z+0.045 if mi < 2 else 0.79), 0.04, 0.09,
+    # (pass 387) the table's mug stood ON the head setting's fork and plate
+    # rim, 1.5 cm into the top: above the plate on the diner's right now
+    for mi, (mx, my) in enumerate(((-2.98, Y_BACK-0.20), (-2.36, Y_BACK-0.45), (0.36, ty+0.16))):   # on the counter, which is on the wall now (2026-09-25)
+        make_cyl(f"Mug_{mi}", (mx, my, TOP_Z+0.045 if mi < 2 else 0.8055), 0.04, 0.09,
                  [(0.72, 0.30, 0.22, 1.0), (0.30, 0.40, 0.52, 1.0), (0.86, 0.82, 0.74, 1.0)][mi], segments=10)
 
 
@@ -392,7 +423,7 @@ def build_detail_2026_10():
     make_cord_run("Cord_Fridge", (W - 0.50 + 0.34, 3.32, 0.22), (W - 0.10, 3.60, 0.30), sag=0.04)
     # ── D4 ──
     make_box("Oven_Towel", (RANGE_X, Y_BACK - 0.60 - 0.012, 0.76), (0.30, 0.02, 0.30), (0.56, 0.62, 0.70, 1.0))
-    make_cyl("Table_Coffee_Ring", (0.42, 2.55, 0.761), 0.045, 0.002, (0.48, 0.36, 0.22, 1.0), segments=12)
+    make_cyl("Table_Coffee_Ring", (0.22, 2.50, 0.7615), 0.045, 0.002, (0.48, 0.36, 0.22, 1.0), segments=12)   # (pass 387) clear of the head setting's fork
     for mi, (dx, dy, dz) in enumerate(((0.0, 0.0, 0.0), (0.03, -0.02, 0.004), (-0.02, 0.03, 0.008))):
         make_box(f"Mail_{mi}", (2.55 + dx, Y_BACK - 0.40 + dy, TOP_Z + 0.003 + dz), (0.24, 0.11, 0.004), ((0.92, 0.92, 0.88, 1.0), (0.86, 0.84, 0.78, 1.0), (0.94, 0.90, 0.80, 1.0))[mi])
     make_chair("Chair_Pushed", 1.35, 1.55, yaw=2.35, wood=COL_WOOD)

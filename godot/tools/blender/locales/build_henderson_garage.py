@@ -72,7 +72,8 @@ COL_CRATE = (0.68, 0.30, 0.14, 1.0)     # orange milk crate
 COL_DRIVE = (0.50, 0.49, 0.50, 1.0)     # driveway concrete (dusk)
 COL_LAWN = (0.22, 0.30, 0.16, 1.0)
 COL_BULB = (1.00, 0.88, 0.62, 1.0)      # bare bulb — blooms via glow
-COL_FLYER = (0.90, 0.88, 0.80, 1.0)
+COL_FLYER = (0.80, 0.68, 0.30, 1.0)      # (pass 387) "a faded mustard yellow" (vol 6 ch14)
+COL_FLYER_INK = (0.10, 0.10, 0.11, 1.0)  # "black ink"
 
 
 def build_shell():
@@ -225,7 +226,7 @@ def build_band_gear():
 
 def build_wall_dressing():
     """Workbench + pegboard on the north wall, paint shelf, fridge,
-    box fan, crates, and the Foxhole flyer pinned by the door."""
+    box fan, crates, and the Foxhole flyer on the bench."""
     ny = ROOM_D - 0.30
     make_box("Bench_Top", (1.4, ny, 0.90), (2.2, 0.55, 0.05), COL_BENCH)
     for lx in (0.45, 2.35):
@@ -256,9 +257,20 @@ def build_wall_dressing():
     # Milk crates stacked by the amps
     for ci, (cx, cy, cz) in enumerate([(-2.45, 4.4, 0.16), (-2.45, 4.4, 0.48), (2.5, 4.5, 0.16)]):   # floor, and stacked (2026-09-23: 1-2 cm gaps)
         make_box(f"Crate_{ci}", (cx, cy, cz), (0.33, 0.33, 0.32), COL_CRATE, open_faces={"+Z"})
-    # The Foxhole flyer pinned by the door jamb (ch14)
-    make_box("Flyer", (ROOM_W / 2.0 - 0.11, 0.35, 1.45), (0.02, 0.22, 0.28), COL_FLYER)   # on the wall (2026-09-23: 2 cm off it)
-    make_box("Flyer_Band", (ROOM_W / 2.0 - 0.1275, 0.35, 1.52), (0.015, 0.18, 0.05), COL_STEEL_DK)
+    # The Foxhole flyer (ch14). (pass 387) BY THE TEXT: "Half-letter,
+    # photocopied, two colors — black ink on a paper that is, today, a faded
+    # mustard yellow", the venue name in block lettering across the top, and
+    # "He sets the flyer on the workbench." It was a cream letter-size slab
+    # 2 cm thick pinned by the door jamb, with a steel band — its close-up
+    # read as a switch plate. On the bench now, beside the map (the bench
+    # top's surface is 0.925). Half-letter's height, at 4:5 — the shape of
+    # the flyer art (henderson_garage_flyer, generated 4:5), which lies
+    # over it flat (meshy_roster: facing "up").
+    fx, fy = 1.45, ROOM_D - 0.44
+    make_box("Flyer", (fx, fy, 0.9265), (0.172, 0.216, 0.002), COL_FLYER)
+    make_box("Flyer_Title", (fx, fy + 0.075, 0.9281), (0.140, 0.034, 0.001), COL_FLYER_INK)
+    for k, (dy, w) in enumerate(((0.036, 0.124), (0.010, 0.140), (-0.016, 0.112), (-0.050, 0.088))):
+        make_box(f"Flyer_Print_{k}", (fx - (0.140 - w) / 2.0, fy + dy, 0.9281), (w, 0.009, 0.001), COL_FLYER_INK)
     # Bare-bulb ceiling fixture — the practical the tscn Omni sits on
     make_cyl("Bulb_Base", (0.0, 2.6, CEIL - 0.06), 0.05, 0.06, COL_STEEL_DK, segments=8)
     make_cyl("Bulb", (0.0, 2.6, CEIL - 0.14), 0.045, 0.09, COL_BULB, segments=10)
@@ -279,12 +291,13 @@ def build_hero_props_2026_09():
       red body, cab, four wheels.
     """
     # ── THE MAP · workbench top (z 0.92) ──
-    make_box("Corridor_Map", (1.0, 5.30, 0.9225), (0.28, 0.216, 0.003),
+    # (pass 386) the bench top's surface is 0.925: the map lay 1 mm under it, its ink on the surface plane
+    make_box("Corridor_Map", (1.0, 5.30, 0.927), (0.28, 0.216, 0.003),
              (0.92, 0.90, 0.85, 1.0))
     for ai, (ax2, ay2, ac) in enumerate(((0.94, 5.26, (0.15, 0.15, 0.16, 1.0)),
                                          (1.05, 5.33, (0.72, 0.20, 0.16, 1.0)),
                                          (0.99, 5.37, (0.22, 0.30, 0.62, 1.0)))):
-        make_box(f"Map_Ink_{ai}", (ax2, ay2, 0.9245), (0.060, 0.008, 0.001), ac)
+        make_box(f"Map_Ink_{ai}", (ax2, ay2, 0.9293), (0.060, 0.008, 0.001), ac)
     # ── BEN'S TRUCK · at the curb, past the driveway ──
     make_box("Street_Curbline", (0.0, -6.5, -0.035), (8.00, 2.60, 0.05),
              (0.32, 0.32, 0.33, 1.0))

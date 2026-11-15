@@ -174,6 +174,8 @@ def record_builder(path):
         half = {'Z': (r, r, h / 2), 'Y': (r, h / 2, r),
                 'X': (h / 2, r, r)}.get(str(axis).upper(), (r, r, h / 2))
         A.BOXES.append((str(name), tuple(float(c) for c in center), half))
+        if str(axis).upper() == 'Z':
+            A.Z_CYLS.add(str(name))
         return A._obj_stub(name)
 
     def rec_mesh(name, verts, faces=None, base_color=None, *a, **k):

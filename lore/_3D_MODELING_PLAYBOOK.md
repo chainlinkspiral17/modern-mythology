@@ -399,6 +399,20 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-11-15 · name the SURFACE, and measure small things from it (pass 386)
+- `top = 0.95`, `desk_top_z`, `TABLE_TOP_Z`, `floor_z=5.02`: in a third
+  of the sets the constant a prop is placed from is the slab's centre or
+  underside. Define the surface where the slab is made
+  (`surf = centre_z + thickness / 2`) and place from that; a helper that
+  takes `floor_z` wants the floor's TOP.
+- A flat thing's centre is `surf + its_thickness / 2`, plus half a
+  millimetre so it does not share the plane. A drop-in sink's rim stands
+  1.5 mm proud of its counter.
+- A rail round a table, a rim round a pot: a RING (`make_lathe` with a
+  four-point profile), never a disc.
+- Reusing another builder's kit in a room with a carpet (or a deck, or
+  a porch): lift the whole kit by that floor's thickness.
+
 ### 2026-11-14 · a cap chosen for rooms was costing the towns five times their draw calls (pass 382)
 - StaticMerge's cell grows with the set but was capped at 12 m — set
   when the biggest sets were a block wide. Measure before trusting a

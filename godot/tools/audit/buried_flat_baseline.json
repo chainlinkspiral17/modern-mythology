@@ -1,0 +1,11 @@
+{
+ "_doc": "buried_flat_audit.py: flat things lying inside (or flush with) the slab they lie on, per set; lower only",
+ "counts": {
+  "harmony_terrain": 23,
+  "le_roulant_casino": 9,
+  "louisiana_road": 4,
+  "pharmacy": 10,
+  "riverfront": 9,
+  "vol3_rooms": 4
+ }
+}

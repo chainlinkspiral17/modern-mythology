@@ -351,9 +351,9 @@ script = ExtResource("14_dbgm")
 
 ; insert: the flyer (SUBSTATION NINE at the Foxhole)
 [node name="shot_insert_flyer" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3, 1.5, -0.85)
-rotation = Vector3(-0.0241, -2.5013, 0.0)
-metadata/fov = 42.0
+position = Vector3(1.620, 1.360, -4.880)
+rotation = Vector3(-0.7037, 0.3403, 0.0)
+metadata/fov = 30.0
 
 ; insert: Ben's annotated corridor map, three colors of ballpoint
 ; (2026-09-24: pitched down onto the map lying on the bench — level, it
@@ -391,9 +391,9 @@ metadata/fov = 45.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_door__henderson_garage" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.188, 2.018, 1.261)
-rotation = Vector3(-0.2618, -0.2976, 0.0)
-metadata/fov = 35.0
+position = Vector3(0.800, 1.100, 5.000)
+rotation = Vector3(0.1229, 0.1526, 0.0)
+metadata/fov = 50.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_snare__henderson_garage_day" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -406,6 +406,12 @@ metadata/fov = 35.0
 position = Vector3(2.414, 0.641, 2.209)
 rotation = Vector3(-0.2618, 1.5533, 0.0)
 metadata/fov = 35.0
+
+; (pass 387) "the kid with the flyer comes up the driveway": out the open door, from where Jesse sits
+[node name="shot_insert_driveway__henderson_garage" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.600, 1.300, -3.000)
+rotation = Vector3(-0.1186, -3.0222, 0.0)
+metadata/fov = 42.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_workbench__henderson_garage" type="Marker3D" parent="." groups=["vn_shot"]]

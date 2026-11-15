@@ -340,7 +340,7 @@ def build_front_facade():
              COL_METAL_BRASS)
     # WELCOME mat
     make_box("FrontDoor_Mat",
-             (fd_x, fd_y - 0.50, 0.015),
+             (fd_x, fd_y - 0.50, 0.113),          # (pass 386) on the porch slab (top 0.10), not inside it
              (fd_w + 0.20, 0.50, 0.025),
              (0.32, 0.26, 0.20, 1.0))
     # Two porch steps + porch slab

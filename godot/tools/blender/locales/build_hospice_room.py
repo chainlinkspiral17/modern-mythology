@@ -276,7 +276,8 @@ def build_use_states_d4():
     make_box("Door_Clipboard_Sheet", (-1.25, 0.1225, 1.34), (0.20, 0.005, 0.26),
              (0.92, 0.92, 0.88, 1.0))
     # Erica's unsent thank-you: an envelope square on the dresser
-    make_box("Dresser_Envelope", (-2.60, 3.25, 0.895), (0.16, 0.11, 0.008),
+    # (pass 386) ON the dresser's runner (its top is at 0.94): at 0.895 it lay 2 cm inside the dresser top
+    make_box("Dresser_Envelope", (-2.60, 3.25, 0.9445), (0.16, 0.11, 0.008),
              (0.90, 0.88, 0.80, 1.0))
 
 def build_draft3_2026_09():

@@ -295,7 +295,7 @@ def build_use_states_d4():
              (0.92, 0.92, 0.88, 1.0))   # (draft 3: off the sink)
     make_box("Takeout_B", (-0.18, 5.52, 0.98), (0.16, 0.16, 0.07),
              (0.92, 0.92, 0.88, 1.0))
-    make_box("Takeout_B_Lid", (0.04, 5.44, 0.935), (0.17, 0.17, 0.01),
+    make_box("Takeout_B_Lid", (0.04, 5.44, 0.9705), (0.17, 0.17, 0.01),   # (pass 386) on the formica (0.965), not 3 cm inside it
              (0.88, 0.88, 0.84, 1.0))
     # Microwave door ajar (a container open)
     # (draft 3: hinged at the microwave's west edge, swung 70° out —

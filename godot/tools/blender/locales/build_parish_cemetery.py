@@ -285,7 +285,7 @@ def build_judgement_dressing():
     # the central path (lamps approx every 3m at y = -4, 0, +4)
     for lpy in (-4.0, 0.0, +4.0):
         make_cyl("Lamp_Halo_%.1f" % lpy,
-                 (0.0, lpy, 0.005),
+                 (0.0, lpy, 0.021),              # (pass 386) on the grass (top 0.02): at 0.005 the pools of lamplight were under it
                  1.20, 0.001,
                  (0.96, 0.74, 0.32, 0.35),
                  segments=12, axis='Z')

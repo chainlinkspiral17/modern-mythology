@@ -16926,7 +16926,7 @@
     {
       "slug": "henderson_garage_flyer",
       "kind": "art",
-      "name": "the Foxhole flyer pinned by the garage door jamb",
+      "name": "the Foxhole flyer on the garage workbench",
       "file": "henderson_garage_flyer.png",
       "vol": [
         6
@@ -16934,7 +16934,7 @@
       "keys": [
         "henderson_garage_flyer"
       ],
-      "tag": "picture · henderson_garage · 0.22 x 0.28 m · 179 lines play here, 10 mention it",
+      "tag": "picture · henderson_garage · 0.17 x 0.22 m · 179 lines play here, 10 mention it",
       "prompt": "Straight-on view of a half-letter photocopied gig flyer, black ink on faded mustard-yellow paper. Top: THE FOXHOLE in chunky hand-drawn block lettering with a little fox head. Below in typewriter- style type: SATURDAY 8/22 — DOORS 8 PM // 21+ // CASH BAR, then 9 PM: SUBURBAN BLIGHT (NEW AUBURN'S OWN) and 11 PM: DJ CHESS (SAN ANTONIO). Slightly crooked photocopy, toner speckle, a corner torn by a thumbtack. Portrait format, evenly lit.",
       "canon": [
         {
@@ -16947,7 +16947,7 @@
         }
       ],
       "prompt_mode": "append",
-      "notes": "(2026-10-13, written from the builder, scenes and wiki) Read: ch14 prose verbatim. Builder colour is cream (0.90,0.88,0.80); prose says mustard yellow — prose followed. (2026-10-19) size doubled: laid at half its stand-in by hero_art_candidates' half-extent bug.",
+      "notes": "(2026-10-13, written from the builder, scenes and wiki) Read: ch14 prose verbatim. Builder colour is cream (0.90,0.88,0.80); prose says mustard yellow — prose followed. (2026-10-19) size doubled: laid at half its stand-in by hero_art_candidates' half-extent bug. (2026-11-15, pass 387) moved by the text: \"He sets the flyer on the workbench.\" It lies flat on the bench beside the map now (facing up, top toward the pegboard); the stand-in is the art's 4:5 at half-letter height, 0.172 x 0.216 m.",
       "art_cat": "PICTURE",
       "score_lines": 179,
       "score_mentions": 10,
@@ -16956,15 +16956,15 @@
           "locale": "henderson_garage",
           "label": "Flyer",
           "center": [
-            2.69,
-            0.35,
-            1.45
+            1.45,
+            5.36,
+            0.9275
           ],
           "size": [
-            0.22,
-            0.28
+            0.172,
+            0.216
           ],
-          "facing": "-x",
+          "facing": "up",
           "hide": [
             "Flyer"
           ]

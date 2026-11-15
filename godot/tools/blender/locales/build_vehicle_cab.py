@@ -480,7 +480,9 @@ def build_corolla_2026_10():
     ax, ay, dz = COR_X, COR_Y, COR_DZ
     # the body round the cab: pan, floor, hood, cowl, fenders, fascia, trunk, quarters, wheels
     make_box("Corolla_Pan", (ax, ay - 0.10, 0.21), (1.80, 5.00, 0.10), RUBBER)
-    make_box("Corolla_Cab_Floor", (ax, ay, 0.29), (1.80, 3.10, 0.06), DASH)
+    # (pass 386) 0.43 + COR_DZ: at 0.29 (the Altima's, which rides 2 cm higher)
+    # the floor mats lay inside the floor and the seats 2 cm into it
+    make_box("Corolla_Cab_Floor", (ax, ay, 0.27), (1.80, 3.10, 0.06), DASH)
     make_box("Corolla_Hood_Block", (ax, ay + 2.27, 0.575), (1.80, 1.34, 0.50), COROLLA)
     make_wedge("Corolla_Hood_Slope", (ax, ay + 2.27, 0.89), (1.80, 1.34, 0.13), COROLLA, high_end="-Y")
     make_box("Corolla_Cowl", (ax, ay + 1.575, 0.69), (1.86, 0.05, 0.74), COROLLA)
@@ -616,7 +618,7 @@ def build_judgement_day_2026_10():
     from _props.plan import shifted
     ax, ay, dz = JD_X, JD_Y, JD_DZ
     make_box("JD_Pan", (ax, ay - 0.10, 0.21), (1.80, 5.00, 0.10), RUBBER)
-    make_box("JD_Cab_Floor", (ax, ay, 0.29), (1.80, 3.10, 0.06), DASH)
+    make_box("JD_Cab_Floor", (ax, ay, 0.27), (1.80, 3.10, 0.06), DASH)   # (pass 386) 0.43 + JD_DZ, as the Corolla's
     make_box("JD_Hood_Block", (ax, ay + 2.27, 0.575), (1.80, 1.34, 0.50), JD_RED)
     make_wedge("JD_Hood_Slope", (ax, ay + 2.27, 0.89), (1.80, 1.34, 0.13), JD_RED, high_end="-Y")
     make_box("JD_Hood_Primer_Patch", (ax + 0.40, ay + 2.40, 0.965), (0.60, 0.50, 0.006), (0.56, 0.56, 0.54, 1.0))

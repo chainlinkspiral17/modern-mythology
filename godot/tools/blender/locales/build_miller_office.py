@@ -273,7 +273,7 @@ def build_hero_props_2026_09():
     """
     make_box("August_Bills_Stack", (-0.75, 3.85, 0.782), (0.16, 0.20, 0.024), (0.90, 0.88, 0.82, 1.0))
     make_box("Bills_Top_Envelope", (-0.74, 3.86, 0.7955), (0.15, 0.19, 0.003), (0.84, 0.86, 0.90, 1.0))
-    make_box("Bills_Checkbook", (-0.75, 3.60, 0.7745), (0.16, 0.08, 0.009), (0.24, 0.30, 0.44, 1.0))
+    make_box("Bills_Checkbook", (-0.75, 3.60, 0.785), (0.16, 0.08, 0.009), (0.24, 0.30, 0.44, 1.0))   # (pass 386) on the desk (0.78), not in it
 
 
 BX = 30.0                    # Bianca's office stands 30 m east of Mike's (no window of his sees it)

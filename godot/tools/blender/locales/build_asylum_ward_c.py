@@ -238,7 +238,7 @@ def build_death_dressing():
     # roughly (0, 0)" — the corridor's south end — so the binder and
     # Sister Beatrice's votive hung a metre up in open corridor.)
     # The CHART BINDER closed on the counter.
-    binder_x = +0.40
+    binder_x = +0.62   # (pass 386) beside the Bishop's letter, not on it: at 0.40 it covered the crest
     binder_y = 6.50
     binder_z = 1.16
     # Binder body (oxblood leather, three-ring style)
@@ -503,7 +503,7 @@ def build_death_wave2_props():
              (0.96, 0.96, 0.96, 1.0))
     # A slight body-shape indent in the mattress (implied absence)
     make_box("Ward5_BodyImpression",
-             (ward5_x, ward5_y - 0.10, 0.4831),
+             (ward5_x, ward5_y - 0.10, 0.5228),      # (pass 386) on the sheet (top 0.52), not 4 cm under it
              (0.34, 0.80, 0.005),
              (0.72, 0.72, 0.74, 1.0))
 

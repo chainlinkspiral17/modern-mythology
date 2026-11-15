@@ -218,7 +218,7 @@ def build_kitchen():
         make_chamfer_box("Stove_Body", (-2.08, 0.50, 0.44), (0.62, 0.62, 0.88), (0.82, 0.80, 0.76, 1.0), chamfer=0.01)
         make_box("Stove_Top", (-2.08, 0.50, 0.895), (0.60, 0.60, 0.03), (0.22, 0.22, 0.24, 1.0))
         for bi, (ox, oy) in enumerate(((-0.15, -0.15), (0.15, -0.15), (-0.15, 0.15), (0.15, 0.15))):
-            make_cyl(f"Burner_{bi}", (-2.08+ox, 0.50+oy, 0.912), 0.09, 0.01,
+            make_cyl(f"Burner_{bi}", (-2.08+ox, 0.50+oy, 0.9305), 0.09, 0.01,   # (pass 386) on the top (0.925): they were inside it
                      (0.14, 0.14, 0.15, 1.0), segments=10)
         # draft 4: the stove's face — four knobs, the oven door's seam and
         # its towel bar, the kettle a turned body with a spout and bail

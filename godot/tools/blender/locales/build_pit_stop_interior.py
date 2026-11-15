@@ -652,7 +652,7 @@ def build_back_lot_2026_10():
     make_box("Lot_Recycling_Lid", (dmx + 3.6, dmy, 1.13), (1.45, 1.05, 0.06), (0.14, 0.18, 0.30, 1.0))
     make_box("Grease_Bin", (dmx + 2.3, dmy + 0.2, 0.50), (0.80, 0.80, 1.00), (0.20, 0.18, 0.14, 1.0))
     make_box("Grease_Bin_Lid", (dmx + 2.3, dmy + 0.2, 1.03), (0.84, 0.84, 0.06), (0.14, 0.12, 0.10, 1.0))
-    make_box("Grease_Bin_Stain", (dmx + 2.3, dmy - 0.5, -0.015), (0.9, 0.6, 0.01), (0.20, 0.18, 0.14, 1.0))
+    make_box("Grease_Bin_Stain", (dmx + 2.3, dmy - 0.5, 0.0015), (0.9, 0.6, 0.003), (0.20, 0.18, 0.14, 1.0))   # (pass 386) on the asphalt, not under it
     # the crushed Powerade bottle by the dumpster's foot; the butt can by the door
     make_cyl("Powerade_Bottle", (dmx + 0.6, dmy - 0.85, 0.03), 0.034, 0.20, (0.30, 0.46, 0.80, 0.8), segments=8, axis='X')
     make_cyl("Butt_Can", (1.7, ROOM_D + 0.30, 0.08), 0.07, 0.16, (0.72, 0.60, 0.42, 1.0), segments=10)
