@@ -11,6 +11,7 @@
   "cabin_interior_bed:shot_insert_blanket__cabin_interior_bed": "pass 390: the wool blanket fills the frame",
   "cabin_interior:shot_insert_coat__cabin_interior": "pass 390: the coat on its peg by the window reads",
   "cabin_interior:shot_insert_coat__cabin_interior_day": "pass 390: as the night frame",
-  "vehicle_cab:shot_insert_windshield__vehicle_cab": "pass 395: the visor is the next line (\"He pulls the visor down. The visor cuts about a third of it.\"); the road reads through the glass"
+  "vehicle_cab:shot_insert_windshield__vehicle_cab": "pass 395: the visor is the next line (\"He pulls the visor down. The visor cuts about a third of it.\"); the road reads through the glass",
+  "cabin_interior:shot_insert_coat__cabin_interior_day_sticks": "pass 401: the cabin_interior_day frame's twin (view_twin), as judged in pass 390"
  }
 }

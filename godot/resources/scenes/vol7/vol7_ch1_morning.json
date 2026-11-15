@@ -74,7 +74,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert charred_wood]She lay on her side and watched the cedars and let the cold of the room arrive at her face by degrees. The wood stove in the main room had banked for the night.",
+      "text": "[shot:insert stove]She lay on her side and watched the cedars and let the cold of the room arrive at her face by degrees. The wood stove in the main room had banked for the night.",
       "voice": "assets/audio/voice/vol7_ch1_morning/014.mp3"
     },
     {
@@ -94,7 +94,7 @@
     },
     {
       "t": "bg",
-      "src": "3d:cabin_interior_day"
+      "src": "3d:cabin_interior_day_breakfast"
     },
     {
       "t": "narrate",
@@ -610,7 +610,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert charred_wood]Tem stood. Tem went to the wood stove and put the kettle back on. Lena watched her cross the room.",
+      "text": "[shot:insert kettle]Tem stood. Tem went to the wood stove and put the kettle back on. Lena watched her cross the room.",
       "voice": "assets/audio/voice/vol7_ch1_morning/098.mp3"
     },
     {

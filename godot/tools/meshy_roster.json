@@ -8464,7 +8464,9 @@
             "cabin_interior",
             "cabin_porch",
             "cabin_porch_dawn",
-            "cabin_porch_day"
+            "cabin_porch_day",
+            "cabin_interior_hexagon",
+            "cabin_interior_piece"
           ]
         },
         {
@@ -8699,7 +8701,9 @@
             "cabin_interior",
             "cabin_porch",
             "cabin_porch_dawn",
-            "cabin_porch_day"
+            "cabin_porch_day",
+            "cabin_interior_hexagon",
+            "cabin_interior_piece"
           ]
         }
       ]
@@ -8744,7 +8748,9 @@
             "cabin_interior",
             "cabin_porch",
             "cabin_porch_dawn",
-            "cabin_porch_day"
+            "cabin_porch_day",
+            "cabin_interior_hexagon",
+            "cabin_interior_piece"
           ]
         }
       ]
@@ -60760,7 +60766,9 @@
             "cabin_interior",
             "cabin_porch",
             "cabin_porch_dawn",
-            "cabin_porch_day"
+            "cabin_porch_day",
+            "cabin_interior_hexagon",
+            "cabin_interior_piece"
           ]
         }
       ]
@@ -60811,7 +60819,9 @@
             "cabin_interior",
             "cabin_porch",
             "cabin_porch_dawn",
-            "cabin_porch_day"
+            "cabin_porch_day",
+            "cabin_interior_hexagon",
+            "cabin_interior_piece"
           ]
         }
       ]
@@ -60863,7 +60873,9 @@
             "cabin_interior",
             "cabin_porch",
             "cabin_porch_dawn",
-            "cabin_porch_day"
+            "cabin_porch_day",
+            "cabin_interior_hexagon",
+            "cabin_interior_piece"
           ]
         }
       ]
@@ -60908,7 +60920,9 @@
             "cabin_interior",
             "cabin_porch",
             "cabin_porch_dawn",
-            "cabin_porch_day"
+            "cabin_porch_day",
+            "cabin_interior_hexagon",
+            "cabin_interior_piece"
           ]
         }
       ]
@@ -60953,7 +60967,9 @@
             "cabin_interior",
             "cabin_porch",
             "cabin_porch_dawn",
-            "cabin_porch_day"
+            "cabin_porch_day",
+            "cabin_interior_hexagon",
+            "cabin_interior_piece"
           ]
         }
       ]
@@ -60998,7 +61014,9 @@
             "cabin_interior",
             "cabin_porch",
             "cabin_porch_dawn",
-            "cabin_porch_day"
+            "cabin_porch_day",
+            "cabin_interior_hexagon",
+            "cabin_interior_piece"
           ]
         }
       ]
@@ -61048,7 +61066,9 @@
             "cabin_interior",
             "cabin_porch",
             "cabin_porch_dawn",
-            "cabin_porch_day"
+            "cabin_porch_day",
+            "cabin_interior_hexagon",
+            "cabin_interior_piece"
           ]
         }
       ]
@@ -62076,7 +62096,13 @@
             "cabin_porch",
             "cabin_porch_dawn",
             "cabin_porch_day",
-            "cabin_interior_bed"
+            "cabin_interior_bed",
+            "cabin_interior_day_breakfast",
+            "cabin_interior_day_sticks",
+            "cabin_interior_day_package",
+            "cabin_interior_day_hexagon",
+            "cabin_interior_day_disc",
+            "cabin_interior_day_headset"
           ]
         }
       ]
@@ -62136,7 +62162,13 @@
             "cabin_porch",
             "cabin_porch_dawn",
             "cabin_porch_day",
-            "cabin_interior_bed"
+            "cabin_interior_bed",
+            "cabin_interior_day_breakfast",
+            "cabin_interior_day_sticks",
+            "cabin_interior_day_package",
+            "cabin_interior_day_hexagon",
+            "cabin_interior_day_disc",
+            "cabin_interior_day_headset"
           ]
         }
       ]
@@ -62193,7 +62225,13 @@
             "cabin_porch",
             "cabin_porch_dawn",
             "cabin_porch_day",
-            "cabin_interior_bed"
+            "cabin_interior_bed",
+            "cabin_interior_day_breakfast",
+            "cabin_interior_day_sticks",
+            "cabin_interior_day_package",
+            "cabin_interior_day_hexagon",
+            "cabin_interior_day_disc",
+            "cabin_interior_day_headset"
           ]
         }
       ]
@@ -62252,7 +62290,13 @@
             "cabin_porch",
             "cabin_porch_dawn",
             "cabin_porch_day",
-            "cabin_interior_bed"
+            "cabin_interior_bed",
+            "cabin_interior_day_breakfast",
+            "cabin_interior_day_sticks",
+            "cabin_interior_day_package",
+            "cabin_interior_day_hexagon",
+            "cabin_interior_day_disc",
+            "cabin_interior_day_headset"
           ]
         }
       ]
@@ -62311,7 +62355,13 @@
             "cabin_porch",
             "cabin_porch_dawn",
             "cabin_porch_day",
-            "cabin_interior_bed"
+            "cabin_interior_bed",
+            "cabin_interior_day_breakfast",
+            "cabin_interior_day_sticks",
+            "cabin_interior_day_package",
+            "cabin_interior_day_hexagon",
+            "cabin_interior_day_disc",
+            "cabin_interior_day_headset"
           ]
         }
       ]
@@ -62370,7 +62420,13 @@
             "cabin_porch",
             "cabin_porch_dawn",
             "cabin_porch_day",
-            "cabin_interior_bed"
+            "cabin_interior_bed",
+            "cabin_interior_day_breakfast",
+            "cabin_interior_day_sticks",
+            "cabin_interior_day_package",
+            "cabin_interior_day_hexagon",
+            "cabin_interior_day_disc",
+            "cabin_interior_day_headset"
           ]
         }
       ]
@@ -62429,7 +62485,13 @@
             "cabin_porch",
             "cabin_porch_dawn",
             "cabin_porch_day",
-            "cabin_interior_bed"
+            "cabin_interior_bed",
+            "cabin_interior_day_breakfast",
+            "cabin_interior_day_sticks",
+            "cabin_interior_day_package",
+            "cabin_interior_day_hexagon",
+            "cabin_interior_day_disc",
+            "cabin_interior_day_headset"
           ]
         }
       ]
@@ -62488,7 +62550,13 @@
             "cabin_porch",
             "cabin_porch_dawn",
             "cabin_porch_day",
-            "cabin_interior_bed"
+            "cabin_interior_bed",
+            "cabin_interior_day_breakfast",
+            "cabin_interior_day_sticks",
+            "cabin_interior_day_package",
+            "cabin_interior_day_hexagon",
+            "cabin_interior_day_disc",
+            "cabin_interior_day_headset"
           ]
         }
       ]
@@ -62547,7 +62615,13 @@
             "cabin_porch",
             "cabin_porch_dawn",
             "cabin_porch_day",
-            "cabin_interior_bed"
+            "cabin_interior_bed",
+            "cabin_interior_day_breakfast",
+            "cabin_interior_day_sticks",
+            "cabin_interior_day_package",
+            "cabin_interior_day_hexagon",
+            "cabin_interior_day_disc",
+            "cabin_interior_day_headset"
           ]
         }
       ]

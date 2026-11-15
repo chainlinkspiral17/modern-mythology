@@ -3835,6 +3835,57 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-15 · pass 401: Tem's cabin table, chapter by chapter.**
+- The cabin is vol 7's home base (~30 segments). Its table held every
+  chapter's things at once: the three sticks, ch4's package, ch1's eggs,
+  the ch13 hexagon, the ch21 disc-case, the epilogue's headset. A reader
+  (cited by node, spot-checked) set each against the text; each now stands
+  in its own twin views (tools/view_twin.py, eight runs):
+  - `cabin_interior_day_breakfast` (ch1 morning): the three sticks
+    ("On the table … three SCUMM sticks") and the eggs in the skillet on
+    the folded towel ("brought the skillet to the table").
+  - `cabin_interior_day_sticks` (ch10, ch11's morning): the sticks.
+  - `cabin_interior_day_package` (ch4): the wax paper opened on the three
+    pieces ("Finn looked at the three pieces"; Charred_Wood3).
+  - `cabin_interior_piece` (ch1's night): the one piece "on the small
+    folded cloth Tem had set down for it".
+  - `cabin_interior_day_hexagon` / `cabin_interior_hexagon` (ch13): the
+    hexagon (`_props/charred_wood`), until Lena takes the bag in ch14.
+  - `cabin_interior_day_disc` (ch21-22) and `_headset` (the epilogue): the
+    disc-case; the headset "beside the disc-case".
+  - Groups: cab_sticks, cab_hex, cab_disc; the rigs on cab_day / cab_night
+    so every twin keeps its hour's light.
+- Gone (invented): the package's twine (it is "wax-paper"); the worn "hand
+  patch" on the table — her hand on his was at the daybed (ch11, Tem "in
+  the chair beside the daybed"): the hand close-up looks there now.
+- Cues read for what they meant: ch1's "charred_wood" lines were the wood
+  stove ("The wood stove … had banked"; the bed view's frame was already
+  the stove's ember glow — renamed `shot_insert_stove`; Tem's "went to the
+  wood stove and put the kettle back on" cuts to the kettle). ch13 and
+  ch15's "insert stick" on lines about PLAYING one cut to an empty table
+  spot: the cue is gone, and the plain stick frame with it.
+- view_twin.py also copies a frame's half-hidden judgement (it is the same
+  frame).
+- A scan for more of the fault — untagged parts whose builder comment
+  cites one chapter, in sets several chapters use — found 45 in 18 sets,
+  nearly all architecture or standing fixtures citing the chapter that
+  justified them (walls, windows, a kettle). Left to read: Natalie's phone
+  (ch12 comment, three chapters use the room) and Jesse's Telecaster in the
+  Henderson garage (ch14). The scan is too noisy to keep as a tool.
+- The stove door's ember glow (ch1's "The wood stove … had banked") is a
+  flat red panel: a grate and a firebox read for draft 2.
+- NEXT (the cabin table, draft 2): the bowls — the text has none before
+  ch11 (but Eddvard's, ch4's night), two in ch11-ch13, three ch13-17, four
+  ch19-20, two (not Marit's) from ch21; the builder shows Marit's and the
+  substrate bowl in every chapter, and lacks Eddvard's, Marina's
+  grandfather's and Olaus's bowls, Per's, Marina's and Roy's boxes, the
+  cedar bell-piece and Brandon's notebook. The lamp is lit in ch1's
+  morning ("The lamp was not lit"). Contradictions to flag for Andy (do not
+  fix): ch10 n99 "between the bowls" before any bowl; ch19_roy n7 "four
+  bowls" vs n78 "the other three"; ch21_cabin n33's two bowls vs ch20's
+  list; ch22 n92 "dining table" vs "kitchen table".
+- Deck must REBUILD cabin_interior.
+
 **2026-11-15 · pass 400: the hexagon in the other rooms.**
 - Pass 399's NEXT. Finn's assembled hexagon stood in four more rooms in
   every chapter that uses them; the text puts it in each for one stretch:

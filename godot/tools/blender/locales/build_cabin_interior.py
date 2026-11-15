@@ -75,6 +75,7 @@ import math as _m
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.furniture import make_chair, make_table, make_bed
+from _props.charred_wood import make_hexagon, make_charred_pieces
 from _props import palette as P
 from _props.geometry import (make_taper_cyl, clear_scene, make_box, make_cyl, make_lathe,
                              make_chamfer_box, make_tube, make_rot_box, make_prism, make_heightfield, make_blob, export_glb)
@@ -1367,49 +1368,57 @@ def build_hero_props_2026_09():
     cedar_dk = (0.44, 0.30, 0.20, 1.0)
     waxpaper = (0.88, 0.84, 0.72, 1.0)
     T = 0.785   # table top
+    # (pass 401) the wood (_props/charred_wood), outside the shift: places given
+    # shifted (+1.0 in y). The hexagon ch13 (cab_hex); ch4's three on the wax
+    # paper; ch1's one piece on its cloth.
+    make_hexagon(0.0, 4.40, T + 0.004, tag="cab_hex", aria=(0.155, -0.145))
+    make_charred_pieces("Charred_Wood3", "cabin_interior_day_package", -0.45, 3.30, T + 0.003,
+                        ((0, 0.004, 0.04), (1, 0.0, 0.0), (2, 0.003, -0.05)))
+    make_charred_pieces("Charred_Wood1", "cabin_interior_piece", -0.45, 3.245, T + 0.008, ((1, 0.0, 0.25),))
     with _shift(0.0, 1.0):   # the table and everything on it
-        # ── THE HEXAGON · table north ──
+        # (pass 401) THE TABLE BY CHAPTER. Every chapter's things stood here in
+        # all ~30 cabin segments. Each now stands in the views (twins of
+        # cabin_interior_day / cabin_interior) whose chapters put it here:
+        # the sticks ch1's morning, ch10, ch11 (cab_sticks); the eggs ch1's
+        # morning; the package ch4; the one piece ch1's night; the hexagon
+        # ch13 (cab_hex); the disc-case ch21 on (cab_disc); the headset the
+        # epilogue. The hexagon is _props/charred_wood's (below, outside the
+        # shift). Gone: the package's twine (it is "wax-paper", ch4) and the
+        # "hand patch" — her hand on his was at the daybed (ch11_stick).
         hx, hy = 0.0, 3.40
-        make_box("Hexagon_Cloth", (hx, hy, T + 0.002), (0.40, 0.36, 0.004), (0.78, 0.74, 0.64, 1.0))
-        for hi in range(6):
-            ang = _m.pi / 3.0 * hi + _m.pi / 6.0
-            make_box(f"Hexagon_Ring_{hi}", (hx + 0.13 * _m.cos(ang), hy + 0.13 * _m.sin(ang), T + 0.013),
-                     (0.085, 0.085, 0.018), cedar)
-        make_cyl("Hexagon_Center_Face", (hx, hy, T + 0.012), 0.055, 0.016, cedar_dk, segments=12)
-        make_cyl("Hexagon_Face_Inlay", (hx, hy, T + 0.0215), 0.030, 0.003, (0.62, 0.46, 0.32, 1.0), segments=10)
-        make_box("Hexagon_Aria_Piece", (0.155, 3.255, T + 0.014), (0.070, 0.050, 0.020), cedar)
+        make_box("Hexagon_Cloth__cab_hex", (hx, hy, T + 0.002), (0.40, 0.36, 0.004), (0.78, 0.74, 0.64, 1.0))
         # ── THE THREE STICKS · table west ──
         for si2, sy2 in enumerate((2.75, 2.90, 3.05)):
-            make_box(f"Stick_Sleeve_{si2}", (-0.50, sy2, T + 0.010), (0.26, 0.09, 0.020), waxpaper)
-            make_box(f"Stick_Label_{si2}", (-0.50, sy2, T + 0.021), (0.10, 0.05, 0.002), (0.96, 0.95, 0.92, 1.0))
-        # ── THE PACKAGE · table south-west ──
-        make_box("Charred_Package", (-0.45, 2.35, T + 0.040), (0.22, 0.16, 0.080), (0.66, 0.56, 0.42, 1.0))
-        make_box("Package_Twine", (-0.45, 2.35, T + 0.0815), (0.24, 0.012, 0.003), (0.42, 0.36, 0.26, 1.0))
+            make_box(f"Stick_Sleeve_{si2}__cab_sticks", (-0.50, sy2, T + 0.010), (0.26, 0.09, 0.020), waxpaper)
+            make_box(f"Stick_Label_{si2}__cab_sticks", (-0.50, sy2, T + 0.021), (0.10, 0.05, 0.002), (0.96, 0.95, 0.92, 1.0))
+        # ── THE PACKAGE · table south-west: ch4, opened on the three pieces
+        # ("He wrapped the three pieces back in the wax paper") ──
+        make_box("Charred_Package__cabin_interior_day_package", (-0.45, 2.35, T + 0.0015), (0.30, 0.26, 0.003), waxpaper)
+        # ── THE ONE PIECE · ch1's night, on "the small folded cloth" ──
+        make_box("Charred_Wood_Cloth__cabin_interior_piece", (-0.45, 2.35, T + 0.004), (0.22, 0.18, 0.008), (0.78, 0.74, 0.64, 1.0))
         # ── THE CUP · table north-east ──
         make_cyl("Ceramic_Cup", (0.58, 3.30, T + 0.050), 0.045, 0.100, (0.52, 0.44, 0.36, 1.0), segments=10)
         make_cyl("Ceramic_Cup_Coffee", (0.58, 3.30, T + 0.1015), 0.036, 0.003, (0.24, 0.16, 0.10, 1.0), segments=10)
         # ── THE DISC-CASE · table east ──
-        make_box("Disc_Case", (0.72, 2.90, T + 0.0075), (0.14, 0.125, 0.015), (0.18, 0.18, 0.20, 1.0))
-        make_box("Disc_Case_Label", (0.72, 2.90, T + 0.0158), (0.10, 0.06, 0.001), (0.82, 0.80, 0.74, 1.0))
+        make_box("Disc_Case__cab_disc", (0.72, 2.90, T + 0.0075), (0.14, 0.125, 0.015), (0.18, 0.18, 0.20, 1.0))
+        make_box("Disc_Case_Label__cab_disc", (0.72, 2.90, T + 0.0158), (0.10, 0.06, 0.001), (0.82, 0.80, 0.74, 1.0))
         # ── THE HEADSET · beside the disc-case (vol7 epilogue, The Submission:
         # "Tem took off the headset. She set it on the kitchen table beside
         # the disc-case.") Visor down, strap arms back, the lens plate dark.
-        make_box("Headset_Visor", (0.50, 3.05, T + 0.045), (0.18, 0.10, 0.09), (0.16, 0.16, 0.18, 1.0))
-        make_box("Headset_Front_Plate", (0.50, 2.999, T + 0.045), (0.16, 0.002, 0.07), (0.08, 0.09, 0.11, 1.0))
-        make_box("Headset_Foam", (0.50, 3.1005, T + 0.045), (0.17, 0.001, 0.08), (0.30, 0.28, 0.26, 1.0))
+        make_box("Headset_Visor__cabin_interior_day_headset", (0.50, 3.05, T + 0.045), (0.18, 0.10, 0.09), (0.16, 0.16, 0.18, 1.0))
+        make_box("Headset_Front_Plate__cabin_interior_day_headset", (0.50, 2.999, T + 0.045), (0.16, 0.002, 0.07), (0.08, 0.09, 0.11, 1.0))
+        make_box("Headset_Foam__cabin_interior_day_headset", (0.50, 3.1005, T + 0.045), (0.17, 0.001, 0.08), (0.30, 0.28, 0.26, 1.0))
         for sgn, nm in ((1, "R"), (-1, "L")):
-            make_box(f"Headset_Strap_{nm}", (0.50 + sgn * 0.0975, 3.17, T + 0.045), (0.015, 0.14, 0.03), (0.20, 0.20, 0.22, 1.0))
-        make_box("Headset_Strap_Back", (0.50, 3.2475, T + 0.045), (0.21, 0.015, 0.03), (0.20, 0.20, 0.22, 1.0))
-        make_box("Headset_Cable", (0.50, 3.34, T + 0.003), (0.008, 0.17, 0.006), (0.12, 0.12, 0.13, 1.0))
+            make_box(f"Headset_Strap_{nm}__cabin_interior_day_headset", (0.50 + sgn * 0.0975, 3.17, T + 0.045), (0.015, 0.14, 0.03), (0.20, 0.20, 0.22, 1.0))
+        make_box("Headset_Strap_Back__cabin_interior_day_headset", (0.50, 3.2475, T + 0.045), (0.21, 0.015, 0.03), (0.20, 0.20, 0.22, 1.0))
+        make_box("Headset_Cable__cabin_interior_day_headset", (0.50, 3.34, T + 0.003), (0.008, 0.17, 0.006), (0.12, 0.12, 0.13, 1.0))
         # ── THE EGGS · skillet on the folded towel, table north-west ──
-        make_box("Trivet_Towel", (-0.45, 3.40, T + 0.004), (0.30, 0.30, 0.008), (0.70, 0.62, 0.50, 1.0))
-        make_cyl("Egg_Skillet", (-0.45, 3.40, T + 0.0255), 0.140, 0.035, (0.16, 0.16, 0.17, 1.0), segments=12)
-        make_box("Egg_Skillet_Handle", (-0.67, 3.40, T + 0.028), (0.16, 0.03, 0.012), (0.14, 0.14, 0.15, 1.0))
+        make_box("Trivet_Towel__cabin_interior_day_breakfast", (-0.45, 3.40, T + 0.004), (0.30, 0.30, 0.008), (0.70, 0.62, 0.50, 1.0))
+        make_cyl("Egg_Skillet__cabin_interior_day_breakfast", (-0.45, 3.40, T + 0.0255), 0.140, 0.035, (0.16, 0.16, 0.17, 1.0), segments=12)
+        make_box("Egg_Skillet_Handle__cabin_interior_day_breakfast", (-0.67, 3.40, T + 0.028), (0.16, 0.03, 0.012), (0.14, 0.14, 0.15, 1.0))
         for ei, (ex2, ey2) in enumerate(((-0.50, 3.35), (-0.40, 3.35), (-0.50, 3.45), (-0.40, 3.45))):
-            make_cyl(f"Egg_White_{ei}", (ex2, ey2, T + 0.049), 0.030, 0.012, (0.96, 0.94, 0.90, 1.0), segments=8)
-            make_cyl(f"Egg_Yolk_{ei}", (ex2, ey2, T + 0.058), 0.013, 0.006, (0.94, 0.72, 0.20, 1.0), segments=8)
-        # ── THE HAND · worn patch at the west chair place ──
-        make_box("Hand_Table_Patch", (-0.75, 2.90, T + 0.001), (0.12, 0.14, 0.002), (0.50, 0.40, 0.28, 1.0))
+            make_cyl(f"Egg_White_{ei}__cabin_interior_day_breakfast", (ex2, ey2, T + 0.049), 0.030, 0.012, (0.96, 0.94, 0.90, 1.0), segments=8)
+            make_cyl(f"Egg_Yolk_{ei}__cabin_interior_day_breakfast", (ex2, ey2, T + 0.058), 0.013, 0.006, (0.94, 0.72, 0.20, 1.0), segments=8)
         # ── THE FACE · relief inside Marit's bowl, flush on the rim disc ──
         make_cyl("Bowl_Face_Inlay", (-0.22, 2.84, 0.9155), 0.040, 0.003, (0.60, 0.44, 0.30, 1.0), segments=10)
     with _shift(-1.0, 0.6):   # the daybed

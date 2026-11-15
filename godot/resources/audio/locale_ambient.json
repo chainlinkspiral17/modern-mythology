@@ -321,7 +321,39 @@
       "bed": "assets/audio/bgm/vol7_cabin_woodstove.wav",
       "gain": 0.9
     },
+    "cabin_interior_piece": {
+      "bed": "assets/audio/bgm/vol7_cabin_woodstove.wav",
+      "gain": 0.9
+    },
+    "cabin_interior_hexagon": {
+      "bed": "assets/audio/bgm/vol7_cabin_woodstove.wav",
+      "gain": 0.9
+    },
     "cabin_interior_day": {
+      "bed": "assets/audio/bgm/vol7_cabin_woodstove.wav",
+      "gain": 0.9
+    },
+    "cabin_interior_day_headset": {
+      "bed": "assets/audio/bgm/vol7_cabin_woodstove.wav",
+      "gain": 0.9
+    },
+    "cabin_interior_day_disc": {
+      "bed": "assets/audio/bgm/vol7_cabin_woodstove.wav",
+      "gain": 0.9
+    },
+    "cabin_interior_day_hexagon": {
+      "bed": "assets/audio/bgm/vol7_cabin_woodstove.wav",
+      "gain": 0.9
+    },
+    "cabin_interior_day_package": {
+      "bed": "assets/audio/bgm/vol7_cabin_woodstove.wav",
+      "gain": 0.9
+    },
+    "cabin_interior_day_sticks": {
+      "bed": "assets/audio/bgm/vol7_cabin_woodstove.wav",
+      "gain": 0.9
+    },
+    "cabin_interior_day_breakfast": {
       "bed": "assets/audio/bgm/vol7_cabin_woodstove.wav",
       "gain": 0.9
     },

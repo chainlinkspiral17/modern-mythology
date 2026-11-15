@@ -54,6 +54,14 @@ const VIEW_GROUPS := {
 	"fa_base": ["finn_apartment", "finn_apartment_stick"],
 	"fa_day": ["finn_apartment_day", "finn_apartment_hexagon"],
 	"fa_night": ["finn_apartment_night", "finn_apartment_night_stick"],
+	# (pass 401) TEM'S CABIN TABLE by chapter: each state its own view (twins of
+	# cabin_interior_day / cabin_interior, made by tools/view_twin.py); the
+	# rigs belong to every twin of their hour
+	"cab_day": ["cabin_interior_day", "cabin_interior_day_breakfast", "cabin_interior_day_sticks", "cabin_interior_day_package", "cabin_interior_day_hexagon", "cabin_interior_day_disc", "cabin_interior_day_headset"],
+	"cab_night": ["cabin_interior", "cabin_interior_hexagon", "cabin_interior_piece"],
+	"cab_sticks": ["cabin_interior_day_breakfast", "cabin_interior_day_sticks"],
+	"cab_hex": ["cabin_interior_day_hexagon", "cabin_interior_hexagon"],
+	"cab_disc": ["cabin_interior_day_disc", "cabin_interior_day_headset"],
 	# (pass 399) the Chau house by day, its two vol 3 ch8 views included
 	"chau_day": ["chau_hall_noon", "chau_entry_morning", "chau_living", "chau_bath", "chau_game_room",
 		"chau_steven_room", "chau_steven_desk", "chau_mom_room"],
@@ -3546,7 +3554,240 @@ const CAMERA_PRESETS := {
 		"fov": 62.0,
 		"suppress_input": true,
 	},
+	"cabin_interior_piece": {
+		# (pass 401) ch1's night: the one piece Finn brought, "on the table … on the small folded
+		# cloth Tem had set down for it".
+		"scene": "res://scenes/locales/cabin_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
+		# SURVEYED 2026-07-12: old vantage sat blender y=-0.5 OUTSIDE
+		# the south door. RE-SURVEYED 2026-09-03 (user: "first view of
+		# the cabin, 90 percent obstructed/wall"): x=2.0 stood INSIDE
+		# the bed alcove east of the East_Part partition (x 1.0,
+		# y 0..2.6), so the partition filled the left of frame. Now just
+		# inside the door WEST of the partition (blender 0.3, 0.9),
+		# looking NNW across the table + rockers to the kitchenette
+		# counter and the wood stove. Eye 1.62 (ceiling 3.4).
+		"camera_origin": Vector3(0.3, 1.62, -0.9),
+		"camera_rotation": Vector3(-0.04, 0.35, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"cabin_interior_hexagon": {
+		# (pass 401) ch13's night: the hexagon still on the cloth ("The hexagon was on the
+		# cloth") until Lena takes the canvas bag in ch14.
+		"scene": "res://scenes/locales/cabin_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
+		# SURVEYED 2026-07-12: old vantage sat blender y=-0.5 OUTSIDE
+		# the south door. RE-SURVEYED 2026-09-03 (user: "first view of
+		# the cabin, 90 percent obstructed/wall"): x=2.0 stood INSIDE
+		# the bed alcove east of the East_Part partition (x 1.0,
+		# y 0..2.6), so the partition filled the left of frame. Now just
+		# inside the door WEST of the partition (blender 0.3, 0.9),
+		# looking NNW across the table + rockers to the kitchenette
+		# counter and the wood stove. Eye 1.62 (ceiling 3.4).
+		"camera_origin": Vector3(0.3, 1.62, -0.9),
+		"camera_rotation": Vector3(-0.04, 0.35, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
 	"cabin_interior_day": {
+		"scene": "res://scenes/locales/cabin_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
+		# SURVEYED 2026-07-12: old vantage sat blender y=-0.5 OUTSIDE
+		# the south door. RE-SURVEYED 2026-09-03 (user: "first view of
+		# the cabin, 90 percent obstructed/wall"): x=2.0 stood INSIDE
+		# the bed alcove east of the East_Part partition (x 1.0,
+		# y 0..2.6), so the partition filled the left of frame. Now just
+		# inside the door WEST of the partition (blender 0.3, 0.9),
+		# looking NNW across the table + rockers to the kitchenette
+		# counter and the wood stove. Eye 1.62 (ceiling 3.4).
+		# (2026-10-11) THE SAME ROOM BY DAY: vol7 plays fourteen cabin cuts in
+		# daylight (ch1 Morning, ch1 Finn, ch2, ch10, ch11 Stick, ch13 Marina,
+		# ch19 Cedar/Per, ch21, ch22, ch4 Finn, the epilogue) on the lamp-lit
+		# dusk rig. The night directionals are suffixed to cabin_interior; this
+		# preset brings the sun through the south windows, a sky fill, the
+		# windows' light on the floor, and a day sky. Lamps and stove serve both.
+		"camera_origin": Vector3(0.3, 1.62, -0.9),
+		"camera_rotation": Vector3(-0.04, 0.35, 0.0),
+		"fov": 62.0,
+		# (2026-11-12, pass 347) an overcast coast morning, not a lamp-lit
+		# room: "the gray hour before the rain became visible". The warm
+		# pine read deep orange and dark under a near-white ambient at 0.95
+		# with every oil lamp lit; the ambient is the cool grey of the sky
+		# through four windows now, brighter, and the fog grey with it.
+		"env": {"sky_top": Color(0.52, 0.58, 0.66, 1), "sky_horizon": Color(0.80, 0.82, 0.84, 1),
+			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.74, 0.80, 0.88, 1), "ambient_energy": 1.60, "fog_color": Color(0.70, 0.74, 0.78, 1)},
+		"style_pack": "raw_observation",
+		"suppress_input": true,
+	},
+	"cabin_interior_day_headset": {
+		# (pass 401) the epilogue: the disc-case, and the headset Tem brings to the table and
+		# sets down "beside the disc-case".
+		"scene": "res://scenes/locales/cabin_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
+		# SURVEYED 2026-07-12: old vantage sat blender y=-0.5 OUTSIDE
+		# the south door. RE-SURVEYED 2026-09-03 (user: "first view of
+		# the cabin, 90 percent obstructed/wall"): x=2.0 stood INSIDE
+		# the bed alcove east of the East_Part partition (x 1.0,
+		# y 0..2.6), so the partition filled the left of frame. Now just
+		# inside the door WEST of the partition (blender 0.3, 0.9),
+		# looking NNW across the table + rockers to the kitchenette
+		# counter and the wood stove. Eye 1.62 (ceiling 3.4).
+		# (2026-10-11) THE SAME ROOM BY DAY: vol7 plays fourteen cabin cuts in
+		# daylight (ch1 Morning, ch1 Finn, ch2, ch10, ch11 Stick, ch13 Marina,
+		# ch19 Cedar/Per, ch21, ch22, ch4 Finn, the epilogue) on the lamp-lit
+		# dusk rig. The night directionals are suffixed to cabin_interior; this
+		# preset brings the sun through the south windows, a sky fill, the
+		# windows' light on the floor, and a day sky. Lamps and stove serve both.
+		"camera_origin": Vector3(0.3, 1.62, -0.9),
+		"camera_rotation": Vector3(-0.04, 0.35, 0.0),
+		"fov": 62.0,
+		# (2026-11-12, pass 347) an overcast coast morning, not a lamp-lit
+		# room: "the gray hour before the rain became visible". The warm
+		# pine read deep orange and dark under a near-white ambient at 0.95
+		# with every oil lamp lit; the ambient is the cool grey of the sky
+		# through four windows now, brighter, and the fog grey with it.
+		"env": {"sky_top": Color(0.52, 0.58, 0.66, 1), "sky_horizon": Color(0.80, 0.82, 0.84, 1),
+			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.74, 0.80, 0.88, 1), "ambient_energy": 1.60, "fog_color": Color(0.70, 0.74, 0.78, 1)},
+		"style_pack": "raw_observation",
+		"suppress_input": true,
+	},
+	"cabin_interior_day_disc": {
+		# (pass 401) ch21-22: "He set the disc-case on the kitchen table" (group cab_disc).
+		"scene": "res://scenes/locales/cabin_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
+		# SURVEYED 2026-07-12: old vantage sat blender y=-0.5 OUTSIDE
+		# the south door. RE-SURVEYED 2026-09-03 (user: "first view of
+		# the cabin, 90 percent obstructed/wall"): x=2.0 stood INSIDE
+		# the bed alcove east of the East_Part partition (x 1.0,
+		# y 0..2.6), so the partition filled the left of frame. Now just
+		# inside the door WEST of the partition (blender 0.3, 0.9),
+		# looking NNW across the table + rockers to the kitchenette
+		# counter and the wood stove. Eye 1.62 (ceiling 3.4).
+		# (2026-10-11) THE SAME ROOM BY DAY: vol7 plays fourteen cabin cuts in
+		# daylight (ch1 Morning, ch1 Finn, ch2, ch10, ch11 Stick, ch13 Marina,
+		# ch19 Cedar/Per, ch21, ch22, ch4 Finn, the epilogue) on the lamp-lit
+		# dusk rig. The night directionals are suffixed to cabin_interior; this
+		# preset brings the sun through the south windows, a sky fill, the
+		# windows' light on the floor, and a day sky. Lamps and stove serve both.
+		"camera_origin": Vector3(0.3, 1.62, -0.9),
+		"camera_rotation": Vector3(-0.04, 0.35, 0.0),
+		"fov": 62.0,
+		# (2026-11-12, pass 347) an overcast coast morning, not a lamp-lit
+		# room: "the gray hour before the rain became visible". The warm
+		# pine read deep orange and dark under a near-white ambient at 0.95
+		# with every oil lamp lit; the ambient is the cool grey of the sky
+		# through four windows now, brighter, and the fog grey with it.
+		"env": {"sky_top": Color(0.52, 0.58, 0.66, 1), "sky_horizon": Color(0.80, 0.82, 0.84, 1),
+			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.74, 0.80, 0.88, 1), "ambient_energy": 1.60, "fog_color": Color(0.70, 0.74, 0.78, 1)},
+		"style_pack": "raw_observation",
+		"suppress_input": true,
+	},
+	"cabin_interior_day_hexagon": {
+		# (pass 401) ch13: "He laid the eight pieces on the table" — the hexagon (group cab_hex).
+		"scene": "res://scenes/locales/cabin_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
+		# SURVEYED 2026-07-12: old vantage sat blender y=-0.5 OUTSIDE
+		# the south door. RE-SURVEYED 2026-09-03 (user: "first view of
+		# the cabin, 90 percent obstructed/wall"): x=2.0 stood INSIDE
+		# the bed alcove east of the East_Part partition (x 1.0,
+		# y 0..2.6), so the partition filled the left of frame. Now just
+		# inside the door WEST of the partition (blender 0.3, 0.9),
+		# looking NNW across the table + rockers to the kitchenette
+		# counter and the wood stove. Eye 1.62 (ceiling 3.4).
+		# (2026-10-11) THE SAME ROOM BY DAY: vol7 plays fourteen cabin cuts in
+		# daylight (ch1 Morning, ch1 Finn, ch2, ch10, ch11 Stick, ch13 Marina,
+		# ch19 Cedar/Per, ch21, ch22, ch4 Finn, the epilogue) on the lamp-lit
+		# dusk rig. The night directionals are suffixed to cabin_interior; this
+		# preset brings the sun through the south windows, a sky fill, the
+		# windows' light on the floor, and a day sky. Lamps and stove serve both.
+		"camera_origin": Vector3(0.3, 1.62, -0.9),
+		"camera_rotation": Vector3(-0.04, 0.35, 0.0),
+		"fov": 62.0,
+		# (2026-11-12, pass 347) an overcast coast morning, not a lamp-lit
+		# room: "the gray hour before the rain became visible". The warm
+		# pine read deep orange and dark under a near-white ambient at 0.95
+		# with every oil lamp lit; the ambient is the cool grey of the sky
+		# through four windows now, brighter, and the fog grey with it.
+		"env": {"sky_top": Color(0.52, 0.58, 0.66, 1), "sky_horizon": Color(0.80, 0.82, 0.84, 1),
+			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.74, 0.80, 0.88, 1), "ambient_energy": 1.60, "fog_color": Color(0.70, 0.74, 0.78, 1)},
+		"style_pack": "raw_observation",
+		"suppress_input": true,
+	},
+	"cabin_interior_day_package": {
+		# (pass 401) ch4: Finn's wax-paper package on the table, opened on the three pieces
+		# ("He set the package on the table beside the lamp" … "Finn looked at the three pieces").
+		"scene": "res://scenes/locales/cabin_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
+		# SURVEYED 2026-07-12: old vantage sat blender y=-0.5 OUTSIDE
+		# the south door. RE-SURVEYED 2026-09-03 (user: "first view of
+		# the cabin, 90 percent obstructed/wall"): x=2.0 stood INSIDE
+		# the bed alcove east of the East_Part partition (x 1.0,
+		# y 0..2.6), so the partition filled the left of frame. Now just
+		# inside the door WEST of the partition (blender 0.3, 0.9),
+		# looking NNW across the table + rockers to the kitchenette
+		# counter and the wood stove. Eye 1.62 (ceiling 3.4).
+		# (2026-10-11) THE SAME ROOM BY DAY: vol7 plays fourteen cabin cuts in
+		# daylight (ch1 Morning, ch1 Finn, ch2, ch10, ch11 Stick, ch13 Marina,
+		# ch19 Cedar/Per, ch21, ch22, ch4 Finn, the epilogue) on the lamp-lit
+		# dusk rig. The night directionals are suffixed to cabin_interior; this
+		# preset brings the sun through the south windows, a sky fill, the
+		# windows' light on the floor, and a day sky. Lamps and stove serve both.
+		"camera_origin": Vector3(0.3, 1.62, -0.9),
+		"camera_rotation": Vector3(-0.04, 0.35, 0.0),
+		"fov": 62.0,
+		# (2026-11-12, pass 347) an overcast coast morning, not a lamp-lit
+		# room: "the gray hour before the rain became visible". The warm
+		# pine read deep orange and dark under a near-white ambient at 0.95
+		# with every oil lamp lit; the ambient is the cool grey of the sky
+		# through four windows now, brighter, and the fog grey with it.
+		"env": {"sky_top": Color(0.52, 0.58, 0.66, 1), "sky_horizon": Color(0.80, 0.82, 0.84, 1),
+			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.74, 0.80, 0.88, 1), "ambient_energy": 1.60, "fog_color": Color(0.70, 0.74, 0.78, 1)},
+		"style_pack": "raw_observation",
+		"suppress_input": true,
+	},
+	"cabin_interior_day_sticks": {
+		# (pass 401) the three sticks on the cabin table: ch10 ("on the table") and ch11's
+		# morning, when Tem picks up "the one in the middle".
+		"scene": "res://scenes/locales/cabin_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
+		# SURVEYED 2026-07-12: old vantage sat blender y=-0.5 OUTSIDE
+		# the south door. RE-SURVEYED 2026-09-03 (user: "first view of
+		# the cabin, 90 percent obstructed/wall"): x=2.0 stood INSIDE
+		# the bed alcove east of the East_Part partition (x 1.0,
+		# y 0..2.6), so the partition filled the left of frame. Now just
+		# inside the door WEST of the partition (blender 0.3, 0.9),
+		# looking NNW across the table + rockers to the kitchenette
+		# counter and the wood stove. Eye 1.62 (ceiling 3.4).
+		# (2026-10-11) THE SAME ROOM BY DAY: vol7 plays fourteen cabin cuts in
+		# daylight (ch1 Morning, ch1 Finn, ch2, ch10, ch11 Stick, ch13 Marina,
+		# ch19 Cedar/Per, ch21, ch22, ch4 Finn, the epilogue) on the lamp-lit
+		# dusk rig. The night directionals are suffixed to cabin_interior; this
+		# preset brings the sun through the south windows, a sky fill, the
+		# windows' light on the floor, and a day sky. Lamps and stove serve both.
+		"camera_origin": Vector3(0.3, 1.62, -0.9),
+		"camera_rotation": Vector3(-0.04, 0.35, 0.0),
+		"fov": 62.0,
+		# (2026-11-12, pass 347) an overcast coast morning, not a lamp-lit
+		# room: "the gray hour before the rain became visible". The warm
+		# pine read deep orange and dark under a near-white ambient at 0.95
+		# with every oil lamp lit; the ambient is the cool grey of the sky
+		# through four windows now, brighter, and the fog grey with it.
+		"env": {"sky_top": Color(0.52, 0.58, 0.66, 1), "sky_horizon": Color(0.80, 0.82, 0.84, 1),
+			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.74, 0.80, 0.88, 1), "ambient_energy": 1.60, "fog_color": Color(0.70, 0.74, 0.78, 1)},
+		"style_pack": "raw_observation",
+		"suppress_input": true,
+	},
+	"cabin_interior_day_breakfast": {
+		# (pass 401) the cabin table on ch1's morning: three SCUMM sticks in waxed paper
+		# sleeves ("On the table … were three SCUMM sticks"), and Tem's eggs in the skillet
+		# on the folded towel ("brought the skillet to the table on the small folded towel").
 		"scene": "res://scenes/locales/cabin_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
 		# SURVEYED 2026-07-12: old vantage sat blender y=-0.5 OUTSIDE

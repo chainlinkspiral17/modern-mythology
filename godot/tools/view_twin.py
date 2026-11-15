@@ -26,6 +26,8 @@ does the copy the same way every time:
   7. The hero-art roster: a picture that skips FROM (`not_presets`) skips TO
      too — a day twin showed the night window pictures beside the day ones
      until pass 400 (hero_art_placement_audit DUPLICATE). Byte-exact.
+  8. A copied frame already judged by render (half_hidden_baseline.json
+     `judged`) is judged in TO too: it is the same frame.
 
     python3 godot/tools/view_twin.py FROM TO --scenes vol7/vol7_ch13_marina.json:0 \
         [--note "why this view exists"] [--dry]
@@ -50,6 +52,10 @@ CUE = re.compile(r"\[shot:(\w+)(?: (\w+))?~?\]")
 def preset_block(src, view):
     m = re.search(r'^\t"%s": \{\n.*?^\t\},\n' % re.escape(view), src, re.M | re.S)
     return m
+
+
+def loc_of(scene):
+    return os.path.splitext(os.path.basename(scene))[0]
 
 
 def segment_cues(path, node):
@@ -177,6 +183,18 @@ def main():
     rout = json.dumps(roster, indent=2, ensure_ascii=False) + "\n"
     assert json.dumps(json.loads(rout), indent=2, ensure_ascii=False) + "\n" == rout
 
+    # frames judged by render are judged in the twin
+    hpath = os.path.join(GODOT, "tools", "audit", "half_hidden_baseline.json")
+    hraw = open(hpath, encoding="utf-8").read()
+    half = json.loads(hraw)
+    nj = 0
+    for base in copies:
+        k_from, k_to = "%s:%s__%s" % (loc_of(scene), base, FROM), "%s:%s__%s" % (loc_of(scene), base, TO)
+        if k_from in half.get("judged", {}) and k_to not in half["judged"]:
+            half["judged"][k_to] = "(view_twin) %s's frame, as judged: %s" % (FROM, half["judged"][k_from])
+            nj += 1
+            log.append("   judged %s" % k_to)
+
     for path, n in moves:
         raw = open(path, encoding="utf-8").read()
         nodes = json.loads(raw)
@@ -203,6 +221,8 @@ def main():
         open(WIDE, "w", encoding="utf-8").write(wide)
         if nskip:
             open(rpath, "w", encoding="utf-8").write(rout)
+        if nj:
+            open(hpath, "w", encoding="utf-8").write(json.dumps(half, indent=1, ensure_ascii=False))
     print("\n".join(log))
     print("view_twin · %s%s → %s" % ("[DRY] " if a.dry else "", FROM, TO))
 

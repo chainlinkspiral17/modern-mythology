@@ -84,6 +84,26 @@ henderson) got there by accumulating exactly these layers.
 
 ## Recent lessons
 
+### 2026-11-15 · a home base's table is a TIMELINE: read it chapter by chapter, then twin the views (passes 397 - 401)
+
+- **What happened:** pass 396's rule, applied room by room, kept finding
+  the same thing: Finn's table (a plate, a stick, the wood at every
+  stage), the truck dash (a map that is "in his glove compartment"), Lena's
+  table and Tem's cabin table (the hexagon, three sticks, a package, eggs,
+  a disc-case, a headset — ~30 segments, everything at once). A room many
+  chapters return to accumulates each pass's "this chapter needs X".
+- **Rule:** for a room the story returns to, list its segments in order
+  and what the text puts on each surface (a reader agent with node
+  citations is fine; spot-check its quotes). Then one view per state with
+  `godot/tools/view_twin.py FROM TO --scenes file:node` — it copies the
+  preset, ambient, wide entry, rig, frames, picture skip lists and judged
+  frames the same way every time (each hand copy in 396-399 lost one) —
+  and tag the state's parts to it (a VIEW_GROUP when two views share one).
+  Put the rig on a group first (`cab_day`), so every twin keeps its hour.
+- Read a cue for what it MEANT before keeping its frame: ch1's
+  "charred_wood" lines were the wood stove; "insert stick" on a line about
+  playing one framed an empty table.
+
 ### 2026-11-15 · one chapter's moment belongs to that chapter's VIEW, not to the set (pass 396)
 
 - **What happened:** the Hendersons' pot roast, the four place settings

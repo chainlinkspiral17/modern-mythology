@@ -190,7 +190,9 @@ shadow_enabled = false
 ; ── vn_shot wave 2 (2026-08) · cued objects that exist ─────────
 ; The stove door's ember glow: blender (2.3-0.35, 5.4, 0.5) →
 ; godot (1.95, 0.5, -5.4). Low camera, level with the door.
-[node name="shot_insert_charred_wood" type="Marker3D" parent="." groups=["vn_shot"]]
+; (pass 401) named for what it shows: ch1's "The wood stove in the main room
+; had banked for the night" was cued "charred_wood" (Finn's wood is not here)
+[node name="shot_insert_stove" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.350, 0.560, -7.320)
 rotation = Vector3(-0.0996, -1.4371, 0.0)
 
