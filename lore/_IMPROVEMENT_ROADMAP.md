@@ -3835,6 +3835,45 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-15 · pass 405: the Miller kitchen, chapter by chapter.**
+- The same reading (node-cited, spot-checked) for vol 6's Miller kitchen,
+  17 segments. Every chapter's moment stood in all of them; each is on its
+  own twin of `miller_kitchen` now (view_twin.py, eight runs):
+  - ch0 (`_ch0`): Mike's coffee at the counter at 6:24.
+  - ch3 (`_ch3`): the Sentinel at Mike's end ("the sports page of the New
+    Auburn Sentinel"), the paper on the island, the bowl and his mug in the
+    drying rack.
+  - ch4 (`_ch4`): the uniform on its hanger, the duty belt, his boots —
+    group `mk_mike` (ch0-ch5 and ch2's night; ch8: "a house her father does
+    not, today, live in").
+  - ch5 (`_ch5`): the photographs "on the counter … pulled, over the course
+    of the afternoon, from the album".
+  - ch9 (`_ch9`): the spiral notebook at Sam's place, before "She takes the
+    notebook upstairs". Your picture of it skips the other views.
+  - ch11 (`_ch11`): the French toast; ch11 with Eileen (`_ch11e`): the
+    cinnamon roll on "the small plate", the bakery bag.
+  - ch17 (`_ch17`): the three kolaches, Anita's "small white bakery bag",
+    and the peach jar ON THE COUNTER ("a peach jar on the counter"; it stood
+    on the table).
+  - ch2's night (`miller_kitchen_night`): the white sedan at the curb.
+- The room is shared with `bianca_kitchen_morning` (the dawn kitchen): a
+  tag that names miller_kitchen's views would strip the part from Bianca's
+  set, so the shared module tags only in the family variant (`_ft()`), and
+  the French toast / four-thirty table take their tags as arguments.
+- Cues read for meaning: ch4's two "insert sedan" lines put the sedan "in
+  the Kwik Stop parking lot half a mile away" — the cues went (and the
+  sedan frame with them).
+- NEXT: the wall clock reads 6:24 in every chapter (ch0's minute; ch3 says
+  07:14, ch4 seven-oh-four, ch22 ten-fourteen …) — hands per view, or a
+  clock the frame does not read; the meals the text cooks and the set lacks
+  (meatloaf ch2, cacciatore ch4-5, the cast-iron chicken ch6, pot roast ch8,
+  the soup ch9, the coffee cake and the French press ch17, the kouglof
+  ch22). For Andy (do not fix): the notebook goes upstairs in ch9 [86] and
+  is underlined and handed over after [117]-[122]; Mike's chair long side
+  vs short side (ch11); the robe's hook (bedroom door ch11 vs back door
+  ch22); "Chief Dale Miller" (ch0) vs "Mike".
+- Deck must REBUILD miller_kitchen, bianca_kitchen_morning.
+
 **2026-11-15 · pass 404: the cabin's bowls by count.**
 - Pass 402 took Olaf's two bowls off the table before ch11; the text then
   adds and takes them chapter by chapter (node-cited reading, spot-checked):

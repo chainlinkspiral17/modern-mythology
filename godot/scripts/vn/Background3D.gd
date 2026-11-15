@@ -78,6 +78,12 @@ const VIEW_GROUPS := {
 	"la_night": ["lena_apartment_night", "lena_apartment_night_ch8", "lena_apartment_night_ch10"],
 	"la_coats4": ["lena_apartment_ch8", "lena_apartment_supper", "lena_apartment_night_ch8"],
 	"la_bread": ["lena_apartment_ch8", "lena_apartment_supper", "lena_apartment_night_ch8", "lena_apartment_night_ch10"],
+	# (pass 405) THE MILLER KITCHEN by chapter (twins of miller_kitchen by
+	# tools/view_twin.py); the rigs; Mike's things before he leaves (ch8:
+	# "a house her father does not, today, live in")
+	"mk_day": ["miller_kitchen", "miller_kitchen_ch0", "miller_kitchen_ch3", "miller_kitchen_ch4", "miller_kitchen_ch5", "miller_kitchen_ch9", "miller_kitchen_ch11", "miller_kitchen_ch11e", "miller_kitchen_ch17"],
+	"mk_night": ["miller_kitchen_night"],
+	"mk_mike": ["miller_kitchen_ch0", "miller_kitchen_ch3", "miller_kitchen_ch4", "miller_kitchen_ch5", "miller_kitchen_night"],
 	# (pass 399) the Chau house by day, its two vol 3 ch8 views included
 	"chau_day": ["chau_hall_noon", "chau_entry_morning", "chau_living", "chau_bath", "chau_game_room",
 		"chau_steven_room", "chau_steven_desk", "chau_mom_room"],
@@ -886,6 +892,110 @@ const CAMERA_PRESETS := {
 	# entrance-looking-in at eye-height 2.30, north-facing, ~60° FOV.
 	# Per-scene refinements via the gauntlet/VN debug overlay.
 	"miller_kitchen": {
+		"scene": "res://scenes/locales/miller_kitchen.tscn",
+		"requires_glb": "res://assets/3d/locales/miller_kitchen.glb",
+		# The Miller kitchen on Meadowlark Circle built big (2026-10-07): a
+		# 9 x 7 m open kitchen, family room and front hall (_props/miller_kitchen.py).
+		# From the family room side of the wide opening, looking N across the island to the sink window (the cul-de-sac), the range, the fridge; the breakfast table at right.
+		"camera_origin": Vector3(1.60, 1.65, 0.50),
+		"camera_rotation": Vector3(-0.061, 0.391, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"miller_kitchen_ch17": {
+		# (pass 405) ch17's table: "three kolaches", Anita's "small white bakery bag", "a peach
+		# jar on the counter".
+		"scene": "res://scenes/locales/miller_kitchen.tscn",
+		"requires_glb": "res://assets/3d/locales/miller_kitchen.glb",
+		# The Miller kitchen on Meadowlark Circle built big (2026-10-07): a
+		# 9 x 7 m open kitchen, family room and front hall (_props/miller_kitchen.py).
+		# From the family room side of the wide opening, looking N across the island to the sink window (the cul-de-sac), the range, the fridge; the breakfast table at right.
+		"camera_origin": Vector3(1.60, 1.65, 0.50),
+		"camera_rotation": Vector3(-0.061, 0.391, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"miller_kitchen_ch11e": {
+		# (pass 405) ch11, Eileen: "put the bakery bag on the table"; the cinnamon roll on "the
+		# small plate Bianca had set in front of her".
+		"scene": "res://scenes/locales/miller_kitchen.tscn",
+		"requires_glb": "res://assets/3d/locales/miller_kitchen.glb",
+		# The Miller kitchen on Meadowlark Circle built big (2026-10-07): a
+		# 9 x 7 m open kitchen, family room and front hall (_props/miller_kitchen.py).
+		# From the family room side of the wide opening, looking N across the island to the sink window (the cul-de-sac), the range, the fridge; the breakfast table at right.
+		"camera_origin": Vector3(1.60, 1.65, 0.50),
+		"camera_rotation": Vector3(-0.061, 0.391, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"miller_kitchen_ch11": {
+		# (pass 405) ch11: the French toast — "She goes back to the pan" … "She puts the
+		# French toast pan in the sink to soak".
+		"scene": "res://scenes/locales/miller_kitchen.tscn",
+		"requires_glb": "res://assets/3d/locales/miller_kitchen.glb",
+		# The Miller kitchen on Meadowlark Circle built big (2026-10-07): a
+		# 9 x 7 m open kitchen, family room and front hall (_props/miller_kitchen.py).
+		# From the family room side of the wide opening, looking N across the island to the sink window (the cul-de-sac), the range, the fridge; the breakfast table at right.
+		"camera_origin": Vector3(1.60, 1.65, 0.50),
+		"camera_rotation": Vector3(-0.061, 0.391, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"miller_kitchen_ch9": {
+		# (pass 405) ch9's coda: the spiral notebook at Sam's kitchen table, before "She takes
+		# the notebook upstairs".
+		"scene": "res://scenes/locales/miller_kitchen.tscn",
+		"requires_glb": "res://assets/3d/locales/miller_kitchen.glb",
+		# The Miller kitchen on Meadowlark Circle built big (2026-10-07): a
+		# 9 x 7 m open kitchen, family room and front hall (_props/miller_kitchen.py).
+		# From the family room side of the wide opening, looking N across the island to the sink window (the cul-de-sac), the range, the fridge; the breakfast table at right.
+		"camera_origin": Vector3(1.60, 1.65, 0.50),
+		"camera_rotation": Vector3(-0.061, 0.391, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"miller_kitchen_ch5": {
+		# (pass 405) ch5: "on the counter … a small stack of photographs she has pulled, over
+		# the course of the afternoon, from the album in the hall closet".
+		"scene": "res://scenes/locales/miller_kitchen.tscn",
+		"requires_glb": "res://assets/3d/locales/miller_kitchen.glb",
+		# The Miller kitchen on Meadowlark Circle built big (2026-10-07): a
+		# 9 x 7 m open kitchen, family room and front hall (_props/miller_kitchen.py).
+		# From the family room side of the wide opening, looking N across the island to the sink window (the cul-de-sac), the range, the fridge; the breakfast table at right.
+		"camera_origin": Vector3(1.60, 1.65, 0.50),
+		"camera_rotation": Vector3(-0.061, 0.391, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"miller_kitchen_ch4": {
+		# (pass 405) ch4: "He goes to the mudroom. Sam hears him put on his uniform" (the
+		# uniform on its hanger, group mk_mike).
+		"scene": "res://scenes/locales/miller_kitchen.tscn",
+		"requires_glb": "res://assets/3d/locales/miller_kitchen.glb",
+		# The Miller kitchen on Meadowlark Circle built big (2026-10-07): a
+		# 9 x 7 m open kitchen, family room and front hall (_props/miller_kitchen.py).
+		# From the family room side of the wide opening, looking N across the island to the sink window (the cul-de-sac), the range, the fridge; the breakfast table at right.
+		"camera_origin": Vector3(1.60, 1.65, 0.50),
+		"camera_rotation": Vector3(-0.061, 0.391, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"miller_kitchen_ch3": {
+		# (pass 405) ch3: Sam "at the kitchen table … with a bowl of cereal and the sports page of
+		# the New Auburn Sentinel"; the bowl and his mug in the drying rack.
+		"scene": "res://scenes/locales/miller_kitchen.tscn",
+		"requires_glb": "res://assets/3d/locales/miller_kitchen.glb",
+		# The Miller kitchen on Meadowlark Circle built big (2026-10-07): a
+		# 9 x 7 m open kitchen, family room and front hall (_props/miller_kitchen.py).
+		# From the family room side of the wide opening, looking N across the island to the sink window (the cul-de-sac), the range, the fridge; the breakfast table at right.
+		"camera_origin": Vector3(1.60, 1.65, 0.50),
+		"camera_rotation": Vector3(-0.061, 0.391, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"miller_kitchen_ch0": {
+		# (pass 405) ch0's 6:24: Mike "standing at his kitchen counter", his coffee, "He puts the
+		# phone on the counter."
 		"scene": "res://scenes/locales/miller_kitchen.tscn",
 		"requires_glb": "res://assets/3d/locales/miller_kitchen.glb",
 		# The Miller kitchen on Meadowlark Circle built big (2026-10-07): a

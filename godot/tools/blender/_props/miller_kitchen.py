@@ -199,11 +199,11 @@ def build_north_run():
     # the morning paper, folded on the island's west end behind the coffee
     # corner ("He crosses to the coffee pot. He pours a mug. He looks at the
     # paper." — vol6 ch3; 2026-11-04. First try sat on the range's cooktop.)
-    make_box("Newspaper", (-1.75, 4.45, 0.98 + 0.012), (0.30, 0.18, 0.024), (0.84, 0.82, 0.76, 1.0))
-    make_box("Newspaper_Masthead", (-1.75, 4.51, 0.98 + 0.0245), (0.26, 0.03, 0.001), (0.18, 0.18, 0.20, 1.0))
-    make_box("Newspaper_Photo", (-1.80, 4.42, 0.98 + 0.0245), (0.10, 0.07, 0.001), (0.36, 0.34, 0.32, 1.0))
+    make_box("Newspaper" + _ft("miller_kitchen_ch3"), (-1.75, 4.45, 0.98 + 0.012), (0.30, 0.18, 0.024), (0.84, 0.82, 0.76, 1.0))
+    make_box("Newspaper_Masthead" + _ft("miller_kitchen_ch3"), (-1.75, 4.51, 0.98 + 0.0245), (0.26, 0.03, 0.001), (0.18, 0.18, 0.20, 1.0))
+    make_box("Newspaper_Photo" + _ft("miller_kitchen_ch3"), (-1.80, 4.42, 0.98 + 0.0245), (0.10, 0.07, 0.001), (0.36, 0.34, 0.32, 1.0))
     for ci in range(4):
-        make_box(f"Newspaper_Column_{ci}", (-1.66, 4.44 - ci * 0.02, 0.98 + 0.0245), (0.12, 0.004, 0.001), (0.50, 0.48, 0.46, 1.0))
+        make_box(f"Newspaper_Column_{ci}" + _ft("miller_kitchen_ch3"), (-1.66, 4.44 - ci * 0.02, 0.98 + 0.0245), (0.12, 0.004, 0.001), (0.50, 0.48, 0.46, 1.0))
     make_box("Microwave", (1.35, YN - 0.24, TOP_Z + 0.16), (0.52, 0.38, 0.32), KK.STAINLESS)
     make_box("Microwave_Door", (1.29, YN - 0.435, TOP_Z + 0.16), (0.38, 0.01, 0.26), (0.12, 0.12, 0.14, 1.0))
     make_box("Paper_Towel_Base", (0.05, YN - 0.20, TOP_Z + 0.006), (0.14, 0.14, 0.012), STEEL)
@@ -441,11 +441,11 @@ def build_outside(sedan):
     make_box("Thru_N_Mailbox", (3.4, 15.75, 1.18), (0.22, 0.48, 0.24), (0.20, 0.20, 0.22, 1.0))
     if sedan:
         white = (0.90, 0.90, 0.88, 1.0)
-        make_box("White_Sedan_Body", (-1.6, 17.0, 0.62), (4.20, 1.70, 0.60), white)
-        make_box("White_Sedan_Cabin", (-1.9, 17.0, 1.13), (2.20, 1.50, 0.42), (0.82, 0.83, 0.82, 1.0))
-        make_box("White_Sedan_Glass", (-1.9, 16.24, 1.13), (2.00, 0.02, 0.32), (0.22, 0.26, 0.30, 1.0))
+        make_box("White_Sedan_Body__miller_kitchen_night", (-1.6, 17.0, 0.62), (4.20, 1.70, 0.60), white)
+        make_box("White_Sedan_Cabin__miller_kitchen_night", (-1.9, 17.0, 1.13), (2.20, 1.50, 0.42), (0.82, 0.83, 0.82, 1.0))
+        make_box("White_Sedan_Glass__miller_kitchen_night", (-1.9, 16.24, 1.13), (2.00, 0.02, 0.32), (0.22, 0.26, 0.30, 1.0))
         for wi, (wx2, wy2) in enumerate(((-3.0, 16.12), (-0.2, 16.12), (-3.0, 17.88), (-0.2, 17.88))):
-            make_cyl(f"White_Sedan_Wheel_{wi}", (wx2, wy2, 0.33), 0.33, 0.25, (0.14, 0.14, 0.15, 1.0), axis='Y', segments=10)
+            make_cyl(f"White_Sedan_Wheel_{wi}__miller_kitchen_night", (wx2, wy2, 0.33), 0.33, 0.25, (0.14, 0.14, 0.15, 1.0), axis='Y', segments=10)
     # east (2026-11-10): the garage is ATTACHED, forward on the street side,
     # reached through the mudroom ("He goes to the mudroom ... Sam hears him
     # leave through the garage. The garage door motor hums", ch4) — it was a
@@ -487,68 +487,83 @@ def build_outside(sedan):
 
 
 # ── the dressings ──────────────────────────────────────────────────
-def dress_french_toast():
+def dress_french_toast(tag=""):
     """ch11 (4:11 AM): the French toast being made on the range's front-left
     burner — shared by the family and the dawn kitchens (2026-10-10: ch11 and
     ch17 moved to the 4 AM kitchen; their props moved with them)."""
     top = 0.77
     # the French toast, mid-making, on the range's front-left burner
     sx, sy = RANGE_X - 0.19, YN - 0.33 - 0.14
-    make_cyl("FrenchToast_Skillet", (sx, sy, TOP_Z + 0.019), 0.14, 0.035, (0.16, 0.15, 0.14, 1.0), segments=14)
-    make_box("FrenchToast_Skillet_Handle", (sx - 0.22, sy, TOP_Z + 0.028), (0.16, 0.032, 0.022), (0.16, 0.15, 0.14, 1.0))
+    make_cyl("FrenchToast_Skillet" + tag, (sx, sy, TOP_Z + 0.019), 0.14, 0.035, (0.16, 0.15, 0.14, 1.0), segments=14)
+    make_box("FrenchToast_Skillet_Handle" + tag, (sx - 0.22, sy, TOP_Z + 0.028), (0.16, 0.032, 0.022), (0.16, 0.15, 0.14, 1.0))
     for si, (ox, oy) in enumerate(((-0.055, 0.03), (0.055, -0.035))):
-        make_box(f"FrenchToast_Slice_{si}", (sx + ox, sy + oy, TOP_Z + 0.050), (0.105, 0.085, 0.028), (0.83, 0.68, 0.44, 1.0))
-    make_box("FrenchToast_Challah", (-1.70, YN - 0.36, TOP_Z + 0.055), (0.30, 0.13, 0.11), (0.62, 0.44, 0.24, 1.0))
-    make_cyl("FrenchToast_EggBowl", (-1.40, YN - 0.42, TOP_Z + 0.0275), 0.095, 0.055, (0.90, 0.88, 0.84, 1.0), segments=12)
-    make_cyl("FrenchToast_Cinnamon", (-1.20, YN - 0.20, TOP_Z + 0.0375), 0.028, 0.075, (0.55, 0.34, 0.18, 1.0), segments=8)
+        make_box(f"FrenchToast_Slice_{si}" + tag, (sx + ox, sy + oy, TOP_Z + 0.050), (0.105, 0.085, 0.028), (0.83, 0.68, 0.44, 1.0))
+    make_box("FrenchToast_Challah" + tag, (-1.70, YN - 0.36, TOP_Z + 0.055), (0.30, 0.13, 0.11), (0.62, 0.44, 0.24, 1.0))
+    make_cyl("FrenchToast_EggBowl" + tag, (-1.40, YN - 0.42, TOP_Z + 0.0275), 0.095, 0.055, (0.90, 0.88, 0.84, 1.0), segments=12)
+    make_cyl("FrenchToast_Cinnamon" + tag, (-1.20, YN - 0.20, TOP_Z + 0.0375), 0.028, 0.075, (0.55, 0.34, 0.18, 1.0), segments=8)
 
 
-def dress_four_thirty_table():
+def dress_four_thirty_table(roll="", kolache="", jar=None):
     """The four-thirty table: the hands' worn patches, Eileen's cinnamon roll,
     the kolaches, the jar — shared by both kitchens."""
     top = 0.77
     # the table: hands' worn patches, the cinnamon roll, the kolaches, the jar, the Sentinel
     make_box("Hands_Worn_Patch_A", (TX, TY - 0.28, top + 0.001), (0.16, 0.12, 0.002), (0.52, 0.40, 0.27, 1.0))
     make_box("Hands_Worn_Patch_B", (TX + 0.60, TY, top + 0.001), (0.12, 0.16, 0.002), (0.52, 0.40, 0.27, 1.0))
-    make_cyl("Small_Plate", (TX + 0.35, TY + 0.25, top + 0.006), 0.090, 0.012, PAPER, segments=12)
-    make_cyl("Cinnamon_Roll", (TX + 0.35, TY + 0.25, top + 0.0345), 0.055, 0.045, (0.72, 0.50, 0.28, 1.0), segments=10)
-    make_cyl("Cinnamon_Roll_Swirl", (TX + 0.35, TY + 0.25, top + 0.059), 0.030, 0.004, (0.90, 0.84, 0.72, 1.0), segments=8)
-    make_box("Bakery_Bag", (TX - 0.30, TY + 0.22, top + 0.09), (0.22, 0.14, 0.18), (0.76, 0.62, 0.42, 1.0))
-    make_cyl("Kolache_Plate", (TX - 0.05, TY + 0.24, top + 0.006), 0.100, 0.012, PAPER, segments=12)
+    make_cyl("Small_Plate" + roll, (TX + 0.35, TY + 0.25, top + 0.006), 0.090, 0.012, PAPER, segments=12)
+    make_cyl("Cinnamon_Roll" + roll, (TX + 0.35, TY + 0.25, top + 0.0345), 0.055, 0.045, (0.72, 0.50, 0.28, 1.0), segments=10)
+    make_cyl("Cinnamon_Roll_Swirl" + roll, (TX + 0.35, TY + 0.25, top + 0.059), 0.030, 0.004, (0.90, 0.84, 0.72, 1.0), segments=8)
+    make_box("Bakery_Bag" + roll, (TX - 0.30, TY + 0.22, top + 0.09), (0.22, 0.14, 0.18), (0.76, 0.62, 0.42, 1.0))
+    make_cyl("Kolache_Plate" + kolache, (TX - 0.05, TY + 0.24, top + 0.006), 0.100, 0.012, PAPER, segments=12)
     for ki, (kx, ky, kc) in enumerate(((-0.045, -0.03, (0.86, 0.62, 0.30, 1.0)), (0.045, -0.03, (0.90, 0.84, 0.66, 1.0)),
                                        (0.0, 0.045, (0.66, 0.44, 0.28, 1.0)))):
-        make_cyl(f"Kolache_{ki}", (TX - 0.05 + kx, TY + 0.24 + ky, top + 0.027), 0.045, 0.030, kc, segments=8)
-    make_cyl("Mason_Jar", (TX - 0.55, TY - 0.30, top + 0.065), 0.045, 0.130, (0.72, 0.76, 0.70, 0.75), segments=10)
-    make_cyl("Mason_Jar_Lid", (TX - 0.55, TY - 0.30, top + 0.1375), 0.047, 0.015, (0.62, 0.52, 0.30, 1.0), segments=10)
+        make_cyl(f"Kolache_{ki}" + kolache, (TX - 0.05 + kx, TY + 0.24 + ky, top + 0.027), 0.045, 0.030, kc, segments=8)
+    # the peach jar — "a peach jar on the counter" (ch17): `jar` = (tag, x, y)
+    # puts it there in the family kitchen
+    if jar is None:
+        make_cyl("Mason_Jar", (TX - 0.55, TY - 0.30, top + 0.065), 0.045, 0.130, (0.72, 0.76, 0.70, 0.75), segments=10)
+        make_cyl("Mason_Jar_Lid", (TX - 0.55, TY - 0.30, top + 0.1375), 0.047, 0.015, (0.62, 0.52, 0.30, 1.0), segments=10)
+    else:
+        jt, jx, jy = jar
+        make_cyl("Mason_Jar" + jt, (jx, jy, TOP_Z + 0.065), 0.045, 0.130, (0.72, 0.76, 0.70, 0.75), segments=10)
+        make_cyl("Mason_Jar_Lid" + jt, (jx, jy, TOP_Z + 0.1375), 0.047, 0.015, (0.62, 0.52, 0.30, 1.0), segments=10)
 
 
 def dress_family():
-    """miller_kitchen: Mike's coffee and his phone at the counter (ch 0),
+    """(pass 405) Each on its chapter's view (twins of miller_kitchen): the
+    notebook ch9, the French toast ch11, the rack ch3, Mike's mug before he
+    leaves, the roll and the tan bag ch11 (Eileen), the kolaches, the white
+    bag and the jar on the counter ch17, the Sentinel ch3, the photographs
+    ch5. They stood in all seventeen segments.
+    miller_kitchen: Mike's coffee and his phone at the counter (ch 0),
     the French toast being made (ch 11), Eileen's cinnamon roll and the
     kolaches and the jar on the table, the Sentinel folded at Mike's end,
     the photographs fanned on the island, the white sedan at the curb."""
     # (pass 71, 2026-10-11) "The notebook is the small spiral-bound one Sam brought to the
     # safehouse" — on the table at Sam's place, six weeks later (ch9 Safehouse's coda)
-    make_box("Notebook_Spiral", (TX - 0.50, TY - 0.35, 0.776), (0.21, 0.27, 0.012), (0.30, 0.30, 0.34, 1.0))
-    make_box("Notebook_Spiral_Page", (TX - 0.50, TY - 0.35, 0.783), (0.19, 0.25, 0.002), (0.94, 0.94, 0.90, 1.0))
-    make_cyl("Notebook_Spiral_Coil", (TX - 0.50 - 0.10, TY - 0.35, 0.779), 0.006, 0.26, (0.70, 0.70, 0.72, 1.0), axis='Y', segments=6)
+    make_box("Notebook_Spiral__miller_kitchen_ch9", (TX - 0.50, TY - 0.35, 0.776), (0.21, 0.27, 0.012), (0.30, 0.30, 0.34, 1.0))
+    make_box("Notebook_Spiral_Page__miller_kitchen_ch9", (TX - 0.50, TY - 0.35, 0.783), (0.19, 0.25, 0.002), (0.94, 0.94, 0.90, 1.0))
+    make_cyl("Notebook_Spiral_Coil__miller_kitchen_ch9", (TX - 0.50 - 0.10, TY - 0.35, 0.779), 0.006, 0.26, (0.70, 0.70, 0.72, 1.0), axis='Y', segments=6)
     top = 0.77
-    dress_french_toast()
+    dress_french_toast("__miller_kitchen_ch11")
     # her cereal bowl and her father's mug in the drying rack (ch3)
-    make_cyl("Rack_Mug_Dad", (0.52, YN - 0.36, TOP_Z + 0.012 + 0.048), 0.04, 0.095, (0.24, 0.30, 0.44, 1.0), segments=10)
-    make_taper_cyl("Rack_Bowl", (0.50, YN - 0.24, TOP_Z + 0.012 + 0.035), 0.045, 0.075, 0.07, (0.92, 0.90, 0.84, 1.0), segments=12)
+    make_cyl("Rack_Mug_Dad__miller_kitchen_ch3", (0.52, YN - 0.36, TOP_Z + 0.012 + 0.048), 0.04, 0.095, (0.24, 0.30, 0.44, 1.0), segments=10)
+    make_taper_cyl("Rack_Bowl__miller_kitchen_ch3", (0.50, YN - 0.24, TOP_Z + 0.012 + 0.035), 0.045, 0.075, 0.07, (0.92, 0.90, 0.84, 1.0), segments=12)
     # Mike's coffee and his phone at the counter by the coffee maker
-    make_cyl("Mike_Coffee_Mug", (-2.95, YN - 0.42, TOP_Z + 0.048), 0.04, 0.095, (0.30, 0.36, 0.52, 1.0), segments=10)
+    make_cyl("Mike_Coffee_Mug__mk_mike", (-2.95, YN - 0.42, TOP_Z + 0.048), 0.04, 0.095, (0.30, 0.36, 0.52, 1.0), segments=10)
     make_box("Phone_Cell", (-2.75, YN - 0.46, TOP_Z + 0.006), (0.075, 0.15, 0.012), (0.12, 0.12, 0.14, 1.0))
-    dress_four_thirty_table()
-    make_box("Sentinel_Folded", (TX + 0.55, TY - 0.15, top + 0.0075), (0.30, 0.20, 0.015), (0.86, 0.84, 0.78, 1.0))
-    make_box("Sentinel_Headline", (TX + 0.55, TY - 0.08, top + 0.0155), (0.22, 0.03, 0.002), (0.28, 0.26, 0.24, 1.0))
+    dress_four_thirty_table(roll="__miller_kitchen_ch11e", kolache="__miller_kitchen_ch17",
+                            jar=("__miller_kitchen_ch17", -1.40, YN - 0.40))
+    # (pass 405) ch17: Anita's "small white bakery bag" ("her empty kolache bag")
+    make_box("Bakery_Bag_White__miller_kitchen_ch17", (TX + 0.40, TY + 0.22, 0.77 + 0.08), (0.16, 0.10, 0.16), (0.94, 0.93, 0.90, 1.0))
+    make_box("Sentinel_Folded__miller_kitchen_ch3", (TX + 0.55, TY - 0.15, top + 0.0075), (0.30, 0.20, 0.015), (0.86, 0.84, 0.78, 1.0))
+    make_box("Sentinel_Headline__miller_kitchen_ch3", (TX + 0.55, TY - 0.08, top + 0.0155), (0.22, 0.03, 0.002), (0.28, 0.26, 0.24, 1.0))
     # THE PHOTOGRAPHS fanned on the island ("He looks at the photographs")
     # (pass 292) each print carries its picture — a darker field inside the
     # white border — so the fan reads on the quartz instead of white on white
     for pi, (dx, dy) in enumerate(((0.0, 0.0), (0.04, 0.03), (0.08, 0.05))):
-        make_box(f"Photographs_{pi}", (IX + 0.50 + dx, IY - 0.10 + dy, 0.9806 + pi * 0.0012), (0.10, 0.15, 0.001), (0.78, 0.76, 0.70, 1.0))
-        make_box(f"Photographs_{pi}_Picture", (IX + 0.50 + dx, IY - 0.10 + dy, 0.9806 + pi * 0.0012 + 0.0007),
+        make_box(f"Photographs_{pi}__miller_kitchen_ch5", (IX + 0.50 + dx, IY - 0.10 + dy, 0.9806 + pi * 0.0012), (0.10, 0.15, 0.001), (0.78, 0.76, 0.70, 1.0))
+        make_box(f"Photographs_{pi}_Picture__miller_kitchen_ch5", (IX + 0.50 + dx, IY - 0.10 + dy, 0.9806 + pi * 0.0012 + 0.0007),
                  (0.084, 0.13, 0.0004), ((0.36, 0.33, 0.30, 1.0), (0.30, 0.34, 0.40, 1.0), (0.44, 0.38, 0.30, 1.0))[pi])
 
 
@@ -654,18 +669,18 @@ def build_mudroom():
     make_box("Mud_Top_Basket", (5.25, YN - 0.16, 1.975), (0.36, 0.24, 0.20), (0.62, 0.48, 0.30, 1.0))
     # what hangs there: the uniform shirt on its hanger, the duty belt, a rain shell
     navy = (0.12, 0.15, 0.24, 1.0)
-    make_box("Mud_Uniform_Hanger", (5.35, YN - 0.11, 1.56), (0.40, 0.012, 0.02), OAK_DK)
-    make_box("Mud_Uniform_Hanger_Neck", (5.35, YN - 0.098, 1.60), (0.012, 0.014, 0.07), KK.NICKEL)
-    make_chamfer_box("Mud_Uniform_Shirt", (5.35, YN - 0.12, 1.20), (0.44, 0.10, 0.70), navy, chamfer=0.02)
-    make_box("Mud_Uniform_Badge", (5.24, YN - 0.173, 1.38), (0.05, 0.004, 0.06), (0.80, 0.70, 0.36, 1.0))
-    make_box("Mud_Duty_Belt", (5.95, YN - 0.10, 1.36), (0.06, 0.07, 0.50), (0.10, 0.10, 0.11, 1.0))
-    make_box("Mud_Duty_Belt_Holster", (5.95, YN - 0.145, 1.16), (0.09, 0.05, 0.16), (0.10, 0.10, 0.11, 1.0))
-    make_box("Mud_Duty_Belt_Buckle", (5.95, YN - 0.138, 1.58), (0.05, 0.006, 0.04), (0.70, 0.70, 0.72, 1.0))
+    make_box("Mud_Uniform_Hanger" + _ft("mk_mike"), (5.35, YN - 0.11, 1.56), (0.40, 0.012, 0.02), OAK_DK)
+    make_box("Mud_Uniform_Hanger_Neck" + _ft("mk_mike"), (5.35, YN - 0.098, 1.60), (0.012, 0.014, 0.07), KK.NICKEL)
+    make_chamfer_box("Mud_Uniform_Shirt" + _ft("mk_mike"), (5.35, YN - 0.12, 1.20), (0.44, 0.10, 0.70), navy, chamfer=0.02)
+    make_box("Mud_Uniform_Badge" + _ft("mk_mike"), (5.24, YN - 0.173, 1.38), (0.05, 0.004, 0.06), (0.80, 0.70, 0.36, 1.0))
+    make_box("Mud_Duty_Belt" + _ft("mk_mike"), (5.95, YN - 0.10, 1.36), (0.06, 0.07, 0.50), (0.10, 0.10, 0.11, 1.0))
+    make_box("Mud_Duty_Belt_Holster" + _ft("mk_mike"), (5.95, YN - 0.145, 1.16), (0.09, 0.05, 0.16), (0.10, 0.10, 0.11, 1.0))
+    make_box("Mud_Duty_Belt_Buckle" + _ft("mk_mike"), (5.95, YN - 0.138, 1.58), (0.05, 0.006, 0.04), (0.70, 0.70, 0.72, 1.0))
     make_chamfer_box("Mud_Rain_Coat", (6.25, YN - 0.10, 1.225), (0.36, 0.09, 0.78), (0.28, 0.32, 0.24, 1.0), chamfer=0.02)
     # his boots under the bench, a pair of her sneakers kicked off beside them
     for k, bx in enumerate((5.25, 5.42)):
-        make_chamfer_box(f"Mud_Boot_{k}_Foot", (bx, by - 0.02, 0.175), (0.11, 0.30, 0.09), (0.10, 0.10, 0.11, 1.0), chamfer=0.02)
-        make_chamfer_box(f"Mud_Boot_{k}_Shaft", (bx, by + 0.07, 0.30), (0.10, 0.12, 0.16), (0.10, 0.10, 0.11, 1.0), chamfer=0.015)
+        make_chamfer_box(f"Mud_Boot_{k}_Foot" + _ft("mk_mike"), (bx, by - 0.02, 0.175), (0.11, 0.30, 0.09), (0.10, 0.10, 0.11, 1.0), chamfer=0.02)
+        make_chamfer_box(f"Mud_Boot_{k}_Shaft" + _ft("mk_mike"), (bx, by + 0.07, 0.30), (0.10, 0.12, 0.16), (0.10, 0.10, 0.11, 1.0), chamfer=0.015)
     for k, (bx, yw) in enumerate(((5.90, 0.2), (6.06, -0.3))):
         make_rot_box(f"Mud_Sneaker_{k}", (bx, by - 0.02, 0.175), (0.10, 0.27, 0.09), (0.90, 0.90, 0.88, 1.0), yaw=yw)
     # the flush light (the tscn hangs Mud_Flushmount_Practical from it)
@@ -698,7 +713,17 @@ def build_east_window():
         make_rot_box(f"Nook_Sideboard_Photo_{k}", (3.20 + k * 0.30, YN - 0.12, 1.00), (0.18, 0.03, 0.22), OAK_DK, roll=0.0, pitch=0.12)
 
 
+_VARIANT = ["family"]
+
+
+def _ft(tag):
+    """(pass 405) a family-kitchen view tag; '' in the dawn kitchen, whose
+    views it would otherwise strip the part from."""
+    return ("__" + tag) if _VARIANT[0] == "family" else ""
+
+
 def build_kitchen(variant):
+    _VARIANT[0] = variant
     build_shell()
     build_north_run()
     build_island_and_table()

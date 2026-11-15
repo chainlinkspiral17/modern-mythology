@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "3d:miller_kitchen"
+      "src": "3d:miller_kitchen_ch4"
     },
     {
       "t": "hide",
@@ -460,7 +460,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:macro_haze][shot:insert sedan~]Outside the rain comes down. At nine-seventeen, in the Kwik Stop parking lot half a mile away, the white sedan pulls up. The reporter and her partner sit in the car. They are waiting.",
+      "text": "[mood:macro_haze]Outside the rain comes down. At nine-seventeen, in the Kwik Stop parking lot half a mile away, the white sedan pulls up. The reporter and her partner sit in the car. They are waiting.",
       "voice": "assets/audio/voice/vol6_ch4_kitchen/082.mp3"
     },
     {
@@ -475,7 +475,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert sedan]The van is transporting Diego Ramos from Zone to Zone-G. The transport is being watched. The sedan follows, three vehicles back, into the storm.",
+      "text": "The van is transporting Diego Ramos from Zone to Zone-G. The transport is being watched. The sedan follows, three vehicles back, into the storm.",
       "voice": "assets/audio/voice/vol6_ch4_kitchen/085.mp3"
     },
     {

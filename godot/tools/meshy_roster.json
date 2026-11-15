@@ -49115,7 +49115,7 @@
         }
       ],
       "prompt_mode": "append",
-      "notes": "(2026-10-19, written from the insert cue and its scene) The text quotes none of what Diego writes (the dream, Boyd's last visit, the device on the wall, the room), so the writing is illegible; the unsteadiness is the text's. Same physical notebook as safehouse_bedroom_kwik_stop_notebook (its cover), here months later and full. (2026-10-27, meta-text pass: \"I want a rich, detailed meta-text\") Removed 'entirely illegible': the page is the last of 'the room' (written last, finished in October at Sam's kitchen table) ending on the canon Strength line he underlines; every fact in the page is the chapter's own.",
+      "notes": "(2026-10-19, written from the insert cue and its scene) The text quotes none of what Diego writes (the dream, Boyd's last visit, the device on the wall, the room), so the writing is illegible; the unsteadiness is the text's. Same physical notebook as safehouse_bedroom_kwik_stop_notebook (its cover), here months later and full. (2026-10-27, meta-text pass: \"I want a rich, detailed meta-text\") Removed 'entirely illegible': the page is the last of 'the room' (written last, finished in October at Sam's kitchen table) ending on the canon Strength line he underlines; every fact in the page is the chapter's own. (2026-11-15, pass 405) The notebook is on the kitchen table in ch9's coda only (\"She takes the notebook upstairs\"): the picture skips the other views of the room.",
       "art_cat": "PICTURE",
       "apply": [
         {
@@ -49133,6 +49133,17 @@
           "facing": "up",
           "hide": [
             "Notebook_Spiral_Page"
+          ],
+          "not_presets": [
+            "miller_kitchen",
+            "miller_kitchen_ch0",
+            "miller_kitchen_ch11",
+            "miller_kitchen_ch11e",
+            "miller_kitchen_ch17",
+            "miller_kitchen_ch3",
+            "miller_kitchen_ch4",
+            "miller_kitchen_ch5",
+            "miller_kitchen_night"
           ]
         }
       ],

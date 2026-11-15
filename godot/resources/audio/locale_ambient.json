@@ -173,6 +173,38 @@
       "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.9
     },
+    "miller_kitchen_ch17": {
+      "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
+      "gain": 0.9
+    },
+    "miller_kitchen_ch11e": {
+      "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
+      "gain": 0.9
+    },
+    "miller_kitchen_ch11": {
+      "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
+      "gain": 0.9
+    },
+    "miller_kitchen_ch9": {
+      "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
+      "gain": 0.9
+    },
+    "miller_kitchen_ch5": {
+      "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
+      "gain": 0.9
+    },
+    "miller_kitchen_ch4": {
+      "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
+      "gain": 0.9
+    },
+    "miller_kitchen_ch3": {
+      "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
+      "gain": 0.9
+    },
+    "miller_kitchen_ch0": {
+      "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
+      "gain": 0.9
+    },
     "miller_kitchen_night": {
       "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.9
