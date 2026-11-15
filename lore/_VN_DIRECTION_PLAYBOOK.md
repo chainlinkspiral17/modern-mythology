@@ -339,8 +339,11 @@ stillness is the player's own camera.
 - An insert holds while the following lines keep naming its subject. When
   the subject LEAVES in the text ("Then it took off"), cut back wide on
   that line or it sits there for three more.
-- A figure in the centre slot is over the insert's object: it steps all
-  the way out; side figures step back to 32 %.
+- (pass 383) The whole cast steps OUT for an insert — a translucent face
+  over a tabletop is worse than in or out — and a spoken line that does
+  not name the object ends the look: the speaker stands in the room.
+  Read a rule as a RUN of lines (room · object · room · object · room),
+  not as one frame.
 
 ### 2026-11-14 · a group needs a middle; a child's line wants a child's lens (passes 377-378)
 - An `insert` of several people is judged like any insert: the nearest

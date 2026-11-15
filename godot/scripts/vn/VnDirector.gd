@@ -375,14 +375,25 @@ static func insert_left_after(spec: String, texts_since: Array) -> int:
 	var words: PackedStringArray = _line_words(String(parts[1]).to_lower().replace("_", " "))
 	var left: int = INSERT_HOLD
 	for tv: Variant in texts_since:
+		# a line is its text, or {text, kind} (GameEngine's replay, pass 383)
+		var line: String = ""
+		var kind: String = "narrate"
+		if tv is Dictionary:
+			var td: Dictionary = tv
+			line = String(td.get("text", ""))
+			kind = String(td.get("kind", "narrate"))
+		else:
+			line = String(tv)
 		var named: bool = false
-		for w: String in _line_words(String(tv)):
+		for w: String in _line_words(line):
 			if w in words:
 				named = true
 				break
 		if named:
 			left = INSERT_HOLD
 			continue
+		if kind == "say":
+			return 0            # someone spoke: play went back to the room
 		left -= 1
 		if left <= 0:
 			return 0
@@ -1021,7 +1032,7 @@ func insert_showing() -> bool:
 func consider_line(text: String, kind: String, cued: bool, speaker: String = "") -> void:
 	_hold_line(kind, speaker, cued)
 	if _insert_left > 0 and not cued:
-		_hold_or_leave_insert(text)
+		_hold_or_leave_insert(text, kind)
 	if not _art_return.is_empty():
 		if not cued:
 			_restore_frame(_art_return)
@@ -1275,7 +1286,7 @@ func _lens_push(cam: Camera3D, to_fov: float) -> void:
 
 ## One more line on an insert: kept while the line names its subject or an
 ## open panel shows it, else counted down; at zero the room's wide returns.
-func _hold_or_leave_insert(text: String) -> void:
+func _hold_or_leave_insert(text: String, kind: String = "narrate") -> void:
 	var named: bool = false
 	for w: String in _line_words(text):
 		if w in _insert_words:
@@ -1288,6 +1299,16 @@ func _hold_or_leave_insert(text: String) -> void:
 				break
 	if named:
 		_insert_left = INSERT_HOLD
+		return
+	if kind == "say":
+		# (pass 383) Someone speaks and the line is not about the object:
+		# the look is over. The hold kept the tabletop for two more lines
+		# whoever spoke, and the cast comes back when someone speaks — so
+		# they stood, full size, over a close-up of a notebook (vol 5 ch0).
+		# A speaker stands in the room.
+		_insert_left = 0
+		apply_shot("establish")
+		print("[VnDirector] someone speaks → the room")
 		return
 	_insert_left -= 1
 	if _insert_left <= 0:

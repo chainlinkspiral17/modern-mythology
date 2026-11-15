@@ -3835,6 +3835,35 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-14 · pass 383: a look at an object is the object; a speaker stands in the room.**
+- Pass 380 made the cast's fades real. Reading what that showed, on the
+  diner counter (vol 5 ch0, two figures at the sides):
+  - "He tapped the cover of his notebook": the step back to 32 % put two
+    ghost faces across the tabletop — worse than the figures in or out.
+    That number was tuned (11-08) while the shader was dropping it;
+    nobody had seen it. **The cast steps all the way out for an insert**
+    and back in after, eased (0.6 s / 0.5 s).
+  - The next line is Frasier speaking. The insert held its tabletop for
+    two more lines whoever spoke, and the cast returns when someone
+    speaks — so both stood, full size, over a close-up of a notebook.
+    **A spoken line that does not name the object ends the look**: the
+    room returns ("someone speaks → the room"). A resumed save follows
+    the same rule (the replay now carries each line's kind).
+  - Read as a run of five lines: room · notebook · room (Frasier) ·
+    phone · room (Frasier).
+  - A spoken or thought line brought the cast back whatever the camera
+    was doing. Now the cast is back when the camera is: a thought over
+    an object the camera still holds is heard over it (booth six's
+    coffee cup, then "He had not, he was almost certain, told the man
+    it was night" — no figure across the table).
+- **The user's calls:** (1) cast fully out on an object close-up, or a
+  faint presence kept? (2) should whoever is listening recede a little
+  when another speaks (off today; it never rendered on the 3D cast)?
+- NEXT: the insert still holds through NARRATED lines that keep naming
+  its subject after the subject has left the text ("Then it took off");
+  three frames want light before they can be cued (the barn's lean,
+  Nick's recliner, Finn's nightstand).
+
 **2026-11-14 · pass 382: the big outdoor sets draw in a fifth of the calls (Harmony Creek 3,837 → 699).**
 - The owed perf pass on harmony_terrain (recorded at 3,837 draw calls in
   pass 376, the heaviest set in the game, under every Harmony exterior and

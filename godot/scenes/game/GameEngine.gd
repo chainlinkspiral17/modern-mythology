@@ -815,7 +815,9 @@ func _fast_forward_to(target: int) -> void:
 					if had_shot:
 						since_shot.clear()
 					elif last_shot != "":
-						since_shot.append(text)
+						# with its kind: a spoken line ends an insert's hold
+						# in play (VnDirector, pass 383), so it must on resume
+						since_shot.append({"text": text, "kind": String(n.get("t", ""))})
 			_:
 				pass
 	# Environment nodes in original relative order.
@@ -1234,7 +1236,11 @@ func _do_say(n: Dictionary) -> void:
 	if via == "" or bool(_chars.call("has_character", char_name)):
 		_chars.call("activate_speaker", char_name.to_lower())
 	_push_scene_light()
-	_chars.call("set_insert_quiet", false)
+	# (pass 383) the cast is back when the camera is back. A spoken line
+	# that names the object keeps the look (VnDirector) and is heard over
+	# it; any other has already cut to the room. `false` here put both
+	# figures, full size, over the close-up the line was still holding.
+	_chars.call("set_insert_quiet", _director != null and bool(_director.call("insert_showing")))
 	_chars.call("direct_line", char_name.to_lower(), text, expr, "say")
 	_chars.call("set_featured", String(_director.call("featured_key")) if _director != null else "")
 	_dlg.visible = true
@@ -1260,7 +1266,9 @@ func _do_think(n: Dictionary) -> void:
 	AudioMgr.duck()
 	_chars.call("activate_speaker", char_name.to_lower())
 	_push_scene_light()
-	_chars.call("set_insert_quiet", false)
+	# (pass 383) as for a spoken line: a thought over an object the camera
+	# still holds is heard over it, the thinker's figure not laid across it
+	_chars.call("set_insert_quiet", _director != null and bool(_director.call("insert_showing")))
 	_chars.call("direct_line", char_name.to_lower(), _s(n, "text"), expr, "think")
 	_chars.call("set_featured", String(_director.call("featured_key")) if _director != null else "")
 	_dlg.visible = true

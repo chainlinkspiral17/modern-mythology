@@ -1015,7 +1015,7 @@ var lone_side: String = "right"
 # portraits step back (fade out) so the object is the picture; they return on
 # the next line that is not one, or when someone speaks.
 var _insert_quiet: bool = false
-const INSERT_QUIET_ALPHA := 0.32
+const INSERT_QUIET_ALPHA := 0.0     # (pass 383) was 0.32: see set_insert_quiet
 var _quiet_tw: Tween = null
 
 
@@ -1064,16 +1064,15 @@ func set_insert_quiet(on: bool) -> void:
 	# eased, slowly enough to read as one move with the cut; the cast stands
 	# at the edges of the centre band, so the object in the middle stays
 	# clear.
-	# (pass 380) ...unless one of them stands in the centre: that figure is
-	# over the object itself (vol 5 ch18: Nicola's face across the crow on
-	# the traffic light, at 32 %). With a figure in the centre slot the cast
-	# steps all the way out for the insert. The fade is real now (the 3D
-	# portrait's shader used to drop it), so this is an eased 0.6 s, not the
-	# blink the 2026-11-08 note describes.
+	# (pass 383) The step back to 32 % was tuned while the 3D portrait's
+	# shader was dropping it — nobody had seen it. Seen (vol 5 ch0, the
+	# notebook on the diner counter): two ghost faces lying across the
+	# tabletop, worse than the figures in or out. The fade is real now, so
+	# the cast steps all the way OUT for the look at the object and back
+	# in after: an eased 0.6 s out and 0.5 s in, one move with the cut —
+	# not the 0.25 s blink the 11-08 note was written against (which, on a
+	# 3D portrait, had been a pop).
 	var quiet_to: float = INSERT_QUIET_ALPHA
-	var centre = _slots.get("center")
-	if centre != null and centre["node"] != null and is_instance_valid(centre["node"]):
-		quiet_to = 0.0
 	_quiet_tw = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	_quiet_tw.tween_property(self, "modulate:a", quiet_to if on else 1.0, 0.6 if on else 0.5)
 
