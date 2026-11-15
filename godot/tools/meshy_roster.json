@@ -14597,17 +14597,17 @@
     },
     {
       "slug": "vehicle_cab_map",
-      "kind": "art",
-      "name": "the folded, annotated corridor map on the truck's dash",
-      "file": "vehicle_cab_map.png",
+      "kind": "scene2d",
+      "name": "Jesse's folded, annotated corridor map (the ch14 map card)",
+      "file": "cg/panel_vol6_jesse_map.jpg",
       "vol": [
         6
       ],
       "keys": [
         "vehicle_cab_map"
       ],
-      "tag": "picture · vehicle_cab · 0.22 x 0.16 m · 441 lines play here, 8 mention it",
-      "prompt": "Top-down flat view of a single sheet of white printer paper folded in half, lying on a dashboard. Printed from a road-atlas PDF: a grey-and-pale-yellow street map of a small Texas suburban corridor at 1:12,000, fine printed street names, small but readable, a highway in orange, a creek in blue, the curving cul-de-sacs of a planned subdivision. Hand annotations in three ballpoint colors: about fourteen small black circles with tiny addresses, four in red, and one emphatic blue ring around a building at the back of a strip mall. Fold crease down the center, soft wear. 1.4:1.",
+      "tag": "vol6 · INSERT (the map card, panel vol6_jesse_map) · vol6_ch14_substation_nine",
+      "prompt": "Top-down flat view of a single sheet of white printer paper folded in half, opened out flat. Printed from a road-atlas PDF: a grey-and-pale-yellow street map of a small Texas suburban corridor at 1:12,000, fine printed street names, small but readable, a highway in orange, a creek in blue, the curving cul-de-sacs of a planned subdivision. Hand annotations in three ballpoint colors: about fourteen small black circles with tiny addresses, four in red, and one emphatic blue ring around a building at the back of a strip mall. Fold crease down the center, soft wear. 1.4:1.",
       "canon": [
         {
           "src": "godot/resources/scenes/vol6/vol6_ch14_substation_nine.json",
@@ -14623,31 +14623,13 @@
         }
       ],
       "prompt_mode": "append",
-      "notes": "(2026-10-13, written from the builder, scenes and wiki) Jesse's map (ch14), dressed on the pickup's dash in the builder (pass 71). Street names deliberately illegible. (2026-10-19) size doubled: laid at half its stand-in by hero_art_candidates' half-extent bug. (2026-10-27, meta-text pass: \"I want a rich, detailed meta-text\") Removed 'too small to read'; wrote the map's printed labels (canon street names) and Jesse's three-colour annotations to the text's counts and meanings; house numbers and red dates invented.",
-      "art_cat": "PICTURE",
-      "score_lines": 441,
-      "score_mentions": 8,
-      "apply": [
-        {
-          "locale": "vehicle_cab",
-          "label": "Map",
-          "center": [
-            0.46,
-            1.1,
-            1.186
-          ],
-          "size": [
-            0.22,
-            0.16
-          ],
-          "facing": "up",
-          "hide": [
-            "Map_Folded"
-          ]
-        }
+      "notes": "(2026-10-13, written from the builder, scenes and wiki) Jesse's map (ch14), dressed on the pickup's dash in the builder (pass 71). Street names deliberately illegible. (2026-10-19) size doubled: laid at half its stand-in by hero_art_candidates' half-extent bug. (2026-10-27, meta-text pass: \"I want a rich, detailed meta-text\") Removed 'too small to read'; wrote the map's printed labels (canon street names) and Jesse's three-colour annotations to the text's counts and meanings; house numbers and red dates invented. (2026-11-15, pass 398) OFF THE DASH: \"The map is in his glove compartment\" (ch14), and the cab is every truck in vol 6, so the sheet lay on all their dashboards. The picture is now the map CARD: ch14's description of it (\"The map is a single folded sheet …\" to the van) shows it over the drive (resources/vn/panels/vol6_jesse_map.json, `art`: this key). The roster row is the CARD now (scene2d, cg/panel_vol6_jesse_map.jpg — a picture with no place in the room cannot stay `art`, which needs an apply list): installing it puts the picture already made (same slug, same front image) where the card looks first. Until then the card finds the old install, art/hero/vehicle_cab_map.png, by the panel's `art` key. A remake drops the dashboard.",
+      "text_body": "Printed header strip: New Auburn – Harmony Creek Estates, TX · Scale 1:12,000 · Rand McNally\nPrinted street and place labels: GALLATIN AVE · FIFTH ST · LIVE OAK ST · OAK ST · MEADOWLARK CIR · ASHBERRY DR · VERBENA WAY · ANTONIO RD · I-10 (orange) · Harmony Creek (blue) · HARMONY CREEK ESTATES · Water Tower · Substation\nPrinted footer: © Rand McNally · For personal use · Page 1 of 1\nBlack ballpoint, fourteen small circles each with an address in Jesse's small print: 114 Meadowlark · 131 Meadowlark · 7 Verbena · 22 Verbena · 409 Ashberry · 417 Ashberry · 1200 Gallatin · 1316 Gallatin · Gas & Go (Gallatin/5th) · 88 Oak · 240 Antonio · 255 Antonio · 61 Live Oak · 75 Live Oak\nRed ballpoint, four of those circled again with dates: 131 Meadowlark — chg 7/2 · 1316 Gallatin — chg 7/9 · 240 Antonio — chg 7/20 · 88 Oak — chg 8/3\nBlue ballpoint, one hard ring around the back of the strip mall on Live Oak: REAR UNIT (old payday loan) — white van 1–3 AM, stays 40–90 min — window re-papered x2 (early July, early Aug) — no sign, no permit\nBeside it, black: Foxhole → across lot\nMargin key in black: BLK = registered · RED = changed (6 wks) · BLUE = ACTIVE",
+      "role": "cg",
+      "scenes": [
+        "vol6_ch14_substation_nine"
       ],
-      "inspect": true,
-      "text_body": "Printed header strip: New Auburn – Harmony Creek Estates, TX · Scale 1:12,000 · Rand McNally\nPrinted street and place labels: GALLATIN AVE · FIFTH ST · LIVE OAK ST · OAK ST · MEADOWLARK CIR · ASHBERRY DR · VERBENA WAY · ANTONIO RD · I-10 (orange) · Harmony Creek (blue) · HARMONY CREEK ESTATES · Water Tower · Substation\nPrinted footer: © Rand McNally · For personal use · Page 1 of 1\nBlack ballpoint, fourteen small circles each with an address in Jesse's small print: 114 Meadowlark · 131 Meadowlark · 7 Verbena · 22 Verbena · 409 Ashberry · 417 Ashberry · 1200 Gallatin · 1316 Gallatin · Gas & Go (Gallatin/5th) · 88 Oak · 240 Antonio · 255 Antonio · 61 Live Oak · 75 Live Oak\nRed ballpoint, four of those circled again with dates: 131 Meadowlark — chg 7/2 · 1316 Gallatin — chg 7/9 · 240 Antonio — chg 7/20 · 88 Oak — chg 8/3\nBlue ballpoint, one hard ring around the back of the strip mall on Live Oak: REAR UNIT (old payday loan) — white van 1–3 AM, stays 40–90 min — window re-papered x2 (early July, early Aug) — no sign, no permit\nBeside it, black: Foxhole → across lot\nMargin key in black: BLK = registered · RED = changed (6 wks) · BLUE = ACTIVE"
+      "aspect": "4:3"
     },
     {
       "slug": "vehicle_cab_mile_marker_sign",

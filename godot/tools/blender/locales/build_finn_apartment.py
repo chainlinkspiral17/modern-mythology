@@ -202,7 +202,8 @@ def build_kitchen_run():
 
 def build_kitchen_table():
     """The table the charred wood is laid out on (ch9: "Finn was at the
-    kitchen table"); three chairs; the hexagon, the stick in its sleeve."""
+    kitchen table"); three chairs; the wood on Tem's cloth as each chapter
+    counts it (pass 399), the stick in its sleeve in ch18."""
     wood = (0.44, 0.32, 0.20, 1.0)
     tx, ty, T = 0.30, 1.95, 0.765
     make_chamfer_box("Kitchen_Table", (tx, ty, 0.74), (1.20, 0.84, 0.05), wood)
@@ -211,20 +212,53 @@ def build_kitchen_table():
     make_chair("KT_Chair_S", tx, ty - 0.72, yaw=0.0, wood=wood, w=0.40)
     make_chair("KT_Chair_N", tx, ty + 0.72, yaw=math.pi, wood=wood, w=0.40)
     make_chair("KT_Chair_E", tx + 0.92, ty, yaw=math.pi / 2.0, wood=wood, w=0.40)
-    # the cloth, the five pieces of charred wood laid out in a shape that is not random
-    make_chamfer_box("Folded_Cloth", (tx + 0.10, ty, T + 0.004), (0.46, 0.36, 0.008), (0.82, 0.78, 0.68, 1.0))
-    for wi, (ox, oy, rz) in enumerate(((-0.08, -0.06, 0.0), (0.04, -0.07, 0.0), (0.12, 0.02, 0.0), (0.02, 0.07, 0.0), (-0.10, 0.05, 0.0))):
-        make_box(f"Charred_Wood_{wi}", (tx + 0.10 + ox, ty + oy, T + 0.020), (0.09, 0.06, 0.025), (0.10, 0.09, 0.08, 1.0))
-    # THE HEXAGON on its own cloth at the west end
-    cedar, cedar_dk = (0.55, 0.38, 0.26, 1.0), (0.44, 0.30, 0.20, 1.0)
-    hx, hy = tx - 0.36, ty
-    make_box("Hexagon_Cloth", (hx, hy, T + 0.002), (0.30, 0.28, 0.004), (0.78, 0.74, 0.64, 1.0))
-    for hi in range(6):
-        ang = math.pi / 3.0 * hi + math.pi / 6.0
-        make_box(f"Hexagon_Ring_{hi}", (hx + 0.095 * math.cos(ang), hy + 0.095 * math.sin(ang), T + 0.013), (0.065, 0.065, 0.018), cedar)
-    make_cyl("Hexagon_Center_Face", (hx, hy, T + 0.012), 0.040, 0.016, cedar_dk, segments=12)
-    make_cyl("Hexagon_Face_Inlay", (hx, hy, T + 0.0215), 0.022, 0.003, (0.62, 0.46, 0.32, 1.0), segments=10)
-    make_box("Hexagon_Aria_Piece", (hx + 0.115, hy - 0.11, T + 0.014), (0.060, 0.045, 0.020), cedar)
+    # (pass 399) THE WOOD ON TEM'S CLOTH, by chapter. It stood here as five
+    # pieces on one cloth AND the finished hexagon on another, in every
+    # chapter. One cloth ("the small folded cloth Tem had set down for it",
+    # ch1; "the cloth Tem had given him to keep them in", ch12); the pieces
+    # are charred yellow-grained wood ("the edges burnt black, the grain
+    # visible in the unburnt parts. The grain was yellow", ch1) — a black
+    # body, its unburnt yellow face up. The text counts them:
+    #   ch5  (finn_apartment_day): three, fitted — "He could see the joins"
+    #   ch9  (finn_apartment): five, "a rough irregular hexagon about ten
+    #        inches across … open at three corners, with room for more pieces"
+    #   ch12 (finn_apartment_night at five AM, finn_apartment_hexagon after
+    #        the bakery and at noon): six in the ring, the cedar face in the
+    #        centre, the AR I A piece beside it (group fa_hex)
+    #   ch18 (the stick views): none — "the stick and the sleeve and the crow"
+    char, grain = (0.075, 0.065, 0.058, 1.0), (0.74, 0.60, 0.30, 1.0)
+    cx, cy, C = tx + 0.10, ty, T + 0.008          # the cloth's centre and top
+    make_chamfer_box("Wood_Cloth__fa_wood", (cx, cy, T + 0.004), (0.46, 0.36, 0.008), (0.82, 0.78, 0.68, 1.0))
+    RING_A = 0.105                                 # the ring's apothem: ~25 cm across
+
+    def ring_piece(base, tag, k, gap=0.0, turn=0.0):
+        d = math.radians(30.0 + 60.0 * k)
+        px, py = cx + (RING_A + gap) * math.cos(d), cy + (RING_A + gap) * math.sin(d)
+        yaw = d + math.pi / 2.0 + turn
+        make_rot_box(f"{base}__{tag}", (px, py, C + 0.011), (0.100, 0.036, 0.022), char, yaw=yaw)
+        make_rot_box(f"{base}_Grain__{tag}", (px, py, C + 0.0225), (0.066, 0.016, 0.001), grain, yaw=yaw)
+
+    # ch5: three, fitted — one arc of the ring, a little uneven
+    for k, (gap, turn) in enumerate(((0.004, 0.04), (0.0, 0.0), (0.003, -0.05))):
+        ring_piece(f"Charred_Wood3_{k}", "finn_apartment_day", k, gap, turn)
+    # ch9: five — two runs that fit, a side missing, one join left open
+    for k, gap, turn in ((0, 0.003, 0.03), (1, 0.0, 0.0), (2, 0.002, -0.04), (4, 0.004, 0.05), (5, 0.016, -0.08)):
+        ring_piece(f"Charred_Wood5_{k}", "finn_apartment", k, gap, turn)
+    # ch12: the hexagon — the ring, the eighth piece in the hole (cedar,
+    # carved: "The face filled the unburnt portion of the wood … The hair
+    # on the face was curling. The eyes were closed"), AR I A beside it
+    for k in range(6):
+        ring_piece(f"Hexagon_Ring_{k}", "fa_hex", k)
+    make_cyl("Hexagon_Eighth__fa_hex", (cx, cy, C + 0.012), 0.096, 0.024, char, segments=6)
+    make_cyl("Hexagon_Face__fa_hex", (cx, cy, C + 0.0245), 0.056, 0.001, (0.72, 0.52, 0.34, 1.0), segments=12)
+    face_ink = (0.54, 0.37, 0.24, 1.0)
+    for ex in (-0.016, 0.016):
+        make_box(f"Hexagon_Face_Eye_{'L' if ex < 0 else 'R'}__fa_hex", (cx + ex, cy + 0.008, C + 0.0252), (0.014, 0.002, 0.0004), face_ink)
+    make_box("Hexagon_Face_Mouth__fa_hex", (cx, cy - 0.020, C + 0.0252), (0.012, 0.002, 0.0004), face_ink)
+    for hk, (hx_, hy_) in enumerate(((-0.034, 0.026), (-0.040, 0.004), (0.034, 0.026), (0.040, 0.004))):
+        make_cyl(f"Hexagon_Face_Curl_{hk}__fa_hex", (cx + hx_, cy + hy_, C + 0.0252), 0.006, 0.0004, face_ink, segments=6)
+    make_rot_box("Hexagon_Aria__fa_hex", (cx + 0.17, cy - 0.12, C + 0.011), (0.078, 0.048, 0.022), char, yaw=0.35)
+    make_rot_box("Hexagon_Aria_Grain__fa_hex", (cx + 0.17, cy - 0.12, C + 0.0225), (0.044, 0.022, 0.001), grain, yaw=0.35)
     # THE STICK in its waxed-paper sleeve, east end
     # (pass 397) the stick, its sleeve and Hans's brown paper bag reach this
     # table in vol 7 ch18 ("He set the bag on the kitchen table … The stick

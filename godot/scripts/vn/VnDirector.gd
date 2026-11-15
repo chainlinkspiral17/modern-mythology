@@ -785,6 +785,30 @@ func _dismiss_panel() -> void:
 	_panel_card = null
 
 
+## (pass 398) The installed hero-art picture a panel's JSON names with
+## `"art": "<roster key>"` ("" when it names none or none is installed).
+func _panel_art_picture(json_path: String) -> String:
+	if not FileAccess.file_exists(json_path):
+		return ""
+	var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(json_path))
+	if typeof(parsed) != TYPE_DICTIONARY:
+		return ""
+	var spec: Dictionary = parsed
+	var key: String = String(spec.get("art", ""))
+	if key == "":
+		return ""
+	if _hero_art_files.is_empty():
+		var d: DirAccess = DirAccess.open(HERO_ART_DIR)
+		if d == null:
+			return ""
+		_hero_art_files = d.get_files()
+	for f0: String in _hero_art_files:
+		var f: String = f0.trim_suffix(".import").trim_suffix(".remap")
+		if (f.ends_with(".png") or f.ends_with(".jpg")) and f.get_basename() == key:
+			return HERO_ART_DIR + f
+	return ""
+
+
 func _build_panel_card(id: String) -> Control:
 	var card := PanelContainer.new()
 	var st := StyleBoxFlat.new()
@@ -805,6 +829,14 @@ func _build_panel_card(id: String) -> Control:
 	# scene2d `panel_<id>`, installed at assets/cg/panel_<id>.jpg) replaces
 	# the old pixel document when it is there
 	var pic_path: String = "res://assets/cg/panel_%s.jpg" % id
+	# (pass 398) or the hero-art picture the panel names (`"art": <key>`):
+	# a thing the text describes where the camera cannot see it — Jesse's
+	# corridor map is "in his glove compartment" (vol 6 ch14), and the
+	# picture made for it when it lay on the dash shows here instead
+	if not ResourceLoader.exists(pic_path):
+		var art_pic: String = _panel_art_picture(path)
+		if art_pic != "":
+			pic_path = art_pic
 	if ResourceLoader.exists(pic_path):
 		var tex: Texture2D = load(pic_path) as Texture2D
 		var pr := TextureRect.new()

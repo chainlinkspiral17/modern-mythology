@@ -263,9 +263,12 @@ def build_dash():
         make_box(f"Floor_Mat_F_{nm}", (sgn * 0.46, 0.65, 0.463), (0.55, 0.60, 0.006), (0.15, 0.15, 0.15, 1.0))
         make_box(f"Floor_Mat_R_{nm}", (sgn * 0.46, -0.60, 0.463), (0.55, 0.50, 0.006), (0.15, 0.15, 0.15, 1.0))
     make_box("Glovebox_Door", (0.46, 0.945, 0.86), (0.50, 0.01, 0.26), DASH_LT)
-    # (pass 71) ch14: the map — a folded sheet of printer paper on the dash over the glove box
-    make_box("Map_Folded", (0.46, 1.10, 1.186), (0.22, 0.16, 0.012), (0.92, 0.90, 0.82, 1.0))
-    make_box("Map_Folded_Crease", (0.46, 1.10, 1.193), (0.004, 0.16, 0.002), (0.60, 0.58, 0.52, 1.0))
+    # (pass 398) its latch: the closed glove box is a close-up's subject now
+    make_box("Glovebox_Latch", (0.46, 0.934, 0.95), (0.09, 0.012, 0.026), (0.78, 0.78, 0.80, 1.0))
+    # (pass 398) no map on the dash: vol 6 ch14 says "The map is in his glove
+    # compartment", and this cab is every truck in vol 6 (ch8, ch14, ch18,
+    # ch19, ch22) — the sheet lay on all their dashboards. The line looks at
+    # the closed glove box now (shot_insert_glovebox).
 
 
 def build_seats():
@@ -463,8 +466,19 @@ def build_altima_2026_10():
         build_dash()
         build_seats()
         build_el_rancho()
+        _sedan_map()
         make_tube("Cord_1", [(0.22, 1.07, 1.19), (0.22, 1.02, 1.05), (0.10, 0.96, 0.85), (0.02, 0.94, 0.80)], 0.004, (0.90, 0.90, 0.88, 1.0), segments=4)
         make_cyl("Socket_12V", (0.0, 0.925, 0.80), 0.014, 0.01, (0.12, 0.12, 0.13, 1.0), axis="Y", segments=8)
+
+
+def _sedan_map():
+    """(pass 398) The folded map on the two sedans' dashes over the glove box
+    (Altima_Map_Folded, Corolla_Map_Folded under plan.shifted). They were
+    clones of the truck's ch14 map and went with it; no line contradicts
+    them, and each has its own picture (vehicle_cab_altima_map,
+    vehicle_cab_corolla_map). The truck's own map is in its glove box."""
+    make_box("Map_Folded", (0.46, 1.10, 1.186), (0.22, 0.16, 0.012), (0.92, 0.90, 0.82, 1.0))
+    make_box("Map_Folded_Crease", (0.46, 1.10, 1.193), (0.004, 0.16, 0.002), (0.60, 0.58, 0.52, 1.0))
 
 
 def build_corolla_2026_10():
@@ -512,6 +526,7 @@ def build_corolla_2026_10():
         build_cab_shell()
         build_dash()
         build_seats()
+        _sedan_map()
         make_box("Apron", (0.45, 0.30, 0.62), (0.40, 0.44, 0.03), (0.62, 0.16, 0.14, 1.0))   # her Kwik Stop apron on the passenger seat
         make_box("Break_Bag", (0.50, 0.10, 0.72), (0.16, 0.12, 0.18), (0.72, 0.60, 0.42, 1.0))
         make_tube("Cord_1", [(0.22, 1.07, 1.19), (0.22, 1.02, 1.05), (0.10, 0.96, 0.85), (0.02, 0.94, 0.80)], 0.004, (0.90, 0.90, 0.88, 1.0), segments=4)

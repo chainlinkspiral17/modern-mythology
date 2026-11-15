@@ -1,0 +1,588 @@
+{
+ "id": "vol6_jesse_map",
+ "w": 120,
+ "h": 90,
+ "art": "vehicle_cab_map",
+ "_doc": "(pass 398) Jesse's corridor map, vol 6 ch14: \"The map is in his glove compartment\" \u2014 the line describes it where the camera cannot see it. The director shows the hero-art picture made for it (roster vehicle_cab_map, `art`) when that is installed, else this pixel sheet: the grid, the creek, the highway, fourteen black circles, four red, one blue around the strip-mall unit.",
+ "palette": [
+  "#f2efe6",
+  "#d8d4c8",
+  "#a8a49a",
+  "#e08a2c",
+  "#4a7cc0",
+  "#1a1a1a",
+  "#c0302a",
+  "#2a52c8",
+  "#6e6a62",
+  "#cfe0c4"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "noise",
+   "xywh": [
+    0,
+    0,
+    120,
+    90
+   ],
+   "density": 0.05,
+   "seed": 3,
+   "color": 1
+  },
+  {
+   "op": "hline",
+   "y": 10,
+   "x_range": [
+    4,
+    115
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 21,
+   "x_range": [
+    4,
+    115
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 32,
+   "x_range": [
+    4,
+    115
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 43,
+   "x_range": [
+    4,
+    115
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 54,
+   "x_range": [
+    4,
+    115
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 65,
+   "x_range": [
+    4,
+    115
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 76,
+   "x_range": [
+    4,
+    115
+   ],
+   "color": 2
+  },
+  {
+   "op": "vline",
+   "x": 8,
+   "y_range": [
+    6,
+    84
+   ],
+   "color": 2
+  },
+  {
+   "op": "vline",
+   "x": 21,
+   "y_range": [
+    6,
+    84
+   ],
+   "color": 2
+  },
+  {
+   "op": "vline",
+   "x": 34,
+   "y_range": [
+    6,
+    84
+   ],
+   "color": 2
+  },
+  {
+   "op": "vline",
+   "x": 47,
+   "y_range": [
+    6,
+    84
+   ],
+   "color": 2
+  },
+  {
+   "op": "vline",
+   "x": 60,
+   "y_range": [
+    6,
+    84
+   ],
+   "color": 2
+  },
+  {
+   "op": "vline",
+   "x": 73,
+   "y_range": [
+    6,
+    84
+   ],
+   "color": 2
+  },
+  {
+   "op": "vline",
+   "x": 86,
+   "y_range": [
+    6,
+    84
+   ],
+   "color": 2
+  },
+  {
+   "op": "vline",
+   "x": 99,
+   "y_range": [
+    6,
+    84
+   ],
+   "color": 2
+  },
+  {
+   "op": "vline",
+   "x": 112,
+   "y_range": [
+    6,
+    84
+   ],
+   "color": 2
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     78,
+     26
+    ],
+    [
+     84,
+     22
+    ],
+    [
+     88,
+     18
+    ],
+    [
+     91,
+     14
+    ]
+   ],
+   "color": 8
+  },
+  {
+   "op": "ring",
+   "xy": [
+    92,
+    13
+   ],
+   "r": 2,
+   "color": 8
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     90,
+     36
+    ],
+    [
+     96,
+     32
+    ],
+    [
+     100,
+     28
+    ],
+    [
+     103,
+     24
+    ]
+   ],
+   "color": 8
+  },
+  {
+   "op": "ring",
+   "xy": [
+    104,
+    23
+   ],
+   "r": 2,
+   "color": 8
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     74,
+     42
+    ],
+    [
+     80,
+     38
+    ],
+    [
+     84,
+     34
+    ],
+    [
+     87,
+     30
+    ]
+   ],
+   "color": 8
+  },
+  {
+   "op": "ring",
+   "xy": [
+    88,
+    29
+   ],
+   "r": 2,
+   "color": 8
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    22,
+    52,
+    12,
+    9
+   ],
+   "color": 9
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     0,
+     70
+    ],
+    [
+     14,
+     66
+    ],
+    [
+     26,
+     72
+    ],
+    [
+     40,
+     64
+    ],
+    [
+     54,
+     68
+    ],
+    [
+     66,
+     58
+    ],
+    [
+     80,
+     62
+    ],
+    [
+     96,
+     52
+    ],
+    [
+     120,
+     56
+    ]
+   ],
+   "color": 4
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     0,
+     40
+    ],
+    [
+     30,
+     42
+    ],
+    [
+     60,
+     44
+    ],
+    [
+     90,
+     46
+    ],
+    [
+     120,
+     47
+    ]
+   ],
+   "color": 3
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     0,
+     41
+    ],
+    [
+     30,
+     43
+    ],
+    [
+     60,
+     45
+    ],
+    [
+     90,
+     47
+    ],
+    [
+     120,
+     48
+    ]
+   ],
+   "color": 3
+  },
+  {
+   "op": "ring",
+   "xy": [
+    12,
+    15
+   ],
+   "r": 2,
+   "color": 5
+  },
+  {
+   "op": "ring",
+   "xy": [
+    26,
+    24
+   ],
+   "r": 2,
+   "color": 5
+  },
+  {
+   "op": "ring",
+   "xy": [
+    41,
+    18
+   ],
+   "r": 2,
+   "color": 5
+  },
+  {
+   "op": "ring",
+   "xy": [
+    55,
+    27
+   ],
+   "r": 2,
+   "color": 5
+  },
+  {
+   "op": "ring",
+   "xy": [
+    69,
+    15
+   ],
+   "r": 2,
+   "color": 5
+  },
+  {
+   "op": "ring",
+   "xy": [
+    20,
+    34
+   ],
+   "r": 2,
+   "color": 5
+  },
+  {
+   "op": "ring",
+   "xy": [
+    47,
+    35
+   ],
+   "r": 2,
+   "color": 5
+  },
+  {
+   "op": "ring",
+   "xy": [
+    73,
+    30
+   ],
+   "r": 2,
+   "color": 5
+  },
+  {
+   "op": "ring",
+   "xy": [
+    16,
+    55
+   ],
+   "r": 2,
+   "color": 5
+  },
+  {
+   "op": "ring",
+   "xy": [
+    38,
+    58
+   ],
+   "r": 2,
+   "color": 5
+  },
+  {
+   "op": "ring",
+   "xy": [
+    62,
+    52
+   ],
+   "r": 2,
+   "color": 5
+  },
+  {
+   "op": "ring",
+   "xy": [
+    77,
+    72
+   ],
+   "r": 2,
+   "color": 5
+  },
+  {
+   "op": "ring",
+   "xy": [
+    30,
+    79
+   ],
+   "r": 2,
+   "color": 5
+  },
+  {
+   "op": "ring",
+   "xy": [
+    52,
+    80
+   ],
+   "r": 2,
+   "color": 5
+  },
+  {
+   "op": "ring",
+   "xy": [
+    34,
+    26
+   ],
+   "r": 2,
+   "color": 6
+  },
+  {
+   "op": "ring",
+   "xy": [
+    60,
+    20
+   ],
+   "r": 2,
+   "color": 6
+  },
+  {
+   "op": "ring",
+   "xy": [
+    45,
+    73
+   ],
+   "r": 2,
+   "color": 6
+  },
+  {
+   "op": "ring",
+   "xy": [
+    94,
+    74
+   ],
+   "r": 2,
+   "color": 6
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    100,
+    60,
+    12,
+    6
+   ],
+   "color": 8
+  },
+  {
+   "op": "ring",
+   "xy": [
+    106,
+    63
+   ],
+   "r": 6,
+   "color": 7
+  },
+  {
+   "op": "ring",
+   "xy": [
+    106,
+    63
+   ],
+   "r": 7,
+   "color": 7
+  },
+  {
+   "op": "vline",
+   "x": 60,
+   "y_range": [
+    0,
+    90
+   ],
+   "color": 1
+  },
+  {
+   "op": "shade",
+   "xywh": [
+    60,
+    0,
+    4,
+    90
+   ],
+   "amount": 0.12,
+   "color": 2
+  }
+ ]
+}

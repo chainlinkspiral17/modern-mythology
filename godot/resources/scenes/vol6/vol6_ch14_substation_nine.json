@@ -227,12 +227,12 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:arcana][shot:insert map]The map is in his glove compartment.",
+   "text": "[mood:arcana][shot:insert glovebox]The map is in his glove compartment.",
    "voice": "assets/audio/voice/vol6_ch14_substation_nine/043.ogg"
   },
   {
    "t": "narrate",
-   "text": "The map is a single folded sheet of printer paper from a Rand McNally pdf he had downloaded in early June, with the local New Auburn-Harmony Creek Estates corridor printed at one-to-twelve-thousand scale,",
+   "text": "[panel:vol6_jesse_map]The map is a single folded sheet of printer paper from a Rand McNally pdf he had downloaded in early June, with the local New Auburn-Harmony Creek Estates corridor printed at one-to-twelve-thousand scale,",
    "voice": "assets/audio/voice/vol6_ch14_substation_nine/044.ogg"
   },
   {
@@ -267,7 +267,7 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert window]The van leaves. There is no signage on the unit. There is no permit displayed in the window.",
+   "text": "[panel:off][shot:insert window]The van leaves. There is no signage on the unit. There is no permit displayed in the window.",
    "voice": "assets/audio/voice/vol6_ch14_substation_nine/051.ogg"
   },
   {

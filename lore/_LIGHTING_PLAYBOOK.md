@@ -151,6 +151,24 @@ Position note: lamp omnis are placed AT the lamp-head mesh position
 
 ## Recent lessons
 
+### 2026-11-15 · a copied view carries the rig of the view it was copied from (pass 399)
+
+**What happened.** Pass 397 made `finn_apartment_stick` and
+`finn_apartment_night_stick` — the same cameras as `finn_apartment` and
+`finn_apartment_night`, with ch18's stick on the table. The room's lights
+were named for the originals (`Key__finn_apartment`,
+`Moon_Window__finn_apartment_night`), and Background3D strips a tagged
+light from every view it does not name: the copies ran with no key, fill,
+back or moon. The same had happened in pass 168 to two Chau house views,
+which kept no light at all.
+
+**The rule.** A light tag names the HOUR, not the view: when a view is
+copied to carry chapter state, put the copy in the rig's tag — a
+VIEW_GROUPS group (`fa_base`, `fa_day`, `fa_night`, `chau_day`) is the
+tidy way. `tools/audit/rig_twin_audit.py` (in the suite) fails a view that
+keeps no light while a sibling does, or no directional while its twin
+(same camera origin) keeps a tagged one.
+
 ### 2026-11-10 · read a set in the mood its lines PLAY in (Board Lords, pass 329)
 
 - **What happened.** Board Lords had been through four drafts of props and

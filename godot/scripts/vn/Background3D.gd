@@ -45,6 +45,18 @@ const ArtMaskScript := preload("res://scripts/vn/ArtMask.gd")
 const VIEW_GROUPS := {
 	# (pass 397) Finn's table once the stick has come home (vol 7 ch18)
 	"fa_stick": ["finn_apartment_stick", "finn_apartment_night_stick"],
+	# (pass 399) the wood on Tem's cloth: the cloth in ch5, ch9, ch12; the
+	# assembled hexagon in ch12's two views
+	"fa_wood": ["finn_apartment", "finn_apartment_day", "finn_apartment_night", "finn_apartment_hexagon"],
+	"fa_hex": ["finn_apartment_night", "finn_apartment_hexagon"],
+	# (pass 399) each light rig with the twin views that share its hour
+	# (a rig tagged to one view went dark in the views copied from it)
+	"fa_base": ["finn_apartment", "finn_apartment_stick"],
+	"fa_day": ["finn_apartment_day", "finn_apartment_hexagon"],
+	"fa_night": ["finn_apartment_night", "finn_apartment_night_stick"],
+	# (pass 399) the Chau house by day, its two vol 3 ch8 views included
+	"chau_day": ["chau_hall_noon", "chau_entry_morning", "chau_living", "chau_bath", "chau_game_room",
+		"chau_steven_room", "chau_steven_desk", "chau_mom_room"],
 	# vol 7 ch20-21, the alley behind the Salty Tome by the clock:
 	# g 6:59 gather · v 7:15 vigil · a 10:45 leaving · b 11:00 thinning · c 11:30 twelve
 	"st_gv": ["salty_tome_gather", "salty_tome_vigil"],
@@ -3686,6 +3698,33 @@ const CAMERA_PRESETS := {
 		"suppress_input": true,
 	},
 	"finn_apartment_day": {
+		"scene": "res://scenes/locales/finn_apartment.tscn",
+		"requires_glb": "res://assets/3d/locales/finn_apartment.glb",
+		# DRAFT 4 (2026-10-09): one-bedroom over the kayak shop, 8.4 x 7.6
+		# (godot x in [-4.2,4.2], z in [0,-7.6], ceil 2.7). Kitchen S: the run
+		# on the W wall under the alley window, the table with the charred
+		# wood (godot 0.3,-1.95), Finn's desk SW, the space heater + duffel
+		# E; bedroom N through the doorway (godot 1.6,-3.9). Camera inside
+		# the entry door (E wall) looking W across the kitchen.
+		# (2026-10-11, pass 60) THE SAME ROOM at the other hour: ch12 Kai (11:15), ch12 Morning (after the bakery, morning), ch5 (morning_bright)
+		# on the dusk rig.
+		# The authored rig is suffixed to finn_apartment; this twin has its own lights and env.
+		# (2026-11-10, pass 331) ch5: "The crow was on the back of the chair
+		# across from him" — the kitchen bird; the bedroom one leaves this view.
+		# (pass 399) ch12's day moved to finn_apartment_hexagon; this is ch5.
+		"strip": ["Crow_", "HP_Crow"],
+		"camera_origin": Vector3(3.60, 1.62, -2.00),
+		"camera_rotation": Vector3(-0.109, deg_to_rad(83.5), 0.0),
+		"fov": 62.0,
+		"env": {"sky_top": Color(0.40, 0.56, 0.80, 1), "sky_horizon": Color(0.84, 0.86, 0.84, 1),
+			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.82, 0.82, 0.80, 1), "ambient_energy": 0.90, "fog_color": Color(0.80, 0.82, 0.80, 1)},
+		"suppress_input": true,
+	},
+	"finn_apartment_hexagon": {
+		# (pass 399) finn_apartment_day with the assembled hexagon on the cloth
+		# (parts tagged __fa_hex): vol 7 ch12 after the bakery and at noon.
+		# ch5 keeps finn_apartment_day, its three pieces.
 		"scene": "res://scenes/locales/finn_apartment.tscn",
 		"requires_glb": "res://assets/3d/locales/finn_apartment.glb",
 		# DRAFT 4 (2026-10-09): one-bedroom over the kayak shop, 8.4 x 7.6

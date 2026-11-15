@@ -171,19 +171,19 @@ glow_hdr_scale = 2.4
 environment = SubResource("Env_Locale")
 
 ; (pass 60, 2026-10-11) the authored rig is suffixed to finn_apartment: its time-of-day twin below brings its own
-[node name="Key__finn_apartment" type="DirectionalLight3D" parent="."]
+[node name="Key__fa_base" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 3, 3, 1)
 light_color = Color(0.98, 0.82, 0.52, 1)
 light_energy = 1.0
 shadow_enabled = false
 
-[node name="Fill__finn_apartment" type="DirectionalLight3D" parent="."]
+[node name="Fill__fa_base" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 4, -6)
 light_color = Color(0.86, 0.92, 0.98, 1)
 light_energy = 0.4
 shadow_enabled = false
 
-[node name="Back__finn_apartment" type="DirectionalLight3D" parent="."]
+[node name="Back__fa_base" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866, 0.354, -0.354, 0, 0.707, 0.707, 0.5, 0.612, -0.612, -3, 4, 2)
 light_color = Color(0.86, 0.62, 0.96, 1)
 light_energy = 0.2
@@ -191,14 +191,14 @@ shadow_enabled = false
 
 ; ── THE DAY (pass 60): finn_apartment_day — the sun through the S window (the street, the sea),
 ; the sky through the N and the alley
-[node name="Day_Sun__finn_apartment_day" type="DirectionalLight3D" parent="."]
+[node name="Day_Sun__fa_day" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.7071, 0.5417, -0.4545, 0.0000, 0.6428, 0.7660, 0.7071, -0.5417, 0.4545, 0, 5, 2)
 light_color = Color(1.00, 0.94, 0.84, 1)
 light_energy = 1.0
 shadow_enabled = true
 metadata/daylight = true
 
-[node name="Day_SkyFill__finn_apartment_day" type="DirectionalLight3D" parent="."]
+[node name="Day_SkyFill__fa_day" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-1.0000, -0.0000, 0.0000, 0.0000, 0.2588, 0.9659, -0.0000, 0.9659, -0.2588, 0, 5, -3)
 light_color = Color(0.72, 0.80, 0.92, 1)
 light_energy = 0.5
@@ -207,7 +207,7 @@ metadata/daylight = true
 
 ; ── THE NIGHT (pass 60): finn_apartment_night — the moon through the N window; the alley's
 ; bakery bulb and the lamps (unsuffixed) are the light
-[node name="Moon_Window__finn_apartment_night" type="DirectionalLight3D" parent="."]
+[node name="Moon_Window__fa_night" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.7071, -0.4545, 0.5417, 0.0000, 0.7660, 0.6428, -0.7071, 0.4545, -0.5417, 0, 5, -7)
 light_color = Color(0.60, 0.68, 0.90, 1)
 light_energy = 0.3
@@ -379,8 +379,16 @@ position = Vector3(0.850, 1.350, -1.350)
 rotation = Vector3(-0.6499, 0.6435, 0.0)
 metadata/fov = 40.0
 
-[node name="shot_insert_hexagon" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.250, 1.300, -1.400)
+; (pass 399) the hexagon is on Tem's cloth with the other stages of the
+; wood (godot 0.40, -1.95), not on its own cloth at the table's west end;
+; ch12's two views only, where it is (group fa_hex)
+[node name="shot_insert_hexagon__finn_apartment_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.703, 1.300, -1.412)
+rotation = Vector3(-0.6890, 0.5133, 0.0)
+metadata/fov = 40.0
+
+[node name="shot_insert_hexagon__finn_apartment_hexagon" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.703, 1.300, -1.412)
 rotation = Vector3(-0.6890, 0.5133, 0.0)
 metadata/fov = 40.0
 
@@ -483,6 +491,12 @@ position = Vector3(1.672, 1.087, -1.906)
 rotation = Vector3(-0.2618, 1.6193, 0.0)
 metadata/fov = 35.0
 
+; (pass 399) the same frame in ch12's day view (finn_apartment_hexagon)
+[node name="shot_insert_table__finn_apartment_hexagon" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.672, 1.087, -1.906)
+rotation = Vector3(-0.2618, 1.6193, 0.0)
+metadata/fov = 35.0
+
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_heater__finn_apartment_night" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(2.450, 0.850, -2.750)
@@ -501,7 +515,7 @@ position = Vector3(1.286, 1.138, -1.799)
 rotation = Vector3(-0.5236, 1.6574, 0.0)
 metadata/fov = 35.0
 
-[node name="shot_insert_cloth__finn_apartment_day" type="Marker3D" parent="." groups=["vn_shot"]]
+[node name="shot_insert_cloth__finn_apartment_hexagon" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.379, 1.092, -1.968)
 rotation = Vector3(-0.2618, 1.5854, 0.0)
 metadata/fov = 35.0
@@ -543,6 +557,12 @@ stand_in_root = NodePath("../Interior")
 hide_prefixes = PackedStringArray("Kitchen_Crow_")
 
 [node name="shot_insert_crow__finn_apartment_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.250, 1.300, -1.550)
+rotation = Vector3(-0.1360, 0.6350, 0.0)
+metadata/fov = 40.0
+
+; (pass 399) the same frame in ch12's day view (finn_apartment_hexagon)
+[node name="shot_insert_crow__finn_apartment_hexagon" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.250, 1.300, -1.550)
 rotation = Vector3(-0.1360, 0.6350, 0.0)
 metadata/fov = 40.0

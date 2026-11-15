@@ -3835,6 +3835,80 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-15 · pass 399: Finn's wood counts the chapters; views that lost their lights.**
+- THE WOOD. Finn's kitchen table held five charred pieces on one cloth
+  AND the finished hexagon on another, in all six chapters. The text
+  counts it: three pieces in ch5 ("He could see the joins"), five in ch9
+  ("a rough irregular hexagon about ten inches across … open at three
+  corners"), the assembled hexagon in ch12 ("six in a ring, one in the
+  center, and one extra"), nothing in ch18 ("the stick and the sleeve and
+  the crow"). One cloth now (`Wood_Cloth__fa_wood`); the stages are view
+  tags — `Charred_Wood3_*__finn_apartment_day` (ch5),
+  `Charred_Wood5_*__finn_apartment` (ch9), `Hexagon_*__fa_hex` (ch12's
+  night and the new `finn_apartment_hexagon`, the day view ch12 moved to so
+  ch5 keeps its three). The pieces are what ch1 says: charred black with
+  the yellow grain showing in the unburnt part; ring pieces are the sides
+  of a hexagon ~25 cm across; the eighth piece fills the hole, its cedar
+  face carved (closed eyes, the curling hair); AR I A beside it.
+- The new view was first spliced onto the previous preset's closing line
+  (`},\t"finn_apartment_hexagon": {`): Godot parsed it, and every
+  line-based audit (vn_story, view_tags, rig_twin) could not see it. The
+  next pass's copies go through tools/view_twin.py.
+- Close-up subjects are found by NAME: the obstruction gate matched
+  `shot_insert_charred_wood` / `_hexagon` against part names, and parts
+  renamed Wood3/Hex read as clutter in front of the lens. Keep a
+  close-up's subject word in its parts' names.
+- THE LIGHTS. Pass 397 copied Finn's base and night views to carry the
+  stick (`finn_apartment_stick`, `finn_apartment_night_stick`). The rig was
+  tagged to the original views (`Key__finn_apartment`,
+  `Moon_Window__finn_apartment_night`), so the copies kept no key, fill,
+  back or moon: ch18 ran on practicals. Pass 168's two vol 3 ch8 Chau house
+  views (Steven's desk, Mrs. Chau's room) kept NO light — the house rig
+  named the six views before them. Groups now: `fa_base`, `fa_day`,
+  `fa_night`, `chau_day`. Rendered: both Chau frames sunlit; ch18 lit.
+- New gate `rig_twin_audit.py` (in run_all_audits): a view that keeps no
+  light while a sibling does, or no directional while its TWIN (same
+  camera origin) keeps a tagged one. It reads the four on the old tree
+  and zero now. Six views at their own cameras with only practicals (a
+  dark room, a TV-lit living room, a beam out of the dark) are choices.
+- NEXT: the hexagon in the other rooms — Lena's kitchen table in ~18
+  chapter segments (ch12_lena only), the cabin table in ~30 (unwrapped
+  there in ch13), Devon's desk (ch12 office), the overlook (ch12, and
+  interlude_ii's visit without it); the cabin table's three sticks and
+  the package likely the same. The crow on the cloth (ch12 node 106: "on
+  the cloth, between the AR I A piece and the eighth piece's empty hole")
+  stands on the chair back.
+- Deck must REBUILD finn_apartment.
+
+**2026-11-15 · pass 398: the map on every truck's dashboard.**
+- The vehicle cab's base view is every truck in vol 6 (ch8 the Millers',
+  ch14 Jesse's, ch18, ch19, ch22 Diego's). A "ch14" pass laid Jesse's
+  corridor map, a folded sheet, on its dash over the glove box — on all
+  of their dashboards. The text: "The map is in his glove compartment."
+  The sheet is gone; the line looks at the closed glove box from Jesse's
+  seat (`shot_insert_glovebox`), which has a latch now so it reads as one.
+- The map is a MAP CARD now: ch14's description of it ("The map is a
+  single folded sheet …" to "The van leaves") shows it over the drive —
+  panel `vol6_jesse_map`, whose JSON names the hero-art picture made for
+  it on the dash (`"art": "vehicle_cab_map"`; VnDirector
+  `_panel_art_picture`). The user's picture serves as it is; a pixel sheet
+  (grid, creek, highway, fourteen black circles, four red, one blue ring at
+  the strip mall) stands in where it is not installed. The roster row is
+  the card's picture now (scene2d, cg/panel_vol6_jesse_map.jpg — an `art`
+  row with no `apply` stops the roster loader, so Hero Studio would not
+  start; the scoped suite caught it through prop_budget_audit). Same slug,
+  same front image: installing it in Hero Studio puts the existing picture
+  where the card looks first. Its prompt drops "on a dashboard".
+- The Altima's and the Corolla's maps were clones of the truck's and went
+  with it; no line contradicts them and each has its own picture
+  (vehicle_cab_altima_map, vehicle_cab_corolla_map): back on their own
+  dashes (`_sedan_map`, inside each sedan's plan.shifted block). The
+  hero-art gate caught the three placements left hiding parts that were
+  gone (NO-STANDIN) — the reason to run it before deleting a part.
+- NEXT: install vehicle_cab_map in Hero Studio (it lands as the card);
+  a remake as the sheet opened flat is the user's call (listed).
+- Deck must REBUILD vehicle_cab.
+
 **2026-11-15 · pass 397: Finn's table had a plate nobody served and a stick that had not come yet.**
 - Pass 396's lesson, applied: a scan of shared sets for dressing a
   builder comment ties to one chapter. Finn's apartment (vol 7, six

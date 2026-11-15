@@ -261,6 +261,10 @@
       "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
       "gain": 0.88
     },
+    "finn_apartment_hexagon": {
+      "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
+      "gain": 0.88
+    },
     "kai_apartment": {
       "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
       "gain": 0.88

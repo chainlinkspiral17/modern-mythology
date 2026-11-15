@@ -579,6 +579,18 @@ SKOUT="$(python3 sunk_thing_audit.py 2>/dev/null)" || {
 echo "$SKOUT" | tail -1
 echo ""
 
+# ── Rig-twin gate (2026-11-15, pass 399) ──────────────────────
+# A view copied to carry chapter state (Finn's ch18 table with the stick)
+# is a new view id: every light tagged to the view it was copied from was
+# stripped from it, and ch18 ran with no key, fill, back or moon. Two vol 3
+# Chau house views kept no light at all. Reads the .tscn and Background3D.
+echo "── rig_twin_audit.py ── t+${SECONDS}s"
+RTOUT="$(python3 rig_twin_audit.py 2>/dev/null)" || {
+    echo "$RTOUT" | grep "^UNLIT" | head -20
+    DEFERRED="$DEFERRED rig_twin_audit"; }
+echo "$RTOUT" | tail -1
+echo ""
+
 # ── Overhang gate (2026-11-15, pass 384) ──────────────────────
 # The user, of a napkin dispenser at booth six: "What's the thing sticking
 # out from the end of the table, hovering in the air?" It touched the

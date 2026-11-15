@@ -743,10 +743,11 @@ rotation = Vector3(-0.1477, -0.3218, 0.0)
 metadata/fov = 42.0
 
 ; insert (pass 64, ch14): the map in the glove compartment, from the driver's eye
-[node name="shot_insert_map" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.163, 1.599, -0.455)
-rotation = Vector3(-0.5236, -0.4311, 0.0)
-metadata/fov = 42.0
+; (pass 398) "The map is in his glove compartment" (vol 6 ch14): the closed glove box from Jesse's seat
+[node name="shot_insert_glovebox" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.380, 1.220, -0.050)
+rotation = Vector3(-0.2853, -0.7537, 0.0)
+metadata/fov = 44.0
 
 ; ── the Corolla's markers (pass 78), the Altima's shifted 23.5 m west, per preset
 [node name="shot_closeup_person__vehicle_cab_corolla" type="Marker3D" parent="." groups=["vn_shot"]]
