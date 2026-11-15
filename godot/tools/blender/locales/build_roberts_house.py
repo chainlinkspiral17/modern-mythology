@@ -710,35 +710,38 @@ def build_kitchen():
              (0.62, 0.74, 0.82, 0.8), segments=10, axis='Z')
 
     # ── Coffee pot · the kitchen smells like coffee ──
+    # (pass 388) cnt_top_z is the top's centre: the machine stood 4 cm into
+    # the counter. The pot and its parts sit on the surface.
+    cnt_surf = cnt_top_z + 0.04
     cp_cx = +1.7
     cp_cy = cnt_y
     # Pot base (black plastic carafe)
     make_box("Coffee_Pot_Base",
-             (cp_cx, cp_cy, cnt_top_z + 0.07),
+             (cp_cx, cp_cy, cnt_surf + 0.07),
              (0.18, 0.18, 0.14),
              COL_COFFEE_POT)
     # Carafe (a cylinder above the base, semi-clear with brown liquid)
     make_cyl("Coffee_Carafe_Glass",
-             (cp_cx + 0.04, cp_cy, cnt_top_z + 0.20),
+             (cp_cx + 0.04, cp_cy, cnt_surf + 0.20),
              0.052, 0.18,
              (0.86, 0.86, 0.88, 0.5), segments=10, axis='Z')
     make_cyl("Coffee_Carafe_Liquid",
-             (cp_cx + 0.04, cp_cy, cnt_top_z + 0.18),
+             (cp_cx + 0.04, cp_cy, cnt_surf + 0.18),
              0.048, 0.12,
              COL_COFFEE_LIQUID, segments=10, axis='Z')
     # Carafe handle
     make_box("Coffee_Carafe_Handle",
-             (cp_cx - 0.017, cp_cy, cnt_top_z + 0.21),   # on the carafe
+             (cp_cx - 0.017, cp_cy, cnt_surf + 0.21),   # on the carafe
              (0.018, 0.06, 0.08),
              COL_COFFEE_POT)
     # Top of the machine (where the basket sits)
     make_box("Coffee_Pot_Top",
-             (cp_cx, cp_cy, cnt_top_z + 0.40),
+             (cp_cx, cp_cy, cnt_surf + 0.40),
              (0.16, 0.16, 0.10),
              COL_COFFEE_POT)
     # Water reservoir (north side of the pot)
     make_box("Coffee_Pot_Reservoir",
-             (cp_cx, cp_cy + 0.10, cnt_top_z + 0.30),
+             (cp_cx, cp_cy + 0.10, cnt_surf + 0.30),
              (0.16, 0.04, 0.40),
              (0.30, 0.30, 0.34, 0.65))
 

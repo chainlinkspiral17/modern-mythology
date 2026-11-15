@@ -495,7 +495,7 @@ def build_counter():
                  (-2.0 + s * 0.18, cy - 0.40, 1.30),
                  (0.06, 0.06, 0.18), COL_BRASS)
     # The call bell on the counter (kitchen side)
-    make_box("CallBell", (-4.5, cy, 1.12),
+    make_box("CallBell", (-4.5, cy, 1.14),
              (0.10, 0.10, 0.08), COL_BRASS)
 
 
@@ -1465,20 +1465,20 @@ def build_west_extension():
              (sb_x - 0.10, sb_y - 1.0, 1.18),
              0.08, 0.32, (0.74, 0.60, 0.32, 1.0), segments=8, axis='Z')
     make_cyl("WestFormal_Candelabra",
-             (sb_x - 0.10, sb_y, 1.20),
+             (sb_x - 0.10, sb_y, 1.22),    # (pass 388) on the sideboard (1.02), not 2 cm in it
              0.025, 0.40, COL_BRASS, segments=6, axis='Z')
     make_cyl("WestFormal_Candelabra_Crown",   # the arms' ring the candles sit in (2026-09-22)
-             (sb_x - 0.10, sb_y, 1.35), 0.15, 0.02, COL_BRASS, segments=8, axis='Z')
+             (sb_x - 0.10, sb_y, 1.37), 0.15, 0.02, COL_BRASS, segments=8, axis='Z')
     for cnd in range(3):
         ang = math.radians(cnd * 120 - 60)
         cx_off = 0.12 * math.cos(ang)
         cy_off = 0.12 * math.sin(ang)
         make_cyl(f"WestFormal_Candle_{cnd}",
-                 (sb_x - 0.10 + cx_off, sb_y + cy_off, 1.41),
+                 (sb_x - 0.10 + cx_off, sb_y + cy_off, 1.43),
                  0.020, 0.18, (0.96, 0.92, 0.82, 1.0),
                  segments=4, axis='Z')
         make_sphere_low(f"WestFormal_CandleFlame_{cnd}",
-                        (sb_x - 0.10 + cx_off, sb_y + cy_off, 1.54),   # on the wick
+                        (sb_x - 0.10 + cx_off, sb_y + cy_off, 1.56),   # on the wick
                         0.04, (0.98, 0.78, 0.32, 1.0),
                         rings=2, segments=4)
     for g in range(4):
@@ -3645,7 +3645,7 @@ def build_storage_closet_and_bbs():
     # Tarot card sleeve next to keyboard — a stack of pulled cards
     # waiting to be entered into the BBS log
     make_box("BBS_CardStack_Diner",
-             (crt_x - 0.10, crt_y + 0.20, desk_top_z + 0.022),
+             (crt_x - 0.10, crt_y + 0.20, desk_top_z + 0.04),    # (pass 388) on the top (desk_top_z + 0.02)
              (0.08, 0.14, 0.04), COL_CARD_PAPER)
     make_box("BBS_CardStack_Top",
              (crt_x - 0.10, crt_y + 0.20, desk_top_z + 0.045),
@@ -4286,12 +4286,12 @@ def build_entry_props():
     # Menus stacked at the back-right corner (no longer the loud
     # bright-red read — brown leather binders).
     make_box("Menus_Stack",
-             (px + 0.28, py + 0.15, pod_top_z + 0.08),
+             (px + 0.28, py + 0.15, pod_top_z + 0.10),    # (pass 388) the stand's top is pod_top_z + 0.05
              (0.18, 0.14, 0.10), (0.30, 0.18, 0.10, 1.0))
     # Pen cup at the FRONT-RIGHT corner (was back-left, overlapped
     # the lamp).
     make_cyl("Pen_Cup",
-             (px + 0.28, py - 0.15, pod_top_z + 0.06),
+             (px + 0.28, py - 0.15, pod_top_z + 0.085),
              0.028, 0.07, COL_BRASS, segments=6, axis='Z')
     # Four small brass signs on the FRONT face of the base (was a
     # floating row above the top — moved down so the top reads
@@ -4306,13 +4306,13 @@ def build_entry_props():
     # podium surface stays clear. Smaller shade too.
     lamp_x, lamp_y = px - 0.28, py + 0.18
     make_box("HostessLamp_Base",
-             (lamp_x, lamp_y, pod_top_z + 0.04),
+             (lamp_x, lamp_y, pod_top_z + 0.07),
              (0.09, 0.09, 0.04), COL_BRASS)
     make_cyl("HostessLamp_Post",
-             (lamp_x, lamp_y, pod_top_z + 0.16),
+             (lamp_x, lamp_y, pod_top_z + 0.19),
              0.012, 0.20, COL_BRASS, segments=4, axis='Z')
     make_box("HostessLamp_Shade",
-             (lamp_x, lamp_y, pod_top_z + 0.285),   # on the post
+             (lamp_x, lamp_y, pod_top_z + 0.315),   # on the post
              (0.16, 0.12, 0.05),
              (0.20, 0.34, 0.18, 1.0))   # green banker's shade, dimmer
 
@@ -6063,11 +6063,11 @@ def build_dambrosios_dressing_2026_08():
     for bi, byo in enumerate([-0.28, -0.10, 0.10, 0.28]):
         _sb_col = [(0.30, 0.16, 0.12, 1.0), (0.16, 0.26, 0.18, 1.0),
                    (0.62, 0.50, 0.28, 1.0), (0.24, 0.18, 0.30, 1.0)][bi]
-        make_cyl(f"Damb_ServiceBar_Bottle_{bi}_Body", (-9.30, -1.52 + byo, 1.22),
+        make_cyl(f"Damb_ServiceBar_Bottle_{bi}_Body", (-9.30, -1.52 + byo, 1.235),
                  0.040, 0.18, _sb_col, segments=6, axis='Z')
-        make_cyl(f"Damb_ServiceBar_Bottle_{bi}_Neck", (-9.30, -1.52 + byo, 1.355),
+        make_cyl(f"Damb_ServiceBar_Bottle_{bi}_Neck", (-9.30, -1.52 + byo, 1.37),
                  0.016, 0.09, _sb_col, segments=6, axis='Z')
-        make_cyl(f"Damb_ServiceBar_Bottle_{bi}_Cap", (-9.30, -1.52 + byo, 1.41),
+        make_cyl(f"Damb_ServiceBar_Bottle_{bi}_Cap", (-9.30, -1.52 + byo, 1.425),
                  0.018, 0.02, (0.18, 0.16, 0.14, 1.0), segments=6, axis='Z')
     # Nicola's stack of WINE LISTS on the service bar's front corner.
     for wi in range(5):

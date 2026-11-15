@@ -1557,16 +1557,16 @@ def build_catering_office():
                      0.022, 0.74, (0.32, 0.22, 0.14, 1.0))
     # Phone — beige rotary on the desk (it's ringing)
     make_box("Cat_Phone_Body",
-             (dk_x + 0.40, dk_y - 0.10, cz + 0.78),
+             (dk_x + 0.40, dk_y - 0.10, cz + 0.81),    # (pass 388) on the desk (cz + 0.76), not 3 cm in it
              (0.20, 0.30, 0.10), (0.92, 0.86, 0.74, 1.0))
     make_box("Cat_Phone_Handset",
-             (dk_x + 0.40, dk_y - 0.10, cz + 0.85),
+             (dk_x + 0.40, dk_y - 0.10, cz + 0.88),
              (0.10, 0.30, 0.04), (0.86, 0.78, 0.66, 1.0))
     # Spiral cord
     for i in range(4):
         zoff = i * 0.025
         make_cyl(f"Cat_Phone_Cord_{i}",
-                 (dk_x + 0.40, dk_y - 0.26, cz + 0.80 + zoff),
+                 (dk_x + 0.40, dk_y - 0.26, cz + 0.83 + zoff),
                  0.012, 0.02,
                  (0.62, 0.52, 0.38, 1.0), segments=6, axis='Y')
     # Paperwork — stacked + dated entries

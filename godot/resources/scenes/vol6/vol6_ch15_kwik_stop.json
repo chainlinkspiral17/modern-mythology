@@ -110,7 +110,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert register]At nine oh-six her phone, on the counter beside the register, vibrates.",
+      "text": "[shot:insert phone]At nine oh-six her phone, on the counter beside the register, vibrates.",
       "voice": "assets/audio/voice/vol6_ch15_kwik_stop/021.mp3"
     },
     {
@@ -360,7 +360,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert register]He is tall. He is thin. He has not shaved in some days. His t-shirt is, up close, the t-shirt of a brewery in Oakland that Sam has not heard of, but the brewery's name on the front of the shirt is in a font that registers,",
+      "text": "[shot:establish]He is tall. He is thin. He has not shaved in some days. His t-shirt is, up close, the t-shirt of a brewery in Oakland that Sam has not heard of, but the brewery's name on the front of the shirt is in a font that registers,",
       "voice": "assets/audio/voice/vol6_ch15_kwik_stop/065.ogg"
     },
     {
@@ -575,7 +575,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert register]She gets a Post-it from the small pad by the register. She writes Bobby's number on it from memory.",
+      "text": "[shot:insert postit]She gets a Post-it from the small pad by the register. She writes Bobby's number on it from memory.",
       "voice": "assets/audio/voice/vol6_ch15_kwik_stop/100.ogg"
     },
     {
@@ -676,7 +676,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert register]She thinks, with the small involuntary thing her interior does when she registers the shape of a person's situation: they are not going to make Atlanta on the budget they have.",
+      "text": "[shot:closeup sam]She thinks, with the small involuntary thing her interior does when she registers the shape of a person's situation: they are not going to make Atlanta on the budget they have.",
       "voice": "assets/audio/voice/vol6_ch15_kwik_stop/118.mp3"
     },
     {
@@ -733,7 +733,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]Mark comes in a minute later. He sits across from Lucy. He sets the two water bottles on the table. He has, in his hand, his phone. He is, Sam can see from the counter, dialing Bobby's number from the Post-it.",
+      "text": "[shot:establish_b]Mark comes in a minute later. He sits across from Lucy. He sets the two water bottles on the table. He has, in his hand, his phone. He is, Sam can see from the counter, dialing Bobby's number from the Post-it.",
       "voice": "assets/audio/voice/vol6_ch15_kwik_stop/129.mp3"
     },
     {
@@ -913,7 +913,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert register]Mark and Lucy, at the table, register Stan's comment.",
+      "text": "[shot:establish_b]Mark and Lucy, at the table, register Stan's comment.",
       "voice": "assets/audio/voice/vol6_ch15_kwik_stop/160.mp3"
     },
     {
@@ -1061,7 +1061,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert cash]Friday's paycheck — the cash portion, which is the tips Jen runs through the till at the end of each week — is going to be roughly two hundred.",
+      "text": "[shot:insert register]Friday's paycheck — the cash portion, which is the tips Jen runs through the till at the end of each week — is going to be roughly two hundred.",
       "voice": "assets/audio/voice/vol6_ch15_kwik_stop/184.ogg"
     },
     {
@@ -1081,7 +1081,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert cash]The cash in the wallet is, today, what she has.",
+      "text": "[shot:closeup sam]The cash in the wallet is, today, what she has.",
       "voice": "assets/audio/voice/vol6_ch15_kwik_stop/188.mp3"
     },
     {

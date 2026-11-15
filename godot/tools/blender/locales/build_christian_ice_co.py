@@ -470,7 +470,7 @@ def build_ice_tools_and_crates():
     make_box("Scale_IceBlock", (sx, sy, 0.38), (0.46, 0.40, 0.40), COL_ICE_BLOCK)
 
     # Ice tongs resting on the retail counter top (counter at y=2.40, top z~1.02)
-    tx, ty, tz = +1.30, 2.40, 1.06
+    tx, ty, tz = +1.30, 2.40, 1.08   # (pass 388) the tips stand on the top (1.02): at 1.06 they were 2 cm in it
     make_cyl("IceTongs_Pivot", (tx, ty, tz + 0.02), 0.02, 0.05, COL_PIPE, axis='Z', segments=8)
     for sgn, tag in [(-1, "L"), (+1, "R")]:
         make_box(f"IceTongs_Arm_{tag}", (tx + sgn * 0.10, ty, tz + 0.02), (0.24, 0.03, 0.02), COL_PIPE)

@@ -103,11 +103,11 @@ def build_parts_pegboard_and_workbench():
     make_box("Bench_Top",  (0.0, ROOM_D-0.50, 0.96), (3.60, 0.50, 0.06), (0.22, 0.16, 0.12, 1.0))
     make_box("Bench_Body", (0.0, ROOM_D-0.50, 0.46), (3.60, 0.50, 0.92), (0.32, 0.24, 0.18, 1.0))
     # Toolbox
-    make_box("Toolbox", (-1.40, ROOM_D-0.50, 1.10), (0.50, 0.30, 0.30), COL_TOOLBOX_RED)
+    make_box("Toolbox", (-1.40, ROOM_D-0.50, 1.14), (0.50, 0.30, 0.30), COL_TOOLBOX_RED)
     # Bench vise
-    make_box("Vise_Base", (+1.40, ROOM_D-0.50, 1.04), (0.16, 0.16, 0.12), (0.32, 0.32, 0.32, 1.0))
-    make_box("Vise_Jaw_F", (+1.40, ROOM_D-0.40, 1.14), (0.20, 0.04, 0.14), (0.32, 0.32, 0.32, 1.0))
-    make_box("Vise_Jaw_B", (+1.40, ROOM_D-0.56, 1.14), (0.20, 0.04, 0.14), (0.32, 0.32, 0.32, 1.0))
+    make_box("Vise_Base", (+1.40, ROOM_D-0.50, 1.05), (0.16, 0.16, 0.12), (0.32, 0.32, 0.32, 1.0))
+    make_box("Vise_Jaw_F", (+1.40, ROOM_D-0.40, 1.15), (0.20, 0.04, 0.14), (0.32, 0.32, 0.32, 1.0))
+    make_box("Vise_Jaw_B", (+1.40, ROOM_D-0.56, 1.15), (0.20, 0.04, 0.14), (0.32, 0.32, 0.32, 1.0))
 
 
 def build_pump_island_in_front_of_bays():

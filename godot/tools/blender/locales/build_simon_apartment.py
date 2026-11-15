@@ -104,7 +104,7 @@ def build_kitchenette():
     make_box("Sink", (cx_, cy_-0.30, 0.92), (0.40, 0.40, 0.06), (0.62, 0.62, 0.58, 1.0))
     make_box("Sink_Faucet", (cx_, cy_-0.30, 1.06), (0.04, 0.04, 0.20), (0.62, 0.62, 0.58, 1.0))   # on the counter top
     # Coffee maker + sugar jar on the counter
-    make_box("CoffeeMaker", (cx_-0.10, cy_+0.30, 1.08), (0.20, 0.20, 0.28), (0.42, 0.30, 0.30, 1.0))
+    make_box("CoffeeMaker", (cx_-0.10, cy_+0.30, 1.10), (0.20, 0.20, 0.28), (0.42, 0.30, 0.30, 1.0))
     make_cyl("SugarJar", (cx_+0.20, cy_+0.40, 1.04), 0.06, 0.16, (0.96, 0.86, 0.62, 1.0))
     # Fridge (N end)
     fx, fy = -ROOM_W/2.0 + 0.40, 4.20

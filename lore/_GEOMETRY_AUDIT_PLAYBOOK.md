@@ -158,6 +158,28 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-15 · the thick half: a thing standing IN the top it stands on (passes 388 - 389)
+
+- **What happened:** the Kwik Stop's hot case stood 7 cm inside its
+  counter (centred at 1.30 when the top's surface is 1.07); a phone lay
+  through its wall. Asked of every set, 42 loose things in 20 sets stood
+  1.5 - 6 cm into the table, counter or desk under them. Every gate passed
+  them: they touch their host (held), and prop_overlap asks named
+  dressing strictly inside.
+- **The reading (`sunk_thing_audit`):** both shapes exact (TRUE_BOXES /
+  Z_CYLS); the host a raised FURNITURE surface (name says top, counter,
+  desk, table, bench, shelf…; its top ≥ 0.30 m; at most 10 cm thick); the
+  thing loose (3 cm - 0.8 m tall, not a leg, post, panel, rail, clamp,
+  lip, sink or hob); SUNK when its underside is > 1.5 cm below the host's
+  top and its top is above it.
+- **Why furniture only:** the unscoped first try found 937, nearly all
+  construction joints — walls and columns built into floor slabs, chair
+  backs into seats, rods into racks — which are right. A positive list of
+  host names is narrower than a list of exemptions, and says what it asks.
+- **Rule (again, after 386):** a surface constant is a centre until the
+  builder says otherwise. Name it for what it is (`DSURF`, `cnt_surf`) at
+  the top of the block and put things ON it.
+
 ### 2026-11-15 · a gate you nudged green has not looked at the frame (pass 387)
 
 - **What happened:** pass 386 lifted Nate's amps 2.4 cm onto the carpet;

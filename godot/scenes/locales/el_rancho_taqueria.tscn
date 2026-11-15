@@ -441,6 +441,6 @@ metadata/fov = 48.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_tables__el_rancho_taqueria" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.290, 0.860, -0.555)
-rotation = Vector3(-0.5236, -1.5776, 0.0)
-metadata/fov = 35.0
+position = Vector3(-4.550, 1.800, -0.850)
+rotation = Vector3(-0.3570, -0.5831, 0.0)
+metadata/fov = 50.0

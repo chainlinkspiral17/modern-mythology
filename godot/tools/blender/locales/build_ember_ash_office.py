@@ -232,88 +232,92 @@ def build_desk_and_props():
     make_cyl("Bourbon_Bottle_Cap", (bot_x, bot_y, desk_top_z + 0.38),
              0.022, 0.04, (0.42, 0.32, 0.18, 1.0), segments=8, axis='Z')
     # A short glass next to the bottle
-    make_cyl("Bourbon_Glass_Body", (bot_x + 0.14, bot_y, desk_top_z + 0.06),
+    make_cyl("Bourbon_Glass_Body", (bot_x + 0.14, bot_y, desk_top_z + 0.07),
              0.030, 0.10, (0.86, 0.86, 0.88, 0.55), segments=8, axis='Z')
-    make_cyl("Bourbon_Glass_Liquid", (bot_x + 0.14, bot_y, desk_top_z + 0.04),
+    make_cyl("Bourbon_Glass_Liquid", (bot_x + 0.14, bot_y, desk_top_z + 0.05),
              0.026, 0.04, COL_BOURBON_LIQ, segments=8, axis='Z')
 
+    # (pass 388) desk_top_z is the top's CENTRE (its surface is 0.02 up):
+    # the phone, the voicemail box, the ashtray and the rolodex stood 2 cm
+    # into the desk. Everything from here to the rolodex sits on DSURF.
+    DSURF = desk_top_z + 0.02
     # ── Rotary phone (Q. Paul has called eleven times) ──
     ph_x, ph_y = desk_cx - 0.55, desk_cy - 0.10
     # Body (low rectangular base)
-    make_box("Phone_Body", (ph_x, ph_y, desk_top_z + 0.04),
+    make_box("Phone_Body", (ph_x, ph_y, DSURF + 0.04),
              (0.24, 0.22, 0.08), COL_PHONE)
     # Cradle for handset
-    make_box("Phone_Cradle", (ph_x, ph_y + 0.04, desk_top_z + 0.10),
+    make_box("Phone_Cradle", (ph_x, ph_y + 0.04, DSURF + 0.10),
              (0.20, 0.10, 0.04), (0.22, 0.18, 0.16, 1.0))
     # Handset resting on cradle
-    make_box("Phone_Handset", (ph_x, ph_y + 0.04, desk_top_z + 0.14),
+    make_box("Phone_Handset", (ph_x, ph_y + 0.04, DSURF + 0.14),
              (0.22, 0.06, 0.04), COL_PHONE)
     # Rotary dial wheel (a low cylinder with a center spindle)
-    make_cyl("Phone_RotaryWheel", (ph_x, ph_y - 0.06, desk_top_z + 0.085),
+    make_cyl("Phone_RotaryWheel", (ph_x, ph_y - 0.06, DSURF + 0.085),
              0.075, 0.005, COL_PHONE_DIAL, segments=12, axis='Z')
     # Finger holes — 10 small darker boxes ringing the wheel
     for h in range(10):
         a = math.radians(36 * h - 90)
         hx = ph_x + 0.055 * math.cos(a)
         hy = ph_y - 0.06 + 0.055 * math.sin(a)
-        make_cyl("Phone_FingerHole_%d" % h, (hx, hy, desk_top_z + 0.089),
+        make_cyl("Phone_FingerHole_%d" % h, (hx, hy, DSURF + 0.089),
                  0.008, 0.002, (0.16, 0.14, 0.12, 1.0), segments=4, axis='Z')
     # Center spindle
-    make_cyl("Phone_Spindle", (ph_x, ph_y - 0.06, desk_top_z + 0.091),
+    make_cyl("Phone_Spindle", (ph_x, ph_y - 0.06, DSURF + 0.091),
              0.014, 0.003, COL_BRASS, segments=6, axis='Z')
     # Coiled handset cord (a few segments)
     for s in range(5):
         make_cyl("Phone_Cord_%d" % s,
-                 (ph_x - 0.10, ph_y + 0.06 + s * 0.018, desk_top_z + 0.03 + s * 0.008),
+                 (ph_x - 0.10, ph_y + 0.06 + s * 0.018, DSURF + 0.03 + s * 0.008),
                  0.010, 0.020, COL_PHONE, segments=4, axis='Z')
 
     # ── Voicemail machine with 2-digit counter ──
     # Setup_option_four says "eleven voicemails today, fourteen
     # yesterday" — the counter on the machine reads 11.
     vm_x, vm_y = desk_cx - 0.30, desk_cy - 0.18
-    make_box("Voicemail_Body", (vm_x, vm_y, desk_top_z + 0.04),
+    make_box("Voicemail_Body", (vm_x, vm_y, DSURF + 0.04),
              (0.22, 0.14, 0.08), COL_VOICEMAIL)
     # Red blinking LED (canon: "messages waiting")
-    make_box("Voicemail_LED", (vm_x + 0.08, vm_y + 0.06, desk_top_z + 0.085),
+    make_box("Voicemail_LED", (vm_x + 0.08, vm_y + 0.06, DSURF + 0.085),
              (0.012, 0.001, 0.012), COL_VM_LED)
     # Two-digit LCD counter on the front face — reads as "11"
-    make_box("Voicemail_LCD_Bg", (vm_x - 0.04, vm_y - 0.071, desk_top_z + 0.060),
+    make_box("Voicemail_LCD_Bg", (vm_x - 0.04, vm_y - 0.071, DSURF + 0.060),
              (0.06, 0.001, 0.026), (0.20, 0.22, 0.20, 1.0))
     # Two darker segments forming a "11" (two vertical lines)
     for ci in (-0.015, +0.012):
         make_box("Voicemail_LCD_Digit_%.3f" % ci,
-                 (vm_x - 0.04 + ci, vm_y - 0.072, desk_top_z + 0.060),
+                 (vm_x - 0.04 + ci, vm_y - 0.072, DSURF + 0.060),
                  (0.005, 0.001, 0.020), COL_VM_DIGIT)
     # Cassette slot on top
-    make_box("Voicemail_CassetteSlot", (vm_x, vm_y, desk_top_z + 0.082),
+    make_box("Voicemail_CassetteSlot", (vm_x, vm_y, DSURF + 0.082),
              (0.16, 0.10, 0.002), (0.10, 0.10, 0.10, 1.0))
 
     # ── Ashtray ──
-    make_cyl("Ashtray_Body", (desk_cx + 0.65, desk_cy + 0.20, desk_top_z + 0.018),
+    make_cyl("Ashtray_Body", (desk_cx + 0.65, desk_cy + 0.20, DSURF + 0.018),
              0.08, 0.035, COL_ASHTRAY, segments=12, axis='Z')
-    make_cyl("Ashtray_Inside", (desk_cx + 0.65, desk_cy + 0.20, desk_top_z + 0.035),
+    make_cyl("Ashtray_Inside", (desk_cx + 0.65, desk_cy + 0.20, DSURF + 0.035),
              0.065, 0.005, (0.20, 0.18, 0.16, 1.0), segments=12, axis='Z')
     # A spent cigarette stubbed on the rim
-    make_cyl("Ashtray_Butt", (desk_cx + 0.71, desk_cy + 0.22, desk_top_z + 0.036),
+    make_cyl("Ashtray_Butt", (desk_cx + 0.71, desk_cy + 0.22, DSURF + 0.036),
              0.005, 0.04, (0.92, 0.88, 0.74, 1.0), segments=4, axis='X')
     # Tiny ash trail
-    make_cyl("Ashtray_Filter", (desk_cx + 0.69, desk_cy + 0.22, desk_top_z + 0.036),
+    make_cyl("Ashtray_Filter", (desk_cx + 0.69, desk_cy + 0.22, DSURF + 0.036),
              0.005, 0.012, (0.62, 0.50, 0.30, 1.0), segments=4, axis='X')
 
     # ── Rolodex ──
     rd_x, rd_y = desk_cx + 0.10, desk_cy + 0.22
     # Base
-    make_box("Rolodex_Base", (rd_x, rd_y, desk_top_z + 0.022),
+    make_box("Rolodex_Base", (rd_x, rd_y, DSURF + 0.022),
              (0.20, 0.12, 0.04), COL_ROLODEX)
     # Drum (cylinder, axis E-W)
-    make_cyl("Rolodex_Drum", (rd_x, rd_y, desk_top_z + 0.080),
+    make_cyl("Rolodex_Drum", (rd_x, rd_y, DSURF + 0.080),
              0.060, 0.18, (0.92, 0.88, 0.78, 1.0), segments=10, axis='X')
     # Two side wheels
     for sgn in (-1, +1):
-        make_cyl("Rolodex_Wheel_%+d" % sgn, (rd_x + sgn * 0.10, rd_y, desk_top_z + 0.080),
+        make_cyl("Rolodex_Wheel_%+d" % sgn, (rd_x + sgn * 0.10, rd_y, DSURF + 0.080),
                  0.066, 0.010, COL_ROLODEX, segments=10, axis='X')
     # Top card visible (a cream rectangle on top of the drum)
-    make_box("Rolodex_TopCard", (rd_x, rd_y, desk_top_z + 0.144),
+    make_box("Rolodex_TopCard", (rd_x, rd_y, DSURF + 0.144),
              (0.16, 0.10, 0.0005), COL_PAPER)
 
     # ── Stack of papers (voicemail call logs etc.) ──

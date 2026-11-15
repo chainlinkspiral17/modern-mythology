@@ -107,8 +107,8 @@ def build_salsa_station():
     salsa_cols = [(0.72,0.20,0.16,1.0),(0.36,0.52,0.24,1.0),(0.86,0.62,0.24,1.0)]
     for i in range(3):
         px = sx-0.34+i*0.34
-        make_box(f"SalsaPan_{i}", (px, sy-0.05, 0.51), (0.26,0.32,0.10), P.METAL_STEEL)
-        make_box(f"Salsa_{i}", (px, sy-0.05, 0.56), (0.22,0.28,0.03), salsa_cols[i])
+        make_box(f"SalsaPan_{i}", (px, sy-0.05, 0.53), (0.26,0.32,0.10), P.METAL_STEEL)
+        make_box(f"Salsa_{i}", (px, sy-0.05, 0.58), (0.22,0.28,0.03), salsa_cols[i])
     for i,col in enumerate([(0.86,0.22,0.16,1.0),(0.86,0.72,0.20,1.0),(0.36,0.46,0.24,1.0)]):
         # Hot-sauce bottles line the table's FRONT edge, clear of
         # the salsa pans (bottle 1 stood in salsa 2).
@@ -171,7 +171,7 @@ def build_tables():
                 make_box(f"SixTop_{ti}_Ch{ci2}_Back", (tx+cxo+bxo, ty+cyo, 0.68), (0.04, 0.38, 0.44), COL_ACCENT)
         # Sauce caddy + napkins on each six-top.
         make_box(f"SixTop_{ti}_Caddy", (tx, ty+0.15, 0.80), (0.16, 0.12, 0.10), (0.72, 0.20, 0.14, 1.0))
-        make_box(f"SixTop_{ti}_Napkins", (tx-0.20, ty-0.10, 0.79), (0.13, 0.06, 0.10), P.METAL_STEEL)
+        make_box(f"SixTop_{ti}_Napkins", (tx-0.20, ty-0.10, 0.815), (0.13, 0.06, 0.10), P.METAL_STEEL)
     # ── two café two-tops along the E wall, under the neon
     for k, ty in enumerate((2.70, 5.10)):
         _make_table(f"TwoTop_{k}", ROOM_W/2.0 - 1.15, ty)

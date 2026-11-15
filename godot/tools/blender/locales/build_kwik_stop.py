@@ -434,27 +434,42 @@ def build_counter():
     make_box("Register_Keypad",
              (cx, cy - 1.20, 1.18),
              (0.36, 0.36, 0.02), (0.32, 0.32, 0.34, 1.0))
+    # (pass 388) "She gets a Post-it from the small pad by the register"
+    # (vol 6 ch15): on the clerk's side of it, by her hand
+    make_box("Register_Postit_Pad", (cx + 0.36, cy - 1.10, 1.078), (0.076, 0.076, 0.016), (0.96, 0.88, 0.36, 1.0))
 
     # ── Hot food case beside register (Hot Pockets canon) ───────
     hcx, hcy = cx, cy - 0.10
+    # (pass 388) ON the counter: centred at 1.30 the case's floor was at
+    # 1.00, seven centimetres inside the 1.07 counter top. HZ lifts it all.
+    HZ = 0.07
     # open to the customer (-X); the glass is two glints
-    case_shell("HotCase_Body", (hcx, hcy, 1.30), (0.50, 0.70, 0.60), (0.94, 0.92, 0.84, 1.0), '-X')
+    case_shell("HotCase_Body", (hcx, hcy, 1.30 + HZ), (0.50, 0.70, 0.60), (0.94, 0.92, 0.84, 1.0), '-X')
     for gi, (gy, gw) in enumerate(((-0.18, 0.02), (-0.10, 0.01))):
-        make_box(f"HotCase_Glint_{gi}", (hcx - 0.22, hcy + gy, 1.30), (0.004, gw, 0.56), COL_GLINT)
+        make_box(f"HotCase_Glint_{gi}", (hcx - 0.22, hcy + gy, 1.30 + HZ), (0.004, gw, 0.56), COL_GLINT)
     # Warm lamp under the top panel (amber glow over the food)
-    make_box("HotCase_Lamp", (hcx, hcy, 1.56),
+    make_box("HotCase_Lamp", (hcx, hcy, 1.56 + HZ),
              (0.46, 0.66, 0.04), (1.0, 0.78, 0.32, 1.0))
     # Hot Pockets on the case floor (3 of them)
     for i in range(3):
         hp_y = hcy - 0.24 + i * 0.24
-        make_box(f"HotPocket_{i}", (hcx - 0.08, hp_y, 1.06),
+        make_box(f"HotPocket_{i}", (hcx - 0.08, hp_y, 1.06 + HZ),
                  (0.20, 0.14, 0.08), (0.78, 0.58, 0.40, 1.0))
-    # Taquito roller (canon convenience-store fixture) — rods from the
-    # back panel toward the opening (they ran 5 cm out through the back)
-    for i in range(2):
+    # The roller grill (vol 6 ch1: "every hot dog that has ever sweated on
+    # the roller grill"). (pass 388) five steel rollers ACROSS the case, as
+    # a roller grill's run side to side under the glass, with three hot dogs
+    # on them: two thick brown rods ran front to back and the only frame
+    # that can see in, through the open front, saw their ends (two logs).
+    # seven 2.5 cm rollers on 3.5 cm centres, wall to wall (0.66 inside);
+    # a hot dog rests in the gap between two of them
+    for i in range(7):
         make_cyl(f"TaquitoRoller_{i}",
-                 (hcx + 0.015, hcy + 0.20 - i * 0.10, 1.42),
-                 0.04, 0.43, (0.42, 0.32, 0.20, 1.0), segments=8, axis='X')
+                 (hcx - 0.105 + i * 0.035, hcy, 1.30 + HZ),
+                 0.0125, 0.66, (0.72, 0.72, 0.74, 1.0), segments=8, axis='Y')
+    for k, (xi, dy) in enumerate(((0, -0.16), (2, 0.04), (4, 0.20))):
+        make_cyl(f"RollerGrill_HotDog_{k}",
+                 (hcx - 0.105 + xi * 0.035 + 0.0175, hcy + dy, 1.30 + HZ + 0.0175),
+                 0.0125, 0.15, (0.66, 0.30, 0.20, 1.0), segments=8, axis='Y')
 
     # ── Wire basket on counter (left-behind objects) ────────────
     # The canon motif. Small steel basket with miscellaneous items
@@ -546,13 +561,13 @@ def build_counter():
                  (0.001, 0.06, 0.02), (0.86, 0.84, 0.78, 0.7))
 
     # ── Receipt paper / printer at register edge ────────────────
+    # (pass 388) ON the counter (1.07): it floated 6 cm over it, held up by
+    # its "curl", a paper block 16 cm tall driven 5 cm into the counter top
     make_box("Receipt_Printer",
-             (cx, cy - 1.50, 1.18),
+             (cx, cy - 1.50, 1.12),
              (0.20, 0.16, 0.10), (0.30, 0.30, 0.32, 1.0))
-    # Receipt curl
-    make_box("Receipt_Curl",
-             (cx - 0.04, cy - 1.50, 1.10),
-             (0.08, 0.04, 0.16), COL_PAPER)
+    # (its curl is build_receipt_paper_curl's strip, off the printer's top;
+    # the 16 cm block that stood here was a second one)
 
     # ── Cigarette / tobacco rack behind counter (on east wall) ──
     # MUST sit against the east wall, NOT floating mid-counter. East
@@ -2141,9 +2156,9 @@ def build_credit_card_terminal():
 
 def build_receipt_paper_curl():
     # Paper curl emerging from the existing Receipt_Printer (at
-    # cx=5.0, cy-1.50, 1.18 per build_counter)
+    # cx=5.0, cy-1.50, 1.12 per build_counter: on the counter since pass 388)
     rx, ry = 5.0, 4.5 - 1.50
-    rz = 1.2325   # the printer's top (1.23) — 2026-09-22: the strip hung 5 cm above it
+    rz = 1.1725   # the printer's top (1.17) — 2026-09-22: the strip hung 5 cm above it
     # Strip of paper sticking out south then curling
     make_box("ReceiptCurl_Strip",
              (rx, ry - 0.10, rz),
@@ -2158,39 +2173,20 @@ def build_receipt_paper_curl():
                  (0.04, 0.02, 0.005), COL_PAPER)
 
 
-def build_cash_drawer_open():
-    # The existing Register_Drawer (cx, cy - 1.20, 0.94 per build_counter)
-    # gets a "slightly open" tier with bill slots visible.
-    dx, dy = 5.0, 4.5 - 1.20
-    dz = 0.92
-    # Open drawer tray (sticks out west, customer-facing)
-    make_box("CashDrawer_Tray", (dx - 0.30, dy, dz),
-             (0.50, 0.40, 0.08), COL_COUNTER_DARK)
-    # Bill compartments (4 slots) — green for $1 / $5 / $10 / $20
-    for bi, bcol in enumerate([
-            (0.42, 0.60, 0.42, 1.0),  # $1
-            (0.62, 0.74, 0.58, 1.0),  # $5
-            (0.58, 0.68, 0.50, 1.0),  # $10
-            (0.46, 0.62, 0.46, 1.0)]):  # $20
-        make_box(f"CashDrawer_Bills_{bi}",
-                 (dx - 0.40 + bi * 0.10, dy, dz + 0.05),
-                 (0.08, 0.30, 0.02), bcol)
-    # Coin tray (north end)
-    for ci_color, cv in enumerate([
-            (0.84, 0.74, 0.32, 1.0),   # pennies/quarters
-            (0.74, 0.74, 0.74, 1.0),
-            (0.62, 0.58, 0.42, 1.0),
-            (0.86, 0.86, 0.86, 1.0)]):
-        make_box(f"CashDrawer_Coins_{ci_color}",
-                 (dx + 0.18, dy - 0.14 + ci_color * 0.08, dz + 0.05),
-                 (0.08, 0.06, 0.015), cv)
-
-
+# (pass 388) build_cash_drawer_open() is gone: an open till tray standing
+# west of the register (toward the customers; the clerk works the east
+# side) with its floor at 0.88, nine centimetres inside the counter body,
+# left open all day. The text never opens the drawer: ch15's "insert cash"
+# lines are the till ("the tips Jen runs through the till") and Sam's
+# wallet; the first cuts to the register now.
 def build_pizza_warmer():
     # Counter-mounted pizza warmer beside the existing hot food case
     # (HotCase at cx, cy-0.10, 1.30 in build_counter)
     px, py = 5.0, 4.5 + 0.70
-    base_z = 1.20
+    # (pass 388) ON the counter: at 1.20 the case (0.42 tall) stood with its
+    # floor at 0.99, inside the 1.07 counter top; pass 386 lifted only the
+    # pans. The case's floor is the top now, and the pans are on its floor.
+    base_z = 1.28
     case_shell("Pizza_CaseBody", (px, py, base_z), (0.50, 0.50, 0.42), COL_METAL_STEEL, '-X')
     # Glass front: two glints at the opening
     for gi, (gy, gw) in enumerate(((-0.14, 0.02), (-0.07, 0.01))):
@@ -2198,11 +2194,10 @@ def build_pizza_warmer():
     # 3 round pizzas on the case floor, side by side (28 cm pans on
     # 16 cm centres overlapped each other and the case sides)
     for pi, py_off in enumerate([-0.15, 0.0, +0.15]):
-        # (pass 386) on the counter: at base_z - 0.18 pan and pizza were inside its 6 cm top
-        make_cyl(f"Pizza_Pan_{pi}", (px, py + py_off, base_z - 0.12),
+        make_cyl(f"Pizza_Pan_{pi}", (px, py + py_off, base_z - 0.18),
                  0.07, 0.02, COL_METAL_STEEL)
         # Pizza (cheese-orange)
-        make_cyl(f"Pizza_Cheese_{pi}", (px, py + py_off, base_z - 0.104),
+        make_cyl(f"Pizza_Cheese_{pi}", (px, py + py_off, base_z - 0.164),
                  0.06, 0.012, COL_PIZZA_ORANGE)
         # 4 pepperoni dots
         for di in range(4):
@@ -2210,7 +2205,7 @@ def build_pizza_warmer():
             dx2 = math.cos(ang) * 0.032
             dy2 = math.sin(ang) * 0.032
             make_cyl(f"Pizza_Pep_{pi}_{di}",
-                     (px + dx2, py + py_off + dy2, base_z - 0.1555 + 0.0286),
+                     (px + dx2, py + py_off + dy2, base_z - 0.1555),
                      0.014, 0.005, (0.74, 0.18, 0.16, 1.0))
     # Heat lamp glow, under the top panel
     make_box("Pizza_HeatLamp", (px, py, base_z + 0.17),
@@ -2431,7 +2426,6 @@ def build_entry_mat_grime():
 def build_polish_pass_4():
     build_credit_card_terminal()
     build_receipt_paper_curl()
-    build_cash_drawer_open()
     build_pizza_warmer()
     build_donut_box_stack()
     build_hanging_chip_rack()
@@ -3058,7 +3052,7 @@ def build_hero_props_2026_08():
     make_box("Novelty_Cooler_Lid", (-1.2, 7.175, 0.92), (1.55, 0.65, 0.04), (0.55, 0.62, 0.66, 0.6))
     make_box("Novelty_Cooler_Decal", (-1.2, 6.82, 0.55), (1.20, 0.01, 0.40), (0.92, 0.56, 0.62, 1.0))
     # Tip cup at the register
-    make_cyl("Tip_Cup", (4.55, 3.6, 1.12), 0.05, 0.14, (0.80, 0.82, 0.72, 0.7), segments=8)
+    make_cyl("Tip_Cup", (4.55, 3.6, 1.14), 0.05, 0.14, (0.80, 0.82, 0.72, 0.7), segments=8)   # (pass 388) on the top (1.07), not 2 cm in it
 
 
 def build_hero_props_2026_09():
@@ -3087,9 +3081,11 @@ def build_hero_props_2026_09():
     """
     white = (0.88, 0.88, 0.86, 1.0)
     # ── SAM'S PHONE · counter top (Z=1.07) ──
-    make_box("Counter_Phone", (4.90, 4.05, 1.0755), (0.070, 0.140, 0.011),
+    # (pass 388) "on the counter beside the register", on Sam's side of it:
+    # at (4.90, 4.05) it lay through the hot case's side wall
+    make_box("Counter_Phone", (5.38, 3.75, 1.0755), (0.070, 0.140, 0.011),
              (0.13, 0.13, 0.15, 1.0))
-    make_box("Counter_Phone_Screen", (4.90, 4.05, 1.0820), (0.058, 0.124, 0.002),
+    make_box("Counter_Phone_Screen", (5.38, 3.75, 1.0820), (0.058, 0.124, 0.002),
              (0.32, 0.40, 0.48, 1.0))
     # ── THE CARD · by the register ──
     make_box("Roofing_Card", (5.00, 3.75, 1.0705), (0.089, 0.051, 0.001),

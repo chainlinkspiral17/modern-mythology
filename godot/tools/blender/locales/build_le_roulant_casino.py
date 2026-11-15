@@ -332,12 +332,12 @@ def build_wheel_wave2_props():
     # Two banker's trays
     for ti, dx in enumerate([-0.40, +0.40]):
         make_box("CountRoom_BankersTray_%d" % ti,
-                 (cr_x + dx, cr_y, ct_z + 0.03),
+                 (cr_x + dx, cr_y, ct_z + 0.05),    # (pass 388) on the top (ct_z is its centre)
                  (0.32, 0.42, 0.06),
                  (0.62, 0.42, 0.24, 1.0))
         # Money bundle inside (light-green stack)
         make_box("CountRoom_TrayMoney_%d" % ti,
-                 (cr_x + dx, cr_y, ct_z + 0.06),
+                 (cr_x + dx, cr_y, ct_z + 0.08),
                  (0.24, 0.16, 0.04),
                  (0.72, 0.86, 0.62, 1.0))
 

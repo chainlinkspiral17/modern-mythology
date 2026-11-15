@@ -216,6 +216,12 @@ posters, screens with no picture: `empty_frame_audit`).
   cues cut to another area of a shared set — a bathroom line to another room's mirror, an upstairs bedroom
   to the television a floor down) and ORPHAN MARKERS (pass 367: 223 authored insert frames no line cut to;
   39 now have their line, 186 remain under a ratchet).
+- **20 sets — passes 388 - 389 (2026-11-15), things standing inside their furniture.** The Kwik Stop's hot
+  case and pizza warmer stood 7 - 8 cm into the counter, the receipt printer floated over it, and an open till
+  nobody opens sat inside the counter body: seated or removed; a roller grill with hot dogs; a Post-it pad
+  for "the small pad by the register". Eight register cues re-cut (two cut on the VERB "register"). 42 loose
+  things in 20 sets stood inside the table, desk or counter under them (Montreal's coffee maker, the Ember &
+  Ash desk, Cat's phone, the D'Ambrosio's bottles): all seated; a new gate holds it at zero.
 - **henderson_garage · nate_garage · henderson_kitchen — pass 387 (2026-11-15).** The Foxhole flyer is the
   text's flyer now (half-letter, mustard, black ink; on Jesse's workbench, and its back with the set order in
   Nate's garage). The Hendersons' forks lie beside their own diner and have tines; the mug is off the fork.

@@ -12697,7 +12697,7 @@
       "prompt": "The top face of a countertop heated pizza display case in a Gulf Coast gas station, seen from directly above. A square brand-red printed panel: a big round pepperoni pizza illustration with one slice pulled out and cheese strings, the word PIZZA in bold cream-yellow capitals arcing over it and HOT · BY THE SLICE underneath. Grease spots, a faint ring where a cup was set on it, heat-faded red. Flat, square, evenly lit.",
       "canon": [],
       "prompt_mode": "fallback",
-      "notes": "(2026-10-13, written from the builder, scenes and wiki) builder: red Pizza_Sign 'PIZZA label, on the case top' (faces up); tagline invented (2026-10-19) size doubled: laid at half its stand-in by hero_art_candidates' half-extent bug.",
+      "notes": "(2026-10-13, written from the builder, scenes and wiki) builder: red Pizza_Sign 'PIZZA label, on the case top' (faces up); tagline invented (2026-10-19) size doubled: laid at half its stand-in by hero_art_candidates' half-extent bug. (2026-11-15, pass 388) up 8 cm with the warmer, which stood with its floor inside the counter top.",
       "art_cat": "SIGN",
       "score_lines": 537,
       "score_mentions": 1,
@@ -12708,7 +12708,7 @@
           "center": [
             5.0,
             5.2,
-            1.43
+            1.51
           ],
           "size": [
             0.5,

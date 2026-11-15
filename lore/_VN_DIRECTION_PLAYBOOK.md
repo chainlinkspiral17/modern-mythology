@@ -323,6 +323,23 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-11-15 · a cue word can be a verb: "register" (pass 388)
+
+- **What happened:** "Mark and Lucy, at the table, *register* Stan's
+  comment" and "she *registers* the shape of a person's situation" both
+  cut to the Kwik Stop's cash register. Of fourteen `insert register`
+  cues, eight framed the till on a line about something else: a man
+  coming in, Sam taking out her phone, Sam not crying at the counter.
+- **Why:** the cues were placed from the noun's presence in the room, not
+  from what the line is ABOUT. The same trap waits for "watch", "check",
+  "file", "case", "box", "light", "plant", "stand", "table" (to table a
+  motion), "set".
+- **Rule:** before cueing an insert, say the line's subject in one word.
+  If it is a person, the frame is that person (or the room); if it is a
+  thing, it is the thing the line handles ("her phone, on the counter
+  beside the register" is the phone). A thing named in passing is the
+  set, not the shot.
+
 ### 2026-11-15 · cut to a thing when the text has it in the room (pass 387)
 
 - **What happened:** vol 6 ch14 cued `insert flyer` on "The kid coming up

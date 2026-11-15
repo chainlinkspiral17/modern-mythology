@@ -555,6 +555,18 @@ BFOUT="$(python3 buried_flat_audit.py 2>/dev/null)" || {
 echo "$BFOUT" | tail -1
 echo ""
 
+# ── Sunk-thing gate (2026-11-15, pass 388) ────────────────────
+# The THICK half of the question: a loose thing standing partly inside the
+# furniture top it stands on (the Kwik Stop's hot case, 7 cm into the
+# counter, with the phone through its side wall). Exact shapes only;
+# furniture surfaces only (tops, counters, desks, tables, benches, shelves).
+echo "── sunk_thing_audit.py ── t+${SECONDS}s"
+SKOUT="$(python3 sunk_thing_audit.py 2>/dev/null)" || {
+    echo "$SKOUT" | grep "^SUNK" | head -20
+    DEFERRED="$DEFERRED sunk_thing_audit"; }
+echo "$SKOUT" | tail -1
+echo ""
+
 # ── Overhang gate (2026-11-15, pass 384) ──────────────────────
 # The user, of a napkin dispenser at booth six: "What's the thing sticking
 # out from the end of the table, hovering in the air?" It touched the

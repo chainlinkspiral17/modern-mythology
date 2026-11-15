@@ -195,9 +195,10 @@ def build_hero_props():
     make_cyl("Narwhal_Mug", (-2.55, 3.55, 0.82), 0.045, 0.09, (0.55, 0.72, 0.80, 1.0), segments=10)
     make_box("Narwhal_Decal", (-2.51, 3.55, 0.83), (0.012, 0.045, 0.04), (0.90, 0.92, 0.94, 1.0))
     make_cyl("Narwhal_Tusk", (-2.49, 3.53, 0.86), 0.006, 0.04, (0.94, 0.92, 0.86, 1.0), segments=5)
-    # The drip coffee maker (a French press does not gurgle)
-    make_box("Drip_Maker", (2.80, 4.50, 1.10), (0.28, 0.28, 0.36), (0.20, 0.20, 0.22, 1.0))
-    make_cyl("Drip_Carafe", (2.80, 4.42, 1.00), 0.09, 0.16, (0.45, 0.38, 0.28, 0.7), segments=10)
+    # The drip coffee maker (a French press does not gurgle). (pass 388) on
+    # the counter (0.98): it and the carafe stood 6 cm into it
+    make_box("Drip_Maker", (2.80, 4.50, 1.16), (0.28, 0.28, 0.36), (0.20, 0.20, 0.22, 1.0))
+    make_cyl("Drip_Carafe", (2.80, 4.42, 1.06), 0.09, 0.16, (0.45, 0.38, 0.28, 0.7), segments=10)
     # Notebook ziggurats on every available surface
     # (2026-09-22: stack 1 hung 42 cm up on nothing — on the floor by the
     # sofa now; stack 2 was past the counter's west edge)
@@ -209,7 +210,7 @@ def build_hero_props():
                      [(0.62, 0.24, 0.24, 1.0), (0.24, 0.42, 0.52, 1.0), (0.72, 0.62, 0.30, 1.0)][k % 3])
     # Fridge + dish rack
     make_box("Fridge", (2.72, 3.4, 0.85), (0.60, 0.60, 1.70), (0.85, 0.84, 0.80, 1.0))
-    make_box("Dish_Rack", (2.35, 4.75, 0.98), (0.30, 0.26, 0.05), (0.60, 0.62, 0.63, 1.0))
+    make_box("Dish_Rack", (2.35, 4.75, 1.005), (0.30, 0.26, 0.05), (0.60, 0.62, 0.63, 1.0))
     # THE ALLEY beyond the N window: opposite brick, moss, the
     # graffiti-scarred drainpipe, recycling bins
     make_box("Alley_Brick", (0.0, 7.4, 1.8), (7.0, 0.2, 3.6), (0.42, 0.30, 0.26, 1.0))

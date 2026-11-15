@@ -161,6 +161,9 @@ def make_sugar_creamer_caddy(prefix, anchor, *, palette=None):
     palette = palette or {}
     caddy = palette.get("caddy", (0.94, 0.94, 0.88, 1.0))
     cx, cy, bz = anchor
+    # (pass 388) the anchor is the SURFACE, as both callers pass it (a
+    # counter's top_z): the 8 cm tray was centred on it, half inside the top
+    bz += 0.04
     make_box(f"{prefix}_Tray", (cx, cy, bz),
              (0.40, 0.30, 0.08), caddy)
     packet_colors = [

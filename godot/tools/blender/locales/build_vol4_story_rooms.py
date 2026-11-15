@@ -608,11 +608,11 @@ def build_aaron_room_2026_10(ax):
         make_standing_figure(f"Aaron_Shelf_Figure_{k}", ax + 0.30, 1.86 + (k % 5) * 0.26, heading=math.pi / 2.0, h=0.18,
                              coat=cols[k % 5], pants=cols[(k + 2) % 5], z0=0.02 + row * 0.70)
     make_box("Aaron_Shelf_Board_Mid", (ax + 0.27, 2.4, 0.71), (0.34, 1.36, 0.02), (0.56, 0.46, 0.32, 1.0))
-    make_chamfer_box("Aaron_Toy_Robot", (ax + 0.27, 2.95, 1.53), (0.14, 0.12, 0.26), (0.70, 0.72, 0.76, 1.0), chamfer=0.02)
+    make_chamfer_box("Aaron_Toy_Robot", (ax + 0.27, 2.95, 1.55), (0.14, 0.12, 0.26), (0.70, 0.72, 0.76, 1.0), chamfer=0.02)
     make_blob("Aaron_Plush", (ax + 0.27, 1.92, 1.52), 0.12, (0.62, 0.46, 0.30, 1.0), noise=0.2, seed=8, squash=1.2)
-    make_box("Aaron_Toy_Castle", (ax + 0.27, 2.45, 1.50), (0.28, 0.40, 0.20), (0.70, 0.66, 0.60, 1.0))
+    make_box("Aaron_Toy_Castle", (ax + 0.27, 2.45, 1.52), (0.28, 0.40, 0.20), (0.70, 0.66, 0.60, 1.0))
     for k in range(4):
-        make_box(f"Aaron_Toy_Castle_Merlon_{k}", (ax + 0.27, 2.30 + k * 0.10, 1.63), (0.28, 0.05, 0.06), (0.70, 0.66, 0.60, 1.0))
+        make_box(f"Aaron_Toy_Castle_Merlon_{k}", (ax + 0.27, 2.30 + k * 0.10, 1.65), (0.28, 0.05, 0.06), (0.70, 0.66, 0.60, 1.0))
     # the toy chest at the shelf's foot, lid up, toys over the rim
     make_box("Aaron_Toy_Chest", (ax + 0.62, 1.2, 0.25), (0.40, 0.70, 0.50), (0.30, 0.46, 0.70, 1.0))
     make_rot_box("Aaron_Toy_Chest_Lid", (ax + 0.40, 1.2, 0.68), (0.04, 0.70, 0.40), (0.30, 0.46, 0.70, 1.0), pitch=-0.25)

@@ -282,7 +282,7 @@ def build_proofer():
 def build_mixer():
     # Planetary stand mixer on the north counter's west end.
     mx, my = -ROOM_W/4.0-0.9, ROOM_D-1.0
-    top = 0.96
+    top = 0.98    # (pass 388) the counter's surface: at 0.96 the mixer stood 2 cm into it
     make_chamfer_box("Mixer_Base", (mx, my, top+0.06), (0.28, 0.34, 0.12), (0.86, 0.84, 0.82, 1.0))
     make_box("Mixer_Column", (mx+0.10, my, top+0.34), (0.14, 0.24, 0.44), (0.86, 0.84, 0.82, 1.0))
     make_chamfer_box("Mixer_Head", (mx-0.06, my, top+0.52), (0.34, 0.22, 0.16), (0.86, 0.84, 0.82, 1.0))

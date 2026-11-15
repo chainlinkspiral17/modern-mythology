@@ -3835,6 +3835,81 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-15 · pass 389: 42 things standing inside the furniture they stand on.**
+- The THICK half of pass 386's question, as a gate (`sunk_thing_audit`,
+  below). Asked of every set: 42 loose things in 20 sets stood 1.5 - 6 cm
+  into the table, counter, desk or shelf they were set on — the same root
+  as 386, a surface constant that was the slab's centre:
+  - Montreal: the drip coffee maker and its carafe, 6 cm into the counter
+    ("the gurgle of the coffee maker", vol 5 ch14); the dish rack.
+  - Ember & Ash: the rotary phone, the voicemail box, the ashtray and the
+    rolodex, all 2 cm into the desk (`desk_top_z` is the top's centre;
+    they sit on `DSURF` now), the bourbon glass 1 cm.
+  - The riverboat: Cat's ringing phone, 3 cm into her desk (vol 5 ch4).
+  - The diner: the D'Ambrosio's four service-bar bottles, the call bell,
+    the hostess stand's menus, pen cup and banker's lamp, the formal
+    room's candelabra, the BBS card stack.
+  - The Roberts' coffee maker (4 cm), Simon's, the Hans bakery mixer, the
+    Lacombe toolbox (4 cm) and vise, the WGUR terminal, Cedar Tower's dish
+    rack, the casino count room's banker's trays, El Rancho's salsa pans
+    and napkin holders, Aaron's toy robot and castle, June's sweaters, a
+    solder stand, a skateboard truck, the ice tongs.
+  - The shared sugar caddy (`food_service.make_sugar_creamer_caddy`)
+    centred its 8 cm tray ON the surface it was given: half inside every
+    counter it stood on (the Pit Stop, the Roberts' island). Fixed in the
+    helper.
+- 42 → 0; the baseline is empty.
+- El Rancho's `insert tables` frame looked at the salsa bar from 0.5 m (the
+  lifted salsa then stood in front of it). The synonym table did not know
+  a six-top is a table; it does now (`six_top`, `two_top`, `four_top`), and
+  the frame looks across both six-tops. (No line reaches it: the brawl it
+  was written for plays over a painted background.)
+- Deck must REBUILD the 20 sets edited (the `--stale` rebuild owed covers
+  them; `_props/food_service.py` changed too).
+- NEXT: the same reading for things on FLOORS and on the ground (a crate
+  sunk into a floor slab) wants its own exemptions (walls, posts, columns
+  are built into floors on purpose); things on SEATS and in BASKETS (the
+  Kwik Stop's mint tubes stand 7 cm into a solid wire basket).
+
+**2026-11-15 · pass 388: the Kwik Stop's register cut on the verb, and its hot case stood in the counter.**
+- **"Mark and Lucy, at the table, register Stan's comment"** cut to the
+  cash register. So did "she registers the shape of a person's situation".
+  Of fourteen `insert register` cues, eight showed the wrong thing: a man
+  described (Mark coming in), Sam taking out her phone, Sam not crying at
+  the counter, her phone "beside the register". Re-cued: the phone where
+  the line is about the phone, Sam's close-up where she thinks, the table
+  where the table reacts, the door where she stares at it. Six that are
+  about the till keep it.
+- **The hot case stood 7 cm inside the counter top** (centred at 1.30 when
+  the top's surface is 1.07) and **the pizza warmer 8 cm**; Sam's phone
+  "on the counter beside the register" lay through the hot case's side
+  wall; the receipt printer floated 6 cm over the counter on a 16 cm paper
+  "curl" block driven into it (a second curl already came off its top).
+  All seated; the phone is on Sam's side of the register.
+- **An open till nobody opens.** A cash tray stood open all day, west of
+  the register (toward the customers; the clerk works the east side), its
+  floor 9 cm inside the counter body. The text never opens the drawer:
+  ch15's two `insert cash` lines are the till ("the tips Jen runs through
+  the till") and Sam's wallet. Gone; the first line cuts to the register,
+  the second to Sam.
+- **"She gets a Post-it from the small pad by the register"** — there was
+  no pad. A yellow pad by her hand, and a frame from her side
+  (`shot_insert_postit__kwik_stop_hood`).
+- **The roller grill** ("the ghost of every hot dog that has ever sweated
+  on the roller grill") was two thick brown rods running front to back
+  in the hot case; the only frame that sees in (through the open front)
+  saw their ends, two logs. Seven steel rollers run across the case now,
+  three hot dogs on them, and the frame stands in front of the opening.
+- **New gate, `sunk_thing_audit`:** a loose thing (thicker than 3 cm, at
+  most 0.8 m tall) whose underside is more than 1.5 cm inside a raised
+  furniture top it stands on. Exact shapes only. Construction joints
+  (walls in floor slabs, columns in a stage, chair backs in seats) are
+  not asked: hosts are tops, counters, desks, tables, benches, shelves.
+- Deck must REBUILD kwik_stop.
+- NEXT: the Kwik Stop's "establish" for "He is tall. He is thin." is the
+  whole store — Mark's close-up would be better if `closeup person` frames
+  him on that view; `insert phone` is tight and dark.
+
 **2026-11-15 · pass 387: the Foxhole flyer, by the text; the Hendersons' forks; a frame that passed its gate half hidden.**
 - Found reading pass 386's own check renders (the suite had failed two
   sightlines after the pot roast and the amps moved):

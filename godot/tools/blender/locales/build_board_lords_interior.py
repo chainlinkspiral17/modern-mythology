@@ -208,7 +208,7 @@ def build_repair_back():
     make_chamfer_box("Repair_Bench_Top", (bx, 6.2, 0.92), (2.26, 0.76, 0.05), (0.32, 0.24, 0.16, 1.0))
     # A board mid-repair on the bench, trucks off
     make_box("Repair_Board", (bx + 0.15, 6.15, 0.96), (0.80, 0.22, 0.03), DECK_TINTS[1])   # on the bench
-    make_box("Repair_Truck_Loose", (bx - 0.45, 6.3, 0.96), (0.16, 0.10, 0.06), COL_STEEL)
+    make_box("Repair_Truck_Loose", (bx - 0.45, 6.3, 0.975), (0.16, 0.10, 0.06), COL_STEEL)
     # the bench vise at the east end, the top's scars
     make_box("Repair_Vise_Body", (bx + 0.95, 6.02, 1.00), (0.16, 0.14, 0.11), (0.28, 0.30, 0.32, 1.0))
     make_box("Repair_Vise_Jaw", (bx + 0.95, 5.90, 1.00), (0.16, 0.05, 0.11), (0.28, 0.30, 0.32, 1.0))

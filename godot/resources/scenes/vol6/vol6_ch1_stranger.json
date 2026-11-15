@@ -53,7 +53,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert register]Her phone is on the counter beside the register, face-up. No texts. Not from Diego. Not from anyone.",
+      "text": "[shot:insert phone]Her phone is on the counter beside the register, face-up. No texts. Not from Diego. Not from anyone.",
       "voice": "assets/audio/voice/vol6_ch1_stranger/009.mp3"
     },
     {
@@ -139,7 +139,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert register]Sam picks up her phone. She types, to Diego: hey where r u. She does not send it. She deletes it. She types, instead: bored. u alive? She sends that. The message delivers. It does not, within the three minutes she watches it, show as read.",
+      "text": "[shot:insert phone]Sam picks up her phone. She types, to Diego: hey where r u. She does not send it. She deletes it. She types, instead: bored. u alive? She sends that. The message delivers. It does not, within the three minutes she watches it, show as read.",
       "voice": "assets/audio/voice/vol6_ch1_stranger/025.mp3"
     },
     {

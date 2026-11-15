@@ -231,28 +231,29 @@ def build_tower_dressing():
              (0.22, 0.20, 0.18, 1.0),
              segments=6, axis='Z')
 
-    # Terminal showing render queue at 847
+    # Terminal showing render queue at 847. (pass 388) desk_top_z is the
+    # top's centre: the case stood 2 cm into the desk; + 0.02 is its surface
     term_x = desk_cx
     term_y = desk_cy + 0.06
     # Beige CRT case
     make_box("WGUR_Terminal_Case",
-             (term_x, term_y, desk_top_z + 0.18),
+             (term_x, term_y, desk_top_z + 0.02 + 0.18),
              (0.42, 0.40, 0.40),
              (0.86, 0.82, 0.74, 1.0))
     # Dark screen
     make_box("WGUR_Terminal_Screen",
-             (term_x, term_y - 0.20, desk_top_z + 0.22),
+             (term_x, term_y - 0.20, desk_top_z + 0.02 + 0.22),
              (0.32, 0.02, 0.26),
              (0.10, 0.10, 0.12, 1.0))
     # Phosphor-green "847" digits on the screen (three small bright boxes)
     for di, dx_off in enumerate([-0.05, 0.0, +0.05]):
         make_box("WGUR_Terminal_Digit_%d" % di,
-                 (term_x + dx_off, term_y - 0.201, desk_top_z + 0.24),
+                 (term_x + dx_off, term_y - 0.201, desk_top_z + 0.02 + 0.24),
                  (0.022, 0.001, 0.040),
                  (0.18, 0.96, 0.40, 1.0))
     # "RENDER QUEUE" label above the digits
     make_box("WGUR_Terminal_QueueLabel",
-             (term_x, term_y - 0.201 - 0.0101, desk_top_z + 0.30),
+             (term_x, term_y - 0.201 - 0.0101, desk_top_z + 0.02 + 0.30),
              (0.18, 0.001, 0.012),
              (0.18, 0.96, 0.40, 1.0))
 

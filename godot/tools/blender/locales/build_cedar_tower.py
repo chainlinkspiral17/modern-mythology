@@ -378,9 +378,9 @@ def build_draft2_density_2026_08():
     make_box("Q_Guitar_Neck", (-4.35, 6.88, z0 + 0.75), (0.06, 0.05, 0.55), CEDAR_DK)
     # Kitchen life: kettle on the stove, dish rack, mug pegs, pot rail.
     make_cyl("Q_Kettle", (5.0, 6.6, z0 + 0.92), 0.11, 0.16, (0.74, 0.76, 0.78, 1.0), segments=10)
-    make_box("Q_DishRack", (5.05, 2.9, z0 + 0.98), (0.45, 0.32, 0.10), (0.62, 0.64, 0.66, 1.0))
+    make_box("Q_DishRack", (5.05, 2.9, z0 + 1.015), (0.45, 0.32, 0.10), (0.62, 0.64, 0.66, 1.0))
     for di2 in range(4):
-        make_box(f"Q_Dish_{di2}", (5.05, 2.80 + di2 * 0.07, z0 + 1.06), (0.30, 0.015, 0.16),
+        make_box(f"Q_Dish_{di2}", (5.05, 2.80 + di2 * 0.07, z0 + 1.095), (0.30, 0.015, 0.16),
                  (0.88, 0.86, 0.80, 1.0))
     for mi in range(5):
         make_cyl(f"Q_MugPeg_{mi}", (5.52, 2.6 + mi * 0.28, z0 + 1.55), 0.015, 0.06,   # on the cabinets' face (2026-09-22)

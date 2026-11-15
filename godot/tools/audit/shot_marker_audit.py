@@ -143,6 +143,9 @@ EXCLUDE = {
 SYNONYMS = {
     # (2026-11-04) "He looks at the paper": the folded Newspaper (one CamelCase word)
     "paper": ["paper", "newspaper"],
+    # (pass 388) restaurant tables named by their seats: El Rancho's
+    # SixTop_* / TwoTop_* (the brawl's "tables and counters", vol 4)
+    "tables": ["table", "six_top", "two_top", "four_top"],
     "door": ["door", "doorway"],
     # 2026-09-07 · the position-form markers came into the audit and
     # sixteen insert cues had no geometry answering to their names
