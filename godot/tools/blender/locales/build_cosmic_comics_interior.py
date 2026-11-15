@@ -193,7 +193,11 @@ def build_register_counter():
         make_rot_box(f"Shop_Keys_Key_{ki}", (cx-0.30 + 0.045*math.cos(ang), cy-0.35 + 0.045*math.sin(ang), top_z + 0.0015 + ki*0.001),
                      (0.058, 0.018, 0.002), col, yaw=ang)
     # The GRAIL BOOK — a single high-grade slab under a glass dome, lit.
-    gx, gy = cx-0.7, cy
+    # (pass 384) on the counter. `cx - 0.7` took the counter to run along X;
+    # it runs along Y (1.0 m deep in X, x 1.95..3.05), so the dome and its
+    # slab stood in the air 30 cm off the counter's west face
+    # (overhang_audit: Grail_DomeBase 97 % off Register_Top).
+    gx, gy = cx-0.25, cy+0.75
     make_box("Grail_Slab", (gx, gy, top_z+0.14), (0.20, 0.30, 0.03), (0.86, 0.42, 0.30, 1.0))
     make_box("Grail_Label", (gx, gy-0.13, top_z+0.20), (0.16, 0.02, 0.06), P.PAPER)
     make_lathe("Grail_Dome", (gx, gy, top_z+0.04),
@@ -380,14 +384,20 @@ def build_landline_and_twenty_2026_08():
     transaction — the shot is about the money changing hands."""
     cx, cy = ROOM_W/4.0, ROOM_D-1.5
     beige = (0.80, 0.76, 0.66, 1.0)
-    make_box("Landline_Base", (cx - 0.85, cy - 0.25, 0.985), (0.20, 0.15, 0.06), beige)
-    make_box("Landline_Handset", (cx - 0.85, cy - 0.25, 1.035), (0.19, 0.055, 0.045),
+    # (pass 384) ON the counter. `cx - 0.85` took the counter to run along X
+    # (it runs along Y: x 1.95..3.05), so the phone hung in the air 20 cm
+    # off its west face and 5 cm low, held — for the support gate — only by
+    # touching the grail's base, which was off the counter too. The cord is
+    # a coil lying on the top now, not three posts.
+    lx, ly, ltop = cx - 0.33, cy + 0.25, 1.01
+    make_box("Landline_Base", (lx, ly, ltop + 0.03), (0.20, 0.15, 0.06), beige)
+    make_box("Landline_Handset", (lx, ly, ltop + 0.0825), (0.19, 0.055, 0.045),
              (0.66, 0.62, 0.52, 1.0))
-    make_box("Landline_Keypad", (cx - 0.82, cy - 0.21, 1.018), (0.08, 0.06, 0.008),
+    make_box("Landline_Keypad", (lx + 0.03, ly + 0.04, ltop + 0.064), (0.08, 0.06, 0.008),
              (0.32, 0.30, 0.28, 1.0))
-    for ci, (dx2, dy2) in enumerate(((0.10, 0.02), (0.16, 0.10), (0.24, 0.06))):
-        make_cyl("Landline_Cord_%d" % ci, (cx - 0.85 + dx2, cy - 0.25 + dy2, 0.975),
-                 0.008, 0.09, beige, segments=6)
+    for ci, (dx2, dy2) in enumerate(((0.115, 0.02), (0.135, 0.02), (0.155, 0.02))):
+        make_cyl("Landline_Cord_%d" % ci, (lx + dx2, ly + dy2, ltop + 0.008),
+                 0.012, 0.016, beige, segments=6)
     # beside the register, not under it (2026-09-22: the drawer sits on the counter now)
     make_box("Twenty_Bill", (cx - 0.42, cy - 0.42, 1.0115), (0.16, 0.068, 0.003),
              (0.55, 0.62, 0.52, 1.0))

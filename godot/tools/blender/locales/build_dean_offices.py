@@ -311,7 +311,8 @@ def build_lobby():
     make_box("Console_Desk", (ox, oy + 0.20, 0.735), (3.0, 0.60, 0.03), (0.86, 0.86, 0.84, 1.0))
     make_box("Console_Body", (ox, oy + 0.20, 0.36), (2.9, 0.50, 0.72), (0.92, 0.92, 0.90, 1.0))
     flat_monitor("Console_Monitor", ox - 0.3, oy + 0.30, 0.75, face="+Y", w=0.50)
-    make_box("Console_Keyboard", (ox - 0.3, oy + 0.55, 0.759), (0.44, 0.15, 0.018), (0.86, 0.86, 0.86, 1.0))
+    # (pass 384) on the desk (y oy-0.10..oy+0.50): at oy + 0.55 all but 2.5 cm of it was past the front edge
+    make_box("Console_Keyboard", (ox - 0.3, oy + 0.41, 0.759), (0.44, 0.15, 0.018), (0.86, 0.86, 0.86, 1.0))
     make_chair("Console_Chair", ox - 0.3, oy + 1.10, yaw=0.0, wood=(0.80, 0.80, 0.80, 1.0), seat_col=(0.70, 0.72, 0.76, 1.0))
     # the television on the W wall and the seating group facing it
     tx, ty = LX0 + 0.04, 4.6

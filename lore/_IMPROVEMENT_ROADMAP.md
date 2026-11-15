@@ -3835,6 +3835,51 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-15 · pass 384: "the thing sticking out from the end of the table, hovering in the air".**
+- The user, of a frame of booth six: *"What's the thing sticking out from
+  the end of the table, hovering in the air?"* The napkin dispenser. The
+  table dressing was laid out in a line for a long table (shakers 0.28 m
+  from the centre, the dispenser 0.10 m past them) and the booth tables
+  are 0.70 m square: 11 of the dispenser's 16 cm, and one of its end
+  caps, stood past the aisle edge of all six booths; 4 cm past the three
+  bistro tops. And `TABLE_TOP_Z` is the top's centre, so everything sat
+  2 cm into the formica — the saucers wholly inside it.
+  - The group is measured from the table's own edge now, on its surface:
+    the dispenser turned across the end 3 cm in, salt and pepper either
+    side, ketchup and sugar in front.
+- **Why no gate said so:** it touches the table, so `support_audit` holds
+  it; it clips nothing, so `prop_overlap` is silent. **`overhang_audit`**
+  (new gate): a small thing rests on a surface when its underside is at
+  the surface's top and their footprints overlap; it OVERHANGS when its
+  centre is past the surface's edge. Parts of assemblies (a seat's back,
+  a lid, a bracket) and coverings (a rug, a blanket) are not judged. On
+  the diner as it was: 13 hits. On everything else it found five more,
+  all real, all fixed:
+  - Cosmic Comics: **the grail under its glass dome** stood in the air
+    30 cm off the register counter's face (`cx - 0.7` took the counter
+    to run along X; it runs along Y).
+  - the darkroom's tongs hung 11 cm above the bench in front of the tray;
+  - the dean's console keyboard, all but 2.5 cm past the desk's front;
+  - the diner closet's BBS keyboard, 13 of 16 cm off a desk too shallow
+    for it (the desk is 0.74 m deep now);
+  - the Missing Link's tip jar, off the end of the counter.
+  The gate reads 0 in 169 sets; the baseline is empty.
+- Moving the grail broke a chain the support gate had been trusting:
+  **Cosmic's landline** ("he picks up the store's landline phone", vol 6
+  ch1) hung in the air 20 cm off the same counter face and 5 cm low,
+  "held" only by touching the grail's base, itself off the counter. On
+  the counter now, its cord a coil on the top; both its frames re-aimed.
+  And the tip jar's label had stayed behind when the jar moved.
+  - One cue taken out: "Maya's phone, in her back pocket, buzzes" cut to
+    the shop's landline (`insert phone` resolves to it in that view).
+- Deck must REBUILD diner, cosmic_comics_interior, darkroom,
+  dean_offices, missing_link_interior.
+- NEXT: a round top is read by its bounding box, so a thing past the arc
+  but inside the box is not seen; the dispenser now stands between the
+  booth-six insert's camera and the cup (it frames the cup above it — a
+  lower camera would clear it); the tutorial lobby (dean_offices) renders
+  as a white room with a pale couch — read it against its text.
+
 **2026-11-14 · pass 383: a look at an object is the object; a speaker stands in the room.**
 - Pass 380 made the cast's fades real. Reading what that showed, on the
   diner counter (vol 5 ch0, two figures at the sides):

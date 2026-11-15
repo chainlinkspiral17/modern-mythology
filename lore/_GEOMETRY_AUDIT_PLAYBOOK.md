@@ -158,6 +158,22 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-15 · "held" is not "on": touching a surface and resting on it are different questions (pass 384)
+- `support_audit` asks whether a thing is connected to the room. A
+  napkin dispenser with a third of its base on a table and two thirds in
+  the air is connected. `overhang_audit` asks the other question: is its
+  centre over what it rests on?
+- When the user names one thing, run the question over every set before
+  fixing the one: six booths had it, and five other props in five other
+  sets (among them a hero prop under a glass dome, floating off its
+  counter since it was built).
+- A layout written as offsets from a centre knows nothing of the edge.
+  Measure small things from the EDGE of what they stand on
+  (`end = half - 0.03`), and from its SURFACE — a `*_TOP_Z` constant is
+  as often the slab's centre as its top.
+- Prove a new gate on the fault that prompted it: put the old file back,
+  run the gate (13 hits), restore.
+
 ### 2026-11-14 · a suite nobody can time grows until nobody runs it (pass 381)
 - The suite's log had no clock. One gate went from a few minutes to
   forty as the crowd passes multiplied its boxes, and the only sign was

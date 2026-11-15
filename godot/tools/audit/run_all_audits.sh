@@ -544,6 +544,18 @@ WDOUT="$(python3 winding_audit.py 2>/dev/null)" || {
 echo "$WDOUT" | tail -1
 echo ""
 
+# ── Overhang gate (2026-11-15, pass 384) ──────────────────────
+# The user, of a napkin dispenser at booth six: "What's the thing sticking
+# out from the end of the table, hovering in the air?" It touched the
+# table, so support_audit held it; it clipped nothing. This asks whether a
+# small thing is ON what it rests on (its centre over the surface).
+echo "── overhang_audit.py ── t+${SECONDS}s"
+OHOUT="$(python3 overhang_audit.py 2>/dev/null)" || {
+    echo "$OHOUT" | grep "^OVERHANG" | head -20
+    DEFERRED="$DEFERRED overhang_audit"; }
+echo "$OHOUT" | tail -1
+echo ""
+
 # ── Shader modulate gate (2026-11-14, pass 381) ───────────────
 # A canvas shader that writes COLOR outright throws away the node's
 # modulate: the fade runs and the picture does not change. The 3D cast's

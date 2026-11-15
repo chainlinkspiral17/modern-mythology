@@ -230,9 +230,10 @@ def build_counter_and_stools():
     make_cyl("CakePlate", (2.7, cy - 0.02, top + 0.015), 0.22, 0.03, COL_CHROME, segments=16)
     make_cyl("CakePie", (2.7, cy - 0.02, top + 0.07), 0.20, 0.08, COL_PIE, segments=16)
     make_lathe("CakeDome", (2.75, cy + 0.25, top), [(0.20, 0.0), (0.20, 0.12), (0.16, 0.17), (0.07, 0.19), (0.03, 0.19), (0.03, 0.22), (0.0, 0.22)], COL_GLASS, segments=16)
-    make_cyl("TipJar", (-1.95, cy - 0.10, top + 0.08), 0.06, 0.16, COL_GLASS, segments=10)
-    make_box("TipJar_Label", (-1.95, cy - 0.162, top + 0.08), (0.08, 0.004, 0.06), (0.86, 0.80, 0.52, 1.0))
-    make_box("TipJar_Label_Foot", (-1.95, cy - 0.165, top + 0.08), (0.02, 0.002, 0.035), COL_BLACK)
+    # (pass 384) on the counter (it starts at x -1.90): at -1.95 the jar stood off its end
+    make_cyl("TipJar", (-1.78, cy - 0.10, top + 0.08), 0.06, 0.16, COL_GLASS, segments=10)
+    make_box("TipJar_Label", (-1.78, cy - 0.162, top + 0.08), (0.08, 0.004, 0.06), (0.86, 0.80, 0.52, 1.0))
+    make_box("TipJar_Label_Foot", (-1.78, cy - 0.165, top + 0.08), (0.02, 0.002, 0.035), COL_BLACK)
 
 
 def build_backbar_kitchen():

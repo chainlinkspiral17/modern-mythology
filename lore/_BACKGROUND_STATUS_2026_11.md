@@ -216,6 +216,10 @@ posters, screens with no picture: `empty_frame_audit`).
   cues cut to another area of a shared set — a bathroom line to another room's mirror, an upstairs bedroom
   to the television a floor down) and ORPHAN MARKERS (pass 367: 223 authored insert frames no line cut to;
   39 now have their line, 186 remain under a ratchet).
+- **diner + four more — pass 384 (2026-11-15).** The napkin dispensers hung off the end of every booth table
+  (the user: "the thing sticking out from the end of the table, hovering in the air"). Re-seated; a new gate
+  for things resting mostly off their surface found five more (Cosmic's grail dome off its counter, the
+  darkroom tongs, two keyboards, the Missing Link's tip jar). All fixed; five sets to rebuild.
 - **the big outdoor sets — pass 382 (2026-11-14).** Harmony Creek, Graustark, the riverfront, the highways and
   the school field draw in a third to a fifth of the calls they did (Harmony 3,837 → 699): the load-time merge
   used a grid sized for rooms. Same picture; nothing to rebuild.

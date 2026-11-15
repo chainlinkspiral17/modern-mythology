@@ -499,7 +499,7 @@ def build_counter():
              (0.10, 0.10, 0.08), COL_BRASS)
 
 
-BOOTH_POSITIONS = []   # (prefix, table_center_x, table_center_y) — filled by builders, used by build_table_dressings
+BOOTH_POSITIONS = []   # (prefix, table_center_x, table_center_y, long axis, half length) — filled by builders, used by build_table_dressings
 
 
 # ── booth dimensions (a real diner-comfortable design) ──
@@ -1659,7 +1659,7 @@ def build_alcove_booths():
                  (0.07, 0.07, 0.005), COL_BRASS)
 
         # Register for table dressings
-        BOOTH_POSITIONS.append((prefix, table_cx, by, 'X'))
+        BOOTH_POSITIONS.append((prefix, table_cx, by, 'X', table_sz / 2.0))
 
 
 def build_freestanding_tables():
@@ -1710,7 +1710,7 @@ def build_freestanding_tables():
             make_box(f"{prefix}_chair_{label}_back_top",
                      (cx, cy + back_dy, 1.06),
                      (0.30, 0.05, 0.04), COL_WOOD_TRIM)
-        BOOTH_POSITIONS.append((prefix, tx, ty, 'Y'))
+        BOOTH_POSITIONS.append((prefix, tx, ty, 'Y', 0.36))   # a round top, r 0.42: what a square group can use
 
 
 # ────────────────────────────────────────────────────────────────
@@ -3598,11 +3598,14 @@ def build_storage_closet_and_bbs():
     desk_x = cl_x_max - 0.45
     desk_y = cl_cy
     desk_top_z = 0.72
-    make_box("ClosetDesk_Top", (desk_x, desk_y, desk_top_z),
-             (0.50, cl_d - 0.30, 0.04), COL_WOOD_TRIM)
+    # (pass 384) 0.50 m deep, the top held the terminal and nothing else:
+    # the keyboard in front of it lay 13 of its 16 cm past the edge. The
+    # top runs 0.74 m out from the wall now, its front panel with it.
+    make_box("ClosetDesk_Top", (desk_x - 0.12, desk_y, desk_top_z),
+             (0.74, cl_d - 0.30, 0.04), COL_WOOD_TRIM)
     # Front and side panels
     make_box("ClosetDesk_Front",
-             (desk_x - 0.24, desk_y, 0.36),
+             (desk_x - 0.47, desk_y, 0.36),
              (0.04, cl_d - 0.30, 0.70), COL_BAR_WOOD)
     make_box("ClosetDesk_Back",
              (desk_x + 0.24, desk_y, 0.36),
@@ -4011,102 +4014,78 @@ def build_table_dressings():
     """Salt + pepper + napkin dispenser + sugar caddy + ketchup bottle
     on every booth table. Reads from the BOOTH_POSITIONS list populated
     by the booth builders so this stays in sync."""
-    table_z = TABLE_TOP_Z
-    for i, (prefix, tx, ty, axis_along) in enumerate(BOOTH_POSITIONS):
-        # Use the table's two principal axes:
-        #   axis_long = bench axis (table's long dimension)
-        #   axis_short = the leg-gap axis (table's short dimension)
-        # We arrange condiments AT THE FAR END of the table (away from
-        # players sitting across), grouped tight.
+    # (pass 384) The user: "What's the thing sticking out from the end of the
+    # table, hovering in the air?" The napkin dispenser. This group was laid
+    # out in a line for a long table — shakers 0.28 m from the centre, the
+    # dispenser 0.10 m past them — and the booth tables are 0.70 m square:
+    # the dispenser's outer 11 cm (of 16) and one of its end caps stood past
+    # the aisle edge of all six booths, 4 cm past the three bistro tops.
+    # And TABLE_TOP_Z is the top's CENTRE (0.72..0.76): everything sat 2 cm
+    # into the formica, the saucers wholly inside it.
+    #
+    # Now measured from the table's own edge, on its surface: the dispenser
+    # turned across the end, 3 cm in from the edge, salt and pepper either
+    # side of it, ketchup and sugar in front.
+    surf = TABLE_TOP_Z + 0.02
+    for i, (prefix, tx, ty, axis_along, half) in enumerate(BOOTH_POSITIONS):
         if axis_along == 'Y':
-            long_axis_off = lambda d: (0.0, d, 0.0)
-            short_axis_off = lambda d: (d, 0.0, 0.0)
+            def at(d_long, d_short, _tx=tx, _ty=ty):
+                return (_tx + d_short, _ty + d_long)
         else:
-            long_axis_off = lambda d: (d, 0.0, 0.0)
-            short_axis_off = lambda d: (0.0, d, 0.0)
-        # Anchor at one end of the long axis (~0.30m from table center)
-        anchor_long = +0.28
-        anchor = (tx + long_axis_off(anchor_long)[0],
-                  ty + long_axis_off(anchor_long)[1])
-        # Salt shaker
-        sx_off = short_axis_off(+0.08)
-        make_box(f"Salt_{i}", (anchor[0] + sx_off[0], anchor[1] + sx_off[1], table_z + 0.07),
-                 (0.06, 0.06, 0.12), COL_SALT)
-        make_box(f"Salt_Cap_{i}", (anchor[0] + sx_off[0], anchor[1] + sx_off[1], table_z + 0.14),
-                 (0.05, 0.05, 0.025), COL_BRASS)
-        # Pepper shaker (paired next to salt)
-        px_off = short_axis_off(-0.08)
-        make_box(f"Pepper_{i}", (anchor[0] + px_off[0], anchor[1] + px_off[1], table_z + 0.07),
-                 (0.06, 0.06, 0.12), COL_PEPPER)
-        make_box(f"Pepper_Cap_{i}", (anchor[0] + px_off[0], anchor[1] + px_off[1], table_z + 0.14),
-                 (0.05, 0.05, 0.025), COL_BRASS)
-        # Napkin dispenser — chrome retro (rebuilt 2026-07-12). A
-        # curved-top box is fine; the tell is the twin domed sides
-        # + the fanned napkin sheaf poking out the slot + the
-        # reflective chrome band. Long/short vary with table axis.
-        nd_long = long_axis_off(+0.10)
-        ndx = anchor[0] + nd_long[0]; ndy = anchor[1] + nd_long[1]
-        wide = axis_along != 'Y'   # slot faces across the short axis
-        w_x = 0.16 if wide else 0.09
-        w_y = 0.09 if wide else 0.16
+            def at(d_long, d_short, _tx=tx, _ty=ty):
+                return (_tx + d_long, _ty + d_short)
+        end = half - 0.03                      # nothing nearer the edge than this
+        # Salt and pepper, either side of the dispenser
+        for nm, cap_col, body_col, side in (("Salt", COL_BRASS, COL_SALT, +0.15), ("Pepper", COL_BRASS, COL_PEPPER, -0.15)):
+            sx, sy = at(end - 0.04, side)
+            make_box(f"{nm}_{i}", (sx, sy, surf + 0.06), (0.06, 0.06, 0.12), body_col)
+            make_box(f"{nm}_Cap_{i}", (sx, sy, surf + 0.1325), (0.05, 0.05, 0.025), cap_col)
+        # Napkin dispenser — chrome retro (rebuilt 2026-07-12): the twin
+        # domed sides, the fanned napkin sheaf out of the slot, the chrome
+        # band. Its long side lies ACROSS the table's end.
+        ndx, ndy = at(end - 0.045, 0.0)
+        across_x = axis_along == 'Y'           # the table's short axis is X
+        w_x = 0.16 if across_x else 0.09
+        w_y = 0.09 if across_x else 0.16
         chrome = (0.66, 0.68, 0.71, 1.0)
         chrome_dk = (0.42, 0.44, 0.47, 1.0)
-        # Base body + darker recessed slot band
-        make_box(f"NapkinDispenser_{i}",
-                 (ndx, ndy, table_z + 0.075), (w_x, w_y, 0.15), chrome)
-        make_box(f"NapkinDispenser_Slot_{i}",
-                 (ndx, ndy, table_z + 0.09),
+        make_box(f"NapkinDispenser_{i}", (ndx, ndy, surf + 0.075), (w_x, w_y, 0.15), chrome)
+        make_box(f"NapkinDispenser_Slot_{i}", (ndx, ndy, surf + 0.09),
                  (w_x - 0.03, w_y - 0.03, 0.11), chrome_dk)
-        # Domed chrome caps on the two ends (the retro shoulders)
         for sgn in (-1, +1):
-            off = (sgn * (w_x / 2), 0, 0) if wide else (0, sgn * (w_y / 2), 0)
+            off = (sgn * (w_x / 2), 0) if across_x else (0, sgn * (w_y / 2))
             make_cyl(f"NapkinDisp_Dome_{i}_{sgn:+d}",
-                     (ndx + off[0], ndy + off[1], table_z + 0.075),
+                     (ndx + off[0], ndy + off[1], surf + 0.075),
                      0.075, 0.02, chrome,
-                     segments=8, axis='X' if wide else 'Y')
-        # Fanned napkin sheaf poking up out of the slot
+                     segments=8, axis='X' if across_x else 'Y')
         for k in range(3):
             lean = (k - 1) * 0.018
             make_box(f"Napkins_{i}_{k}",
-                     (ndx + (lean if wide else 0), ndy + (0 if wide else lean),
-                      table_z + 0.165 + 0.004 * k),
-                     (w_x - 0.06 if wide else 0.02,
-                      0.02 if wide else w_y - 0.06, 0.05),
+                     (ndx + (lean if across_x else 0), ndy + (0 if across_x else lean),
+                      surf + 0.165 + 0.004 * k),
+                     (w_x - 0.06 if across_x else 0.02,
+                      0.02 if across_x else w_y - 0.06, 0.05),
                      COL_NAPKIN)
-        # Ketchup bottle — squat red cylinder with darker cap
-        kt_off = long_axis_off(-0.08)
-        make_cyl(f"Ketchup_Body_{i}",
-                 (anchor[0] + kt_off[0], anchor[1] + kt_off[1], table_z + 0.06),
+        # Ketchup bottle — squat red cylinder with darker cap — in front
+        kx, ky = at(end - 0.16, +0.05)
+        make_cyl(f"Ketchup_Body_{i}", (kx, ky, surf + 0.06),
                  0.030, 0.12, (0.72, 0.18, 0.14, 1.0), segments=8, axis='Z')
-        make_cyl(f"Ketchup_Neck_{i}",
-                 (anchor[0] + kt_off[0], anchor[1] + kt_off[1], table_z + 0.14),
+        make_cyl(f"Ketchup_Neck_{i}", (kx, ky, surf + 0.14),
                  0.018, 0.04, (0.72, 0.18, 0.14, 1.0), segments=6, axis='Z')
-        make_cyl(f"Ketchup_Cap_{i}",
-                 (anchor[0] + kt_off[0], anchor[1] + kt_off[1], table_z + 0.17),
+        make_cyl(f"Ketchup_Cap_{i}", (kx, ky, surf + 0.17),
                  0.020, 0.025, (0.96, 0.94, 0.88, 1.0), segments=6, axis='Z')
-        # Sugar caddy (glass jar with metal lid)
-        sg_off = (long_axis_off(-0.08)[0] + short_axis_off(-0.10)[0],
-                  long_axis_off(-0.08)[1] + short_axis_off(-0.10)[1])
-        make_box(f"Sugar_Jar_{i}",
-                 (anchor[0] + sg_off[0], anchor[1] + sg_off[1], table_z + 0.06),
-                 (0.07, 0.07, 0.12), (0.92, 0.86, 0.68, 1.0))
-        make_box(f"Sugar_Lid_{i}",
-                 (anchor[0] + sg_off[0], anchor[1] + sg_off[1], table_z + 0.13),
-                 (0.075, 0.075, 0.020), COL_BRASS)
+        # Sugar caddy (glass jar with metal lid) beside it
+        gx, gy = at(end - 0.16, -0.06)
+        make_box(f"Sugar_Jar_{i}", (gx, gy, surf + 0.06), (0.07, 0.07, 0.12), (0.92, 0.86, 0.68, 1.0))
+        make_box(f"Sugar_Lid_{i}", (gx, gy, surf + 0.13), (0.075, 0.075, 0.020), COL_BRASS)
         # Coffee cup on a saucer on the OTHER end of the table (suggests a seated diner)
-        cup_long = long_axis_off(-0.22)
-        cup_short = short_axis_off(+0.10)
-        cup_x = anchor[0] - long_axis_off(anchor_long)[0] + cup_long[0] + cup_short[0]
-        cup_y = anchor[1] - long_axis_off(anchor_long)[1] + cup_long[1] + cup_short[1]
-        make_cyl(f"Saucer_{i}",
-                 (cup_x, cup_y, table_z + 0.01),
+        cup_x, cup_y = at(-0.22, +0.10)
+        make_cyl(f"Saucer_{i}", (cup_x, cup_y, surf + 0.005),
                  0.07, 0.010, (0.96, 0.92, 0.84, 1.0), segments=10, axis='Z')
-        make_cyl(f"CoffeeCup_{i}",
-                 (cup_x, cup_y, table_z + 0.05),
+        make_cyl(f"CoffeeCup_{i}", (cup_x, cup_y, surf + 0.045),
                  0.040, 0.07, (0.96, 0.92, 0.84, 1.0), segments=8, axis='Z')
         # Coffee liquid (dark disc at cup top)
-        make_cyl(f"CoffeeLiquid_{i}",
-                 (cup_x, cup_y, table_z + 0.085),
+        make_cyl(f"CoffeeLiquid_{i}", (cup_x, cup_y, surf + 0.078),
                  0.034, 0.004, (0.18, 0.10, 0.06, 1.0), segments=8, axis='Z')
 
 

@@ -121,9 +121,11 @@ def build_wet_bench():
              (0.22, 0.30, 0.004), COL_PRINT)
     make_box("Tray_Dev_Print_Img", (bx, tray_ys[0], top_z + 0.103 + 0.0086),
              (0.16, 0.22, 0.002), COL_PRINT_IMG)
-    # Bamboo print tongs resting on the splash
+    # Bamboo print tongs, laid across the developer tray's rim. (pass 384:
+    # they hung 11 cm above the bench in front of the tray, touching its
+    # end — there is no splash under y0 + 0.05 for them to rest on.)
     for k in range(2):
-        make_box(f"Tongs_{k}", (bx - 0.10 + k * 0.05, y0 + 0.05, top_z + 0.12),
+        make_box(f"Tongs_{k}", (bx - 0.10 + k * 0.05, tray_ys[0] - 0.12, top_z + 0.12),
                  (0.02, 0.24, 0.01), COL_TONG)
     # ── Chemistry shelf above the bench (amber bottles) ──
     make_box("ChemShelf", (-1.16, by, 1.62), (0.24, y1 - y0 - 0.3, 0.03), COL_BENCH_DK)
