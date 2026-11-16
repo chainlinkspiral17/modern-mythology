@@ -3835,6 +3835,15 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-16 · pass 419: the fourth sweep (12 more lines), clean.**
+- The Daily Grind, the Graustark wreck, Café Olimpico (Elicia and the
+  man at the window), Cosmic Comics' floor, Nate's garage, Dean's monitor
+  room, the twelve at the alley wall, Roy's four bowls in a row with the
+  crow on a rim, Nicola in Natalie's apartment at night, the club office,
+  the Millers' kitchen at ch17, the drugstore aisle. All twelve read; no
+  defect. (Three sweeps found eight; the fourth found none. The next
+  sweeps should go where draft-1 sets cluster: vol1-4.)
+
 **2026-11-16 · pass 418: the third sweep (12 more lines).**
 - Twelve more random lines from twelve unswept sets (the ranch bedroom,
   the Korean barbecue table, the writer's desk, the chalk wall at night
