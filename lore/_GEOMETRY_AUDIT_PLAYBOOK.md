@@ -177,6 +177,19 @@ the source line. A wall fixture is placed between the openings on its
 wall (window casing, door jambs), with the gap measured in the plan the
 part is built in.
 
+### 2026-11-16 · a node inserted mid-chapter moves every target after it (pass 411)
+
+**What happened.** To make Per's box appear when he sets it down, a bg
+node went into ch10_cabin before n99. The chapter's verb-coin choice
+("Per's box") and its two jumps aim at nodes by index. They kept their
+old numbers, so the first option pointed at the choice itself, an
+endless loop. vn_target_audit caught it.
+
+**The rule.** Insert nodes only with `godot/tools/scene_insert_node.py`:
+it moves every `goto` / `pass` / `fail` at or past the insert, keeps the
+file's layout, refuses voiced chapters and lists the trip beats to move.
+Then run vn_target_audit and vn_story_audit before anything else.
+
 ### 2026-11-16 · every synonym is a subject the aim gate will accept (pass 409)
 
 **What happened.** The cabin's two charred-wood frames showed a glowing

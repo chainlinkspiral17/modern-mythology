@@ -3835,6 +3835,38 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-16 · pass 411: Per's box arrives; Small Wood at Christmas.**
+- ch10_cabin: the table is bare of Per's box until "Per set the wooden box
+  on the table" (n99 → n100). A new twin `cabin_interior_day_arrival` (the
+  sticks view without the box; groups cab_day, cab_sticks, cab_shelf)
+  opens the segment, and a `bg` node dissolves to `cabin_interior_day_
+  sticks`. The chapter is unvoiced; its trip beat moved 100 → 101.
+  The first edit left the chapter's verb-coin choice ("Per's box")
+  aiming at itself: choices and jumps target nodes BY INDEX, and the
+  insert did not move them (vn_target_audit caught it). New tool
+  `godot/tools/scene_insert_node.py` inserts a node as text (keeping the
+  file's layout), moves every `goto` / `pass` / `fail` at or past it,
+  refuses voiced chapters and lists the trip beats to move by hand.
+  ch11_bowl (pass 410) has no choices or jumps.
+  (ch11_per needs nothing: its n10 is pluperfect, "had taken out a bowl".)
+- vol2 ch4 "night lights" is December: "she'd round the family up in the
+  car and take us on a long winding ride to check out Christmas lights on
+  display" (n7); "Christmas lights were dull and obnoxious to me" (n35).
+  The night road had none. Its painting now maps to a new twin,
+  `small_wood_road_christmas`, where a string of big bulbs hangs along
+  the small house's front eave (the `house` frame's house), with a
+  practical on them. vol1 ch3 and vol2 ch10, the other night chapters,
+  keep the plain night. The night car, its spill and the town's glow are
+  on a group (`swr_night`): the family is in the car. The house frame
+  tilts up to the eave. n6's cue ("the start of December … that
+  celebration began") is back on the lit house; pass 409 had dropped it
+  while the frame looked like a ruin. (Correction: `house` frames the
+  standing house west of the road; `fallen_house` is the ruin.)
+- NEXT for Small Wood at Christmas: a lit tree in the lit window, the
+  Christmas trees for sale on the neighbors' lots (n6), the botanical
+  garden and its lights (n9) if the chapter goes there.
+- Deck must REBUILD small_wood_road.
+
 **2026-11-16 · pass 410: the substrate-bowl comes out of Kai's pocket.**
 - ch11_bowl opens on `cabin_interior_marit` (Per's box and Marit's bowl).
   At "He reached into his shirt pocket on a hunch … He pulled it out" a

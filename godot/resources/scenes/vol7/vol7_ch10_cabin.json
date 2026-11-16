@@ -478,7 +478,7 @@
       "t": "narrate"
     },
     {
-      "src": "3d:cabin_interior_day_sticks",
+      "src": "3d:cabin_interior_day_arrival",
       "t": "bg"
     },
     {
@@ -530,6 +530,11 @@
       "t": "narrate"
     },
     {
+      "src": "3d:cabin_interior_day_sticks",
+      "t": "bg",
+      "transition": "dissolve"
+    },
+    {
       "t": "narrate",
       "text": "[shot:insert wooden_box]Per set the wooden box on the table, between the bowls, and did not open it. Nobody asked him to. The kettle ticked toward its whistle."
     },
@@ -541,19 +546,19 @@
       "opts": [
         {
           "text": "look at", "skill": "logic",
-          "goto": 101,
+          "goto": 102,
           "flag": "ch10_box_looked",
           "hide_if_flag": "ch10_box_looked"
         },
         {
           "text": "ask Per", "skill": "rhetoric",
-          "goto": 103,
+          "goto": 104,
           "flag": "ch10_box_asked",
           "hide_if_flag": "ch10_box_asked"
         },
         {
           "text": "leave it", "skill": "composure",
-          "goto": 106
+          "goto": 107
         }
       ]
     },
@@ -563,7 +568,7 @@
     },
     {
       "t": "jump",
-      "goto": 100
+      "goto": 101
     },
     {
       "t": "say",
@@ -577,7 +582,7 @@
     },
     {
       "t": "jump",
-      "goto": 100
+      "goto": 101
     },
     {
       "text": "The cabin took the four of them. The rain on the cedar roof did not change.",

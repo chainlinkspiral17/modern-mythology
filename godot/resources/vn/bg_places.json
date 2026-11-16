@@ -381,7 +381,7 @@
     },
     "vol2_christmas_lights_road": {
       "fit": "reuse",
-      "to": "3d:small_wood_road_night",
+      "to": "3d:small_wood_road_christmas",
       "scenes": 1
     },
     "vol2_cliffside_circus": {

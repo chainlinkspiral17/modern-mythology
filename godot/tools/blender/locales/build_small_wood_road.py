@@ -50,7 +50,7 @@ import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_wedge, make_gable, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_wedge, make_gable, make_tube, export_glb
 from _props.trees import make_conifer, make_broadleaf
 from _props.vehicles import make_car
 from _props.buildings import make_ranch_house, make_shed
@@ -242,7 +242,9 @@ def build_night():
     # (2026-10-31) the night's alone: the car, its spill and the town's lights
     # stood in the day and the dawn views too (the spill a pale slab on the
     # day road)
-    NT = "__small_wood_road_night"
+    # (pass 411) the night views: vol1/vol2 ch10 and December (vol2 ch4, the
+    # family "in the car ... to check out Christmas lights on display")
+    NT = "__swr_night"
     make_car("Night_Car", 0.9, -22.0, 4.6, (0.30, 0.34, 0.42, 1.0), along="Y", z0=0.02)
     make_box("Headlight_Spill" + NT, (0.9, -8.0, 0.0205), (3.2, 24.0, 0.001), (0.34, 0.34, 0.30, 1.0))
     for i in range(3):
@@ -257,6 +259,26 @@ def build_night():
     except Exception:
         pass
     make_box("Church_Steeple", (-20.0, 380.0, 9.0), (2.0, 2.0, 18.0), (0.84, 0.84, 0.80, 1.0))
+
+
+def build_christmas_2026_11():
+    """(pass 411) vol2 ch4 "night lights", December: "My mother had a
+    tradition; she'd round the family up in the car and take us on a long
+    winding ride to check out Christmas lights on display" (n7); "Christmas
+    lights were dull and obnoxious to me, an eye sore" (n35). The night road
+    had no lights. A string of big bulbs along the small house's front eave
+    (the `house` frame's house), on its own view (small_wood_road_christmas)
+    — the other night chapters are not December. Draft 2: a lit tree in the
+    lit window, the neighbors' lots with trees for sale (n6)."""
+    XT = "__small_wood_road_christmas"
+    ex, z = -13.98, 2.94                        # under the front eave (front +X at x -14.5, eave 0.55)
+    cols = ((0.95, 0.16, 0.10, 1.0), (0.12, 0.80, 0.26, 1.0), (0.16, 0.36, 0.96, 1.0), (1.0, 0.70, 0.12, 1.0))
+    ys = [-25.7 + k * 0.40 for k in range(20)]
+    wire = []
+    for k, y in enumerate(ys):
+        wire.append((ex, y, z + (0.045 if k % 2 == 0 else 0.010)))   # clipped every other bulb, dipping between
+        make_blob("Xmas_Bulb_%d%s" % (k, XT), (ex, y, z - 0.03), 0.055, cols[k % 4], noise=0.05, seed=200 + k, rings=4, segments=6, squash=1.3)
+    make_tube("Xmas_Wire" + XT, wire, 0.008, (0.10, 0.16, 0.10, 1.0), segments=4)
 
 
 def build_horizon():
@@ -364,6 +386,7 @@ def main():
     build_property_dressing_2026_09()
     build_paths_and_gate_2026_11()
     build_crick_2026_11()
+    build_christmas_2026_11()
     from _props.geometry import join_stock
     join_stock()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/small_wood_road.glb"))

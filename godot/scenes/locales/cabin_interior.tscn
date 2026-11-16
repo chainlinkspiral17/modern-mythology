@@ -1233,6 +1233,12 @@ position = Vector3(2.737, 1.465, -6.520)
 rotation = Vector3(-0.2618, -0.4092, 0.0)
 metadata/fov = 35.0
 
+; (view_twin) cabin_interior_day_sticks's frame in cabin_interior_day_arrival
+[node name="shot_insert_kettle__cabin_interior_day_arrival" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.737, 1.465, -6.520)
+rotation = Vector3(-0.2618, -0.4092, 0.0)
+metadata/fov = 35.0
+
 ; (view_twin) cabin_interior_day's frame in cabin_interior_day_breakfast
 [node name="shot_insert_kettle__cabin_interior_day_breakfast" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(2.737, 1.465, -6.520)

@@ -453,6 +453,10 @@
       "bed": "assets/audio/bgm/vol7_cabin_woodstove.wav",
       "gain": 0.9
     },
+    "cabin_interior_day_arrival": {
+      "bed": "assets/audio/bgm/vol7_cabin_woodstove.wav",
+      "gain": 0.9
+    },
     "cabin_interior_day_breakfast": {
       "bed": "assets/audio/bgm/vol7_cabin_woodstove.wav",
       "gain": 0.9
@@ -834,6 +838,10 @@
       "gain": 0.6
     },
     "small_wood_road_night": {
+      "bed": "assets/audio/bgm/vol1_drive_night.wav",
+      "gain": 0.5
+    },
+    "small_wood_road_christmas": {
       "bed": "assets/audio/bgm/vol1_drive_night.wav",
       "gain": 0.5
     },

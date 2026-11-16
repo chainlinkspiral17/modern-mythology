@@ -57,7 +57,7 @@ const VIEW_GROUPS := {
 	# (pass 401) TEM'S CABIN TABLE by chapter: each state its own view (twins of
 	# cabin_interior_day / cabin_interior, made by tools/view_twin.py); the
 	# rigs belong to every twin of their hour
-	"cab_day": ["cabin_interior_day", "cabin_interior_day_breakfast", "cabin_interior_day_sticks", "cabin_interior_day_package", "cabin_interior_day_hexagon", "cabin_interior_day_disc", "cabin_interior_day_headset", "cabin_interior_day_early", "cabin_interior_day_four"],
+	"cab_day": ["cabin_interior_day", "cabin_interior_day_breakfast", "cabin_interior_day_sticks", "cabin_interior_day_arrival", "cabin_interior_day_package", "cabin_interior_day_hexagon", "cabin_interior_day_disc", "cabin_interior_day_headset", "cabin_interior_day_early", "cabin_interior_day_four"],
 	"cab_night": ["cabin_interior", "cabin_interior_marit", "cabin_interior_hexagon", "cabin_interior_piece", "cabin_interior_early", "cabin_interior_eddvard", "cabin_interior_three", "cabin_interior_four"],
 	# (pass 404) the bowls by count (pass 402: none before ch11). Marit's and
 	# the substrate-bowl ch11-ch20; Marina's grandfather's from ch13's night;
@@ -75,13 +75,13 @@ const VIEW_GROUPS := {
 	# on, when it is one of "The two remaining bowls" on the table (cab_late)
 	"cab_shelf": ["cabin_interior", "cabin_interior_marit", "cabin_interior_four", "cabin_interior_three", "cabin_interior_early",
 		"cabin_interior_piece", "cabin_interior_hexagon", "cabin_interior_day_four", "cabin_interior_day_early",
-		"cabin_interior_day_hexagon", "cabin_interior_day_package", "cabin_interior_day_sticks", "cabin_interior_day_breakfast",
+		"cabin_interior_day_hexagon", "cabin_interior_day_package", "cabin_interior_day_sticks", "cabin_interior_day_arrival", "cabin_interior_day_breakfast",
 		"cabin_porch", "cabin_porch_dawn", "cabin_porch_day"],
 	"cab_third": ["cabin_interior_hexagon", "cabin_interior_three", "cabin_interior_four", "cabin_interior_day_four"],
 	"cab_ch19": ["cabin_interior_four", "cabin_interior_day_four"],
 	"cab_bell": ["cabin_interior_four", "cabin_interior_day_four", "cabin_interior_day", "cabin_interior_day_disc"],
 	"cab_late": ["cabin_interior_day", "cabin_interior_day_disc", "cabin_interior_day_headset"],
-	"cab_sticks": ["cabin_interior_day_breakfast", "cabin_interior_day_sticks"],
+	"cab_sticks": ["cabin_interior_day_breakfast", "cabin_interior_day_sticks", "cabin_interior_day_arrival"],
 	"cab_hex": ["cabin_interior_day_hexagon", "cabin_interior_hexagon"],
 	"cab_disc": ["cabin_interior_day_disc", "cabin_interior_day_headset"],
 	# (pass 403) LENA'S APARTMENT by chapter (twins of lena_apartment /
@@ -108,6 +108,8 @@ const VIEW_GROUPS := {
 	# sanderling's body" (ch2, ch6); "taken the head this week" (ch9-ch12, the
 	# base views); "The sanderling's bird-shape was gone. The brick under the
 	# patch was bare" (ch16)
+	# (pass 411) Small Wood's night road: the night car, its spill, the town far up
+	"swr_night": ["small_wood_road_night", "small_wood_road_christmas"],
 	"bl_bird": ["board_lords_interior", "main_street", "board_lords_interior_early", "main_street_early"],
 	"bl_mid": ["board_lords_interior", "main_street"],
 	"bl_early": ["board_lords_interior_early", "main_street_early"],
@@ -3191,6 +3193,22 @@ const CAMERA_PRESETS := {
 		"far": 1100.0,   # the hills, 300-1000 m out
 		"suppress_input": true,
 	},
+	"small_wood_road_christmas": {
+		# (pass 411) vol2 ch4, December: the night road with the Christmas lights on the small house
+		"scene": "res://scenes/locales/small_wood_road.tscn",
+		"requires_glb": "res://assets/3d/locales/small_wood_road.glb",
+		# Night, driving around. The car's hood (eye 1.0) on the
+		# centerline, the dashes running into the firs, the town's
+		# lights far up. (vol1 ch3) (2026-10-31) a night sky of its own.
+		"camera_origin": Vector3(0.9, 1.0, 18.8),
+		"camera_rotation": Vector3(0.02, 0.0, 0.0),
+		"fov": 70.0,
+		"env": {"sky_top": Color(0.03, 0.04, 0.09, 1), "sky_horizon": Color(0.13, 0.13, 0.20, 1),
+			"ground_horizon": Color(0.06, 0.07, 0.08, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.36, 0.40, 0.56, 1), "ambient_energy": 0.40, "fog_color": Color(0.10, 0.11, 0.16, 1)},
+		"far": 1100.0,   # the hills, 300-1000 m out
+		"suppress_input": true,
+	},
 	"small_wood_roadside": {
 		"scene": "res://scenes/locales/small_wood_road.tscn",
 		"requires_glb": "res://assets/3d/locales/small_wood_road.glb",
@@ -4302,6 +4320,40 @@ const CAMERA_PRESETS := {
 		"suppress_input": true,
 	},
 	"cabin_interior_day_sticks": {
+		# (pass 401) the three sticks on the cabin table: ch10 ("on the table") and ch11's
+		# morning, when Tem picks up "the one in the middle".
+		"scene": "res://scenes/locales/cabin_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
+		# SURVEYED 2026-07-12: old vantage sat blender y=-0.5 OUTSIDE
+		# the south door. RE-SURVEYED 2026-09-03 (user: "first view of
+		# the cabin, 90 percent obstructed/wall"): x=2.0 stood INSIDE
+		# the bed alcove east of the East_Part partition (x 1.0,
+		# y 0..2.6), so the partition filled the left of frame. Now just
+		# inside the door WEST of the partition (blender 0.3, 0.9),
+		# looking NNW across the table + rockers to the kitchenette
+		# counter and the wood stove. Eye 1.62 (ceiling 3.4).
+		# (2026-10-11) THE SAME ROOM BY DAY: vol7 plays fourteen cabin cuts in
+		# daylight (ch1 Morning, ch1 Finn, ch2, ch10, ch11 Stick, ch13 Marina,
+		# ch19 Cedar/Per, ch21, ch22, ch4 Finn, the epilogue) on the lamp-lit
+		# dusk rig. The night directionals are suffixed to cabin_interior; this
+		# preset brings the sun through the south windows, a sky fill, the
+		# windows' light on the floor, and a day sky. Lamps and stove serve both.
+		"camera_origin": Vector3(0.3, 1.62, -0.9),
+		"camera_rotation": Vector3(-0.04, 0.35, 0.0),
+		"fov": 62.0,
+		# (2026-11-12, pass 347) an overcast coast morning, not a lamp-lit
+		# room: "the gray hour before the rain became visible". The warm
+		# pine read deep orange and dark under a near-white ambient at 0.95
+		# with every oil lamp lit; the ambient is the cool grey of the sky
+		# through four windows now, brighter, and the fog grey with it.
+		"env": {"sky_top": Color(0.52, 0.58, 0.66, 1), "sky_horizon": Color(0.80, 0.82, 0.84, 1),
+			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.74, 0.80, 0.88, 1), "ambient_energy": 1.60, "fog_color": Color(0.70, 0.74, 0.78, 1)},
+		"style_pack": "raw_observation",
+		"suppress_input": true,
+	},
+	"cabin_interior_day_arrival": {
+		# (pass 411) ch10's morning before Per sets the wooden box on the table (n99)
 		# (pass 401) the three sticks on the cabin table: ch10 ("on the table") and ch11's
 		# morning, when Tem picks up "the one in the middle".
 		"scene": "res://scenes/locales/cabin_interior.tscn",
