@@ -3835,6 +3835,27 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-16 · pass 417: the second sweep (12 more lines); close-ups on what nobody sees.**
+- Twelve more random lines from twelve more sets. Ten read (the Missing
+  Link with the Writer, Natalie's table, the model city, Montreal's desk,
+  the bungalow, the grocery pallet, the equipment shed, the Caldwell radio
+  room, the tide pool, Chillwave's back room). Two dark, unreadable frames,
+  both cues that meant something else:
+  - ch19's crow cue ("The crow walked from the back of the chair across
+    the table to the cedar bell-piece") held the cabin's crow frame (a
+    crow on a beam elsewhere) through "It was the bell". It cuts to the
+    bell-piece now (the night frame from pass 414).
+  - ch4_alone's "[shot:insert truck]She heard the truck before she saw
+    it." showed a dark window. A line that says the thing is not yet seen
+    takes no close-up of it; dropped.
+- That class, scanned (insert cues on lines with negated sight: "before
+  she saw", "did not see", "out of sight" …): 10 rows. Most are fine (the
+  phone she does not look at is still there to show). Dropped two that
+  are about people: "The mother is on the bench … smoking" (vol2) and
+  "Skip was on his phone" (vol6).
+- NEXT: the crow on ch19's table beside the bell-piece (it walks there at
+  n75; the four view has no crow on the table).
+
 **2026-11-16 · pass 416: a render sweep (12 random lines), and what a picture answers to.**
 - Twelve random lines from twelve different sets, rendered and read. Two
   defects, both new classes:
