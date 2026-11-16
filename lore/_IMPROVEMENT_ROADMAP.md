@@ -3835,6 +3835,37 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-16 · pass 416: a render sweep (12 random lines), and what a picture answers to.**
+- Twelve random lines from twelve different sets, rendered and read. Two
+  defects, both new classes:
+  - vol3 ch11's opening, "The car pulls in. A barbecue is set up,
+    something is smoking underneath the lid. Before the car can stop, my
+    sis is out the door …", cut to the house's screen door from 40 cm:
+    text_focus_pass (2026-10-27) had authored a `door` frame for "out the
+    door" (the car's). The frame is now `barbecue__lake_house_day`, on the
+    set's smoking kettle from the drive, and the cue follows it.
+  - vol6 ch1's "Sam Miller turns away from the window" cut to a drape:
+    the director's NOTICE matches a line's words against each picture's,
+    and a picture's words came from its whole name: "the west drape at
+    Sam's window" answered to "window". HeroArt now takes a picture's
+    words from its name's HEAD (before "at / on / in / by / over …" or a
+    comma) plus its slug without the locale prefix, falling back to the
+    whole name when those name no object. "curtain" and "drape" join
+    OBJECT_WORDS, and twins (photo/photograph, tv/television,
+    curtain/drape) answer together. 22 pictures change, all for the better:
+    the drapes answer to "curtain"/"drape", not "window"; neon OPEN signs
+    "in the front window" stop answering every window line; Cosmic Comics'
+    pictures stop answering "comic" (the shop's own name in the slug); a
+    fire-drill notice stops answering "corkboard". The line now notices
+    the window picture itself.
+- Read and kept: the river at night, the Iron Crow bar, Faust's
+  apartment, the lake house at sunrise, Wren in the back office, Maya's
+  room, the Henderson supper, the Pit Stop booth, the Salty Tome alley at
+  dusk, the tide pool.
+- NEXT: text_focus_pass authored frames from single words across the
+  game (2026-10-27); read the rest of its frames for the "out the door"
+  class (a word that belongs to a different object in its own line).
+
 **2026-11-16 · pass 415: frames nobody sees, read against the lines.**
 - For each of the 98 orphan frames: an uncued line in its view that names
   its subject. 16 had one; most are verbs ("Hugo … registers this"),

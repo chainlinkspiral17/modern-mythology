@@ -51,8 +51,17 @@ const OBJECT_WORDS: Array[String] = [
 	"flyer", "postcard", "drawing", "sketch", "album", "comic", "corkboard",
 	"bulletin", "collage", "screen", "monitor", "television", "tv", "sign",
 	"billboard", "banner", "marquee", "plaque", "neon", "tapestry", "nebula", "starfish",
-	"letter", "notice", "laptop", "window",
+	"letter", "notice", "laptop", "window", "curtain", "drape",
 ]
+## (pass 416) What a picture IS is its name's head, not where it hangs: "the
+## west drape at Sam's window" answered to "window", so "Sam Miller turns away
+## from the window" cut to a drape close-up; every picture in Cosmic Comics
+## answered to "comic" from its locale's own name in the slug. When the head
+## (the name before "at / on / in / by / over …" or a comma) or its slug
+## without the locale prefix names an object, the picture answers to those.
+const WORD_TWINS: Dictionary = {"photo": "photograph", "photograph": "photo", "tv": "television",
+	"television": "tv", "curtain": "drape", "drape": "curtain"}
+const LOCATION_TAIL := "\\s(?:at|on|in|by|over|under|beside|above|behind|near|from|across|outside|inside|against|along|through|past)\\s|,|—|;|\\("
 ## (2026-11-09) a picture also answers to its category's plain word — a
 ## window's view to "window", a screen's picture to "screen" — so the
 ## director notices it when the prose looks at it ("the director is not
@@ -95,7 +104,7 @@ static func _load_roster() -> void:
 			row["_name"] = String(e.get("name", ""))
 			row["_inspect"] = bool(e.get("inspect", false))
 			row["_cat"] = String(e.get("art_cat", ""))
-			var words: PackedStringArray = _object_words(String(e.get("slug", "")) + " " + String(e.get("name", "")))
+			var words: PackedStringArray = _picture_words(String(e.get("slug", "")), String(e.get("name", "")), loc)
 			var cat_v: Variant = CAT_WORDS.get(String(e.get("art_cat", "")), [])
 			for cw: Variant in (cat_v as Array):
 				if not String(cw) in words:
@@ -109,6 +118,23 @@ static func _load_roster() -> void:
 
 ## Lay every installed picture for `locale` on its surface under `root`.
 ## Returns how many pictures went up.
+static func _picture_words(slug: String, pname: String, loc: String) -> PackedStringArray:
+	var rx := RegEx.create_from_string(LOCATION_TAIL)
+	var head: String = pname
+	var m: RegExMatch = rx.search(pname)
+	if m != null:
+		head = pname.substr(0, m.get_start())
+	var own: String = slug.substr(loc.length()) if (loc != "" and slug.begins_with(loc)) else slug
+	var w: PackedStringArray = _object_words(own + " " + head)
+	if w.is_empty():
+		w = _object_words(slug + " " + pname)
+	for k: String in WORD_TWINS:
+		var twin: String = String(WORD_TWINS[k])
+		if k in w and not twin in w:
+			w.append(twin)
+	return w
+
+
 static func _object_words(text: String) -> PackedStringArray:
 	var out := PackedStringArray()
 	for raw: String in text.to_lower().replace("_", " ").replace("'", " ").split(" ", false):

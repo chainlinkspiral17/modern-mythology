@@ -177,6 +177,22 @@ the source line. A wall fixture is placed between the openings on its
 wall (window casing, door jambs), with the gap measured in the plan the
 part is built in.
 
+### 2026-11-16 · a picture is its head noun, not where it hangs (pass 416)
+
+**What happened.** The director's NOTICE cuts to a picture when a line
+names it, and HeroArt took a picture's words from its whole name. "The
+west drape at Sam's window" answered to "window", so "Sam Miller turns
+away from the window" cut to a drape. Every picture in Cosmic Comics
+answered to "comic", because the locale's own name is in each slug. In
+the same sweep, an authored `door` frame was built from "my sis is out the
+door" (the car's door) and shot the house's screen door.
+
+**The rule.** A name's object is its head: the words before "at / on / in
+/ by / over …" or a comma, and the slug after the locale prefix. When a
+word in a line belongs to a different object in that same line ("out the
+door" of the car that "pulls in"), it is not a cue for the set's door.
+Read the whole line before authoring a frame from one of its words.
+
 ### 2026-11-16 · a frame whose subject has a view needs the view in its name (passes 412, 414)
 
 **What happened.** Pass 412 tagged Hans's bread to its two views, and
