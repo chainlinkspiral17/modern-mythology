@@ -3835,6 +3835,20 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-16 · pass 418: the third sweep (12 more lines).**
+- Twelve more random lines from twelve unswept sets (the ranch bedroom,
+  the Korean barbecue table, the writer's desk, the chalk wall at night
+  and at the star, the Millers' kitchen twice, the Altima at night, the
+  Foxhole show, the Centro break room, the bindery, the cabin's sticks
+  morning). Eleven read.
+- The bindery's "Overhead, a crow flies" (vol6 ch2) cut to a crow
+  perched on the bindery's lintel, a black bird on a dark ceiling, and
+  held it through the next line. Maya is pedalling home. The cue and its
+  frame are gone. A scan for creature cues on lines in motion (flies,
+  took flight, crosses the …) finds no others.
+- The sweep is now a script (scratch `sweep.sh SEED TAG`: it picks lines
+  from sets not yet swept, renders them, tiles two contact sheets).
+
 **2026-11-16 · pass 417: the second sweep (12 more lines); close-ups on what nobody sees.**
 - Twelve more random lines from twelve more sets. Ten read (the Missing
   Link with the Writer, Natalie's table, the model city, Montreal's desk,
