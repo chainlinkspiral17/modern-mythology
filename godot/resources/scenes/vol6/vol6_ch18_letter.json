@@ -240,7 +240,7 @@
     {
       "t": "say",
       "char": "abuela",
-      "text": "*The letter.*",
+      "text": "[shot:insert letter]*The letter.*",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch18_letter/047.mp3"
     },

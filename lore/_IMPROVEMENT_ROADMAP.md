@@ -3835,6 +3835,23 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-16 · pass 415: frames nobody sees, read against the lines.**
+- For each of the 98 orphan frames: an uncued line in its view that names
+  its subject. 16 had one; most are verbs ("Hugo … registers this"),
+  memories of another place (the desk in Bergen, the access-road drone
+  at sixteen) or a person (the grandmother asleep in the recliner, the
+  cabin's hands).
+- Cued: vol6 ch18 "*The letter.*" → the letter on the grandmother's
+  kitchen table (rendered: the lined sheet and the pen).
+- Tried and dropped by render or gate: vol1 ch15 "behind them the
+  drugstore glows and gets smaller" (the frame is 447 m off, at the
+  drugstore itself — wrong_room); vol5 ch18 "The crow, on the roof,
+  shifted its weight" while driving (the set's crow frame is the one on
+  the station's traffic light, a later moment, with its own view).
+- Deleted: the cabin's `hands` frame (house rule). Orphans 98 → 96.
+- NEXT: the 80 orphans no line names — sort into "a later chapter may
+  need it" (keep) and dead (delete), set by set.
+
 **2026-11-16 · pass 414: small reads (the bell-piece, two doors, Lena's phone).**
 - ch19's "The bell-piece on the table at the cabin tonight" cut to the
   table; it cuts to the bell-piece now. The night view had no bell frame
