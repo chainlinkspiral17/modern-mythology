@@ -389,6 +389,13 @@ position = Vector3(-0.400, 1.200, -2.200)
 rotation = Vector3(-0.1775, 1.1484, 0.0)
 metadata/fov = 45.0
 
+; (pass 420) "Tied to the railing … a faded piece of red ribbon and, attached to the
+; ribbon by a brass loop, a key" (vol2 bf_overlook n6) — the 707 key on the top rail
+[node name="shot_insert_key__briar_falls_overlook" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(9.720, 1.320, -14.720)
+rotation = Vector3(-0.3028, -0.6147, 0.0)
+metadata/fov = 34.0
+
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_falls__briar_falls_overlook" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(9.200, 1.800, -15.100)

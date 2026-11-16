@@ -3835,6 +3835,22 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-16 · pass 420: the fifth sweep (vol1-4, 12 lines).**
+- The sweep picker takes a volume filter now; this one drew only from
+  vol1-4: the pharmacy floor, Briar Falls overlook, the video store, Dean's
+  basement in '94, the truck cab, Ron's room at dawn, the condo demo unit,
+  the plane, Meadowlark Circle at night, Dabney's couch room, the Small
+  Wood classroom, the Small Wood road. Ten read as they are.
+- Briar Falls: "Tied to the railing … a faded piece of red ribbon and,
+  attached to the ribbon by a brass loop, a key" (vol2 bf_overlook n6)
+  held the falls close-up. The set has the ribbon and the 707 key on the
+  top rail (pass 2026-09-23) and no frame on them. New
+  `shot_insert_key__briar_falls_overlook`; n6 cues it and n7 ("stamped on
+  the side … 707") holds it. (The chapter's `lithograph` mood draws the
+  whole frame as red line-art; that is its look, not a defect.)
+- Read and kept: vol2 ch9's truck cue on "I sighed and got up and left
+  him alone" (the truck from outside as she leaves it).
+
 **2026-11-16 · pass 419: the fourth sweep (12 more lines), clean.**
 - The Daily Grind, the Graustark wreck, Café Olimpico (Elicia and the
   man at the window), Cosmic Comics' floor, Nate's garage, Dean's monitor
