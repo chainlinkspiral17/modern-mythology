@@ -177,6 +177,20 @@ the source line. A wall fixture is placed between the openings on its
 wall (window casing, door jambs), with the gap measured in the plan the
 part is built in.
 
+### 2026-11-16 · a frame whose subject has a view needs the view in its name (passes 412, 414)
+
+**What happened.** Pass 412 tagged Hans's bread to its two views, and
+pass 414 tagged Lena's phone to its two. Each time, the obstruction gate
+flagged the plain frame (`shot_insert_bread`, `shot_insert_phone`): "fills
+78% at 0.8 m". A plain frame is judged in the set's base view, where the
+subject was now stripped, so the gate saw only the table top.
+
+**The rule.** When a frame's subject moves to a view or group, rename the
+frame for each view that cues it (`shot_insert_phone__lena_apartment_
+letter`, `…__lena_apartment_night_ch8`) and drop the plain one. The
+director then finds it by view, and the gates judge it with its subject
+in place.
+
 ### 2026-11-16 · a node inserted mid-chapter moves every target after it (pass 411)
 
 **What happened.** To make Per's box appear when he sets it down, a bg

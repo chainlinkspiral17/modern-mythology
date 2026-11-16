@@ -1,10 +1,6 @@
 {
  "_": "Frames vantage_obstruction's HALF HIDDEN reading flagged when it was written (pass 387). Read each by render; remove it when fixed. Never add.",
- "to_read": [
-  "cosmic_comics_back_office:shot_insert_safe",
-  "cosmic_comics_interior:shot_insert_safe__cosmic_comics_back_office",
-  "editing_suite:shot_insert_cables__suite_4am"
- ],
+ "to_read": [],
  "judged": {
   "foxhole_bar:shot_insert_stage__foxhole_bar": "pass 390: the venue wide, stage lit; the console in the foreground is the room",
   "cosmic_comics_interior:shot_insert_bars__cosmic_comics_interior": "pass 390: the purple light bars read on the floor past the bin",
@@ -13,6 +9,7 @@
   "cabin_interior:shot_insert_coat__cabin_interior_day": "pass 390: as the night frame",
   "vehicle_cab:shot_insert_windshield__vehicle_cab": "pass 395: the visor is the next line (\"He pulls the visor down. The visor cuts about a third of it.\"); the road reads through the glass",
   "cabin_interior:shot_insert_coat__cabin_interior_day_sticks": "pass 401: the cabin_interior_day frame's twin (view_twin), as judged in pass 390",
-  "cabin_interior:shot_insert_coat__cabin_interior_three": "(view_twin) cabin_interior's frame, as judged: pass 390: the coat on its peg by the window reads"
+  "cabin_interior:shot_insert_coat__cabin_interior_three": "(view_twin) cabin_interior's frame, as judged: pass 390: the coat on its peg by the window reads",
+  "(pass 414) the three left": "cosmic back office safe x2, editing suite cables: no line cues them (orphans); the frames are deleted"
  }
 }

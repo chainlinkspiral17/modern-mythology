@@ -482,12 +482,6 @@ position = Vector3(3.600, 1.550, -11.500)
 rotation = Vector3(0.0378607, 0, 0)
 metadata/fov = 40.0
 
-; insert: the office safe in the corner
-[node name="shot_insert_safe__cosmic_comics_back_office" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(4.587, 0.559, -12.020)
-rotation = Vector3(-0.2618, -1.3090, 0.0)
-metadata/fov = 42.0
-
 ; insert: Rick's spiral notebook, open, kept since Sunday
 [node name="shot_insert_notebook__cosmic_comics_back_office" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(3.359, 1.202, -11.776)

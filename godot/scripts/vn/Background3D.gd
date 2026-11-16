@@ -91,6 +91,9 @@ const VIEW_GROUPS := {
 	"la_night": ["lena_apartment_night", "lena_apartment_night_ch8", "lena_apartment_night_ch10"],
 	"la_coats4": ["lena_apartment_ch8", "lena_apartment_supper", "lena_apartment_night_ch8"],
 	"la_bread": ["lena_apartment_ch8", "lena_apartment_supper", "lena_apartment_night_ch8", "lena_apartment_night_ch10"],
+	# (pass 414) her phone on the side table: ch6's morning ("reached for her phone")
+	# and ch7-8's night ("Lena looked at her phone on the side table")
+	"la_phone": ["lena_apartment_letter", "lena_apartment_night_ch8"],
 	# (pass 405) THE MILLER KITCHEN by chapter (twins of miller_kitchen by
 	# tools/view_twin.py); the rigs; Mike's things before he leaves (ch8:
 	# "a house her father does not, today, live in")

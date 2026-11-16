@@ -236,6 +236,12 @@ position = Vector3(0.620, 1.150, -3.780)
 rotation = Vector3(-0.6430, 0.7550, 0.0)
 metadata/fov = 30.0
 
+; (pass 414) the same, at night: ch19's "The bell-piece on the table at the cabin tonight"
+[node name="shot_insert_cedar__cabin_interior_four" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.620, 1.150, -3.780)
+rotation = Vector3(-0.6430, 0.7550, 0.0)
+metadata/fov = 30.0
+
 ; ── THE DAY (2026-10-11, preset cabin_interior_day): ch1 Morning ("the light at this hour
 ; in this room"), ch1 Finn (ten-thirty to two), ch2 (Finn at the cabin until eleven), ch10
 ; (the morning, the rain), ch11 Stick (lunch), ch13 Marina (seven, eggs), ch19 Cedar / Per

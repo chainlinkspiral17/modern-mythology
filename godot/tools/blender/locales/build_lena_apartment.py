@@ -670,8 +670,10 @@ def build_hero_props_2026_09():
         # Estuary 7 stick lay here in every chapter; the text keeps it in her
         # coat — "in the inside pocket of the coat hanging on the hook by the
         # door" (ch8) — and lays it here once, in a memory.
-        make_box("Lena_Phone", (1.40, 0.95, 0.546), (0.070, 0.140, 0.012), (0.16, 0.16, 0.18, 1.0))
-        make_box("Lena_Phone_Screen", (1.40, 0.95, 0.553), (0.058, 0.124, 0.002), (0.30, 0.36, 0.44, 1.0))
+        # (pass 414) so it lies here in the two views whose lines go to it:
+        # ch6's morning ("reached for her phone") and ch7-8's night (la_phone)
+        make_box("Lena_Phone__la_phone", (1.40, 0.95, 0.546), (0.070, 0.140, 0.012), (0.16, 0.16, 0.18, 1.0))
+        make_box("Lena_Phone_Screen__la_phone", (1.40, 0.95, 0.553), (0.058, 0.124, 0.002), (0.30, 0.36, 0.44, 1.0))
 
     # (pass 400) the hexagon itself: _props/charred_wood (outside the shift,
     # so its place is given shifted: the cloth's centre, (-0.90, 0.85) + (-0.3, 0.3))

@@ -3835,6 +3835,30 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-16 · pass 414: small reads (the bell-piece, two doors, Lena's phone).**
+- ch19's "The bell-piece on the table at the cabin tonight" cut to the
+  table; it cuts to the bell-piece now. The night view had no bell frame
+  (the plain `cedar` frame is the blanket chest), so it has a copy of
+  the day view's `cedar__cabin_interior_day_four`.
+- ch22's portal door was cued on two lines running; the second is gone.
+  vol6 ch14 cued Jesse's door on "His parents' bedroom door is closed";
+  that cue is dropped (the set's door is his own).
+- Lena's phone lay on the side table in every chapter. It is there only
+  where the lines go to it: ch6's morning ("reached for her phone") and
+  ch7-8's night ("Lena looked at her phone on the side table"), as group
+  la_phone. Its frame is split per view (the obstruction gate judges a
+  plain frame in the base view, where the phone is gone). Lesson in the
+  geometry playbook.
+- Read and kept: the cabin's ceramic cup in every view, Finn's cap on its
+  peg, Kai's truck at the curb. Don Geller's house is not built (the
+  porch set's notes list it as a later target; the text puts it across
+  the cul-de-sac).
+- The half-hidden list (vantage_obstruction, pass 387) is read to the end:
+  its last three frames, the Cosmic Comics office safe (under two names)
+  and the editing suite's floor cables, have no line that cues them; they
+  are deleted. Orphans 100 → 98 (ceiling 98).
+- Deck must REBUILD lena_apartment.
+
 **2026-11-16 · pass 413: close-ups on a surface when the line is about a thing.**
 - `cue_meaning_scan.py --generic` (new mode): cues on a generic surface
   or room part (table, counter, door, window, bench, porch, shelf …)

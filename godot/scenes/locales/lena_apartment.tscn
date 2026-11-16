@@ -402,7 +402,13 @@ metadata/fov = 42.0
 
 ; insert: Lena's phone, Tem's twelve-fourteen message (ch6)
 ; (pass 403) her phone is on the side table ("her phone on the side table", ch8)
-[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+[node name="shot_insert_phone__lena_apartment_letter" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.200, 1.050, -0.850)
+rotation = Vector3(-0.7014, -0.8208, 0.0)
+metadata/fov = 42.0
+
+; (pass 414) the phone lies on the side table in these two views only (la_phone)
+[node name="shot_insert_phone__lena_apartment_night_ch8" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.200, 1.050, -0.850)
 rotation = Vector3(-0.7014, -0.8208, 0.0)
 metadata/fov = 42.0

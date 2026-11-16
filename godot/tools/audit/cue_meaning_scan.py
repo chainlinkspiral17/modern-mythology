@@ -77,6 +77,7 @@ JUDGED = {
     "vol7_ch11_per:119": "KEEP (pass 409 reader, node-cited)",
     "vol7_ch14_figure:80": "KEEP (pass 409 reader, node-cited)",
     "vol7_ch14_painting:104": "face: she paints the jaw and the neck (pass 409)",
+    "vol7_ch19_ring:48": "cedar: the bell-piece (Cedar_Bell_*) \"on the table at the cabin tonight\" (pass 414)",
     "vol7_ch19_roy:46": "KEEP (pass 409 reader, node-cited)",
     "vol7_ch20_wall:123": "KEEP (pass 409 reader, node-cited)",
     "vol7_ch21_cabin:27": "KEEP (pass 409 reader, node-cited)",
