@@ -120,6 +120,8 @@ EXCLUDE = {
     "door": ["fridge", "cabinet", "cab", "oven", "microwave", "dishwasher", "stall", "car", "truck", "van", "locker", "safe", "bell"],
     # (2026-11-04) the rug in front of the sink is not the sink
     "sink": ["rug", "ring"],
+    # (pass 409) the cabin's charred-wood frame aimed at Stove_EmberGlow ("ember")
+    "charred_wood": ["stove", "glow", "cigarette", "wear"],
     # (2026-11-04) "He looks at the paper" is the newspaper
     "paper": ["towel", "magnet", "board"],
     # (2026-11-04) the substation is its building, not its lot's stripes

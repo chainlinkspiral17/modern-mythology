@@ -296,11 +296,11 @@
       "t": "say"
     },
     {
-      "text": "[shot:insert bread]The three of them did not, for a while, talk. The rain on the roof had thinned since two-something in the morning. The kitchen window was the same gray-blue as the ceiling stains. Kai could hear the early traffic on Hemlock.",
+      "text": "The three of them did not, for a while, talk. The rain on the roof had thinned since two-something in the morning. The kitchen window was the same gray-blue as the ceiling stains. Kai could hear the early traffic on Hemlock.",
       "t": "narrate"
     },
     {
-      "text": "Finn served the eggs to the small plates Lena pulled down for him. He cut three pieces of bread from the heel and put them on the plates. He grated some of the cheddar over the eggs.",
+      "text": "[shot:insert bread]Finn served the eggs to the small plates Lena pulled down for him. He cut three pieces of bread from the heel and put them on the plates. He grated some of the cheddar over the eggs.",
       "t": "narrate"
     },
     {

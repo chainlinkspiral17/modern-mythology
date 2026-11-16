@@ -516,12 +516,12 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert receipt]She thought, I will, in the morning, walk to the post office on Elm. I will mail a letter.",
+      "text": "She thought, I will, in the morning, walk to the post office on Elm. I will mail a letter.",
       "voice": "assets/audio/voice/vol5_ch17_star/102.ogg"
     },
     {
       "t": "narrate",
-      "text": "I will mail a letter to the address that is on the back of the 1987 receipt the crow brought me, in the handwriting under the doodle, the address I have, until tonight, refused to read because reading it would have committed me to mailing the letter.",
+      "text": "[shot:insert receipt]I will mail a letter to the address that is on the back of the 1987 receipt the crow brought me, in the handwriting under the doodle, the address I have, until tonight, refused to read because reading it would have committed me to mailing the letter.",
       "voice": "assets/audio/voice/vol5_ch17_star/103.ogg"
     },
     {

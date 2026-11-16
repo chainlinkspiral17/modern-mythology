@@ -353,13 +353,6 @@ offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
 
-; ── vn_shot coverage (2026-10-06, the room rebuilt: one kitchen, two dressings) ──
-; insert: the hands — the worn places in the oilcloth where they land (ch1/ch10)
-[node name="shot_insert_hands" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.050, 1.250, -2.100)
-rotation = Vector3(-0.6627, 0.5967, 0.0)
-metadata/fov = 42.0
-
 ; insert: the eggs and the chorizo in the skillet (ch10)
 [node name="shot_insert_eggs" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.950, 1.550, -3.750)

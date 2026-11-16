@@ -665,7 +665,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]Ben, at the corkboard, watches Tucker dial. Tucker, at the truck, with the door open and one foot inside, talks for about thirty seconds.",
+      "text": "Ben, at the corkboard, watches Tucker dial. Tucker, at the truck, with the door open and one foot inside, talks for about thirty seconds.",
       "voice": "assets/audio/voice/vol6_ch19_depthchart/117.mp3"
     },
     {
@@ -724,7 +724,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert truck]The long way passes the equipment shed at the back of the school field, and the long way also passes the back gate that the team uses to get to the field on weekends when the front of the school is locked.",
+      "text": "[shot:insert shed]The long way passes the equipment shed at the back of the school field, and the long way also passes the back gate that the team uses to get to the field on weekends when the front of the school is locked.",
       "voice": "assets/audio/voice/vol6_ch19_depthchart/129.mp3"
     },
     {

@@ -600,7 +600,7 @@
       "voice": "assets/audio/voice/vol7_ch4_finn/096.mp3"
     },
     {
-      "text": "[shot:insert package]He did. The piece was, like the others, charred wood. The grain was the same yellow grain as the first two. He set the third piece on the table and took the first two from a small inside pocket of his coat and laid them out beside it.",
+      "text": "[shot:insert charred_wood]He did. The piece was, like the others, charred wood. The grain was the same yellow grain as the first two. He set the third piece on the table and took the first two from a small inside pocket of his coat and laid them out beside it.",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch4_finn/097.mp3"
     },

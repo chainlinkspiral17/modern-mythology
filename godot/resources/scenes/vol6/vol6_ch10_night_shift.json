@@ -534,7 +534,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert coffee]Russell is at the card table eating a banana and reading a folded section of yesterday's San Antonio Express-News he has brought from home.",
+      "text": "Russell is at the card table eating a banana and reading a folded section of yesterday's San Antonio Express-News he has brought from home.",
       "voice": "assets/audio/voice/vol6_ch10_night_shift/100.ogg"
     },
     {
@@ -544,7 +544,7 @@
     },
     {
       "t": "narrate",
-      "text": "Diego is at the door to the dock with a paper cup of coffee from the pot Jessa keeps going on the counter. BT is in the corner near the bulletin board, on his phone.",
+      "text": "[shot:insert coffee]Diego is at the door to the dock with a paper cup of coffee from the pot Jessa keeps going on the counter. BT is in the corner near the bulletin board, on his phone.",
       "voice": "assets/audio/voice/vol6_ch10_night_shift/102.ogg"
     },
     {

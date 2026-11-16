@@ -535,12 +535,12 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert marquee]The unit, this Friday at eight-thirty-nine PM, is dark. The papered-over front window is — Jesse, slowing the Civic past the front of the strip mall to look — papered over.",
+      "text": "The unit, this Friday at eight-thirty-nine PM, is dark. The papered-over front window is — Jesse, slowing the Civic past the front of the strip mall to look — papered over.",
       "voice": "assets/audio/voice/vol6_ch20_bridge/094.mp3"
     },
     {
       "t": "narrate",
-      "text": "The chalk marquee at The Foxhole at the front of the strip mall now reads, in someone's handwriting from this morning: SAT 8/22 — DOORS 8 — SUBURBAN BLIGHT 9 — DJ CHESS 11.",
+      "text": "[shot:insert marquee]The chalk marquee at The Foxhole at the front of the strip mall now reads, in someone's handwriting from this morning: SAT 8/22 — DOORS 8 — SUBURBAN BLIGHT 9 — DJ CHESS 11.",
       "voice": "assets/audio/voice/vol6_ch20_bridge/095.mp3"
     },
     {

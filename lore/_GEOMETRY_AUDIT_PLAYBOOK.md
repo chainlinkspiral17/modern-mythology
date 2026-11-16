@@ -177,6 +177,20 @@ the source line. A wall fixture is placed between the openings on its
 wall (window casing, door jambs), with the gap measured in the plan the
 part is built in.
 
+### 2026-11-16 · every synonym is a subject the aim gate will accept (pass 409)
+
+**What happened.** The cabin's two charred-wood frames showed a glowing
+red square: the stove's `Stove_EmberGlow`. `charred_wood`'s synonyms
+include "ember". The aim gate splits CamelCase, found "ember" in the
+stove, and called the frame aimed. The three pieces on the table were
+2.6 m away.
+
+**The rule.** When you add a synonym, find every part in the sets that
+carries the word as a name part (grep the builders), and add an `EXCLUDE`
+entry for each one that is not the subject (`charred_wood: stove, glow,
+cigarette, wear`). When a frame passes and the render shows something
+else, look first at which word the gate matched.
+
 ### 2026-11-15 · a cue word can name a part of another thing (pass 407)
 
 **What happened.** ch16's "[shot:insert ring]" sat on the line "The bell

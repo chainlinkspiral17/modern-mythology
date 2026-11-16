@@ -165,12 +165,12 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert stick]She crossed the room and sat at the small wooden table beside the kerosene lamp. The lamp was not lit; the gray light through the south-facing window was enough.",
+      "text": "She crossed the room and sat at the small wooden table beside the kerosene lamp. The lamp was not lit; the gray light through the south-facing window was enough.",
       "voice": "assets/audio/voice/vol7_ch1_morning/030.mp3"
     },
     {
       "t": "narrate",
-      "text": "On the table, beside the John Frank novel and the small clay dish with the rosemary, were three SCUMM sticks in waxed paper sleeves. Lena had registered them last night when they had arrived; she had not, last night, asked.",
+      "text": "[shot:insert stick]On the table, beside the John Frank novel and the small clay dish with the rosemary, were three SCUMM sticks in waxed paper sleeves. Lena had registered them last night when they had arrived; she had not, last night, asked.",
       "voice": "assets/audio/voice/vol7_ch1_morning/031.mp3"
     },
     {

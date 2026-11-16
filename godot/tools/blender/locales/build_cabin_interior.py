@@ -235,6 +235,11 @@ def build_shell():
     # over the door showed the thermometer from the porch)
     make_box("Wall_S_DoorHead", (0.0, 0.0, 2.30), (0.951, 0.20, 0.40), PAL_WALL["wall"])
     make_cyl("Door_Latch", (0.36, 0.10, 1.02), 0.025, 0.04, COL_IRON, axis='Y', segments=8)
+    # (pass 409) the knob on it: "The doorknob was the cedar knob Eddvard had
+    # carved in '11. The knob was warm" (ch20_door n32) — turned cedar on the
+    # iron rose, into the room
+    make_cyl("Door_Knob_Stem", (0.36, 0.13, 1.02), 0.011, 0.022, (0.62, 0.43, 0.26, 1.0), axis='Y', segments=10)
+    make_blob("Door_Knob", (0.36, 0.163, 1.02), 0.026, (0.72, 0.52, 0.32, 1.0), noise=0.04, seed=11, rings=6, segments=12, squash=0.85)
     # its OUTSIDE (2026-10-08, the porch): a board-and-batten door — four
     # boards with their seams, the Z-brace, two strap hinges and the
     # thumb-latch's handle. A flat dark slab under the porch sun was one

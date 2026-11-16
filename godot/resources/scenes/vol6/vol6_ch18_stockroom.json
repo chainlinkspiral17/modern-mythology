@@ -713,7 +713,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert bale]He folds the first pallet.",
+      "text": "[shot:insert pallet]He folds the first pallet.",
       "voice": "assets/audio/voice/vol6_ch18_stockroom/129.mp3"
     },
     {

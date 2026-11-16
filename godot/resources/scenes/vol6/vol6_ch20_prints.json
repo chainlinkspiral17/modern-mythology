@@ -95,12 +95,12 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert prints]His father is at the kitchen table.",
+      "text": "His father is at the kitchen table.",
       "voice": "assets/audio/voice/vol6_ch20_prints/014.mp3"
     },
     {
       "t": "narrate",
-      "text": "His father has, on the table, a small set of black-and-white photographs — the contact prints from this week's photography class assignment, the assignment of which Jesse knows only that it has been about small things at the back of the house.",
+      "text": "[shot:insert prints]His father has, on the table, a small set of black-and-white photographs — the contact prints from this week's photography class assignment, the assignment of which Jesse knows only that it has been about small things at the back of the house.",
       "voice": "assets/audio/voice/vol6_ch20_prints/015.mp3"
     },
     {

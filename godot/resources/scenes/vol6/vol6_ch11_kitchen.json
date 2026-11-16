@@ -215,7 +215,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert sink_light]Don has been going in at five thirty for as long as she can remember, and she has been watching his porch light come on at five oh-two for almost as long, because Don is the only person on the cul-de-sac who keeps the same hours she now keeps.",
+      "text": "[shot:insert porch_light]Don has been going in at five thirty for as long as she can remember, and she has been watching his porch light come on at five oh-two for almost as long, because Don is the only person on the cul-de-sac who keeps the same hours she now keeps.",
       "voice": "assets/audio/voice/vol6_ch11_kitchen/042.ogg"
     },
     {
@@ -379,7 +379,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:kitchen_practical][shot:insert french_toast]She cracks the eggs. She whisks. She measures the cinnamon. She pours the milk.",
+      "text": "[mood:kitchen_practical][shot:insert eggs]She cracks the eggs. She whisks. She measures the cinnamon. She pours the milk.",
       "voice": "assets/audio/voice/vol6_ch11_kitchen/075.ogg"
     },
     {
@@ -414,7 +414,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert cinnamon_roll]The smell — butter and cinnamon and the warm vanilla she had added to the egg mixture — fills the kitchen the way the smell of French toast fills a kitchen when a person has, for sixteen years,",
+      "text": "[shot:insert french_toast]The smell — butter and cinnamon and the warm vanilla she had added to the egg mixture — fills the kitchen the way the smell of French toast fills a kitchen when a person has, for sixteen years,",
       "voice": "assets/audio/voice/vol6_ch11_kitchen/082.ogg"
     },
     {

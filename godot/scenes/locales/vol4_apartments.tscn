@@ -392,12 +392,8 @@ position = Vector3(4.600, 1.500, -1.500)
 rotation = Vector3(-0.3349, 2.7002, 0.0)
 metadata/fov = 38.0
 
-; "an elderly man was walking their way with a garden trough in his hand"
-[node name="shot_insert_trough__chess_hallway" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(41.550, 1.550, -9.600)
-rotation = Vector3(-0.1752, -0.1316, 0.0)
-metadata/fov = 40.0
+; (pass 409) "follow her into the elevator": from the hall into the open car (it stood inside, at the buttons)
 [node name="shot_insert_elevator__chess_hallway" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(41.950, 1.350, -1.750)
-rotation = Vector3(-0.6476, -1.3734, 0.0)
-metadata/fov = 40.0
+position = Vector3(41.600, 1.550, -3.600)
+rotation = Vector3(-0.1714, -3.1416, 0.0)
+metadata/fov = 50.0

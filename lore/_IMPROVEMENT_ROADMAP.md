@@ -3835,6 +3835,60 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-16 · pass 409: close-ups read for meaning (the ring/bell class).**
+- `tools/audit/cue_meaning_scan.py` (new, report only) lists every
+  `[shot:insert X]` whose line names another object Y that has its own
+  frame in the view, and does not name X. 82 rows. A node-cited reader
+  read each with the three lines around it, and I spot-checked every
+  change against the text. Read rows go in the scan's `JUDGED` table (45
+  stand), so it reports 0 unread now.
+- 39 cue tags changed (tags only, no nodes; voiced chapters untouched):
+  - 10 moved to the line that names their object (ch1's sticks, ch8's
+    window, ch10's bread, ch12's hexagon, ch20's doorknob, vol5's
+    photograph and receipt, vol6's coffee pot, marquee, contact prints).
+  - 14 retargeted to the frame the line is about (the porch light Bianca
+    watches, her eggs and French toast, the shed, the cordless phone, the
+    pallet, Board Lords' deck, the charred piece, the boats, the jaw she
+    paints).
+  - Plus two more: the apple-peddler's pie and coffee were swapped. The
+    chess hallway's "follow her into the elevator" now cues the elevator,
+    whose frame had no line.
+  - 15 dropped: lines about a person (a grandmother who didn't come in,
+    a man getting into a sedan, "He dries his hands", "She takes her
+    father's hand") or an action with no object.
+  - Four of the reader's calls overruled: booth six, "Faust paints." (the
+    table he paints at), Sam hearing the phone through the door, and the
+    elevator (retargeted rather than dropped).
+- Frames the read showed wrong, fixed by render:
+  - The cabin's charred-wood frames looked at the stove's ember glow (a
+    red square), because "ember" is a synonym of charred_wood and the aim
+    gate passed it. They look at the pieces on the table now, and
+    shot_marker_audit's EXCLUDE keeps charred_wood off stove, glow,
+    cigarette and wear parts.
+  - The elevator frame stood inside the car, at the buttons; it now
+    looks from the hall into the open car.
+  - The doorknob: "the cedar knob Eddvard had carved in '11" was a 5 cm
+    iron latch seen from 1.3 m. Now a turned cedar knob on the latch, and
+    the frame comes in close.
+  - ch5's "He cleaned the glass on the deck wall" cues the deck wall.
+- Frames no line needs, deleted: two `hands` (Miller, Ramos), the
+  cinnamon roll, the held garden trough, the jetty bench, and Small Wood's
+  pole barn (a retarget to it from vol2's December line landed in the
+  roadside view's area, which wrong_room_audit caught; that cue is dropped,
+  since the night view's "house" is the fallen-in ruin). Orphans 102 → 100
+  (ceiling 100).
+- NEXT: the scan's other half: 499 cues whose line names both their own
+  object and another framed one (most are fine; read the ones whose cued
+  object is a support, a room part or a synonym hit). A gate check that a
+  frame's subject is not reached only through a synonym when the cue word
+  itself names a part elsewhere in the set. The Speak & Spell frames:
+  both shop-floor frames aim under the register, though the text keeps it
+  on the back-office shelf (vol6_ch12_cosmic n178). The phone frame in the
+  safehouse shows the bedside table while the line has it in Diego's
+  hands (vol6_ch6_safehouse n21). vol2_ch4_night_lights n27 and n35 cue
+  "house" (the fallen-in ruin) on lines about ennui and Christmas lights.
+- Deck must REBUILD cabin_interior.
+
 **2026-11-15 · pass 408: the bowls, draft 3 (Tem's cabin).**
 - The spiral is one carved line now, not three rings: "A spiral was cut
   into the outside that ran from the rim down to the base in a single

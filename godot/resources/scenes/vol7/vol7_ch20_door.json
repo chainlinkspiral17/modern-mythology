@@ -140,7 +140,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert doorknob]She reached the door.",
+      "text": "She reached the door.",
       "t": "narrate"
     },
     {
@@ -148,7 +148,7 @@
       "t": "narrate"
     },
     {
-      "text": "The doorknob was the cedar knob Eddvard had carved in '11. The knob was warm — warm in the way the bowls had been warm. It had not, in any of the years Tem had been at the cabin, been warm before.",
+      "text": "[shot:insert doorknob]The doorknob was the cedar knob Eddvard had carved in '11. The knob was warm — warm in the way the bowls had been warm. It had not, in any of the years Tem had been at the cabin, been warm before.",
       "t": "narrate"
     },
     {

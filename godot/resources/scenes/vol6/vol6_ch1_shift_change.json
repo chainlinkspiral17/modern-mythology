@@ -90,7 +90,7 @@
       "t": "say",
       "char": "Jen",
       "expr": "neutral",
-      "text": "[shot:insert door~]\"His grandma came by. Around two. Before you got here. She was — Sammy, she was in her church clothes. On a Sunday afternoon. She was looking for him. She didn't come in. I saw her through the window.",
+      "text": "\"His grandma came by. Around two. Before you got here. She was — Sammy, she was in her church clothes. On a Sunday afternoon. She was looking for him. She didn't come in. I saw her through the window.",
       "voice": "assets/audio/voice/vol6_ch1_shift_change/013.ogg"
     },
     {

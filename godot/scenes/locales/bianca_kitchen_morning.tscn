@@ -465,11 +465,6 @@ position = Vector3(2.000, 1.350, -2.600)
 rotation = Vector3(-0.5861, -0.9319, 0.0)
 metadata/fov = 42.0
 
-[node name="shot_insert_cinnamon_roll" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(3.243, 1.145, -4.184)
-rotation = Vector3(-0.5236, 2.7945, 0.0)
-metadata/fov = 40.0
-
 [node name="shot_insert_jar" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.600, 1.200, -2.600)
 rotation = Vector3(-0.4565, -0.8330, 0.0)

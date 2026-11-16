@@ -460,12 +460,6 @@ position = Vector3(-2.600, 1.500, -4.900)
 rotation = Vector3(-0.1647, 0.8285, 0.0)
 metadata/fov = 45.0
 
-; insert: the worn places where the hands meet
-[node name="shot_insert_hands" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.000, 1.350, -2.600)
-rotation = Vector3(-0.5861, -0.9319, 0.0)
-metadata/fov = 42.0
-
 ; insert: Eileen's cinnamon roll, untouched
 [node name="shot_insert_cinnamon_roll__miller_kitchen_ch11e" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(2.863, 1.145, -3.114)

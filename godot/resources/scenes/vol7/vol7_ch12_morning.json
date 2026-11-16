@@ -599,11 +599,11 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert hexagon]He stood at the rail. The crow landed on the rail beside him. He set the canvas bag on the bench. He took out the cloth.",
+      "text": "He stood at the rail. The crow landed on the rail beside him. He set the canvas bag on the bench. He took out the cloth.",
       "t": "narrate"
     },
     {
-      "text": "He carried the hexagon — six pieces in the ring, the cedar face in the center, the AR I A piece beside it — and set it on the platform's earthen floor between his boots and the rail.",
+      "text": "[shot:insert hexagon]He carried the hexagon — six pieces in the ring, the cedar face in the center, the AR I A piece beside it — and set it on the platform's earthen floor between his boots and the rail.",
       "t": "narrate"
     },
     {
