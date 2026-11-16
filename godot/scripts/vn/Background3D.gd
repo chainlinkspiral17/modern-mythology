@@ -65,7 +65,7 @@ const VIEW_GROUPS := {
 	# on, "Lindholm-Marina's and Eddvard's-by-Tem"
 	"cab_bowls": ["cabin_interior", "cabin_interior_hexagon", "cabin_interior_day_hexagon", "cabin_interior_three", "cabin_interior_four", "cabin_interior_day_four"],
 	# (pass 408) Marit's bowl comes out of Per's box in ch11_per, before the
-	# substrate-bowl comes out of Finn's pocket (ch11_bowl n22): ch11_per is
+	# substrate-bowl comes out of Kai's shirt pocket (ch11_bowl n21-22): ch11_per is
 	# its own view. Per's box stands at his elbow in both (ch10-ch13).
 	"cab_marit": ["cabin_interior", "cabin_interior_marit", "cabin_interior_hexagon", "cabin_interior_day_hexagon", "cabin_interior_three", "cabin_interior_four", "cabin_interior_day_four"],
 	"cab_box": ["cabin_interior", "cabin_interior_marit", "cabin_interior_day_sticks"],
@@ -3950,7 +3950,7 @@ const CAMERA_PRESETS := {
 		"suppress_input": true,
 	},
 	"cabin_interior_marit": {
-		# (pass 408) ch11_per: Per's box and Marit's bowl alone — the substrate-bowl comes out of Finn's shirt pocket in ch11_bowl (n22)
+		# (pass 408) ch11_per: Per's box and Marit's bowl alone — the substrate-bowl comes out of Kai's shirt pocket in ch11_bowl (n21-22)
 		"scene": "res://scenes/locales/cabin_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
 		# SURVEYED 2026-07-12: old vantage sat blender y=-0.5 OUTSIDE

@@ -590,7 +590,7 @@ def build_table():
     # (pass 404) THE BOWLS BY COUNT. The text adds and takes them chapter by
     # chapter (node-cited reading, lore note in the roadmap):
     #   ch11_per: Marit's alone, out of Per's box (+ the box)        cab_marit
-    #     (pass 408; the substrate-bowl comes out of Finn's shirt
+    #     (pass 408; the substrate-bowl comes out of Kai's shirt
     #     pocket in ch11_bowl n22)
     #   ch11-ch13: Marit's and the substrate-bowl (+ Per's box)      cab_bowls
     #   ch13 night: + Marina's grandfather's ("a rough triangle … Marit's

@@ -5,7 +5,7 @@
   "type": "scene",
   "nodes": [
     {
-      "src": "3d:cabin_interior",
+      "src": "3d:cabin_interior_marit",
       "t": "bg"
     },
     {
@@ -117,6 +117,11 @@
     {
       "text": "He reached into his shirt pocket on a hunch.",
       "t": "narrate"
+    },
+    {
+      "src": "3d:cabin_interior",
+      "t": "bg",
+      "transition": "dissolve"
     },
     {
       "text": "[shot:insert substrate_bowl]The bowl was in his shirt pocket where the second-station bowl had been in the inside pocket of the green wool coat. He pulled it out. It came out warm in his hand. It was the size of his palm. It had the spiral on the outside.",

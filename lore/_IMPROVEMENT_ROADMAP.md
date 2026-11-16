@@ -3835,6 +3835,24 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-16 · pass 410: the substrate-bowl comes out of Kai's pocket.**
+- ch11_bowl opens on `cabin_interior_marit` (Per's box and Marit's bowl).
+  At "He reached into his shirt pocket on a hunch … He pulled it out" a
+  `bg` node dissolves to `cabin_interior`, where the substrate-bowl stands
+  beside it. The chapter is unvoiced, so a node could go in. Same model,
+  so the cast stays on screen, and the node's `"transition": "dissolve"`
+  plays. The two node-indexed records moved with it: the chapter's trip
+  beat (121 → 122) and the cue scan's four judged keys.
+- Corrected my own error: passes 408-409 said the substrate-bowl came out
+  of FINN's pocket. It is KAI's ("Kai opened his eyes", n9; "the bowl Kai
+  had brought out of the experience", n47). Fixed in Background3D, the
+  cabin builder, shot_marker_audit and the roadmap.
+- The inline `[view:]` tag is still NEXT, for the voiced chapters (ch4,
+  ch2 and the others where a node cannot go in). The unvoiced ones take
+  a `bg` node like this. Candidates: ch10_cabin n89-98 has Per's box on
+  the table before Per brings it in (n99); ch11_per n0-9 has Marit's bowl
+  out before Per takes it from the box (n10).
+
 **2026-11-16 · pass 409: close-ups read for meaning (the ring/bell class).**
 - `tools/audit/cue_meaning_scan.py` (new, report only) lists every
   `[shot:insert X]` whose line names another object Y that has its own
@@ -3903,7 +3921,7 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
   modeling playbook). The carving keeps a floor size (`max(s, 0.85)`) so
   it still reads at palm size.
 - ch11_per is its own view (`cabin_interior_marit`): Per's box and
-  Marit's bowl alone. The substrate-bowl comes out of Finn's shirt pocket
+  Marit's bowl alone. The substrate-bowl comes out of Kai's shirt pocket
   in ch11_bowl (n22). Marit's bowl, its face inlay and Per's box moved to
   groups (`cab_marit`, `cab_box`). Per's box stands on the table in
   ch10-11's day view too ("Per set the wooden box on the table", ch10 n99).
@@ -3945,7 +3963,7 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
   (ch11_per n120-121). Its row is in the roster; it lays in the seven
   views that have Marit's bowl.
 - NEXT: ch11_bowl's first 21 nodes show the substrate-bowl still in
-  Finn's pocket (needs the inline `[view:]` tag); the crow relief turning
+  Kai's pocket (done in pass 410); the crow relief turning
   "another small turn" (ch11_bowl n158, ch17_dawn n22); the bearded man
   with the piece of wood on Marina's grandfather's bowl (ch13_marina
   n136), his eyes above the rim looking at the lamp (ch14_painting
