@@ -3835,6 +3835,56 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-16 · pass 413: close-ups on a surface when the line is about a thing.**
+- `cue_meaning_scan.py --generic` (new mode): cues on a generic surface
+  or room part (table, counter, door, window, bench, porch, shelf …)
+  whose line names a specific object that has its own frame. 98 rows; a
+  node-cited reader read each, and I checked every change against its
+  line. 77 stand (`JUDGED_GENERIC`).
+- 12 retargeted: "He looked at the bowl on the table" → bowl; "The crow
+  tapped the table" and "The crow, beside him on the table" → crow; ch19's
+  bowls; ch22's disc-case "still on the kitchen table"; Jameson's broken
+  deck "on the counter"; the laundromat window "Janet Halfmoon had painted
+  the sanderling onto" → sanderling; the new-arrivals shelf; the iced tea
+  on the small table; Don's porch light out Bianca's kitchen window; the
+  meat counter; the cooler door at the Kwik Stop.
+- 9 dropped: hands and faces at a table (ch20 ×3, ch22 Marisol), the
+  cabin's table remembered from the porch, a table in Hans's house that
+  is not this set, Natalie moving a girl to the door, Linda sitting down.
+  Also Bianca's Saturday line about Don's porch light: that view's
+  porch_light frame is the Millers' own light.
+- Two frames left with no line, deleted (the Caldwell porch table, the
+  grocery counter); wrong_room_audit's kept entry for the dropped cabin
+  porch cue removed. Orphans 100.
+- NEXT: a frame for Don's porch light from the Millers' back porch; the
+  bell-piece on ch19's table (`cedar` frame) on the line that names it
+  without the word (ch19_ring n48); doubled cues on consecutive lines
+  (ch22_portal n8/9, vol6 ch14 n106/107, vol5 ch17 n107/109).
+
+**2026-11-16 · pass 412: Board Lords' counter and door, by the clock.**
+- The bread and the taped note stood in every view of the shop. Now:
+  - Hans's bread is on the counter from "Hans came in with bread wrapped
+    in the cloth … He set it on the counter" (ch9 n54) and from "He had
+    bread in the cloth" (ch10 n13). Group bl_bread.
+  - The Tuesday note is on the door from "He wrote a note on a piece of
+    register paper and taped it to the inside of the door above the sign"
+    (ch10 n65). It is still there through ch12's Thursday, and comes off
+    at "He pulled it off" (ch16 n8). Group bl_note.
+- Four twins (view_twin): `board_lords_interior_bread` (ch9 n53+, ch10
+  n12-65), `board_lords_interior_closed` (bread + note, ch10 n66+),
+  `board_lords_interior_note` (ch12), `board_lords_interior_late_note`
+  (ch16 n0-8). Four `bg` dissolves, inserted with scene_insert_node.py
+  into the unvoiced chapters, change them mid-segment; ch16_shop's trip
+  beats moved (12 → 13, 77 → 78). The bread frame is named for its view
+  (the obstruction gate judged it in the base view, where the bread is
+  gone, and saw only counter top).
+- NEXT: the Closed/Open sign by the clock (flipped at ch10 n65, ch16 n7;
+  the street side in ch5); the kettle on the burner by segment; the decks
+  on the counter (ch2 n98/106); Mateo's Tess clamped on the bench (ch9);
+  the note seen from Main Street (main_street views in ch12) through the
+  door glass.
+- Deck must REBUILD board_lords_interior.
+
 **2026-11-16 · pass 411: Per's box arrives; Small Wood at Christmas.**
 - ch10_cabin: the table is bare of Per's box until "Per set the wooden box
   on the table" (n99 → n100). A new twin `cabin_interior_day_arrival` (the

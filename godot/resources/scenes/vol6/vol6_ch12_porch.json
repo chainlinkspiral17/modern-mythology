@@ -119,7 +119,7 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert table]with a glass of iced tea on the small table beside her and a paperback in her lap that she has, by the look of the page, read maybe twelve pages of in the past hour.",
+   "text": "[shot:insert iced_tea]with a glass of iced tea on the small table beside her and a paperback in her lap that she has, by the look of the page, read maybe twelve pages of in the past hour.",
    "voice": "assets/audio/voice/vol6_ch12_porch/021.ogg"
   },
   {

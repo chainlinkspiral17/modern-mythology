@@ -389,7 +389,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 1.5, -3.0)
 rotation = Vector3(-1.0005, -0.6889, 0.0)
 metadata/fov = 42.0
 
-[node name="shot_insert_bread" type="Marker3D" parent="." groups=["vn_shot"]]
+[node name="shot_insert_bread__board_lords_interior_bread" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.45, 1.35, -4.5)
 rotation = Vector3(-0.4153, -0.0567, 0.0)
 metadata/fov = 42.0
@@ -556,8 +556,20 @@ position = Vector3(0.887, 0.492, -4.720)
 rotation = Vector3(-0.2618, 0.1736, 0.0)
 metadata/fov = 35.0
 
+; (view_twin) board_lords_interior's frame in board_lords_interior_bread
+[node name="shot_insert_shelf__board_lords_interior_bread" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.887, 0.492, -4.720)
+rotation = Vector3(-0.2618, 0.1736, 0.0)
+metadata/fov = 35.0
+
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_bearings__board_lords_interior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.300, 1.450, -4.200)
+rotation = Vector3(-0.3180, -0.6750, 0.0)
+metadata/fov = 36.0
+
+; (view_twin) board_lords_interior's frame in board_lords_interior_bread
+[node name="shot_insert_bearings__board_lords_interior_bread" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(2.300, 1.450, -4.200)
 rotation = Vector3(-0.3180, -0.6750, 0.0)
 metadata/fov = 36.0

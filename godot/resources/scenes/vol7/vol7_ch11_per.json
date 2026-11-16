@@ -153,7 +153,7 @@
       "t": "say"
     },
     {
-      "text": "[shot:insert table]He looked at the bowl on the table.",
+      "text": "[shot:insert bowl]He looked at the bowl on the table.",
       "t": "narrate"
     },
     {

@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][mood:dawn_warm][shot:insert window]Bianca is at the kitchen window at four forty-three when Don Geller's porch light comes on across the cul-de-sac.",
+      "text": "[trip:1.2][mood:dawn_warm][shot:insert porch_light]Bianca is at the kitchen window at four forty-three when Don Geller's porch light comes on across the cul-de-sac.",
       "voice": "assets/audio/voice/vol6_ch17_table/006.mp3"
     },
     {

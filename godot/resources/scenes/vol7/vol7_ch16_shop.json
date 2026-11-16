@@ -5,7 +5,7 @@
  "type": "scene",
  "nodes": [
   {
-   "src": "3d:board_lords_interior_late",
+   "src": "3d:board_lords_interior_late_note",
    "t": "bg"
   },
   {
@@ -43,6 +43,11 @@
   {
    "text": "[shot:insert note]The Tuesday note he had taped above the OPEN sign was still on the door. Family thing. Back Friday. — Kai. He pulled it off. He read it once. He folded it.",
    "t": "narrate"
+  },
+  {
+    "src": "3d:board_lords_interior_late",
+    "t": "bg",
+    "transition": "dissolve"
   },
   {
    "text": "He put it in the small drawer under the register where he kept the pieces of paper he had taken off the door over the years.",

@@ -60,6 +60,11 @@
       "t": "show"
     },
     {
+      "src": "3d:board_lords_interior_bread",
+      "t": "bg",
+      "transition": "dissolve"
+    },
+    {
       "text": "Hans came across from the bakery at seven-thirty-two. Hans was in the apron and the flour and the not-having-put-a-coat-on. He had bread in the cloth.",
       "t": "narrate"
     },
@@ -348,6 +353,11 @@
     {
       "text": "At nine-fifty he turned off the back light. He pulled the kettle off the burner. He flipped the OPEN to CLOSED. He wrote a note on a piece of register paper and taped it to the inside of the door above the sign: \"Family thing.",
       "t": "narrate"
+    },
+    {
+      "src": "3d:board_lords_interior_closed",
+      "t": "bg",
+      "transition": "dissolve"
     },
     {
       "text": "Back Friday. — Kai.\" He locked the front. He went around to the back. He pulled the truck out of the alley and drove the three blocks to the bakery.",

@@ -140,7 +140,10 @@ def build_shell():
             make_box(f"Front_Push_Bar_{e}_Post_{pe}", (bx, 0.07, 1.02), (0.03, 0.03, 0.03), COL_STEEL)
         make_box(f"Front_Kick_Plate_{e}", (lx, 0.058, 0.15), (0.78, 0.006, 0.22), COL_STEEL)
     make_box("Open_Sign", (0.35, 0.06, 1.55), (0.24, 0.01, 0.16), (0.86, 0.82, 0.72, 1.0))
-    make_box("Taped_Note", (0.35, 0.06, 1.74), (0.14, 0.008, 0.10), (0.94, 0.92, 0.84, 1.0))
+    # (pass 412) "He wrote a note on a piece of register paper and taped it to
+    # the inside of the door above the sign" (ch10_per n65) — "still on the
+    # door" Saturday until "He pulled it off" (ch16_shop n8): bl_note
+    make_box("Taped_Note__bl_note", (0.35, 0.06, 1.74), (0.14, 0.008, 0.10), (0.94, 0.92, 0.84, 1.0))
 
 
 def build_deck_wall():
@@ -457,13 +460,16 @@ def build_hero_props():
     # wholly inside the slab, the loaf and the bearing sets up to their
     # waists in it (buried_flat_audit).
     top = 1.01
-    make_box("Bread_Board", (1.45, 5.35, top + 0.015), (0.46, 0.32, 0.03),
+    # (pass 412) Hans's bread: "Hans came in with bread wrapped in the cloth …
+    # He set it on the counter" (ch9_tuesday n54), "He had bread in the cloth"
+    # (ch10_per n13) — on the counter from those lines on only: bl_bread
+    make_box("Bread_Board__bl_bread", (1.45, 5.35, top + 0.015), (0.46, 0.32, 0.03),
              (0.56, 0.42, 0.26, 1.0))
-    make_chamfer_box("Bread_Loaf", (1.42, 5.38, top + 0.10), (0.32, 0.17, 0.13),
+    make_chamfer_box("Bread_Loaf__bl_bread", (1.42, 5.38, top + 0.10), (0.32, 0.17, 0.13),
                      (0.46, 0.32, 0.18, 1.0))
-    make_box("Bread_Slice", (1.66, 5.26, top + 0.05), (0.03, 0.15, 0.11),
+    make_box("Bread_Slice__bl_bread", (1.66, 5.26, top + 0.05), (0.03, 0.15, 0.11),
              (0.62, 0.50, 0.34, 1.0))
-    make_box("Bread_Knife", (1.45, 5.18, top + 0.035), (0.34, 0.035, 0.012),
+    make_box("Bread_Knife__bl_bread", (1.45, 5.18, top + 0.035), (0.34, 0.035, 0.012),
              COL_STEEL)
 
     # (draft 5: the hexagon is on Devon's desk in the back office, where the

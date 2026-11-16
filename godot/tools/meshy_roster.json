@@ -11853,7 +11853,11 @@
             "board_lords_interior_early",
             "board_lords_interior_late",
             "main_street_early",
-            "main_street_late"
+            "main_street_late",
+            "board_lords_interior_bread",
+            "board_lords_interior_closed",
+            "board_lords_interior_note",
+            "board_lords_interior_late_note"
           ]
         }
       ],

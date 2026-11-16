@@ -110,10 +110,14 @@ const VIEW_GROUPS := {
 	# patch was bare" (ch16)
 	# (pass 411) Small Wood's night road: the night car, its spill, the town far up
 	"swr_night": ["small_wood_road_night", "small_wood_road_christmas"],
-	"bl_bird": ["board_lords_interior", "main_street", "board_lords_interior_early", "main_street_early"],
-	"bl_mid": ["board_lords_interior", "main_street"],
+	"bl_bird": ["board_lords_interior", "board_lords_interior_bread", "board_lords_interior_closed", "board_lords_interior_note", "main_street", "board_lords_interior_early", "main_street_early"],
+	"bl_mid": ["board_lords_interior", "board_lords_interior_bread", "board_lords_interior_closed", "board_lords_interior_note", "main_street"],
 	"bl_early": ["board_lords_interior_early", "main_street_early"],
-	"bl_late": ["board_lords_interior_late", "main_street_late"],
+	"bl_late": ["board_lords_interior_late", "board_lords_interior_late_note", "main_street_late"],
+	# (pass 412) Kai's counter and door by the clock: Hans's bread (ch9 n53+, ch10
+	# n12+) and the Tuesday note taped to the door (ch10 n65 to ch16 n8)
+	"bl_bread": ["board_lords_interior_bread", "board_lords_interior_closed"],
+	"bl_note": ["board_lords_interior_closed", "board_lords_interior_note", "board_lords_interior_late_note"],
 	# (pass 399) the Chau house by day, its two vol 3 ch8 views included
 	"chau_day": ["chau_hall_noon", "chau_entry_morning", "chau_living", "chau_bath", "chau_game_room",
 		"chau_steven_room", "chau_steven_desk", "chau_mom_room"],
@@ -3302,7 +3306,77 @@ const CAMERA_PRESETS := {
 		"fov": 66.0,
 		"suppress_input": true,
 	},
+	"board_lords_interior_note": {
+		# (pass 412) ch12, Thursday: the Tuesday note still on the door (it is there Saturday, ch16)
+		"scene": "res://scenes/locales/board_lords_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/board_lords_interior.glb",
+		# Board Lords, Kai's skate shop (vol 7) 9×7.6 (godot x∈[-4.5,4.5],
+		# z∈[0,-7.6], ceil 2.8). "The wall of decks" behind its glass on the
+		# W wall, the board rack mid-floor, the repair bench and lathe on the
+		# N wall, the counter NE with the back office behind it, the bench
+		# under the front window SW. (2026-10-22: the lens was in the SW
+		# corner looking NE — from the board-game shop this set used to be —
+		# with the deck wall behind it; now from the SE by the wheel bin
+		# looking NW: the deck wall, the rack, the repair bench, the counter.)
+		"camera_origin": Vector3(3.4, 1.70, -0.9),
+		"camera_rotation": Vector3(-0.07, deg_to_rad(50.0), 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	"board_lords_interior_closed": {
+		# (pass 412) ch10 at nine-fifty: the bread, and the note taped to the inside of the door
+		"scene": "res://scenes/locales/board_lords_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/board_lords_interior.glb",
+		# Board Lords, Kai's skate shop (vol 7) 9×7.6 (godot x∈[-4.5,4.5],
+		# z∈[0,-7.6], ceil 2.8). "The wall of decks" behind its glass on the
+		# W wall, the board rack mid-floor, the repair bench and lathe on the
+		# N wall, the counter NE with the back office behind it, the bench
+		# under the front window SW. (2026-10-22: the lens was in the SW
+		# corner looking NE — from the board-game shop this set used to be —
+		# with the deck wall behind it; now from the SE by the wheel bin
+		# looking NW: the deck wall, the rack, the repair bench, the counter.)
+		"camera_origin": Vector3(3.4, 1.70, -0.9),
+		"camera_rotation": Vector3(-0.07, deg_to_rad(50.0), 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	"board_lords_interior_bread": {
+		# (pass 412) Hans's bread on the counter: ch9 from "He set it on the counter", ch10 from "He had bread in the cloth"
+		"scene": "res://scenes/locales/board_lords_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/board_lords_interior.glb",
+		# Board Lords, Kai's skate shop (vol 7) 9×7.6 (godot x∈[-4.5,4.5],
+		# z∈[0,-7.6], ceil 2.8). "The wall of decks" behind its glass on the
+		# W wall, the board rack mid-floor, the repair bench and lathe on the
+		# N wall, the counter NE with the back office behind it, the bench
+		# under the front window SW. (2026-10-22: the lens was in the SW
+		# corner looking NE — from the board-game shop this set used to be —
+		# with the deck wall behind it; now from the SE by the wheel bin
+		# looking NW: the deck wall, the rack, the repair bench, the counter.)
+		"camera_origin": Vector3(3.4, 1.70, -0.9),
+		"camera_rotation": Vector3(-0.07, deg_to_rad(50.0), 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
 	"board_lords_interior_late": {
+		# (pass 407) the shop in ch16: the patch stopped, "The sanderling's bird-shape was gone.
+		# The brick under the patch was bare."
+		"scene": "res://scenes/locales/board_lords_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/board_lords_interior.glb",
+		# Board Lords, Kai's skate shop (vol 7) 9×7.6 (godot x∈[-4.5,4.5],
+		# z∈[0,-7.6], ceil 2.8). "The wall of decks" behind its glass on the
+		# W wall, the board rack mid-floor, the repair bench and lathe on the
+		# N wall, the counter NE with the back office behind it, the bench
+		# under the front window SW. (2026-10-22: the lens was in the SW
+		# corner looking NE — from the board-game shop this set used to be —
+		# with the deck wall behind it; now from the SE by the wheel bin
+		# looking NW: the deck wall, the rack, the repair bench, the counter.)
+		"camera_origin": Vector3(3.4, 1.70, -0.9),
+		"camera_rotation": Vector3(-0.07, deg_to_rad(50.0), 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	"board_lords_interior_late_note": {
+		# (pass 412) ch16 until "He pulled it off": the note on the door
 		# (pass 407) the shop in ch16: the patch stopped, "The sanderling's bird-shape was gone.
 		# The brick under the patch was bare."
 		"scene": "res://scenes/locales/board_lords_interior.tscn",

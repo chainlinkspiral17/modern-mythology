@@ -25,7 +25,23 @@
       "bed": "assets/audio/bgm/vol7_shop_signal_bell.wav",
       "gain": 0.82
     },
+    "board_lords_interior_note": {
+      "bed": "assets/audio/bgm/vol7_shop_signal_bell.wav",
+      "gain": 0.82
+    },
+    "board_lords_interior_closed": {
+      "bed": "assets/audio/bgm/vol7_shop_signal_bell.wav",
+      "gain": 0.82
+    },
+    "board_lords_interior_bread": {
+      "bed": "assets/audio/bgm/vol7_shop_signal_bell.wav",
+      "gain": 0.82
+    },
     "board_lords_interior_late": {
+      "bed": "assets/audio/bgm/vol7_shop_signal_bell.wav",
+      "gain": 0.82
+    },
+    "board_lords_interior_late_note": {
       "bed": "assets/audio/bgm/vol7_shop_signal_bell.wav",
       "gain": 0.82
     },

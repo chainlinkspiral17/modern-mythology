@@ -262,6 +262,11 @@
       "t": "narrate"
     },
     {
+      "src": "3d:board_lords_interior_bread",
+      "t": "bg",
+      "transition": "dissolve"
+    },
+    {
       "text": "[shot:insert bread]Hans came in with bread wrapped in the cloth he wrapped Kai's bread in. He set it on the counter. He was wearing his bakery apron and had not taken it off to walk over. There was flour on the apron.",
       "t": "narrate"
     },
@@ -690,7 +695,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert window]The drone over the laundromat had, while he was gone, finished the downspout and was working on the frame around the small window Janet Halfmoon had painted the sanderling onto.",
+      "text": "[shot:insert sanderling]The drone over the laundromat had, while he was gone, finished the downspout and was working on the frame around the small window Janet Halfmoon had painted the sanderling onto.",
       "t": "narrate"
     },
     {

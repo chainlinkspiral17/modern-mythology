@@ -17,7 +17,9 @@ and decide:
 Rows read and kept go in JUDGED below, so a diff shows each judgement. The report lists only
 the unread rows. Report only (not a gate).
 
-    python3 cue_meaning_scan.py [--all]
+    python3 cue_meaning_scan.py [--generic] [--all]
+      --generic: cues on a generic surface (table, door, window ...) whose line
+      names a specific object with its own frame (pass 413)
 """
 import json
 import os
@@ -82,6 +84,90 @@ JUDGED = {
     "vol7_ch6_sunday:7": "KEEP (pass 409 reader, node-cited)",
 }
 
+# --generic: cues on a generic surface (table, door, window ...) whose line names a
+# specific framed object. Pass 413: 98 rows read; 77 stand as cued.
+JUDGED_GENERIC = {
+    "meld_seam_1_2:20": "KEEP (pass 413 reader, node-cited)",
+    "vol1_ch3_bar:6": "KEEP (pass 413 reader, node-cited)",
+    "vol2_ch12_drift_wood_intro:16": "KEEP (pass 413 reader, node-cited)",
+    "vol2_ch3_points_of_impact:34": "KEEP (pass 413 reader, node-cited)",
+    "vol4_curtain_call:29": "KEEP (pass 413 reader, node-cited)",
+    "vol5_ch10_wheel:11": "KEEP (pass 413 reader, node-cited)",
+    "vol5_ch11_justice:48": "KEEP (pass 413 reader, node-cited)",
+    "vol5_ch17_star:107": "KEEP (pass 413 reader, node-cited)",
+    "vol5_ch17_star:109": "KEEP (pass 413 reader, node-cited)",
+    "vol5_ch17_star:30": "KEEP (pass 413 reader, node-cited)",
+    "vol5_ch17_star:60": "KEEP (pass 413 reader, node-cited)",
+    "vol5_ch17_star:87": "KEEP (pass 413 reader, node-cited)",
+    "vol5_ch18_moon:193": "KEEP (pass 413 reader, node-cited)",
+    "vol5_ch20_judgement:87": "KEEP (pass 413 reader, node-cited)",
+    "vol5_ch4_emperor:50": "KEEP (pass 413 reader, node-cited)",
+    "vol5_ch7_chariot:155": "KEEP (pass 413 reader, node-cited)",
+    "vol5_ch7_chariot:79": "KEEP (pass 413 reader, node-cited)",
+    "vol5_ch9_hermit:77": "KEEP (pass 413 reader, node-cited)",
+    "vol6_ch0_prelude:76": "KEEP (pass 413 reader, node-cited)",
+    "vol6_ch10_home:75": "KEEP (pass 413 reader, node-cited)",
+    "vol6_ch11_eileen:134": "KEEP (pass 413 reader, node-cited)",
+    "vol6_ch12_cosmic:226": "KEEP (pass 413 reader, node-cited)",
+    "vol6_ch13_two_a_days:23": "KEEP (pass 413 reader, node-cited)",
+    "vol6_ch13_two_a_days:59": "KEEP (pass 413 reader, node-cited)",
+    "vol6_ch14_live_oak:107": "KEEP (pass 413 reader, node-cited)",
+    "vol6_ch14_live_oak:115": "KEEP (pass 413 reader, node-cited)",
+    "vol6_ch14_substation_nine:51": "KEEP (pass 413 reader, node-cited)",
+    "vol6_ch15_home:16": "KEEP (pass 413 reader, node-cited)",
+    "vol6_ch15_kwik_stop:290": "KEEP (pass 413 reader, node-cited)",
+    "vol6_ch17_porch:6": "KEEP (pass 413 reader, node-cited)",
+    "vol6_ch18_stockroom:92": "KEEP (pass 413 reader, node-cited)",
+    "vol6_ch1_bedroom:9": "KEEP (pass 413 reader, node-cited)",
+    "vol6_ch21_cosmic:132": "KEEP (pass 413 reader, node-cited)",
+    "vol6_ch21_cosmic:92": "KEEP (pass 413 reader, node-cited)",
+    "vol6_ch22_vinton:203": "KEEP (pass 413 reader, node-cited)",
+    "vol6_ch23_sunday:31": "KEEP (pass 413 reader, node-cited)",
+    "vol6_ch2_kwik_stop:33": "KEEP (pass 413 reader, node-cited)",
+    "vol6_ch3_jesse_bedroom:43": "KEEP (pass 413 reader, node-cited)",
+    "vol6_ch3_sam_bedroom:16": "KEEP (pass 413 reader, node-cited)",
+    "vol6_ch4_miller_office:4": "KEEP (pass 413 reader, node-cited)",
+    "vol6_ch4_sam_list:24": "KEEP (pass 413 reader, node-cited)",
+    "vol6_ch5_radio:24": "KEEP (pass 413 reader, node-cited)",
+    "vol6_ch6_kwik_stop_open:21": "KEEP (pass 413 reader, node-cited)",
+    "vol6_ch7_henderson_kitchen:20": "KEEP (pass 413 reader, node-cited)",
+    "vol6_ch7_henderson_kitchen:29": "KEEP (pass 413 reader, node-cited)",
+    "vol6_ch8_kowalski_kitchen:23": "KEEP (pass 413 reader, node-cited)",
+    "vol7_ch12_lena:64": "KEEP (pass 413 reader, node-cited)",
+    "vol7_ch12_morning:126": "KEEP (pass 413 reader, node-cited)",
+    "vol7_ch15_bread:87": "KEEP (pass 413 reader, node-cited)",
+    "vol7_ch15_loft:15": "KEEP (pass 413 reader, node-cited)",
+    "vol7_ch16_aud:104": "KEEP (pass 413 reader, node-cited)",
+    "vol7_ch16_aud:160": "KEEP (pass 413 reader, node-cited)",
+    "vol7_ch17_aria:14": "KEEP (pass 413 reader, node-cited)",
+    "vol7_ch17_dawn:34": "KEEP (pass 413 reader, node-cited)",
+    "vol7_ch17_dawn:37": "KEEP (pass 413 reader, node-cited)",
+    "vol7_ch18_stick:76": "KEEP (pass 413 reader, node-cited)",
+    "vol7_ch19_ring:48": "KEEP (pass 413 reader, node-cited)",
+    "vol7_ch19_ring:64": "KEEP (pass 413 reader, node-cited)",
+    "vol7_ch1_finn:7": "KEEP (pass 413 reader, node-cited)",
+    "vol7_ch1_morning:10": "KEEP (pass 413 reader, node-cited)",
+    "vol7_ch1_morning:14": "KEEP (pass 413 reader, node-cited)",
+    "vol7_ch20_calls:39": "KEEP (pass 413 reader, node-cited)",
+    "vol7_ch20_door:10": "KEEP (pass 413 reader, node-cited)",
+    "vol7_ch21_cabin:38": "KEEP (pass 413 reader, node-cited)",
+    "vol7_ch21_tower:21": "KEEP (pass 413 reader, node-cited)",
+    "vol7_ch21_tower:44": "KEEP (pass 413 reader, node-cited)",
+    "vol7_ch22_portal:9": "KEEP (pass 413 reader, node-cited)",
+    "vol7_ch2_morning:133": "KEEP (pass 413 reader, node-cited)",
+    "vol7_ch3_apartment:14": "KEEP (pass 413 reader, node-cited)",
+    "vol7_ch3_studio:61": "KEEP (pass 413 reader, node-cited)",
+    "vol7_ch4_finn:134": "KEEP (pass 413 reader, node-cited)",
+    "vol7_ch5_roy:67": "KEEP (pass 413 reader, node-cited)",
+    "vol7_ch7_six_oclock:29": "KEEP (pass 413 reader, node-cited)",
+    "vol7_ch8_aria:66": "KEEP (pass 413 reader, node-cited)",
+    "vol7_ch8_monday:12": "KEEP (pass 413 reader, node-cited)",
+    "vol7_ch8_six_oclock:11": "KEEP (pass 413 reader, node-cited)",
+    "vol7_ch9_evening:33": "KEEP (pass 413 reader, node-cited)",
+}
+GENERIC = {"table", "counter", "door", "window", "wall", "room", "desk", "shelf", "floor", "kitchen", "bench",
+           "porch", "yard", "street", "road", "lot", "hall", "doorway", "booth", "bar", "shelves", "stove", "sink"}
+
 
 def words_for(i):
     return {w for w in SYNONYMS.get(i, []) + [i] if len(w) >= 3}
@@ -93,6 +179,8 @@ def has(text, ws):
 
 def main():
     show_all = "--all" in sys.argv
+    generic = "--generic" in sys.argv
+    judged = JUDGED_GENERIC if generic else JUDGED
     p2s = preset_to_scene()
     rows = []
     for dp, _, fs in os.walk(SCENES):
@@ -124,22 +212,30 @@ def main():
                     if mm and mm.group(2) in (None, cur):
                         ids.add(mm.group(1))
                 plain = TAG.sub("", t).lower()
+                key = "%s:%d" % (fn[:-5], k)
+                if generic:
+                    if x not in GENERIC:
+                        continue
+                    alts = sorted(y for y in ids if y != x and y not in GENERIC and has(plain, words_for(y))
+                                  and not (words_for(y) & words_for(x)))
+                    if alts and (show_all or key not in JUDGED_GENERIC):
+                        rows.append((key, cur, x, alts, " ".join(plain[:140].split())))
+                    continue
                 if has(plain, words_for(x)):
                     continue
                 alts = sorted(y for y in ids if y != x and has(plain, words_for(y))
                               and not (words_for(y) & words_for(x)))
                 if not alts:
                     continue
-                key = "%s:%d" % (fn[:-5], k)
                 if key in JUDGED and not show_all:
                     continue
                 rows.append((key, cur, x, alts, " ".join(plain[:140].split())))
     for key, cur, x, alts, txt in rows:
         print("  %s [%s] insert %s · line names %s · %s%s" % (
-            key, cur, x, ",".join(alts), txt, ("   (judged: %s)" % JUDGED[key]) if key in JUDGED else ""))
-    unread = len([r for r in rows if r[0] not in JUDGED])
-    print("cue_meaning_scan · %d unread cue(s) whose line names another framed object (%d judged)"
-          % (unread, len(JUDGED)))
+            key, cur, x, ",".join(alts), txt, ("   (judged: %s)" % judged[key]) if key in judged else ""))
+    unread = len([r for r in rows if r[0] not in judged])
+    print("cue_meaning_scan%s · %d unread cue(s) whose line names another framed object (%d judged)"
+          % (" --generic" if generic else "", unread, len(judged)))
 
 
 if __name__ == "__main__":

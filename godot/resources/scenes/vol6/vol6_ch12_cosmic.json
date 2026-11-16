@@ -1220,7 +1220,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert shelf]The shop, at eight oh-one, has three customers left — two in the back issues, one at the new-arrivals shelf.",
+      "text": "[shot:insert arrivals]The shop, at eight oh-one, has three customers left — two in the back issues, one at the new-arrivals shelf.",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/217.mp3"
     },
     {
