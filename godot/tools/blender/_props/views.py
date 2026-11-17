@@ -59,7 +59,7 @@ def _box(F, name, u, v, z, su, sv, sz, col):
     make_box(name, F.p(u, v, z), F.sz(su, sv, sz), col)
 
 
-def _house(F, pre, u, v, w, d, h, col, door=True, porch_light=False, facing_room=True):
+def _house(F, pre, u, v, w, d, h, col, door=True, porch_light=False, facing_room=True, garage=False):
     """The house across the street / over the fence (draft 2, 2026-10-20).
 
     The Deck: "interiors need more windows, as do exteriors" / "still in the
@@ -83,6 +83,9 @@ def _house(F, pre, u, v, w, d, h, col, door=True, porch_light=False, facing_room
     door_u = u + 0.4
     slots = [u - w / 2.0 + 1.3 + k * 2.1 for k in range(int((w - 2.0) / 2.1) + 1)]
     slots = [su for su in slots if not door or abs(su - door_u) > 1.25]
+    gu = u + w / 2.0 - 1.4                  # (pass 421) the garage at the +u end of the front
+    if garage:
+        slots = [su for su in slots if abs(su - gu) > 1.95]
     shutters = (rnd % 3) == 0
     shutter_col = ((0.20, 0.30, 0.26, 1.0), (0.30, 0.18, 0.16, 1.0), (0.18, 0.22, 0.32, 1.0))[rnd % 3]
     for k, su in enumerate(slots):
@@ -104,6 +107,15 @@ def _house(F, pre, u, v, w, d, h, col, door=True, porch_light=False, facing_room
         _box(F, f"{pre}_Porch_Roof", door_u, v - 0.62, 2.48, 1.9, 1.30, 0.10, ROOF)
         for sg in (-1, 1):
             make_cyl(f"{pre}_Porch_Post_{sg:+d}", F.p(door_u + sg * 0.80, v - 1.12, 1.29), 0.05, 2.30, trim, segments=8)
+    if garage:
+        # an attached garage's door, its header and four panel courses (pass
+        # 421: the houses across had no garage and no drive)
+        gcol = (0.86, 0.84, 0.80, 1.0)
+        _box(F, f"{pre}_Garage_Header", gu, face - 0.01, 2.34, 2.60, 0.05, 0.14, trim)   # under the porch roof's edge (2.43)
+        _box(F, f"{pre}_Garage_Door", gu, face - 0.02, 1.12, 2.40, 0.04, 2.24, gcol)
+        for gi in range(4):
+            _box(F, f"{pre}_Garage_Panel_{gi}", gu, face - 0.045, 0.34 + gi * 0.54, 2.24, 0.01, 0.40,
+                 (0.78, 0.76, 0.72, 1.0))
     if porch_light:
         _box(F, f"{pre}_Porch_Light_Bracket", u + 1.05, face - 0.02, 2.22, 0.06, 0.04, 0.06, (0.20, 0.20, 0.22, 1.0))
         make_cyl(f"{pre}_Porch_Light", F.p(u + 1.05, face - 0.06, 2.10), 0.06, 0.12, (0.98, 0.86, 0.56, 1.0), segments=8)
@@ -164,15 +176,26 @@ def make_view(prefix, side, wall_line, center, kind="back", ground_z=0.0, span=2
         else:
             _box(F, f"{prefix}_Ground_Curb", 0.0, 9.6, gz + 0.04, span, 0.15, 0.12, (0.56, 0.54, 0.50, 1.0))
         _box(F, f"{prefix}_Ground_Street", 0.0, 13.2, gz, span, 7.0, 0.05, ASPHALT)
-        _box(F, f"{prefix}_Ground_Curb_Far", 0.0, 16.8, gz + 0.04, span, 0.15, 0.12, (0.56, 0.54, 0.50, 1.0))
+        # (pass 421) each house across has its garage and its drive, out to
+        # the far walk; the far curb is cut at each (it ran unbroken past
+        # houses that had no way to park)
+        across = (-9.0, 0.5, 10.0)
+        garages = [du + 8.0 / 2.0 - 1.4 for du in across]
+        _curb_run(F, f"{prefix}_Ground_Curb_Far", 16.8, 0.15, gz + 0.04 - 0.06, gz + 0.04 + 0.06, span,
+                  [(gu - 1.75, gu + 1.75) for gu in garages], (0.56, 0.54, 0.50, 1.0), gz + 0.025 + 0.02)
         _box(F, f"{prefix}_Ground_Walk_Far", 0.0, 17.5, gz + 0.01, span, 1.2, 0.05, CONCRETE)
         _box(F, f"{prefix}_Ground_Lawn_Far", 0.0, 22.0, gz, span, 7.8, 0.05, GRASS)
-        for k, du in enumerate((-9.0, 0.5, 10.0)):
-            _house(F, f"{prefix}_House_{k}", du, 24.0, 8.0, 7.0, 3.4, HOUSE_COLS[(k + seed) % 4], porch_light=True)
-            make_cyl(f"{prefix}_House_{k}_Mailbox_Post", F.p(du + 2.6, 18.3, 0.55), 0.05, 1.10, (0.30, 0.30, 0.32, 1.0), segments=6)
-            _box(F, f"{prefix}_House_{k}_Mailbox", du + 2.6, 18.3, 1.18, 0.48, 0.22, 0.24, (0.20, 0.20, 0.22, 1.0))
+        for k, du in enumerate(across):
+            _house(F, f"{prefix}_House_{k}", du, 24.0, 8.0, 7.0, 3.4, HOUSE_COLS[(k + seed) % 4], porch_light=True, garage=True)
+            gu = garages[k]
+            a0, a1 = max(gu - 1.4, -span / 2.0), min(gu + 1.4, span / 2.0)     # the drive, within the street's run
+            if a1 - a0 > 0.5:
+                _box(F, f"{prefix}_House_{k}_Driveway", (a0 + a1) / 2.0, (18.1 + 24.0) / 2.0, gz + 0.015, a1 - a0, 24.0 - 18.1, 0.03, CONCRETE)
+            mu = gu - 1.9                         # the mailbox beside the drive's mouth (it stood where the drive goes)
+            make_cyl(f"{prefix}_House_{k}_Mailbox_Post", F.p(mu, 18.3, 0.55), 0.05, 1.10, (0.30, 0.30, 0.32, 1.0), segments=6)
+            _box(F, f"{prefix}_House_{k}_Mailbox", mu, 18.3, 1.18, 0.48, 0.22, 0.24, (0.20, 0.20, 0.22, 1.0))
             if logo_mailbox:
-                _box(F, f"{prefix}_House_{k}_Mailbox_Logo", du + 2.6, 18.18, 1.18, 0.20, 0.004, 0.08, (0.16, 0.32, 0.56, 1.0))
+                _box(F, f"{prefix}_House_{k}_Mailbox_Logo", mu, 18.18, 1.18, 0.20, 0.004, 0.08, (0.16, 0.32, 0.56, 1.0))
         _tree(F, f"{prefix}_Front_Tree", -4.5, 4.5, h=5.0, r=1.8, seed=seed)
         for k, du in enumerate((-2.0, 2.5)):
             make_cyl(f"{prefix}_Sprinkler_{k}", F.p(du, 3.0, 0.03), 0.03, 0.07, (0.30, 0.32, 0.30, 1.0), segments=6)

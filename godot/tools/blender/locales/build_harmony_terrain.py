@@ -8428,8 +8428,9 @@ def build_commercial_cluster():
                           (lot_x + apron_hw, apron_y0),
                           (lot_x + apron_hw, apron_y1),
                           (lot_x - apron_hw, apron_y1)]:
-            av.append((ax, ay, mesh_z(ax, ay) + 0.045))
+            av.append((ax, ay, mesh_z(ax, ay) + 0.065))     # over the strip walk it crosses (pass 422)
         _finalize_mesh(f"{tag}_Apron", av, [[0, 1, 2, 3]], COL_ROAD)
+        DRIVE_MOUTHS.append((lot_x, apron_y1, apron_hw))     # its curb cut (pass 422)
 
     # ── STREETLIGHTS + BENCHES along the strip sidewalk
     # Six 4 m lamp posts on the south curb of the sidewalk (i.e.
@@ -9720,8 +9721,73 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
                         sg_size, col_sign)
 
 
+# (pass 422) THE CURB CUTS. The residential curbs were laid as flat strips
+# with each road, before its houses — so every drive met an unbroken curb
+# (driveway_audit: 34). The strips are held here and laid in one pass at the
+# end of main(), cut at every drive's mouth that _build_driveway records.
+PENDING_CURBS = []      # (name, verts, color)
+DRIVE_MOUTHS = []       # (x, y, half_width): a drive's end at the road edge
+
+
+def _curb_quad(name, verts, faces, color):
+    PENDING_CURBS.append((name, [tuple(v) for v in verts], color))
+
+
+def _clear_of_mouths(x, y, ux, uy, pad=0.8):
+    """A street-side thing (a tree, a lamp, a mailbox) slid along its street
+    (unit ux, uy) to just past any drive mouth it would stand in (pass 422:
+    the straightened drives ran through two lamps, three street trees and a
+    mailbox). Only drives built before the caller count — the street
+    furniture builders run after the neighbourhoods."""
+    for _ in range(3):
+        moved = False
+        for mx, my, mhw in DRIVE_MOUTHS:
+            r = mhw + pad
+            dx, dy = x - mx, y - my
+            if dx * dx + dy * dy < r * r:
+                along = dx * ux + dy * uy
+                shift = (r if along >= 0.0 else -r) - along
+                x, y = x + ux * shift, y + uy * shift
+                moved = True
+        if not moved:
+            break
+    return x, y
+
+
+def _flush_curbs():
+    """Lay every held curb strip, leaving out its length across each drive
+    mouth (the drive's flare plus 0.3 m a side)."""
+    for name, v, color in PENDING_CURBS:
+        a, b, c, d = v[0], v[1], v[2], v[3]          # inner start, inner end, outer end, outer start
+        ex, ey = b[0] - a[0], b[1] - a[1]
+        L2 = ex * ex + ey * ey
+        L = math.sqrt(L2) or 1.0
+        cuts = []
+        for mx, my, mhw in DRIVE_MOUTHS:
+            t = ((mx - a[0]) * ex + (my - a[1]) * ey) / (L2 or 1.0)
+            dist = abs((mx - a[0]) * ey - (my - a[1]) * ex) / L
+            ht = (mhw + 0.3) / L
+            if dist < 5.0 and -ht < t < 1.0 + ht:      # (a lot's apron can end past the curb line)
+                cuts.append((max(0.0, t - ht), min(1.0, t + ht)))
+        keep, cur = [], 0.0
+        for t0, t1 in sorted(cuts):
+            if t0 > cur + 1e-6:
+                keep.append((cur, t0))
+            cur = max(cur, t1)
+        if cur < 1.0 - 1e-6:
+            keep.append((cur, 1.0))
+        dz = a[2] - mesh_z(a[0], a[1])
+        for k, (t0, t1) in enumerate(keep):
+            pts = []
+            for (p, q), t in (((a, b), t0), ((a, b), t1), ((d, c), t1), ((d, c), t0)):
+                x, y = p[0] + (q[0] - p[0]) * t, p[1] + (q[1] - p[1]) * t
+                pts.append((x, y, mesh_z(x, y) + dz))
+            _finalize_mesh(name if k == 0 else f"{name}_{k}", pts, [[0, 1, 2, 3]], color)
+    PENDING_CURBS.clear()
+
+
 def _build_driveway(name, house_cx, house_cy, ground_z, facing,
-                     curb_x, curb_y, color=(0.18, 0.18, 0.20, 1.0)):
+                     curb_x, curb_y, color=(0.18, 0.18, 0.20, 1.0), reach=1.0, straight=True):
     """Asphalt driveway from the front of a house (garage front)
     to a point on the curb. Computed as a quad from the garage
     apron to the curb point, sampling mesh_z at each corner."""
@@ -9743,6 +9809,29 @@ def _build_driveway(name, house_cx, house_cy, ground_z, facing,
     gar_d = 6.0
     apron_cx = house_cx + perp_x * main_w / 2 + fx * gar_d / 2
     apron_cy = house_cy + perp_y * main_w / 2 + fy * gar_d / 2
+    # (pass 422) STRAIGHT out from the garage along the house's facing, to
+    # the road edge (`reach` past the curb point the caller gives, which is
+    # 0.5 m behind the curb): every drive ran diagonally to the lot's
+    # middle, 4.5 m to one side of its garage, and stopped a metre short of
+    # the road, behind an unbroken curb
+    # (A cul-de-sac lot's drive still runs to its point on the bulb, which
+    # faces the bulb's centre: straight=False — only `reach` further in.)
+    # The road edge is the line through the curb point square to the lot's
+    # axis (house centre -> curb point): the drive runs along the facing
+    # until it meets that line, then `reach` on (a diagonal street meets
+    # an axis-aligned drive at an angle).
+    _nx, _ny = curb_x - house_cx, curb_y - house_cy
+    _nl = math.hypot(_nx, _ny) or 1.0
+    _nx, _ny = _nx / _nl, _ny / _nl
+    _fn = fx * _nx + fy * _ny
+    if straight and _fn > 0.3:
+        t_end = ((curb_x - apron_cx) * _nx + (curb_y - apron_cy) * _ny + reach) / _fn
+        curb_x = apron_cx + fx * t_end
+        curb_y = apron_cy + fy * t_end
+    else:                   # a cul-de-sac lot (or a drive nearly along its street)
+        _d = math.hypot(curb_x - apron_cx, curb_y - apron_cy) or 1.0
+        curb_x += (curb_x - apron_cx) / _d * reach
+        curb_y += (curb_y - apron_cy) / _d * reach
     # Driveway is a 3.5 m wide quad from apron to curb
     dw_w = 3.5
     perp_hw = dw_w / 2
@@ -9771,7 +9860,9 @@ def _build_driveway(name, house_cx, house_cy, ground_z, facing,
          flare_start_y + perp_dy * perp_hw),
         (apron_cx + perp_dx * perp_hw, apron_cy + perp_dy * perp_hw),
     ]
-    main_verts = [(vx, vy, mesh_z(vx, vy) + 0.04)
+    # 2.5 cm over the road and over the walk strip (+0.06) it crosses — it
+    # sat AT road level, under the walk, which hid it short of the street
+    main_verts = [(vx, vy, mesh_z(vx, vy) + 0.065)
                    for (vx, vy) in main_corners]
     _finalize_mesh(f"{name}_Driveway", main_verts, [[0, 1, 2, 3]],
                     color)
@@ -9786,10 +9877,11 @@ def _build_driveway(name, house_cx, house_cy, ground_z, facing,
         (flare_start_x + perp_dx * perp_hw,
          flare_start_y + perp_dy * perp_hw),
     ]
-    flare_verts = [(vx, vy, mesh_z(vx, vy) + 0.04)
+    flare_verts = [(vx, vy, mesh_z(vx, vy) + 0.065)
                     for (vx, vy) in flare_corners]
     _finalize_mesh(f"{name}_DrivewayApron", flare_verts,
                     [[0, 1, 2, 3]], color)
+    DRIVE_MOUTHS.append((curb_x, curb_y, flare_hw))
 
 
 def _face_axis(facing):
@@ -12013,6 +12105,7 @@ def build_arterial_trees():
                     if 1e-6 < d_ < 3.0:
                         tx = kx_ + (tx - kx_) / d_ * 3.0
                         ty = ky_ + (ty - ky_) / d_ * 3.0
+                tx, ty = _clear_of_mouths(tx, ty, dxs / seg_len, dys / seg_len)
                 tz = mesh_z(tx, ty)
                 # Tree variety — cycle 4 species deterministically
                 # so each block has a mix instead of uniform oaks
@@ -12159,6 +12252,7 @@ def build_arterial_lighting():
                 perp_y =  dxs / seg_len
                 lamp_x = mx + side_sgn * perp_x * 3.5
                 lamp_y = my + side_sgn * perp_y * 3.5
+                lamp_x, lamp_y = _clear_of_mouths(lamp_x, lamp_y, dxs / seg_len, dys / seg_len)
                 lz = mesh_z(lamp_x, lamp_y)
                 lamp_h_res = 4.0
                 _make_cyl_local(f"{prefix}Lamp_{int(next_lamp)}",
@@ -12932,6 +13026,7 @@ def build_residential_mailboxes():
                     continue
                 bx = mx + side_sgn * perp_x * mb_offset
                 by = my + side_sgn * perp_y * mb_offset
+                bx, by = _clear_of_mouths(bx, by, dxs / seg_len, dys / seg_len)
                 bz = mesh_z(bx, by)
                 # Deterministic per-position color
                 mb_seed = (int(bx * 11) + int(by * 13)) % 100
@@ -13835,7 +13930,7 @@ def build_ot_park_access_road():
                              (x0 + sgn * perp_x * (hw + curb_w),
                               y0 + sgn * perp_y * (hw + curb_w))]:
                 cv.append((rx, ry, mesh_z(rx, ry) + 0.10))
-            _finalize_mesh(f"OTLink_Curb_{i}_{sgn:+d}", cv,
+            _curb_quad(f"OTLink_Curb_{i}_{sgn:+d}", cv,
                             [[0, 1, 2, 3]], COL_CURB)
     # OT Park visitor parking lot at the road's north end, just
     # south of the beacon
@@ -13891,7 +13986,7 @@ def build_connector_roads():
                                  (x0 + sgn * perp_x * (hw + curb_w),
                                   y0 + sgn * perp_y * (hw + curb_w))]:
                     cv.append((rx, ry, mesh_z(rx, ry) + 0.10))
-                _finalize_mesh(f"{prefix}Curb_{i}_{sgn:+d}", cv,
+                _curb_quad(f"{prefix}Curb_{i}_{sgn:+d}", cv,
                                 [[0, 1, 2, 3]], COL_CURB)
             # 2 yellow dash marks per segment — US convention for
             # an undivided 2-way road's centerline.
@@ -14374,7 +14469,7 @@ def build_district_arterials():
                                  (x0 + sgn * perp_x * (hw + curb_w),
                                   y0 + sgn * perp_y * (hw + curb_w))]:
                     cv.append((rx, ry, mesh_z(rx, ry) + 0.10))
-                _finalize_mesh(f"{prefix}Curb_{i}_{sgn:+d}", cv,
+                _curb_quad(f"{prefix}Curb_{i}_{sgn:+d}", cv,
                                 [[0, 1, 2, 3]], COL_CURB)
                 # Solid white edge line · 0.10 m wide, just inside
                 # the curb. Helps drivers see lane edges at night.
@@ -15611,7 +15706,7 @@ def build_east_cds_neighborhood():
                                  (x0 + sgn * perp_x * (hw + curb_w),
                                   y0 + sgn * perp_y * (hw + curb_w))]:
                     cv.append((rx, ry, mesh_z(rx, ry) + 0.10))
-                _finalize_mesh(f"{prefix}Curb_{i}_{sgn:+d}", cv,
+                _curb_quad(f"{prefix}Curb_{i}_{sgn:+d}", cv,
                                 [[0, 1, 2, 3]], COL_CURB)
 
     # Curving collector — Ridge Crest Dr
@@ -15702,7 +15797,7 @@ def build_east_cds_neighborhood():
         curb_x = cul_x + math.cos(ang_r) * (cul_r + 0.5)
         curb_y = cul_y + math.sin(ang_r) * (cul_r + 0.5)
         _build_driveway(f"ECDS_Cul_House_{k}_Drive", hcx, hcy, hcz,
-                         facing, curb_x, curb_y)
+                         facing, curb_x, curb_y, straight=False)
 
 
 def build_nexcorp_model_home():
@@ -15921,7 +16016,7 @@ def build_nexcorp_model_home():
     # ── DRIVEWAY from garage to the curb (Aspen Street at y=200)
     drive_apron_x = gar_cx
     drive_apron_y = gar_cy - gar_d / 2
-    drive_curb_y = 200 + 3.5     # curb edge of Aspen
+    drive_curb_y = 200 + 3.0     # Aspen's road edge (pass 422: it stopped behind the curb, under the walk)
     drive_w = 5.0
     drive_hw = drive_w / 2
     drive_verts = [
@@ -15934,8 +16029,10 @@ def build_nexcorp_model_home():
         (drive_apron_x - drive_hw, drive_curb_y,
          mesh_z(drive_apron_x - drive_hw, drive_curb_y) + 0.04),
     ]
+    drive_verts = [(x, y, z + 0.025) for (x, y, z) in drive_verts]    # over the walk strip (+0.06)
     _finalize_mesh("ModelHome_Driveway", drive_verts,
                     [[0, 1, 2, 3]], (0.78, 0.76, 0.72, 1.0))
+    DRIVE_MOUTHS.append((drive_apron_x, drive_curb_y, drive_hw))
 
     # ── "MODEL HOME · TOUR SUNDAY" YARD SIGN at the curb
     sign_x = drive_apron_x - drive_hw - 3.0
@@ -16130,7 +16227,7 @@ def build_north_ranch_neighborhood():
                                  (x0 + sgn * perp_x * (hw + curb_w),
                                   y0 + sgn * perp_y * (hw + curb_w))]:
                     cv.append((rx, ry, mesh_z(rx, ry) + 0.10))
-                _finalize_mesh(f"{prefix}Curb_{i}_{sgn:+d}", cv,
+                _curb_quad(f"{prefix}Curb_{i}_{sgn:+d}", cv,
                                 [[0, 1, 2, 3]], COL_CURB)
 
     # Two parallel east-west streets ("Aspen" north + "Birch" south)
@@ -16408,7 +16505,7 @@ def build_west_estates_neighborhood():
                                  (x0 + sgn * perp_x * (hw + curb_w),
                                   y0 + sgn * perp_y * (hw + curb_w))]:
                     cv.append((rx, ry, mesh_z(rx, ry) + 0.10))
-                _finalize_mesh(f"{prefix}Curb_{i}_{sgn:+d}", cv,
+                _curb_quad(f"{prefix}Curb_{i}_{sgn:+d}", cv,
                                 [[0, 1, 2, 3]], COL_CURB)
             mid_x = (x0 + x1) / 2
             mid_y = (y0 + y1) / 2
@@ -16570,7 +16667,7 @@ def build_phase2_neighborhood():
                              (x0 + sgn * perp_x * (hw + curb_w),
                               y0 + sgn * perp_y * (hw + curb_w))]:
                 cv.append((rx, ry, mesh_z(rx, ry) + 0.10))
-            _finalize_mesh(f"P2Curb_{i}_{sgn:+d}", cv, [[0,1,2,3]], COL_CURB)
+            _curb_quad(f"P2Curb_{i}_{sgn:+d}", cv, [[0,1,2,3]], COL_CURB)
         # Centerline dash (one per segment, in the middle)
         mid_x = (x0 + x1) / 2
         mid_y = (y0 + y1) / 2
@@ -16629,7 +16726,7 @@ def build_phase2_neighborhood():
         curb_x = cul_x + math.cos(ang_r) * (cul_r + 0.5)
         curb_y = cul_y + math.sin(ang_r) * (cul_r + 0.5)
         _build_driveway(f"P2_Cul_House_{k}_Drive", hcx, hcy, hcz,
-                         facing, curb_x, curb_y)
+                         facing, curb_x, curb_y, straight=False)
 
     # ── HOUSES placed along the arterial · alternating sides,
     # closer to road (12 m off-road, was 18 m) so the
@@ -18001,6 +18098,7 @@ def main():
     # slabs, and the minimart, the plaza and the storage lot were built after
     # them (the MM clerk stood 4.6 cm inside the minimart's floor)
     build_ambient_npcs()
+    _flush_curbs()          # (pass 422) the held curb strips, cut at the drives
     export_glb()
 
 

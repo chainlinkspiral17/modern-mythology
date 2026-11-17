@@ -210,6 +210,8 @@ def record_builder(path):
         h = (max(0.005, (max(xs) - min(xs)) / 2.0), max(0.005, (max(ys) - min(ys)) / 2.0), max(0.005, (max(zs) - min(zs)) / 2.0))
         A.BOXES.append((str(name), c, h))
         MESH_NAMES.add(str(name))
+        if not A.box_is_shape(verts):          # (pass 422) for the gates that read the cache
+            A.RAW_IMPRECISE.add(str(name))
         return A._obj_stub(name)
 
     if "make_box" in g:

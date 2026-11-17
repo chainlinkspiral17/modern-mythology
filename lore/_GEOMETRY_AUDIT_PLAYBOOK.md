@@ -158,6 +158,24 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-17 · a gate that reads boxes must know which boxes lie (pass 422)
+
+**What happened.** With Harmony's curbs cut and its drives straightened,
+`driveway_audit` still reported 20: drives "sunk" up to 71 mm under the walk
+and curbs "across" drives on the East CDS collector. Every one was a box:
+the walk and drive strips are single quads draped on sloped ground (a box
+spans the whole slope), and the collector runs diagonally (a strip's box
+covers metres of lawn and road). Judging the whole set away would have hidden
+the real ones underneath — there were three (drive ends 15-20 mm under the
+walk, an apron past a second road's curb).
+
+**The rule.** Record which parts' boxes are not their shape
+(`locale_geometry_audit.box_is_shape`; the cache keeps the list,
+`vantage_obstruction_audit.imprecise_for`) and let a box-reading gate skip a
+pair it cannot judge, never a whole set. Then check the parts it skipped
+some other way: Harmony's cuts were verified from the builder's own curb
+pieces (no strip passes any of the 40 mouths).
+
 ### 2026-11-16 · a raw-mesh prop module is invisible until the recorder records its meshes (pass 421)
 
 **What happened.** `_props.streets` builds curbs, walks, drives and lawns

@@ -3835,6 +3835,41 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-17 · pass 422: the street edge, draft 2 — the houses across every window, and Harmony Creek's streets.**
+- **Window views** (`make_view` kind "front": the Chau house, Dean's
+  offices, the Henderson kitchen, Sam's bedroom, the skatepark, Small Wood
+  High, Wagner + Jacob's block, the writer's desk): every house across the
+  street has an attached garage at one end of its front (door, header,
+  panel courses; the windows clear of it), a drive from it to the far walk,
+  and a curb cut in the far curb; the mailboxes moved off the drive mouths
+  to beside them. The houses across had no garage and no drive, behind an
+  unbroken curb.
+- **Harmony Creek's residential streets** (judged off-camera in pass 421;
+  now fixed): the curb strips of all seven road emitters are held
+  (`_curb_quad`) and laid in one pass at the end of main(), cut at every
+  mouth `_build_driveway` records (`_flush_curbs`); drives run straight from
+  the garage along the house's facing to the road edge (intersected with the
+  real edge line, so the diagonal East CDS collector meets them too; the
+  cul-de-sac lots keep their radial drives), 2.5 cm proud so they cross the
+  walk strip instead of vanishing under it. The model home's drive and the
+  commercial cluster's four lot aprons record their mouths too. The street
+  trees, lamps and mailboxes slide along the street out of any drive mouth
+  (`_clear_of_mouths`: two lamps, three trees and a mailbox stood in them).
+  Verified from the builder's own output: 40 mouths, 999 curb pieces, none
+  uncut.
+- Gates: the recorder marks every raw mesh whose box is not its shape (a
+  curve, a diagonal strip, a ribbon on sloped ground; `box_is_shape`), the
+  box cache keeps that list beside it (`<set>.<sig>.raw.json`,
+  `vantage_obstruction_audit.imprecise_for`), and `driveway_audit` does not
+  judge a pair by box when either is in it — Harmony's East CDS findings
+  were diagonal strips' boxes. The gate also reads every builder that calls
+  `make_view`. Harmony's blanket judgement is gone; the set passes on its
+  own.
+- Draft N+1: Harmony's sloped drives can't be judged by box (62 of 70) —
+  a face-reading driveway check, or record ribbons as their own quads; a
+  gutter line along Meadowlark's curb; the Riverfront lot curbs where its
+  aprons enter; harmony_commercial's lot entrances.
+
 **2026-11-16 · pass 421: curbs and driveways (the user: "Curbs and driveways look broken or incomplete"). Draft 1 of the street edge.**
 - NEW `_props/streets.py`: the street edge as ONE path (asphalt edge,
   curb 0.20, walk 1.30, then drive or lawn) for straight runs, fillets and

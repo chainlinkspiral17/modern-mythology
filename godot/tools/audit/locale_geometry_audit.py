@@ -145,19 +145,29 @@ RAW_MESH_MODULES = {"streets"}
 RAW_IMPRECISE = set()
 
 
-def _rec_raw_mesh(name, verts, faces=None, base_color=None, *a, **k):
+def box_is_shape(verts):
+    """A raw mesh's box is its shape when every vertex lies on the box's
+    outline in plan and at its top or its base (a straight level curb, a
+    subdivided rectangular drive) — not a curve, a diagonal strip, a ramp
+    or a ribbon draped on sloped ground."""
     xs = [float(v[0]) for v in verts]; ys = [float(v[1]) for v in verts]; zs = [float(v[2]) for v in verts]
     if not xs:
-        return _obj_stub(name)
-    # exact when every vertex lies on the box's outline in plan and at its
-    # top or its base (a straight curb, a subdivided rectangular drive)
+        return True
     x0, x1, y0, y1, z0, z1 = min(xs), max(xs), min(ys), max(ys), min(zs), max(zs)
     e = 1e-3
     for x, y, z in zip(xs, ys, zs):
         on_plan = abs(x - x0) < e or abs(x - x1) < e or abs(y - y0) < e or abs(y - y1) < e
         if not on_plan or (abs(z - z0) >= e and abs(z - z1) >= e):
-            RAW_IMPRECISE.add(str(name))
-            break
+            return False
+    return True
+
+
+def _rec_raw_mesh(name, verts, faces=None, base_color=None, *a, **k):
+    xs = [float(v[0]) for v in verts]; ys = [float(v[1]) for v in verts]; zs = [float(v[2]) for v in verts]
+    if not xs:
+        return _obj_stub(name)
+    if not box_is_shape(verts):
+        RAW_IMPRECISE.add(str(name))
     BOXES.append((str(name), ((max(xs) + min(xs)) / 2.0, (max(ys) + min(ys)) / 2.0, (max(zs) + min(zs)) / 2.0),
                   (max(0.005, (max(xs) - min(xs)) / 2.0), max(0.005, (max(ys) - min(ys)) / 2.0),
                    max(0.005, (max(zs) - min(zs)) / 2.0))))

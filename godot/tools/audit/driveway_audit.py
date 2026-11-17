@@ -51,24 +51,17 @@ JUDGED = {"%s:%s" % (loc, d): _FRONTAGE
           for loc in ("riverfront", "graustark")
           for d in ("Drive_Lot_apron_-16", "Drive_Lot_apron_16", "Drive_Gas_apron", "Drive_Mall_apron")}
 # whole sets judged, with the reason (a set's every finding)
-JUDGED_SETS = {
-    "harmony_terrain": (
-        "pass 421: 34 findings. The residential streets are flat ribbons on the "
-        "terrain — the road at +0.04, the curb a flat strip at +0.10 with no face, "
-        "the walk at +0.06 laid half over the road edge — and each drive runs "
-        "diagonally from its garage to a point 4.5 m to the side, stopping 0.3 m "
-        "short of the walk. No used view shows them (the set's six presets are "
-        "Highway 9). Draft N+1: defer the seven curb emitters' quads to one pass "
-        "after the houses, cut at each drive's mouth; move the walks out past the "
-        "curb; aim each drive straight from its garage to the road edge"),
-}
+JUDGED_SETS = {}
 
 
 def _ov(a0, a1, b0, b1):
     return min(a1, b1) - max(a0, b0)
 
 
-def findings_for(locale, boxes):
+def findings_for(locale, boxes, imprecise=frozenset()):
+    """imprecise: parts whose box is not their shape (vantage_obstruction_
+    audit.imprecise_for: a curve, a diagonal strip, a ribbon on sloped
+    ground). A pair with one of them is not judged by box."""
     drives = [b for b in boxes if DRIVE.search(b[0]) and not DECAL.search(b[0])]
     walks = [b for b in boxes if WALK.search(b[0]) and not DECAL.search(b[0])]
     curbs = [b for b in boxes if CURB.search(b[0]) and not CURBSTOP.search(b[0]) and not DECAL.search(b[0])]
@@ -78,7 +71,10 @@ def findings_for(locale, boxes):
             continue
         top = c[2] + h[2]
         probs = []
+        loose = n in imprecise
         for wn, wc, wh in walks:
+            if loose or wn in imprecise:
+                continue
             ox = _ov(c[0] - h[0], c[0] + h[0], wc[0] - wh[0], wc[0] + wh[0])
             oy = _ov(c[1] - h[1], c[1] + h[1], wc[1] - wh[1], wc[1] + wh[1])
             if ox > 0.05 and oy > 0.05 and abs(wc[2] - c[2]) < 0.5:
@@ -98,7 +94,9 @@ def findings_for(locale, boxes):
             if ox > 0.0 and oy > 0.0:
                 near.append((cn, cc, ch))
         served = any((cc[2] + ch[2]) - top <= 0.03 and 2.0 * max(ch[0], ch[1]) >= 2.4 for cn, cc, ch in near)
-        for cn, cc, ch in ([] if served else near):
+        for cn, cc, ch in ([] if served or loose else near):
+            if cn in imprecise:
+                continue
             ct = cc[2] + ch[2]
             ox = _ov(c[0] - h[0], c[0] + h[0], cc[0] - ch[0], cc[0] + ch[0])
             oy = _ov(c[1] - h[1], c[1] + h[1], cc[1] - ch[1], cc[1] + ch[1])
@@ -133,17 +131,17 @@ for _lot in ("Lot_NW_KwikStop", "Lot_NE_GasGo", "Lot_SW_Cosmic", "Lot_SE_Damb"):
         "cut the four lots' entrances when the set is next built")
 
 
-def sealed_lots(boxes):
+def sealed_lots(boxes, imprecise=frozenset()):
     """SEALED: a parking lot that touches a road (within 6 m) only through
     curb or raised walk — no stretch of 3 m where the barrier is down —
     and has no open frontage to any road. (Gas & Go and the Kwik Stop
     across Gallatin, pass 421: both lots were walled off from the road.)"""
-    flat = [(n, c, h) for n, c, h in boxes if h[2] <= 0.08]
+    flat = [(n, c, h) for n, c, h in boxes if h[2] <= 0.08 and n not in imprecise]
     lots = [b for b in flat if LOT.search(b[0]) and not DECAL.search(b[0]) and b[2][0] * b[2][1] * 4.0 >= 40.0]
     roads = [b for b in flat if ROAD.search(b[0]) and not NOT_ROAD.search(b[0]) and max(b[2][0], b[2][1]) >= 7.5]
     # a curb cut's own flares (CurbRamp_*) slope down into it: not a barrier
     bars = [b for b in boxes if (CURB.search(b[0]) or WALK.search(b[0])) and not DECAL.search(b[0])
-            and not re.search(r"ramp", b[0], re.I)]
+            and not re.search(r"ramp", b[0], re.I) and b[0] not in imprecise]
     out = []
     for ln, lc, lh in lots:
         ltop = lc[2] + lh[2]
@@ -199,18 +197,20 @@ def main():
         if want and loc not in want:
             continue
         src = open(path, encoding="utf-8", errors="replace").read()
-        if not re.search(r"(?i)drive|apron|(^|_)lot(_|\b)|parking|forecourt", src):
+        # (a window view's street, make_view, lays drives of its own)
+        if not re.search(r"(?i)drive|apron|(^|_)lot(_|\b)|parking|forecourt|make_view\(", src):
             continue
         boxes = V.boxes_for(loc) or []
+        loose = V.imprecise_for(loc)
         sets += 1
-        for ln in sealed_lots(boxes):
+        for ln in sealed_lots(boxes, loose):
             key = "%s:%s" % (loc, ln)
             if key in JUDGED_LOTS or loc in JUDGED_SETS:
                 judged += 1
                 continue
             bad += 1
             print("  %-26s %-36s SEALED: no way in from its road (curb or raised walk the whole frontage)" % (loc, ln[:36]))
-        for n, probs in findings_for(loc, boxes):
+        for n, probs in findings_for(loc, boxes, loose):
             key = "%s:%s" % (loc, n)
             if key in JUDGED or loc in JUDGED_SETS:
                 judged += 1

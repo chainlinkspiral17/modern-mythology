@@ -252,6 +252,37 @@ def _builder_sig(path):
     return _shared_sig + _sig_files(deps)
 
 
+_imprecise = {}
+
+
+def imprecise_for(locale):
+    """The recorded parts of `locale` whose box is not their shape — the
+    clipping and contact gates should not judge them by box. Re-records a
+    set whose cache predates the list."""
+    if locale in _imprecise:
+        return _imprecise[locale]
+    import json as _j
+    import hashlib
+    for cand in (os.path.join(P.A.LOCALES, "build_%s.py" % locale),
+                 os.path.join(BLENDER_ALT, "build_%s.py" % locale)):
+        if os.path.exists(cand):
+            sig = hashlib.sha1(_builder_sig(cand).encode()).hexdigest()
+            cf = os.path.join(DISK_CACHE, "%s.%s.json" % (locale, sig[:16]))
+            rf = cf[:-5] + ".raw.json"
+            if os.path.exists(rf):
+                try:
+                    _imprecise[locale] = set(_j.load(open(rf)))
+                    return _imprecise[locale]
+                except Exception:
+                    pass
+            if os.path.exists(cf):
+                os.remove(cf)
+            _cache.pop(locale, None)
+            boxes_for(locale)
+            return _imprecise.get(locale, set())
+    return set()
+
+
 def boxes_for(locale):
     if locale in _cache:
         return _cache[locale]
@@ -277,15 +308,20 @@ def boxes_for(locale):
                 P.A.install_stubs()
             bx, _err = P.record_builder(cand)
             _cache[locale] = bx or []
+            names = {n for n, _c, _h in (bx or [])}
+            _imprecise[locale] = set(P.A.RAW_IMPRECISE) & names
             if bx:
                 try:
                     os.makedirs(DISK_CACHE, exist_ok=True)
                     for old_f in os.listdir(DISK_CACHE):
-                        if old_f.startswith(locale + ".") and old_f.count(".") == 2:
+                        if old_f.startswith(locale + ".") and (old_f.count(".") == 2 or old_f.endswith(".raw.json")):
                             os.remove(os.path.join(DISK_CACHE, old_f))
                     tmp = cf + ".tmp"
                     _j.dump([[n, list(c), list(h)] for n, c, h in bx], open(tmp, "w"))
                     os.replace(tmp, cf)
+                    # (pass 422) the parts whose box is not their shape (a
+                    # curve, a diagonal strip, a ribbon on sloped ground)
+                    _j.dump(sorted(_imprecise[locale]), open(cf[:-5] + ".raw.json", "w"))
                 except OSError:
                     pass
             return _cache[locale]
