@@ -451,7 +451,7 @@ metadata/fov = 45.0
 ; insert: the table
 [node name="shot_insert_table" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.600, 1.450, -2.400)
-rotation = Vector3(-0.7080, -0.4375, 0.0)
+rotation = Vector3(-0.4590, -0.7668, 0.0)
 metadata/fov = 45.0
 
 ; insert: the fridge and its papers

@@ -545,13 +545,13 @@ metadata/fov = 42.0
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_couch__lena_apartment_night" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.623, 0.965, -2.469)
-rotation = Vector3(-0.2899, -0.1914, 0.0)
+rotation = Vector3(-0.2240, -0.0061, 0.0)
 metadata/fov = 35.0
 
 ; (view_twin) lena_apartment_night's frame in lena_apartment_night_ch10
 [node name="shot_insert_couch__lena_apartment_night_ch10" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.623, 0.965, -2.469)
-rotation = Vector3(-0.2899, -0.1914, 0.0)
+rotation = Vector3(-0.2240, -0.0061, 0.0)
 metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
@@ -700,19 +700,19 @@ metadata/fov = 35.0
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_couch__lena_apartment" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.623, 0.965, -2.469)
-rotation = Vector3(-0.2899, -0.1914, 0.0)
+rotation = Vector3(-0.2240, -0.0061, 0.0)
 metadata/fov = 35.0
 
 ; (pass 403) the older ch7 six o'clock file plays on the supper view
 [node name="shot_insert_couch__lena_apartment_supper" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.623, 0.965, -2.469)
-rotation = Vector3(-0.2899, -0.1914, 0.0)
+rotation = Vector3(-0.2240, -0.0061, 0.0)
 metadata/fov = 35.0
 
 ; (view_twin) lena_apartment's frame in lena_apartment_ch8
 [node name="shot_insert_couch__lena_apartment_ch8" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.623, 0.965, -2.469)
-rotation = Vector3(-0.2899, -0.1914, 0.0)
+rotation = Vector3(-0.2240, -0.0061, 0.0)
 metadata/fov = 35.0
 
 [node name="shot_insert_kettle__lena_apartment" type="Marker3D" parent="." groups=["vn_shot"]]

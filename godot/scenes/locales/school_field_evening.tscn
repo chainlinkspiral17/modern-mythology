@@ -416,7 +416,7 @@ metadata/fov = 34.0
 ; insert: the home stands behind the home bench, the press box on top (draft 5: the stands moved east)
 [node name="shot_insert_bleachers" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(22.384, 1.700, -33.864)
-rotation = Vector3(-0.1707, -0.4845, 0.0)
+rotation = Vector3(-0.0819, -0.3069, 0.0)
 metadata/fov = 46.0
 
 ; insert: the Vinton bus pulling into the lot, from across it (it looked down at a wheel)
@@ -605,7 +605,7 @@ metadata/fov = 45.0
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_chair__school_field_evening" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(31.130, 1.475, -45.613)
-rotation = Vector3(-0.2618, -1.7909, 0.0)
+rotation = Vector3(-0.0869, -1.7790, 0.0)
 metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it

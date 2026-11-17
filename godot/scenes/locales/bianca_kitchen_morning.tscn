@@ -489,7 +489,7 @@ metadata/fov = 35.0
 
 [node name="shot_insert_table__bianca_kitchen_morning" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(3.692, 1.302, -5.548)
-rotation = Vector3(-0.3162, 2.8215, 0.0)
+rotation = Vector3(-0.2280, 2.6619, 0.0)
 metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
@@ -501,6 +501,6 @@ metadata/fov = 35.0
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_table__bianca_kitchen_day" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(3.692, 1.302, -5.548)
-rotation = Vector3(-0.3162, 2.8215, 0.0)
+rotation = Vector3(-0.2280, 2.6619, 0.0)
 metadata/fov = 35.0
 

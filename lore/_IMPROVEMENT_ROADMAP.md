@@ -3835,6 +3835,33 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-17 · pass 428: a thing's legs are not the thing (the aim gate's subject).**
+- The aim gate (and marker_reaim, text_focus_pass) finds a frame's subject as
+  the cluster of parts named for the cue. Its note always said a thing's
+  "poles, posts, legs, bases and brackets are not the subject", but its
+  SUPPORT_WORDS lacked leg/legs/foot/feet: a table's, bench's, bed's, cot's,
+  chair's or desk's legs were half its subject, and the re-aim tool had
+  aimed 22 frames at the floor under them. Read by render, before and
+  after: the overlook bench (the frame looked down at its legs, the seat cut
+  off at the top), Diego's cot (a leg on the floor), Bianca's kitchen table
+  (its legs centred, the top pushed up), the Hans bakery's communal table
+  (all three of its frames looked at the PENDANT LAMPS over it — the table
+  out of frame), the couches, beds, desks, stools, chairs, bleachers.
+- Added: leg/legs/foot/feet as supports; `"table": ["pendant", "lamp"]` in
+  the cue exclusions (the lamp over a table is not the table — with its legs
+  gone, Bianca's table's pendant pulled its subject 13° up, onto the coffee
+  table 9 m away). The 22 frames, and the bakery's three, re-aimed one by
+  one (marker_reaim --tight reaches every insert of a set: eight more it
+  turned, among them the Millers' coffee frame onto the coffee table's
+  remote and the field's bus onto a wheel, were put back).
+- Houston, vol5 ch11 n146 "The desk clerk waved him to the elevator" (a
+  lobby three blocks away) cut to Natalie's own desk: the cue moves to n141,
+  "a different desk than the one she had been sitting at all morning".
+- The pharmacy floor's copy of the office desk frame, cued by nothing, could
+  not see past the office chair from any lens near it: deleted.
+- Rendered (21 lines, before and after); aim gate 0 misaims across 1,9xx
+  frames; obstruction, orphan, cue-meaning at zero / ceiling.
+
 **2026-11-17 · pass 427: the all-night drugstore's reception desk, and the gray cat (vol1 ch11).**
 - "Behind the front counter, where Deborah should be, there's a reception
   desk. Olivia is behind it, the secretary from the tutorial, in the same

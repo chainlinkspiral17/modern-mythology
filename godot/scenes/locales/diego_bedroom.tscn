@@ -361,7 +361,7 @@ metadata/fov = 45.0
 
 [node name="shot_insert_bed" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.450, 1.300, -1.900)
-rotation = Vector3(-0.6850, 0.6486, 0.0)
+rotation = Vector3(-0.4635, 0.9327, 0.0)
 metadata/fov = 45.0
 
 [node name="shot_insert_glass" type="Marker3D" parent="." groups=["vn_shot"]]

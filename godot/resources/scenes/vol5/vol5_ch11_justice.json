@@ -739,7 +739,7 @@
     },
     {
       "t": "narrate",
-      "text": "She had a feeling, a small unfamiliar feeling at the back of her throat, that she would listen to it from a different desk than the one she had been sitting at all morning.",
+      "text": "[shot:insert desk]She had a feeling, a small unfamiliar feeling at the back of her throat, that she would listen to it from a different desk than the one she had been sitting at all morning.",
       "voice": "assets/audio/voice/vol5_ch11_justice/141.mp3"
     },
     {
@@ -764,7 +764,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert desk]He stubbed the cigarette out. He went inside. The desk clerk waved him to the elevator.",
+      "text": "He stubbed the cigarette out. He went inside. The desk clerk waved him to the elevator.",
       "voice": "assets/audio/voice/vol5_ch11_justice/146.mp3"
     },
     {

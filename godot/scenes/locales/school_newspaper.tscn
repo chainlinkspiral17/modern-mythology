@@ -385,7 +385,7 @@ metadata/fov = 52.0
 ; insert: the layout island from above — the paste-up, the waxer, the rule
 [node name="shot_insert_desk" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.950, 1.800, -3.550)
-rotation = Vector3(-1.0188, 0.1853, 0.0)
+rotation = Vector3(-0.7921, 0.1419, 0.0)
 metadata/fov = 45.0
 
 ; insert: a paste-up page, its columns waxed down

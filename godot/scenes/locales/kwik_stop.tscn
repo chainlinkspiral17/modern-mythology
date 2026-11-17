@@ -614,7 +614,7 @@ metadata/fov = 45.0
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_table__kwik_stop_hood" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-1.606, 0.825, -1.421)
-rotation = Vector3(-0.3419, 1.8722, 0.0)
+rotation = Vector3(-0.0679, 1.8721, 0.0)
 metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it

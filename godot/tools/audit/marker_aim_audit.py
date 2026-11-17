@@ -182,7 +182,10 @@ def geometry_godot(locale):
     return out
 
 
-SUPPORT_WORDS = {"pole", "poles", "post", "posts", "pylon", "bracket", "brackets", "pedestal", "footing"}
+# (pass 428) legs and feet too, as the note below always said: Lena's kitchen
+# table's four feet on the floor dragged its subject 0.6 m down (pass 426)
+SUPPORT_WORDS = {"pole", "poles", "post", "posts", "pylon", "bracket", "brackets", "pedestal", "footing",
+                 "leg", "legs", "foot", "feet"}
 
 
 def matches_for(cue_id, geo):

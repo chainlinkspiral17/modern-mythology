@@ -158,6 +158,20 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-17 · a subject's legs pull a frame to the floor (pass 428)
+**What happened:** the aim gate's subject for a table, bench, bed or desk was
+the cluster of every part named for it — legs and feet included — so the
+re-aim tool had aimed 22 frames between the tabletop and the floor (the
+overlook bench's frame looked at its legs). Taking the legs out exposed the
+next pull: a table's pendant lamp (`Table_Pendant_*`) lifted its subject onto
+another table 9 m away, and the bakery's three table frames had been aimed at
+the pendants all along.
+**Rule:** a cue's subject is the thing's body: its legs, feet, posts and the
+lamp hanging over it are not (SUPPORT_WORDS, EXCLUDE). When the subject rule
+changes, re-aim only the frames the gate now fails and put back everything
+else marker_reaim --tight touches in those sets.
+**Where it lives:** marker_aim_audit SUPPORT_WORDS; shot_marker_audit EXCLUDE.
+
 ### 2026-11-17 · a part's name decides what its cue frames (pass 427)
 **What happened:** the drugstore's new reception desk was one family of
 `Purg_Reception_Counter_*` parts. The counter frame's subject became the
