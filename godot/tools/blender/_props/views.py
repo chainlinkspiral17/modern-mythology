@@ -160,7 +160,7 @@ def _mouths(drives):
 
 
 def make_view(prefix, side, wall_line, center, kind="back", ground_z=0.0, span=24.0, seed=0, logo_mailbox=False,
-              drives=()):
+              drives=(), parked=(-4.0, 5.0)):
     """drives (kind 'front' / 'street'): where the near curb is cut — u of
     each driveway's centre, or (u, half-width) for a lot's entrance (the
     drive itself is the builder's: a house's runs to the walk's back edge
@@ -237,7 +237,9 @@ def make_view(prefix, side, wall_line, center, kind="back", ground_z=0.0, span=2
             _box(F, f"{prefix}_Facade_{k}", du, 15.0, 2.4, 7.8, 4.0, 4.8, col)
             _box(F, f"{prefix}_Facade_{k}_Glass", du, 12.98, 1.5, 5.0, 0.04, 1.8, (0.26, 0.32, 0.36, 1.0))
             _box(F, f"{prefix}_Facade_{k}_Sign", du, 12.96, 3.6, 4.0, 0.06, 0.6, ((0.70, 0.20, 0.16, 1.0), (0.20, 0.36, 0.56, 1.0), (0.86, 0.66, 0.24, 1.0))[(k + seed) % 3])
-        for k, du in enumerate((-4.0, 5.0)):
+        # parked (kind 'street', pass 425): u of the two parked cars' centres —
+        # Lena's street opens the space under her window for Finn's truck
+        for k, du in enumerate(parked):
             _box(F, f"{prefix}_Parked_Car_{k}_Body", du, 3.6, 0.62, 4.2, 1.7, 0.60, ((0.62, 0.64, 0.66, 1.0), (0.40, 0.18, 0.16, 1.0))[k])
             _box(F, f"{prefix}_Parked_Car_{k}_Cabin", du - 0.2, 3.6, 1.12, 2.2, 1.5, 0.42, (0.24, 0.28, 0.30, 1.0))
             for e, (wu, wv) in enumerate(((-1.4, -0.86), (1.4, -0.86), (-1.4, 0.86), (1.4, 0.86))):

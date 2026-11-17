@@ -646,3 +646,11 @@ metadata/fov = 35.0
 position = Vector3(5.837, 1.661, -2.214)
 rotation = Vector3(-0.3671, 0.8543, 0.0)
 metadata/fov = 35.0
+
+; (pass 425) "the actual clock, the one on the wall by the office door" (vol 6 ch6, ch15): the
+; clock over the stockroom shelf beside the office doorway, the doorway's light below it — two
+; cues had cut to the front door
+[node name="shot_insert_clock" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.200, 1.750, -6.400)
+rotation = Vector3(0.0655, -1.0749, 0.0)
+metadata/fov = 30.0

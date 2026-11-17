@@ -158,6 +158,23 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-17 · a word in the line is not the thing in the frame (pass 425)
+**What happened:** the text pass cued `insert door` on every line naming a
+door; thirteen named a door the frame does not show (a garage door heard from
+a car's back seat, a front door from the back office, "the clock by the
+office door"). Dropping one of those cues left its frame cued by nothing, and
+the orphan gate went one over its ceiling. The cue-meaning scan also flagged
+a correct new cue: "Don's porch" did not match `dons_porch`.
+**Rule:** read a generic-surface cue (door, window, table) for WHICH one the
+line means, and which the frame shows — the head noun, its possessor, the
+room. When dropping a cue orphans the frame authored for it, delete the frame
+(the orphan gate names it). Text matchers fold possessives (`'s` → `s`).
+Never name a prop for a cast member (`Finn_Truck`): the aim gate matches a
+portrait close-up (`shot_closeup_finn`) to any part whose name holds the name,
+and judged Finn's close-up against his truck's wheel. Name it for its place
+(`Hemlock_Truck`).
+**Where it lives:** the pass 425 roadmap entry; `cue_meaning_scan.has()`.
+
 ### 2026-11-17 · tagging a part takes it out of the merge; the re-aim tool knows no views (pass 423)
 
 **What happened.** Hiding the cabin's sill crow from three views meant

@@ -3835,6 +3835,48 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-17 · pass 425: "insert door" read for what the line means (text_focus class).**
+- The text pass (2026-10-27) cued `[shot:insert door]` on any line naming a
+  door. Read line by line, thirteen were another door than the frame shows:
+  - DROPPED (nine; the room's own view carries the line, no frame shows that
+    door): vol3 ch8_passengers n25 (his garage door heard from the back seat,
+    the frame was the car's door — that frame now cued by nothing, deleted),
+    vol5 ch4_emperor n49 ("did not go through the front door"), ch6_lovers
+    n68 (a knock at the front; the kitchen frame is the back screen door),
+    vol6 ch12_porch n94/n97 and ch21_porch n82 (front door / grandmother's
+    bedroom door, cut to Maya's switch), ch2_maya_bedroom n20, ch9_room n60
+    (a remembered front door, the frame the cell door), ch21_cosmic n147
+    (the shop's front chain, seen from the back office).
+  - RETARGETED to new frames: Cosmic's back-office doorway
+    (`shot_insert_office_door`, ch12_cosmic n66 "Maya, at the back-office
+    door", ch21_cosmic n56 "The back-office door is open"); the Kwik Stop's
+    "actual clock … by the office door" (`shot_insert_clock` on the clock
+    beside the office doorway, not the front wall's — ch15 n7, ch6_open n21;
+    its judged-keep entry removed); Roy's bowl from the wooden box
+    (`shot_insert_bowl__cabin_interior_four`, ch19_roy n80 — the plain
+    bowl frame looks at Marit's).
+  - Lena's supper table frame looked at the living room's side table; every
+    supper cue is the kitchen table ("the small kitchen table", "The four
+    chairs were not a matched set") — re-aimed from the kitchen's corner.
+  - Lena's front window (vol7 ch8_six_oclock n11: "She went to the front
+    window and looked down. Three of them got out", after "she heard Finn's
+    truck on Hemlock") cut to the KITCHEN window over the alley (the pass
+    413 judged-keep was wrong: Hemlock is the street, the alley is behind).
+    Built: Finn's truck at the near curb under the front window, in his
+    colours, nose with the traffic, the crow on the cab roof ("The crow had
+    stayed at the truck", n12), tagged la_coats4 (arrival, supper, the night
+    they stay); `shot_insert_truck__lena_apartment_ch8` looks down through
+    the window's right pane. Named `Hemlock_Truck`: a part named for Finn
+    was judged as his portrait close-up's subject. Kit: make_car(along="-X");
+    make_view(parked=…) moves a street view's two parked cars (default
+    unchanged) — the truck had been wedged bumper to bumper.
+- cue_meaning_scan: a possessive is the word ("Don's porch" names
+  `dons_porch`). All rendered; aim, obstruction, orphan, cue-meaning gates
+  at zero / ceiling. Deck must REBUILD lena_apartment.
+- Draft N+1: the same read for `insert window` and `insert table` cues on
+  generic surfaces (cue_meaning_scan --generic is judged at 76 — re-read
+  the judged list with the renders, not the text alone).
+
 **2026-11-17 · pass 424: Don's porch, across the cul-de-sac (Bianca's back porch).**
 - Bianca's Saturday (vol6 ch22_bianca): "Don's porch, across the cul-de-sac,
   in the morning light" (n131), "Don's porch is, by nine twenty-two, in full

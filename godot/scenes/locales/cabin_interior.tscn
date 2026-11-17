@@ -1382,3 +1382,10 @@ metadata/fov = 35.0
 position = Vector3(0.454, 1.125, -3.398)
 rotation = Vector3(-0.5236, -0.4882, 0.0)
 metadata/fov = 35.0
+
+; (pass 425) "He took out the bowl. Cedar. The spiral on the outside." (vol 7 ch19_roy n80): Olaus's
+; bowl, the nearest of the four, from Roy's side of the table — the plain bowl frame looks at Marit's
+[node name="shot_insert_bowl__cabin_interior_four" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.300, 1.200, -3.050)
+rotation = Vector3(-0.4735, -0.4845, 0.0)
+metadata/fov = 38.0

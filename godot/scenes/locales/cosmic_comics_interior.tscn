@@ -803,3 +803,10 @@ metadata/fov = 40.0
 position = Vector3(-0.376, 0.787, 4.231)
 rotation = Vector3(-0.2618, 1.1868, 0.0)
 metadata/fov = 35.0
+
+; (pass 425) "Maya, at the back-office door" (vol 6 ch12) / "The back-office door is open" (ch21):
+; from the shop floor past the register, the open office doorway — both cues had cut to the front door
+[node name="shot_insert_office_door" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.100, 1.620, -4.000)
+rotation = Vector3(-0.1386, -0.1536, 0.0)
+metadata/fov = 40.0

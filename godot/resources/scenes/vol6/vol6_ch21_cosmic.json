@@ -313,7 +313,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert door]The wanderer is at the doorway of the back office. The back-office door is open. She has been, all morning, going in and out for things and has not, since opening, closed it.",
+      "text": "[shot:insert office_door]The wanderer is at the doorway of the back office. The back-office door is open. She has been, all morning, going in and out for things and has not, since opening, closed it.",
       "voice": "assets/audio/voice/vol6_ch21_cosmic/056.mp3"
     },
     {
@@ -827,7 +827,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert door]She locks the back-office door behind her. She texts Rick.",
+      "text": "She locks the back-office door behind her. She texts Rick.",
       "voice": "assets/audio/voice/vol6_ch21_cosmic/147.mp3"
     },
     {

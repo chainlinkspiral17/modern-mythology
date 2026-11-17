@@ -640,11 +640,13 @@ position = Vector3(1.390, 0.650, -0.296)
 rotation = Vector3(-0.2618, -0.2663, 0.0)
 metadata/fov = 35.0
 
-; (view_twin) lena_apartment's frame in lena_apartment_supper
+; (pass 425) every supper cue is the kitchen table ("Kai brought the soup to the small kitchen
+; table", "The four chairs were not a matched set"): from the kitchen's south-east corner over it,
+; the counter and fridge behind — this frame had looked at the living room's side table
 [node name="shot_insert_table__lena_apartment_supper" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.390, 0.650, -0.296)
-rotation = Vector3(-0.2618, -0.2663, 0.0)
-metadata/fov = 35.0
+position = Vector3(-0.250, 1.550, -0.350)
+rotation = Vector3(-0.5156, 0.6759, 0.0)
+metadata/fov = 42.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 ; (pass 403) "She made the coffee": the pour-over cone on the counter (the
@@ -720,3 +722,12 @@ metadata/fov = 35.0
 position = Vector3(-2.157, 1.263, -0.414)
 rotation = Vector3(-0.2618, 1.6489, 0.0)
 metadata/fov = 35.0
+
+; (pass 425) "She went to the front window and looked down. Three of them got out" (vol 7 ch8_six_oclock
+; n11), after "she heard Finn's truck on Hemlock" (n10): down through the front window's right pane onto
+; Finn's truck at the near curb, the crow on the cab roof ("The crow had stayed at the truck", n12) —
+; the cue had cut to the kitchen window over the alley
+[node name="shot_insert_truck__lena_apartment_ch8" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.250, 1.620, -0.620)
+rotation = Vector3(-0.7185, 3.0592, 0.0)
+metadata/fov = 40.0

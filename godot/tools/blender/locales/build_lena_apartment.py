@@ -988,6 +988,34 @@ def build_draft8_2026_11():
     study("Study_Swatches", (ex, 1.98, 1.52), 0.22, 0.30, "-x", (0.62, 0.32, 0.42, 1.0))
 
 
+def build_finn_truck_hemlock_2026_11():
+    """FINN'S TRUCK ON HEMLOCK (pass 425). vol7 ch8_six_oclock: "At
+    five-forty-eight she heard Finn's truck on Hemlock" (n10); "She went to
+    the front window and looked down. Three of them got out" (n11); "The crow
+    was, this time, not on Finn's shoulder. The crow had stayed at the truck"
+    (n12). The street the front window looks down on had two box cars and a
+    gap; the truck now stands in the gap below the window, at the near curb
+    nose-first with the traffic, in Finn's colours (cabin_road's older
+    Toyota), the crow on its cab roof — while the three are here
+    (la_coats4: the arrival, supper, the night they stay). Named Hemlock_Truck:
+    a part named for Finn is judged as his portrait's subject (marker_aim)."""
+    from _props import vehicles as _veh
+    from _props import creatures as _cr
+    from _props.view_tags import Views
+    from _props.geometry import join_prefix
+    finn_red = (0.50, 0.24, 0.20, 1.0)        # build_cabin_road.FINN_RED
+    tx, ty, gz = 1.50, -3.62, -3.20           # under the front window; Hemlock's asphalt top
+    V = Views("la", {"c": "la_coats4"})
+    with V.tagged("c", _veh, _cr):
+        # the near curb's face at y -2.52: the tires 4 cm off it
+        _veh.make_car("Hemlock_Truck", tx, ty, 4.40, finn_red, pickup=True, along="-X", z0=gz)
+        # on the cab roof (nose at -x: the cab's roof spans u 2.2-3.35 .. 2.2-2.40)
+        _cr.make_crow("Truck_Crow", tx + 0.68, ty + 0.10, gz + 1.70, facing=1.0)
+    V.check()
+    join_prefix("Hemlock_Truck")
+    join_prefix("Truck_Crow")
+
+
 def main():
     clear_scene()
     build_shell()
@@ -1002,8 +1030,10 @@ def main():
     build_hero_props_2026_09()
     build_draft4_2026_09()
     build_draft8_2026_11()
+    build_finn_truck_hemlock_2026_11()
     # what is outside the window (2026-10-07, _props/views.py)
-    make_view("View_S", "S", 0.0, 2.00, kind="street", ground_z=-3.2, seed=11)   # Hemlock, one floor down
+    make_view("View_S", "S", 0.0, 2.00, kind="street", ground_z=-3.2, seed=11,   # Hemlock, one floor down
+              parked=(-4.6, 5.4))     # (pass 425) the space under the window: Finn's truck (la_coats4)
     make_view("View_N", "N", ROOM_D, 1.55, kind="back", ground_z=-3.2, seed=6)       # (2026-10-21) the back of the block
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/lena_apartment.glb"))

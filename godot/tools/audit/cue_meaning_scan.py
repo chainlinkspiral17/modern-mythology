@@ -83,6 +83,7 @@ JUDGED = {
     "vol7_ch21_cabin:27": "KEEP (pass 409 reader, node-cited)",
     "vol7_ch22_portal:68": "KEEP (pass 409 reader, node-cited)",
     "vol7_ch6_sunday:7": "KEEP (pass 409 reader, node-cited)",
+    "vol7_ch8_six_oclock:11": "KEEP (pass 425): she looks DOWN from the front window — the frame is through it, on Finn's truck (n10)",
 }
 
 # --generic: cues on a generic surface (table, door, window ...) whose line names a
@@ -130,7 +131,6 @@ JUDGED_GENERIC = {
     "vol6_ch4_miller_office:4": "KEEP (pass 413 reader, node-cited)",
     "vol6_ch4_sam_list:24": "KEEP (pass 413 reader, node-cited)",
     "vol6_ch5_radio:24": "KEEP (pass 413 reader, node-cited)",
-    "vol6_ch6_kwik_stop_open:21": "KEEP (pass 413 reader, node-cited)",
     "vol6_ch7_henderson_kitchen:20": "KEEP (pass 413 reader, node-cited)",
     "vol6_ch7_henderson_kitchen:29": "KEEP (pass 413 reader, node-cited)",
     "vol6_ch8_kowalski_kitchen:23": "KEEP (pass 413 reader, node-cited)",
@@ -163,7 +163,6 @@ JUDGED_GENERIC = {
     "vol7_ch7_six_oclock:29": "KEEP (pass 413 reader, node-cited)",
     "vol7_ch8_aria:66": "KEEP (pass 413 reader, node-cited)",
     "vol7_ch8_monday:12": "KEEP (pass 413 reader, node-cited)",
-    "vol7_ch8_six_oclock:11": "KEEP (pass 413 reader, node-cited)",
     "vol7_ch9_evening:33": "KEEP (pass 413 reader, node-cited)",
 }
 GENERIC = {"table", "counter", "door", "window", "wall", "room", "desk", "shelf", "floor", "kitchen", "bench",
@@ -175,6 +174,8 @@ def words_for(i):
 
 
 def has(text, ws):
+    # (pass 425) a possessive is the word: "don's porch" names dons_porch
+    text = re.sub(r"['\u2019]s\b", "s", text)
     return any(re.search(r"\b%s(s|es)?\b" % re.escape(w).replace("_", r"[-\s]?"), text) for w in ws)
 
 

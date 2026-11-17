@@ -16,7 +16,7 @@ bumper step; hatches a fastback profile; the light bar stays.
              light_bar=False, along="X", z0=0.0, glass_col=None)
 
 `along` is the axis the car's length runs on ("X" or "Y"); the nose
-is toward +axis. `z0` is the ground the wheels stand on. Names keep
+is toward +axis ("-X" / "-Y": toward -axis). `z0` is the ground the wheels stand on. Names keep
 the DRAFT 1 parts (Body, Cabin→now part of the Body profile but a
 "Cabin" glass band remains, Windshield, Rear_Glass, Side_Glass_L/R,
 Wheel_0..3) so every existing marker and synonym still lands.
@@ -41,6 +41,12 @@ def _frame(cx, cy, along):
         def P(u, v, z): return (cx + u, cy + v, z)
         def S(l, w, h): return (l, w, h)
         return P, S, "Y", "Y"
+    # (pass 425) "-X": along X with the nose toward -x (Finn's truck at the
+    # near curb of Hemlock, parked with the traffic)
+    if along == "-X":
+        def P(u, v, z): return (cx - u, cy - v, z)
+        def S(l, w, h): return (l, w, h)
+        return P, S, "Y", "Y"
     def P(u, v, z): return (cx + v, cy + u, z)
     def S(l, w, h): return (w, l, h)
     return P, S, "X", "X"
@@ -51,7 +57,7 @@ def _wheel(prefix, P, cx, cy, u, v, z0, along, r=0.33, w=0.24):
     # the lathe revolves about Z; a wheel needs its axis across the
     # car, so it is built as a short cylinder stack instead: tire
     # (rubber), a slightly narrower shoulder, the dished rim, the hub.
-    axis = "Y" if along == "X" else "X"
+    axis = "Y" if along in ("X", "-X") else "X"
     make_cyl(f"{prefix}_Tire", P(u, v, z0 + r), r, w, RUBBER, axis=axis, segments=14)
     off = (w / 2.0 + 0.004) * (1 if v > 0 else -1)
     make_cyl(f"{prefix}_Rim", P(u, v + off, z0 + r), r * 0.62, 0.008, RIM, axis=axis, segments=10)
@@ -71,7 +77,7 @@ def curb_park(road_c, road_half_w, along, side, u, gap=0.12):
     (cx, cy) for make_car(..., along=along). Feed the result to
     make_car so the LANE check in furniture_grammar_audit stays quiet."""
     across = road_c + side * (road_half_w - gap - CAR_HALF_W)
-    if along == "X":
+    if along in ("X", "-X"):
         return (u, across)
     return (across, u)
 
@@ -141,7 +147,7 @@ def make_car(prefix, cx, cy, length, col, pickup=False, hatch=False, light_bar=F
                 (nose - 1.10, 0.96), (nose - 1.70, 1.42), (nose - 1.95, 1.46), (tail + 1.35, 1.46),
                 (tail + 1.15, 1.42), (tail + 0.55, 1.02), (tail + 0.10, 0.98)]
     prof_abs = [(u, z0 + z) for (u, z) in prof]
-    if along == "-Y":
+    if along in ("-Y", "-X"):
         # the prism lays its profile along +y whatever P does: mirror it so the
         # hood is at the nose (2026-10-30: Judgement Day on the turn had its
         # body facing north and its grille and headlights hanging off the tail)
@@ -175,7 +181,7 @@ def make_car(prefix, cx, cy, length, col, pickup=False, hatch=False, light_bar=F
     # buried in the slope read, from above and in front, as a board stood
     # up on the hood (the curtain call's por puesto, every parked sedan).
     # Each pane follows its profile segment (u, z rel. z0), 2.5 cm proud.
-    yaw_u = {"X": 0.0, "Y": math.pi / 2.0, "-Y": -math.pi / 2.0}.get(along, math.pi / 2.0)
+    yaw_u = {"X": 0.0, "-X": math.pi, "Y": math.pi / 2.0, "-Y": -math.pi / 2.0}.get(along, math.pi / 2.0)
     def raked(nm, a, b, width, keep=0.86):
         (ua, za), (ub, zb) = a, b
         slope = (zb - za) / (ub - ua)
