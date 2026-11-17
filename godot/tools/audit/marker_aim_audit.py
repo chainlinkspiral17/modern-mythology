@@ -91,7 +91,7 @@ TR_RE = re.compile(r'transform = Transform3D\(([^)]+)\)')
 ROT_RE = re.compile(r'rotation = Vector3\(([^)]+)\)')
 POS_RE = re.compile(r'position = Vector3\(([^)]+)\)')
 FOV_RE = re.compile(r'metadata/fov = ([\d.]+)')
-CAMEL_RE = re.compile(r'(?<=[a-z])(?=[A-Z])')
+CAMEL_RE = re.compile(r'(?<=[a-z])(?=[A-Z])|(?<=[A-Z])(?=[A-Z][a-z])')
 
 
 def yxz_forward(rx, ry, rz):
