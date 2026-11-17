@@ -108,9 +108,11 @@ def build_june():
     build_june_closet_2026_10()
     # the room: the bed, the desk with a cassette player and a lamp, a poster
     make_bed("June_Bed", 4.0 - 0.08 - 0.50, 1.6, head="+X", w=0.95, d=1.95, made=False, blanket_col=(0.60, 0.40, 0.56, 1.0))
-    make_table("June_Desk", 0.08 + 0.35, 1.2, w=0.70, d=1.1, h=0.74, wood=(0.56, 0.46, 0.36, 1.0))
-    make_lamp("June_Desk_Lamp", 0.30, 1.6, base_z=0.74, h=0.46)
-    make_box("June_Cassette_Player", (0.45, 0.78, 0.80), (0.30, 0.18, 0.10), (0.20, 0.20, 0.22, 1.0))
+    # (pass 437) clear of the doorway (doorway_audit's open-doorway pass): the desk filled the corner inside the door;
+    # it and all on it stand 0.75 m north
+    make_table("June_Desk", 0.08 + 0.35, 1.95, w=0.70, d=1.1, h=0.74, wood=(0.56, 0.46, 0.36, 1.0))
+    make_lamp("June_Desk_Lamp", 0.30, 2.35, base_z=0.74, h=0.46)
+    make_box("June_Cassette_Player", (0.45, 1.53, 0.80), (0.30, 0.18, 0.10), (0.20, 0.20, 0.22, 1.0))
     make_box("June_Poster_Mounted", (2.2, 0.08 + 0.004, 1.6), (0.60, 0.006, 0.80), (0.30, 0.50, 0.70, 1.0))
 
 
@@ -189,10 +191,10 @@ def build_june_closet_2026_10():
     make_blob("June_Closet_Bulb", (2.6, 4.6, 2.37), 0.04, (1.0, 0.94, 0.78, 1.0), noise=0.02, seed=3, squash=1.2)
     make_box("June_Closet_Bulb_Chain", (2.64, 4.6, 2.18), (0.005, 0.005, 0.40), (0.70, 0.66, 0.50, 1.0))
     # June's PC on the desk: the beige case under it, the monitor, the keyboard
-    make_box("June_PC_Monitor", (0.30, 1.20, 0.74 + 0.18), (0.36, 0.38, 0.34), (0.80, 0.76, 0.66, 1.0))
-    make_box("June_PC_Screen", (0.483, 1.20, 0.74 + 0.20), (0.005, 0.28, 0.22), (0.30, 0.62, 0.56, 1.0))
-    make_box("June_PC_Keyboard", (0.64, 1.18, 0.755), (0.16, 0.44, 0.03), (0.82, 0.78, 0.70, 1.0))
-    make_box("June_PC_Case", (0.36, 0.95, 0.22), (0.42, 0.18, 0.40), (0.80, 0.76, 0.66, 1.0))
+    make_box("June_PC_Monitor", (0.30, 1.95, 0.74 + 0.18), (0.36, 0.38, 0.34), (0.80, 0.76, 0.66, 1.0))
+    make_box("June_PC_Screen", (0.483, 1.95, 0.74 + 0.20), (0.005, 0.28, 0.22), (0.30, 0.62, 0.56, 1.0))
+    make_box("June_PC_Keyboard", (0.64, 1.93, 0.755), (0.16, 0.44, 0.03), (0.82, 0.78, 0.70, 1.0))
+    make_box("June_PC_Case", (0.36, 1.70, 0.22), (0.42, 0.18, 0.40), (0.80, 0.76, 0.66, 1.0))
 
 
 # ── B. the Oregon home (x 300..308, y 0..6) ─────────────────────────────
@@ -414,7 +416,7 @@ def build_coast_studio_2026_10(x0):
     make_cyl("Studio_Fig_Pot", (x0 + 8.4, 7.4, 0.22), 0.22, 0.44, (0.66, 0.40, 0.30, 1.0), segments=12)
     make_blob("Studio_Fig_Leaves", (x0 + 8.4, 7.4, 1.30), 0.55, (0.24, 0.40, 0.22, 1.0), noise=0.4, seed=33, squash=1.6)
     for i in range(2):
-        make_chamfer_box(f"Studio_Kit_Bag_{i}", (x0 + 8.4, 5.0 + 0.5 * i, 0.16), (0.40, 0.26, 0.32), (0.16, 0.16, 0.18, 1.0), chamfer=0.03)
+        make_chamfer_box(f"Studio_Kit_Bag_{i}", (x0 + 8.4, 6.45 + 0.45 * i, 0.16), (0.40, 0.26, 0.32), (0.16, 0.16, 0.18, 1.0), chamfer=0.03)
 
 
 def build_coast_bath_2026_10(bx0, by0):

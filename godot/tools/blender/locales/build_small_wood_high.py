@@ -248,9 +248,13 @@ def build_locker_room():
         for k in range(18):
             x = LOCK_X0 + 1.4 + k * 0.40
             make_box(f"Lock_Locker_{row}_{k}", (x, y, 0.92), (0.38, 0.46, 1.84), (0.56, 0.20, 0.16, 1.0))   # on the floor
-        make_box(f"Lock_Bench_{row}", (LOCK_X0 + 4.8, y - 0.95, 0.43), (7.0, 0.30, 0.05), WOOD)
-        for k in range(4):
-            make_box(f"Lock_Bench_{row}_Leg_{k}", (LOCK_X0 + 1.8 + k * 2.0, y - 0.95, 0.21), (0.05, 0.24, 0.40), STEEL)
+        # (pass 437) the first row's bench ran 7 m across the locker room's door from
+        # the hall (x 7.5 .. 8.5): it starts past the door now
+        bx0, bx1 = (LOCK_X0 + 4.8, LOCK_X0 + 8.3) if row == 0 else (LOCK_X0 + 1.3, LOCK_X0 + 8.3)
+        make_box(f"Lock_Bench_{row}", ((bx0 + bx1) / 2.0, y - 0.95, 0.43), (bx1 - bx0, 0.30, 0.05), WOOD)
+        legs = (bx0 + 0.4, bx1 - 0.4) if row == 0 else tuple(LOCK_X0 + 1.8 + k * 2.0 for k in range(4))
+        for k, lx in enumerate(legs):
+            make_box(f"Lock_Bench_{row}_Leg_{k}", (lx, y - 0.95, 0.21), (0.05, 0.24, 0.40), STEEL)
     make_box("Coach_Office_Window", (LOCK_X1 - 0.12, cy + 1.6, 1.6), (0.02, 2.2, 1.0), P.GLASS)
     make_box("Coach_Whiteboard", (LOCK_X0 + 0.12, cy, 1.5), (0.02, 2.4, 1.1), (0.94, 0.94, 0.92, 1.0))
     for k, (a, b) in enumerate([((0.3, 0.2), (1.0, -0.3)), ((-0.6, 0.3), (0.0, -0.2))]):   # the X's and O's

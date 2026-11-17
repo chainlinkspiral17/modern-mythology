@@ -404,8 +404,8 @@ def build_game_room():
     make_box("Game_TV", (gx, 6.0 + 0.07 + 0.05, 1.50), (1.30, 0.08, 0.76), FLAT)
     make_box("Game_TV_Screen", (gx, 6.0 + 0.07 + 0.092, 1.50), (1.22, 0.004, 0.68), (0.30, 0.34, 0.56, 1.0))
     make_box("Game_TV_Console", (gx, 6.0 + 0.07 + 0.25, 0.30), (1.6, 0.44, 0.60), (0.24, 0.20, 0.18, 1.0))
-    make_box("Game_Chair_Base", (gx + 2.2, 7.4, 0.22), (0.86, 0.86, 0.44), LEATHER)
-    make_box("Game_Chair_Back", (gx + 2.2, 7.4 - 0.36, 0.66), (0.86, 0.16, 0.50), LEATHER)
+    make_box("Game_Chair_Base", (gx + 1.3, 7.4, 0.22), (0.86, 0.86, 0.44), LEATHER)
+    make_box("Game_Chair_Back", (gx + 1.3, 7.4 - 0.36, 0.66), (0.86, 0.16, 0.50), LEATHER)
     # the fern in the SW corner, its pot
     make_taper_cyl("Fern_Pot", (X0 + 0.45, 6.0 + 0.07 + 0.38, 0.22), 0.20, 0.26, 0.44, (0.62, 0.36, 0.24, 1.0), segments=12)
     make_cyl("Fern_Soil", (X0 + 0.45, 6.0 + 0.07 + 0.38, 0.445), 0.24, 0.01, (0.24, 0.18, 0.12, 1.0), segments=12)
@@ -909,14 +909,16 @@ def build_game_room_2026_10():
     make_box("Game_Print_Image", (gx + 1.9, ny - 0.008, 1.80), (0.92, 0.004, 0.58), (0.30, 0.42, 0.52, 1.0))
     make_box("Game_Print_Image_Band", (gx + 1.9, ny - 0.011, 1.66), (0.92, 0.002, 0.14), (0.72, 0.56, 0.34, 1.0))
     # -- a second club chair, a side table, a rug --
-    make_box("Game_Rug", (gx + 2.05, 8.3, 0.018), (1.7, 2.6, 0.012), (0.50, 0.36, 0.26, 1.0))
-    make_box("Game_Chair_2_Base", (gx + 2.2, 9.1, 0.22), (0.86, 0.86, 0.44), LEATHER)
-    make_box("Game_Chair_2_Back", (gx + 2.2, 9.1 + 0.36, 0.66), (0.86, 0.16, 0.50), LEATHER)
+    # (pass 437) clear of the doorway (doorway_audit's open-doorway pass): the club chairs, side table and rug
+    # stood in the east door; the group sits 0.9 m west
+    make_box("Game_Rug", (gx + 1.15, 8.3, 0.018), (1.7, 2.6, 0.012), (0.50, 0.36, 0.26, 1.0))
+    make_box("Game_Chair_2_Base", (gx + 1.3, 9.1, 0.22), (0.86, 0.86, 0.44), LEATHER)
+    make_box("Game_Chair_2_Back", (gx + 1.3, 9.1 + 0.36, 0.66), (0.86, 0.16, 0.50), LEATHER)
     for s in (-1, 1):
         for i, cy in enumerate((7.4, 9.1)):
-            make_box(f"Game_Chair_Arm_{i}_{s:+d}", (gx + 2.2 + s * 0.38, cy + (0.08, -0.08)[i], 0.56), (0.12, 0.64, 0.24), LEATHER)
-    make_cyl("Game_Side_Table", (gx + 2.2, 8.25, 0.27), 0.22, 0.54, WAL, segments=14)
-    make_cyl("Game_Side_Table_Glass", (gx + 2.25, 8.20, 0.585), 0.035, 0.09, (0.80, 0.74, 0.56, 1.0), segments=10)
+            make_box(f"Game_Chair_Arm_{i}_{s:+d}", (gx + 1.3 + s * 0.38, cy + (0.08, -0.08)[i], 0.56), (0.12, 0.64, 0.24), LEATHER)
+    make_cyl("Game_Side_Table", (gx + 1.3, 8.25, 0.27), 0.22, 0.54, WAL, segments=14)
+    make_cyl("Game_Side_Table_Glass", (gx + 1.35, 8.20, 0.585), 0.035, 0.09, (0.80, 0.74, 0.56, 1.0), segments=10)
     # -- the night's leavings --
     for k, (x, y, yaw, col) in enumerate(((-8.6, 8.0, 0.4, (0.50, 0.30, 0.12, 1.0)), (-5.3, 11.8, 1.9, (0.80, 0.80, 0.76, 1.0)),
                                           (-6.0, 7.2, 2.6, (0.20, 0.36, 0.20, 1.0)))):

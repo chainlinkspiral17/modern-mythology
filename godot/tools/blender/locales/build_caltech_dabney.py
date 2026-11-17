@@ -565,7 +565,7 @@ def build_spencer_room():
     make_rot_box("Sp_Laptop_Lid", (fx + 0.10, fy + 0.005, 0.20), (0.30, 0.012, 0.22), (0.24, 0.24, 0.26, 1.0), roll=-0.20)
     make_rot_box("Sp_Laptop_Screen", (fx + 0.10, fy - 0.002, 0.20), (0.27, 0.004, 0.19), (0.40, 0.56, 0.74, 1.0), roll=-0.20)
     # the clothes heaped over the corners
-    for k, (x, y, r) in enumerate(((SX0 + 0.40, SY1 - 0.40, 0.50), (SX0 + 0.30, 0.70, 0.40), (SX1 - 0.45, 2.20, 0.36))):
+    for k, (x, y, r) in enumerate(((SX0 + 0.40, SY1 - 0.40, 0.50), (SX0 + 0.30, 1.35, 0.40), (SX1 - 0.45, 2.20, 0.36))):
         make_blob(f"Sp_Clothes_{k}", (x, y, r * 0.35), r, ((0.30, 0.34, 0.44, 1.0), (0.60, 0.56, 0.48, 1.0), (0.24, 0.24, 0.26, 1.0))[k],
                   noise=0.35, seed=k + 3, squash=0.45)
     # magazines and textbooks on the floor by the wall

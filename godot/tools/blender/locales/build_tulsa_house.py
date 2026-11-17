@@ -130,17 +130,19 @@ def build_show():
         make_blob(f"Beam_Dust_Mote_{k}" + SHOW, (px + ((k * 7) % 5 - 2) * spread * 0.4, y, 0.86 + t * 1.0 + ((k * 3) % 5 - 2) * spread * 0.3),
                   0.008, (1.0, 0.96, 0.86, 1.0), noise=0.0, seed=k, squash=1.0)
     # the guests' seats: the plaid sofa, two chairs, the coffee table
-    make_box("Sofa_Base", (0.0, 1.0, 0.24), (2.4, 0.90, 0.48), PLAID)
-    make_box("Sofa_Back", (0.0, 0.62, 0.70), (2.4, 0.16, 0.50), PLAID)
+    # (pass 437) clear of the doorway (doorway_audit's open-doorway pass): the sofa's west end stood in the front door
+    # (x -3.1 .. -0.9); the group sits 0.35 m east
+    make_box("Sofa_Base", (0.35, 1.0, 0.24), (2.4, 0.90, 0.48), PLAID)
+    make_box("Sofa_Back", (0.35, 0.62, 0.70), (2.4, 0.16, 0.50), PLAID)
     for s in (-1, 1):
-        make_box(f"Sofa_Arm_{s:+d}", (s * 1.14, 1.0, 0.56), (0.14, 0.90, 0.20), PLAID)
-    make_box("Coffee_Table_Glass_Top", (0.0, 1.9, 0.42), (1.2, 0.60, 0.02), (0.60, 0.66, 0.66, 1.0))
+        make_box(f"Sofa_Arm_{s:+d}", (0.35 + s * 1.14, 1.0, 0.56), (0.14, 0.90, 0.20), PLAID)
+    make_box("Coffee_Table_Glass_Top", (0.35, 1.9, 0.42), (1.2, 0.60, 0.02), (0.60, 0.66, 0.66, 1.0))
     for s in (-1, 1):
-        make_box(f"Coffee_Table_Brass_Leg_{s:+d}", (s * 0.56, 1.9, 0.205), (0.04, 0.56, 0.41), BRASS)
+        make_box(f"Coffee_Table_Brass_Leg_{s:+d}", (0.35 + s * 0.56, 1.9, 0.205), (0.04, 0.56, 0.41), BRASS)
     for k, (x, y, yaw) in enumerate(((3.2, 2.2, math.pi * 0.85), (-2.8, 2.6, -math.pi * 0.85), (3.4, 4.6, math.pi * 0.6))):
         make_chair(f"Guest_Chair_{k}", x, y, yaw=yaw, wood=(0.40, 0.30, 0.22, 1.0), seat_col=(0.62, 0.50, 0.30, 1.0))
-    make_box("Glass_Wine_On_Table", (0.3, 1.8, 0.48), (0.06, 0.06, 0.10), (0.50, 0.10, 0.16, 1.0))
-    make_box("Slide_Box", (-0.3, 1.95, 0.45), (0.20, 0.14, 0.04), (0.80, 0.70, 0.30, 1.0))
+    make_box("Glass_Wine_On_Table", (0.65, 1.8, 0.48), (0.06, 0.06, 0.10), (0.50, 0.10, 0.16, 1.0))
+    make_box("Slide_Box", (0.05, 1.95, 0.45), (0.20, 0.14, 0.04), (0.80, 0.70, 0.30, 1.0))
     # the bar on the W wall: the structural counter, the bottles, the ports
     bx = -6.0 + 0.10 + 1.6
     make_box("Bar_Counter", (bx, 4.6, 0.55), (0.60, 3.6, 1.10), (0.36, 0.24, 0.16, 1.0))

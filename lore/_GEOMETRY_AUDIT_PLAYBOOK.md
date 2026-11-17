@@ -158,6 +158,20 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-17 · a gate's exemption is a class it cannot see (pass 437)
+**What happened:** two faults the user saw had passed their gates for
+months. doorway_audit read only door LEAVES, so an open doorway (a lintel,
+no leaf) with booths or a sideboard across it was invisible; prop_overlap
+excused every riverboat part from every other ("one machine"), so the
+paddle wheel turned through its own deck. Adding the missing class found
+ten blocked doorways in eight sets.
+**Rule:** when the user finds a fault a gate passed, find the RULE that
+passed it (an exemption, a name filter, a class the gate never reads), not
+just the instance; widen the rule to the class and run it over every set
+before fixing the one the user saw. Tune a new pass to "really blocks"
+(depth and coverage thresholds) by reading its first findings, not by
+raising a count until it is quiet.
+
 ### 2026-11-17 · a model is placed by its stand-in, and outlives it (pass 436)
 **What happened:** the user: "crow still clipping through rail". Every crow
 model lay across its perch: the kit's stand-ins run along Z and the models

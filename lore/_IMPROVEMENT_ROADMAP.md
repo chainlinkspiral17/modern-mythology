@@ -3835,6 +3835,40 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-17 · pass 437: the gates learn the classes the user found.**
+Pass 436's blocked formal door and the paddle wheel through the deck passed
+every gate. Both gates now see their class, and what they found is fixed.
+- OPEN DOORWAYS (doorway_audit). The gate read only built LEAVES; a doorway
+  with no leaf (a gap under a lintel) was never checked. Now every lintel at
+  a door's height marks an opening; a window (its lintel too) is told apart
+  by probing the opening from the floor up (a spandrel or frame fills some
+  probe); a blocker must stand within 0.75 m of the wall's face and cover a
+  quarter metre of the width (a corner grazing the zone leaves the way).
+  Ten doorways were blocked, all fixed and re-gated (BLOCKED 0):
+  apple_peddler's prep table in the pass door; caltech's clothes heap in
+  Spencer's door; the Chau game room's club chairs, side table and rug in
+  its east door (the group 0.9 m west); the diner's corridor console across
+  the bar partition's opening (beside it now) and its mop bucket in the
+  galley gap, and the corridor painting hanging in the top of the formal
+  partition's opening (beside it at eye height, its picture moved with it);
+  Bianca's bed foot in the bedroom doorway (0.3 m west); Small Wood High's
+  locker-room bench running 7 m across the door from the hall (it starts
+  past the door); the Tulsa sofa's end in the front door (the group 0.35 m
+  east); June's desk filling the corner inside her door (desk, PC, lamp,
+  cassette player and their two practical lights 0.75 m north); the
+  studio's kit bags at the east door. Overlap, support, aim and obstruction
+  gates clean on all eight sets.
+- STRUCTURE THROUGH STRUCTURE (prop_overlap). The gate excused any two
+  riverboat parts from each other ("the sternwheeler is one machine"), the
+  turning wheel and its deck included. A paddle wheel's moving parts
+  (blades, rims, spokes, braces) are now checked against everything that is
+  not wheel: the pre-436 position reports a 0.225 m clip into the boiler
+  deck; the fixed set is clean.
+- Draft N+1: the same sweep for other machines that move (doors that
+  swing, fans, the Ferris wheel and carousel kits) against what they pass.
+- Deck must REBUILD apple_peddler, caltech_dabney, chau_house, diner,
+  miller_office, small_wood_high, tulsa_house, vol3_rooms.
+
 **2026-11-17 · pass 436: the user's screenshots (portraits, booths, wheel, crow, art).**
 The user: "portraits obscuring each other. booth not properly aligned, room
 visible behind it/no wall behind booth. riverboat wheel cutting through deck.

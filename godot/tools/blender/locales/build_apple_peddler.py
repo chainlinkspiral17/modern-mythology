@@ -160,8 +160,9 @@ def build_kitchen():
     make_box("Hood", (4.3, D - 0.10 - 0.40, 2.30), (2.80, 0.80, 0.50), STEEL)
     make_box("Hood_Duct", (4.3, gy + 0.20, 2.70), (0.60, 0.40, 0.30), STEEL)
     make_box("Reach_In", (2.6, gy + 0.05, 1.0), (0.80, 0.70, 2.0), STEEL)
-    make_box("Prep_Table", (6.3, 6.9, 0.45), (0.70, 1.20, 0.90), STEEL)
-    make_box("Prep_Table_Top", (6.3, 6.9, 0.905), (0.72, 1.22, 0.02), STEEL)
+    # (pass 437) clear of the doorway (doorway_audit's open-doorway pass): it stood in the pass door
+    make_box("Prep_Table", (7.3, 6.9, 0.45), (0.70, 1.20, 0.90), STEEL)
+    make_box("Prep_Table_Top", (7.3, 6.9, 0.905), (0.72, 1.22, 0.02), STEEL)
 
 
 def build_outside():

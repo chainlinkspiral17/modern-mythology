@@ -1319,25 +1319,29 @@ def build_west_extension():
     cor_cx = EX_cx
     cor_cy = +0.5
     # Console table against the south wall of the corridor (Y=-1)
+    # (pass 437) clear of the doorway (doorway_audit's open-doorway pass): it stood across the bar
+    # partition's opening (both partition openings are at EX_cx)
     make_box("WestExt_Corridor_Console",
-             (EX_cx, +1.6, 0.78),
+             (EX_cx + 1.6, +1.6, 0.78),
              (1.20, 0.36, 0.04), (0.40, 0.26, 0.16, 1.0))
     for lx in (-1, +1):
         for ly in (-1, +1):
             make_box(f"WestExt_Corridor_ConsoleLeg_{lx:+d}_{ly:+d}",
-                     (EX_cx + lx * 0.55, +1.6 + ly * 0.16, 0.39),
+                     (EX_cx + 1.6 + lx * 0.55, +1.6 + ly * 0.16, 0.39),
                      (0.04, 0.04, 0.78), (0.30, 0.20, 0.10, 1.0))
     # Vase + a brass-trimmed framed painting on the south partition
     make_cyl("WestExt_Corridor_Vase",
-             (EX_cx, +1.6, 0.92),
+             (EX_cx + 1.6, +1.6, 0.92),
              0.07, 0.22, (0.32, 0.46, 0.40, 1.0), segments=8, axis='Z')
     # Brass picture frame above the console (looking south at the
     # north face of the formal-partition)
+    # (pass 437) beside the formal partition's opening at eye height: over it,
+    # z 1.65 .. 2.35, it hung in the top of a 2.2 m doorway
     make_box("WestExt_Corridor_Painting_Frame",
-             (EX_cx, -1.0 + 0.06, 2.00),
+             (EX_cx + 1.8, -1.0 + 0.06, 1.60),
              (1.00, 0.04, 0.70), COL_PHOTO_FRAME)
     make_box("WestExt_Corridor_Painting_Canvas",
-             (EX_cx, -1.0 + 0.08, 2.00),
+             (EX_cx + 1.8, -1.0 + 0.08, 1.60),
              (0.90, 0.02, 0.60), (0.30, 0.20, 0.14, 1.0))
     # Runner rug
     make_box("WestExt_Corridor_Rug",
@@ -6004,7 +6008,7 @@ def build_closing_shift_props():
     make_sphere_low("CoatRack_HatCrown", (8.3, -1.5, 1.87), 0.09,
                     (0.38, 0.31, 0.22, 1.0), rings=2, segments=8)
     # ── Mop in bucket by the galley gap ──
-    bx, by = 4.4, -3.65
+    bx, by = 4.4, -4.45   # (pass 437) clear of the doorway (doorway_audit's open-doorway pass): it stood in the galley gap
     make_cyl("MopBucket", (bx, by, 0.16), 0.15, 0.32,
              (0.72, 0.74, 0.30, 1.0), segments=8)
     make_cyl("MopBucket_Water", (bx, by, 0.30), 0.13, 0.01,

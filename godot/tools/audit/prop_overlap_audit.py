@@ -403,7 +403,14 @@ def overlaps(boxes):
             VESSEL = ("dr_", "sc_", "ph_", "pw_", "saloon", "hurricane",
                       "boiler", "gangway", "paddle", "hull", "boat",
                       "stack", "pilot")
-            if any(l1.startswith(v) or ("_" + v) in l1 for v in VESSEL) and \
+            # (pass 437, the user: "riverboat wheel cutting through deck") except the
+            # paddle wheel's TURNING parts: they sweep a circle, and a blade 0.4 m into
+            # the boiler deck passed as "the machine joining itself"
+            mov1 = re.match(r"pw_(blade|rim|spoke|brace)", l1) is not None
+            mov2 = re.match(r"pw_(blade|rim|spoke|brace)", l2) is not None
+            if mov1 != mov2 and not (l1.startswith("pw_") and l2.startswith("pw_")):
+                pass
+            elif any(l1.startswith(v) or ("_" + v) in l1 for v in VESSEL) and \
                     any(l2.startswith(v) or ("_" + v) in l2 for v in VESSEL):
                 continue
             # Terrain meets water meets bank — grounds, rivers,

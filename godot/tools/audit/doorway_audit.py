@@ -153,6 +153,89 @@ def audit(loc, boxes):
     return out
 
 
+LINTEL = re.compile(r"lintel|door_?header|doorhead", re.I)
+# the opening's own wall and trim, what hangs on a wall, and a rope meant to bar it
+OPENING_NOT_BLOCK = re.compile(r"window|glass|pane|spandrel|frame|jamb|casing|header|band|hull|rope|stanchion|"
+                               r"painting|picture|poster|mirror|clock|sign|plaque|curtain|blind|shade|closet", re.I)
+
+
+def openings(loc, boxes):
+    """(pass 437) A DOORWAY WITH NO LEAF. The leaf pass above sees only doors that
+    were built; an open doorway (a gap between wall segments under a lintel) was
+    never checked — the diner's formal door had booths across it on one side and
+    a sideboard on the other (pass 436), and nothing said so until it had leaves.
+    Every lintel at a door's height marks an opening; when no leaf stands in it,
+    the leaf pass's clearance zone is read on both sides with the same rules."""
+    out = []
+    people = figure_prefixes(boxes)
+    # any door-sized leaf (the leaf pass's part filter drops names with "bar" in them,
+    # the diner's bar door among them)
+    leaves = [(n, c, h) for n, c, h in boxes if (DOOR.search(n) or re.search(r"leaf", n, re.I))
+              and 2 * h[2] >= 1.5 and min(h[0], h[1]) <= 0.075]
+    for n, c, h in boxes:
+        if not LINTEL.search(n):
+            continue
+        ax = 0 if h[0] < h[1] else 1
+        lat = 1 - ax
+        width, thick = 2 * h[lat], 2 * h[ax]
+        bottom = c[2] - h[2]
+        if not (0.6 <= width <= 2.4 and thick <= 0.45 and 1.8 <= bottom <= 2.7):
+            continue
+        z0 = max(0.0, bottom - 2.2) if bottom < 3.0 else bottom - 2.2
+        lo_l, hi_l = c[lat] - h[lat], c[lat] + h[lat]
+        # a leaf standing in the opening: the leaf pass reads it
+        if any(c2[lat] - h2[lat] < hi_l - 0.1 and c2[lat] + h2[lat] > lo_l + 0.1 and abs(c2[ax] - c[ax]) < h[ax] + h2[ax] + 0.2
+               and c2[2] - h2[2] < z0 + 0.5 for n2, c2, h2 in leaves):
+            continue
+        # a WINDOW has a lintel too: its opening is filled below (the wall under the
+        # sill, the frame, the glass). A doorway is open to the floor — nothing in
+        # the wall's plane at knee or chest height across its middle
+        # probed from just above the floor up to under the lintel, at the middle and
+        # a third either side: a window's spandrel or frame fills some probe
+        filled = False
+        floor_guess = max(0.0, bottom - 2.6)
+        zz = floor_guess + 0.3
+        while zz < bottom - 0.25 and not filled:
+            for fl in (0.0, -0.33, 0.33):
+                pt = [0.0, 0.0, zz]
+                pt[ax], pt[lat] = c[ax], c[lat] + fl * h[lat]
+                if any(n2 != n and all(abs(pt[i] - c2[i]) <= h2[i] + (0.06 if i == ax else 0.0) for i in range(3))
+                       for n2, c2, h2 in boxes):
+                    filled = True
+                    break
+            zz += 0.3
+        if filled:
+            continue
+        prefix = re.split(r"_(?=[^_]*$)", n)[0]
+        for side in (-1, 1):
+            zlo = [0.0, 0.0, z0 + 0.12]
+            zhi = [0.0, 0.0, z0 + 1.9]
+            zlo[lat], zhi[lat] = lo_l + 0.05, hi_l - 0.05
+            face = c[ax] + side * h[ax]
+            zlo[ax], zhi[ax] = (face, face + side * CLEAR) if side > 0 else (face - CLEAR, face)
+            for n2, c2, h2 in boxes:
+                if n2 == n or n2.startswith(prefix) or IGNORE.search(n2) or DOOR.search(n2) or LINTEL.search(n2) \
+                        or OPENING_NOT_BLOCK.search(n2):
+                    continue
+                if max(h2) < 0.05 or (min(h2) < THIN and not re.search(r"glass|pane|screen|fence|gate|grille", n2, re.I)):
+                    continue
+                if any(n2.startswith(pp + "_") for pp in people):
+                    continue
+                if all(c2[i] - h2[i] < zhi[i] - 0.01 and c2[i] + h2[i] > zlo[i] + 0.01 for i in range(3)):
+                    if WALLISH.search(n2) and h2[2] > 0.8:
+                        continue
+                    # it BLOCKS when it stands within 0.75 m of the wall's face and
+                    # covers a quarter metre of the opening's width — a corner
+                    # grazing the zone by a few cm leaves the way through
+                    near = (c2[ax] - h2[ax] - face) if side > 0 else (face - (c2[ax] + h2[ax]))
+                    cover = min(hi_l, c2[lat] + h2[lat]) - max(lo_l, c2[lat] - h2[lat])
+                    if near > 0.75 or cover < 0.25:
+                        continue
+                    out.append(("BLOCKED", n + " (no leaf)", n2, side))
+                    break
+    return out
+
+
 def main():
     only = [a for a in sys.argv[1:] if not a.startswith("-")]
     P.A.install_stubs()
@@ -167,7 +250,7 @@ def main():
         boxes, _ = P.record_builder(os.path.join(LOCALES, fn))
         if not boxes:
             continue
-        for kind, door, what, side in audit(loc, boxes):
+        for kind, door, what, side in audit(loc, boxes) + openings(loc, boxes):
             tot[kind] += 1
             print("%-8s %-28s %-30s %s" % (kind, loc, door, ("%s (side %+d)" % (what, side)) if what else ""))
     print("doorway_audit · BLOCKED %d · ADRIFT %d · OPENING %d (report)" % (tot["BLOCKED"], tot["ADRIFT"], tot["OPENING"]))

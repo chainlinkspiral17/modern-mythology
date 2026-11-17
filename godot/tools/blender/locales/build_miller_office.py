@@ -311,14 +311,14 @@ def build_bianca_office_2026_10():
     # the master bedroom past the doorway: its carpet, the bed's corner, the dresser
     make_wall("Bianca_Bedroom_Wall_W", (x0 - 3.0, B_D / 2.0, 0), length=B_D + 0.4, height=B_CEIL, axis='Y', palette=wp, baseboard_face_sign=+1)
     make_box("Bianca_Bedroom_Carpet", (x0 - 1.5, B_D / 2.0, 0.005), (2.9, B_D - 0.2, 0.01), (0.70, 0.66, 0.60, 1.0))
-    make_box("Bianca_Bedroom_Bed_Frame", (x0 - 1.4, 2.2, 0.25), (1.60, 1.60, 0.50), (0.40, 0.30, 0.22, 1.0))
-    make_box("Bianca_Bedroom_Bed_Spread", (x0 - 1.4, 2.2, 0.53), (1.64, 1.64, 0.06), (0.62, 0.70, 0.76, 1.0))
+    make_box("Bianca_Bedroom_Bed_Frame", (x0 - 1.7, 2.2, 0.25), (1.60, 1.60, 0.50), (0.40, 0.30, 0.22, 1.0))
+    make_box("Bianca_Bedroom_Bed_Spread", (x0 - 1.7, 2.2, 0.53), (1.64, 1.64, 0.06), (0.62, 0.70, 0.76, 1.0))
     make_box("Bianca_Bedroom_Dresser", (x0 - 2.7, 0.70, 0.45), (0.50, 1.00, 0.90), (0.40, 0.30, 0.22, 1.0))
     # (2026-10-12) the bed as a bed: the headboard against the N wall side, two pillows,
     # the nightstand at its E side with the bee-balm book and the reading lamp (vol6 ch23:
     # "Bianca is in her bed at eleven-oh-two. The book ... is on the nightstand")
-    make_box("Bianca_Bedroom_Headboard", (x0 - 1.4, 3.05, 0.70), (1.66, 0.06, 0.90), (0.36, 0.27, 0.20, 1.0))
-    for pi_, px in enumerate((x0 - 1.80, x0 - 1.00)):
+    make_box("Bianca_Bedroom_Headboard", (x0 - 1.7, 3.05, 0.70), (1.66, 0.06, 0.90), (0.36, 0.27, 0.20, 1.0))
+    for pi_, px in enumerate((x0 - 2.10, x0 - 1.30)):   # (pass 437) clear of the doorway (doorway_audit's open-doorway pass): the bed 0.3 m west, its foot out of the doorway
         make_chamfer_box(f"Bianca_Bedroom_Pillow_{pi_}", (px, 2.78, 0.62), (0.62, 0.36, 0.12), (0.94, 0.94, 0.92, 1.0), chamfer=0.04)
     nx_, ny_ = x0 - 0.30, 2.70
     make_box("Bianca_Bedroom_Nightstand", (nx_, ny_, 0.28), (0.40, 0.40, 0.56), (0.40, 0.30, 0.22, 1.0))
