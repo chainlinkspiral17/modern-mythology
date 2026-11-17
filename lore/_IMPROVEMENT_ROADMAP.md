@@ -3835,6 +3835,97 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-17 · pass 434: the contradictions fixed (Andy: "Fix contradictions").**
+Andy's word makes the fix canon. Each knot went the way most of the text
+already goes; the lines that changed are VOICED and need re-voicing (list
+below). No node was added or removed.
+- DON GELLER'S PORCH LIGHT lives across BIANCA's cul-de-sac (ch11_kitchen
+  n41-42, ch17_table n6, ch22_bianca n27-29/n131/n152-154, ch22_sunday
+  n17-18, Bianca at her kitchen window in ch23_sleep n143). Three lines
+  put it elsewhere:
+  - vol6_ch21_porch n44 had it "three doors down" from Linda's porch, with
+    Bianca "two miles away" watching it. Now: "A neighbor's porch light,
+    three doors down, is also on. Two miles away, across Bianca Marin's
+    cul-de-sac, Don Geller's porch light will come on at five oh-two, the
+    way Bianca has watched it come on every morning since June."
+  - vol6_ch23_sleep n126 "at the end of the Caldwell cul-de-sac" (its own
+    n140 calls the Caldwell porch "a different cul-de-sac") → "at the end
+    of the Marin cul-de-sac".
+  - vol6_ch23_sleep n142 "the Salinas house" with Bianca in it → "the Marin
+    house" (Marin twice elsewhere: ch21 n44, ch22_sunday n15 "the Marin
+    house on Elm"; Salinas is Patricia Salinas, the HOA newsletter's
+    editor, in COMMUNITY PLANNED). Background3D's comment on
+    meadowlark_circle_night follows.
+- THE FOXHOLE'S MARQUEE is the chalk board on two posts at the front of the
+  strip mall (ch20 n96, n99 "He pulls past the marquee"; the set). The set
+  also has the lit THE FOXHOLE sign above the door, which ch14 had merged
+  with it. vol6_ch14_live_oak n8 now: "The Foxhole's lit sign above the
+  front door is on, the venue logo glowing — and so is its marquee, the
+  black board on two posts at the front of the strip mall, with a
+  chalk-board insert announcing the next show." (n9's "chalk insert" still
+  has its referent.) The roster's door-sign entry quotes the new line.
+- THE CROW ON THE DASHBOARD (vol7 ch17_dawn n41, and n48 on the road): she
+  stands on the open cab's dash now, at its back edge under the roof's
+  front, where her head clears the raked glass (pass 431 stood her
+  mid-dash, where the rake and the windshield's foot hid her, so she went to
+  the cowl). The open cab got a tan vinyl interior (the kit; only Kai's
+  truck uses it), so a black bird reads against the seat back. The window
+  frame (shot_insert_crow, n34) re-aimed on her. RAY-CAST from the frame to
+  her body: window glass, windshield, crow, nothing else. The ray also found
+  ch15's porch-rail crow (untagged, every view) two metres from the lens: a
+  second bird in the frame. The dawn preset strips `Porch_Crow`.
+  Rendered: one crow, standing on the dash, legs and head, through the glass.
+- THE OBSTRUCTION GATE JUDGED THE WRONG SUBJECT. With the rail crow stripped,
+  vantage_obstruction --markers failed the frame on the loft newel's carved
+  crow, behind the camera's shoulder: it took the matching part nearest the
+  LENS, twice (once for occlusion, once inside its half-hidden sampler), while
+  the aim gate takes the one nearest the AXIS (best_subject). Both now share
+  best_subject's anchor. Across every set that surfaced five frames the old
+  pick had hidden, each read by render: the water tower on Meadowlark Circle
+  had its legs in frame and the lettered band cut off by the top edge
+  (re-aimed up at the band, a 22° lens: the tank fills the frame); four
+  judged and kept, with reasons, in DELIBERATE_MARKERS (vol6 ch20 n106 the
+  stage past the rail; vol7 ch14_figure n39 the laundromat's wall between the
+  alley's walls; vol7 ch21_leaving n22 Per's mother sitting on the crate;
+  vol6 ch15 n38 the Peugeot under the window's neon, a clearer pane next).
+- vol6_ch2_dumpster n11 (pass 391's knot: n10's clause and n12's sentence
+  merged) is NOT a contradiction of n10: n10 plays `when_flag` "item:two
+  Powerades" and n11 `when_not_flag` (the player bought none at the Kwik
+  Stop). Only its garble is mended, to mirror n10: "…a fastidious
+  relationship to surfaces that have been touched by grease." n12 follows
+  both. Unvoiced, so nothing to re-voice. (A first try retired n11 as a
+  stray; the flag was found and the retire reverted before commit.)
+- THE WATER TOWERS (the user: "Tank not connected to leg supports"). Both
+  Harmony Creek towers had legs that stopped short of the tank: the gates
+  measure the tank as its BOX, whose floor (the bowl's lowest point) met the
+  leg tops, while the curved bowl at the legs' radius was 0.25-0.4 m higher.
+  - meadowlark_circle: four plumb posts at r 3.2 ending at z 13.0 under a
+    bowl 13.4 high there → four raked columns from footings at r 6.0 to the
+    tank's equator (r 5.0, z 15.6) under the catwalk, two rings of struts and
+    an X of tie rods in each bay (one joined object). Rendered from the
+    frame's camera and from the lot: the tank stands on its legs.
+  - gallatin_water_tower: leg tops at zt + 0.2, the flare's height at r 3.0,
+    though the legs' heads stand at r 3.4 → computed into the flare at the
+    leg's outer edge. Its two bracing bars ran along X and Y through the
+    riser while the legs stand on the diagonals (their ends in the air) →
+    struts and tie rods between the legs. Its catwalk was a solid disc (a
+    plate under the tank from below) → a ring with posts and a rail. Rendered.
+- RE-VOICE (Andy, in the voice studio; Claude generates nothing):
+  vol6_ch21_porch 044 · vol6_ch23_sleep 126 · vol6_ch23_sleep 142 ·
+  vol6_ch14_live_oak 008. Until then the old takes play the old words.
+- Left for Andy (ambiguous, not a slip): Don's light is on at 1:15 AM
+  (ch22_sunday n17-18) and at 11:30 PM (ch23_sleep n126) but "comes on" at
+  5:02 with the cul-de-sac dark before it (ch22_bianca n13, n26-27) —
+  readable as different nights; say if it should be one rule.
+- Draft N+1: the cabin's porch-rail crow is in every cabin view, but the text
+  moves her (Finn's dash ch10-13, the rail ch15, the cabin table ch19-20,
+  Kai's dash ch17): tag her to ch15's views and check which views show the
+  rail; then the older "For Andy" knots below (Roy's bowl cedar vs walnut,
+  four bowls vs "the other three", the notebook upstairs vs handed over).
+  A support check that tests a part's top against the SURFACE above it, not
+  its box (a lathe's box floor is its lowest point only at the axis).
+- Deck must REBUILD cabin_interior, meadowlark_circle, gallatin_water_tower.
+
 **2026-11-17 · pass 433: signs read their words (Label3D).**
 - Close-up lines that quote a sign now see its words (the shader playbook's
   Label3D pattern: writing on a surface is shaded, alpha-cut, a hand font):
@@ -3859,7 +3950,7 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 - FOR ANDY (a knot, not fixed): ch14 n8 puts the marquee "above the front
   door, with the venue logo and a chalk-board insert below it"; ch20 n96 has
   "the chalk marquee at The Foxhole at the front of the strip mall" — the
-  set follows ch20 (a board on posts).
+  set follows ch20 (a board on posts). RESOLVED pass 434 (ch14 n8 rewritten).
 - Draft N+1: the Kwik Stop's thermometer "stuck at 97 degrees" (ch2, seen
   from the Gas & Go); a sweep for every quoted sign, label and screen line.
 
@@ -3906,7 +3997,7 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
   stands on the cowl at the windshield's foot, now in silhouette against the
   see-through cab — rendered, clearly a crow. FOR ANDY (a staging call, not a
   canon change): the dashboard is the text's; the frame shows her on the
-  cowl in front of it.
+  cowl in front of it. RESOLVED pass 434 (on the dash, tan cab).
 - Draft N+1: a dash-level frame from the porch (closer, lower) if a later
   line looks into the cab; the kit's sedans and hatches open the same way.
 - Deck must REBUILD cabin_interior.
@@ -4107,6 +4198,7 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 - CANON KNOT for Andy (flagged, not fixed): ch21_porch has Bianca "two miles
   away" from Don's porch light; ch17_table and ch22_bianca have her watching
   it "across the cul-de-sac". The set follows the porch chapters.
+  RESOLVED pass 434 (ch21 n44, ch23_sleep n126/n142 rewritten).
 - Deck must REBUILD miller_back_porch.
 
 **2026-11-17 · pass 423: the crow comes inside (vol 7 ch19-20).**
@@ -5200,7 +5292,8 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 - KNOT for Andy (not fixed): vol 6 ch2 node 11 reads "…because Jesse has
   a fastidious relationship to surfaces that his leaning against it now,
   Ben registers, is its own kind of tell." — node 10's clause and node
-  12's sentence look merged; node 12 then repeats it.
+  12's sentence look merged; node 12 then repeats it. RESOLVED pass 434 (n11 is
+  the no-Powerades branch; its garble mended).
 - Deck must REBUILD diner.
 - NEXT: **the riverfront park** (rendered: the "chipped bench" stands on
   River Road's asphalt by the lane line, the bandstand straddles the

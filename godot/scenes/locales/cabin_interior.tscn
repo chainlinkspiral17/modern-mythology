@@ -1412,9 +1412,9 @@ metadata/fov = 40.0
 
 ; (pass 429) ch17_dawn n34 "went to the south window to look at his crow on Kai's truck": what he looks
 ; at — through the middle of the south-west window's lower pane, over the porch rail, a long lens on the
-; crow at the windshield's foot of the truck's open cab (pass 431)
+; crow on the dash of the truck's open cab (pass 434: the dashboard, as n41 says)
 ; in the turnaround (the warm night panes stripped in this view, the truck's glass see-through)
 [node name="shot_insert_crow__cabin_interior_three_dawn" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-1.800, 1.216, -0.686)
-rotation = Vector3(-0.0516, 2.5140, 0.0)
+rotation = Vector3(-0.0323, 2.5628, 0.0)
 metadata/fov = 9.0

@@ -716,7 +716,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert window~]The Geller porch light at the end of the Caldwell cul-de-sac is on. Don's silhouette, at eleven-thirty, is at the window.",
+      "text": "[shot:insert window~]The Geller porch light at the end of the Marin cul-de-sac is on. Don's silhouette, at eleven-thirty, is at the window.",
       "voice": "assets/audio/voice/vol6_ch23_sleep/126.mp3"
     },
     {
@@ -798,7 +798,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup bianca]In a different cul-de-sac, the Salinas house has the kitchen light still on. Bianca, who had gone to bed at eleven-oh-two, has gotten up at eleven-thirty for a glass of water, is downstairs, has not yet gone back up.",
+      "text": "[shot:closeup bianca]In a different cul-de-sac, the Marin house has the kitchen light still on. Bianca, who had gone to bed at eleven-oh-two, has gotten up at eleven-thirty for a glass of water, is downstairs, has not yet gone back up.",
       "voice": "assets/audio/voice/vol6_ch23_sleep/142.mp3"
     },
     {

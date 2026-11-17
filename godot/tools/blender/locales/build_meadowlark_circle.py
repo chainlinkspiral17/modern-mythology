@@ -42,7 +42,7 @@ import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_lathe, make_prism, make_tube, make_rot_box, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_lathe, make_prism, make_tube, make_rot_box, export_glb, join_prefix
 from _props.detail import make_far_bands
 from _props.vehicles import make_car
 from _props.buildings import make_ranch_house
@@ -295,9 +295,34 @@ def build_water_tower():
     white Residential Solutions van parked beside the fence."""
     tx, ty = 46.0, -38.0
     make_box("Tower_Lot_Pad", (tx, ty, -0.02), (30.0, 26.0, 0.04), (0.40, 0.40, 0.41, 1.0))
-    for li in range(4):
-        a = li * math.pi / 2.0 + math.pi / 4.0
-        make_cyl(f"Water_Tower_Leg_{li}", (tx + 3.2 * math.cos(a), ty + 3.2 * math.sin(a), 6.5), 0.22, 13.0, (0.72, 0.74, 0.76, 1.0), segments=8)
+    # (pass 434, the user: "Tank not connected to leg supports") the legs stood
+    # plumb at r 3.2 and stopped at z 13.0, under a bowl that is 13.4 high there:
+    # four posts under a floating tank. Now four raked columns, as the town
+    # towers are built: from footings at r 6.0 up to the tank's equator (the
+    # drum's foot, r 5.0 at z 15.6), into the drum just under the catwalk, with
+    # two rings of struts and an X of tie rods in each bay
+    steel = (0.72, 0.74, 0.76, 1.0)
+    R0, Z0, R1, Z1 = 6.0, 0.30, 5.05, 15.78
+
+    def leg_at(a, z):
+        r = R0 + (R1 - R0) * (z - Z0) / (Z1 - Z0)
+        return (tx + r * math.cos(a), ty + r * math.sin(a), z)
+    angs = [li * math.pi / 2.0 + math.pi / 4.0 for li in range(4)]
+    for li, a in enumerate(angs):
+        make_tube(f"Water_Tower_Leg_{li}", [leg_at(a, Z0), leg_at(a, Z1)], 0.24, steel, segments=8)
+        fx, fy, _fz = leg_at(a, Z0)
+        make_box(f"Water_Tower_Footing_{li}", (fx, fy, 0.15), (1.0, 1.0, 0.30), (0.62, 0.62, 0.60, 1.0))
+    levels = (Z0 + 0.9, 5.4, 10.6, 15.0)
+    for li, a in enumerate(angs):
+        b = angs[(li + 1) % 4]
+        for si, z in enumerate(levels[1:3]):
+            make_tube(f"Water_Tower_Brace_Strut_{li}_{si}", [leg_at(a, z), leg_at(b, z)], 0.09, steel, segments=6)
+        for bi in range(3):
+            za, zb = levels[bi], levels[bi + 1]
+            make_tube(f"Water_Tower_Brace_Rod_{li}_{bi}_0", [leg_at(a, za), leg_at(b, zb)], 0.035, steel, segments=5)
+            make_tube(f"Water_Tower_Brace_Rod_{li}_{bi}_1", [leg_at(b, za), leg_at(a, zb)], 0.035, steel, segments=5)
+    # the bracing is one object (40 parts would be 40 draw calls in every view)
+    join_prefix("Water_Tower_Brace")
     make_lathe("Water_Tower_Riser", (tx, ty, 0.0), [(0.62, 0.0), (0.55, 0.4), (0.55, 12.6), (0.9, 13.0)], (0.72, 0.74, 0.76, 1.0), segments=12)
     # the tank: a bowl bottom, a straight drum, a shallow domed cap and a finial
     make_lathe("Water_Tower_Tank", (tx, ty, 13.0), [(0.0, 0.0), (2.6, 0.0), (4.4, 1.2), (5.0, 2.6), (5.0, 6.4), (0.0, 6.4)], (0.86, 0.87, 0.86, 1.0), segments=24)

@@ -158,6 +158,41 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-17 · a box floor is not the bowl (pass 434, the water towers)
+**What happened:** the user: "Tank not connected to leg supports." Both
+water towers' legs stopped 0.25-0.4 m under the tank. The gates record a
+lathe as its axis-aligned box; the box's floor is the bowl's lowest point,
+on the axis, and the leg tops met it — so every support check passed while
+the bowl, curving up toward the rim, hung clear of the legs at their radius.
+**Rule:** when a part meets a CURVED surface (a lathe bowl, a dome, a raked
+roof), compute the meeting height from the profile at the part's own radius
+(its outer edge), and carry the part a few centimetres into the shell — a
+joint, not a clip. Legs of a tank go to its equator or into its flare; check
+by render from below.
+
+### 2026-11-17 · ray-cast the frame before blaming the subject (pass 434)
+**What happened:** pass 431 gave up on the crow on Kai's dash ("the cowl
+hides her, a black bird in a dark cab does not read") and moved her to the
+cowl, against the text. Pass 434 cast rays from the frame's camera to points
+on her body in Blender: every ray reached her (window glass, windshield,
+crow). The muddle in the frame was a SECOND crow (ch15's porch-rail bird,
+untagged, in every view) two metres from a 9° lens, and her own mid-dash
+spot, where her head met the raked glass. Back at the dash's rear edge, with
+a tan cab behind her, she reads.
+**Rule:** when a subject "can't be seen" from its frame, cast rays from the
+camera to it and list what each hits before moving the subject or the
+camera: the occluder is often something nobody meant to be there. An
+untagged creature or object the text moves between chapters is a
+contradiction waiting in every view but the one it was built for. Two
+gates that judge one frame must judge the SAME subject: the obstruction
+gate took the part nearest the lens (twice: once for occlusion, once
+inside its half-hidden sampler) while the aim gate took the one nearest
+the axis; both now share best_subject's anchor.
+**And for the text:** before calling two lines a contradiction, read their
+flags. vol6_ch2_dumpster's "Jesse has brought nothing" looked like a stray
+draft of the line before it; it is the `when_not_flag` branch for a player
+who bought no Powerades. A retired node there would have cut a path.
+
 ### 2026-11-17 · a kit's output is read once, in a close-up (pass 432)
 **What happened:** make_wall_clock had drawn every clock in the game wrong
 since it was written (hands as offset squares, up/down swapped, left/right

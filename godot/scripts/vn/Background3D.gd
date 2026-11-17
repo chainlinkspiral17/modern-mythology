@@ -2683,7 +2683,7 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/meadowlark_circle.tscn",
 		"requires_glb": "res://assets/3d/locales/meadowlark_circle.glb",
 		# Midnight in mid-August, from the bulb (blender 48, 4) looking
-		# WEST back down the block: porch lights, the lit Salinas kitchen
+		# WEST back down the block: porch lights, the lit Marin kitchen
 		# window south, the white sedan at the curb near-left, streetlamps
 		# receding. Scenes carry [mood:night]; the practicals do the rest.
 		"camera_origin": Vector3(48.0, 1.6, -4.0),
@@ -4171,8 +4171,11 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/cabin_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
 		# (pass 429) dawn from inside: the south windows' warm night panes (lit
-		# windows seen from the porch) would tint the turnaround orange
-		"strip": ["South_Window_W_Warm", "South_Window_E_Warm"],
+		# windows seen from the porch) would tint the turnaround orange.
+		# (pass 434) and the porch-rail crow (ch15's, untagged): at dawn in ch17 the
+		# one crow is on Kai's dash ("since I left her there last night") — the rail
+		# crow stood two metres from the window frame, a second bird in the shot
+		"strip": ["South_Window_W_Warm", "South_Window_E_Warm", "Porch_Crow"],
 		# SURVEYED 2026-07-12: old vantage sat blender y=-0.5 OUTSIDE
 		# the south door. RE-SURVEYED 2026-09-03 (user: "first view of
 		# the cabin, 90 percent obstructed/wall"): x=2.0 stood INSIDE

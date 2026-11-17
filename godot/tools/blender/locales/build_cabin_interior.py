@@ -2081,8 +2081,8 @@ def build_crow_on_truck_2026_11():
     on Kai's truck" (n34); "The crow was on the truck" (n37); "The crow has
     been on Kai's truck since I left her there last night ... by the way the
     crow is standing on the dashboard" (n40-41). The truck's cab is open (pass 431)
-    and its glass clear; she stands on the cowl at the windshield's foot, facing
-    the cabin — on the dash she cannot be seen from the window (see below). Only in the
+    and its glass clear; she stands on the dash, facing the cabin, at its back edge
+    where her head clears the raked glass (pass 434). Only in the
     dawn view (cabin_interior_three_dawn); the window-sill crow (cab_wcrow) is
     not in that view."""
     from _props import creatures as _cr
@@ -2090,13 +2090,16 @@ def build_crow_on_truck_2026_11():
     from _props.geometry import join_prefix
     V = Views("cab", {"d": "cabin_interior_three_dawn"})
     with V.tagged("d", _cr):
-        # the truck runs along Y, nose +y at y -3.8; the cowl (body top z0 + 1.02..1.10)
-        # just ahead of the windshield's foot (u = nose - 1.85)
-        # (pass 431) tried on the open cab's dash: from the cabin's window the
-        # windshield's lower frame and the cowl hide her, and a black bird in a dark
-        # cab at dawn does not read. On the cowl at the windshield's foot she stands
-        # against the see-through cab — the dashboard is the text's (draft N+1)
-        _cr.make_crow("Truck_Crow", -6.6 + 0.30, -6.2 + 2.4 - 1.72, YARD_Z + 1.07, facing=-1.0)
+        # the truck runs along Y, nose +y at y -3.8; the dash (top z0 + 1.20) spans
+        # u = nose - 1.91 .. nose - 2.45 under the raked windshield (foot u nose - 1.85
+        # at z0 + 1.10, head u nose - 2.25 at z0 + 1.62)
+        # (pass 434, Andy: fix the contradiction) ON THE DASHBOARD, as n41 and the
+        # road (n48) have her: at its back edge, under the roof's front, so her head
+        # (u nose - 2.21, top z0 + 1.47) clears the glass (z0 + 1.57 there). Pass 431
+        # stood her mid-dash, where her head met the rake and the windshield's foot
+        # hid her body; the cab's tan interior (the kit, pass 434) is what she reads
+        # against now, not a near-black dash
+        _cr.make_crow("Truck_Crow", -6.6 + 0.30, -6.2 + 2.4 - 2.40, YARD_Z + 1.20, facing=-1.0)
     V.check()
     join_prefix("Truck_Crow")
 

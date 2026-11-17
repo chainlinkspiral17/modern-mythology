@@ -40,7 +40,7 @@ import random
 import sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
-from _props.geometry import clear_scene, make_box, make_cyl, make_lathe, make_rot_box, make_blob, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_lathe, make_rot_box, make_blob, make_tube, export_glb, join_prefix
 
 FENCE_Y = -40.0
 COL_ASPHALT = (0.30, 0.30, 0.31, 1.0)
@@ -150,7 +150,11 @@ def build_water_tower():
     tx, ty = 4.0, -74.0
     top = 18.9
     tank_h, tank_r = 6.4, 5.2
-    leg_top = top - tank_h + 0.20            # into the tank's flare, a joint not a clip
+    # (pass 434, the user: "Tank not connected to leg supports") the legs' heads
+    # stand at r 3.4, where the bowl's flare is zt + 0.2 + (3.4 - 3.0) / 2.2 * 1.4,
+    # not zt + 0.2: they stopped 0.25-0.37 m under it. Now into the flare at the
+    # leg's OUTER edge (r 3.4 + 0.18), 8 cm past the shell — a joint, not a clip
+    leg_top = (top - tank_h) + 0.2 + (3.4 + 0.18 - 3.0) / (tank_r - 3.0) * 1.4 + 0.08
     leg_base = 0.30                          # the legs start on the footings
     for k, a in enumerate((45, 135, 225, 315)):
         ar = math.radians(a)
@@ -163,18 +167,38 @@ def build_water_tower():
         make_rot_box(f"Water_Tower_Leg_{k}", ((fx + hx) / 2.0, (fy + hy) / 2.0, (leg_base + leg_top) / 2.0), (0.36, 0.36, L), COL_STEEL,
                      pitch=-rake * math.cos(ar), roll=rake * math.sin(ar))
         make_box(f"Water_Tower_Footing_{k}", (fx, fy, 0.15), (1.0, 1.0, 0.30), (0.62, 0.62, 0.60, 1.0))
-    for k, z in enumerate((4.0, 8.0)):
-        rr = 4.6 - (4.6 - 3.4) * z / leg_top
-        for e, ax in enumerate(('X', 'Y')):
-            size = (2.0 * rr * 0.71 * 2.0, 0.12, 0.12) if ax == 'X' else (0.12, 2.0 * rr * 0.71 * 2.0, 0.12)
-            make_box(f"Water_Tower_Brace_{k}_{ax}", (tx, ty, z), size, COL_STEEL)
+    # (pass 434) the bracing joins the LEGS: struts between neighbours at two
+    # heights and an X of tie rods in each bay. It was two bars along X and Y
+    # through the riser, while the legs stand on the diagonals — the bars joined
+    # nothing and their ends hung in the air outside the legs
+    def leg_at(a, z):
+        r = 4.6 + (3.4 - 4.6) * (z - leg_base) / (leg_top - leg_base)
+        return (tx + r * math.cos(a), ty + r * math.sin(a), z)
+    angs = [math.radians(a) for a in (45, 135, 225, 315)]
+    levels = (1.2, 4.0, 8.0, 11.6)
+    for k, a in enumerate(angs):
+        b = angs[(k + 1) % 4]
+        for si, z in enumerate(levels[1:3]):
+            make_tube(f"Water_Tower_Brace_Strut_{k}_{si}", [leg_at(a, z), leg_at(b, z)], 0.07, COL_STEEL, segments=6)
+        for bi in range(3):
+            za, zb = levels[bi], levels[bi + 1]
+            make_tube(f"Water_Tower_Brace_Rod_{k}_{bi}_0", [leg_at(a, za), leg_at(b, zb)], 0.03, COL_STEEL, segments=5)
+            make_tube(f"Water_Tower_Brace_Rod_{k}_{bi}_1", [leg_at(b, za), leg_at(a, zb)], 0.03, COL_STEEL, segments=5)
+    join_prefix("Water_Tower_Brace")
     make_cyl("Water_Tower_Riser", (tx, ty, leg_top / 2.0), 0.55, leg_top, COL_STEEL, segments=12)
     make_box("Water_Tower_Ladder", (tx + 0.58, ty, leg_top / 2.0 + 0.3), (0.06, 0.50, leg_top - 0.6), COL_DARK)
     zt = top - tank_h
     make_lathe("Water_Tower_Tank", (tx, ty, zt), [(0.0, 0.0), (3.0, 0.2), (tank_r, 1.6), (tank_r, 4.4), (3.6, 5.8), (0.6, tank_h), (0.0, tank_h)],
                COL_TANK, segments=24)
     make_cyl("Water_Tower_Finial", (tx, ty, top + 0.35), 0.18, 0.7, COL_STEEL, segments=8)
-    make_cyl("Water_Tower_Catwalk", (tx, ty, zt + 1.55), tank_r + 0.55, 0.10, COL_STEEL, segments=24)
+    # (pass 434) a ring round the drum's foot, not a solid disc (from below the
+    # disc read as a plate under the tank), with its rail
+    make_lathe("Water_Tower_Catwalk", (tx, ty, zt + 1.50), [(tank_r - 0.02, 0.0), (tank_r + 0.55, 0.0), (tank_r + 0.55, 0.10), (tank_r - 0.02, 0.10)],
+               COL_STEEL, segments=24, loop=True)
+    for ri in range(12):
+        a = ri * math.pi / 6.0
+        make_cyl(f"Water_Tower_Rail_{ri}", (tx + (tank_r + 0.50) * math.cos(a), ty + (tank_r + 0.50) * math.sin(a), zt + 1.60 + 0.5), 0.02, 1.0, COL_STEEL, segments=5)
+    make_lathe("Water_Tower_Rail_Ring", (tx, ty, zt + 2.58), [(tank_r + 0.48, 0.0), (tank_r + 0.52, 0.02), (tank_r + 0.48, 0.04)], COL_STEEL, segments=24, loop=True)
     # HARMONY CREEK in blue block letters, on the street-facing face (toward +y)
     face_y = ty + tank_r + 0.02
     letters = "HARMONY CREEK"

@@ -391,10 +391,13 @@ rotation = Vector3(-0.0400, -1.2360, 0.0)
 metadata/fov = 42.0
 
 ; insert: the water tower — HARMONY CREEK in blue block letters
+; (pass 434) aimed up at the tank's lettered band (blender z 17.2): the frame had the
+; legs and the tank's underside, the band and its letters cut off by the top edge;
+; a 22° lens on the tank, so it fills the frame instead of the sky
 [node name="shot_insert_water_tower" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.0, 2.0, 18.0)
-rotation = Vector3(0.1980, -2.4826, 0.0)
-metadata/fov = 42.0
+rotation = Vector3(0.5181, -2.4669, 0.0)
+metadata/fov = 22.0
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
 ; every closeup of a person cued here cuts to it (the scene had no closeup marker)

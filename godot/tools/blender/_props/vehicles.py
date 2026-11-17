@@ -245,8 +245,11 @@ def make_car(prefix, cx, cy, length, col, pickup=False, hatch=False, light_bar=F
             make_rot_box(f"{prefix}_Cab_PillarA_{nm}", P((ua + ub) / 2.0, v, z0 + (za + zb) / 2.0), (aln, 0.08, 0.07), col,
                          yaw=yaw_u, pitch=-math.atan(aslope))
             make_box(f"{prefix}_Cab_PillarC_{nm}", P(nose - 3.40, v, z0 + 1.38), S(0.08, 0.08, 0.56), col)
-        make_box(f"{prefix}_Dash", P(nose - 2.18, 0.0, z0 + 1.15), S(0.54, 2 * hw - 0.16, 0.10), DARK)   # top z0 + 1.20
-        seat = (max(0.08, col[0] * 0.5), max(0.08, col[1] * 0.5), max(0.08, col[2] * 0.5), 1.0)
+        # (pass 434) a tan vinyl interior, as the era's pickups had: a black bird on
+        # the dash reads against the seat back behind her (the body-colour seat at
+        # half value and a near-black dash swallowed her at dawn)
+        make_box(f"{prefix}_Dash", P(nose - 2.18, 0.0, z0 + 1.15), S(0.54, 2 * hw - 0.16, 0.10), (0.40, 0.35, 0.29, 1.0))   # top z0 + 1.20
+        seat = (0.60, 0.51, 0.38, 1.0)
         make_box(f"{prefix}_Cab_Seat", P(nose - 3.02, 0.0, z0 + 1.16), S(0.52, 2 * hw - 0.22, 0.12), seat)
         make_box(f"{prefix}_Cab_Seat_Back", P(nose - 3.32, 0.0, z0 + 1.40), S(0.12, 2 * hw - 0.22, 0.40), seat)
     # ── nose: grille slats, plate, bumpers

@@ -69,6 +69,17 @@ EMBED_TOL = 0.18
 # sky rule and is right to (2026-09-10; each read by hand).
 DELIBERATE_MARKERS = {
     ("cabin_road", "shot_insert_drone"), ("cabin_road", "shot_insert_crow"),
+    # (pass 434) read by render when the gate began judging the aim gate's subject
+    # (the part nearest the AXIS, not the lens): vol6 ch20 n106 the stage reads past
+    # the rail, which clips the deck's front edge only; vol7 ch14_figure n39 the
+    # laundromat's brick wall at the alley's end, framed between the alley's walls;
+    # vol7 ch21_leaving n22 Per's mother sits on the crate Lena brought (the text's
+    # staging: the figure IS on the subject); vol6 ch15 n38 the red Peugeot reads
+    # through the window under its neon signs (a clearer pane is a next-draft aim)
+    ("foxhole_bar", "shot_insert_stage__foxhole_bar"),
+    ("salty_tome_interior", "shot_insert_laundromat__salty_tome_alley"),
+    ("salty_tome_interior", "shot_insert_crate__salty_tome_leaving"),
+    ("kwik_stop", "shot_insert_lot"),
     # (2026-11-04) "standing by the meat counter": the lens looks at the meat
     # case's cuts under the glass; the back counter behind it is the audit's
     # name match, and the case in front of it IS the view
@@ -560,7 +571,7 @@ def _half_known():
     return _HALF_KNOWN
 
 
-def _hidden_share(origin_b, pos_g, hits, boxes, subj):
+def _hidden_share(origin_b, pos_g, hits, boxes, subj, anchor=None):
     """(pass 387) How much of the subject can the lens SEE? `_occlusion`
     asks five rays at the cluster's centre, 6 cm apart, and passes when
     three arrive. Nate's set order (vol 6 ch14) is a sheet taped to an
@@ -574,7 +585,11 @@ def _hidden_share(origin_b, pos_g, hits, boxes, subj):
     byname = {b[0]: b for b in boxes}
     def gd(a, b):
         return sum((x - y) ** 2 for x, y in zip(a, b)) ** 0.5
-    nearest = min(hits, key=lambda h: gd(h[1], pos_g))
+    # (pass 434) sample the cluster the gate judged (`anchor`, from best_subject),
+    # not the matching part nearest the lens — they differ when the frame looks
+    # past a near one (the cabin's dawn crow frame and the loft newel's crow)
+    named = [h for h in hits if h[0] == anchor]
+    nearest = named[0] if named else min(hits, key=lambda h: gd(h[1], pos_g))
     r = M.cluster_radius(gd(nearest[1], pos_g))
     parts = [h[0] for h in hits if gd(h[1], nearest[1]) < r]
     subj_boxes = [byname[x] for x in subj if x in byname]
@@ -709,12 +724,17 @@ def markers_pass(only, show_all):
                 # question — can the lens see the thing? — not by how
                 # much of the frame the thing (or its table) fills.
                 subj = {h[0] for h in hits}
-                anchor_name, tgt_g = M.subject_target(hits, pos)
+                # (pass 434) the aim gate's subject (best_subject: nearest the lens,
+                # unless another same-cue cluster sits closer to the axis), not the
+                # part nearest the lens alone: the cabin's dawn crow frame looks out
+                # at the truck's crow and was judged on the loft newel's carved crow
+                # behind the camera's shoulder once the rail crow was stripped
+                anchor_name, tgt_g, _a, _d = M.best_subject(hits, pos, M.yxz_forward(*rot))
                 occl = _occlusion(o_b, (tgt_g[0], -tgt_g[2], tgt_g[1]), boxes, subj)
                 if occl:
                     why.append("OCCLUDED: %s stands between the lens and %s" % (occl, anchor_name))
                 elif name.startswith("shot_insert_"):
-                    hb, ha, hw = _hidden_share(o_b, pos, hits, boxes, subj)
+                    hb, ha, hw = _hidden_share(o_b, pos, hits, boxes, subj, anchor_name)
                     # three points at least: two corners of a one-part subject
                     # (a water tower's leg behind a fence rail) is a foreground
                     if ha >= 5 and hb >= 3 and hb >= HALF_HIDDEN * ha:
