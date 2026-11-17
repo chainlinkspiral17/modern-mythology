@@ -321,6 +321,18 @@ IOOUT="$(python3 inside_out_audit.py 2>/dev/null)" || {
 echo "$IOOUT" | tail -1
 echo ""
 
+# ── Driveway gate (pass 421, 2026-11-16, the user: "Curbs and driveways
+# look broken or incomplete") — a drive sunk under the walk it crosses, a
+# curb standing over a drive or across its mouth with no curb cut. Cuts
+# come from _props.streets / make_view(drives=…). Judged ones are named in
+# JUDGED with the reason. Zero.
+echo "── driveway_audit.py ── t+${SECONDS}s"
+DVOUT="$(python3 driveway_audit.py 2>/dev/null | grep -v "^\[")" || {
+    echo "$DVOUT" | grep -E "SUNK|ACROSS|BLOCKED" | head -20
+    echo "REGRESSION  driveway_audit found a drive the street does not meet (ceiling 0)"; DEFERRED="$DEFERRED driveway_audit"; }
+echo "$DVOUT" | tail -1
+echo ""
+
 # ── Placement gate (2026-09-25, the user: "objects just hanging out in
 # the middle of rooms, not against walls") — wall-class pieces off every
 # wall, tall thin slabs reaching no wall, storage tight on a bed. The

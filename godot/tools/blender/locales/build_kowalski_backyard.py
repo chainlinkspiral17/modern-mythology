@@ -248,7 +248,9 @@ def build_front_yard_2026_10():
     make_box("Driveway_Concrete", (7.5, (FY - 13.4) / 2.0, -0.015), (3.8, 13.4 + FY, 0.05), COL_PATIO)
     make_car("Driveway_Civic", 7.5, -9.4, 4.4, (0.42, 0.46, 0.52, 1.0), along="Y")
     make_box("Front_Sidewalk", (1.0, -14.0, -0.01), (26.0, 1.2, 0.06), COL_PATIO)
-    make_box("Front_Curb", (1.0, -14.66, 0.02), (26.0, 0.12, 0.14), (0.60, 0.59, 0.56, 1.0))
+    from _props.streets import make_cut_curb
+    make_cut_curb("Front_Curb", -12.0, 14.0, -14.72, -14.60, -0.05, 0.09, [(7.5 - 2.2, 7.5 + 2.2)],
+                  lip=0.015, color=(0.60, 0.59, 0.56, 1.0))   # cut at the drive (pass 421: it ran across it)
     make_box("Front_Street_Asphalt", (1.0, -17.9, -0.03), (40.0, 6.4, 0.05), (0.28, 0.28, 0.30, 1.0))
     make_box("Front_Lawn_Across", (1.0, -26.0, -0.03), (40.0, 9.8, 0.04), COL_LAWN)
     for k, (hx, col) in enumerate(((-8.0, (0.78, 0.72, 0.60, 1.0)), (3.0, (0.66, 0.70, 0.72, 1.0)), (14.0, (0.84, 0.80, 0.70, 1.0)))):

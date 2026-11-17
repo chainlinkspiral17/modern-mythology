@@ -330,7 +330,10 @@ def build_jacob_house():
     """Jacob's: another block (x 80), a plain small house, a walk and a
     stoop; Jacob waits outside (he is the sprite)."""
     jx = 80.0
-    make_view("Jacob_View_S", "S", 0.0, jx, kind="front", ground_z=0.0, seed=11)
+    # (pass 421) the view spans the block (40 m: it was 24, and a second,
+    # higher sidewalk box lay over its walk and curb to cover the rest) and
+    # cuts its curb at the neighbour's drive (it ran across it)
+    make_view("Jacob_View_S", "S", 0.0, jx, kind="front", ground_z=0.0, seed=11, span=40.0, drives=(-6.5,))
     make_box("Jacob_House_Body", (jx, 4.0, 1.4), (8.0, 8.0, 2.8), (0.76, 0.70, 0.60, 1.0))
     make_gable("Jacob_House_Roof", (jx, 4.0, 2.8 + 0.9), (8.8, 8.8, 1.8), ROOF, ridge_axis='X')
     make_box("Jacob_Front_Door", (jx - 1.2, -0.02, 1.0), (0.90, 0.04, 2.0), (0.30, 0.34, 0.40, 1.0))
@@ -346,8 +349,6 @@ def build_jacob_house():
     # the houses either side, the sidewalk, a yard tree, the mailbox, the
     # porch light, and the stoop where he waits ("Jacob is waiting for them
     # outside, smoking") with the coffee can he uses for butts.
-    make_box("Jacob_Sidewalk", (jx, -9.0, 0.02), (40.0, 1.6, 0.06), (0.62, 0.60, 0.56, 1.0))
-    make_box("Jacob_Block_Lawn", (jx, -4.0, -0.03), (40.0, 9.0, 0.04), (0.30, 0.38, 0.22, 1.0))
     for k, (nx, body, roof_c) in enumerate(((jx - 12.0, (0.62, 0.66, 0.70, 1.0), (0.30, 0.28, 0.28, 1.0)),
                                           (jx + 12.0, (0.80, 0.74, 0.58, 1.0), (0.36, 0.24, 0.20, 1.0)))):
         make_box(f"Jacob_Neighbor_{k}_Body", (nx, 4.5, 1.4), (8.4, 8.0, 2.8), body)
@@ -356,7 +357,9 @@ def build_jacob_house():
         for w, wx in enumerate((nx - 2.0, nx - 0.4)):
             make_box(f"Jacob_Neighbor_{k}_Window_{w}", (wx, 0.48, 1.5), (1.1, 0.03, 1.0), (0.30, 0.34, 0.38, 1.0))
         make_box(f"Jacob_Neighbor_{k}_Walk", (nx + 1.5, -4.2, -0.001), (1.0, 8.4, 0.008), (0.62, 0.60, 0.56, 1.0))
-    make_box("Jacob_Neighbor_Drive", (jx + 6.5, -4.0, -0.002), (2.8, 9.0, 0.008), (0.50, 0.50, 0.50, 1.0))
+        # its lot (pass 421: the block lawn it stood on went with the second sidewalk)
+        make_box(f"Jacob_Neighbor_{k}_Lot_Ground", (nx, 4.5, -0.025), (10.4, 9.0, 0.05), (0.30, 0.38, 0.22, 1.0))
+    make_box("Jacob_Neighbor_Drive", (jx + 6.5, -3.9, -0.002), (2.8, 8.8, 0.008), (0.50, 0.50, 0.50, 1.0))   # to the walk's back edge (pass 421: into the walk, under it)
     make_car("Jacob_Neighbor_Car", jx + 6.5, -3.4, 4.5, (0.56, 0.62, 0.70, 1.0), along="Y")
     make_cyl("Jacob_Yard_Tree_Trunk", (jx + 3.2, -3.4, 1.4), 0.16, 2.8, (0.32, 0.24, 0.18, 1.0), segments=8)
     make_blob("Jacob_Yard_Tree_Crown", (jx + 3.2, -3.4, 3.6), 1.6, (0.24, 0.36, 0.20, 1.0), noise=0.25, seed=14, squash=0.9)
@@ -371,7 +374,7 @@ def build_jacob_house():
 
 def build_outside():
     """The yard, the driveway and JD on it; the street of small houses."""
-    make_view("View_S", "S", Y0, 0.0, kind="front", ground_z=0.0, seed=27)
+    make_view("View_S", "S", Y0, 0.0, kind="front", ground_z=0.0, seed=27, drives=(-1.5,))   # the curb cut at the drive (pass 421)
     # (2026-11-02) the street goes on: a 24 m segment either side (the lawn,
     # the walk, the street, the houses across it), and the Wagners'
     # neighbours on this side. The outside views had a bare horizon left and
@@ -394,7 +397,7 @@ def build_outside():
     from _props.detail import make_far_bands
     make_far_bands("Wagner_Far", (0.30, 0.34, 0.30), [(60.0, 120.0, 6.0, 0.9), (140.0, 220.0, 9.0, 0.7)], sides="NWE",
                    cx=0.0, cy=4.0, profile="treeline")
-    make_box("Driveway", (1.5, -4.5, -0.001), (2.8, 9.0, 0.008), (0.62, 0.60, 0.56, 1.0))
+    make_box("Driveway", (1.5, -4.15, -0.001), (2.8, 8.3, 0.008), (0.62, 0.60, 0.56, 1.0))   # to the walk's back edge (pass 421: 0.7 m into it)
     build_front()
     build_jacob_house()
     # JD: "a beat-up piece of shit" — a faded maroon sedan, nose to the house

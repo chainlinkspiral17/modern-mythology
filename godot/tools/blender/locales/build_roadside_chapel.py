@@ -222,7 +222,10 @@ def build_facade_2026_08():
     make_box("Steeple_Cross_H", (0.0, 0.8, 8.1), (0.4, 0.06, 0.06), (0.74, 0.58, 0.28, 1.0))
     # The shimmering asphalt apron + curb
     make_box("Asphalt_Apron", (0.0, -6.5, -0.01), (14.0, 10.0, 0.04), (0.22, 0.22, 0.24, 1.0))
-    make_box("Curb", (0.0, -9.0, 0.05), (14.0, 0.25, 0.12), (0.55, 0.53, 0.48, 1.0))
+    # the apron's way in from the road, west of where the car idles (pass
+    # 421: the curb ran the apron's whole width, so nothing could get in)
+    from _props.streets import make_cut_curb
+    make_cut_curb("Curb", -7.0, 7.0, -9.125, -8.875, -0.01, 0.11, [(-5.6, -1.4)], lip=0.03, color=(0.55, 0.53, 0.48, 1.0))
     # The long black car idling by the curb
     make_box("Black_Car_Body", (4.5, -8.0, 0.55), (4.6, 1.75, 0.55), (0.08, 0.08, 0.10, 1.0))
     make_box("Black_Car_Cabin", (4.2, -8.0, 1.02), (2.4, 1.6, 0.45), (0.08, 0.08, 0.10, 1.0))

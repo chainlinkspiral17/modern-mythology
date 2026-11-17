@@ -158,6 +158,30 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-16 · a raw-mesh prop module is invisible until the recorder records its meshes (pass 421)
+
+**What happened.** `_props.streets` builds curbs, walks, drives and lawns
+with `_finalize_mesh`. Stubbed as an unknown `_props` module, Meadowlark
+would have recorded no street edge at all, and every gate would have passed
+it. It is now in the recorder's real-module list, and its `_finalize_mesh`
+is rebound to a bounding-box recorder (`RAW_MESH_MODULES`); it builds its
+strips in pieces of at most 12 m or 18° of curve so those boxes stay tight.
+
+**The rule.** A new `_props` module that draws through `_finalize_mesh` goes
+in both lists in `locale_geometry_audit.py` the day it is written. Check by
+recording one builder and counting its pieces. And a defect gate should be
+proven on the OLD builder (`git show HEAD:… > build_zzold_x.py`, run, delete)
+before it is trusted: `driveway_audit` found four mouths the first scan
+missed (a drive that stops at the walk overlaps no curb; the curb is PAST
+its end).
+
+A curved piece's box is not its shape: Miller's drive follows the walk's
+curve exactly, and prop_overlap read four 7 cm clips between their boxes.
+`_rec_raw_mesh` marks a piece exact only when every vertex sits on its
+box's outline in plan and at its top or base; the rest (curves, skewed
+edges, ramps) go into `RAW_IMPRECISE`, which prop_overlap treats like its
+other raw meshes (not judged by box). Straight curbs and walks stay checked.
+
 ### 2026-11-15 · inside shifted(), a number is in the OLD plan (pass 407)
 
 **What happened.** The bakery's bowl shelf ran 0.28 m across the back

@@ -103,9 +103,13 @@ def build_road():
     for sgn in (-1, +1):
         make_box(f"Road_Gravel_Shoulder_{sgn:+d}", (sgn * 2.35, mid, 0.01), (1.1, span, 0.02), GRAVEL)
     # the ditches: a heightfield surface beside the gate (east), wedges beyond
-    make_wedge("Ditch_-1", (-3.7, mid, -0.18), (1.6, span, 0.36), GRASS, high_end="+X")
-    make_wedge("Ditch_+1_S", (3.7, (ROAD_NEAR + -62.0) / 2.0, -0.18), (1.6, -62.0 - ROAD_NEAR, 0.36), GRASS, high_end="-X")
-    make_wedge("Ditch_+1_N", (3.7, (62.0 + BEND_Y) / 2.0, -0.18), (1.6, BEND_Y - 62.0, 0.36), GRASS, high_end="-X")
+    # V ditches (pass 421): down from the shoulder and back up to the field —
+    # one wedge each fell to an outer edge that met nothing, a black slot
+    # the length of the road
+    from _props.streets import make_v_ditch
+    make_v_ditch("Ditch_-1", -2.9, -4.5, ROAD_NEAR, BEND_Y, -0.36, 0.0, -0.05, GRASS)
+    make_v_ditch("Ditch_+1_S", 2.9, 4.5, ROAD_NEAR, -62.0, -0.36, 0.0, -0.05, GRASS)
+    make_v_ditch("Ditch_+1_N", 2.9, 4.5, 62.0, BEND_Y, -0.36, 0.0, -0.05, GRASS)
     make_ditch_field("Ditch_Field_E", 2.9, 8.9, -62.0, 62.0, 1.0, ditch_x=4.2, ditch_depth=0.42, ditch_half=1.3, amp=0.06, seed=4, color=GRASS, base_z=0.0)
     # the bend: twenty degrees east into the firs, then the run to the horizon
     make_road_bend("Road_Bend", 0.0, BEND_Y, 0.0, 20.0, 100.0, 1000.0, 3.6, asphalt=ASPHALT, line=(0.90, 0.84, 0.50, 1.0),

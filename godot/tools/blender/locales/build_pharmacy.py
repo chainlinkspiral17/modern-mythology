@@ -339,7 +339,8 @@ def build_shell():
         make_box(f"Out_Corral_Rail_{s:+d}", (6.0 + s * 0.55, -11.5, 0.95), (0.05, 3.0, 0.05), COL_STEEL)
         for k in range(3):
             make_cyl(f"Out_Corral_Post_{s:+d}_{k}", (6.0 + s * 0.55, -12.9 + k * 1.4, 0.475), 0.025, 0.95, COL_STEEL, segments=6)
-    make_view("View_S", "S", -26.0, 0.0, kind="street", ground_z=0.0, seed=26)
+    # the lot's two entrances (pass 421: the street's curb ran the lot's whole length)
+    make_view("View_S", "S", -26.0, 0.0, kind="street", ground_z=0.0, seed=26, drives=((10.5, 3.0), (-10.5, 3.0)))
 
 
 def build_lights():

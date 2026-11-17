@@ -84,6 +84,28 @@ henderson) got there by accumulating exactly these layers.
 
 ## Recent lessons
 
+### 2026-11-16 · a driveway is finished where it meets the STREET, not the walk (pass 421)
+
+**What happened.** The user: "Curbs and driveways look broken or
+incomplete." Meadowlark's eight drives began inside the walk, 4 cm under
+it, so each vanished at the walk; the curb ran unbroken across every
+mouth; the cul-de-sac's ring was rotated boxes, saw-toothed at the outer
+edge, meeting the straight walk in a notch; its asphalt disc drew black.
+Nine more sets had the same mouths (Nick's house, the Kowalski front,
+Wagner and Jacob's block, the Caldwell cul-de-sac, Gallatin, the roadside
+chapel, New Auburn's street), New Auburn's drives ran to the middle of each
+house instead of its garage, the Gas & Go and Kwik Stop lots had no way in
+at all, and two country roads' ditches fell to an outer edge that met
+nothing (a black band the length of the road).
+
+**The rule.** Build the street edge as ONE path: asphalt edge → curb →
+walk → drive or lawn (`_props.streets`: `make_street_edge` for paths and
+curves, `make_cut_curb` for box curbs, `make_view(drives=…)` for window
+views). Every drive: from the walk's back edge, flush with the walk, to the
+garage slab; a curb cut at its mouth (a 2 cm lip, a transition each side);
+an apron where a shoulder lies between. Every lot: its entrances. A ditch is
+a V that comes back up to the field. Then `driveway_audit.py` (zero).
+
 ### 2026-11-15 · a thing that moves needs its HOME built too (pass 408)
 
 **What happened.** Pass 402 put Eddvard's small bowl on Tem's table for

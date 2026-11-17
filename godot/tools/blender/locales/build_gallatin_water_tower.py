@@ -60,12 +60,19 @@ def build_street():
     make_box("Ground_Lawns", (0.0, -30.0, -0.06), (200.0, 160.0, 0.04), COL_GRASS)
     make_box("Gallatin_Road", (0.0, -10.0, -0.025), (8.0, 60.0, 0.05), COL_ASPHALT)
     make_box("Gallatin_Road_Centerline", (0.0, -10.0, 0.004), (0.12, 60.0, 0.01), (0.92, 0.80, 0.20, 1.0))
+    # (pass 421) the curb and the raised walk dip across each house's drive
+    # (they ran on, 12-15 cm proud, across all six)
+    from _props.streets import make_cut_curb
+    HOUSES = ((-14.0, 12.0), (-14.0, -4.0), (-14.0, -20.0), (14.0, 8.0), (14.0, -8.0), (14.0, -24.0))
     for s in (-1, 1):
-        make_box(f"Gallatin_Curb_{s:+d}", (s * 4.08, -10.0, 0.06), (0.16, 60.0, 0.15), COL_CONCRETE)
-        make_box(f"Gallatin_Sidewalk_{s:+d}", (s * 5.6, -10.0, 0.06), (1.6, 60.0, 0.12), COL_CONCRETE)
+        mouths = [(hy + 2.5 - 1.85, hy + 2.5 + 1.85) for hx, hy in HOUSES if (hx > 0) == (s > 0)]
+        make_cut_curb(f"Gallatin_Curb_{s:+d}", -40.0, 20.0, s * 4.08 - 0.08, s * 4.08 + 0.08, -0.015, 0.135, mouths,
+                      axis="Y", lip=0.02, wing=1.0, color=COL_CONCRETE)
+        make_cut_curb(f"Gallatin_Sidewalk_{s:+d}", -40.0, 20.0, s * 5.6 - 0.8, s * 5.6 + 0.8, 0.0, 0.12, mouths,
+                      axis="Y", lip=0.0, wing=1.0, color=COL_CONCRETE)
     # the small houses along Gallatin and their lawns
     rnd = random.Random(19)
-    for k, (hx, hy) in enumerate(((-14.0, 12.0), (-14.0, -4.0), (-14.0, -20.0), (14.0, 8.0), (14.0, -8.0), (14.0, -24.0))):
+    for k, (hx, hy) in enumerate(HOUSES):
         w, d, h = 9.0, 8.0, rnd.uniform(3.2, 4.0)
         col = ((0.80, 0.74, 0.62, 1.0), (0.66, 0.72, 0.70, 1.0), (0.84, 0.82, 0.76, 1.0))[k % 3]
         make_box(f"House_{k}_Facade", (hx, hy, h / 2.0), (w, d, h), col)
@@ -75,7 +82,7 @@ def build_street():
             make_rot_box(f"House_{k}_Roof_{'E' if e > 0 else 'W'}", (hx + e * w / 4.0, hy, rz), (2.0 * hd, d + 0.6, 0.16), (0.34, 0.32, 0.30, 1.0), pitch=-e * 0.40)
         make_box(f"House_{k}_Door", (hx - (w / 2.0 + 0.01) * (1 if hx > 0 else -1), hy, 1.02), (0.02, 0.90, 2.04), (0.36, 0.26, 0.22, 1.0))
         side = 1.0 if hx > 0 else -1.0
-        make_box(f"House_{k}_Driveway", (side * 7.95, hy + 2.5, -0.035), (3.1, 3.0, 0.03), COL_CONCRETE)   # sidewalk to the house front
+        make_box(f"House_{k}_Driveway", (side * 7.95, hy + 2.5, -0.015), (3.1, 3.0, 0.03), COL_CONCRETE)   # sidewalk to the house front; level with the road (pass 421: 2 cm under it)
     for k, (tx, ty) in enumerate(((-9.5, 4.0), (9.5, 0.0), (-9.5, -14.0), (9.5, -18.0), (-20.0, -32.0))):
         make_cyl(f"Street_Tree_{k}_Trunk", (tx, ty, 1.8), 0.22, 3.6, (0.36, 0.28, 0.22, 1.0), segments=8)
         make_blob(f"Street_Tree_{k}_Crown", (tx, ty, 5.0), 2.6, (0.26, 0.40, 0.22, 1.0), noise=0.22, seed=50 + k, squash=0.7)

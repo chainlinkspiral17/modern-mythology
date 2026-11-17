@@ -46,6 +46,8 @@ from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_lat
 from _props.detail import make_far_bands
 from _props.vehicles import make_car
 from _props.buildings import make_ranch_house
+from _props.streets import (EdgePath, line_path, arc_path, join_paths, make_street_edge,
+                            make_slab_between, make_flat_polygon, drive_lines)
 
 ASPHALT = (0.30, 0.30, 0.32, 1.0)
 CONCRETE = (0.62, 0.61, 0.58, 1.0)
@@ -80,36 +82,59 @@ FRONT_Y = HOUSE_Y - HOUSE_D / 2.0     # 15.5
 STREET_X0 = -130.0      # the street runs on west past the frame, under the far tree band
 
 
+FILLET_R = 6.0          # the curve that joins each straight curb to the bulb
+HALF_W = 3.5            # the street's asphalt half-width
+EDGE_D = 1.5            # curb face to the walk's back edge (curb 0.20 + walk 1.30)
+DRIVE_TOP = 0.07        # flush with the walk (it was 0.03: every drive sank under the walk)
+LAWN_TOP = 0.012
+
+
+def _street_geometry():
+    """The asphalt's edge, walked counter-clockwise: east along the south
+    curb, round a fillet into the bulb, round the bulb, out through the
+    north fillet and west along the north curb (pass 421)."""
+    R, rf, hw = BULB_R, FILLET_R, HALF_W
+    dx = math.sqrt((R + rf) ** 2 - (hw + rf) ** 2)
+    xf = BULB_X - dx                                   # where the straight curb starts to turn
+    a_t = math.degrees(math.atan2(hw + rf, dx))        # the fillet meets the bulb
+    south_fillet = arc_path((xf, -(hw + rf)), rf, 90.0, a_t)
+    bulb = arc_path((BULB_X, 0.0), R, -(180.0 - a_t), 180.0 - a_t)
+    north_fillet = arc_path((xf, hw + rf), rf, -a_t, -90.0)
+    return xf, south_fillet, bulb, north_fillet
+
+
+XF, _SF, _BULB, _NF = _street_geometry()
+EDGE = EdgePath(join_paths(line_path((STREET_X0, -HALF_W), (XF, -HALF_W)), _SF, _BULB, _NF,
+                           line_path((XF, HALF_W), (STREET_X0, HALF_W))), out_right=True)
+
+
+def walk_back_y(x, side):
+    """The y of the walk's back edge at x, on the north (+1) or south (-1) side."""
+    return EDGE.y_at_x(x, EDGE_D, side * 6.0)
+
+
+def garage_x(hx, side):
+    return hx + (10.0 / 2.0 - 1.9) * (1 if side > 0 else -1)   # make_ranch_house puts the garage at u = -W/2 + 1.9
+
+
 def build_street():
     make_box("Ground_Far", (0.0, 0.0, -0.05), (700.0, 700.0, 0.02), (0.30, 0.34, 0.22, 1.0))
-    sx0, sx1 = STREET_X0, BULB_X
-    make_box("Meadowlark_Asphalt", ((sx0 + sx1) / 2.0, 0.0, -0.03), (sx1 - sx0, 7.0, 0.06), ASPHALT)
-    make_cyl("Meadowlark_Bulb", (BULB_X, 0.0, -0.03), BULB_R, 0.06, ASPHALT, segments=32)
-    # the straight walks and curbs stop where the bulb's ring takes over
-    # (2026-11-08: they ran on across the bulb's asphalt)
-    walk_x1 = BULB_X - math.sqrt((BULB_R + 1.5) ** 2 - 4.25 ** 2) + 0.4
-    curb_x1 = BULB_X - math.sqrt(BULB_R ** 2 - 3.6 ** 2) + 0.2
-    for sgn, nm in ((1, "N"), (-1, "S")):
-        make_box(f"Sidewalk_{nm}", ((sx0 + walk_x1) / 2.0, sgn * 4.25, 0.02), (walk_x1 - sx0, 1.50, 0.10), CONCRETE)
-        make_box(f"Curb_{nm}", ((sx0 + curb_x1) / 2.0, sgn * 3.6, 0.03), (curb_x1 - sx0, 0.20, 0.12), (0.56, 0.56, 0.54, 1.0))
-    # the bulb's walk is a RING round its asphalt, with its curb (2026-11-08:
-    # a full disc at 7 cm lay over the bulb's asphalt — the whole turnaround
-    # read as concrete)
-    # … an ARC: open at the mouth, where the street and its walks come in
-    for nm, r_in, r_out, z_top, col, mouth in (("Bulb_Sidewalk", BULB_R + 0.1, BULB_R + 1.5, 0.07, CONCRETE, 5.0),
-                                              ("Bulb_Curb", BULB_R - 0.1, BULB_R + 0.1, 0.09, (0.56, 0.56, 0.54, 1.0), 3.7)):
-        r_mid = (r_in + r_out) / 2.0
-        half_gap = math.degrees(math.asin(min(1.0, mouth / r_mid)))
-        step = 6.0
-        k = 0
-        a = 180.0 + half_gap + step / 2.0
-        while a < 540.0 - half_gap - step / 2.0 + 1e-6:
-            t = math.radians(a)
-            seg = r_mid * math.radians(step) * 1.08
-            make_rot_box(f"{nm}_{k}", (BULB_X + r_mid * math.cos(t), r_mid * math.sin(t), z_top / 2.0 - 0.015),
-                         (seg, r_out - r_in, z_top + 0.03), col, yaw=t + math.pi / 2.0)
-            k += 1
-            a += step
+    # (pass 421, the user: "Curbs and driveways look broken or incomplete")
+    # The street box stops where the curb starts to turn; the bulb and its
+    # two fillets are one slab beyond it (the street box ran on under the
+    # bulb's disc, the two coplanar). The curb and walk are ONE path round
+    # the asphalt — straight, fillet, bulb, fillet, straight — with a curb
+    # cut at every driveway mouth (they were straight boxes laid across
+    # every mouth, and a ring of rotated boxes saw-toothed at its outer edge
+    # that met the straight walk in a notch).
+    make_box("Meadowlark_Asphalt", ((STREET_X0 + XF) / 2.0, 0.0, -0.03), (XF - STREET_X0, 2 * HALF_W, 0.06), ASPHALT)
+    make_flat_polygon("Meadowlark_Bulb", join_paths(_SF, _BULB, _NF), 0.0, -0.06, ASPHALT)
+    mouths = []
+    for side, lots in ((+1, NORTH), (-1, SOUTH)):
+        for _tag, hx in lots:
+            gx = garage_x(hx, side)
+            mouths.append(EDGE.mouth(gx - 1.6, gx + 1.6, side * 4.0))
+    make_street_edge("Meadowlark", EDGE, mouths, walk_col=CONCRETE)
     # center-line dashes
     for i in range(int((BULB_X - BULB_R - STREET_X0) / 5.5)):
         make_box(f"Center_Dash_{i}", (STREET_X0 + 2.0 + i * 5.5, 0.0, 0.001), (2.0, 0.12, 0.01), (0.80, 0.78, 0.60, 1.0))
@@ -140,19 +165,28 @@ def build_house(tag, hx, hy, facing, col, lit_window=False, porch_on=False, gara
     W, D = 10.0, HOUSE_D
     front_y = hy - f * D / 2.0
     make_ranch_house(tag, hx, hy, front, col, ROOF, w=W, d=D, h=2.8, garage=garage,
-                     lit=(False, True, False) if lit_window else (False, False, False), porch=True, shrubs=True)
+                     lit=(False, True, False) if lit_window else (False, False, False), porch=True, shrubs=True,
+                     apron=False)
     if garage:
-        gx = hx + (W / 2.0 - 1.9) * (1 if f > 0 else -1)   # make_ranch_house puts the garage at u = -W/2 + 1.9
-        drive_len = abs(front_y - f * 4.0) - 1.9
-        make_box(f"{tag}_Driveway", (gx, front_y - f * (drive_len / 2.0 + 1.6), 0.015), (3.20, drive_len, 0.03), CONCRETE)
+        # (pass 421) from the walk's back edge to the garage slab, flush with
+        # the walk: it began inside the walk 4 cm below it (so it vanished
+        # under it) and the curb ran on across its mouth; the curb cut is
+        # in build_street. Miller's runs into the fillet, so its front edge
+        # follows the walk's curve.
+        gx = garage_x(hx, f)
+        front_ln, back_ln = drive_lines(EDGE, gx - 1.6, gx + 1.6, front_y - f * 0.2, f * 6.0)
+        make_slab_between(f"{tag}_Driveway", front_ln, back_ln, DRIVE_TOP, 0.0, CONCRETE)
     # the lawn: the lot's whole frontage, from the sidewalk's back edge to
-    # the house (it ran 1.1 m over the walk, 7 m wide)
-    walk = f * WALK_BACK
-    make_box(f"{tag}_Lawn", (hx, (walk + front_y) / 2.0, 0.006), (LOT_W - 0.3, abs(front_y - walk), 0.012), LAWN)
-    make_cyl(f"{tag}_Mailbox_Post", (hx + 5.2, f * 5.1, 0.55), 0.05, 1.10, (0.30, 0.30, 0.32, 1.0), segments=6)
-    make_box(f"{tag}_Mailbox", (hx + 5.2, f * 5.1, 1.20), (0.22, 0.48, 0.24), (0.22, 0.26, 0.34, 1.0))
+    # the house (it ran 1.1 m over the walk, 7 m wide); its front edge
+    # follows the walk round the fillet (Miller's ran out over the bulb)
+    xs = [hx - (LOT_W - 0.3) / 2.0 + (LOT_W - 0.3) * k / 24.0 for k in range(25)]
+    make_slab_between(f"{tag}_Lawn", [(x, walk_back_y(x, f)) for x in xs], [(x, front_y) for x in xs],
+                      LAWN_TOP, 0.0, LAWN)
+    my = walk_back_y(hx + 5.2, f) + f * 0.1                 # just behind the walk (Miller's stood on the bulb)
+    make_cyl(f"{tag}_Mailbox_Post", (hx + 5.2, my, 0.55), 0.05, 1.10, (0.30, 0.30, 0.32, 1.0), segments=6)
+    make_box(f"{tag}_Mailbox", (hx + 5.2, my, 1.20), (0.22, 0.48, 0.24), (0.22, 0.26, 0.34, 1.0))
     if lot_num is not None:
-        make_box(f"{tag}_Lot_Number", (hx + 5.2, f * (5.1 - 0.25), 1.20), (0.18, 0.004, 0.10), (0.92, 0.90, 0.86, 1.0))
+        make_box(f"{tag}_Lot_Number", (hx + 5.2, my - f * 0.25, 1.20), (0.18, 0.004, 0.10), (0.92, 0.90, 0.86, 1.0))
 
 
 NORTH = [("Lot1402", -38.0), ("Lot1408", -20.0), ("Lot1414", -2.0), ("Lot1420", 16.0), ("Miller", 34.0)]
@@ -171,7 +205,7 @@ def build_lots():
     # the car Sammy will drive to school, in the Salinas driveway
     # (2026-11-03) a car, not three boxes: make_car, backed in, nose to the street
     # (2026-11-08) on the drive (garage at hx - 3.1), its tail at the walk
-    make_car("Salinas_Car", -6.0 - 3.1, -7.4, 4.4, (0.52, 0.56, 0.60, 1.0), along="Y")
+    make_car("Salinas_Car", -6.0 - 3.1, -7.4, 4.4, (0.52, 0.56, 0.60, 1.0), along="Y", z0=DRIVE_TOP)
     # the Geller house at the END of the cul-de-sac, facing down the street
     # (west) across the bulb and its own lawn: porch light ON, Don at the
     # lit window. (It stood on the bulb's asphalt, facing south.)
@@ -181,7 +215,7 @@ def build_lots():
     front_x = gx - HOUSE_D / 2.0
     lawn_x0 = BULB_X + BULB_R + 1.5
     make_box("Geller_Lawn", ((lawn_x0 + front_x) / 2.0, 0.0, 0.006), (front_x - lawn_x0, LOT_W - 0.3, 0.012), LAWN)
-    make_box("Geller_Walk", ((lawn_x0 + front_x) / 2.0, 0.0, 0.016), (front_x - lawn_x0, 1.2, 0.03), CONCRETE)
+    make_box("Geller_Walk", ((lawn_x0 + front_x) / 2.0, 0.0, 0.035), (front_x - lawn_x0, 1.2, 0.07), CONCRETE)   # flush with the bulb's walk (pass 421: 4 cm below it)
     # standing at the lit window (u 0.8), against the glass from the porch
     # side: the house body is a solid box, so "inside" him was never seen
     # (on the porch slab, its top at 0.24)
@@ -323,7 +357,7 @@ def build_henderson_2026_09():
     make_box("Henderson_Garage_Vent", (1.1, FRONT_Y - 0.065, 2.30), (0.60, 0.01, 0.10), (0.98, 0.86, 0.58, 1.0))   # on the garage header (2026-09-22: 4 cm off it)
     make_box("Henderson_Vent_Slats", (1.1, FRONT_Y - 0.073, 2.30), (0.56, 0.002, 0.08), (0.72, 0.62, 0.42, 1.0))
     # rain has mostly stopped: a puddle at the foot of the drive, the wet sheen on the truck's hood
-    make_box("Driveway_Puddle", (1.5, 4.6, 0.0705), (1.6, 0.9, 0.001), (0.34, 0.36, 0.40, 1.0))
+    make_box("Driveway_Puddle", (1.5, 5.55, DRIVE_TOP + 0.0005), (1.6, 0.9, 0.001), (0.34, 0.36, 0.40, 1.0))   # on the drive's foot (pass 421: it lay across the walk, where the apron ramps now)
     # the pickup's hood rises 4 cm over 1.47 m toward the cab (vehicles.py
     # profile): the sheen is pitched with it (2026-09-25: flat at 0.98 it
     # lay 56 cm inside the body's box; the truck is at x -4.2, nose east)
@@ -355,11 +389,11 @@ def build_home_cars_2026_11():
     south = dict(SOUTH)
     gx_n = lambda tag: north[tag] + 3.1          # build_house: the garage side of a north lot
     gx_s = lambda tag: south[tag] - 3.1
-    make_car("Home_Corolla", gx_n("Miller"), 10.60, 4.3, (0.72, 0.70, 0.64, 1.0), along="Y")
-    make_car("Home_Jim_Truck", gx_n("Lot1414"), 10.30, 5.6, (0.20, 0.24, 0.32, 1.0), pickup=True, along="Y")
-    make_car("Home_1408_Car", gx_n("Lot1408"), 10.50, 4.5, (0.46, 0.16, 0.14, 1.0), along="Y")
-    make_car("Home_1420_Car", gx_n("Lot1420"), 10.70, 4.1, (0.30, 0.42, 0.52, 1.0), hatch=True, along="Y")
-    make_car("Home_Ben_Truck", gx_s("Kowalski"), -10.30, 5.6, (0.22, 0.34, 0.24, 1.0), pickup=True, along="-Y")
+    make_car("Home_Corolla", gx_n("Miller"), 10.60, 4.3, (0.72, 0.70, 0.64, 1.0), along="Y", z0=DRIVE_TOP)
+    make_car("Home_Jim_Truck", gx_n("Lot1414"), 10.30, 5.6, (0.20, 0.24, 0.32, 1.0), pickup=True, along="Y", z0=DRIVE_TOP)
+    make_car("Home_1408_Car", gx_n("Lot1408"), 10.50, 4.5, (0.46, 0.16, 0.14, 1.0), along="Y", z0=DRIVE_TOP)
+    make_car("Home_1420_Car", gx_n("Lot1420"), 10.70, 4.1, (0.30, 0.42, 0.52, 1.0), hatch=True, along="Y", z0=DRIVE_TOP)
+    make_car("Home_Ben_Truck", gx_s("Kowalski"), -10.30, 5.6, (0.22, 0.34, 0.24, 1.0), pickup=True, along="-Y", z0=DRIVE_TOP)
 
 
 # WHICH VIEW A CAR BELONGS TO. A group's parts hang under an empty named

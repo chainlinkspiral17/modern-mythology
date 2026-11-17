@@ -396,9 +396,15 @@ def build_street():
     make_box("Back_Lawn_Ground_Garage", (-10.15, 8.6, -0.01), (6.3, 3.0, 0.02), LAWN)
     make_box("Driveway", (-10.15, -3.06, 0.005), (4.6, 5.88, 0.01), CONCRETE)
     make_box("Front_Walk", (-1.0, -3.06, 0.005), (1.0, 5.88, 0.01), CONCRETE)
-    make_box("Sidewalk", (0.0, -6.8, 0.06), (80.0, 1.6, 0.12), CONCRETE)
+    # (pass 421) the walk stands 12 cm proud of the drive and the street:
+    # it dips across the drive's mouth with its curb face (a lip 3 cm over
+    # the street), a metre of slope each side. It ran on, kerb-high, right
+    # across the drive.
+    from _props.streets import make_cut_curb
+    mouth = [(-10.15 - 2.6, -10.15 + 2.6)]
+    make_cut_curb("Sidewalk", -40.0, 40.0, -7.6, -6.0, 0.0, 0.12, mouth, lip=0.03, wing=1.0, color=CONCRETE)
     make_box("Street_Asphalt", (0.0, -11.0, -0.01), (80.0, 7.0, 0.02), (0.20, 0.20, 0.22, 1.0))
-    make_box("Curb", (0.0, -7.62, 0.06), (80.0, 0.04, 0.12), (0.62, 0.60, 0.56, 1.0))
+    make_cut_curb("Curb", -40.0, 40.0, -7.64, -7.60, 0.0, 0.12, mouth, lip=0.03, wing=1.0, color=(0.62, 0.60, 0.56, 1.0))
     # the rusting mini-bike outside
     mx, my = -7.3, -2.2
     for s in (-1, 1):

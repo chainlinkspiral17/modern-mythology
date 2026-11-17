@@ -634,8 +634,14 @@ def build_street_2026_10():
     make_box("Lot_Apron", (0.0, -10.0, -0.05), (34.0, 7.0, 0.10), asphalt)
     for k in range(6):
         make_box(f"Lot_Apron_Stripe_{k}", (-12.0 + k * 2.6, -9.0, 0.002), (0.10, 4.0, 0.004), line)
-    make_box("Lot_Curb", (0.0, -13.6, 0.06), (34.0, 0.30, 0.22), (0.70, 0.70, 0.68, 1.0))
-    make_box("Lot_Sidewalk", (0.0, -14.6, 0.05), (34.0, 1.8, 0.10), (0.74, 0.72, 0.68, 1.0))
+    # (pass 421) the lot's two driveways onto Gallatin: the curb and the walk
+    # ran unbroken along the lot's whole front, so nothing could drive in
+    # (the van's hand-off in this lot) — cut down to a 2 cm lip, a metre of
+    # slope each side
+    from _props.streets import make_cut_curb
+    lot_ways = [(-16.0, -10.0), (8.0, 14.0)]
+    make_cut_curb("Lot_Curb", -17.0, 17.0, -13.75, -13.45, -0.05, 0.17, lot_ways, lip=0.02, wing=1.0, color=(0.70, 0.70, 0.68, 1.0))
+    make_cut_curb("Lot_Sidewalk", -17.0, 17.0, -15.5, -13.7, 0.0, 0.10, lot_ways, lip=0.02, wing=1.0, color=(0.74, 0.72, 0.68, 1.0))
     make_box("Gallatin_Road", (0.0, -22.0, -0.05), (80.0, 13.0, 0.10), asphalt)
     for k in range(10):
         make_box(f"Gallatin_Road_Dash_{k}", (-36.0 + k * 8.0, -18.8, 0.002), (3.0, 0.12, 0.004), line)
@@ -648,7 +654,9 @@ def build_street_2026_10():
             ang = f * math.pi / 4.0
             make_box(f"Gallatin_Median_Palm_{k}_Frond_{f}", (px + 0.9 * math.cos(ang), -22.0 + 0.9 * math.sin(ang), 7.2 - 0.2 * (f % 2)),
                      (1.6 if f % 2 == 0 else 0.6, 0.6 if f % 2 == 0 else 1.6, 0.05), (0.30, 0.46, 0.28, 1.0))
-    make_box("Gallatin_Far_Sidewalk", (0.0, -29.6, 0.05), (80.0, 2.2, 0.10), (0.74, 0.72, 0.68, 1.0))
+    # … and the Kwik Stop's two, across the road (Sam parks in that lot)
+    make_cut_curb("Gallatin_Far_Sidewalk", -40.0, 40.0, -30.7, -28.5, 0.0, 0.10, [(-7.0, -1.0), (13.0, 19.0)],
+                  lip=0.02, wing=1.0, color=(0.74, 0.72, 0.68, 1.0))
     # the Kwik Stop across the intersection: its lot, its red front, its canopy
     make_box("KwikStop_Lot", (6.0, -38.0, -0.05), (30.0, 14.0, 0.10), asphalt)
     make_box("KwikStop_Front_Wall", (6.0, -46.0, 2.0), (18.0, 0.4, 4.1), (0.90, 0.88, 0.84, 1.0))

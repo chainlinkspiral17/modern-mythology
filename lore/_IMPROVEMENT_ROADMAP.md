@@ -3835,6 +3835,66 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-16 · pass 421: curbs and driveways (the user: "Curbs and driveways look broken or incomplete"). Draft 1 of the street edge.**
+- NEW `_props/streets.py`: the street edge as ONE path (asphalt edge,
+  curb 0.20, walk 1.30, then drive or lawn) for straight runs, fillets and
+  cul-de-sac bulbs; a curb cut at every drive's mouth (the curb drops to a
+  2 cm lip, 0.6 m transitions, the walk's street half ramps up as an
+  apron); drives and lawns whose front edge follows the walk's back edge;
+  `make_flat_polygon` (any plan, faces wound outward), `make_cut_curb` for
+  sets whose curb is one long box, `make_v_ditch`. `make_view(drives=…)`
+  cuts a window view's near curb. `make_ranch_house(apron=False)` when the
+  street builds the drive to the slab.
+- **Meadowlark Circle** (vol 6, 12 scenes): the street is one path round
+  the asphalt (straight, a 6 m fillet, the bulb, the fillet, straight).
+  The eight drives ran from inside the walk, 4 cm under it (each vanished
+  there), and the curb ran across every mouth; the bulb's walk and curb
+  were rotated boxes, saw-toothed outside and meeting the straight walk in
+  the notch the angry-fog frame showed; the street box ran on under the
+  bulb's disc (coplanar), which drew black. Now each drive starts at the
+  walk's back edge flush with it and runs to the garage slab, the curb is
+  cut at all eight, Miller's mouth sits on the fillet, the lawns follow the
+  walk round the curve (Miller's ran out over the bulb, his mailbox stood
+  on its asphalt), the cars sit on the drives (z0), the puddle is on the
+  drive's foot.
+- Curb cuts and drive ends in **Wagner + Jacob's block** (the block's view
+  spans 40 m; a second, higher sidewalk box over its walk and curb is
+  gone), **the Caldwell cul-de-sac** (the neighbour's and the four across;
+  the two bulb houses get drives — their garages faced bare lawn, the south
+  one past the bulb's end), **Nick's house** (the 12 cm walk dips across the
+  drive), **the Kowalski front**, **Gallatin** (six houses; the pads 2 cm
+  under the road raised to it), **the roadside chapel** (its apron had no way
+  in), **New Auburn's street** (drives ran to the middle of each house,
+  1.7 m off the garage and its own apron; now to the garages, with aprons
+  over the shoulder; the east ranch's garage gets the drive it never had;
+  drive 1 moved off the streetlamp and pole; mailboxes and sprinklers off
+  the drives), **Gas & Go + the Kwik Stop across Gallatin** (both lots were
+  sealed off by an unbroken curb and walk: two entrances each), **the
+  pharmacy lot** and **the Pit Stop's west lot** (their window views' street
+  curb ran the lot's length: `make_view(kind="street", drives=((u, half),))`
+  cuts lot entrances).
+- **Ditches**: New Auburn's highway and the Small Wood road fell 34-40 cm
+  to an outer edge that met nothing; the void under the field showed as a
+  black band the length of both roads (the motel, the two-lane, the cedar
+  route). V ditches now.
+- NEW GATE `driveway_audit.py` (in run_all_audits.sh, zero): SUNK under
+  a walk, a curb ACROSS a drive, a curb BLOCKING the line past its ends
+  with no cut, and a SEALED lot (a parking lot whose whole road frontage is
+  curb or raised walk; a cut's own ramps don't count). Proven on the old
+  builders (15 drive findings in three sets; both Gas & Go lots). Uses the
+  box cache. JUDGED: Riverfront/Graustark frontage aprons (by design,
+  off-camera); harmony_commercial's four lots (no used view); JUDGED_SET
+  harmony_terrain (34; off-camera — its presets are Highway 9).
+  `locale_geometry_audit` records `_props.streets` (real module, raw meshes
+  as boxes).
+- Draft N+1: Harmony Creek's residential streets (defer the seven curb
+  emitters' quads to one pass after the houses, cut at the mouths, move the
+  walks out past the curb, straight drives to the road edge); the Riverfront
+  lot curbs where its two aprons enter; harmony_commercial's four lot
+  entrances; the houses across in `make_view` front views have no drives
+  (and no garages: ~40 rooms see them through windows); a gutter line
+  along Meadowlark's curb; render-read Caldwell's bulb from its porch wide.
+
 **2026-11-16 · pass 420: the fifth sweep (vol1-4, 12 lines).**
 - The sweep picker takes a volume filter now; this one drew only from
   vol1-4: the pharmacy floor, Briar Falls overlook, the video store, Dean's

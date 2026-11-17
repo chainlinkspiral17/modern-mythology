@@ -145,6 +145,7 @@ def record_builder(path):
     A.BOXES.clear()
     A.TRUE_BOXES.clear()
     MESH_NAMES.clear()
+    A.RAW_IMPRECISE.clear()
     SPHERES.clear()
     # (2026-11-09) the ceiling grids fixtures snap to (safety.on_ceiling_grid)
     # are this builder's alone — one set's grid leaked into the next
@@ -292,6 +293,7 @@ def record_builder(path):
                     _rebound(fn)()
                 except Exception:
                     pass
+    MESH_NAMES.update(A.RAW_IMPRECISE)     # (pass 421) a curved street piece's box is not its shape
     return list(A.BOXES), err
 
 

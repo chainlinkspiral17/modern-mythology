@@ -24,7 +24,7 @@
 # ground_z   where the ground is relative to the room's floor (an upstairs
 #            room: about -2.9)
 # ════════════════════════════════════════════════════════════════
-from .geometry import make_box, make_cyl, make_blob, make_taper_cyl, make_gable
+from .geometry import make_box, make_cyl, make_blob, make_taper_cyl, make_gable, make_wedge
 
 GRASS = (0.38, 0.50, 0.28, 1.0)
 CONCRETE = (0.62, 0.60, 0.56, 1.0)
@@ -114,13 +114,55 @@ def _tree(F, pre, u, v, h=4.5, r=1.6, col=(0.30, 0.44, 0.24, 1.0), seed=0):
     make_blob(f"{pre}_Canopy", F.p(u, v, h * 0.75), r, col, noise=0.24, seed=seed, squash=0.8)
 
 
-def make_view(prefix, side, wall_line, center, kind="back", ground_z=0.0, span=24.0, seed=0, logo_mailbox=False):
+def _curb_run(F, name, v, sv, z0, top, span, gaps, col, lip):
+    """The near curb of a view, with a curb cut at each driveway mouth
+    (pass 421: it ran on across the house's own drive); `lip` is the cut's
+    top, 2 cm over the street."""
+    from .streets import cut_pieces
+    # +u is world +x (N), -x (S), -y (E), +y (W): the wedge's high end in world terms
+    hi_minus = {"N": "-X", "S": "+X", "E": "+Y", "W": "-Y"}[F.side]
+    hi_plus = {"N": "+X", "S": "-X", "E": "-Y", "W": "+Y"}[F.side]
+    named = False
+    for k, (kind, s, e) in enumerate(cut_pieces(-span / 2.0, span / 2.0, gaps)):
+        um, su = (s + e) / 2.0, e - s
+        nm = name if (kind == "full" and not named) else f"{name}_{k}"
+        named = named or kind == "full"
+        if kind == "full":
+            _box(F, nm, um, v, (z0 + top) / 2.0, su, sv, top - z0, col)
+        elif kind == "lip":
+            _box(F, nm, um, v, (z0 + lip) / 2.0, su, sv, lip - z0, col)
+        else:
+            _box(F, nm + "_Base", um, v, (z0 + lip) / 2.0, su, sv, lip - z0, col)
+            make_wedge(nm, F.p(um, v, (lip + top) / 2.0), F.sz(su, sv, top - lip), col,
+                       high_end=hi_minus if kind == "down" else hi_plus)
+
+
+def _mouths(drives):
+    """drives: u of a driveway's centre (a house drive, 3.5 m with its
+    flare), or (u, half-width) for a lot's entrance."""
+    out = []
+    for d in drives:
+        u, hw = (d if isinstance(d, (tuple, list)) else (d, 1.75))
+        out.append((u - hw, u + hw))
+    return out
+
+
+def make_view(prefix, side, wall_line, center, kind="back", ground_z=0.0, span=24.0, seed=0, logo_mailbox=False,
+              drives=()):
+    """drives (kind 'front' / 'street'): where the near curb is cut — u of
+    each driveway's centre, or (u, half-width) for a lot's entrance (the
+    drive itself is the builder's: a house's runs to the walk's back edge
+    at v 8.3)."""
     F = _Frame(side, wall_line, center, ground_z)
     gz = -0.03
     if kind == "front":
         _box(F, f"{prefix}_Ground_Lawn", 0.0, 4.3, gz, span, 8.0, 0.05, GRASS)
         _box(F, f"{prefix}_Ground_Walk", 0.0, 8.9, gz + 0.01, span, 1.2, 0.05, CONCRETE)
-        _box(F, f"{prefix}_Ground_Curb", 0.0, 9.6, gz + 0.04, span, 0.15, 0.12, (0.56, 0.54, 0.50, 1.0))
+        if drives:
+            _curb_run(F, f"{prefix}_Ground_Curb", 9.6, 0.15, gz + 0.04 - 0.06, gz + 0.04 + 0.06, span,
+                      _mouths(drives), (0.56, 0.54, 0.50, 1.0), gz + 0.025 + 0.02)
+        else:
+            _box(F, f"{prefix}_Ground_Curb", 0.0, 9.6, gz + 0.04, span, 0.15, 0.12, (0.56, 0.54, 0.50, 1.0))
         _box(F, f"{prefix}_Ground_Street", 0.0, 13.2, gz, span, 7.0, 0.05, ASPHALT)
         _box(F, f"{prefix}_Ground_Curb_Far", 0.0, 16.8, gz + 0.04, span, 0.15, 0.12, (0.56, 0.54, 0.50, 1.0))
         _box(F, f"{prefix}_Ground_Walk_Far", 0.0, 17.5, gz + 0.01, span, 1.2, 0.05, CONCRETE)
@@ -158,7 +200,11 @@ def make_view(prefix, side, wall_line, center, kind="back", ground_z=0.0, span=2
         _box(F, f"{prefix}_AC_Unit", -3.0, 3.8, 0.38, 0.80, 0.70, 0.70, (0.66, 0.66, 0.64, 1.0))
     else:   # street
         _box(F, f"{prefix}_Ground_Walk", 0.0, 1.2, gz + 0.01, span, 2.4, 0.05, CONCRETE)
-        _box(F, f"{prefix}_Ground_Curb", 0.0, 2.45, gz + 0.04, span, 0.15, 0.12, (0.56, 0.54, 0.50, 1.0))
+        if drives:     # a lot's entrances onto the street (pass 421)
+            _curb_run(F, f"{prefix}_Ground_Curb", 2.45, 0.15, gz + 0.04 - 0.06, gz + 0.04 + 0.06, span,
+                      _mouths(drives), (0.56, 0.54, 0.50, 1.0), gz + 0.025 + 0.02)
+        else:
+            _box(F, f"{prefix}_Ground_Curb", 0.0, 2.45, gz + 0.04, span, 0.15, 0.12, (0.56, 0.54, 0.50, 1.0))
         _box(F, f"{prefix}_Ground_Street", 0.0, 6.5, gz, span, 8.0, 0.05, ASPHALT)
         for k in range(int(span / 6)):
             _box(F, f"{prefix}_Ground_Street_Dash_{k}", -span / 2.0 + 3.0 + k * 6.0, 6.5, gz + 0.03, 2.0, 0.12, 0.005, (0.92, 0.88, 0.70, 1.0))

@@ -163,9 +163,22 @@ def build_suburban_street():
     y0, y1 = -6.0, 18.0
     y_mid, y_len = (y0 + y1) / 2.0, (y1 - y0)
     # ── Sidewalks + curbs both sides (public right-of-way) ──
-    for sgn, sw_x in ((-1, -4.0), (+1, 4.6)):
+    # (pass 421, the user: "Curbs and driveways look broken or incomplete")
+    # Each drive now runs from its GARAGE (they ran to the middle of the
+    # house, 1.7 m off the garage and its own apron) to the walk's back
+    # edge, flush with the walk; the curb is cut at its mouth and an apron
+    # crosses the shoulder to the road (the curb ran on across every drive).
+    # The east ranch house's garage gets the drive it never had.
+    from _props.streets import make_cut_curb
+    # (drive y, to a garage); the two-storey's side drive at its north end,
+    # clear of the streetlamp and the pole at y 6
+    west_mouths = [(-1.5 + 1.7, True), (8.4, False), (14.0 + 1.7, True)]
+    east_mouths = [(9.0 - 1.7, True)]
+    for sgn, sw_x, mouths in ((-1, -4.0, west_mouths), (+1, 4.6, east_mouths)):
         make_box(f"Sidewalk_{sgn:+d}", (sw_x, y_mid, 0.03), (1.2, y_len, 0.06), COL_SIDEWALK)
-        make_box(f"Curb_{sgn:+d}", (sw_x - sgn * 0.7, y_mid, 0.05), (0.12, y_len, 0.12), COL_CURB)
+        cx = sw_x - sgn * 0.7
+        make_cut_curb(f"Curb_{sgn:+d}", y0, y1, cx - 0.06, cx + 0.06, -0.01, 0.11, [(dy - 1.6, dy + 1.6) for dy, _g in mouths],
+                      axis="Y", lip=0.06, color=COL_CURB)
     # ── West front lawns (mowed, raised slightly off the street) ──
     make_box("Lawn_W", (-8.0, y_mid, 0.035), (7.0, y_len, 0.05), COL_LAWN)
     # ── Houses set back on BOTH sides, varied silhouettes ──
@@ -173,22 +186,27 @@ def build_suburban_street():
                    (14.0, 'ranch', COL_HOUSE_BRK)]
     for i, (hy, style, col) in enumerate(west_houses):
         make_ranch_house(f"HouseW_{i}", -12.5, hy, "+X", col, COL_ROOF, w=7.2 if style == 'ranch' else 6.0, d=5.2 if style == 'ranch' else 5.0,
-                         garage=(style == 'ranch'), two_story=(style == 'two_story'), lit=(True, False, True) if i % 2 else (False, True, False))
+                         garage=(style == 'ranch'), two_story=(style == 'two_story'), lit=(True, False, True) if i % 2 else (False, True, False),
+                         apron=False)
     east_houses = [(1.0, 'two_story', COL_HOUSE_BRK), (9.0, 'ranch', COL_HOUSE_TAN),
                    (29.5, 'two_story', COL_HOUSE_GRY)]  # north of the gas station — at 16.5 it stood inside the store
     for i, (hy, style, col) in enumerate(east_houses):
         make_ranch_house(f"HouseE_{i}", 14.5, hy, "-X", col, COL_ROOF, w=7.2 if style == 'ranch' else 6.0, d=5.2 if style == 'ranch' else 5.0,
-                         garage=(style == 'ranch'), two_story=(style == 'two_story'), lit=(False, True, True) if i % 2 else (True, False, False))
+                         garage=(style == 'ranch'), two_story=(style == 'two_story'), lit=(False, True, True) if i % 2 else (True, False, False),
+                         apron=False)
     # ── Driveways (curb-cut apron to each west house) + one parked car ──
-    for i, (hy, _s, _c) in enumerate(west_houses):
-        make_box(f"DriveW_{i}", (-6.8, hy, 0.032), (6.0, 2.6, 0.05), COL_DRIVEWAY)
-        make_box(f"DriveApron_W_{i}", (-3.2, hy, 0.031), (1.6, 2.2, 0.04), COL_DRIVEWAY)
+    for i, (dy, to_garage) in enumerate(west_mouths):
+        x_house = -9.77 if to_garage else -9.5           # the garage slab's edge / the two-storey's side
+        make_box(f"DriveW_{i}", ((x_house - 4.6) / 2.0, dy, 0.03), (4.6 - x_house, 2.6, 0.06), COL_DRIVEWAY)
+        make_box(f"DriveApron_W_{i}", (-2.8, dy, 0.025), (1.2, 3.2, 0.05), COL_DRIVEWAY)    # walk to road, over the shoulder
+    make_box("DriveE_0", ((11.77 + 5.2) / 2.0, east_mouths[0][0], 0.03), (11.77 - 5.2, 2.6, 0.06), COL_DRIVEWAY)
+    make_box("DriveApron_E_0", (3.4, east_mouths[0][0], 0.025), (1.2, 3.2, 0.05), COL_DRIVEWAY)
     # parked sedan on the middle west driveway (nosed toward the house)
     # On house 0's driveway, along it (E-W), nosed west at the
     # house. It was authored crosswise on drive 1: nose inside the
     # porch posts, tail across the cypress buttresses, and drive 1's
     # mouth is where the sedan stalled anyway.
-    cxp, cyp = -6.0, -1.3
+    cxp, cyp = -6.0, 0.2          # on the drive, which now runs to the garage (pass 421)
     make_box("Parked_Body", (cxp, cyp, 0.5), (3.8, 2.0, 0.6), (0.20, 0.28, 0.40, 1.0))
     make_box("Parked_Cabin", (cxp + 0.2, cyp, 1.05), (2.0, 1.7, 0.5), (0.16, 0.22, 0.32, 1.0))
     make_box("Parked_Windshield", (cxp - 0.75, cyp, 1.06), (0.05, 1.5, 0.42), (0.30, 0.36, 0.42, 1.0))
@@ -198,14 +216,15 @@ def build_suburban_street():
                      0.34, 0.28, (0.08, 0.08, 0.09, 1.0), segments=8, axis='Y')
     # ── Mailboxes on posts at each west driveway mouth ──
     for i, (hy, _s, _c) in enumerate(west_houses):
-        # house 1's box sits SOUTH of its drive: the stalled sedan
-        # stands exactly where hy+1.4 lands
-        mb_y = hy - 1.4 if i == 1 else hy + 1.4
+        # each box just south of its drive's curb cut (pass 421: the drives
+        # moved to the garages; house 1's box was already south — the
+        # stalled sedan stands where hy+1.4 lands)
+        mb_y = west_mouths[i][0] - 2.1
         make_cyl(f"Mailbox_Post_{i}", (-3.1, mb_y, 0.55), 0.05, 1.1, COL_MAIL_POST, segments=6)
         make_box(f"Mailbox_Box_{i}", (-3.1, mb_y, 1.15), (0.24, 0.42, 0.24), COL_MAILBOX)
         make_box(f"Mailbox_Flag_{i}", (-2.95, mb_y - 0.2, 1.2), (0.02, 0.04, 0.14), COL_SIGN_RED)
     # ── Sprinklers on the west lawns: heads + faint arcing spray ──
-    for i, (sx, sy) in enumerate([(-6.8, 0.5), (-6.4, 7.6), (-9.6, 16.8)]):
+    for i, (sx, sy) in enumerate([(-7.2, -2.2), (-6.4, 4.4), (-8.6, 17.6)]):   # on the grass (pass 421: two stood on drives)
         make_cyl(f"Sprinkler_{i}", (sx, sy, 0.08), 0.05, 0.16, COL_SPRINK, segments=6)
         # parabolic arc of droplets rising and falling from the head
         for d in range(6):
@@ -585,7 +604,8 @@ def build_road():
     for sgn in (-1, +1):
         make_box(f"Road_EdgeLine_{sgn:+d}", (sgn * 2.05, mid, 0.022), (0.06, span, 0.005), (0.92, 0.92, 0.86, 1.0))
         make_box(f"Road_Shoulder_{sgn:+d}", (sgn * 2.95, mid, 0.02), (1.50, span, 0.04), COL_DIRT_SHOULDER)
-        make_wedge(f"Ditch_{sgn:+d}", (sgn * 4.6, mid, -0.20), (1.8, span, 0.40), COL_GRASS, high_end=("+X" if sgn < 0 else "-X"))
+        from _props.streets import make_v_ditch
+        make_v_ditch(f"Ditch_{sgn:+d}", sgn * 3.7, sgn * 5.5, mid - span / 2.0, mid + span / 2.0, -0.40, 0.0, -0.05, COL_GRASS)
     # the road bends west past the van (a long Texas curve, 18 degrees), then runs on
     make_road_bend("Road_Bend", 0.0, BEND_Y, 0.0, -18.0, 160.0, 700.0, 4.4, asphalt=COL_ASPHALT, line=COL_LANE_LINE,
                    edge=(0.92, 0.92, 0.86, 1.0), shoulder_w=1.5, shoulder=COL_DIRT_SHOULDER, seg_len=10.0)

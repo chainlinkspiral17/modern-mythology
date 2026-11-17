@@ -784,7 +784,7 @@ def main():
     build_hero_props_2026_09()
     build_prints_2026_09()
     # what is outside the window (2026-10-07, _props/views.py)
-    make_view("View_S", "S", 0.0, 0.0, kind="street", ground_z=0.0, seed=12)   # the road past the front lot
+    make_view("View_S", "S", 0.0, 0.0, kind="street", ground_z=0.0, seed=12, drives=((9.8, 2.2),))   # the road past the front lot; the west lot's entrance (pass 421)
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/pit_stop_interior.glb"))
     print(f"\n[build_pit_stop_interior] exporting to {out}")

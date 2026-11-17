@@ -135,6 +135,35 @@ def _obj_stub(name):
     return o
 
 
+# real _props modules whose geometry is raw meshes (_finalize_mesh): each
+# piece records as its vertices' bounding box (pass 421, _props.streets —
+# it builds its curbs in short pieces so those boxes stay tight on curves)
+RAW_MESH_MODULES = {"streets"}
+# the raw meshes whose box is NOT their shape (a curve, a skewed edge, a
+# ramp): the clipping gates read a box as solid, so these are left to the
+# gates that read faces (prop_overlap_audit adds them to its MESH_NAMES)
+RAW_IMPRECISE = set()
+
+
+def _rec_raw_mesh(name, verts, faces=None, base_color=None, *a, **k):
+    xs = [float(v[0]) for v in verts]; ys = [float(v[1]) for v in verts]; zs = [float(v[2]) for v in verts]
+    if not xs:
+        return _obj_stub(name)
+    # exact when every vertex lies on the box's outline in plan and at its
+    # top or its base (a straight curb, a subdivided rectangular drive)
+    x0, x1, y0, y1, z0, z1 = min(xs), max(xs), min(ys), max(ys), min(zs), max(zs)
+    e = 1e-3
+    for x, y, z in zip(xs, ys, zs):
+        on_plan = abs(x - x0) < e or abs(x - x1) < e or abs(y - y0) < e or abs(y - y1) < e
+        if not on_plan or (abs(z - z0) >= e and abs(z - z1) >= e):
+            RAW_IMPRECISE.add(str(name))
+            break
+    BOXES.append((str(name), ((max(xs) + min(xs)) / 2.0, (max(ys) + min(ys)) / 2.0, (max(zs) + min(zs)) / 2.0),
+                  (max(0.005, (max(xs) - min(xs)) / 2.0), max(0.005, (max(ys) - min(ys)) / 2.0),
+                   max(0.005, (max(zs) - min(zs)) / 2.0))))
+    return _obj_stub(name)
+
+
 def install_stubs():
     """Stand in for every _props.* helper and for bpy itself."""
     bpy = types.ModuleType("bpy")
@@ -386,7 +415,11 @@ def install_stubs():
                      # (pass 375) the builders' view-tag helper: a context
                      # manager too — stubbed, The Foxhole recorded without
                      # the hundred and six people the pass had just built
-                     "view_tags"):
+                     "view_tags",
+                     # (pass 421) curbs, walks, curb cuts, driveways and
+                     # lawns built as raw meshes along a street's path:
+                     # stubbed, Meadowlark recorded no street edge at all
+                     "streets"):
         mpath = os.path.join(BLENDER, "_props", real_mod + ".py")
         if not os.path.exists(mpath):
             continue
@@ -396,6 +429,8 @@ def install_stubs():
         sys.modules["_props." + real_mod] = real
         setattr(pkg, real_mod, real)
         exec(compile(open(mpath).read(), mpath, "exec"), real.__dict__)
+        if real_mod in RAW_MESH_MODULES:
+            real.__dict__["_finalize_mesh"] = _rec_raw_mesh
     # (pass 376) THE OTHER PEOPLE. human_sculpt.human_figure builds a person
     # straight on bpy, past every recorder: Graustark's street people, the
     # parishioners at St. Jude, Harmony Creek's neighbours and the New

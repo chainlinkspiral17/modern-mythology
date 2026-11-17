@@ -43,7 +43,10 @@ def _frame(cx, cy, front):
 
 
 def make_ranch_house(prefix, cx, cy, front, wall_col, roof_col, w=11.0, d=8.0, h=2.9,
-                     garage=True, lit=(False, True, False), porch=True, two_story=False, shrubs=True):
+                     garage=True, lit=(False, True, False), porch=True, two_story=False, shrubs=True,
+                     apron=True):
+    # apron=False (pass 421): the street builds the driveway right up to the
+    # slab (_props.streets), and a 3 cm apron under it would be buried in it
     P, S, ridge_axis, sign = _frame(cx, cy, front)
     if two_story:
         h = h * 1.9
@@ -129,7 +132,8 @@ def make_ranch_house(prefix, cx, cy, front, wall_col, roof_col, w=11.0, d=8.0, h
         make_box(f"{prefix}_Garage_Door", P(gu, fv + 0.03, 1.12), S(2.7, 0.05, 2.24), (0.88, 0.86, 0.82, 1.0))
         for gi in range(4):
             make_box(f"{prefix}_Garage_Panel_{gi}", P(gu, fv + 0.062, 0.32 + gi * 0.55), S(2.5, 0.01, 0.40), (0.80, 0.78, 0.74, 1.0))
-        make_box(f"{prefix}_Garage_Apron", P(gu, fv + 1.6, 0.015), S(3.2, 3.0, 0.03), CONCRETE)
+        if apron:
+            make_box(f"{prefix}_Garage_Apron", P(gu, fv + 1.6, 0.015), S(3.2, 3.0, 0.03), CONCRETE)
     # ── foundation shrubs
     if shrubs:
         # (2026-11-09) the lathe's centre at the shrub's MIDDLE (0.42 up, the

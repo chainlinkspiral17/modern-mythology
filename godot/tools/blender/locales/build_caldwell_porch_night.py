@@ -461,12 +461,20 @@ def build_culdesac_2026_11():
     for nm, x in (("W", -23.0), ("E", 23.0)):
         make_box(f"Lawn_Front_{nm}", (x, -2.2, -0.033), (34.0, 3.6, 0.05), lawn)
     make_box("Front_Walk", (0.0, -2.05, -0.004), (1.20, 3.90, 0.012), conc)
-    make_box("Curb_Near", (7.0, -4.06, 0.02), (66.0, 0.12, 0.12), (0.50, 0.49, 0.47, 1.0))
+    # (pass 421) a curb cut at the neighbour's drive: the curb ran across it
+    from _props.streets import make_cut_curb
+    curb_c = (0.50, 0.49, 0.47, 1.0)
+    street_top = -0.005
+    make_cut_curb("Curb_Near", -26.0, 40.0, -4.12, -4.00, -0.04, 0.08, [(-20.0 - 1.75, -20.0 + 1.75)],
+                  lip=street_top + 0.02, color=curb_c)
     # the street: the near lane was 12 m of strip; west of it, and the far lane
     make_box("Street_Strip_W", (-23.0, -6.0, -0.03), (34.0, 4.0, 0.05), (0.26, 0.26, 0.28, 1.0))
     make_box("Street_Far_Lane", (0.0, -9.75, -0.03), (80.0, 3.5, 0.05), (0.25, 0.25, 0.27, 1.0))
     make_cyl("Culdesac_Bulb", (-33.0, -7.8, -0.028), 6.5, 0.05, (0.26, 0.26, 0.28, 1.0), segments=24)
-    make_box("Curb_Far", (7.0, -11.56, 0.02), (66.0, 0.12, 0.12), (0.50, 0.49, 0.47, 1.0))
+    # … and at each drive across (the curb ran across all four)
+    across_drives = [hx + (-1 if k % 2 == 0 else 1) * 3.2 for k, hx in enumerate((-21.0, -7.0, 7.0, 21.0))]
+    make_cut_curb("Curb_Far", -26.0, 40.0, -11.62, -11.50, -0.04, 0.08, [(dx - 1.75, dx + 1.75) for dx in across_drives],
+                  lip=street_top + 0.02, color=curb_c)
     make_box("Walk_Far", (7.0, -12.3, -0.02), (66.0, 1.2, 0.05), conc)   # ends at the bulb
     make_box("Lawn_Across", (0.0, -18.4, -0.033), (80.0, 11.0, 0.05), lawn)
     make_box("Ground_Beyond_S", (0.0, -42.0, -0.04), (120.0, 36.4, 0.05), (0.10, 0.14, 0.11, 1.0))
@@ -514,9 +522,15 @@ def build_culdesac_2026_11():
         make_box(f"{pre}_Facade", (-46.0, hy, 1.65), (7.0, 9.0, 3.3), bodies[(k + 2) % 4])
         make_rot_box(f"{pre}_Roof_W", (-47.75, hy, 3.3 + 2.0 * math.sin(0.42) + 0.06), (4.0, 9.6, 0.16), (0.20, 0.20, 0.23, 1.0), pitch=0.42)
         make_rot_box(f"{pre}_Roof_E", (-44.25, hy, 3.3 + 2.0 * math.sin(0.42) + 0.06), (4.0, 9.6, 0.16), (0.20, 0.20, 0.23, 1.0), pitch=-0.42)
-        make_box(f"{pre}_Window", (-42.48, hy + 2.0, 1.55), (0.04, 1.8, 1.3), lit if wl else dark)
+        make_box(f"{pre}_Window", (-42.48, hy + 2.0 if k == 0 else hy - 3.0, 1.55), (0.04, 1.8, 1.3), lit if wl else dark)   # k 1: the garage takes the bulb end (pass 421)
         make_box(f"{pre}_Front_Door", (-42.48, hy - 1.2, 1.03), (0.04, 0.95, 2.06), (0.24, 0.16, 0.14, 1.0))
-        make_box(f"{pre}_Garage_Door", (-42.48, hy - 3.0, 1.10), (0.04, 2.4, 2.2), (0.62, 0.61, 0.58, 1.0))
+        # (pass 421) the garage toward the bulb, and its drive out to the
+        # bulb's asphalt: the garages faced bare lawn (and the south one
+        # faced past the bulb's end)
+        gy = hy - 3.0 if k == 0 else hy + 3.0
+        make_box(f"{pre}_Garage_Door", (-42.48, gy, 1.10), (0.04, 2.4, 2.2), (0.62, 0.61, 0.58, 1.0))
+        bx = -33.0 - math.sqrt(6.5 ** 2 - (gy + 7.8) ** 2) + 0.35    # 35 cm onto the bulb's edge
+        make_box(f"{pre}_Driveway", ((-42.5 + bx) / 2.0, gy, -0.004), (bx + 42.5, 2.9, 0.012), conc)
     make_box("Lawn_Bulb_End", (-46.0, -7.8, -0.036), (14.0, 30.0, 0.05), lawn)
     make_lathe("Street_Lamp_C_Post", (-11.0, -4.4, -0.03), [(0.14, 0.0), (0.09, 0.10), (0.06, 5.6), (0.07, 5.8), (0.0, 5.8)], (0.24, 0.24, 0.26, 1.0), segments=8)
     make_lathe("Street_Lamp_C_Head", (-11.0, -4.4, 5.72), [(0.0, 0.0), (0.12, 0.05), (0.16, 0.18), (0.0, 0.22)], (0.98, 0.84, 0.50, 1.0), segments=10)
