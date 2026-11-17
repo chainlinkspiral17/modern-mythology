@@ -3835,6 +3835,27 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-17 · pass 424: Don's porch, across the cul-de-sac (Bianca's back porch).**
+- Bianca's Saturday (vol6 ch22_bianca): "Don's porch, across the cul-de-sac,
+  in the morning light" (n131), "Don's porch is, by nine twenty-two, in full
+  sun" (n152), the porch light she has been "making a relationship out of …
+  for nineteen years" (n154). The porch set's morning view looks east across
+  the porch, and past the east fence there was nothing (its own draft-5 list
+  said "Don Geller's house over the fence").
+- Built (miller_back_porch, `build_don_geller_2026_11`): the ground going
+  on past the fence; the cul-de-sac's bulb and its street running south, the
+  curb and walk round them (`_props.streets`); the Geller house at the
+  bulb's end facing back across it (no garage, as on Meadowlark Circle), a
+  lawn, a front walk, a mailbox, and the porch light beside the door. The
+  house kit builds at z 0, so its geometry calls are lowered to the yard's
+  grade for the call.
+- `shot_insert_dons_porch` (through the east screen, a long lens on his
+  porch and light), cued on n152 (a cue tag in a voiced chapter). Rendered.
+- CANON KNOT for Andy (flagged, not fixed): ch21_porch has Bianca "two miles
+  away" from Don's porch light; ch17_table and ch22_bianca have her watching
+  it "across the cul-de-sac". The set follows the porch chapters.
+- Deck must REBUILD miller_back_porch.
+
 **2026-11-17 · pass 423: the crow comes inside (vol 7 ch19-20).**
 - Through ch19-20 the crow is in the cabin with them, and the cabin had one
   crow: on the kitchen window's outside sill, in every view. ch19_cedar's

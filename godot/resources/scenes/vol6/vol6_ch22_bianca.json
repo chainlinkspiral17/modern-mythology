@@ -920,7 +920,7 @@
   },
   {
    "t": "narrate",
-   "text": "The cicadas are louder by a degree. Don's porch is, by nine twenty-two, in full sun.",
+   "text": "[shot:insert dons_porch]The cicadas are louder by a degree. Don's porch is, by nine twenty-two, in full sun.",
    "voice": "assets/audio/voice/vol6_ch22_bianca/151.mp3"
   },
   {

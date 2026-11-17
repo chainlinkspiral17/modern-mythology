@@ -345,6 +345,14 @@ position = Vector3(2.200, 1.450, -0.600)
 rotation = Vector3(0.1295, -2.7334, 0.0)
 metadata/fov = 38.0
 
+; (pass 424) insert: Don's porch across the cul-de-sac, from just past the
+; porch's east screen — "Don's porch is, by nine twenty-two, in full sun" (vol6 ch22_bianca
+; n152); the porch light she watches beside his door
+[node name="shot_insert_dons_porch" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.450, 1.450, 0.400)
+rotation = Vector3(-0.0122, -1.6969, 0.0)
+metadata/fov = 16.0
+
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
 layer = 100
 

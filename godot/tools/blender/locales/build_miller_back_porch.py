@@ -395,6 +395,64 @@ def build_bianca_night_2026_10():
     make_rot_box("Cordless_Phone", (0.60, cy + 0.08, 0.46 + 0.0125), (0.055, 0.17, 0.025), (0.86, 0.85, 0.80, 1.0), yaw=0.35)
     make_rot_box("Cordless_Phone_Keys", (0.60, cy + 0.08, 0.46 + 0.0255), (0.040, 0.08, 0.001), (0.30, 0.30, 0.32, 1.0), yaw=0.35)
 
+def build_don_geller_2026_11():
+    """DON'S PORCH, ACROSS THE CUL-DE-SAC (pass 424). Bianca's Saturday: "Don's
+    porch, across the cul-de-sac, in the morning light" (ch22_bianca n131),
+    "Don's porch is, by nine twenty-two, in full sun" (n152) — the porch light
+    she has been "making a relationship out of … for nineteen years" (n154).
+    The morning view looks east across the porch; past the east fence was
+    nothing. Now: the ground goes on, the cul-de-sac's bulb with its street
+    running off south (curb and walk round it, _props.streets), and the
+    Geller house facing back across the bulb (no garage, as on Meadowlark
+    Circle), its porch light beside the door. (Canon knot for Andy: ch21_porch
+    puts Bianca "two miles away" from Don; ch17 and ch22 have her watching his
+    porch across the cul-de-sac. The set follows the porch chapters.)"""
+    from _props.buildings import make_ranch_house
+    from _props.streets import EdgePath, line_path, arc_path, join_paths, make_street_edge, make_flat_polygon
+    gz = -0.44                                   # the yard's grade
+    asphalt = (0.30, 0.30, 0.31, 1.0); concrete = (0.62, 0.61, 0.58, 1.0)
+    make_box("East_Ground", (26.0, -14.0, gz - 0.025), (36.0, 52.0, 0.05), COL_GRASS)
+    # the bulb (centre 16.5, -4, r 6.5) and the street off it to the south
+    bx, by, br, hw = 16.5, -4.0, 6.5, 3.0
+    a = math.degrees(math.asin(hw / br))                # where the street's edges meet the circle
+    y_meet = by - math.sqrt(br * br - hw * hw)
+    bulb = arc_path((bx, by), br, -90.0 + a, 270.0 - a, step_deg=4.0)        # counter-clockwise from the street's east edge
+    road_y0 = -40.0
+    outline = join_paths(line_path((bx + hw, road_y0), (bx + hw, y_meet)), bulb, line_path((bx - hw, y_meet), (bx - hw, road_y0)))
+    make_flat_polygon("Culdesac_Asphalt", outline, gz + 0.012, gz - 0.03, asphalt)
+    # the curb and walk round it, outward on the right walking counter-clockwise
+    from _props import streets as _st
+    _st.make_street_edge("Culdesac", EdgePath(outline, out_right=True), (), curb_top=gz + 0.012 + 0.10,
+                         walk_top=gz + 0.012 + 0.08, base=gz - 0.03, walk_col=concrete)
+    # the Geller house at the bulb's east end, facing back across it — the
+    # kit builds at z 0; the yard's grade is 44 cm down, so its geometry
+    # calls are lowered for the call
+    import _props.buildings as _bld
+    hx, hy = 32.0, by
+    saved = {}
+    def _dz(f, path=False):
+        if path:
+            return lambda name, pts, *a_, **k_: f(name, [(q[0], q[1], q[2] + gz) for q in pts], *a_, **k_)
+        return lambda name, c, *a_, **k_: f(name, (c[0], c[1], c[2] + gz), *a_, **k_)
+    for n in ("make_box", "make_cyl", "make_chamfer_box", "make_prism", "make_lathe"):
+        saved[n] = getattr(_bld, n); setattr(_bld, n, _dz(saved[n]))
+    saved["make_tube"] = _bld.make_tube; _bld.make_tube = _dz(saved["make_tube"], path=True)
+    try:
+        make_ranch_house("Geller", hx, hy, "-X", (0.72, 0.68, 0.60, 1.0), (0.34, 0.30, 0.28, 1.0), w=10.0, d=8.0, h=2.8,
+                         garage=False, lit=(False, False, False), porch=True, shrubs=True)
+    finally:
+        for n, f in saved.items():
+            setattr(_bld, n, f)
+    fx = hx - 4.0                                     # its front wall
+    make_box("Geller_Lawn", ((24.6 + fx) / 2.0, hy, gz + 0.006), (fx - 24.6, 14.0, 0.012), COL_GRASS)
+    make_box("Geller_Front_Walk", ((24.6 + fx) / 2.0, hy, gz + 0.04), (fx - 24.6, 1.2, 0.08), concrete)
+    # the porch light Bianca watches, beside the door
+    make_box("Dons_Porch_Light_Bracket", (fx - 0.03, hy + 0.80, gz + 2.26), (0.06, 0.06, 0.06), (0.20, 0.20, 0.22, 1.0))
+    make_box("Dons_Porch_Light", (fx - 0.09, hy + 0.80, gz + 2.12), (0.12, 0.14, 0.22), (0.96, 0.90, 0.72, 1.0))
+    make_cyl("Geller_Mailbox_Post", (24.2, hy - 1.6, gz + 0.55), 0.05, 1.10, (0.30, 0.30, 0.32, 1.0), segments=6)
+    make_box("Geller_Mailbox", (24.2, hy - 1.6, gz + 1.20), (0.48, 0.22, 0.24), (0.22, 0.26, 0.34, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -408,6 +466,7 @@ def main():
     build_hero_props_2026_09()
     build_draft3_2026_09()
     build_bianca_night_2026_10()
+    build_don_geller_2026_11()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/miller_back_porch.glb"))
     print(f"\n[build_miller_back_porch] exporting to {out}")
