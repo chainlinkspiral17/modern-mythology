@@ -84,6 +84,7 @@ JUDGED = {
     "vol7_ch22_portal:68": "KEEP (pass 409 reader, node-cited)",
     "vol7_ch6_sunday:7": "KEEP (pass 409 reader, node-cited)",
     "vol7_ch8_six_oclock:11": "KEEP (pass 425): she looks DOWN from the front window — the frame is through it, on Finn's truck (n10)",
+    "vol1_ch11_drugstore:33": "KEEP (pass 427): the beat ends at the door — \"He carries her out the door, down to the boat\" — the entry frame",
 }
 
 # --generic: cues on a generic surface (table, door, window ...) whose line names a

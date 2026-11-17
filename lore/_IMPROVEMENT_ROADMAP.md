@@ -3835,6 +3835,42 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-17 · pass 427: the all-night drugstore's reception desk, and the gray cat (vol1 ch11).**
+- "Behind the front counter, where Deborah should be, there's a reception
+  desk. Olivia is behind it, the secretary from the tutorial, in the same
+  cardigan, typing. A cat carrier sits on the counter beside her keyboard
+  with the little door open" (n17). The purgatory view had no desk, and its
+  counter frame looked at the pharmacy counter at the back of the store.
+- Built (build_pharmacy, `build_purgatory_2026_11`): on register 1's cashier
+  side, a reception desk — a raised ledge facing the store (it reads over
+  the register's counter), the work surface behind with her monitor,
+  keyboard, mouse, a mug, the three forms with a rubber stamp and its pad
+  ("Olivia slides three forms across the desk" … "stamps all three forms"), her chair; the carrier beside the keyboard,
+  its wire door swung open over the desk. The desk's body is `Desk`, the
+  surface `Desk_Top`, the ledge `Counter` (the frame's subject, clear of the carrier).
+- "They all look at the carrier. A gray cat comes out slowly, the way old
+  cats get up, and sits on the counter facing Faust" (n26) … "He carries her
+  out the door" (n33): a twin view `drugstore_purgatory_cat` (view_twin) with
+  the kit's gray cat sitting on the ledge facing the store; bg nodes
+  dissolve to it before n26 and back before "He comes back in without her"
+  (the chapter is not voiced: scene_insert_node). The waterfront's empty is
+  now `Purgatory__purg` (a group of the two views).
+- Frames: `shot_insert_counter__drugstore_purgatory` re-aimed from the front
+  of the store over register 1's end; `shot_insert_desk__drugstore_purgatory`
+  (the forms lines; it had looked at the back office's desk) from over
+  Olivia's chair — the ledge hides the surface from Faust's side; `shot_insert_cat__drugstore_purgatory_cat`
+  from the customers' side. The entry frame on "He carries her out the door"
+  judged keep.
+- The kit's gray cat read near-black under the view's tubes: a light gray.
+- The suite caught three: Olivia's chair floated 4 cm (support_audit); the twin
+  inherited the purgatory's wide-screen clearance, but the cat frame's side
+  bands open onto night sky through the storefront — the twin holds its
+  width; both drugstore views had no ambient bed (the pharmacy's hum now).
+- Draft N+1: Olivia's cardigan and typing are the portrait's; the cat could
+  turn to "the door … the water outside" (n28) in a third view; the cat's
+  shape "small in the window" of Judgement Day as it pulls away (n35).
+- Deck must REBUILD pharmacy.
+
 **2026-11-17 · pass 426: which table, which door, which window (a sweep).**
 - A sweep of every `insert window/door/table/counter/desk/shelf/bench` cue
   whose line qualifies the noun (south, front, kitchen, bedroom, end …)

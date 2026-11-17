@@ -158,6 +158,19 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-17 · a part's name decides what its cue frames (pass 427)
+**What happened:** the drugstore's new reception desk was one family of
+`Purg_Reception_Counter_*` parts. The counter frame's subject became the
+desk's south end panel (nearest the lens), which the cat carrier hides — the
+obstruction gate failed it. The desk frame from Faust's side could not see
+the work surface at all: the raised ledge hides it, as a real one does.
+**Rule:** name the parts by what the text calls them, because the cue's
+subject follows the name: the line's "reception desk" is `Desk_*` (body,
+surface), "the counter beside her keyboard" / the ledge over the register is
+`Counter_*`. Stage a desk frame from the side that works at it (over the
+worker's chair) when a ledge or screen faces the customer.
+**Where it lives:** build_pharmacy `build_purgatory_2026_11`; pass 427 entry.
+
 ### 2026-11-17 · a word in the line is not the thing in the frame (pass 425)
 **What happened:** the text pass cued `insert door` on every line naming a
 door; thirteen named a door the frame does not show (a garage door heard from

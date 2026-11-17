@@ -766,8 +766,70 @@ def build_purgatory_2026_11():
     sheen("Lamp0", dx1 + 0.30, -5.4, 3.0, (1.0, 0.86, 0.58))
     sheen("Lamp1", dx1 + 0.30, -11.6, 7.5, (1.0, 0.86, 0.58))
     sheen("Torch", tx, ty + 0.4, 8.4, (1.0, 0.62, 0.26))
+    # (pass 427) "Behind the front counter, where Deborah should be, there's a
+    # reception desk. Olivia is behind it, the secretary from the tutorial, in
+    # the same cardigan, typing. A cat carrier sits on the counter beside her
+    # keyboard with the little door open." (ch11_drugstore n17) — on register
+    # 1's cashier side (E): a reception counter with a raised transaction ledge
+    # facing the store (it reads over the register's counter), the work surface
+    # behind it with her monitor and keyboard, her chair, and the carrier on the
+    # surface beside the keyboard, its wire door swung open.
+    rx, ry = -1.45, 2.60                          # register 1 stands at x -2.6 (E face -2.20)
+    lam, lam_dk = (0.70, 0.66, 0.60, 1.0), (0.42, 0.38, 0.34, 1.0)
+    make_box("Purg_Reception_Desk_Front", (rx - 0.33, ry, 0.56), (0.04, 1.60, 1.12), lam_dk)     # the modesty face, W
+    make_box("Purg_Reception_Counter_Ledge", (rx - 0.26, ry, 1.135), (0.22, 1.66, 0.03), lam)          # the raised ledge
+    make_box("Purg_Reception_Desk_Top", (rx + 0.02, ry, 0.745), (0.66, 1.60, 0.03), lam)            # the work surface
+    for s in (-1, 1):
+        make_box(f"Purg_Reception_Desk_End_{s:+d}", (rx + 0.02, ry + s * 0.79, 0.37), (0.66, 0.02, 0.74), lam_dk)
+    # her monitor and keyboard, a mouse, a mug
+    make_box("Purg_Reception_Monitor_Foot", (rx - 0.10, ry + 0.15, 0.765), (0.18, 0.14, 0.01), COL_DARK)
+    make_box("Purg_Reception_Monitor_Neck", (rx - 0.10, ry + 0.15, 0.86), (0.03, 0.04, 0.18), COL_DARK)
+    make_box("Purg_Reception_Monitor", (rx - 0.11, ry + 0.15, 1.05), (0.03, 0.50, 0.30), COL_DARK)
+    make_box("Purg_Reception_Monitor_Glow", (rx - 0.09, ry + 0.15, 1.05), (0.004, 0.46, 0.26), (0.62, 0.76, 0.86, 1.0))
+    make_box("Purg_Reception_Keyboard", (rx + 0.12, ry + 0.15, 0.768), (0.16, 0.44, 0.016), (0.22, 0.22, 0.24, 1.0))
+    make_box("Purg_Reception_Mouse", (rx + 0.14, ry + 0.48, 0.772), (0.06, 0.04, 0.02), (0.22, 0.22, 0.24, 1.0))
+    make_cyl("Purg_Reception_Mug", (rx + 0.22, ry + 0.66, 0.81), 0.04, 0.10, (0.80, 0.30, 0.24, 1.0), segments=10)
+    # "Olivia slides three forms across the desk" (n48) ... "Olivia stamps all
+    # three forms" (n57): the forms on the surface by the ledge, the stamp and
+    # its pad beside them
+    for k in range(3):
+        make_box(f"Purg_Reception_Form_{k}", (rx - 0.02 + k * 0.012, ry + 0.66 - k * 0.01, 0.7615 + k * 0.0012),
+                 (0.22, 0.28, 0.001), (0.94, 0.93, 0.88, 1.0))
+    make_box("Purg_Reception_Stamp_Pad", (rx + 0.20, ry + 0.42, 0.766), (0.10, 0.07, 0.012), (0.20, 0.22, 0.40, 1.0))
+    make_cyl("Purg_Reception_Stamp", (rx + 0.28, ry + 0.40, 0.80), 0.025, 0.08, (0.40, 0.26, 0.16, 1.0), segments=8)
+    # the carrier beside the keyboard (S of it), its long side along the desk;
+    # the wire door on its S end, hinged at the E edge, swung open over the desk
+    cx, cy, cz = rx, ry - 0.38, 0.76
+    make_box("Purg_Cat_Carrier_Base", (cx, cy, cz + 0.07), (0.34, 0.48, 0.14), (0.86, 0.84, 0.80, 1.0))
+    make_box("Purg_Cat_Carrier_Top", (cx, cy, cz + 0.22), (0.32, 0.46, 0.16), (0.74, 0.70, 0.62, 1.0))
+    make_box("Purg_Cat_Carrier_Handle", (cx, cy, cz + 0.315), (0.04, 0.16, 0.03), (0.30, 0.30, 0.32, 1.0))
+    for v in (-1, 1):
+        make_box(f"Purg_Cat_Carrier_Vent_{v:+d}", (cx + v * 0.162, cy, cz + 0.20), (0.004, 0.30, 0.06), (0.30, 0.30, 0.32, 1.0))
+    make_box("Purg_Cat_Carrier_Doorway", (cx, cy - 0.242, cz + 0.16), (0.26, 0.004, 0.20), (0.06, 0.06, 0.07, 1.0))
+    hx, hy, th = cx + 0.13, cy - 0.24, -0.70
+    make_rot_box("Purg_Cat_Carrier_Door", (hx + 0.12 * math.cos(th), hy + 0.12 * math.sin(th), cz + 0.16),
+                 (0.24, 0.012, 0.20), (0.62, 0.62, 0.64, 1.0), yaw=th)
+    # her chair behind the desk
+    make_cyl("Purg_Reception_Chair_Base", (rx + 0.62, ry + 0.05, 0.02), 0.28, 0.04, COL_DARK, segments=10)
+    make_cyl("Purg_Reception_Chair_Post", (rx + 0.62, ry + 0.05, 0.255), 0.03, 0.43, COL_STEEL, segments=6)
+    make_box("Purg_Reception_Chair_Seat", (rx + 0.62, ry + 0.05, 0.50), (0.46, 0.46, 0.07), (0.20, 0.22, 0.30, 1.0))
+    make_box("Purg_Reception_Chair_Back", (rx + 0.86, ry + 0.05, 0.79), (0.05, 0.42, 0.52), (0.20, 0.22, 0.30, 1.0))
+    # (pass 427) "They all look at the carrier. A gray cat comes out slowly, the
+    # way old cats get up, and sits on the counter facing Faust" (n25) until "he
+    # picks up the cat ... He carries her out the door" (n32): on the reception
+    # counter's ledge, facing the store — only in that stretch's twin view
+    from _props import creatures as _cr
+    from _props.view_tags import Views
+    from _props.geometry import join_prefix
+    V = Views("ph", {"c": "drugstore_purgatory_cat"})
+    with V.tagged("c", _cr):
+        # a light gray: the kit's gray reads near-black under this view's blue-white tubes
+        _cr.make_cat("Gray_Cat", rx - 0.27, ry - 0.30, 1.15, heading='-X', pose='sitting',
+                     coat=(0.70, 0.70, 0.72, 1.0), dark=(0.46, 0.46, 0.48, 1.0))
+    V.check()
+    join_prefix("Gray_Cat")
     if bpy is not None:
-        empty = bpy.data.objects.new("Purgatory__drugstore_purgatory", None)
+        empty = bpy.data.objects.new("Purgatory__purg", None)
         bpy.context.scene.collection.objects.link(empty)
         for obj in list(bpy.data.objects):
             if obj is not empty and obj.parent is None and obj.name.startswith("Purg_"):

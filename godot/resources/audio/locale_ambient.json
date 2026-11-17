@@ -1125,6 +1125,14 @@
       "bed": "assets/audio/bgm/vol1_pharmacy.wav",
       "gain": 0.82
     },
+    "drugstore_purgatory": {
+      "bed": "assets/audio/bgm/vol1_pharmacy.wav",
+      "gain": 0.82
+    },
+    "drugstore_purgatory_cat": {
+      "bed": "assets/audio/bgm/vol1_pharmacy.wav",
+      "gain": 0.82
+    },
     "pharmacy_office": {
       "bed": "assets/audio/bgm/vol1_pharmacy.wav",
       "gain": 0.82

@@ -43,6 +43,9 @@ const ArtMaskScript := preload("res://scripts/vn/ArtMask.gd")
 ## their groups against this table (a tag that names nothing would put the
 ## part in EVERY view); tools/audit/view_tags.py reads it for the gates.
 const VIEW_GROUPS := {
+	# (pass 427) the all-night drugstore (vol1 ch11): the waterfront and the reception desk, and the stretch
+	# with the gray cat out of her carrier
+	"purg": ["drugstore_purgatory", "drugstore_purgatory_cat"],
 	# (pass 397) Finn's table once the stick has come home (vol 7 ch18)
 	"fa_stick": ["finn_apartment_stick", "finn_apartment_night_stick"],
 	# (pass 399) the wood on Tem's cloth: the cloth in ch5, ch9, ch12; the
@@ -6864,6 +6867,19 @@ const CAMERA_PRESETS := {
 	# vantage as pharmacy_floor, night; the lot is water (the Purg_ waterfront,
 	# tagged to this view; the lot, its cars and the street stripped)
 	"drugstore_purgatory": {
+		"scene": "res://scenes/locales/pharmacy.tscn",
+		"requires_glb": "res://assets/3d/locales/pharmacy.glb",
+		"camera_origin": Vector3(1.20, 2.10, -15.98),
+		"camera_rotation": Vector3(-0.050, -3.123, 0.0),
+		"fov": 64.0,
+		"strip": ["Out_Lot", "Out_Car_", "Out_Stall", "Out_Fire_Lane", "Out_Corral", "View_S", "Sun_Storefront"],
+		"env": {"sky_top": Color(0.03, 0.04, 0.08, 1), "sky_horizon": Color(0.12, 0.12, 0.18, 1),
+			"ground_horizon": Color(0.06, 0.07, 0.10, 1), "ground_bottom": Color(0.02, 0.02, 0.03, 1)},
+		"far": 600.0,
+		"suppress_input": true,
+	},
+	"drugstore_purgatory_cat": {
+		# (pass 427) n26-n34: the gray cat out of the carrier, on the reception counter's ledge facing Faust, until he carries her out
 		"scene": "res://scenes/locales/pharmacy.tscn",
 		"requires_glb": "res://assets/3d/locales/pharmacy.glb",
 		"camera_origin": Vector3(1.20, 2.10, -15.98),

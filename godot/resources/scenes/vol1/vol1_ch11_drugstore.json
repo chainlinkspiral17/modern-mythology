@@ -136,8 +136,13 @@
       "text": "She's been tired for weeks. I brought her to work because I didn't want her to be alone for it. I keep the door open, so she can decide."
     },
     {
+      "t": "bg",
+      "src": "3d:drugstore_purgatory_cat",
+      "transition": "dissolve"
+    },
+    {
       "t": "narrate",
-      "text": "[shot:insert counter]They all look at the carrier. A gray cat comes out slowly, the way old cats get up, and sits on the counter facing Faust."
+      "text": "[shot:insert cat]They all look at the carrier. A gray cat comes out slowly, the way old cats get up, and sits on the counter facing Faust."
     },
     {
       "t": "say",
@@ -176,6 +181,11 @@
     {
       "t": "narrate",
       "text": "[shot:insert entry]Faust stands there. Then he picks up the cat, carefully, the way you pick up something that already hurts. He carries her out the door, down to the boat, and sets her on the front seat. She turns around once and lies down."
+    },
+    {
+      "t": "bg",
+      "src": "3d:drugstore_purgatory",
+      "transition": "dissolve"
     },
     {
       "t": "narrate",

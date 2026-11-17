@@ -329,21 +329,21 @@ shadow_enabled = false
 omni_range = 4.60
 
 ; (2026-11-03) vol1 ch11's waterfront: the methane torch, the dock lamps ("Every light is on, inside and out")
-[node name="Purg_Torch_Light__drugstore_purgatory" type="OmniLight3D" parent="."]
+[node name="Purg_Torch_Light__drugstore_purgatory__drugstore_purgatory_cat" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0, 8.0, 12.0)
 light_color = Color(1.0, 0.6, 0.25, 1)
 light_energy = 3.0
 omni_range = 18.0
 shadow_enabled = false
 
-[node name="Purg_Dock_Lamp_0__drugstore_purgatory" type="OmniLight3D" parent="."]
+[node name="Purg_Dock_Lamp_0__drugstore_purgatory__drugstore_purgatory_cat" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.55, 2.8, 5.0)
 light_color = Color(1.0, 0.9, 0.7, 1)
 light_energy = 1.6
 omni_range = 7.0
 shadow_enabled = false
 
-[node name="Purg_Dock_Lamp_1__drugstore_purgatory" type="OmniLight3D" parent="."]
+[node name="Purg_Dock_Lamp_1__drugstore_purgatory__drugstore_purgatory_cat" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.55, 2.8, 11.5)
 light_color = Color(1.0, 0.9, 0.7, 1)
 light_energy = 1.6
@@ -363,17 +363,36 @@ position = Vector3(-6.400, 1.750, 1.900)
 rotation = Vector3(-0.1960, -3.1074, 0.0)
 metadata/fov = 45.0
 
-[node name="shot_insert_counter__drugstore_purgatory" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-2.200, 1.750, -12.600)
-rotation = Vector3(-0.3555, -0.5129, 0.0)
+; (view_twin) drugstore_purgatory's frame in drugstore_purgatory_cat
+[node name="shot_insert_judgement_day__drugstore_purgatory_cat" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-6.400, 1.750, 1.900)
+rotation = Vector3(-0.1960, -3.1074, 0.0)
 metadata/fov = 45.0
 
+; (pass 427) "Behind the front counter, where Deborah should be, there's a reception desk. Olivia is behind
+; it ... typing. A cat carrier sits on the counter beside her keyboard with the little door open" (n17):
+; from the front of the store over register 1's end, the reception counter, her monitor and keyboard, the
+; carrier with its door open, her chair — this frame had looked at the pharmacy counter at the back
+[node name="shot_insert_counter__drugstore_purgatory" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.000, 2.200, -0.600)
+rotation = Vector3(-0.5099, 0.5775, 0.0)
+metadata/fov = 42.0
+
+; (pass 427) "Olivia slides three forms across the desk" (n48), "Olivia stamps all three forms" (n57):
+; over her chair, her desk — the forms, the stamp and its pad, the keyboard, the carrier — the counter and
+; the store beyond. This frame had looked at the back office's desk.
 [node name="shot_insert_desk__drugstore_purgatory" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.766, 1.513, -19.447)
-rotation = Vector3(-0.2540, -0.1726, 0.0)
-metadata/fov = 35.0
+position = Vector3(-0.300, 1.650, -2.900)
+rotation = Vector3(-0.6860, 1.6952, 0.0)
+metadata/fov = 45.0
 
 [node name="shot_insert_entry__drugstore_purgatory" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-7.400, 1.600, -4.600)
+rotation = Vector3(-0.0717, 2.8069, 0.0)
+metadata/fov = 50.0
+
+; (view_twin) drugstore_purgatory's frame in drugstore_purgatory_cat
+[node name="shot_insert_entry__drugstore_purgatory_cat" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-7.400, 1.600, -4.600)
 rotation = Vector3(-0.0717, 2.8069, 0.0)
 metadata/fov = 50.0
@@ -383,12 +402,30 @@ position = Vector3(0.500, 1.620, -13.900)
 rotation = Vector3(0.1518, -0.2141, 0.0)
 metadata/fov = 42.0
 
+; (view_twin) drugstore_purgatory's frame in drugstore_purgatory_cat
+[node name="shot_closeup_person__drugstore_purgatory_cat" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.500, 1.620, -13.900)
+rotation = Vector3(0.1518, -0.2141, 0.0)
+metadata/fov = 42.0
+
 [node name="shot_closeup_person_b__drugstore_purgatory" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.550, 2.020, -16.450)
 rotation = Vector3(-0.2478, 2.8198, 0.0)
 metadata/fov = 42.0
 
+; (view_twin) drugstore_purgatory's frame in drugstore_purgatory_cat
+[node name="shot_closeup_person_b__drugstore_purgatory_cat" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.550, 2.020, -16.450)
+rotation = Vector3(-0.2478, 2.8198, 0.0)
+metadata/fov = 42.0
+
 [node name="shot_establish_b__drugstore_purgatory" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.500, 1.700, -4.900)
+rotation = Vector3(0.0540, 0.0270, 0.0)
+metadata/fov = 58.0
+
+; (view_twin) drugstore_purgatory's frame in drugstore_purgatory_cat
+[node name="shot_establish_b__drugstore_purgatory_cat" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.500, 1.700, -4.900)
 rotation = Vector3(0.0540, 0.0270, 0.0)
 metadata/fov = 58.0
@@ -574,3 +611,10 @@ metadata/fov = 35.0
 position = Vector3(1.443, 1.076, -5.945)
 rotation = Vector3(-0.2374, 2.9630, 0.0)
 metadata/fov = 35.0
+
+; (pass 427) "They all look at the carrier. A gray cat comes out slowly, the way old cats get up, and sits on
+; the counter facing Faust" (n26): from the customers' side past register 1, the cat on the reception ledge
+[node name="shot_insert_cat__drugstore_purgatory_cat" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.700, 1.600, -1.200)
+rotation = Vector3(-0.1704, -1.1064, 0.0)
+metadata/fov = 34.0
