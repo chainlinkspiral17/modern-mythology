@@ -5,7 +5,7 @@
   "type": "scene",
   "nodes": [
     {
-      "src": "3d:cabin_interior_three",
+      "src": "3d:cabin_interior_three_dawn",
       "t": "bg"
     },
     {
@@ -150,7 +150,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert window]Finn rolled off the floor at five twenty-two and went to the south window to look at his crow on Kai's truck.",
+      "text": "[shot:insert crow]Finn rolled off the floor at five twenty-two and went to the south window to look at his crow on Kai's truck.",
       "t": "narrate"
     },
     {

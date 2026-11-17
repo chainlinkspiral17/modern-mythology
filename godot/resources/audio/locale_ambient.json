@@ -429,6 +429,10 @@
       "bed": "assets/audio/bgm/vol7_cabin_woodstove.wav",
       "gain": 0.9
     },
+    "cabin_interior_three_dawn": {
+      "bed": "assets/audio/bgm/vol7_cabin_woodstove.wav",
+      "gain": 0.9
+    },
     "cabin_interior_eddvard": {
       "bed": "assets/audio/bgm/vol7_cabin_woodstove.wav",
       "gain": 0.9

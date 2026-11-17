@@ -1599,7 +1599,9 @@ def build_hero_props_2026_09():
     for wi, off in enumerate((0.75, 2.05)):
         trk = [(-1.3 + off - 0.16, -9.0), (-1.3 + off + 0.16, -9.0), (-4.4 + off * 1.2 + 0.16, -17.9), (-4.4 + off * 1.2 - 0.16, -17.9)]
         _prism_ccw_z(f"Gravel_Road_Track_{wi}", trk, YARD_Z + 0.0085, 0.001, (0.29, 0.27, 0.22, 1.0))
-    make_car("Toyota_Truck", -6.6, -6.2, 4.8, (0.44, 0.48, 0.42, 1.0), pickup=True, along="Y", z0=YARD_Z)
+    # (pass 429) glass with alpha: the engine's GlassPass makes it see-through
+    make_car("Toyota_Truck", -6.6, -6.2, 4.8, (0.44, 0.48, 0.42, 1.0), pickup=True, along="Y", z0=YARD_Z,
+             glass_col=(0.26, 0.30, 0.36, 0.45))
     make_car("Station_Wagon", 3.7, -5.9, 5.0, (0.48, 0.36, 0.26, 1.0), along="Y", z0=YARD_Z)
     # the wagon's roof rack, on the roofline (z0 + 1.46)
     make_box("Station_Wagon_Rack", (3.7, -6.2, YARD_Z + 1.48), (1.20, 1.40, 0.04), (0.30, 0.30, 0.32, 1.0))
@@ -2073,6 +2075,28 @@ def build_porch_2026_10():
         make_rot_box(f"Chopping_Block_Split_{ci}", (sx2, sy2, YARD_Z + 0.05), (0.36, 0.10, 0.10), COL_WOOD, yaw=syaw)
 
 
+def build_crow_on_truck_2026_11():
+    """THE CROW ON KAI'S TRUCK (pass 429), vol7 ch17_dawn: "Finn rolled off the
+    floor at five twenty-two and went to the south window to look at his crow
+    on Kai's truck" (n34); "The crow was on the truck" (n37); "The crow has
+    been on Kai's truck since I left her there last night ... by the way the
+    crow is standing on the dashboard" (n40-41). The kit's cab is one solid
+    prism (no dashboard inside it): she stands on the cowl at the windshield's
+    foot, facing the cabin — draft N+1: a hollow cab with a dash. Only in the
+    dawn view (cabin_interior_three_dawn); the window-sill crow (cab_wcrow) is
+    not in that view."""
+    from _props import creatures as _cr
+    from _props.view_tags import Views
+    from _props.geometry import join_prefix
+    V = Views("cab", {"d": "cabin_interior_three_dawn"})
+    with V.tagged("d", _cr):
+        # the truck runs along Y, nose +y at y -3.8; the cowl (body top z0 + 1.02..1.10)
+        # just ahead of the windshield's foot (u = nose - 1.85)
+        _cr.make_crow("Truck_Crow", -6.6 + 0.30, -6.2 + 2.4 - 1.72, YARD_Z + 1.07, facing=-1.0)
+    V.check()
+    join_prefix("Truck_Crow")
+
+
 def main():
     clear_scene()
     build_shell()
@@ -2103,6 +2127,7 @@ def main():
     build_shop_wing_2026_10()
     build_porch_2026_10()
     build_crow_inside_2026_11()       # (pass 423) actual coordinates
+    build_crow_on_truck_2026_11()     # (pass 429) ch17 dawn
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/cabin_interior.glb"))
     build_door_infill_front_door_2026_09()

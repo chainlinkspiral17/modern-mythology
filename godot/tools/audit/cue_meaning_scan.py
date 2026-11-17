@@ -166,6 +166,7 @@ JUDGED_GENERIC = {
     "vol7_ch8_monday:12": "KEEP (pass 413 reader, node-cited)",
     "vol7_ch9_evening:33": "KEEP (pass 413 reader, node-cited)",
     "vol7_ch10_morning:51": "KEEP (pass 426): the beat ends in the chair by the FRONT window — the night_ch10 window frame is that chair and window; the bedroom door is where she picks up the cup",
+    "vol7_epilogue_morning:11": "KEEP (pass 429): \"the mist on the cedars\" is the trees outside the kitchen window, not the cedar bell-piece",
 }
 GENERIC = {"table", "counter", "door", "window", "wall", "room", "desk", "shelf", "floor", "kitchen", "bench",
            "porch", "yard", "street", "road", "lot", "hall", "doorway", "booth", "bar", "shelves", "stove", "sink"}

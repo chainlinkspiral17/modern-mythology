@@ -3835,6 +3835,36 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-17 · pass 429: the crow on Kai's truck, from the cabin's south window (vol7 ch17 dawn).**
+- "Finn rolled off the floor at five twenty-two and went to the south window
+  to look at his crow on Kai's truck" (n34); "The crow was on the truck"
+  (n37); "The crow has been on Kai's truck since I left her there last night
+  … by the way the crow is standing on the dashboard" (n40-41). Pass 426 had
+  given the line its window; through it the warm night pane tinted the dawn
+  orange, the truck's glass was opaque and no crow was there — the set's
+  crow stood on the kitchen window's sill in every night view.
+- A twin `cabin_interior_three_dawn` for ch17_dawn (view_twin; the room's
+  groups — night rig, bowls, Marit's, the shelf, the third bowl — but not the
+  window-sill crow's); the south windows' warm panes stripped in it; the
+  truck's glass given alpha (the engine's GlassPass makes it see-through);
+  the crow on the truck facing the cabin, in that view only. n34's cue is
+  now what he looks at — `insert crow`: through the middle of the south-west
+  window's lower pane (the first lens looked straight down its horizontal
+  bar), over the porch rail, a long lens (fov 9) on the crow at the
+  windshield's foot.
+- The cabin's two window frames lost their only cue with it; three lines
+  that name those windows and had none now cue them: Roy "crossed to the
+  kitchen window and looked out at the dark clearing" (ch20_calls n44), Finn
+  "at the kitchen window watching the mist on the cedars" (epilogue n11 —
+  the cedars are the trees: judged keep), "Finn was asleep on the floor by
+  the south window" (ch14_painting n13).
+- Rendered: the crow reads as a silhouette at frame centre, low-contrast in
+  the gray before dawn.
+- The kit's cab is one solid prism — there is no dashboard inside it — so
+  she stands on the cowl at the windshield's foot. Draft N+1: a hollow cab
+  with a dash, then she moves inside onto it as the text has her.
+- Deck must REBUILD cabin_interior.
+
 **2026-11-17 · pass 428: a thing's legs are not the thing (the aim gate's subject).**
 - The aim gate (and marker_reaim, text_focus_pass) finds a frame's subject as
   the cluster of parts named for the cue. Its note always said a thing's
