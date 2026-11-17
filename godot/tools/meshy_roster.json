@@ -8471,7 +8471,9 @@
             "cabin_interior_eddvard",
             "cabin_interior_three",
             "cabin_interior_four",
-            "cabin_interior_marit"
+            "cabin_interior_marit",
+            "cabin_interior_four_perch",
+            "cabin_interior_four_crow"
           ]
         },
         {
@@ -8713,7 +8715,9 @@
             "cabin_interior_eddvard",
             "cabin_interior_three",
             "cabin_interior_four",
-            "cabin_interior_marit"
+            "cabin_interior_marit",
+            "cabin_interior_four_perch",
+            "cabin_interior_four_crow"
           ]
         }
       ]
@@ -8765,7 +8769,9 @@
             "cabin_interior_eddvard",
             "cabin_interior_three",
             "cabin_interior_four",
-            "cabin_interior_marit"
+            "cabin_interior_marit",
+            "cabin_interior_four_perch",
+            "cabin_interior_four_crow"
           ]
         }
       ]
@@ -60884,7 +60890,9 @@
             "cabin_interior_eddvard",
             "cabin_interior_three",
             "cabin_interior_four",
-            "cabin_interior_marit"
+            "cabin_interior_marit",
+            "cabin_interior_four_perch",
+            "cabin_interior_four_crow"
           ]
         }
       ]
@@ -60942,7 +60950,9 @@
             "cabin_interior_eddvard",
             "cabin_interior_three",
             "cabin_interior_four",
-            "cabin_interior_marit"
+            "cabin_interior_marit",
+            "cabin_interior_four_perch",
+            "cabin_interior_four_crow"
           ]
         }
       ]
@@ -61001,7 +61011,9 @@
             "cabin_interior_eddvard",
             "cabin_interior_three",
             "cabin_interior_four",
-            "cabin_interior_marit"
+            "cabin_interior_marit",
+            "cabin_interior_four_perch",
+            "cabin_interior_four_crow"
           ]
         }
       ]
@@ -61053,7 +61065,9 @@
             "cabin_interior_eddvard",
             "cabin_interior_three",
             "cabin_interior_four",
-            "cabin_interior_marit"
+            "cabin_interior_marit",
+            "cabin_interior_four_perch",
+            "cabin_interior_four_crow"
           ]
         }
       ]
@@ -61105,7 +61119,9 @@
             "cabin_interior_eddvard",
             "cabin_interior_three",
             "cabin_interior_four",
-            "cabin_interior_marit"
+            "cabin_interior_marit",
+            "cabin_interior_four_perch",
+            "cabin_interior_four_crow"
           ]
         }
       ]
@@ -61157,7 +61173,9 @@
             "cabin_interior_eddvard",
             "cabin_interior_three",
             "cabin_interior_four",
-            "cabin_interior_marit"
+            "cabin_interior_marit",
+            "cabin_interior_four_perch",
+            "cabin_interior_four_crow"
           ]
         }
       ]
@@ -61214,7 +61232,9 @@
             "cabin_interior_eddvard",
             "cabin_interior_three",
             "cabin_interior_four",
-            "cabin_interior_marit"
+            "cabin_interior_marit",
+            "cabin_interior_four_perch",
+            "cabin_interior_four_crow"
           ]
         }
       ]
@@ -62257,7 +62277,8 @@
             "cabin_interior_day_headset",
             "cabin_interior_day_early",
             "cabin_interior_day_four",
-            "cabin_interior_day_arrival"
+            "cabin_interior_day_arrival",
+            "cabin_interior_day_four_crow"
           ]
         }
       ]
@@ -62326,7 +62347,8 @@
             "cabin_interior_day_headset",
             "cabin_interior_day_early",
             "cabin_interior_day_four",
-            "cabin_interior_day_arrival"
+            "cabin_interior_day_arrival",
+            "cabin_interior_day_four_crow"
           ]
         }
       ]
@@ -62392,7 +62414,8 @@
             "cabin_interior_day_headset",
             "cabin_interior_day_early",
             "cabin_interior_day_four",
-            "cabin_interior_day_arrival"
+            "cabin_interior_day_arrival",
+            "cabin_interior_day_four_crow"
           ]
         }
       ]
@@ -62460,7 +62483,8 @@
             "cabin_interior_day_headset",
             "cabin_interior_day_early",
             "cabin_interior_day_four",
-            "cabin_interior_day_arrival"
+            "cabin_interior_day_arrival",
+            "cabin_interior_day_four_crow"
           ]
         }
       ]
@@ -62528,7 +62552,8 @@
             "cabin_interior_day_headset",
             "cabin_interior_day_early",
             "cabin_interior_day_four",
-            "cabin_interior_day_arrival"
+            "cabin_interior_day_arrival",
+            "cabin_interior_day_four_crow"
           ]
         }
       ]
@@ -62596,7 +62621,8 @@
             "cabin_interior_day_headset",
             "cabin_interior_day_early",
             "cabin_interior_day_four",
-            "cabin_interior_day_arrival"
+            "cabin_interior_day_arrival",
+            "cabin_interior_day_four_crow"
           ]
         }
       ]
@@ -62664,7 +62690,8 @@
             "cabin_interior_day_headset",
             "cabin_interior_day_early",
             "cabin_interior_day_four",
-            "cabin_interior_day_arrival"
+            "cabin_interior_day_arrival",
+            "cabin_interior_day_four_crow"
           ]
         }
       ]
@@ -62732,7 +62759,8 @@
             "cabin_interior_day_headset",
             "cabin_interior_day_early",
             "cabin_interior_day_four",
-            "cabin_interior_day_arrival"
+            "cabin_interior_day_arrival",
+            "cabin_interior_day_four_crow"
           ]
         }
       ]
@@ -62800,7 +62828,8 @@
             "cabin_interior_day_headset",
             "cabin_interior_day_early",
             "cabin_interior_day_four",
-            "cabin_interior_day_arrival"
+            "cabin_interior_day_arrival",
+            "cabin_interior_day_four_crow"
           ]
         }
       ]

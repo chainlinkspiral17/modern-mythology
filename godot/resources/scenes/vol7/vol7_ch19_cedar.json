@@ -144,6 +144,11 @@
    "t": "narrate"
   },
   {
+    "t": "bg",
+    "src": "3d:cabin_interior_day_four_crow",
+    "transition": "dissolve"
+  },
+  {
    "text": "[shot:insert crow~]The crow walked from his shoulder to the table. The crow walked across the table and stopped at the cedar piece. The crow stood beside the cedar and looked at it. The crow lowered its head. The crow tapped the table beside the cedar once with its beak.",
    "t": "narrate"
   },

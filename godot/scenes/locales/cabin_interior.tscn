@@ -222,7 +222,7 @@ metadata/fov = 40.0
 ; The big table: blender (0.0, 2.9, 0.76) → godot (0, 0.76, -2.9).
 [node name="shot_insert_table" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.550, 1.350, -3.050)
-rotation = Vector3(-0.5276, 0.5743, 0.0)
+rotation = Vector3(-0.3526, 0.2350, 0.0)
 
 ; The cedar chest: blender (2.55, 3.55, 0.26) → godot (2.55, 0.26, -3.55).
 [node name="shot_insert_cedar" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -237,7 +237,43 @@ rotation = Vector3(-0.6430, 0.7550, 0.0)
 metadata/fov = 30.0
 
 ; (pass 414) the same, at night: ch19's "The bell-piece on the table at the cabin tonight"
+; (pass 423) the crow on the table beside the bell-piece, both in frame —
+; ch19_cedar "The crow walked from his shoulder to the table … stood beside
+; the cedar" (n31), "The crow, beside him on the table" (n55). The base
+; crow frame looks at the kitchen sill, where it is not in this view.
+[node name="shot_insert_crow__cabin_interior_day_four_crow" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.150, 1.250, -3.420)
+rotation = Vector3(-0.2531, 0.7797, 0.0)
+metadata/fov = 34.0
+
+; (pass 423) ring n56: "The crow on the back of the chair was awake — … the
+; crow was looking at the bowls on the table" — from behind the chair, past
+; the bird to the bowls
+[node name="shot_insert_crow__cabin_interior_four_perch" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.720, 1.120, -6.020)
+rotation = Vector3(-0.1077, -2.7267, 0.0)
+metadata/fov = 46.0
+
+; (pass 423) ring n76: the crow walks across the table to the bell-piece — the bell-piece in front, the crow behind it
+[node name="shot_insert_crow__cabin_interior_four_crow" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.150, 1.250, -3.420)
+rotation = Vector3(-0.2531, 0.7797, 0.0)
+metadata/fov = 34.0
+
 [node name="shot_insert_cedar__cabin_interior_four" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.620, 1.150, -3.780)
+rotation = Vector3(-0.6430, 0.7550, 0.0)
+metadata/fov = 30.0
+
+; (view_twin) cabin_interior_four's frame in cabin_interior_four_crow
+; (pass 423) ring n76: the crow walks to the bell-piece and stands beside it — both in frame
+[node name="shot_insert_cedar__cabin_interior_four_crow" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.150, 1.250, -3.420)
+rotation = Vector3(-0.3906, 0.8731, 0.0)
+metadata/fov = 34.0
+
+; (view_twin) cabin_interior_four's frame in cabin_interior_four_perch
+[node name="shot_insert_cedar__cabin_interior_four_perch" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.620, 1.150, -3.780)
 rotation = Vector3(-0.6430, 0.7550, 0.0)
 metadata/fov = 30.0
@@ -1253,6 +1289,12 @@ metadata/fov = 35.0
 
 ; (view_twin) cabin_interior's frame in cabin_interior_four
 [node name="shot_insert_kerosene__cabin_interior_four" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.238, 0.540, -0.713)
+rotation = Vector3(-0.2618, 1.9048, 0.0)
+metadata/fov = 35.0
+
+; (view_twin) cabin_interior_four's frame in cabin_interior_four_perch
+[node name="shot_insert_kerosene__cabin_interior_four_perch" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-0.238, 0.540, -0.713)
 rotation = Vector3(-0.2618, 1.9048, 0.0)
 metadata/fov = 35.0

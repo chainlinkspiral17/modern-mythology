@@ -1288,7 +1288,61 @@ def build_crow_2026_08():
     the outside sill, which is where it always is.
     """
     from _props.creatures import make_crow
-    make_crow("Crow", -1.6, ROOM_D + 0.30, 1.06, facing=1.0)
+    from _props import creatures as _cr
+    from _props.view_tags import Views
+    # (pass 423) not while it is INSIDE with them (ch19 from the cedar
+    # chapter's n31, ch20): the same bird is on the table or a chair then
+    V = Views("cab", {"w": "cab_wcrow"})
+    with V.tagged("w", _cr):
+        make_crow("Crow", -1.6, ROOM_D + 0.30, 1.06, facing=1.0)
+    V.check()
+    # one object (pass 423): tagged, its 23 parts could not merge at load
+    # and each was drawn again in every lamp's shadow pass (perf_gate)
+    from _props.geometry import join_prefix
+    join_prefix("Crow")
+
+
+def build_crow_inside_2026_11():
+    """THE CROW INSIDE (pass 423), at the room's real coordinates. It came
+    in on Finn's shoulder; "The crow walked from his shoulder to the table
+    … stopped at the cedar piece. The crow stood beside the cedar" (ch19_cedar
+    n31), and it stays there, "the crow on the table beside the cedar" (n71,
+    n85, n123; ch20_door n11, ch20_each n29) — cab_crow_t. At the start of
+    the night (ch19_ring) it is "on the back of the chair Lena had brought
+    the perch in for — the perch was in the corner of the kitchen and the
+    crow had not yet decided to use it" (n6), "looking at the bowls on the
+    table" (n55), until "The crow walked from the back of the chair across
+    the table to the cedar bell-piece" (n76) — cab_crow_p. The perch (Finn's,
+    "Lena and Kai brought it in anyway", ch19_cedar n123) — cab_perch."""
+    from _props.creatures import make_crow
+    from _props import creatures as _cr
+    from _props.view_tags import Views
+    V = Views("cab", {"t": "cab_crow_t", "p": "cab_crow_p", "h": "cab_perch"})
+    top_z = 0.785                       # the round table's top (build_table)
+    # beside the bell-piece (real 0.30, 4.12), on its far side from the
+    # close-up's lens, looking down at it ("stood beside the cedar and
+    # looked at it"), clear of Marit's bowl and Brandon's notebook
+    with V.tagged("t", _cr):
+        make_crow("Crow_Table", 0.26, 4.40, top_z, facing=1.0, scale=0.92)
+    # on the top rail of the cushioned chair at the table's north side
+    # (Chair_2: real -0.276, 5.088; its back rail at -0.316, 5.258, top 0.905),
+    # looking south across the table at the bowls
+    with V.tagged("p", _cr):
+        make_crow("Crow_Chair", -0.316, 5.258, 0.905, facing=1.0, scale=0.92)
+    # Finn's perch in the kitchen corner, against the west wall between the
+    # loft ladder and the counter: a weighted round base, a turned post and
+    # a T-bar, a seed cup
+    px, py = -3.62, 5.00
+    wood, dark = (0.46, 0.33, 0.20, 1.0), (0.24, 0.18, 0.12, 1.0)
+    make_cyl("Crow_Perch_Base" + V.tag("h"), (px, py, 0.02), 0.20, 0.04, dark, segments=16)
+    make_lathe("Crow_Perch_Post" + V.tag("h"), (px, py, 0.04),
+               [(0.035, 0.0), (0.024, 0.06), (0.020, 0.60), (0.024, 0.98), (0.018, 1.02), (0.0, 1.03)], wood, segments=10)
+    make_cyl("Crow_Perch_Bar" + V.tag("h"), (px, py, 1.06), 0.016, 0.40, wood, segments=8, axis='Y')
+    make_cyl("Crow_Perch_Cup" + V.tag("h"), (px, py + 0.21, 1.075), 0.035, 0.035, (0.70, 0.70, 0.68, 1.0), segments=10)
+    V.check()
+    from _props.geometry import join_prefix     # one object each (perf_gate)
+    for pfx in ("Crow_Table", "Crow_Chair", "Crow_Perch"):
+        join_prefix(pfx)
 
 
 def build_wear_personality_2026_08():
@@ -2048,6 +2102,7 @@ def main():
     build_exterior_2026_10()
     build_shop_wing_2026_10()
     build_porch_2026_10()
+    build_crow_inside_2026_11()       # (pass 423) actual coordinates
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/cabin_interior.glb"))
     build_door_infill_front_door_2026_09()

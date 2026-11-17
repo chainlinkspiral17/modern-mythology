@@ -5,7 +5,7 @@
   "type": "scene",
   "nodes": [
     {
-      "src": "3d:cabin_interior_four",
+      "src": "3d:cabin_interior_four_perch",
       "t": "bg"
     },
     {
@@ -261,7 +261,7 @@
       "t": "narrate"
     },
     {
-      "text": "The crow on the back of the chair was awake — by what Per could see at this distance, the crow was looking at the bowls on the table.",
+      "text": "[shot:insert crow]The crow on the back of the chair was awake — by what Per could see at this distance, the crow was looking at the bowls on the table.",
       "t": "narrate"
     },
     {
@@ -347,7 +347,12 @@
       "t": "narrate"
     },
     {
-      "text": "[mood:dream_blur][shot:insert cedar~]The crow walked from the back of the chair across the table to the cedar bell-piece. The crow stood beside the bell-piece. The crow opened its beak.",
+      "t": "bg",
+      "src": "3d:cabin_interior_four_crow",
+      "transition": "dissolve"
+    },
+    {
+      "text": "[mood:dream_blur][shot:insert crow~]The crow walked from the back of the chair across the table to the cedar bell-piece. The crow stood beside the bell-piece. The crow opened its beak.",
       "t": "narrate"
     },
     {

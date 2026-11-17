@@ -57,17 +57,17 @@ const VIEW_GROUPS := {
 	# (pass 401) TEM'S CABIN TABLE by chapter: each state its own view (twins of
 	# cabin_interior_day / cabin_interior, made by tools/view_twin.py); the
 	# rigs belong to every twin of their hour
-	"cab_day": ["cabin_interior_day", "cabin_interior_day_breakfast", "cabin_interior_day_sticks", "cabin_interior_day_arrival", "cabin_interior_day_package", "cabin_interior_day_hexagon", "cabin_interior_day_disc", "cabin_interior_day_headset", "cabin_interior_day_early", "cabin_interior_day_four"],
-	"cab_night": ["cabin_interior", "cabin_interior_marit", "cabin_interior_hexagon", "cabin_interior_piece", "cabin_interior_early", "cabin_interior_eddvard", "cabin_interior_three", "cabin_interior_four"],
+	"cab_day": ["cabin_interior_day", "cabin_interior_day_breakfast", "cabin_interior_day_sticks", "cabin_interior_day_arrival", "cabin_interior_day_package", "cabin_interior_day_hexagon", "cabin_interior_day_disc", "cabin_interior_day_headset", "cabin_interior_day_early", "cabin_interior_day_four", "cabin_interior_day_four_crow"],
+	"cab_night": ["cabin_interior", "cabin_interior_marit", "cabin_interior_hexagon", "cabin_interior_piece", "cabin_interior_early", "cabin_interior_eddvard", "cabin_interior_three", "cabin_interior_four", "cabin_interior_four_perch", "cabin_interior_four_crow"],
 	# (pass 404) the bowls by count (pass 402: none before ch11). Marit's and
 	# the substrate-bowl ch11-ch20; Marina's grandfather's from ch13's night;
 	# Roy's, the notebook and Roy's box ch19-20; the bell-piece ch19-22; ch21
 	# on, "Lindholm-Marina's and Eddvard's-by-Tem"
-	"cab_bowls": ["cabin_interior", "cabin_interior_hexagon", "cabin_interior_day_hexagon", "cabin_interior_three", "cabin_interior_four", "cabin_interior_day_four"],
+	"cab_bowls": ["cabin_interior", "cabin_interior_hexagon", "cabin_interior_day_hexagon", "cabin_interior_three", "cabin_interior_four", "cabin_interior_day_four", "cabin_interior_four_perch", "cabin_interior_four_crow", "cabin_interior_day_four_crow"],
 	# (pass 408) Marit's bowl comes out of Per's box in ch11_per, before the
 	# substrate-bowl comes out of Kai's shirt pocket (ch11_bowl n21-22): ch11_per is
 	# its own view. Per's box stands at his elbow in both (ch10-ch13).
-	"cab_marit": ["cabin_interior", "cabin_interior_marit", "cabin_interior_hexagon", "cabin_interior_day_hexagon", "cabin_interior_three", "cabin_interior_four", "cabin_interior_day_four"],
+	"cab_marit": ["cabin_interior", "cabin_interior_marit", "cabin_interior_hexagon", "cabin_interior_day_hexagon", "cabin_interior_three", "cabin_interior_four", "cabin_interior_day_four", "cabin_interior_four_perch", "cabin_interior_four_crow", "cabin_interior_day_four_crow"],
 	"cab_box": ["cabin_interior", "cabin_interior_marit", "cabin_interior_day_sticks"],
 	# (pass 408) EDDVARD'S BOWL on "the shelf above the kerosene lamp" (ch4_finn
 	# n43/n132), "where Eddvard's bowl has been since '11" (ch17_aria n118):
@@ -76,10 +76,10 @@ const VIEW_GROUPS := {
 	"cab_shelf": ["cabin_interior", "cabin_interior_marit", "cabin_interior_four", "cabin_interior_three", "cabin_interior_early",
 		"cabin_interior_piece", "cabin_interior_hexagon", "cabin_interior_day_four", "cabin_interior_day_early",
 		"cabin_interior_day_hexagon", "cabin_interior_day_package", "cabin_interior_day_sticks", "cabin_interior_day_arrival", "cabin_interior_day_breakfast",
-		"cabin_porch", "cabin_porch_dawn", "cabin_porch_day"],
-	"cab_third": ["cabin_interior_hexagon", "cabin_interior_three", "cabin_interior_four", "cabin_interior_day_four"],
-	"cab_ch19": ["cabin_interior_four", "cabin_interior_day_four"],
-	"cab_bell": ["cabin_interior_four", "cabin_interior_day_four", "cabin_interior_day", "cabin_interior_day_disc"],
+		"cabin_porch", "cabin_porch_dawn", "cabin_porch_day", "cabin_interior_four_perch", "cabin_interior_four_crow", "cabin_interior_day_four_crow"],
+	"cab_third": ["cabin_interior_hexagon", "cabin_interior_three", "cabin_interior_four", "cabin_interior_day_four", "cabin_interior_four_perch", "cabin_interior_four_crow", "cabin_interior_day_four_crow"],
+	"cab_ch19": ["cabin_interior_four", "cabin_interior_day_four", "cabin_interior_four_perch", "cabin_interior_four_crow", "cabin_interior_day_four_crow"],
+	"cab_bell": ["cabin_interior_four", "cabin_interior_day_four", "cabin_interior_day", "cabin_interior_day_disc", "cabin_interior_four_perch", "cabin_interior_four_crow", "cabin_interior_day_four_crow"],
 	"cab_late": ["cabin_interior_day", "cabin_interior_day_disc", "cabin_interior_day_headset"],
 	"cab_sticks": ["cabin_interior_day_breakfast", "cabin_interior_day_sticks", "cabin_interior_day_arrival"],
 	"cab_hex": ["cabin_interior_day_hexagon", "cabin_interior_hexagon"],
@@ -144,6 +144,13 @@ const VIEW_GROUPS := {
 	"fx_ks": ["foxhole_check", "foxhole_show"],
 	"fx_st": ["foxhole_show", "foxhole_after"],
 	"fx_kst": ["foxhole_check", "foxhole_show", "foxhole_after"],
+	# (pass 423) ch19-20, the crow INSIDE: on the table beside the bell-piece,
+	# on the back of a table chair, the perch in the kitchen corner — and the
+	# kitchen window's outside-sill crow everywhere else (it is the same bird)
+	"cab_crow_t": ["cabin_interior_four_crow", "cabin_interior_day_four_crow"],
+	"cab_crow_p": ["cabin_interior_four_perch"],
+	"cab_perch": ["cabin_interior_four_perch", "cabin_interior_four_crow"],
+	"cab_wcrow": ["cabin_interior", "cabin_interior_marit", "cabin_interior_four", "cabin_interior_three", "cabin_interior_eddvard", "cabin_interior_early", "cabin_interior_piece", "cabin_interior_hexagon", "cabin_interior_day", "cabin_interior_day_four", "cabin_interior_day_early", "cabin_interior_day_headset", "cabin_interior_day_disc", "cabin_interior_day_hexagon", "cabin_interior_day_package", "cabin_interior_day_sticks", "cabin_interior_day_arrival", "cabin_interior_day_breakfast", "cabin_porch", "cabin_porch_dawn", "cabin_porch_day"],
 }
 
 const CAMERA_PRESETS := {
@@ -4079,6 +4086,44 @@ const CAMERA_PRESETS := {
 		"fov": 62.0,
 		"suppress_input": true,
 	},
+	"cabin_interior_four_crow": {
+		# (pass 423) from ch19's ring, when the crow walks across the table to the bell-piece (n76), through ch20: the crow on the table beside the bell-piece, the perch in the kitchen corner
+		# (pass 404) the cabin at night with FOUR bowls (ch19-20): + Roy's, the
+		# bell-piece "beside the four bowls", Brandon's notebook "beside the cedar".
+		"scene": "res://scenes/locales/cabin_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
+		# SURVEYED 2026-07-12: old vantage sat blender y=-0.5 OUTSIDE
+		# the south door. RE-SURVEYED 2026-09-03 (user: "first view of
+		# the cabin, 90 percent obstructed/wall"): x=2.0 stood INSIDE
+		# the bed alcove east of the East_Part partition (x 1.0,
+		# y 0..2.6), so the partition filled the left of frame. Now just
+		# inside the door WEST of the partition (blender 0.3, 0.9),
+		# looking NNW across the table + rockers to the kitchenette
+		# counter and the wood stove. Eye 1.62 (ceiling 3.4).
+		"camera_origin": Vector3(0.3, 1.62, -0.9),
+		"camera_rotation": Vector3(-0.04, 0.35, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"cabin_interior_four_perch": {
+		# (pass 423) ch19's night until the crow walks to the bell-piece: the crow on the back of a table chair, the perch Lena brought in the kitchen corner (ch19_ring n6, n55)
+		# (pass 404) the cabin at night with FOUR bowls (ch19-20): + Roy's, the
+		# bell-piece "beside the four bowls", Brandon's notebook "beside the cedar".
+		"scene": "res://scenes/locales/cabin_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
+		# SURVEYED 2026-07-12: old vantage sat blender y=-0.5 OUTSIDE
+		# the south door. RE-SURVEYED 2026-09-03 (user: "first view of
+		# the cabin, 90 percent obstructed/wall"): x=2.0 stood INSIDE
+		# the bed alcove east of the East_Part partition (x 1.0,
+		# y 0..2.6), so the partition filled the left of frame. Now just
+		# inside the door WEST of the partition (blender 0.3, 0.9),
+		# looking NNW across the table + rockers to the kitchenette
+		# counter and the wood stove. Eye 1.62 (ceiling 3.4).
+		"camera_origin": Vector3(0.3, 1.62, -0.9),
+		"camera_rotation": Vector3(-0.04, 0.35, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
 	"cabin_interior_three": {
 		# (pass 404) the cabin at night with THREE bowls (ch14-ch17): Marit's, the
 		# substrate-bowl, Marina's grandfather's.
@@ -4202,6 +4247,39 @@ const CAMERA_PRESETS := {
 		"suppress_input": true,
 	},
 	"cabin_interior_day_four": {
+		# (pass 404) the cabin by day in ch19: the four bowls, the bell-piece, the notebook.
+		"scene": "res://scenes/locales/cabin_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
+		# SURVEYED 2026-07-12: old vantage sat blender y=-0.5 OUTSIDE
+		# the south door. RE-SURVEYED 2026-09-03 (user: "first view of
+		# the cabin, 90 percent obstructed/wall"): x=2.0 stood INSIDE
+		# the bed alcove east of the East_Part partition (x 1.0,
+		# y 0..2.6), so the partition filled the left of frame. Now just
+		# inside the door WEST of the partition (blender 0.3, 0.9),
+		# looking NNW across the table + rockers to the kitchenette
+		# counter and the wood stove. Eye 1.62 (ceiling 3.4).
+		# (2026-10-11) THE SAME ROOM BY DAY: vol7 plays fourteen cabin cuts in
+		# daylight (ch1 Morning, ch1 Finn, ch2, ch10, ch11 Stick, ch13 Marina,
+		# ch19 Cedar/Per, ch21, ch22, ch4 Finn, the epilogue) on the lamp-lit
+		# dusk rig. The night directionals are suffixed to cabin_interior; this
+		# preset brings the sun through the south windows, a sky fill, the
+		# windows' light on the floor, and a day sky. Lamps and stove serve both.
+		"camera_origin": Vector3(0.3, 1.62, -0.9),
+		"camera_rotation": Vector3(-0.04, 0.35, 0.0),
+		"fov": 62.0,
+		# (2026-11-12, pass 347) an overcast coast morning, not a lamp-lit
+		# room: "the gray hour before the rain became visible". The warm
+		# pine read deep orange and dark under a near-white ambient at 0.95
+		# with every oil lamp lit; the ambient is the cool grey of the sky
+		# through four windows now, brighter, and the fog grey with it.
+		"env": {"sky_top": Color(0.52, 0.58, 0.66, 1), "sky_horizon": Color(0.80, 0.82, 0.84, 1),
+			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.74, 0.80, 0.88, 1), "ambient_energy": 1.60, "fog_color": Color(0.70, 0.74, 0.78, 1)},
+		"style_pack": "raw_observation",
+		"suppress_input": true,
+	},
+	"cabin_interior_day_four_crow": {
+		# (pass 423) ch19_cedar from n31: the crow walks from Finn's shoulder to the table and stays beside the cedar bell-piece
 		# (pass 404) the cabin by day in ch19: the four bowls, the bell-piece, the notebook.
 		"scene": "res://scenes/locales/cabin_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",

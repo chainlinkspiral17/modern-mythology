@@ -158,6 +158,23 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-17 · tagging a part takes it out of the merge; the re-aim tool knows no views (pass 423)
+
+**What happened.** Hiding the cabin's sill crow from three views meant
+tagging it, and a tagged part is not merged at load (StaticMerge): its 23
+parts, and the 50 of the two new crows, were drawn again in every lamp's
+shadow pass — 10,514 draw calls, over the room's cap. Then
+`marker_reaim.py --tight`, run for three misaimed frames, re-aimed six
+(every insert over 6°) and aimed the chair-crow frame at the table crow: it
+does not read view tags.
+
+**The rule.** A multi-part prop that gets a view tag is joined to one object
+(`join_prefix(<its prefix>)`). After `marker_reaim.py`, diff the .tscn and
+keep only the re-aims of the frames that failed; aim a view's own frame by
+hand (author the position, compute the aim from the part's recorded
+centre). And re-import after rebuilding a set you measured from another
+build: the renders read Godot's import cache, not the GLB on disk.
+
 ### 2026-11-17 · a gate that reads boxes must know which boxes lie (pass 422)
 
 **What happened.** With Harmony's curbs cut and its drives straightened,

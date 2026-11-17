@@ -3835,6 +3835,41 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-17 · pass 423: the crow comes inside (vol 7 ch19-20).**
+- Through ch19-20 the crow is in the cabin with them, and the cabin had one
+  crow: on the kitchen window's outside sill, in every view. ch19_cedar's
+  "The crow walked from his shoulder to the table … stood beside the cedar"
+  and "The crow, beside him on the table" cut to that sill.
+- By the text: from ch19_cedar n31 the crow is "on the table beside the
+  cedar" (n71, n85, n123), and in ch20 ("where it had been, beside the
+  bell-piece", door n11; each n29) — view twins
+  `cabin_interior_day_four_crow` (cedar from n31, a dissolve) and
+  `cabin_interior_four_crow` (ring from n76, ch20 door/each/calls). At the
+  start of ch19's night it is "on the back of the chair Lena had brought the
+  perch in for — the perch was in the corner of the kitchen" (ring n6, n55)
+  until "The crow walked from the back of the chair across the table to the
+  cedar bell-piece" (n76) — `cabin_interior_four_perch`. Groups cab_crow_t
+  (the table crow, beside the bell-piece, looking at it), cab_crow_p (on
+  the north chair's top rail, looking at the bowls), cab_perch (Finn's
+  T-perch against the west wall between the loft ladder and the counter),
+  cab_wcrow (the sill crow: every other view).
+- Frames: `shot_insert_crow__cabin_interior_day_four_crow` and
+  `…_four_crow` take in the bell-piece with the crow behind it, looking at
+  it (ring n76 is cued `insert crow~` now — the line is the crow's walk);
+  ring n55 cued `insert crow` on a new frame from low behind the chair crow,
+  the bird against the lamp-lit table and its bowls. Rendered and read.
+- Perf: tagging the sill crow pulled its 23 parts out of the load-time merge
+  and each was drawn again in every lamp's shadow pass (10,514 draws, over
+  the cap); each crow and the perch are joined to one object
+  (`join_prefix`) — 9,686, under the room's 9,914 before the pass (its
+  8,786 baseline was stale).
+- The marker gate reads a set's frames only when the set changes; this
+  pass found `shot_insert_table` 20° off the table (re-aimed, rendered).
+  `marker_reaim.py --tight` re-aims EVERY insert over 6° and does not read
+  view tags (it aimed the chair-crow frame at the table crow): run it, then
+  diff the .tscn and keep only the frames that were failing.
+- Deck must REBUILD cabin_interior.
+
 **2026-11-17 · pass 422: the street edge, draft 2 — the houses across every window, and Harmony Creek's streets.**
 - **Window views** (`make_view` kind "front": the Chau house, Dean's
   offices, the Henderson kitchen, Sam's bedroom, the skatepark, Small Wood

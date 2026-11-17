@@ -2834,13 +2834,13 @@
    "why": "the volume's own — substrate ×8",
    "beats": [
     {
-     "node": 44,
+     "node": 45,
      "trip": 0.45,
      "hold": 3,
      "why": "a weight the trip steps back from (died)"
     },
     {
-     "node": 75,
+     "node": 76,
      "trip": 0.45,
      "hold": 3,
      "why": "a weight the trip steps back from (died)"
