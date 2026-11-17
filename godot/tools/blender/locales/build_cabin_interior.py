@@ -1281,25 +1281,12 @@ def build_solar_roof_2026_10():
     make_box("Loft_LED_Switch", (-3.85, 6.60, 1.50), (0.03, 0.07, 0.11), (0.90, 0.90, 0.88, 1.0))
 
 
-def build_crow_2026_08():
-    """THE CROW at the cabin's kitchen window (north wall), seen
-    through the glass from inside — the vol 7 motif made physical.
-    Kitchen_Window sits at (-1.6, ROOM_D-0.04); the bird stands on
-    the outside sill, which is where it always is.
-    """
-    from _props.creatures import make_crow
-    from _props import creatures as _cr
-    from _props.view_tags import Views
-    # (pass 423) not while it is INSIDE with them (ch19 from the cedar
-    # chapter's n31, ch20): the same bird is on the table or a chair then
-    V = Views("cab", {"w": "cab_wcrow"})
-    with V.tagged("w", _cr):
-        make_crow("Crow", -1.6, ROOM_D + 0.30, 1.06, facing=1.0)
-    V.check()
-    # one object (pass 423): tagged, its 23 parts could not merge at load
-    # and each was drawn again in every lamp's shadow pass (perf_gate)
-    from _props.geometry import join_prefix
-    join_prefix("Crow")
+# (pass 435) build_crow_2026_08 — "THE CROW at the cabin's kitchen window ... on
+# the outside sill, which is where it always is" — is gone: no line sets the crow
+# on the cabin's sill. Across vol 7 it is on Finn's dash, his shoulder, Lena's or
+# Kai's, the porch rail once (ch15), the table inside (ch19-20) — and in 21 views
+# the sill bird stood beside those, a second crow (ch19_per: "The crow's at
+# Lena's apartment"; ch21_cabin: "The crow was with Lena in town").
 
 
 def build_crow_inside_2026_11():
@@ -2032,9 +2019,18 @@ def build_porch_2026_10():
     make_cyl("Porch_Cigarette_Ash", (tx, ty, CAP + 0.008), 0.040, 0.004, (0.36, 0.35, 0.33, 1.0), segments=10)
     make_cyl("Porch_Cigarette_Butt", (tx + 0.005, ty + 0.01, CAP + 0.016), 0.0045, 0.030, (0.90, 0.86, 0.76, 1.0), axis='X', segments=6)
     make_cyl("Porch_Cigarette_Butt_Filter", (tx - 0.014, ty + 0.01, CAP + 0.016), 0.0046, 0.010, (0.80, 0.56, 0.32, 1.0), axis='X', segments=6)
-    # the crow, on the west rail
-    from _props.creatures import make_crow
-    make_crow("Porch_Crow", post_xs[0], -1.05, CAP, facing=1.0)
+    # the crow, on the west rail — ch15 only ("The crow was on the porch railing",
+    # vol7_ch15_wagon n46): (pass 435) tagged to that chapter's twin of the porch
+    # view; untagged it stood on the rail in every view, beside the crow the text
+    # had on a dash, a shoulder or a table. A module-level call so the tag wraps it
+    from _props import creatures as _crr
+    from _props.view_tags import Views as _Vr
+    from _props.geometry import join_prefix as _jp
+    _VR = _Vr("cab", {"r": "cabin_porch_day_rail"})
+    with _VR.tagged("r", _crr):
+        _crr.make_crow("Porch_Crow", post_xs[0], -1.05, CAP, facing=1.0)
+    _VR.check()
+    _jp("Porch_Crow")
     # ── against the wall ──
     # the bench under the west window
     bx = -2.00
@@ -2082,13 +2078,14 @@ def build_crow_on_truck_2026_11():
     been on Kai's truck since I left her there last night ... by the way the
     crow is standing on the dashboard" (n40-41). The truck's cab is open (pass 431)
     and its glass clear; she stands on the dash, facing the cabin, at its back edge
-    where her head clears the raked glass (pass 434). Only in the
-    dawn view (cabin_interior_three_dawn); the window-sill crow (cab_wcrow) is
-    not in that view."""
+    where her head clears the raked glass (pass 434). In the cab_dash views
+    (pass 435): ch17's dawn and the porch views whose chapters have her there."""
     from _props import creatures as _cr
     from _props.view_tags import Views
     from _props.geometry import join_prefix
-    V = Views("cab", {"d": "cabin_interior_three_dawn"})
+    # (pass 435) the cab_dash group: ch17's dawn and the porch views where ch1, ch4,
+    # ch13 and ch16 have her on the dash
+    V = Views("cab", {"d": "cab_dash"})
     with V.tagged("d", _cr):
         # the truck runs along Y, nose +y at y -3.8; the dash (top z0 + 1.20) spans
         # u = nose - 1.91 .. nose - 2.45 under the raked windshield (foot u nose - 1.85
@@ -2099,9 +2096,29 @@ def build_crow_on_truck_2026_11():
         # stood her mid-dash, where her head met the rake and the windshield's foot
         # hid her body; the cab's tan interior (the kit, pass 434) is what she reads
         # against now, not a near-black dash
-        _cr.make_crow("Truck_Crow", -6.6 + 0.30, -6.2 + 2.4 - 2.40, YARD_Z + 1.20, facing=-1.0)
+        # (pass 435) at nose - 2.47 on the deepened dash: at nose - 2.40 her beak went 8 cm
+        # through the raked glass (prop_overlap measures the pane exactly)
+        _cr.make_crow("Truck_Crow", -6.6 + 0.30, -6.2 + 2.4 - 2.47, YARD_Z + 1.20, facing=-1.0)
     V.check()
     join_prefix("Truck_Crow")
+
+
+def build_roy_f100_2026_11():
+    """ROY'S F-100 (pass 435), vol7 ch19_roy n46-48: "Roy came up the road at
+    four-twelve. His F-100 — the only one still on the road in town, by Per's
+    count ... The F-100 came up to the clearing and parked beside Tem's wagon."
+    The porch's truck insert showed the set's one truck, the Toyota, on that
+    line. Beside the wagon (x 3.7), nose to the cabin like the others; the
+    paint is invented (a faded red, the text names none). Only in ch19_roy's
+    twin of the porch view. Named Ford_Truck: the line's cue is "insert truck",
+    and the gates find a frame's subject by its parts' names (not "Roy_":
+    that matched his close-up frame)."""
+    from _props import vehicles as _veh
+    from _props.view_tags import Views
+    V = Views("cab", {"r": "cabin_porch_day_roy"})
+    with V.tagged("r", _veh):
+        _veh.make_car("Ford_Truck", 6.25, -6.0, 4.9, (0.52, 0.25, 0.19, 1.0), pickup=True, along="Y", z0=YARD_Z)
+    V.check()
 
 
 def main():
@@ -2109,7 +2126,6 @@ def main():
     build_shell()
     with _shift(-1.0, 2.0):
         build_kitchen()
-        build_crow_2026_08()
     build_loft()                      # (draft 10) actual coordinates
     build_architecture_2026_10()
     build_nature_let_in_2026_10()
@@ -2135,6 +2151,7 @@ def main():
     build_porch_2026_10()
     build_crow_inside_2026_11()       # (pass 423) actual coordinates
     build_crow_on_truck_2026_11()     # (pass 429) ch17 dawn
+    build_roy_f100_2026_11()          # (pass 435) ch19 Roy
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/cabin_interior.glb"))
     build_door_infill_front_door_2026_09()

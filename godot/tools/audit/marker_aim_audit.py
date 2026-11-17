@@ -203,14 +203,18 @@ def matches_for(cue_id, geo):
         # not the sofa; the text pass aimed an insert at one.
         if name.startswith("Wear_") or "_Wear_" in name:
             continue
+        # (pass 435) a view tag (`__<view or group>`) names where the part is,
+        # not what it is: `Ford_Truck_Taillight__cabin_porch_day_roy` matched the
+        # `roy` close-up and every part tagged `__cab_crow_t` matched "crow"
+        base = name.split("__")[0]
         if excl:
-            low_parts = CAMEL_RE.sub("_", name).lower().split("_")
+            low_parts = CAMEL_RE.sub("_", base).lower().split("_")
             if any(p == e for p in low_parts for e in excl):
                 continue
         # CamelCase parts split too: "WallClock_Face" → wall, clock,
         # face — "clock" must find the clock (2026-09-07).
-        parts = CAMEL_RE.sub("_", name).lower().split("_")
-        flat = name.lower().replace("_", "")
+        parts = CAMEL_RE.sub("_", base).lower().split("_")
+        flat = base.lower().replace("_", "")
         if any(p == w or p == w + "s" for p in parts for w in words) or \
                 any(f in flat for f in flats):
             hits.append((name, pos))

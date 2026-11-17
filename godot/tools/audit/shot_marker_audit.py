@@ -145,6 +145,11 @@ EXCLUDE = {
 }
 
 SYNONYMS = {
+    # (pass 435) vol3 ch6 "The hallways leading to the lab are lined by long empty
+    # aquariums": the frame's subject is what lines them (built pass 435). It had
+    # matched only by accident, through a door's `__caltech_hallway_1945` view tag,
+    # until view tags left name matching
+    "hallways": ["aquarium"], "hallway": ["aquarium"],
     # (2026-11-04) "He looks at the paper": the folded Newspaper (one CamelCase word)
     "paper": ["paper", "newspaper"],
     # (pass 388) restaurant tables named by their seats: El Rancho's

@@ -3835,6 +3835,67 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-17 · pass 435: the crow by chapter at the cabin.**
+The text moves the crow; the cabin set had three fixed crows. Read across
+vol 7 (every cabin segment against its crow lines):
+- THE KITCHEN-SILL CROW IS GONE. Built in 2026-08 "on the outside sill,
+  which is where it always is", it stood in 21 views (cab_wcrow). No line
+  sets the crow on the cabin's sill; it is on Finn's dash (ch1, ch2, ch4,
+  ch13), his shoulder, Lena's ("The crow's at Lena's apartment", ch19_per;
+  "The crow was with Lena in town", ch21_cabin), Kai's dash (ch16-17), the
+  table inside (ch19-20). Its frame went with it; ch1_morning n62's crow
+  cue (on Tem's smile, the crow miles off on the road) dropped (a cue tag in
+  a voiced chapter).
+- THE PORCH-RAIL CROW is ch15's ("The crow was on the porch railing"): a
+  twin of the porch view for ch15_wagon (cabin_porch_day_rail) carries it,
+  and strips the truck (Finn had taken Kai's truck to town). ch15 n44 "The
+  three bowls were on the table": the twin joins the bowl groups — its
+  frame had shown the bare table in every porch view.
+- THE DASH CROW stands in cab_dash: ch17's dawn and the porch views (the
+  porch wides do not reach the truck; only frames aimed at it show her).
+  The porch-day crow frame (ch1 n28 "visible through the windshield",
+  ch13_cale n11) aimed at the rail crow: now from the yard in front of the
+  truck's nose (from the porch the A-pillar stood in the line). The open
+  cab's dash is 0.62 deep and she stands at its back edge: at nose - 2.40
+  her beak went 8 cm through the raked glass (prop_overlap).
+- ROY'S F-100 (ch19_roy n46 "His F-100 ... parked beside Tem's wagon"): the
+  porch's truck frame showed the Toyota. A twin for ch19_roy's porch
+  segment (cabin_porch_day_roy) has a red pickup (paint invented) beside the
+  wagon, named Ford_Truck so the "truck" cue finds it; its frame moved
+  between the porch's east posts (post 2 stood in the old line).
+- THE AIM GATE MATCHED VIEW TAGS. A part's name was split whole, its
+  `__<view>` tag included: `Ford_Truck_*__cabin_porch_day_roy` matched
+  Roy's close-up, and every part tagged `__cab_crow_t` matched "crow".
+  matches_for reads the name before the tag now. One frame had passed only
+  that way: vol3 ch6 n17 "The hallways leading to the lab are lined by long
+  empty aquariums" stood 0.27 m off the tunnel's east wall, looking through
+  the bare room's door. The aquariums were not built — now nine dry tanks
+  on steel stands down both walls (the 2003 view), and the frame looks up
+  the corridor along them. Rendered: the tanks recede down the tunnel.
+- Rendered: ch1 n28 and ch13 n11 (the crow on the dash, through the glass),
+  ch15 n48 (the rail crow) and n44 (the three bowls), ch17 n34 (dawn, the
+  dash), ch19_roy n46 (the red pickup beside the wagon).
+- EVERY LATHE'S INNER WALL WAS INSIDE OUT (the user: "Chairs visible
+  through rim of bowls"). make_lathe wound each face away from the lathe's
+  centre on its axis — right for a solid of revolution, wrong for any inner
+  wall: a rim's, a ring's, a catwalk's, a cup's inside faced outward and was
+  culled, so the far side of every bowl's rim showed the chairs behind it.
+  The winding gate never saw it (a profile that repeats its first point is
+  not a CLOSED mesh, and only closed ones are read). Now the profile decides:
+  _gen_lathe faces the right-hand side of the profile's direction, outward
+  for a section that runs counter-clockwise in (r, z); a clockwise one is
+  reversed whole; only a profile with no area falls back to the old rule.
+  431 lathe calls, every set: seven lathe-heavy sets rebuilt (cabin, diner,
+  Kwik Stop, Hans's back kitchen, both water-tower sets, caltech), the
+  winding gate 0 / 0 across all 169. Rendered: ch15 n44 and ch14 n14, the
+  three bowls' rims whole.
+- Draft N+1: ch15's rail crow faces the yard, the text has her "looking at
+  the cedar" along the rail (the crow kit has no yaw); the Toyota's
+  presence before Finn arrives (ch1_morning, ch4_alone) through windows;
+  ch13_cale's "Two trucks and a wagon" (the set has one truck); the
+  wings "half-spread" (ch1 n28).
+- Deck must REBUILD every set (the lathe kit changed): rebuild_all_locales.sh --stale.
+
 **2026-11-17 · pass 434: the contradictions fixed (Andy: "Fix contradictions").**
 Andy's word makes the fix canon. Each knot went the way most of the text
 already goes; the lines that changed are VOICED and need re-voicing (list

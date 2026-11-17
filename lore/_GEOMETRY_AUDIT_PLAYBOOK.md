@@ -158,6 +158,32 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-17 · a lathe is wound by its profile (pass 435, the bowl rims)
+**What happened:** the user: "Chairs visible through rim of bowls." Every
+make_lathe face was turned away from the lathe's centre on its axis. An
+inner wall's outward side faces the axis, so every rim, ring, catwalk and
+cup had its inside turned out and culled: the far rim showed the room behind
+it. The winding gate reads only CLOSED meshes; a lathe whose profile repeats
+its first point leaves a seam ring unwelded, so the gate never saw one.
+**Rule:** orient a surface of revolution by the section's 2D winding (signed
+area in r, z; an open profile closes along the axis), never by a centre
+point; a centre-point rule is only right for convex solids around that
+point. When a gate cannot read a class of mesh, a close-up render looking
+INTO the thing (a bowl from above, a ring from the side) is the check.
+
+### 2026-11-17 · a view tag is not part of a thing's name (pass 435)
+**What happened:** the aim gate split a part's whole name into words, its
+`__<view or group>` tag included. A twin view named for Roy made every part
+tagged to it match `shot_closeup_roy`; every part tagged to the group
+`cab_crow_t` matched the cue "crow"; and caltech's "hallways" frame passed
+for months on an open door tagged `__caltech_hallway_1945` — the frame
+looked through that door from 0.27 m off a wall, and the aquariums its line
+names were never built.
+**Rule:** match cue words against the name BEFORE `__`. When a fix to a
+gate turns a frame red, read the frame by render before teaching the gate
+a synonym: the gate may have been passing a frame that never showed its
+line's subject, and the honest fix is the set.
+
 ### 2026-11-17 · a box floor is not the bowl (pass 434, the water towers)
 **What happened:** the user: "Tank not connected to leg supports." Both
 water towers' legs stopped 0.25-0.4 m under the tank. The gates record a

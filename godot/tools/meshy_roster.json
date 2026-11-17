@@ -8474,7 +8474,9 @@
             "cabin_interior_marit",
             "cabin_interior_four_perch",
             "cabin_interior_four_crow",
-            "cabin_interior_three_dawn"
+            "cabin_interior_three_dawn",
+            "cabin_porch_day_rail",
+            "cabin_porch_day_roy"
           ]
         },
         {
@@ -8719,7 +8721,9 @@
             "cabin_interior_marit",
             "cabin_interior_four_perch",
             "cabin_interior_four_crow",
-            "cabin_interior_three_dawn"
+            "cabin_interior_three_dawn",
+            "cabin_porch_day_rail",
+            "cabin_porch_day_roy"
           ]
         }
       ]
@@ -8774,7 +8778,9 @@
             "cabin_interior_marit",
             "cabin_interior_four_perch",
             "cabin_interior_four_crow",
-            "cabin_interior_three_dawn"
+            "cabin_interior_three_dawn",
+            "cabin_porch_day_rail",
+            "cabin_porch_day_roy"
           ]
         }
       ]
@@ -48207,7 +48213,9 @@
             "cabin_porch",
             "cabin_porch_dawn",
             "cabin_porch_day",
-            "cabin_interior_day_arrival"
+            "cabin_interior_day_arrival",
+            "cabin_porch_day_rail",
+            "cabin_porch_day_roy"
           ]
         }
       ]
@@ -60904,7 +60912,9 @@
             "cabin_interior_marit",
             "cabin_interior_four_perch",
             "cabin_interior_four_crow",
-            "cabin_interior_three_dawn"
+            "cabin_interior_three_dawn",
+            "cabin_porch_day_rail",
+            "cabin_porch_day_roy"
           ]
         }
       ]
@@ -60965,7 +60975,9 @@
             "cabin_interior_marit",
             "cabin_interior_four_perch",
             "cabin_interior_four_crow",
-            "cabin_interior_three_dawn"
+            "cabin_interior_three_dawn",
+            "cabin_porch_day_rail",
+            "cabin_porch_day_roy"
           ]
         }
       ]
@@ -61027,7 +61039,9 @@
             "cabin_interior_marit",
             "cabin_interior_four_perch",
             "cabin_interior_four_crow",
-            "cabin_interior_three_dawn"
+            "cabin_interior_three_dawn",
+            "cabin_porch_day_rail",
+            "cabin_porch_day_roy"
           ]
         }
       ]
@@ -61082,7 +61096,9 @@
             "cabin_interior_marit",
             "cabin_interior_four_perch",
             "cabin_interior_four_crow",
-            "cabin_interior_three_dawn"
+            "cabin_interior_three_dawn",
+            "cabin_porch_day_rail",
+            "cabin_porch_day_roy"
           ]
         }
       ]
@@ -61137,7 +61153,9 @@
             "cabin_interior_marit",
             "cabin_interior_four_perch",
             "cabin_interior_four_crow",
-            "cabin_interior_three_dawn"
+            "cabin_interior_three_dawn",
+            "cabin_porch_day_rail",
+            "cabin_porch_day_roy"
           ]
         }
       ]
@@ -61192,7 +61210,9 @@
             "cabin_interior_marit",
             "cabin_interior_four_perch",
             "cabin_interior_four_crow",
-            "cabin_interior_three_dawn"
+            "cabin_interior_three_dawn",
+            "cabin_porch_day_rail",
+            "cabin_porch_day_roy"
           ]
         }
       ]
@@ -61252,7 +61272,9 @@
             "cabin_interior_marit",
             "cabin_interior_four_perch",
             "cabin_interior_four_crow",
-            "cabin_interior_three_dawn"
+            "cabin_interior_three_dawn",
+            "cabin_porch_day_rail",
+            "cabin_porch_day_roy"
           ]
         }
       ]
@@ -62296,7 +62318,9 @@
             "cabin_interior_day_early",
             "cabin_interior_day_four",
             "cabin_interior_day_arrival",
-            "cabin_interior_day_four_crow"
+            "cabin_interior_day_four_crow",
+            "cabin_porch_day_rail",
+            "cabin_porch_day_roy"
           ]
         }
       ]
@@ -62366,7 +62390,9 @@
             "cabin_interior_day_early",
             "cabin_interior_day_four",
             "cabin_interior_day_arrival",
-            "cabin_interior_day_four_crow"
+            "cabin_interior_day_four_crow",
+            "cabin_porch_day_rail",
+            "cabin_porch_day_roy"
           ]
         }
       ]
@@ -62433,7 +62459,9 @@
             "cabin_interior_day_early",
             "cabin_interior_day_four",
             "cabin_interior_day_arrival",
-            "cabin_interior_day_four_crow"
+            "cabin_interior_day_four_crow",
+            "cabin_porch_day_rail",
+            "cabin_porch_day_roy"
           ]
         }
       ]
@@ -62502,7 +62530,9 @@
             "cabin_interior_day_early",
             "cabin_interior_day_four",
             "cabin_interior_day_arrival",
-            "cabin_interior_day_four_crow"
+            "cabin_interior_day_four_crow",
+            "cabin_porch_day_rail",
+            "cabin_porch_day_roy"
           ]
         }
       ]
@@ -62571,7 +62601,9 @@
             "cabin_interior_day_early",
             "cabin_interior_day_four",
             "cabin_interior_day_arrival",
-            "cabin_interior_day_four_crow"
+            "cabin_interior_day_four_crow",
+            "cabin_porch_day_rail",
+            "cabin_porch_day_roy"
           ]
         }
       ]
@@ -62640,7 +62672,9 @@
             "cabin_interior_day_early",
             "cabin_interior_day_four",
             "cabin_interior_day_arrival",
-            "cabin_interior_day_four_crow"
+            "cabin_interior_day_four_crow",
+            "cabin_porch_day_rail",
+            "cabin_porch_day_roy"
           ]
         }
       ]
@@ -62709,7 +62743,9 @@
             "cabin_interior_day_early",
             "cabin_interior_day_four",
             "cabin_interior_day_arrival",
-            "cabin_interior_day_four_crow"
+            "cabin_interior_day_four_crow",
+            "cabin_porch_day_rail",
+            "cabin_porch_day_roy"
           ]
         }
       ]
@@ -62778,7 +62814,9 @@
             "cabin_interior_day_early",
             "cabin_interior_day_four",
             "cabin_interior_day_arrival",
-            "cabin_interior_day_four_crow"
+            "cabin_interior_day_four_crow",
+            "cabin_porch_day_rail",
+            "cabin_porch_day_roy"
           ]
         }
       ]
@@ -62847,7 +62885,9 @@
             "cabin_interior_day_early",
             "cabin_interior_day_four",
             "cabin_interior_day_arrival",
-            "cabin_interior_day_four_crow"
+            "cabin_interior_day_four_crow",
+            "cabin_porch_day_rail",
+            "cabin_porch_day_roy"
           ]
         }
       ]

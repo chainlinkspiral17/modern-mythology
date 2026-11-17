@@ -531,10 +531,13 @@ rotation = Vector3(-0.8727, 0.7188, 0.0)
 metadata/fov = 40.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+; (pass 435) "The hallways leading to the lab are lined by long empty aquariums": from the corridor's
+; south end up the west wall's row of dry tanks (the frame stood 0.27 m off the east wall, looking
+; through the bare room's door; the aquariums were not built)
 [node name="shot_insert_hallways__caltech_tunnels" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(102.930, 1.212, -7.240)
-rotation = Vector3(-0.2618, -1.6338, 0.0)
-metadata/fov = 35.0
+position = Vector3(101.500, 1.450, -0.900)
+rotation = Vector3(-0.0774, 0.2964, 0.0)
+metadata/fov = 50.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_door__caltech_bare_room" type="Marker3D" parent="." groups=["vn_shot"]]

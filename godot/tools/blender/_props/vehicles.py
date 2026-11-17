@@ -248,7 +248,9 @@ def make_car(prefix, cx, cy, length, col, pickup=False, hatch=False, light_bar=F
         # (pass 434) a tan vinyl interior, as the era's pickups had: a black bird on
         # the dash reads against the seat back behind her (the body-colour seat at
         # half value and a near-black dash swallowed her at dawn)
-        make_box(f"{prefix}_Dash", P(nose - 2.18, 0.0, z0 + 1.15), S(0.54, 2 * hw - 0.16, 0.10), (0.40, 0.35, 0.29, 1.0))   # top z0 + 1.20
+        # (pass 435) 0.62 deep (nose - 1.91 .. nose - 2.53), as a pickup's dash runs: a crow
+        # standing on it stands behind the windshield's rake, not under it
+        make_box(f"{prefix}_Dash", P(nose - 2.22, 0.0, z0 + 1.15), S(0.62, 2 * hw - 0.16, 0.10), (0.40, 0.35, 0.29, 1.0))   # top z0 + 1.20
         seat = (0.60, 0.51, 0.38, 1.0)
         make_box(f"{prefix}_Cab_Seat", P(nose - 3.02, 0.0, z0 + 1.16), S(0.52, 2 * hw - 0.22, 0.12), seat)
         make_box(f"{prefix}_Cab_Seat_Back", P(nose - 3.32, 0.0, z0 + 1.40), S(0.12, 2 * hw - 0.22, 0.40), seat)

@@ -68,11 +68,11 @@ const VIEW_GROUPS := {
 	# the substrate-bowl ch11-ch20; Marina's grandfather's from ch13's night;
 	# Roy's, the notebook and Roy's box ch19-20; the bell-piece ch19-22; ch21
 	# on, "Lindholm-Marina's and Eddvard's-by-Tem"
-	"cab_bowls": ["cabin_interior", "cabin_interior_hexagon", "cabin_interior_day_hexagon", "cabin_interior_three", "cabin_interior_three_dawn", "cabin_interior_four", "cabin_interior_day_four", "cabin_interior_four_perch", "cabin_interior_four_crow", "cabin_interior_day_four_crow"],
+	"cab_bowls": ["cabin_interior", "cabin_interior_hexagon", "cabin_interior_day_hexagon", "cabin_interior_three", "cabin_porch_day_rail", "cabin_interior_three_dawn", "cabin_interior_four", "cabin_interior_day_four", "cabin_interior_four_perch", "cabin_interior_four_crow", "cabin_interior_day_four_crow"],
 	# (pass 408) Marit's bowl comes out of Per's box in ch11_per, before the
 	# substrate-bowl comes out of Kai's shirt pocket (ch11_bowl n21-22): ch11_per is
 	# its own view. Per's box stands at his elbow in both (ch10-ch13).
-	"cab_marit": ["cabin_interior", "cabin_interior_marit", "cabin_interior_hexagon", "cabin_interior_day_hexagon", "cabin_interior_three", "cabin_interior_three_dawn", "cabin_interior_four", "cabin_interior_day_four", "cabin_interior_four_perch", "cabin_interior_four_crow", "cabin_interior_day_four_crow"],
+	"cab_marit": ["cabin_interior", "cabin_interior_marit", "cabin_interior_hexagon", "cabin_interior_day_hexagon", "cabin_interior_three", "cabin_porch_day_rail", "cabin_interior_three_dawn", "cabin_interior_four", "cabin_interior_day_four", "cabin_interior_four_perch", "cabin_interior_four_crow", "cabin_interior_day_four_crow"],
 	"cab_box": ["cabin_interior", "cabin_interior_marit", "cabin_interior_day_sticks"],
 	# (pass 408) EDDVARD'S BOWL on "the shelf above the kerosene lamp" (ch4_finn
 	# n43/n132), "where Eddvard's bowl has been since '11" (ch17_aria n118):
@@ -81,8 +81,8 @@ const VIEW_GROUPS := {
 	"cab_shelf": ["cabin_interior", "cabin_interior_marit", "cabin_interior_four", "cabin_interior_three", "cabin_interior_three_dawn", "cabin_interior_early",
 		"cabin_interior_piece", "cabin_interior_hexagon", "cabin_interior_day_four", "cabin_interior_day_early",
 		"cabin_interior_day_hexagon", "cabin_interior_day_package", "cabin_interior_day_sticks", "cabin_interior_day_arrival", "cabin_interior_day_breakfast",
-		"cabin_porch", "cabin_porch_dawn", "cabin_porch_day", "cabin_interior_four_perch", "cabin_interior_four_crow", "cabin_interior_day_four_crow"],
-	"cab_third": ["cabin_interior_hexagon", "cabin_interior_three", "cabin_interior_three_dawn", "cabin_interior_four", "cabin_interior_day_four", "cabin_interior_four_perch", "cabin_interior_four_crow", "cabin_interior_day_four_crow"],
+		"cabin_porch", "cabin_porch_dawn", "cabin_porch_day", "cabin_porch_day_rail", "cabin_porch_day_roy", "cabin_interior_four_perch", "cabin_interior_four_crow", "cabin_interior_day_four_crow"],
+	"cab_third": ["cabin_interior_hexagon", "cabin_interior_three", "cabin_porch_day_rail", "cabin_interior_three_dawn", "cabin_interior_four", "cabin_interior_day_four", "cabin_interior_four_perch", "cabin_interior_four_crow", "cabin_interior_day_four_crow"],
 	"cab_ch19": ["cabin_interior_four", "cabin_interior_day_four", "cabin_interior_four_perch", "cabin_interior_four_crow", "cabin_interior_day_four_crow"],
 	"cab_bell": ["cabin_interior_four", "cabin_interior_day_four", "cabin_interior_day", "cabin_interior_day_disc", "cabin_interior_four_perch", "cabin_interior_four_crow", "cabin_interior_day_four_crow"],
 	"cab_late": ["cabin_interior_day", "cabin_interior_day_disc", "cabin_interior_day_headset"],
@@ -155,7 +155,14 @@ const VIEW_GROUPS := {
 	"cab_crow_t": ["cabin_interior_four_crow", "cabin_interior_day_four_crow"],
 	"cab_crow_p": ["cabin_interior_four_perch"],
 	"cab_perch": ["cabin_interior_four_perch", "cabin_interior_four_crow"],
-	"cab_wcrow": ["cabin_interior", "cabin_interior_marit", "cabin_interior_four", "cabin_interior_three", "cabin_interior_eddvard", "cabin_interior_early", "cabin_interior_piece", "cabin_interior_hexagon", "cabin_interior_day", "cabin_interior_day_four", "cabin_interior_day_early", "cabin_interior_day_headset", "cabin_interior_day_disc", "cabin_interior_day_hexagon", "cabin_interior_day_package", "cabin_interior_day_sticks", "cabin_interior_day_arrival", "cabin_interior_day_breakfast", "cabin_porch", "cabin_porch_dawn", "cabin_porch_day"],
+	# (pass 435) the crow on the dash of the truck in the turnaround (Finn's Toyota,
+	# or Kai's — the set's one truck): ch17's dawn from the window ("standing on
+	# the dashboard"), and the porch views where ch1 (n28), ch4 (n6, until it flies
+	# at n126), ch13 (cale n11, marina, porch n13) and ch16 (Kai's, ch17 n40 "since
+	# I left her there last night") have her there. The kitchen-sill crow that
+	# stood in 21 views (cab_wcrow, "which is where it always is") had no line
+	# behind it — the text never sets the crow on the cabin's sill — and is gone.
+	"cab_dash": ["cabin_interior_three_dawn", "cabin_porch_day", "cabin_porch"],
 }
 
 const CAMERA_PRESETS := {
@@ -4658,6 +4665,39 @@ const CAMERA_PRESETS := {
 	"cabin_porch_day": {
 		"scene": "res://scenes/locales/cabin_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
+		# (pass 91, 2026-10-12) THE PORCH BY DAY: ch1 Finn's morning, ch5, ch10, ch15
+		# the wagon — the same camera in the turnaround, the interior-day sky and
+		# light; its nodes are the porch's, cloned with the __cabin_porch_day suffix.
+		"camera_origin": Vector3(-0.60, 1.25, 8.00),
+		"camera_rotation": Vector3(0.0921, 0.1732, 0.0),
+		"fov": 60.0,
+		"env": {"sky_top": Color(0.40, 0.56, 0.80, 1), "sky_horizon": Color(0.84, 0.86, 0.84, 1),
+			"ground_horizon": Color(0.40, 0.44, 0.36, 1), "ground_bottom": Color(0.20, 0.22, 0.18, 1),
+			"ambient_color": Color(0.86, 0.86, 0.82, 1), "ambient_energy": 1.25, "fog_color": Color(0.82, 0.84, 0.82, 1)},
+		"style_pack": "raw_observation",
+		"suppress_input": true,
+	},
+	"cabin_porch_day_roy": {
+		# (pass 435) ch19 Roy: his F-100 comes up and parks beside Tem's wagon; the crow is inside on the table, not on the Toyota's dash
+		"scene": "res://scenes/locales/cabin_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
+		# (pass 91, 2026-10-12) THE PORCH BY DAY: ch1 Finn's morning, ch5, ch10, ch15
+		# the wagon — the same camera in the turnaround, the interior-day sky and
+		# light; its nodes are the porch's, cloned with the __cabin_porch_day suffix.
+		"camera_origin": Vector3(-0.60, 1.25, 8.00),
+		"camera_rotation": Vector3(0.0921, 0.1732, 0.0),
+		"fov": 60.0,
+		"env": {"sky_top": Color(0.40, 0.56, 0.80, 1), "sky_horizon": Color(0.84, 0.86, 0.84, 1),
+			"ground_horizon": Color(0.40, 0.44, 0.36, 1), "ground_bottom": Color(0.20, 0.22, 0.18, 1),
+			"ambient_color": Color(0.86, 0.86, 0.82, 1), "ambient_energy": 1.25, "fog_color": Color(0.82, 0.84, 0.82, 1)},
+		"style_pack": "raw_observation",
+		"suppress_input": true,
+	},
+	"cabin_porch_day_rail": {
+		# (pass 435) ch15 the wagon: the crow on the porch railing (it rode back up in the wagon; Finn took Kai's truck to town) — the rail crow is here only, and the truck is gone
+		"scene": "res://scenes/locales/cabin_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
+		"strip": ["Toyota_Truck"],
 		# (pass 91, 2026-10-12) THE PORCH BY DAY: ch1 Finn's morning, ch5, ch10, ch15
 		# the wagon — the same camera in the turnaround, the interior-day sky and
 		# light; its nodes are the porch's, cloned with the __cabin_porch_day suffix.

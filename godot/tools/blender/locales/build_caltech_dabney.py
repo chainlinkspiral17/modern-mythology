@@ -697,6 +697,42 @@ def build_bare_room():
     make_blob("Bare_Bulb", (cx, cy, h - 0.34), 0.05, (0.98, 0.94, 0.80, 1.0), noise=0.0, seed=1)
 
 
+def build_tunnel_aquariums():
+    """THE AQUARIUMS (pass 435), vol3 ch6_tunnels n17: "The hallways leading to
+    the lab are lined by long empty aquariums once housing intricate families of
+    electric eels." Long tanks on steel stands down both walls, clear of the
+    doors (E: the bare room 7.6, 14.0) and the openings (W: 21.0 to the
+    racquetball room) — dry, a mineral line where the water stood, grit on the
+    floor of each. The 2003 tunnels view only (the TUN2003 tag, as its
+    radiation signs). One object (joined)."""
+    steel = (0.30, 0.31, 0.32, 1.0)
+    glass = (0.70, 0.78, 0.80, 0.22)
+    rim = (0.16, 0.17, 0.18, 1.0)
+    scale = (0.80, 0.78, 0.70, 1.0)
+    grit = (0.42, 0.38, 0.32, 1.0)
+    L, D, H, SZ = 2.30, 0.46, 0.58, 0.80          # tank length, depth, height; stand top
+    rows = [("W", TX0 + 0.10 + D / 2.0 + 0.03, (3.6, 6.1, 8.6, 11.1, 13.6)),
+            ("E", TX1 - 0.10 - D / 2.0 - 0.03, (3.6, 10.6, 16.6, 19.1))]
+    for side, x, ys in rows:
+        for k, y in enumerate(ys):
+            nm = f"Aquarium_{side}{k}"
+            for e in (-1, 1):                        # the stand: legs and rails
+                for f in (-1, 1):
+                    make_box(f"{nm}_Leg_{e:+d}{f:+d}" + TUN2003, (x + f * (D / 2.0 - 0.03), y + e * (L / 2.0 - 0.04), SZ / 2.0),
+                             (0.04, 0.04, SZ), steel)
+            make_box(f"{nm}_Shelf" + TUN2003, (x, y, SZ - 0.02), (D, L, 0.04), steel)
+            make_box(f"{nm}_Rail" + TUN2003, (x, y, 0.16), (D - 0.04, L - 0.06, 0.03), steel)
+            z0 = SZ
+            make_box(f"{nm}_Base" + TUN2003, (x, y, z0 + 0.02), (D, L, 0.04), rim)
+            make_box(f"{nm}_Grit" + TUN2003, (x, y, z0 + 0.045), (D - 0.03, L - 0.03, 0.01), grit)
+            for f in (-1, 1):
+                make_box(f"{nm}_Glass_Long_{f:+d}" + TUN2003, (x + f * (D / 2.0 - 0.005), y, z0 + H / 2.0), (0.01, L, H), glass)
+                make_box(f"{nm}_Glass_End_{f:+d}" + TUN2003, (x, y + f * (L / 2.0 - 0.005), z0 + H / 2.0), (D, 0.01, H), glass)
+                make_box(f"{nm}_Scale_{f:+d}" + TUN2003, (x + f * (D / 2.0 - 0.012), y, z0 + H - 0.12), (0.004, L - 0.04, 0.025), scale)
+            make_box(f"{nm}_Rim" + TUN2003, (x, y, z0 + H + 0.012), (D + 0.01, L + 0.01, 0.024), rim)
+    join_named("Aquarium_", "Aquarium" + TUN2003)
+
+
 def main():
     clear_scene()
     build_courtyard()
@@ -704,6 +740,7 @@ def main():
     build_game_room()
     build_spencer_room()
     build_tunnels()
+    build_tunnel_aquariums()        # (pass 435) vol3 ch6 n17
     build_bare_room()
     try:
         join_stock()

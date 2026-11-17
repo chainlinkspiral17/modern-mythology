@@ -105,7 +105,7 @@ KEPT_INSERT = {
     ("estuary_7_template", "shot_insert_tower"): _DIORAMA,
     ("hans_bakery_back_kitchen", "shot_insert_back_light"): "the back door's light, from the lot: 'The bakery's back-kitchen light was on'",
     ("nick_house_front", "shot_insert_minibike"): "the mini-bike outside the house",
-    ("cabin_porch_day", "shot_insert_bowls"): "the bowls on the table indoors: they go in",
+    ("cabin_porch_day_rail", "shot_insert_bowls"): "the bowls on the table indoors: they go in",
     ("kwik_stop_interior", "shot_insert_coffee"): "the coffee station across the store",
     ("kwik_stop_interior", "shot_insert_window"): "the table by the window",
     ("missing_link_exterior", "shot_insert_bench"): "the shuttle bench outside",

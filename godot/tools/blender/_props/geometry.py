@@ -806,7 +806,30 @@ def make_lathe(name, center, profile, base_color, segments=12, yaw=0.0, loop=Fal
     loop=True makes a torus from a closed section profile."""
     verts, faces = _gen_lathe(center, profile, segments, loop)
     verts = _yaw_rot(verts, center, yaw)
-    return _finalize_mesh(name, verts, _fix_winding(verts, faces, center), base_color)
+    # (pass 435, the user: "Chairs visible through rim of bowls") a lathe is
+    # wound by its PROFILE, not by its centre. _gen_lathe's faces face the
+    # right-hand side of the profile's direction — outward for a section that
+    # runs counter-clockwise in (r, z) (bottom, out, up, back in). The old
+    # centroid rule turned every face away from the axis, so a rim's, a ring's
+    # or a cup's INNER wall faced outward and was culled: the far side of every
+    # bowl rim showed what stood behind it. Now: the section's signed area
+    # decides (an open profile closes along the axis); clockwise reverses all.
+    # Only a profile with no area (a line) falls back to the centroid rule.
+    pts = [(float(r), float(z)) for r, z in profile]
+    closed = loop or (len(pts) > 2 and abs(pts[0][0] - pts[-1][0]) < 1e-9 and abs(pts[0][1] - pts[-1][1]) < 1e-9)
+    if not closed:
+        if pts[-1][0] > 1e-6:
+            pts.append((0.0, pts[-1][1]))
+        if pts[0][0] > 1e-6:
+            pts.append((0.0, pts[0][1]))
+    area = 0.0
+    for (r0, z0), (r1, z1) in zip(pts, pts[1:] + pts[:1]):
+        area += r0 * z1 - r1 * z0
+    if abs(area) < 1e-12:
+        faces = _fix_winding(verts, faces, center)
+    elif area < 0.0:
+        faces = [list(reversed(f)) for f in faces]
+    return _finalize_mesh(name, verts, faces, base_color)
 
 
 def _gen_prism(center, polygon, length, axis):

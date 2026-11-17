@@ -262,6 +262,8 @@
   "cabin_porch": "shot_insert_truck: void 0%→4%, sky 0%→0%",
   "cabin_porch_dawn": "shot_insert_truck: void 0%→4%, sky 0%→0%",
   "cabin_porch_day": "shot_insert_truck: void 0%→4%, sky 0%→0%",
+  "cabin_porch_day_roy": "shot_insert_truck: void 0%→4%, sky 0%→0%",
+  "cabin_porch_day_rail": "shot_insert_truck: void 0%→4%, sky 0%→0%",
   "cabin_road": "shot_establish_c: void 0%→0%, sky 43%→59%",
   "cabin_road_truck": "shot_establish_c: void 0%→0%, sky 43%→59%",
   "cafe_olimpico": "shot_closeup_john: void 6%→9%, sky 18%→0%",
