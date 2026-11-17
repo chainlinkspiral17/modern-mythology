@@ -708,7 +708,13 @@ def build_east_window():
     make_box("Nook_TV_Screen", (3.30, YN - 0.057, 1.90), (0.74, 0.004, 0.40), (0.30, 0.36, 0.42, 1.0))
     make_box("Nook_Sideboard", (3.30, YN - 0.24, 0.43), (1.50, 0.46, 0.86), OAK)
     make_box("Nook_Sideboard_Top", (3.30, YN - 0.24, 0.875), (1.54, 0.50, 0.03), OAK_DK)
-    make_box("Nook_Sideboard_Mail_Basket", (2.85, YN - 0.24, 0.96), (0.32, 0.22, 0.14), (0.62, 0.48, 0.30, 1.0))
+    make_box("Nook_Sideboard_Mail_Basket", (3.35, YN - 0.24, 0.96), (0.32, 0.22, 0.14), (0.62, 0.48, 0.30, 1.0))
+    # (pass 432) "The kitchen clock, on the wall above the toaster, ticks" (vol6
+    # ch22_bianca n26): the toaster on the sideboard's west end, under the clock
+    make_chamfer_box("Nook_Toaster", (2.69, YN - 0.30, 0.985), (0.28, 0.17, 0.19), (0.78, 0.78, 0.80, 1.0), chamfer=0.03)
+    for k in range(2):
+        make_box(f"Nook_Toaster_Slot_{k}", (2.63 + k * 0.12, YN - 0.30, 1.0805), (0.10, 0.03, 0.002), (0.10, 0.10, 0.11, 1.0))
+    make_box("Nook_Toaster_Lever", (2.69, YN - 0.393, 1.03), (0.04, 0.015, 0.02), (0.16, 0.16, 0.18, 1.0))
     for k in range(3):
         make_rot_box(f"Nook_Sideboard_Photo_{k}", (3.20 + k * 0.30, YN - 0.12, 1.00), (0.18, 0.03, 0.22), OAK_DK, roll=0.0, pitch=0.12)
 
@@ -735,8 +741,11 @@ def build_kitchen(variant):
     build_wear_and_infra()
     build_outside(sedan=(variant == "family"))
     if variant == "family":
-        make_wall_clock("Clock", (2.30, YN, 1.95), frozen_hour=6, frozen_min=24, facing='-Y')
+        make_wall_clock("Clock", (2.55, YN, 1.95), frozen_hour=6, frozen_min=24, facing='-Y')   # (pass 432) over the toaster
         dress_family()
     else:
-        make_wall_clock("Clock", (2.30, YN, 1.95), frozen_hour=4, frozen_min=11, facing='-Y')
+        # (pass 432) the dawn kitchen's clock: ch11 "At four thirty-two, the cul-de-sac is
+        # dark"; ch22 "The kitchen clock ... ticks. The refrigerator hum cycles up at four
+        # thirty-six" — 4:34 (it read 4:11, Bianca's waking minute, against both lines)
+        make_wall_clock("Clock", (2.55, YN, 1.95), frozen_hour=4, frozen_min=34, facing='-Y')
         dress_dawn()

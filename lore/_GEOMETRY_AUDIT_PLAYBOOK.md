@@ -158,6 +158,21 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-17 · a kit's output is read once, in a close-up (pass 432)
+**What happened:** make_wall_clock had drawn every clock in the game wrong
+since it was written (hands as offset squares, up/down swapped, left/right
+swapped on two facings) — only a close-up whose line states the time shows
+it, and no gate compared the two. Fixing it, a local `from .geometry import
+make_rot_box` inside the kit function escaped the view-tag wrapper (which
+patches the module's own names): both views' hands landed untagged, and
+ch6's morning clock showed the evening's time over its own.
+**Rule:** when a line states what a thing shows (a time, a number, a word),
+read the thing in its frame — a kit that draws it is checked once, by
+render, at every orientation it supports. In a `_props` module, import the
+geometry helpers at module level, never inside a function, or view tags
+miss what it makes.
+**Where it lives:** _props/decor.make_wall_clock; pass 432 entry.
+
 ### 2026-11-17 · the text's spot is not always where the frame can see it (passes 429-431)
 **What happened:** ch17's crow is "standing on the dashboard" of Kai's truck,
 seen by Finn from the cabin's south window. The kit's cab was one solid prism,

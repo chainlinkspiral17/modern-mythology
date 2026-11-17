@@ -117,6 +117,10 @@
       "bed": "assets/audio/bgm/vol6_kwik_stop_interior.wav",
       "gain": 0.82
     },
+    "kwik_stop_morning": {
+      "bed": "assets/audio/bgm/vol6_kwik_stop_interior.wav",
+      "gain": 0.82
+    },
     "kwik_stop_peugeot": {
       "bed": "assets/audio/bgm/vol6_kwik_stop_interior.wav",
       "gain": 0.82

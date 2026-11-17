@@ -3008,9 +3008,17 @@ def build_hero_props_2026_08():
     make_box("Microwave_ClockLED", (-4.87, 2.865, 1.11), (0.10, 0.015, 0.035), (0.30, 0.92, 0.42, 1.0))
     # THE ACTUAL CLOCK — second face by the office door, east wall.
     # The pairing with the fast microwave clock is the point.
-    make_cyl("Clock_Office_Face", (5.88, 8.05, 2.10), 0.16, 0.04, (0.92, 0.90, 0.84, 1.0), axis='X', segments=14)
-    make_box("Clock_Office_HandH", (5.85, 8.02, 2.12), (0.02, 0.015, 0.08), (0.14, 0.14, 0.15, 1.0))
-    make_box("Clock_Office_HandM", (5.85, 8.09, 2.11), (0.02, 0.10, 0.015), (0.14, 0.14, 0.15, 1.0))
+    # (pass 432) the kit's clock, its hands at the line's time: "The actual clock by the
+    # office door reads eight oh-two" (ch15 n7) in every view of the set; ch6's morning
+    # (kwik_stop_morning) "The actual clock reads 06:58" (n21). Its hands read 12:45.
+    from _props import decor as _dec
+    from _props.view_tags import Views
+    V = Views("ks", {"p": "ks_pm", "m": "kwik_stop_morning"})
+    with V.tagged("p", _dec):
+        _dec.make_wall_clock("Clock_Office", (5.90, 8.05, 2.10), frozen_hour=8, frozen_min=2, facing='-X')
+    with V.tagged("m", _dec):
+        _dec.make_wall_clock("Clock_Office", (5.90, 8.05, 2.10), frozen_hour=6, frozen_min=58, facing='-X')
+    V.check()
     # The back office door (Jen's deposit paperwork) + lit pocket
     make_box("Office_Doorframe", (5.94, 7.2, 1.08), (0.10, 0.98, 2.16), wood)
     make_box("Office_Door_Open", (5.90, 7.2, 1.05), (0.05, 0.85, 2.05), (0.50, 0.40, 0.28, 1.0))

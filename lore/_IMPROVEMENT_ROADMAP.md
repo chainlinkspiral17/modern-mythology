@@ -3835,6 +3835,35 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-17 · pass 432: clocks read what their lines say.**
+- THE CLOCK KIT WAS WRONG EVERYWHERE. make_wall_clock drew its hands as small
+  squares offset from the hub, up and down swapped (12 drew at 6) and, on a
+  dial facing +Y or -X, left and right swapped too: Kai's "seven oh-eight"
+  read about eleven, the Kwik Stop's "eight oh-two" half past two. Its hands
+  are now bars from the hub, clockwise as the viewer sees the dial, for all
+  four wall facings (checked by recorded hand offsets and by render). 49
+  sets use the kit — the Deck's --stale rebuild takes them all.
+- Close-ups made to read their line (all rendered):
+  - The Kwik Stop's office clock (it had its own two boxes, reading 12:45)
+    is the kit's: "The actual clock by the office door reads eight oh-two"
+    (ch15) in every view; ch6's morning ("The actual clock reads 06:58") is
+    a twin `kwik_stop_morning` where it reads 6:58. The frame is square-on
+    now — the doorway's strip curtain stood across half the dial.
+  - Bianca's dawn kitchen (ch11 "At four thirty-two"; ch22 "The kitchen
+    clock, on the wall above the toaster, ticks … four thirty-six"): it
+    read 4:11; now 4:34, moved over a new toaster on the nook sideboard
+    (there was no toaster), the frame re-staged.
+  - Kai's kitchen clock (7:08, "The clock on the kitchen wall said seven
+    oh-eight") sat across the window's casing: moved clear.
+  - Checked and right: the diner's 3:47 (its own hands), Diego's digital
+    dresser clock (no digits drawn).
+- Draft N+1: the Millers' family-kitchen clock reads 6:24 in every view
+  (ch3 says 07:14, ch4 7:04, ch11 6:15, ch11 with Eileen 8:03, ch17 7:06;
+  the base view plays 4:48, 7:03, 9:41, 10:14) — not legible in the wide,
+  so per-view hands wait for a clock frame there; a gate comparing a clock
+  cue's stated time with its clock's hands.
+- Deck must REBUILD the 49 kit-clock sets (the --stale rebuild finds them).
+
 **2026-11-17 · pass 431: an open cab (the car kit) — the crow against it.**
 - make_car(open_cab=True) for pickups: the body's profile stops at the
   beltline, and the cab is its frame round the glass — a roof slab on A

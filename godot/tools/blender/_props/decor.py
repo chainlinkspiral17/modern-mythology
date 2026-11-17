@@ -7,7 +7,7 @@
 # ════════════════════════════════════════════════════════════════
 import math
 from . import palette as P
-from .geometry import make_box, make_cyl
+from .geometry import make_box, make_cyl, make_rot_box
 
 
 def make_wall_clock(prefix, anchor, *, frozen_hour=11, frozen_min=47,
@@ -57,17 +57,25 @@ def make_wall_clock(prefix, anchor, *, frozen_hour=11, frozen_min=47,
                                        (0.0, -0.13), (-0.13, 0.0)]):
         make_box(f"{prefix}_Tick_{ang_i}", at(mx, 0.0225, mz),
                  sz(0.02, 0.005, 0.02), P.METAL_BLACK)
-    # Hands — point to frozen_hour / frozen_min on a 12-hour clock face
-    hour_ang = ((frozen_hour % 12) + frozen_min / 60.0) * (math.pi * 2 / 12) - math.pi / 2
-    min_ang = (frozen_min / 60.0) * (math.pi * 2) - math.pi / 2
-    h_len = 0.10
-    m_len = 0.16
-    make_box(f"{prefix}_HourHand",
-             at(math.cos(hour_ang) * h_len * 0.5, 0.027, math.sin(hour_ang) * h_len * 0.5),
-             sz(0.05, 0.004, 0.05), P.METAL_BLACK)
-    make_box(f"{prefix}_MinuteHand",
-             at(math.cos(min_ang) * m_len * 0.5, 0.027, math.sin(min_ang) * m_len * 0.5),
-             sz(0.08, 0.004, 0.05), P.METAL_BLACK)
+    # Hands — bars from the hub to frozen_hour / frozen_min, CLOCKWISE AS THE
+    # VIEWER SEES THE DIAL (pass 432). They were squares offset from the hub, up
+    # and down swapped (12 drew at 6) and, on a dial facing +Y or -X, left and
+    # right swapped too: the Kwik Stop's "eight oh-two" read half past two.
+    # theta is clockwise from 12; the viewer's right along the wall is +x for a
+    # dial facing -Y, -x for +Y, -y for -X, +y for +X.
+    # make_rot_box is imported at the top: a view tag (view_tags.tagged) wraps
+    # this module's own names, and a local import would escape it
+    k = sgn if along_x else -sgn
+    def _hand(name, theta, length, width, depth):
+        c = at(k * math.sin(theta) * length * 0.5, depth, math.cos(theta) * length * 0.5)
+        if along_x:      # the dial in the YZ plane: a Z bar rolled about X
+            make_rot_box(name, c, (0.004, width, length), P.METAL_BLACK, roll=-k * theta)
+        else:            # the dial in the XZ plane: a Z bar pitched about Y
+            make_rot_box(name, c, (width, 0.004, length), P.METAL_BLACK, pitch=k * theta)
+    hour_theta = ((frozen_hour % 12) + frozen_min / 60.0) * (math.pi * 2 / 12)
+    min_theta = (frozen_min / 60.0) * (math.pi * 2)
+    _hand(f"{prefix}_HourHand", hour_theta, 0.10, 0.024, 0.025)
+    _hand(f"{prefix}_MinuteHand", min_theta, 0.155, 0.014, 0.029)
 
 
 def make_fire_extinguisher(prefix, anchor, *, palette=None):
