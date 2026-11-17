@@ -19515,6 +19515,10 @@
           "facing": "-x",
           "hide": [
             "Marquee_Board"
+          ],
+          "not_presets": [
+            "new_auburn_strip_mall",
+            "new_auburn_strip_mall_early"
           ]
         }
       ],
@@ -19566,6 +19570,10 @@
           "facing": "-x",
           "hide": [
             "Marquee_Chalk_Line1"
+          ],
+          "not_presets": [
+            "new_auburn_strip_mall",
+            "new_auburn_strip_mall_early"
           ]
         }
       ],

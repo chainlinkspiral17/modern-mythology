@@ -402,6 +402,7 @@
   "new_auburn_courtroom": "shot_insert_subaru: void 35%→46%, sky 100%→100%",
   "new_auburn_lot": "shot_insert_van: void 0%→0%, sky 55%→100%",
   "new_auburn_strip_mall": "the frame: void 0%→0%, sky 9%→30%",
+  "new_auburn_strip_mall_early": "the frame: void 0%→0%, sky 9%→30%",
   "new_auburn_two_lane": "the frame: void 0%→0%, sky 85%→100%",
   "new_orleans_bar": "the frame: void 0%→5%, sky 0%→9%",
   "new_orleans_office": "shot_insert_door__new_orleans_office: void 0%→5%, sky 0%→25%",

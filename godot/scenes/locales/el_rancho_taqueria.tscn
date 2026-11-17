@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://el_rancho_taqueria_locale"]
+[gd_scene load_steps=27 format=3 uid="uid://el_rancho_taqueria_locale"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/el_rancho_taqueria.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
+[ext_resource type="FontFile" path="res://resources/fonts/ReenieBeanie-Regular.ttf" id="433_marker"]
 
 [sub_resource type="ShaderMaterial" id="Mat_Post"]
 shader = ExtResource("4_post")
@@ -362,11 +363,6 @@ position = Vector3(2.800, 1.380, -6.500)
 rotation = Vector3(-0.2003, -0.5679, 0.0)
 metadata/fov = 35.0
 
-[node name="shot_insert_speaker" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(5.600, 1.500, -5.000)
-rotation = Vector3(-0.1779, -0.3823, 0.0)
-metadata/fov = 35.0
-
 ; the room's closeup frame (draft 3, 2026-10-21): across the long booth at the back,
 ; from the bench side to the wall seat ("Coach K and Eileen are in the booth across
 ; from Coach Guidry and Linda Guidry")
@@ -444,3 +440,26 @@ metadata/fov = 48.0
 position = Vector3(-4.550, 1.800, -0.850)
 rotation = Vector3(-0.3570, -0.5831, 0.0)
 metadata/fov = 50.0
+
+; (pass 433) "The drive-thru has, taped to the speaker box, a hand-lettered sign that reads SPEAKER
+; BROKE — ORDER AT WINDOW." (vol6 ch16 n135): marker on the taped paper (shaded, discard)
+[node name="Speaker_Sign_Text" type="Label3D" parent="."]
+position = Vector3(6.029, 1.115, -6.288)
+rotation = Vector3(0, -1.5708, 0)
+pixel_size = 0.0002
+shaded = true
+alpha_cut = 1
+modulate = Color(0.10, 0.10, 0.12, 1)
+outline_size = 0
+text = "SPEAKER BROKE —\nORDER AT WINDOW"
+font = ExtResource("433_marker")
+font_size = 130
+horizontal_alignment = 0
+vertical_alignment = 0
+
+; (pass 433) ch16 n135 "a hand-lettered sign that reads SPEAKER BROKE — ORDER AT WINDOW": close on the taped
+; sign under the speaker box, where its marker lettering reads (the speaker frame shows it as a blank card)
+[node name="shot_insert_sign__el_rancho_drive_thru" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(5.450, 1.300, -6.000)
+rotation = Vector3(-0.2854, -1.2387, 0.0)
+metadata/fov = 30.0

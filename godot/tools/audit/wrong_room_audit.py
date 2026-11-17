@@ -84,7 +84,8 @@ KEPT_INSERT = {
     ("graustark_cottage", "shot_insert_herbs"): "Joanna's herb patch outside",
     ("highway_101", "shot_insert_marker"): "the mile marker up the road",
     ("new_auburn_cedar_route", "shot_insert_cypress"): "the Cypress's sign, passed on the ride",
-    ("new_auburn_strip_mall", "shot_insert_sedan"): "the white sedan in the FRONT lot (this camera is the back lot's)",
+    # (pass 433) ch14 plays in its twin now
+    ("new_auburn_strip_mall_early", "shot_insert_sedan"): "the white sedan in the FRONT lot (this camera is the back lot's)",
     ("daily_grind_interior", "shot_insert_tower"): "the tower on the hill, seen from town",
     ("kestrel_mountain", "shot_wide_town"): _KESTREL, ("kestrel_mountain_golden", "shot_wide_town"): _KESTREL,
     ("kestrel_mountain", "shot_insert_hedge"): _KESTREL, ("kestrel_mountain_golden", "shot_insert_hedge"): _KESTREL,

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://new_auburn_louisiana_road_cameo"]
+[gd_scene load_steps=27 format=3 uid="uid://new_auburn_louisiana_road_cameo"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/new_auburn_road.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
+[ext_resource type="FontFile" path="res://resources/fonts/Caveat-Variable.ttf" id="433_chalk"]
 
 [sub_resource type="ShaderMaterial" id="Mat_Post"]
 shader = ExtResource("4_post")
@@ -614,9 +615,21 @@ position = Vector3(7.948, 1.612, -42.464)
 rotation = Vector3(-0.2618, -0.7854, 0.0)
 metadata/fov = 45.0
 
+; (view_twin) new_auburn_strip_mall's frame in new_auburn_strip_mall_early
+[node name="shot_closeup_person__new_auburn_strip_mall_early" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(7.948, 1.612, -42.464)
+rotation = Vector3(-0.2618, -0.7854, 0.0)
+metadata/fov = 45.0
+
 ; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
 ; the far side of the same spot, so two speakers alternate sides
 [node name="shot_closeup_person_b__new_auburn_strip_mall" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(9.860, 1.612, -44.377)
+rotation = Vector3(-0.2618, 2.3562, 0.0)
+metadata/fov = 45.0
+
+; (view_twin) new_auburn_strip_mall's frame in new_auburn_strip_mall_early
+[node name="shot_closeup_person_b__new_auburn_strip_mall_early" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(9.860, 1.612, -44.377)
 rotation = Vector3(-0.2618, 2.3562, 0.0)
 metadata/fov = 45.0
@@ -642,8 +655,20 @@ position = Vector3(10.617, 2.051, -42.025)
 rotation = Vector3(-0.2618, -1.4408, 0.0)
 metadata/fov = 35.0
 
+; (view_twin) new_auburn_strip_mall's frame in new_auburn_strip_mall_early
+[node name="shot_insert_units__new_auburn_strip_mall_early" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(10.617, 2.051, -42.025)
+rotation = Vector3(-0.2618, -1.4408, 0.0)
+metadata/fov = 35.0
+
 ; insert: the dark sedan's plate in the sodium light (it framed the Civic's own plate)
 [node name="shot_insert_plate__new_auburn_strip_mall" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(28.000, 0.900, -48.300)
+rotation = Vector3(-0.1752, -3.1416, 0.0)
+metadata/fov = 34.0
+
+; (view_twin) new_auburn_strip_mall's frame in new_auburn_strip_mall_early
+[node name="shot_insert_plate__new_auburn_strip_mall_early" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(28.000, 0.900, -48.300)
 rotation = Vector3(-0.1752, -3.1416, 0.0)
 metadata/fov = 34.0
@@ -672,3 +697,37 @@ metadata/fov = 55.0
 position = Vector3(-0.900, 1.000, -294.600)
 rotation = Vector3(-0.0537, -0.5358, 0.0)
 metadata/fov = 42.0
+
+; (pass 433) "The chalk marquee at The Foxhole at the front of the strip mall now reads, in someone's
+; handwriting from this morning: SAT 8/22 — DOORS 8 — SUBURBAN BLIGHT 9 — DJ CHESS 11." (vol6 ch20 n96;
+; ch22 is the show). Chalk on the board (shaded, discard): this view only (ch14's twin is before it),
+; where the placeholder chalk strips are stripped
+[node name="Marquee_Chalk_Text__new_auburn_strip_mall" type="Label3D" parent="."]
+position = Vector3(11.425, 3.640, -36.580)
+rotation = Vector3(0, -1.5708, 0)
+pixel_size = 0.001
+shaded = true
+alpha_cut = 1
+modulate = Color(0.93, 0.92, 0.87, 0.95)
+outline_size = 0
+text = "SAT 8/22 — DOORS 8\nSUBURBAN BLIGHT 9\nDJ CHESS 11"
+font = ExtResource("433_chalk")
+font_size = 230
+horizontal_alignment = 0
+vertical_alignment = 0
+
+; (pass 433) ch14 n9 "The chalk insert reads, in someone's handwriting from this afternoon: SAT 8/22 — SUBURBAN
+; BLIGHT // DJ CHESS — DOORS 8." — the first wording, in ch14's twin view (ch20 rewrites it with set times)
+[node name="Marquee_Chalk_Text__new_auburn_strip_mall_early" type="Label3D" parent="."]
+position = Vector3(11.425, 3.640, -36.580)
+rotation = Vector3(0, -1.5708, 0)
+pixel_size = 0.001
+shaded = true
+alpha_cut = 1
+modulate = Color(0.93, 0.92, 0.87, 0.95)
+outline_size = 0
+text = "SAT 8/22 —\nSUBURBAN BLIGHT //\nDJ CHESS — DOORS 8"
+font = ExtResource("433_chalk")
+font_size = 230
+horizontal_alignment = 0
+vertical_alignment = 0

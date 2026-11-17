@@ -3835,6 +3835,34 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-17 · pass 433: signs read their words (Label3D).**
+- Close-up lines that quote a sign now see its words (the shader playbook's
+  Label3D pattern: writing on a surface is shaded, alpha-cut, a hand font):
+  - The Foxhole's chalk marquee — ch20 n96 "SAT 8/22 — DOORS 8 — SUBURBAN
+    BLIGHT 9 — DJ CHESS 11" (ch22, the show, same view), in Caveat chalk;
+    ch14 n9 has the first wording, "SAT 8/22 — SUBURBAN BLIGHT // DJ CHESS
+    — DOORS 8", in a twin `new_auburn_strip_mall_early`. The board's
+    placeholder chalk strips are stripped in both views.
+  - El Rancho's taped speaker sign, ch16 n135 "SPEAKER BROKE — ORDER AT
+    WINDOW", marker on the card (the builder's comment had "PULL FORWARD");
+    a close sign frame — the speaker frame showed a blank card.
+  - Briar Falls' trail sign, vol2 bf_trail n9: routed "0.4 MI TO THE FALLS /
+    1.2 MI TO THE OLD TOWER / (DISCONTINUED — )" with DO NOT in pencil in the
+    gap; a close sign frame.
+  - The two lines now cue `insert sign` (the old speaker and trail frames,
+    cued by nothing after, deleted). All rendered and legible.
+  - The roster's two marquee pictures (the whole board in ch14's wording;
+    its top chalk line) skip the two strip-mall views (`not_presets` on their
+    apply rows): the game draws the board's words there now. Neither picture
+    is in the repo yet — not needed for those views. The wrong-room gate's
+    kept sedan insert moves with ch14 to its twin.
+- FOR ANDY (a knot, not fixed): ch14 n8 puts the marquee "above the front
+  door, with the venue logo and a chalk-board insert below it"; ch20 n96 has
+  "the chalk marquee at The Foxhole at the front of the strip mall" — the
+  set follows ch20 (a board on posts).
+- Draft N+1: the Kwik Stop's thermometer "stuck at 97 degrees" (ch2, seen
+  from the Gas & Go); a sweep for every quoted sign, label and screen line.
+
 **2026-11-17 · pass 432: clocks read what their lines say.**
 - THE CLOCK KIT WAS WRONG EVERYWHERE. make_wall_clock drew its hands as small
   squares offset from the hub, up and down swapped (12 drew at 6) and, on a

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://briar_falls_park"]
+[gd_scene load_steps=28 format=3 uid="uid://briar_falls_park"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/briar_falls.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -15,6 +15,8 @@
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
+[ext_resource type="FontFile" path="res://resources/fonts/BebasNeue-Regular.ttf" id="433_routed"]
+[ext_resource type="FontFile" path="res://resources/fonts/Caveat-Variable.ttf" id="433_pencil"]
 
 [sub_resource type="ShaderMaterial" id="Mat_Post"]
 shader = ExtResource("4_post")
@@ -346,11 +348,6 @@ position = Vector3(8.200, 1.780, -15.320)
 rotation = Vector3(-1.0889, -0.0412, 0.0)
 metadata/fov = 14.0
 
-[node name="shot_insert_trail" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(4.588, 2.425, -6.693)
-rotation = Vector3(-0.0645, -0.7841, 0.0)
-metadata/fov = 35.0
-
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
 ; every closeup of a person cued here cuts to it (the scene had no closeup marker)
 [node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -444,3 +441,52 @@ metadata/fov = 62.0
 position = Vector3(10.200, 1.850, -15.250)
 rotation = Vector3(-0.6425, 0.0462, 0.0)
 metadata/fov = 40.0
+
+; (pass 433) "The sign at the head reads: 0.4 MI TO THE FALLS. 1.2 MI TO THE OLD TOWER (DISCONTINUED — DO
+; NOT). The DO NOT has been added in pencil. It does not look recent. It does not look old, either."
+; (vol2 bf_trail n9): the routed lettering on the south face, and the pencilled DO NOT in its gap
+[node name="Trail_Sign_Text" type="Label3D" parent="."]
+position = Vector3(6.000, 2.248, -8.583)
+pixel_size = 0.0005
+shaded = true
+alpha_cut = 1
+modulate = Color(0.92, 0.88, 0.74, 1)
+outline_size = 0
+text = "0.4 MI TO THE FALLS\n1.2 MI TO THE OLD TOWER\n(DISCONTINUED —"
+font = ExtResource("433_routed")
+font_size = 150
+horizontal_alignment = 0
+vertical_alignment = 0
+
+[node name="Trail_Sign_Pencil" type="Label3D" parent="."]
+position = Vector3(6.400, 2.090, -8.582)
+pixel_size = 0.0005
+shaded = true
+alpha_cut = 1
+modulate = Color(0.30, 0.30, 0.33, 1)
+outline_size = 0
+text = "DO NOT"
+font = ExtResource("433_pencil")
+font_size = 120
+horizontal_alignment = 0
+vertical_alignment = 0
+
+; (pass 433) bf_trail n9 "The sign at the head reads: 0.4 MI TO THE FALLS. 1.2 MI TO THE OLD TOWER
+; (DISCONTINUED — DO NOT). The DO NOT has been added in pencil": close on the sign's south face
+[node name="shot_insert_sign__briar_falls_trail" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(6.300, 2.150, -7.350)
+rotation = Vector3(-0.0239, -0.1599, 0.0)
+metadata/fov = 35.0
+
+[node name="Trail_Sign_Paren" type="Label3D" parent="."]
+position = Vector3(6.615, 2.096, -8.583)
+pixel_size = 0.0005
+shaded = true
+alpha_cut = 1
+modulate = Color(0.92, 0.88, 0.74, 1)
+outline_size = 0
+text = ")"
+font = ExtResource("433_routed")
+font_size = 150
+horizontal_alignment = 0
+vertical_alignment = 0

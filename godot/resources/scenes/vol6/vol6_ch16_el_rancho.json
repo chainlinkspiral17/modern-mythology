@@ -728,7 +728,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert speaker]The drive-thru is at the back. The drive-thru has, taped to the speaker box, a hand-lettered sign that reads SPEAKER BROKE — ORDER AT WINDOW.",
+      "text": "[shot:insert sign]The drive-thru is at the back. The drive-thru has, taped to the speaker box, a hand-lettered sign that reads SPEAKER BROKE — ORDER AT WINDOW.",
       "voice": "assets/audio/voice/vol6_ch16_el_rancho/135.mp3"
     },
     {

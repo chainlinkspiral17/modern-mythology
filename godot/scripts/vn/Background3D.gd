@@ -3096,6 +3096,23 @@ const CAMERA_PRESETS := {
 	# vol6 · New Auburn, Texas
 	"new_auburn_strip_mall": {
 		"scene": "res://scenes/locales/new_auburn_road.tscn",
+		# (pass 433) the chalk placeholder strips leave: the marquee's Label3D reads the words
+		"strip": ["Marquee_Chalk_Line"],
+		"requires_glb": "res://assets/3d/locales/new_auburn_road.glb",
+		# Night. Jesse's vantage from the Civic's nose at the south-west
+		# corner of the back lot (blender 6.6, 41.5), eye 1.35 — seated —
+		# NNE at the unit's back door in the dark, the flood at the far
+		# end, the mall's parapet over it. (ch14, ch20, ch22)
+		"camera_origin": Vector3(6.6, 1.35, -41.5),
+		"camera_rotation": Vector3(-0.02, -1.215, 0.0),   # (2026-10-10: re-aimed at the unit, now two doors down from the Foxhole's)
+		"fov": 58.0,
+		"suppress_input": true,
+		"far": 750.0,   # (2026-10-31) its far scenery stood past the 200 m default
+	},
+	"new_auburn_strip_mall_early": {
+		# (pass 433) ch14: the chalk insert's first wording, "SAT 8/22 — SUBURBAN BLIGHT // DJ CHESS — DOORS 8" (ch20 rewrites it)
+		"scene": "res://scenes/locales/new_auburn_road.tscn",
+		"strip": ["Marquee_Chalk_Line"],
 		"requires_glb": "res://assets/3d/locales/new_auburn_road.glb",
 		# Night. Jesse's vantage from the Civic's nose at the south-west
 		# corner of the back lot (blender 6.6, 41.5), eye 1.35 — seated —

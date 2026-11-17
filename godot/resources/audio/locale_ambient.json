@@ -853,6 +853,10 @@
       "bed": "assets/audio/bgm/vol6_two_lane.wav",
       "gain": 0.62
     },
+    "new_auburn_strip_mall_early": {
+      "bed": "assets/audio/bgm/vol6_two_lane.wav",
+      "gain": 0.62
+    },
     "new_auburn_lot": {
       "bed": "assets/audio/bgm/vol6_two_lane.wav",
       "gain": 0.66
