@@ -73,6 +73,8 @@ COL_FORMICA        = (0.88, 0.84, 0.72, 1.0)   # counter surface
 COL_VINYL_RED      = (0.62, 0.18, 0.16, 1.0)   # booth vinyl
 COL_VINYL_RED_DK   = (0.45, 0.14, 0.12, 1.0)   # booth shadow
 COL_WOOD_TRIM      = (0.42, 0.28, 0.18, 1.0)   # booth wood
+COL_WOOD_PANEL     = (0.30, 0.19, 0.12, 1.0)   # (pass 436) the walnut panelling behind the booths
+COL_WOOD_PANEL_LT  = (0.38, 0.25, 0.15, 1.0)   # its raised fields
 COL_BRASS          = (0.78, 0.58, 0.26, 1.0)   # brass railing
 COL_BAR_WOOD       = (0.32, 0.22, 0.14, 1.0)   # closed cocktail bar
 COL_KITCHEN_STEEL  = (0.62, 0.62, 0.60, 1.0)   # stainless
@@ -207,8 +209,15 @@ def build_shell():
     #   1) Y=+5  (1.6m) → main floor → bar in the extension's NW
     #   2) Y=-3.25 (1.4m) → formal hallway → formal dining in the
     #      extension's SW  (per the L-hallway design)
+    # (pass 436, the user: "booth not properly aligned, room visible behind it")
+    # these doors stand inside the booth row (dividers y -4.5 .. 4.5): booth 1/2's
+    # benches and a divider across the formal door, booth 6's divider in the bar
+    # door, and both were open holes into the lit rooms behind the seats. The wall's
+    # ends cannot take them (Table 14 inside the formal room's south end, the back
+    # bar along the bar room's north wall), so they are CLOSED doors now (leaves
+    # below); re-laying the west extension so they land clear is draft N+1.
     door1_y, door1_w = +5.0, 1.6
-    door2_y, door2_w = -3.25, 1.4
+    door2_y, door2_w = -3.25, 1.4   # (pass 436) unbuilt: the wall is closed here (below)
     door_h = 2.20
     # Segments along X=-9 from south to north:
     #   -6.0 .. door2_y-w/2   (S of formal-dining door)
@@ -217,8 +226,11 @@ def build_shell():
     #   door1_y-w/2 .. door1_y+w/2  (door 1)
     #   door1_y+w/2 .. +6.0   (N of bar door)
     breaks_w = [
-        (-D_D/2,                 door2_y - door2_w/2,  "Wall_W_seg_SS"),
-        (door2_y + door2_w/2,    door1_y - door1_w/2,  "Wall_W_seg_mid"),
+        # (pass 436) no formal-dining door here any more: booths 1-2 stood across it on
+        # this side and the formal room's sideboard across it on the other (the doorway
+        # gate, once the doorway had leaves). The formal room is reached from the
+        # extension's own hall; this wall is panelled behind every booth.
+        (-D_D/2,                 door1_y - door1_w/2,  "Wall_W_seg_mid"),
         (door1_y + door1_w/2,    +D_D/2,               "Wall_W_seg_NN"),
     ]
     for y_lo, y_hi, name in breaks_w:
@@ -230,39 +242,45 @@ def build_shell():
                      (-D_W/2 - 0.05, (y_lo + y_hi) / 2, D_H/2),
                      (0.10, seg_len, D_H), COL_WALL_INTERIOR)
             continue
-        # ── Asset pass 5: the booth row's RIVER VIEW. The mid
-        # segment (spanning all six alcove booths) becomes a glazed
-        # pass-through: booths look through the west bar room to the
-        # extension's open portside picture wall beyond. Lower band,
-        # glass band z 1.0..2.3 in mullioned bays, upper band, wood
-        # sill + header. Collision (diner.tscn WallWest) unchanged —
-        # you still can't walk through glass.
+        # (pass 436) THE WALL BEHIND THE BOOTHS. Asset pass 5 glazed this segment as a
+        # pass-through to the extension's river windows; from the booths it read as the
+        # lit bar room behind the seats ("no wall behind booth"). Now a panelled wall:
+        # the cream lower band, walnut panels above (z 1.0 .. 2.3) between stiles set ON
+        # the booth dividers (y -4.5 .. 4.5 every 1.5) so each booth has its own panel,
+        # a chair rail at the panels' foot and a cornice board above.
         wx = -D_W/2 - 0.05
-        glass_lo, glass_hi = 1.00, 2.30
-        make_box("Wall_W_mid_lower", (wx, (y_lo + y_hi) / 2, glass_lo / 2),
-                 (0.10, seg_len, glass_lo), COL_WALL_INTERIOR)
-        make_box("Wall_W_mid_upper",
-                 (wx, (y_lo + y_hi) / 2, (glass_hi + D_H) / 2),
-                 (0.10, seg_len, D_H - glass_hi), COL_WALL_INTERIOR)
-        make_box("Wall_W_mid_sill", (wx + 0.06, (y_lo + y_hi) / 2, glass_lo - 0.03),
-                 (0.14, seg_len, 0.06), COL_WOOD_TRIM)
-        make_box("Wall_W_mid_header", (wx + 0.05, (y_lo + y_hi) / 2, glass_hi + 0.04),
-                 (0.12, seg_len, 0.08), COL_WOOD_TRIM)
-        n_bays = 5
-        bay_w = seg_len / n_bays
-        for b in range(n_bays):
-            by_lo = y_lo + b * bay_w
-            make_box(f"Wall_W_mid_glass_{b}",
-                     (wx, by_lo + bay_w / 2, (glass_lo + glass_hi) / 2),
-                     (0.05, bay_w - 0.10, glass_hi - glass_lo),
-                     COL_NIGHT_GLASS)
-        for m in range(n_bays + 1):
-            make_box(f"Wall_W_mid_mullion_{m}",
-                     (wx, y_lo + m * bay_w, (glass_lo + glass_hi) / 2),
-                     (0.11, 0.09, glass_hi - glass_lo), COL_WOOD_TRIM)
+        pan_lo, pan_hi = 1.00, 2.30
+        cy = (y_lo + y_hi) / 2
+        # the band behind the bench backs is walnut too: in cream, under each booth's
+        # pendant, it blew out to a white glow behind the table (rendered, pass 436)
+        make_box("Wall_W_mid_lower", (wx, cy, pan_lo / 2), (0.10, seg_len, pan_lo), COL_WOOD_PANEL)
+        make_box("Wall_W_mid_upper", (wx, cy, (pan_hi + D_H) / 2), (0.10, seg_len, D_H - pan_hi), COL_WALL_INTERIOR)
+        make_box("Wall_W_mid_panelboard", (wx, cy, (pan_lo + pan_hi) / 2), (0.10, seg_len, pan_hi - pan_lo), COL_WOOD_PANEL)
+        make_box("Wall_W_mid_sill", (wx + 0.06, cy, pan_lo - 0.03), (0.14, seg_len, 0.06), COL_WOOD_TRIM)
+        make_box("Wall_W_mid_header", (wx + 0.05, cy, pan_hi + 0.04), (0.12, seg_len, 0.08), COL_WOOD_TRIM)
+        # stiles on the dividers inside this segment, and at its two ends (the door jambs)
+        stiles = [y_lo + 0.05] + [-4.5 + 1.5 * k for k in range(7) if y_lo + 0.3 < -4.5 + 1.5 * k < y_hi - 0.3] + [y_hi - 0.05]
+        for m, sy in enumerate(stiles):
+            make_box(f"Wall_W_mid_stile_{m}", (wx + 0.06, sy, (pan_lo + pan_hi) / 2), (0.03, 0.10, pan_hi - pan_lo), COL_WOOD_TRIM)
+        for b in range(len(stiles) - 1):
+            gap = stiles[b + 1] - stiles[b]
+            if gap < 0.6:
+                continue
+            # the raised field of each booth's panel, proud of the board
+            make_box(f"Wall_W_mid_panel_{b}", (wx + 0.06, (stiles[b] + stiles[b + 1]) / 2, (pan_lo + pan_hi) / 2),
+                     (0.02, gap - 0.30, pan_hi - pan_lo - 0.30), COL_WOOD_PANEL_LT)
+    # (pass 436) a CLOSED door leaf pair in the bar doorway (walnut, a
+    # brass push plate and kick plate on the diner face): booths stand across
+    # these doors, and as open holes they showed the lit rooms behind the seats
+    for door_y, door_w_v, suffix in [(door1_y, door1_w, "bar")]:
+        for k, sg in enumerate((-1, 1)):
+            ly = door_y + sg * door_w_v / 4.0
+            make_box(f"Wall_W_doorLeaf_{suffix}_{k}", (-D_W/2 - 0.05, ly, door_h / 2), (0.05, door_w_v / 2 - 0.02, door_h - 0.02), COL_WOOD_PANEL)
+            make_box(f"Wall_W_doorLeaf_{suffix}_{k}_Field", (-D_W/2 - 0.02, ly, door_h * 0.58), (0.012, door_w_v / 2 - 0.22, door_h * 0.55), COL_WOOD_PANEL_LT)
+            make_box(f"Wall_W_doorLeaf_{suffix}_{k}_Kick", (-D_W/2 - 0.021, ly, 0.14), (0.012, door_w_v / 2 - 0.10, 0.22), COL_BRASS)
+            make_box(f"Wall_W_doorLeaf_{suffix}_{k}_Push", (-D_W/2 - 0.021, door_y + sg * 0.12, 1.15), (0.012, 0.08, 0.30), COL_BRASS)
     # Lintels above both doors
-    for door_y, door_w_v, suffix in [(door1_y, door1_w, "bar"),
-                                       (door2_y, door2_w, "formal")]:
+    for door_y, door_w_v, suffix in [(door1_y, door1_w, "bar")]:
         make_box(f"Wall_W_doorLintel_{suffix}",
                  (-D_W/2 - 0.05, door_y, door_h + (D_H - door_h)/2),
                  (0.10, door_w_v, D_H - door_h), COL_WALL_INTERIOR)
@@ -279,10 +297,6 @@ def build_shell():
     make_box("Wall_W_doorPlaque_BAR",   # on the lintel's ROOM face (2026-11-09: it hung inside the lintel)
              (-D_W/2 + 0.021, door1_y, door_h + 0.20),
              (0.04, door1_w * 0.45, 0.10), COL_BRASS)
-    # Brass plaque "FORMAL" above the south door
-    make_box("Wall_W_doorPlaque_FORMAL",   # on the lintel's ROOM face (2026-11-09: it hung inside the lintel)
-             (-D_W/2 + 0.021, door2_y, door_h + 0.20),
-             (0.04, door2_w * 0.70, 0.10), COL_BRASS)
 
     # ── EAST wall (parking-lot side) — front door + picture window ──
     door_w = 1.4

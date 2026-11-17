@@ -540,15 +540,8 @@ metadata/fov = 62.0
 
 ; HERO PROPS (2026-10-27) — Hero Studio models over the box stand-ins, fitted at runtime by HeroProp;
 ; a missing GLB (no drive-pull) leaves the stand-in exactly as built.
-[node name="HP_Crow" type="Node3D" parent="."]
-position = Vector3(4.300, 1.699, 3.179)
-script = ExtResource("hp_hero_prop")
-glb_path = "res://assets/3d/props/crow.glb"
-size_m = 0.34
-upright = true
-seat_center = true
-stand_in_root = NodePath("../Interior")
-hide_prefixes = PackedStringArray("Crow_")
+; (pass 436) HP_Crow — the cab-roof crow's model — is gone: pass 407 took the crow off the cab
+; roof ("The crow stayed on Finn's shoulder") and the model went on loading there
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_shelf__board_lords_interior" type="Marker3D" parent="." groups=["vn_shot"]]

@@ -36,6 +36,17 @@ extends Node3D
 ## its lowest point overall (the perched crow's tail hangs 15 % of its height
 ## below its feet, and the crow sat on its tail tip, feet in the air)
 @export var seat_center: bool = false
+## (pass 436, the user: "crow still clipping through rail") the axis a PERCH
+## runs along ("x" or "z"; "" = as built). Turns the model about Y — even an
+## upright one — so its longest horizontal extent (a bird's beak-to-tail) lies
+## along the perch. Every crow lay ACROSS its rail: the kit's stand-in crows run
+## along Z, the models were left as built, and on a 12 cm rail the feet missed
+## the top and hung down behind it.
+@export var perch_axis: String = ""
+## (pass 436) which end of the perch axis the head points to (+1 / -1; 0 = as it
+## lands). The head end is the one that stands higher (a perched bird's tail
+## hangs low at the other end). Match the stand-in's facing.
+@export var head_dir: int = 0
 @export var lay_down: bool = false         # true: a model standing on end is laid along length_axis (a book, a rolled rug); a Meshy model is drawn upright and never is (2026-10-27)
 @export var stand_in_root: NodePath        # the locale GLB instance holding the procedural stand-in
 @export var hide_prefixes: PackedStringArray = PackedStringArray()
@@ -147,6 +158,14 @@ func _fit(root: Node3D) -> void:
 			var horiz: int = 2 if ext.z >= ext.x else 0
 			if horiz != want:
 				root.rotation = Vector3(0.0, PI / 2.0, 0.0)      # swap X and Z
+	if perch_axis != "":
+		var pb: AABB = _measure(root, meshes)
+		var lie: int = 2 if pb.size.z >= pb.size.x else 0
+		var along: int = 2 if perch_axis.to_lower() == "z" else 0
+		if lie != along:
+			root.rotation.y += PI / 2.0
+		if head_dir != 0 and _head_end(meshes, along) != signi(head_dir):
+			root.rotation.y += PI
 	# Re-measure in the new orientation, then scale and seat.
 	var box: AABB = _measure(root, meshes)
 	ext = box.size
@@ -214,6 +233,42 @@ func _central_floor(meshes: Array[Node], box: AABB, fallback: float) -> float:
 	print("[HeroProp] %s stands %.0f %% of its height above its lowest point (the tail hangs below the feet)" % [
 		name, 100.0 * (best - box.position.y) / maxf(box.size.y, 0.001)])
 	return best
+
+
+# (pass 436) Which end of `axis` (0 = x, 2 = z) the head is at, in this node's
+# space: +1 or -1. A perched bird's head is the high end; its tail hangs low at
+# the other. Compares the highest point in each end's outer 30 % of the length.
+func _head_end(meshes: Array[Node], axis: int) -> int:
+	var inv: Transform3D = global_transform.affine_inverse()
+	var pts: PackedVector3Array = PackedVector3Array()
+	for n: Node in meshes:
+		var mi: MeshInstance3D = n as MeshInstance3D
+		if mi == null or mi.mesh == null:
+			continue
+		var xf: Transform3D = inv * mi.global_transform
+		for si in mi.mesh.get_surface_count():
+			var arrays: Array = mi.mesh.surface_get_arrays(si)
+			var verts: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
+			for v: Vector3 in verts:
+				pts.append(xf * v)
+	if pts.is_empty():
+		return 1
+	var lo: float = INF
+	var hi: float = -INF
+	for w: Vector3 in pts:
+		var t: float = w[axis]
+		lo = minf(lo, t)
+		hi = maxf(hi, t)
+	var cut: float = (hi - lo) * 0.30
+	var top_pos: float = -INF
+	var top_neg: float = -INF
+	for w: Vector3 in pts:
+		var t: float = w[axis]
+		if t >= hi - cut:
+			top_pos = maxf(top_pos, w.y)
+		elif t <= lo + cut:
+			top_neg = maxf(top_neg, w.y)
+	return 1 if top_pos >= top_neg else -1
 
 
 # The merged AABB of the model's meshes in THIS node's space (root's

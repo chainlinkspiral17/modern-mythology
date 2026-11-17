@@ -209,11 +209,14 @@ def build_dresser_window():
                    (0.02, 0.18, 0.16, COL_GUAD_RAY)]
     for pi, (py, pw, ph, frame) in enumerate(photo_specs):
         # (2026-11-09) the fifth stands in a FRONT row: in one plane with the
-        # rest it overlapped the second and third frames (they z-fought)
-        fx = dx - 0.06 - (0.10 if pi == 4 else 0.0)
+        # rest it overlapped the second and third frames (they z-fought).
+        # (pass 436) the room is +x (the drawers' face): the front row is +x of the
+        # rest, and each photo sits on its frame's ROOM face — every image stood
+        # 1.7 cm behind its own solid frame, the fifth a row back toward the wall
+        fx = dx - 0.06 + (0.10 if pi == 4 else 0.0)
         make_box(f"Photo_{pi}_Frame", (fx, dy + py, 0.90 + ph / 2.0),
                  (0.02, pw, ph), frame)
-        make_box(f"Photo_{pi}_Img", (fx - 0.012, dy + py, 0.90 + ph / 2.0),
+        make_box(f"Photo_{pi}_Img", (fx + 0.012, dy + py, 0.90 + ph / 2.0),
                  (0.01, pw - 0.04, ph - 0.04), COL_PHOTO_BW)
     # A jewelry box + a hairbrush + a small statue
     make_box("Dresser_JewelBox", (dx + 0.02, dy - 0.42, 0.94), (0.16, 0.12, 0.08), COL_WOOD_DK)

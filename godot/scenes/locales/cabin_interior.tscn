@@ -1370,25 +1370,35 @@ metadata/fov = 45.0
 
 ; HERO PROPS (2026-10-27) — Hero Studio models over the box stand-ins, fitted at runtime by HeroProp;
 ; a missing GLB (no drive-pull) leaves the stand-in exactly as built.
-[node name="HP_Crow" type="Node3D" parent="."]
-position = Vector3(-2.600, 1.059, -8.371)
-script = ExtResource("hp_hero_prop")
-glb_path = "res://assets/3d/props/crow.glb"
-size_m = 0.34
-upright = true
-seat_center = true
-stand_in_root = NodePath("../Interior")
-hide_prefixes = PackedStringArray("Crow_")
+; (pass 436) HP_Crow — the kitchen-sill crow's model — is gone with its stand-in (pass 435):
+; it went on loading the crow at the window in every view
 
-[node name="HP_Porch_Crow" type="Node3D" parent="."]
+; (pass 436) the porch-rail crow is ch15's alone: its model is tagged to that twin, as its stand-in
+[node name="HP_Porch_Crow__cabin_porch_day_rail" type="Node3D" parent="."]
 position = Vector3(-2.800, 0.939, 0.979)
 script = ExtResource("hp_hero_prop")
 glb_path = "res://assets/3d/props/crow.glb"
 size_m = 0.34
 upright = true
 seat_center = true
+perch_axis = "z"
+head_dir = 1
 stand_in_root = NodePath("../Interior")
 hide_prefixes = PackedStringArray("Porch_Crow_")
+
+; (pass 436) the crow on the truck's dash (cab_dash: ch17's dawn and the porch views), over its stand-in
+; at blender (-6.3, -6.27, 0.80); a touch smaller than the rail crows so the raked windshield clears her
+[node name="HP_Truck_Crow__cab_dash" type="Node3D" parent="."]
+position = Vector3(-6.300, 0.800, 6.270)
+script = ExtResource("hp_hero_prop")
+glb_path = "res://assets/3d/props/crow.glb"
+size_m = 0.3
+upright = true
+seat_center = true
+perch_axis = "z"
+head_dir = -1
+stand_in_root = NodePath("../Interior")
+hide_prefixes = PackedStringArray("Truck_Crow")
 
 ; HERO PROP (2026-10-27): the reader and its cap on the side table by the
 ; stove ("the side table where the stick and the reader sit") — Tem's

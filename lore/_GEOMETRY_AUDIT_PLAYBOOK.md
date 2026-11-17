@@ -158,6 +158,20 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-17 · a model is placed by its stand-in, and outlives it (pass 436)
+**What happened:** the user: "crow still clipping through rail". Every crow
+model lay across its perch: the kit's stand-ins run along Z and the models
+were left "as built", so the feet missed a 12 cm rail and hung behind it.
+Two crow models still loaded where passes had removed their stand-ins, and
+one untagged model showed in every view of its set.
+**Rule:** a hero model takes its stand-in's axis, facing and view tags; when
+a pass removes or retags a stand-in, grep the set's `.tscn` for the HP_ node
+over it (hero_prop_standin_audit now fails a model with no stand-in under
+it). A part behind an occluder can still show through screen-space passes
+that read a mask drawn without occluders.
+**And:** read a gate's sudden jump before acting on it: 27 NO-STANDIN in one
+set came from a half-written box cache, not from the set.
+
 ### 2026-11-17 · a lathe is wound by its profile (pass 435, the bowl rims)
 **What happened:** the user: "Chairs visible through rim of bowls." Every
 make_lathe face was turned away from the lathe's centre on its axis. An

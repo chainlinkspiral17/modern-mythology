@@ -3835,6 +3835,74 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-17 · pass 436: the user's screenshots (portraits, booths, wheel, crow, art).**
+The user: "portraits obscuring each other. booth not properly aligned, room
+visible behind it/no wall behind booth. riverboat wheel cutting through deck.
+crow still clipping through rail. art still not visible in lots of scenes."
+- PORTRAITS (vol1 ch3, the night road: Wagner left, Jacob centre, Faust
+  right). n8's `[shot:closeup person]` features Wagner; the camera holds that
+  close-up to n14, and a featured flank figure grew 30 % and slid 55 % toward
+  the middle — onto Jacob, for five lines the others spoke. CharLayer: with
+  someone standing in the middle, a featured flank figure keeps its slot and
+  grows a quarter as much. (Portraits are the Deck's models: not rendered
+  here.)
+- THE DINER'S BOOTHS (vol5 ch0, booth six). The west wall behind the six
+  alcove booths was glazed (asset pass 5's "river view"): from the booths it
+  showed the lit bar and formal rooms beyond, and its cream lower band blew
+  out white under each booth's pendant — "no wall behind booth". Now a walnut
+  wall: panels between stiles set ON the booth dividers, a chair rail and a
+  cornice board, the band behind the benches walnut too; the river-window
+  spill light behind it gone. And the two west doors stood INSIDE the booth
+  row as open holes into those rooms. The formal door had booth 1/2's
+  benches and a divider across it on the diner side and the formal room's
+  sideboard across it on the other (the doorway gate saw it once the doorway
+  had leaves): no line uses it, and it is WALL now, the panelling running
+  behind all six booths. The bar door (booth 6's divider at its edge) is a
+  closed walnut pair with brass push and kick plates. Re-laying the west
+  extension so a bar door lands clear of the row (the back bar stands at the
+  wall's north end) is draft N+1. Rendered n22/n23: a panelled wall.
+- THE RIVERBOAT'S WHEEL (riverfront): the boiler deck runs aft to y -12.5
+  (BD_L = BOAT_L + 1) and the wheel's forward blades swung to -12.1. 0.75 m
+  further aft it clears the deck's end by 0.3 m; two timbers outside the
+  blades carry the axle into bearing blocks. Rendered n2: the wheel turns
+  behind the stern on its timbers.
+- THE CROW ON THE TRAIL RAIL, and every crow: the HeroProp crow models lay
+  ACROSS their perches. The kit's stand-in crows run along Z; the models
+  stood "as built" (upright props never turned), so on a 12 cm rail the feet
+  missed the top and hung behind it — and the clarity mask (which sees the
+  model's twin with nothing in front of it) drew those hidden legs as a ghost
+  on the rail's face. HeroProp gains `perch_axis` (turns any model about Y so
+  its length runs along the perch) and `head_dir` (finds the head as the high
+  end and points it with the stand-in's beak); all 16 crow models set.
+  Tested in Godot on the kit crow built crosswise: each case turns to the
+  perch with its head where asked.
+- MODELS WITH NO STAND-IN: the cabin's kitchen-sill crow model went on
+  loading after pass 435 removed its stand-in; Board Lords' cab-roof crow
+  after pass 407 removed its. Both deleted; the rail crow's model is tagged
+  to ch15's twin (it loaded in every cabin view, the dawn strip included);
+  the dash crow has its own model (cab_dash). New gate
+  hero_prop_standin_audit (in the suite): every HP_ node needs its stand-in
+  part within 1 m.
+- ART NOT VISIBLE: the pictures live on the Drive (gitignored); a machine
+  shows only the ones it holds — the drive manifest lists 737 of the 780
+  placed pictures, so most exist and must be PULLED onto the machine that
+  plays (play.sh and the update command do not pull). Of the pictures hidden
+  on set: the NexCorp manila envelope lay 3 cm inside the pickup's body (now
+  on the bed floor); Graciela's dresser photos stood BEHIND their own solid
+  frames (every image on the wall side of its frame, the "front row" a row
+  back) — turned round, the two pictures in front of their frames. Left as
+  natural framing: comics behind the spinner's wires and the bins' lips,
+  window views behind curtains.
+- An art-gate scare on the way: 27 NO-STANDIN in graustark came from a
+  half-written box cache (two runs recording graustark at once); deleted and
+  re-recorded, 11,344 parts, 0 findings.
+- Draft N+1: the west extension's doors clear of the booth row; the sleep
+  lab's Sun monitor facing a curtain 0.4 m off; the safehouse notebook under
+  the bedside lamp's shade; the clarity mask drawing pictures and models
+  through whatever stands in front of them (occluders in the mask pass).
+- Deck must REBUILD diner, riverfront, graciela_bedroom, nexcorp_gas_go
+  (and every set, from pass 435's lathe fix).
+
 **2026-11-17 · pass 435: the crow by chapter at the cabin.**
 The text moves the crow; the cabin set had three fixed crows. Read across
 vol 7 (every cabin segment against its crow lines):

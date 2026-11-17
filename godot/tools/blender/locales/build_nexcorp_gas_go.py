@@ -772,7 +772,9 @@ def build_hero_props_2026_09():
     make_box("Pickup_Plate_Louisiana", (8.6, -0.906, 0.62), (0.30, 0.008, 0.15),
              (0.86, 0.84, 0.76, 1.0))
     # ── THE ENVELOPE · flat in the bed ──
-    make_box("Pickup_Bed_Manila_Envelope", (8.6, 0.10, 1.0075), (0.24, 0.16, 0.003), manila)
+    # (pass 436) ON the bed floor (the kit pickup's deck, z0 + 1.04): at 1.0075 it lay
+    # 3 cm inside the body, its picture with it (hero_art_placement COVERED 100 %)
+    make_box("Pickup_Bed_Manila_Envelope", (8.6, 0.10, 1.0415), (0.24, 0.16, 0.003), manila)
     build_handoff_2026_11()
     # ── THE THERMOMETER · on the SW canopy post ──
     make_cyl("Lot_Thermometer", (-3.5, -1.78, 1.70), 0.09, 0.030,

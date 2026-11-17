@@ -35351,18 +35351,17 @@
           "locale": "graciela_bedroom",
           "label": "Photo",
           "center": [
-            -1.752,
-            3.375,
-            1.018
+            -1.727,
+            3.42,
+            1.03
           ],
           "size": [
             0.18,
-            0.14
+            0.22
           ],
           "facing": "+x",
           "hide": [
-            "Photo_2_Img",
-            "Photo_4_Img"
+            "Photo_2_Img"
           ]
         }
       ],
@@ -35392,7 +35391,7 @@
           "locale": "graciela_bedroom",
           "label": "Photo",
           "center": [
-            -1.73,
+            -1.727,
             2.96,
             1.02
           ],
@@ -49391,7 +49390,7 @@
           "center": [
             8.6,
             0.1,
-            1.0105
+            1.0445
           ],
           "size": [
             0.24,

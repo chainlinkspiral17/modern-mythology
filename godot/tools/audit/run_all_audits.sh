@@ -706,6 +706,10 @@ echo ""
 # every placed hero prop has a roster entry, a tier that carries the size
 # it is placed at, and a set's prop models together stay under two
 # characters' video memory. Nonzero fails.
+echo "── hero_prop_standin_audit.py ── t+${SECONDS}s"
+python3 hero_prop_standin_audit.py 2>/dev/null || { echo "REGRESSION  hero_prop_standin_audit (ceiling 0)"; DEFERRED="$DEFERRED hero_prop_standin_audit"; }
+echo ""
+
 echo "── prop_budget_audit.py ── t+${SECONDS}s"
 python3 prop_budget_audit.py || { echo "REGRESSION  prop_budget_audit (ceiling 0)"; DEFERRED="$DEFERRED prop_budget_audit"; }
 echo ""

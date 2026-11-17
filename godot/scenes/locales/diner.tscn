@@ -434,13 +434,8 @@ light_energy = 0.5
 omni_range = 1.4
 shadow_enabled = false
 
-; ─── River-window spill (cool blue spill from the bayou outside) ───
-[node name="RiverWindowSpill" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 1.9, 0)
-light_color = Color(0.66, 0.78, 0.95, 1)
-light_energy = 1.4
-omni_range = 7.0
-shadow_enabled = false
+; (pass 436) the river-window spill is gone: the wall behind the booths is panelled now (no
+; glass), and the light stood behind it lighting the booths from nowhere
 
 [node name="Geometry" parent="." instance=ExtResource("1_diner_glb")]
 script = ExtResource("8_setup")

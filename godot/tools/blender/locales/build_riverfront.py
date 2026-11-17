@@ -1111,7 +1111,11 @@ def build_riverboat():
     # ════════════════════════════════════════════════════════════
     # PADDLE WHEEL — bigger, with proper housing
     # ════════════════════════════════════════════════════════════
-    pw_y = -BOAT_L / 2 - 2.6   # AFT of stern (stern-wheeler)
+    # (pass 436, the user: "riverboat wheel cutting through deck") at -BOAT_L/2 - 2.6
+    # the blades swung to y -12.1 while the boiler deck runs aft to -12.5 (BD_L =
+    # BOAT_L + 1): every turn put a blade 0.4 m into the deck. 0.75 m further aft its
+    # sweep clears the deck's end by 0.3 m, and two timbers carry the axle (below)
+    pw_y = -BOAT_L / 2 - 3.35   # AFT of stern (stern-wheeler)
     pw_z = RIVER_LEVEL_Z + 2.4
     pw_radius = 2.4
     pw_blade_n = 12
@@ -1128,8 +1132,18 @@ def build_riverboat():
         cx = -house_w/2 + 0.25 + i * 0.50
         make_box(f"PW_House_Crest_{i}", (cx, pw_y, pw_z + 2.85), (0.12, 0.50, 0.20), col_crest)
 
+    # (pass 436) the wheel timbers: from the stern under the deck's end out to the
+    # axle hubs, the way a stern-wheeler carries its wheel (it hung in the air)
+    # They run OUTSIDE the blades (which span the axle's ±BOAT_W*0.375), the axle
+    # lengthened into a bearing block on each.
+    deck_end_y = -(BOAT_L + 1.0) / 2.0
+    tim_x = BOAT_W * 0.375 + 0.35
+    for side, hx in (("L", -tim_x), ("R", tim_x)):
+        t_len = deck_end_y - pw_y
+        make_box(f"PW_Timber_{side}", (hx, pw_y + t_len / 2.0 - 0.15, pw_z), (0.28, t_len + 0.30, 0.34), COL_HULL)
+        make_box(f"PW_Bearing_{side}", (hx, pw_y, pw_z + 0.22), (0.34, 0.50, 0.12), COL_BRASS)
     # Hub and axle (cylinder along X)
-    make_cyl("PW_Axle", (0, pw_y, pw_z), 0.30, BOAT_W * 0.75, COL_BRASS, segments=8, axis='X')
+    make_cyl("PW_Axle", (0, pw_y, pw_z), 0.30, 2 * (BOAT_W * 0.375 + 0.35), COL_BRASS, segments=8, axis='X')   # (pass 436) into the timbers' bearings
     make_cyl("PW_HubL", (-BOAT_W * 0.35, pw_y, pw_z), 0.55, 0.30, COL_BRASS, segments=10, axis='X')
     make_cyl("PW_HubR", ( BOAT_W * 0.35, pw_y, pw_z), 0.55, 0.30, COL_BRASS, segments=10, axis='X')
 

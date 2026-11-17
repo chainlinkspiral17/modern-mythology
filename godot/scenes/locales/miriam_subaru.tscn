@@ -423,6 +423,8 @@ glb_path = "res://assets/3d/props/crow.glb"
 size_m = 0.34
 upright = true
 seat_center = true
+perch_axis = "z"
+head_dir = 1
 stand_in_root = NodePath("../Interior")
 hide_prefixes = PackedStringArray("Signal_Crow_")
 
@@ -433,6 +435,8 @@ glb_path = "res://assets/3d/props/crow.glb"
 size_m = 0.34
 upright = true
 seat_center = true
+perch_axis = "z"
+head_dir = 1
 stand_in_root = NodePath("../Interior")
 hide_prefixes = PackedStringArray("Car_Roof_Crow_")
 
@@ -443,6 +447,8 @@ glb_path = "res://assets/3d/props/crow.glb"
 size_m = 0.34
 upright = true
 seat_center = true
+perch_axis = "z"
+head_dir = -1
 stand_in_root = NodePath("../Interior")
 hide_prefixes = PackedStringArray("Parked_Subaru_Crow_")
 

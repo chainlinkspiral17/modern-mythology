@@ -769,6 +769,15 @@ func occupied_slots() -> Array[String]:
 	return out
 
 
+## (pass 436) a slot with a figure standing in it on screen
+func _slot_visible(pos: String) -> bool:
+	var slot: Variant = _slots.get(pos)
+	if slot == null:
+		return false
+	var node: Control = (slot as Dictionary).get("node") as Control
+	return node != null and is_instance_valid(node) and node.visible
+
+
 # slot -> {name, expr, node: Control}
 var _slots: Dictionary = {"left": null, "center": null, "right": null}
 var _t:     float      = 0.0
@@ -892,6 +901,11 @@ func _process(delta: float) -> void:
 	var pdx: float = -sin(sway_phase) * PARALLAX_X_AMP
 	var pdy: float = -cos(sway_phase * 0.7) * PARALLAX_Y_AMP
 	var lone: bool = _present_count() == 1 and not _insert_quiet
+	# (pass 436, the user: "portraits obscuring each other") with someone standing
+	# in the middle, a featured FLANK figure keeps its slot: its step toward the
+	# middle (and its +30 %) put Wagner over Jacob for five lines of vol1 ch3,
+	# the camera holding his close-up while the others spoke
+	var mid_taken: bool = _slot_visible("center")
 	for pos: String in _slots:
 		var slot = _slots[pos]
 		if slot == null:
@@ -923,7 +937,9 @@ func _process(delta: float) -> void:
 			if absf(feat - feat_goal) < 0.002:
 				feat = feat_goal
 			node.set_meta("feature", feat)
-		var feat_dx: float = (_slot_pos("center").x - _slot_pos(pos).x) * FEATURE_SHIFT * feat
+		var crowd: bool = mid_taken and pos != "center"
+		node.set_meta("feature_crowd", crowd)
+		var feat_dx: float = 0.0 if crowd else (_slot_pos("center").x - _slot_pos(pos).x) * FEATURE_SHIFT * feat
 		node.position = _slot_pos(pos) + Vector2(pdx + slide_x + feat_dx, idle_y + pdy + entrance_y)
 		# ── Subtle breath: ±1% scale on the tint_holder, longer period
 		# than position sway so the two motions don't beat against each
@@ -955,6 +971,8 @@ func _process(delta: float) -> void:
 				# under the text band (pass 349, Antonio's narration)
 				var sz: String = String(node.get_meta("shot_size")) if node.has_meta("shot_size") else "wide"
 				var grow_max: float = FEATURE_GROW if (sz == "wide" or sz == "medium") else FEATURE_GROW * 0.35
+				if node.has_meta("feature_crowd") and bool(node.get_meta("feature_crowd")):
+					grow_max = minf(grow_max, FEATURE_GROW * 0.25)   # a three-shot: a nudge, not a step over the middle
 				var grow: float = 1.0 + grow_max * feat
 				tint_holder.pivot_offset = Vector2(tint_holder.size.x * 0.5, tint_holder.size.y * (FEATURE_EYE_Y if feat > 0.0 else 0.5))
 				tint_holder.scale = Vector2(flip_x * breath_s * grow, breath_s * grow)
