@@ -1601,7 +1601,7 @@ def build_hero_props_2026_09():
         _prism_ccw_z(f"Gravel_Road_Track_{wi}", trk, YARD_Z + 0.0085, 0.001, (0.29, 0.27, 0.22, 1.0))
     # (pass 429) glass with alpha: the engine's GlassPass makes it see-through
     make_car("Toyota_Truck", -6.6, -6.2, 4.8, (0.44, 0.48, 0.42, 1.0), pickup=True, along="Y", z0=YARD_Z,
-             glass_col=(0.26, 0.30, 0.36, 0.45))
+             glass_col=(0.72, 0.78, 0.82, 0.18), open_cab=True)   # (pass 431) an open cab: the crow stands on its dash
     make_car("Station_Wagon", 3.7, -5.9, 5.0, (0.48, 0.36, 0.26, 1.0), along="Y", z0=YARD_Z)
     # the wagon's roof rack, on the roofline (z0 + 1.46)
     make_box("Station_Wagon_Rack", (3.7, -6.2, YARD_Z + 1.48), (1.20, 1.40, 0.04), (0.30, 0.30, 0.32, 1.0))
@@ -2080,9 +2080,9 @@ def build_crow_on_truck_2026_11():
     floor at five twenty-two and went to the south window to look at his crow
     on Kai's truck" (n34); "The crow was on the truck" (n37); "The crow has
     been on Kai's truck since I left her there last night ... by the way the
-    crow is standing on the dashboard" (n40-41). The kit's cab is one solid
-    prism (no dashboard inside it): she stands on the cowl at the windshield's
-    foot, facing the cabin — draft N+1: a hollow cab with a dash. Only in the
+    crow is standing on the dashboard" (n40-41). The truck's cab is open (pass 431)
+    and its glass clear; she stands on the cowl at the windshield's foot, facing
+    the cabin — on the dash she cannot be seen from the window (see below). Only in the
     dawn view (cabin_interior_three_dawn); the window-sill crow (cab_wcrow) is
     not in that view."""
     from _props import creatures as _cr
@@ -2092,6 +2092,10 @@ def build_crow_on_truck_2026_11():
     with V.tagged("d", _cr):
         # the truck runs along Y, nose +y at y -3.8; the cowl (body top z0 + 1.02..1.10)
         # just ahead of the windshield's foot (u = nose - 1.85)
+        # (pass 431) tried on the open cab's dash: from the cabin's window the
+        # windshield's lower frame and the cowl hide her, and a black bird in a dark
+        # cab at dawn does not read. On the cowl at the windshield's foot she stands
+        # against the see-through cab — the dashboard is the text's (draft N+1)
         _cr.make_crow("Truck_Crow", -6.6 + 0.30, -6.2 + 2.4 - 1.72, YARD_Z + 1.07, facing=-1.0)
     V.check()
     join_prefix("Truck_Crow")

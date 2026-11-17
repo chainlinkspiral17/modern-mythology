@@ -3835,6 +3835,33 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-17 · pass 431: an open cab (the car kit) — the crow against it.**
+- make_car(open_cab=True) for pickups: the body's profile stops at the
+  beltline, and the cab is its frame round the glass — a roof slab on A
+  pillars along the windshield's rake and C posts — with a dash under the
+  windshield and a bench seat inside; the rear glass runs beltline to roof;
+  the audit records the low body and the roof, not a solid cab box. Default
+  off (every other car unchanged).
+- The cabin's truck (ch17 dawn) has the open cab and clear glass. The crow
+  was tried on its dash, as the text has her ("standing on the
+  dashboard"): from the cabin's window the windshield's lower frame and the
+  cowl hide her, and a black bird in a dark cab at dawn does not read. She
+  stands on the cowl at the windshield's foot, now in silhouette against the
+  see-through cab — rendered, clearly a crow. FOR ANDY (a staging call, not a
+  canon change): the dashboard is the text's; the frame shows her on the
+  cowl in front of it.
+- Draft N+1: a dash-level frame from the porch (closer, lower) if a later
+  line looks into the cab; the kit's sedans and hatches open the same way.
+- Deck must REBUILD cabin_interior.
+
+**2026-11-17 · pass 430: names with a one-letter head split (the aim gate).**
+- The gate split part names at lower→Upper only, so `WChair_Base` was one
+  word `wchair`: a "chair" cue found no part in Lena's apartment (WChair,
+  KChair) — the gap pass 426 recorded. It now also splits before a capital
+  that starts a word (`WChair` → w, chair; `TVStand` → tv, stand; `LEDSign`
+  → led, sign). One frame's verdict changed: the bungalow's boxes, re-aimed
+  onto the nearest box cluster (rendered).
+
 **2026-11-17 · pass 429: the crow on Kai's truck, from the cabin's south window (vol7 ch17 dawn).**
 - "Finn rolled off the floor at five twenty-two and went to the south window
   to look at his crow on Kai's truck" (n34); "The crow was on the truck"

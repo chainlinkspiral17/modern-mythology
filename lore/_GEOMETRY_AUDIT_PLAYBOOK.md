@@ -158,6 +158,24 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-17 · the text's spot is not always where the frame can see it (passes 429-431)
+**What happened:** ch17's crow is "standing on the dashboard" of Kai's truck,
+seen by Finn from the cabin's south window. The kit's cab was one solid prism,
+so pass 429 stood her on the cowl. Pass 431 opened the cab (make_car
+open_cab: a beltline profile, roof on A pillars, C posts, dash, seat; the
+audit records the low body and the roof, not a solid cab box) and moved her
+onto the dash — where, from the window 8 m off, the windshield's lower frame
+and the cowl hid her, and a black bird in a dark cab at dawn was invisible.
+Back on the cowl she read at once, in silhouette against the open cab.
+**Rule:** build the place the text names, then check from the frame that
+plays it; when the text's exact spot cannot be seen from there, stage the
+nearest spot that reads, and record the staging call for Andy (it is not a
+canon change). A part the audit records as a box must be recorded as the
+shape it really is when something goes inside it (an open cab, a hollow
+crate), or every prop inside reads as a clip.
+**Where it lives:** _props/vehicles make_car(open_cab); build_cabin_interior
+build_crow_on_truck_2026_11; passes 429-431 entries.
+
 ### 2026-11-17 · a subject's legs pull a frame to the floor (pass 428)
 **What happened:** the aim gate's subject for a table, bench, bed or desk was
 the cluster of every part named for it — legs and feet included — so the

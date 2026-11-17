@@ -92,7 +92,7 @@ def bulb_park(bulb_cx, bulb_cy, bulb_r, angle_deg, along, gap=0.12):
     return (bulb_cx + math.cos(a) * rr, bulb_cy + math.sin(a) * rr)
 
 
-def _audit_body(prefix, P, S, nose, tail, hw, z0, cab_u0, cab_u1, roof, deck):
+def _audit_body(prefix, P, S, nose, tail, hw, z0, cab_u0, cab_u1, roof, deck, open_cab=False):
     """THE AUDITS READ A PRISM AS ITS BOUNDING BOX (pass 372). Over a pickup's
     bed or a sedan's hood that box is air up to the roof line: anything lying
     there read as "inside the body", and a camera above the bed as inside the
@@ -120,11 +120,15 @@ def _audit_body(prefix, P, S, nose, tail, hw, z0, cab_u0, cab_u1, roof, deck):
     # lamps sit ON the nose face and must still touch it
     boxes.append((name + tag, P((nose + tail) / 2.0 + 0.05, 0.0, z0 + (0.42 + deck) / 2.0),
                   half(S((nose - tail - 0.10) / 2.0, hw - 0.02, (deck - 0.42) / 2.0))))
+    if open_cab:
+        # (pass 431) the open cab: its roof slab is recorded by its own part
+        return
     boxes.append((name + "_Cab" + tag, P((cab_u0 + cab_u1) / 2.0, 0.0, z0 + (deck + roof) / 2.0),
                   half(S(abs(cab_u1 - cab_u0) / 2.0, hw - 0.02, (roof - deck) / 2.0))))
 
 
-def make_car(prefix, cx, cy, length, col, pickup=False, hatch=False, light_bar=False, along="X", z0=0.0, glass_col=None):
+def make_car(prefix, cx, cy, length, col, pickup=False, hatch=False, light_bar=False, along="X", z0=0.0, glass_col=None,
+             open_cab=False):
     glass = glass_col or GLASS_DK
     P, S, side_axis, wheel_axis = _frame(cx, cy, along)
     L = length
@@ -133,7 +137,13 @@ def make_car(prefix, cx, cy, length, col, pickup=False, hatch=False, light_bar=F
     # ── the body: a side profile (u along the length, w up) extruded across the width
     #    z values are relative to z0; the pan sits at 0.30..0.42
     nose, tail = L / 2.0, -L / 2.0
-    if pickup:
+    if pickup and open_cab:
+        # (pass 431) the cab OPEN above the beltline: roof, pillars, dash and
+        # seat are their own parts, so a crow on the dashboard is IN the cab
+        prof = [(tail + 0.10, 0.42), (nose - 0.05, 0.42), (nose, 0.62), (nose - 0.08, 0.98),
+                (nose - 1.55, 1.02), (nose - 1.85, 1.10), (nose - 3.45, 1.10), (nose - 3.45, 1.02),
+                (tail + 0.10, 0.98)]
+    elif pickup:
         # hood to a cab, then the bed
         prof = [(tail + 0.10, 0.42), (nose - 0.05, 0.42), (nose, 0.62), (nose - 0.08, 0.98),
                 (nose - 1.55, 1.02), (nose - 1.85, 1.10), (nose - 2.25, 1.62), (nose - 2.40, 1.70),
@@ -176,7 +186,9 @@ def make_car(prefix, cx, cy, length, col, pickup=False, hatch=False, light_bar=F
     # own window insert read as hidden behind the car.
     gh0, gh1 = (nose - 3.44, nose - 2.19) if pickup else ((tail + 0.84, nose - 1.79) if hatch else (tail + 1.09, nose - 1.64))
     _audit_body(prefix, P, S, nose, tail, hw, z0, gh0, gh1,
-                1.70 if pickup else (1.48 if hatch else 1.46), 1.04 if pickup else 1.00)
+                1.70 if pickup else (1.48 if hatch else 1.46),
+                (1.10 if open_cab else 1.04) if pickup else 1.00,     # an open cab's body ends at its beltline
+                open_cab=bool(pickup and open_cab))
     # (2026-11-01) the glass LIES ON the body's rake: a vertical plate half
     # buried in the slope read, from above and in front, as a board stood
     # up on the hood (the curtain call's por puesto, every parked sedan).
@@ -192,7 +204,8 @@ def make_car(prefix, cx, cy, length, col, pickup=False, hatch=False, light_bar=F
         make_rot_box(nm, P(cu, 0.0, z0 + cz), (ln * keep, width, 0.02), glass, yaw=yaw_u, pitch=-math.atan(slope))
     if pickup:
         raked(f"{prefix}_Windshield", (nose - 1.85, 1.10), (nose - 2.25, 1.62), 2 * hw - 0.40)
-        make_box(f"{prefix}_Rear_Glass", P(nose - 3.44, 0.0, z0 + 1.36), S(0.03, 2 * hw - 0.44, 0.44), glass)   # the cab's back is upright
+        # the cab's back is upright (an open cab's spans its beltline to its roof)
+        make_box(f"{prefix}_Rear_Glass", P(nose - 3.44, 0.0, z0 + 1.36), S(0.03, 2 * hw - 0.44, 0.52 if open_cab else 0.44), glass)
     elif hatch:
         raked(f"{prefix}_Windshield", (nose - 1.10, 0.96), (nose - 1.85, 1.44), 2 * hw - 0.40)
         raked(f"{prefix}_Rear_Glass", (tail + 0.20, 1.10), (tail + 0.90, 1.44), 2 * hw - 0.44)
@@ -219,6 +232,23 @@ def make_car(prefix, cx, cy, length, col, pickup=False, hatch=False, light_bar=F
         # on the body's rear face (the profiles end at tail + 0.10; the
         # lights used to sit 10 cm behind it, in the air)
         make_box(f"{prefix}_Taillight_{nm}", P(tail + 0.10 - 0.006, sgn * 0.62, z0 + 0.82), S(0.012, 0.28, 0.14), (0.78, 0.14, 0.10, 1.0))
+    if pickup and open_cab:
+        # (pass 431) the open cab's frame round its glass — the roof slab, the A
+        # pillars along the windshield's rake, the C posts at the back corners —
+        # and inside it the dash under the windshield and the bench seat
+        ru0, ru1 = nose - 3.45, nose - 2.25
+        make_box(f"{prefix}_Cab_Roof", P((ru0 + ru1) / 2.0, 0.0, z0 + 1.66), S(ru1 - ru0 + 0.06, 2 * hw - 0.04, 0.08), col)
+        (ua, za), (ub, zb) = (nose - 1.85, 1.10), (nose - 2.27, 1.64)
+        aln, aslope = math.hypot(ub - ua, zb - za), (zb - za) / (ub - ua)
+        for sgn, nm in ((1, "L"), (-1, "R")):
+            v = sgn * (hw - 0.07)
+            make_rot_box(f"{prefix}_Cab_PillarA_{nm}", P((ua + ub) / 2.0, v, z0 + (za + zb) / 2.0), (aln, 0.08, 0.07), col,
+                         yaw=yaw_u, pitch=-math.atan(aslope))
+            make_box(f"{prefix}_Cab_PillarC_{nm}", P(nose - 3.40, v, z0 + 1.38), S(0.08, 0.08, 0.56), col)
+        make_box(f"{prefix}_Dash", P(nose - 2.18, 0.0, z0 + 1.15), S(0.54, 2 * hw - 0.16, 0.10), DARK)   # top z0 + 1.20
+        seat = (max(0.08, col[0] * 0.5), max(0.08, col[1] * 0.5), max(0.08, col[2] * 0.5), 1.0)
+        make_box(f"{prefix}_Cab_Seat", P(nose - 3.02, 0.0, z0 + 1.16), S(0.52, 2 * hw - 0.22, 0.12), seat)
+        make_box(f"{prefix}_Cab_Seat_Back", P(nose - 3.32, 0.0, z0 + 1.40), S(0.12, 2 * hw - 0.22, 0.40), seat)
     # ── nose: grille slats, plate, bumpers
     for gi in range(4):
         make_box(f"{prefix}_Grille_{gi}", P(nose + 0.004, 0.0, z0 + 0.60 + gi * 0.06), S(0.008, 0.90, 0.025), DARK)
