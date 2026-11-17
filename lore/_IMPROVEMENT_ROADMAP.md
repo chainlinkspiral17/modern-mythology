@@ -3835,6 +3835,40 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-17 · pass 426: which table, which door, which window (a sweep).**
+- A sweep of every `insert window/door/table/counter/desk/shelf/bench` cue
+  whose line qualifies the noun (south, front, kitchen, bedroom, end …)
+  against the qualifier on the frame's subject part. Most "differences" are
+  names (a garage set's `Door_Panel_3` is its garage door). Real ones:
+  - Lena, ch10_morning n61 "Kai poured himself a cup and sat at the table
+    … Finn brought his plate": the living room's side table → the kitchen
+    table, seen from the living room through the kitchen's opening.
+  - Lena, ch10 n11 "Lena had been at the bedroom door": the front door →
+    its own cue `insert bedroom_door` and frame (the cue's id is the
+    line's words, so the gate's subject is that door, not a cluster with
+    the closet and the kitchen casing); the view's front-door copy, cued by
+    nothing after, deleted.
+  - Lena, ch10 n51 "… walked to the chair by the window, sat down, drank":
+    the kitchen window over the alley → the view's own window frame, low,
+    the armchair's back against the FRONT window (judged keep recorded).
+  - Cabin, ch17_dawn n34 "went to the south window to look at his crow on
+    Kai's truck": the north kitchen window → the south-west window.
+  - vol7 ch7_six_oclock / ch7_night are not in the scene index (ch8
+    replaced them): edits there serve nothing; a cue tried on ch7 reverted.
+- Draft N+1:
+  - The aim gate's subject counts a thing's legs and feet (`Table_Foot_*`
+    dragged Lena's table's target to the floor; its SUPPORT_WORDS lack
+    leg/legs/foot/feet though its note names them). Adding them re-judges
+    23 frames (the Hendersons' table → their coffee table at 8.8 m, the
+    overlook bench → its wet sheen, Houston's desk 50° off …): read each
+    by render, then add the words.
+  - Cabin ch17 dawn: the south window's warm pane tints the dawn and hides
+    the truck; the crow is on Kai's DASHBOARD (n41) behind the kit's opaque
+    windshield — glass with alpha (GlassPass) and a ch17-dawn twin.
+  - The gate's "chair" finds no `WChair`/`KChair` part (CamelCase with a
+    one-letter head does not split): rename or teach the split.
+- Rendered; aim, obstruction, orphan, cue-meaning gates at zero / ceiling.
+
 **2026-11-17 · pass 425: "insert door" read for what the line means (text_focus class).**
 - The text pass (2026-10-27) cued `[shot:insert door]` on any line naming a
   door. Read line by line, thirteen were another door than the frame shows:

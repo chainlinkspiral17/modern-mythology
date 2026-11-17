@@ -1389,3 +1389,11 @@ metadata/fov = 35.0
 position = Vector3(-0.300, 1.200, -3.050)
 rotation = Vector3(-0.4735, -0.4845, 0.0)
 metadata/fov = 38.0
+
+; (pass 426) ch17_dawn n34 "went to the south window to look at his crow on Kai's truck": the south-west
+; window, Kai's truck in the turnaround beyond — the plain frame is the north kitchen window. (The crow is
+; on the dashboard, n41, behind the kit's opaque windshield: not seen.)
+[node name="shot_insert_window__cabin_interior_three" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.600, 1.550, -2.400)
+rotation = Vector3(-0.0374, 2.5909, 0.0)
+metadata/fov = 40.0

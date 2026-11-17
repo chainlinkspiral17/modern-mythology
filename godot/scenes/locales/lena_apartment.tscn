@@ -560,12 +560,6 @@ position = Vector3(2.205, 1.662, -1.688)
 rotation = Vector3(-0.3347, 2.4158, 0.0)
 metadata/fov = 35.0
 
-; (view_twin) lena_apartment_night's frame in lena_apartment_night_ch10
-[node name="shot_insert_door__lena_apartment_night_ch10" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.205, 1.662, -1.688)
-rotation = Vector3(-0.3347, 2.4158, 0.0)
-metadata/fov = 35.0
-
 ; (view_twin) lena_apartment_night's frame in lena_apartment_night_ch8
 [node name="shot_insert_door__lena_apartment_night_ch8" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(2.205, 1.662, -1.688)
@@ -615,9 +609,12 @@ rotation = Vector3(-0.2618, -0.2663, 0.0)
 metadata/fov = 35.0
 
 ; (view_twin) lena_apartment_night's frame in lena_apartment_night_ch10
+; (pass 426) ch10_morning n61 "Kai poured himself a cup and sat at the table. Lena moved over from the
+; chair. Finn brought his plate" — the kitchen table from the living room, through the kitchen's opening,
+; not the side table by the chair. (From 3.5 m: the aim gate's "table" still counts its feet on the floor.)
 [node name="shot_insert_table__lena_apartment_night_ch10" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.390, 0.650, -0.296)
-rotation = Vector3(-0.2618, -0.2663, 0.0)
+position = Vector3(2.200, 1.300, -0.900)
+rotation = Vector3(-0.2493, 1.4175, 0.0)
 metadata/fov = 35.0
 
 ; (2026-11-10) "The thermostat above the bed read sixty-one" (ch3): it framed a
@@ -730,4 +727,19 @@ metadata/fov = 35.0
 [node name="shot_insert_truck__lena_apartment_ch8" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(2.250, 1.620, -0.620)
 rotation = Vector3(-0.7185, 3.0592, 0.0)
+metadata/fov = 40.0
+
+; (pass 426) ch10_morning n11 "Lena had been at the bedroom door for a beat looking back at the three of
+; them": from the kitchen, the bedroom door — the cue had cut to the front door
+[node name="shot_insert_bedroom_door__lena_apartment_night_ch10" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.900, 1.550, -1.600)
+rotation = Vector3(-0.2577, 0.2003, 0.0)
+metadata/fov = 40.0
+
+; (pass 426) ch10_morning n51 "She came into the kitchen, saw the cup outside the bedroom door, picked it
+; up, walked to the chair by the window, sat down, drank": the chair by the FRONT window, the window behind
+; it — the plain frame is the kitchen window over the alley
+[node name="shot_insert_window__lena_apartment_night_ch10" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.200, 1.050, -3.400)
+rotation = Vector3(0.0610, -2.9259, 0.0)
 metadata/fov = 40.0
