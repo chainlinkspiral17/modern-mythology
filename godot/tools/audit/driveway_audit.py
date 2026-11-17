@@ -41,15 +41,7 @@ CURB = re.compile(r"curb", re.I)
 CURBSTOP = re.compile(r"curbstop|wheel_?stop|parking_?block", re.I)
 
 # "locale:drive" -> why it stands
-_FRONTAGE = ("the frontage aprons: the flat frontage walk crosses each drive 2 cm "
-             "proud (a walk across a drive, not a drive sunk under one), and the raised "
-             "D'Ambrosio walk ramps down either side of both lot cuts by design "
-             "(CurbRamp_*); no used view looks at the frontage road (riverfront_exterior "
-             "faces the boat, riverfront_park the park). Draft N+1: the lot's own curbs "
-             "(Curb_N / Curb_S) where the two lot aprons enter it")
-JUDGED = {"%s:%s" % (loc, d): _FRONTAGE
-          for loc in ("riverfront", "graustark")
-          for d in ("Drive_Lot_apron_-16", "Drive_Lot_apron_16", "Drive_Gas_apron", "Drive_Mall_apron")}
+JUDGED = {}
 # whole sets judged, with the reason (a set's every finding)
 JUDGED_SETS = {}
 

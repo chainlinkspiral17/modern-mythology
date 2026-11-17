@@ -1458,9 +1458,17 @@ def build_parking_lot():
 
     # Curb stones around perimeter (concrete edging)
     curb_col = (0.55, 0.52, 0.48, 1.0)
-    make_box("Curb_S", (lot_cx, lot_cy - lot_y_l/2, 0.10), (lot_x_w, 0.20, 0.18), curb_col)
-    make_box("Curb_N", (lot_cx, lot_cy + lot_y_l/2, 0.10), (lot_x_w, 0.20, 0.18), curb_col)
-    make_box("Curb_W", (lot_cx - lot_x_w/2, lot_cy, 0.10), (0.20, lot_y_l, 0.18), curb_col)
+    # (pass 422) the two aprons off River Road come in at the lot's west
+    # corners (y = +/-16, 5 m wide): the west curb and the corner ends of the
+    # north and south curbs ran across both
+    from _props.streets import make_cut_curb
+    x0, x1 = lot_cx - lot_x_w/2, lot_cx + lot_x_w/2
+    make_cut_curb("Curb_S", x0, x1, lot_cy - lot_y_l/2 - 0.10, lot_cy - lot_y_l/2 + 0.10, 0.01, 0.19,
+                  [(x0 - 1.0, x0 + 0.4)], lip=0.02, color=curb_col)
+    make_cut_curb("Curb_N", x0, x1, lot_cy + lot_y_l/2 - 0.10, lot_cy + lot_y_l/2 + 0.10, 0.01, 0.19,
+                  [(x0 - 1.0, x0 + 0.4)], lip=0.02, color=curb_col)
+    make_cut_curb("Curb_W", lot_cy - lot_y_l/2, lot_cy + lot_y_l/2, x0 - 0.10, x0 + 0.10, 0.01, 0.19,
+                  [(-16.0 - 2.8, -16.0 + 2.8), (16.0 - 2.8, 16.0 + 2.8)], axis="Y", lip=0.03, color=curb_col)   # 5 mm over the apron
     make_box("Curb_E", (lot_cx + lot_x_w/2, lot_cy, 0.10), (0.20, lot_y_l, 0.18), curb_col)
 
     # Painted parking lines — two rows of bays running along the X axis
@@ -1997,11 +2005,15 @@ def build_road_network():
     make_box("Sidewalk_FrontageE", (FRONTAGE_X + road_w/2 + side_w/2, 0.0, -0.02),
              (side_w, road_l, 0.08), concrete)
     # Sidewalk seam-lines every 3m for that real-concrete look
+    # (pass 422) no seam on the east walk where a drive apron runs over it
+    _aprons_y = ((-18.5, -13.5), (13.5, 18.5), (-42.0, -30.0), (22.0, 38.0))
     for si in range(int(road_l / 3.0)):
         sy = -road_l/2 + 1.5 + si * 3.0
         make_box(f"SidewalkSeam_W_{si}",
                  (FRONTAGE_X - road_w/2 - side_w/2, sy, 0.022),
                  (side_w - 0.1, 0.04, 0.005), (0.42, 0.40, 0.36, 1.0))
+        if any(a0 - 0.1 <= sy <= a1 + 0.1 for a0, a1 in _aprons_y):
+            continue
         make_box(f"SidewalkSeam_E_{si}",
                  (FRONTAGE_X + road_w/2 + side_w/2, sy, 0.022),
                  (side_w - 0.1, 0.04, 0.005), (0.42, 0.40, 0.36, 1.0))
@@ -2023,15 +2035,17 @@ def build_road_network():
 
     # ── DRIVEWAY APRONS — actual curving curb-cuts to each developed patch
     # Parking lot: two curb cuts (north + south)
+    # (pass 422) each runs over the frontage walk it crosses, 5 mm proud of
+    # it (it ran 2 cm UNDER the walk, so the walk cut every drive off)
     for entry_y in (-16.0, 16.0):
         make_box(f"Drive_Lot_apron_{int(entry_y)}",
-                 (FRONTAGE_X + road_w/2 + side_w + 2.0, entry_y, -0.02),
+                 (FRONTAGE_X + road_w/2 + side_w + 2.0, entry_y, 0.005),
                  (8.0, 5.0, 0.04), asphalt)
     # Gas station forecourt connection
-    make_box("Drive_Gas_apron", (FRONTAGE_X + road_w/2 + side_w + 3.5, -36.0, -0.02),
+    make_box("Drive_Gas_apron", (FRONTAGE_X + road_w/2 + side_w + 3.5, -36.0, 0.005),
              (8.5, 12.0, 0.04), asphalt)
     # Strip mall lot connection
-    make_box("Drive_Mall_apron", (FRONTAGE_X + road_w/2 + side_w + 2.5, 30.0, -0.02),
+    make_box("Drive_Mall_apron", (FRONTAGE_X + road_w/2 + side_w + 2.5, 30.0, 0.005),
              (6.0, 16.0, 0.04), asphalt)
 
     # ════════════════════════════════════════════════════════════

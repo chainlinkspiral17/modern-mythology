@@ -3865,10 +3865,23 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
   were diagonal strips' boxes. The gate also reads every builder that calls
   `make_view`. Harmony's blanket judgement is gone; the set passes on its
   own.
+- **Riverfront (and Graustark, which builds it)**: the lot's west curb and
+  the corner ends of its north and south curbs are cut where the two River
+  Road aprons come in (they ran across both), and the four frontage aprons
+  run 5 mm over the frontage walk instead of 2 cm under it. Their judged
+  entries are gone; only harmony_commercial's four lots stay judged (no used
+  view; its lots sit below sidewalks raised to curb height, so they need
+  sloped aprons, not cuts).
+  Knock-ons fixed: the lot curb's lip sits 5 mm over the apron, no walk
+  seam under an apron, Graustark's extra on the lot apron stands on it
+  (`NPC_STAND_ON`).
+- **Meadowlark**: a 40 cm concrete gutter pan along the curb face, round
+  the whole street and across the drive mouths.
 - Draft N+1: Harmony's sloped drives can't be judged by box (62 of 70) —
-  a face-reading driveway check, or record ribbons as their own quads; a
-  gutter line along Meadowlark's curb; the Riverfront lot curbs where its
-  aprons enter; harmony_commercial's lot entrances.
+  a face-reading driveway check, or record ribbons as their own quads;
+  harmony_commercial's lot aprons; Harmony's views are Highway 9 only, so
+  its streets have never been read by render (the set is too big for the
+  free-camera viewer: a crop-to-region import).
 
 **2026-11-16 · pass 421: curbs and driveways (the user: "Curbs and driveways look broken or incomplete"). Draft 1 of the street edge.**
 - NEW `_props/streets.py`: the street edge as ONE path (asphalt edge,

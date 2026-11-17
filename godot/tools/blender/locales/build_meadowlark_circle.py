@@ -135,6 +135,16 @@ def build_street():
             gx = garage_x(hx, side)
             mouths.append(EDGE.mouth(gx - 1.6, gx + 1.6, side * 4.0))
     make_street_edge("Meadowlark", EDGE, mouths, walk_col=CONCRETE)
+    # (pass 422) the concrete gutter pan in front of the curb face, 40 cm of
+    # it round the whole street and across the drive mouths, a shade lighter
+    # than the asphalt (the asphalt ran straight into the curb face)
+    inner = EDGE.offset(-0.40)
+    i = k = 0
+    while i < len(EDGE.pts) - 1:
+        j = min(i + 8, len(EDGE.pts) - 1)
+        make_slab_between(f"Meadowlark_Gutter_{k}", inner[i:j + 1], EDGE.pts[i:j + 1], 0.004, -0.01,
+                          (0.42, 0.42, 0.41, 1.0))
+        i, k = j, k + 1
     # center-line dashes
     for i in range(int((BULB_X - BULB_R - STREET_X0) / 5.5)):
         make_box(f"Center_Dash_{i}", (STREET_X0 + 2.0 + i * 5.5, 0.0, 0.001), (2.0, 0.12, 0.01), (0.80, 0.78, 0.60, 1.0))

@@ -4336,6 +4336,7 @@ TIER_1_LABELS = {
 # knees in a deck. A label here stands ON something: (x, y) of the thing's
 # own ground reference, and its height above that ground.
 NPC_STAND_ON = {
+    "RF_lot_2": (-42.0, 14.0, 0.025),   # on River Road's lot apron (pass 422: it runs over the walk now)
     "Band_horn": (-150.0, 120.0, 0.50),         # the bandstand's deck (they stood through it)
     "Band_bass": (-150.0, 120.0, 0.50),
     "Band_drums": (-150.0, 120.0, 0.50),
