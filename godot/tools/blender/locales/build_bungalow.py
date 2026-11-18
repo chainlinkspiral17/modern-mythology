@@ -329,14 +329,18 @@ def build_shell():
     # South wall has front-door opening
     # (2026-10-09) the window walls are CUT: the six windows stood inside
     # solid wall boxes — invisible from inside and out
-    _wall_cut("Wall_S_W", 'X', INTERIOR_Y_S, -5.0, -1.8, [(-3.05, -1.95, 1.00, 2.00)])
+    # (2026-11-18) the living-room window is cut where the living room is:
+    # it stood at x -3.05..-1.95 with the bathroom partition (x -2.5) through
+    # its middle, half of it lighting the bath. Now centred on the reading
+    # chair that faces it, the wall running on to the door's frame.
+    _wall_cut("Wall_S_W", 'X', INTERIOR_Y_S, -5.0, -0.8, [(-2.20, -1.10, 1.00, 2.00)])
     _wall_cut("Wall_S_E", 'X', INTERIOR_Y_S, +1.8, +5.0, [(2.45, 3.55, 1.00, 2.00)])
     make_box("Wall_S_AboveDoor", (0.0, INTERIOR_Y_S, 2.50),
              (1.6, 0.20, 0.40), COL_WALL_OUTER)
     # the front door is 1.6 m with its frame; the opening was 3.6 m —
     # a metre of open air each side (2026-09-24, the user: "doorways ...
     # misaligned"): close it to the frame
-    for fs in (-1, 1):
+    for fs in (1,):   # the west fill is Wall_S_W's last pier now (2026-11-18)
         make_box(f"Wall_S_DoorFill_{fs:+d}", (fs * 1.30, INTERIOR_Y_S, 1.35),
                  (1.00, 0.20, 2.70), COL_WALL_OUTER)
     # North wall has the back-door (kitchen → yard) cutout
@@ -382,7 +386,7 @@ def build_shell():
 
     # Windows — south wall (living room), east wall (studio),
     # west wall (bedroom + bathroom), north wall (kitchen)
-    for wx, wy, label in [(-2.5, INTERIOR_Y_S, "Win_LR"),
+    for wx, wy, label in [(-1.65, INTERIOR_Y_S, "Win_LR"),
                           (+3.0, INTERIOR_Y_S, "Win_Studio_S")]:
         make_box(label, (wx, wy, 1.50), (1.10, 0.06, 1.00),
                  COL_WINDOW_GLASS)
@@ -580,18 +584,49 @@ def build_living_room():
     make_box("LR_Phone_CameraBump",
              (table_x - 0.17, table_y - 0.15, 0.649),
              (0.03, 0.03, 0.005), (0.10, 0.10, 0.12, 1.0))
-    # The WALLPAPER PEEL SEAM — a curling strip on the S wall's
-    # interior face by the seating, backing plaster showing above
-    # where the paper has let go.
-    make_box("LR_Wallpaper_Peel",
-             (-2.5, 0.115, 2.05),
-             (0.30, 0.03, 0.55), (0.72, 0.66, 0.52, 1.0))
-    make_box("LR_Wallpaper_Peel_Curl",
-             (-2.5, 0.17, 1.78),
-             (0.28, 0.09, 0.04), (0.78, 0.72, 0.58, 1.0))
-    make_box("LR_Wallpaper_Plaster",
-             (-2.5, 0.105, 2.35),
-             (0.26, 0.015, 0.28), (0.62, 0.58, 0.50, 1.0))
+    # THE PLASTER (2026-11-18): "The walls were crumbling. Not just the
+    # bungalow's plaster — which was atrocious". Over the window's east
+    # corner, where a house settles: a hole where a plate of plaster has
+    # let go and the lath shows, its rim ragged and loose, cracks running
+    # down to the window's corner and up to the ceiling, the wallpaper
+    # peeling off the edge, the crumbs still on the floor under it. (It was
+    # a peel strip on the bathroom partition's end, seen edge-on.)
+    FY = INTERIOR_Y_S + 0.10            # the south wall's inside face
+    COL_PLASTER = (0.80, 0.76, 0.66, 1.0)
+    COL_CRACK = (0.28, 0.24, 0.20, 1.0)
+    make_box("LR_Plaster_Hole", (-1.10, FY + 0.002, 2.37), (0.36, 0.004, 0.30), (0.26, 0.20, 0.15, 1.0))
+    # the lath, not a grille: strips of uneven length, two snapped short, the
+    # plaster keys still squeezed between some (pass 438 render: five even
+    # slats in a dark box read as a vent)
+    for k, (x0, x1, dz) in enumerate(((-1.27, -0.97, 0.004), (-1.22, -0.93, -0.003), (-1.27, -1.09, 0.002),
+                                      (-1.25, -0.94, -0.004), (-1.16, -0.93, 0.003))):
+        make_box(f"LR_Plaster_Lath_{k}", ((x0 + x1) / 2.0, FY + 0.008, 2.25 + k * 0.06 + dz),
+                 (x1 - x0, 0.008, 0.033 - 0.002 * (k % 2)), (0.50 - 0.03 * (k % 3), 0.38 - 0.02 * (k % 2), 0.24, 1.0))
+    for k, (kx, kz) in enumerate(((-1.18, 2.282), (-1.02, 2.343), (-1.20, 2.40), (-1.06, 2.46), (-0.99, 2.283))):
+        make_box(f"LR_Plaster_Key_{k}", (kx, FY + 0.006, kz), (0.035, 0.008, 0.022), COL_PLASTER)
+    for k, (cx, cz, w, h) in enumerate(((-1.30, 2.30, 0.05, 0.10), (-1.24, 2.545, 0.12, 0.04),
+                                        (-0.96, 2.54, 0.10, 0.035), (-0.90, 2.40, 0.04, 0.14),
+                                        (-1.05, 2.205, 0.14, 0.03), (-1.27, 2.215, 0.06, 0.03),
+                                        # the edge ragged: a lip hanging into the hole, a corner
+                                        # still holding, a bite out of the bottom
+                                        (-1.13, 2.505, 0.07, 0.045), (-1.265, 2.47, 0.04, 0.06),
+                                        (-0.94, 2.25, 0.05, 0.06), (-1.17, 2.235, 0.05, 0.035))):
+        make_box(f"LR_Plaster_Rim_{k}", (cx, FY + 0.008, cz), (w, 0.016, h), COL_PLASTER)
+    # the cracks, jagged: (x0, z0, x1, z1) runs, each a vertical then a level step
+    for k, (x0, z0, x1, z1) in enumerate(((-0.95, 2.20, -0.99, 2.14), (-0.99, 2.14, -1.03, 2.095),
+                                          (-1.26, 2.53, -1.31, 2.58), (-1.31, 2.58, -1.38, 2.64),
+                                          (-1.38, 2.64, -1.42, 2.70), (-0.90, 2.46, -0.87, 2.51),
+                                          (-0.87, 2.51, -0.85, 2.57))):
+        make_box(f"LR_Plaster_Crack_{k}_V", (x0, FY + 0.0015, (z0 + z1) / 2.0), (0.006, 0.003, abs(z1 - z0) + 0.006), COL_CRACK)
+        make_box(f"LR_Plaster_Crack_{k}_H", ((x0 + x1) / 2.0, FY + 0.0015, z1), (abs(x1 - x0) + 0.006, 0.003, 0.006), COL_CRACK)
+    # the wallpaper letting go at the hole's west edge, its foot curled out
+    make_box("LR_Wallpaper_Peel", (-1.40, FY + 0.006, 2.33), (0.10, 0.012, 0.42), (0.72, 0.66, 0.52, 1.0))
+    make_box("LR_Wallpaper_Peel_Curl", (-1.40, FY + 0.05, 2.118), (0.10, 0.08, 0.012), (0.78, 0.72, 0.58, 1.0))
+    # what fell: dust and crumbs on the boards under it
+    make_box("LR_Plaster_Dust", (-1.08, FY + 0.10, 0.0165), (0.34, 0.16, 0.003), (0.70, 0.66, 0.58, 1.0))
+    for k, (cx, cy, sz) in enumerate(((-1.20, 0.16, 0.040), (-1.02, 0.22, 0.030), (-0.94, 0.15, 0.025),
+                                      (-1.12, 0.27, 0.022), (-0.88, 0.25, 0.035), (-1.28, 0.24, 0.020))):
+        make_box(f"LR_Plaster_Crumb_{k}", (cx, cy, 0.018 + sz * 0.3), (sz, sz * 0.8, sz * 0.6), COL_PLASTER)
     # A red ink scribble across it (Elicia's notes)
     make_box("LR_ScriptPage_Mark",
              (table_x - 0.04, table_y + 0.02, 0.640),

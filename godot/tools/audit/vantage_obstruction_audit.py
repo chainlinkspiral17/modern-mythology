@@ -553,6 +553,56 @@ def _occlusion(origin_b, target_b, boxes, subj):
 HALF_HIDDEN = 0.40
 _HALF_KNOWN = None
 
+# EDGE-ON (pass 438): an insert whose subject is a flat face that carries
+# what the line names — a page, a photograph, a sign, a screen, a mural, a
+# patch of plaster — seen at more than EDGE_ON_DEG from that face's normal
+# shows a sliver, not the thing. The bungalow's "insert plaster" stood 5 cm
+# off the wall looking ALONG it; marker_aim and this gate's occlusion test
+# both passed it, the subject being in line and unblocked.
+EDGE_ON_DEG = 80.0
+READABLE = re.compile(r"sign|banner|poster|paper|page|photo|picture|mural|screen|monitor|letter|note|"
+                      r"card(?!board|_bale)|map|flyer|book|plaster|label|menu|calendar|painting|canvas|"
+                      r"print|list|folder|envelope|ticket|receipt|wallpaper|display|chalk|whiteboard|"
+                      r"clock|dial|plaque|certificate|diploma|drawing|sketch|lyric|script|newspaper", re.I)
+# "locale:marker" -> why an edge-on view of its flat subject is the shot
+EDGE_ON_JUDGED = {}
+
+
+def _plate_angle(origin_b, box):
+    """Degrees off the face normal of a plate-shaped box (thinnest half-extent
+    under a tenth of the next, the face at least 6 cm across); None if the box
+    is not a plate."""
+    c, h = box[1], box[2]
+    order = sorted(range(3), key=lambda i: h[i])
+    if not (h[order[0]] < 0.1 * h[order[1]] and h[order[1]] >= 0.03):
+        return None
+    v = [c[i] - origin_b[i] for i in range(3)]
+    L = math.sqrt(sum(x * x for x in v)) or 1.0
+    return math.degrees(math.acos(min(1.0, abs(v[order[0]]) / L)))
+
+
+def _edge_on(origin_b, anchor, boxes, cue, subj=()):
+    """The best (smallest) angle at which the lens sees a face of the subject
+    that carries something to read: the anchor part if it is a plate, else
+    None — and any other plate of the subject's own parts within 0.6 m of it
+    counts (a monitor's text lines lie edge-on to the lens while the screen
+    they sit on faces it)."""
+    if not (READABLE.search(anchor) or READABLE.search(cue)):
+        return None
+    byname = {b[0]: b for b in boxes}
+    a = byname.get(anchor)
+    if a is None or _plate_angle(origin_b, a) is None:
+        return None
+    best = _plate_angle(origin_b, a)
+    for n in subj:
+        b = byname.get(n)
+        if b is None or sum((b[1][i] - a[1][i]) ** 2 for i in range(3)) > 0.36:
+            continue
+        ang = _plate_angle(origin_b, b)
+        if ang is not None:
+            best = min(best, ang)
+    return best
+
 
 def _half_known():
     """half_hidden_baseline.json: the frames the reading flagged on the day
@@ -733,6 +783,10 @@ def markers_pass(only, show_all):
                 occl = _occlusion(o_b, (tgt_g[0], -tgt_g[2], tgt_g[1]), boxes, subj)
                 if occl:
                     why.append("OCCLUDED: %s stands between the lens and %s" % (occl, anchor_name))
+                elif name.startswith("shot_insert_") and "%s:%s" % (locale, name) not in EDGE_ON_JUDGED \
+                        and (_edge_on(o_b, anchor_name, boxes, cm.group(2), subj) or 0.0) > EDGE_ON_DEG:
+                    why.append("EDGE-ON: %s is seen %.0f deg off its face" % (
+                        anchor_name, _edge_on(o_b, anchor_name, boxes, cm.group(2), subj)))
                 elif name.startswith("shot_insert_"):
                     hb, ha, hw = _hidden_share(o_b, pos, hits, boxes, subj, anchor_name)
                     # three points at least: two corners of a one-part subject

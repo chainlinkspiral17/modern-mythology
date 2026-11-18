@@ -539,11 +539,13 @@ light_energy = 1.30
 shadow_enabled = false
 omni_range = 4.57
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+; "The walls were crumbling ... the bungalow's plaster" (2026-11-18): from by
+; the reading chair, up at the hole over the window's corner — the lath, the
+; cracks, the peeling paper. It stood 5 cm off the wall looking along it.
 [node name="shot_insert_plaster__bungalow_interior" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.710, 2.562, -0.157)
-rotation = Vector3(-0.2618, 1.6369, 0.0)
-metadata/fov = 35.0
+position = Vector3(-1.15, 1.50, -1.55)
+rotation = Vector3(0.5141, -3.0934, 0.0)
+metadata/fov = 32.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_page__bungalow_interior" type="Marker3D" parent="." groups=["vn_shot"]]

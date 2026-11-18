@@ -158,6 +158,28 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-18 · in line and unblocked is not seen (pass 438)
+
+- **What happened:** Elicia's plaster insert stood 5 cm off the wall looking
+  along it at a peel strip on the same wall. The aim gate (subject on the
+  axis) and the obstruction gate (nothing between lens and subject) both
+  passed it: the subject WAS in line and nothing WAS in the way. A face
+  turned 86° from the lens shows a sliver. Three more inserts had the same
+  fault (photographs from 14 cm over a tabletop, a mural from along its own
+  wall, a banner from its own line).
+- **The rule:** a flat subject that carries what the line names is judged on
+  the ANGLE to its face as well as the line to it. EDGE-ON in
+  vantage_obstruction --markers: plate-shaped parts (thinnest half-extent under
+  a tenth of the next) of a readable subject seen more than 80° off-normal
+  fail, taking the best face among the subject's parts within 0.6 m (text
+  strips on a screen lie edge-on while the screen faces the lens).
+- **Also:** read the subject's neighbourhood, not only the frame — the peel
+  strip sat on a partition's end, and the partition ran through a window
+  (now `partition_window_audit.py`: 0 across every set).
+  And a "recessed" door built as one solid block in front of the wall hid the
+  door it was recessing, through every pass that framed the bar: a recess is
+  jambs and a head round a gap.
+
 ### 2026-11-17 · a gate's exemption is a class it cannot see (pass 437)
 **What happened:** two faults the user saw had passed their gates for
 months. doorway_audit read only door LEAVES, so an open doorway (a lintel,

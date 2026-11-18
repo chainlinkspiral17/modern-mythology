@@ -3835,6 +3835,69 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-18 · pass 438: playtest ahead of the user — the bar's street, the plaster, edge-on inserts.**
+Eighteen lines rendered across vol 1 ch 3 and vol 5 ch 1–3 and read; two
+frames were broken and every gate had passed them.
+- BAR EXTERIOR, DRAFT 2 (vol1 ch3_outside + _b, the superpower talk). Both
+  close-ups (blind-authored 2026-09-10) stood 1.2 m off the bricks looking
+  ALONG the facade: the frame was the door reveal's edge as a dark pole and
+  the spill as a smeared hotspot. The set was a 3 m one-lane road with
+  nothing across it, so no reverse could exist. Now: two lanes and a parking
+  lane each side (curb to curb 10.9 m), the block 60 m long (a hardware
+  store and flats east, a three-storey brick block west), the far side built
+  (a laundromat still lit, a record shop shuttered, a parking lot with its
+  curb cut and a tall light, flats over a garage), a second near lamp, two
+  far lamps, parking meters, a hydrant, the double yellow line, the sedan as
+  the profiled car. The "recessed door" was ONE solid brick block 0.35 m
+  proud of the wall with the door and its glow buried inside — jambs and a
+  head round an open recess now, the door's lit glass showing. Close-up A
+  from the parking lane (door, neon, warm window behind the face), the
+  reverse B from by the door across the street (record shop, the red
+  pickup, the laundromat), the establish from the far parking lane with the
+  whole frontage (fov 40). Five new practicals for the new lamps and the
+  laundromat. Read by render: all seven lines.
+- THE BUNGALOW'S PLASTER (vol5 ch2 n34–35, "The walls were crumbling. Not
+  just the bungalow's plaster"). The insert (text_focus_pass, 2026-10-27)
+  stood 5 cm off the south wall looking along it; its subject, a peel strip,
+  sat on the END of the bathroom partition — which ran through the middle of
+  the living-room window, half the window lighting the bath. The window is
+  cut where the living room is (x -2.2..-1.1, in front of the reading chair
+  that the builder says faces it; the west door-fill folded into the wall
+  run), and the plaster is built over its east corner: a hole with the lath
+  showing (uneven, two laths snapped, plaster keys between), a ragged rim,
+  cracks to the window's corner and the ceiling, the paper peeling, dust and
+  crumbs on the boards. The insert looks up at it from by the chair.
+  New gate `partition_window_audit.py` (in the suite after the stand-in
+  gate): an inside wall whose thickness lies inside a window's span and
+  whose end reaches the window's plane. Every set reads 0 now.
+- EDGE-ON, a new check in vantage_obstruction --markers: an insert whose
+  subject is a plate carrying something to read (page, photo, sign, screen,
+  mural, plaster…) seen more than 80° off its face fails — judged on the
+  best face of the subject's parts within 0.6 m (a monitor's text strips lie
+  edge-on while its screen faces the lens). It found three more: Miller's ch5
+  photographs (from 14 cm over the island top — now from his stool, down at
+  them), the vigil and twelve mural inserts (along the wall from 0.7 m — now
+  from the annex wall, high over the crowd, the Nebula at under 70°, nothing
+  hiding it), and carnival_lot's banner insert (on the banner's own line; no
+  line cues it — deleted).
+- Read and left: two close-ups whose middle row grazes a wall (Caldwell
+  radio room night's person_b — the bed and its wall; Nate's driveway walt —
+  the house's side door at 1.5 m). Draft N+1: walt's from further down the
+  drive, the garage and the street behind him.
+- Draft N+1 for the bar exterior: the alley as a real gap (walls, dumpster,
+  the side door the smokers use); fire escapes; awnings; wires between the
+  lamps; the laundromat's washers through its pane; generic shop signs
+  lettered (art roster: COIN LAUNDRY, RECORDS, HARDWARE). The bar itself is
+  unnamed in the text ("INT. A HIP BAR — NIGHT"): its neon stays two tubes
+  until Andy names it. For the bungalow plaster: the hole's edge as a
+  profile, not boxes.
+- wide_views.json: only the two lines this pass changed were updated (the
+  bar's failing marker, the deleted carnival banner). A full `--write` now
+  clears ~30 more views for the panorama (ballfield ×4, bus_station,
+  cabin_interior_bed, chillwave_interior, club_street ×3, …) that the passes
+  since 2026-11-09 have opened up — draft N+1: look at each wide, then write.
+- Deck must REBUILD bar_exterior, bungalow.
+
 **2026-11-17 · pass 437: the gates learn the classes the user found.**
 Pass 436's blocked formal door and the paddle wheel through the deck passed
 every gate. Both gates now see their class, and what they found is fixed.

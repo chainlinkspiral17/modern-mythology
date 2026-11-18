@@ -7128,9 +7128,12 @@ const CAMERA_PRESETS := {
 		# the door and the window filled the frame with no street under them.
 		# "Jacob and Emily are talking outside" — the sidewalk, the sedan at the
 		# curb, the lamp.
-		"camera_origin": Vector3(0.9, 1.65, 3.4),
-		"camera_rotation": Vector3(-0.02, 0.098, 0.0),
-		"fov": 62.0,
+		# (2026-11-18, draft 2) the street at real size: from the far parking
+		# lane, the whole frontage with the alley and both neighbours, the
+		# double yellow line under it.
+		"camera_origin": Vector3(0.9, 1.65, 8.4),
+		"camera_rotation": Vector3(0.035, 0.1004, 0.0),
+		"fov": 40.0,
 		"suppress_input": true,
 		"far": 600.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},

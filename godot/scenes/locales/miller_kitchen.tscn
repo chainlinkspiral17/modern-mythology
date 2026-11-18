@@ -480,10 +480,13 @@ rotation = Vector3(-0.4712, -2.6070, 0.0)
 metadata/fov = 40.0
 
 ; insert: the photographs fanned on the island, grazing from counter height so the room stands behind them (pass 292: from above they were white on white)
+; (pass 438) "He sits at the counter ... He looks at the photographs": from his
+; stool, down at the three prints on the island — it looked across the top from
+; 14 cm over it and the photographs were slivers
 [node name="shot_insert_photographs__miller_kitchen_ch5" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.900, 1.120, -5.300)
-rotation = Vector3(-0.1719, -2.8394, 0.0)
-metadata/fov = 32.0
+position = Vector3(-0.68, 1.38, -3.85)
+rotation = Vector3(-0.5317, -0.0294, 0.0)
+metadata/fov = 34.0
 
 
 

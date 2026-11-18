@@ -710,6 +710,12 @@ echo "── hero_prop_standin_audit.py ── t+${SECONDS}s"
 python3 hero_prop_standin_audit.py 2>/dev/null || { echo "REGRESSION  hero_prop_standin_audit (ceiling 0)"; DEFERRED="$DEFERRED hero_prop_standin_audit"; }
 echo ""
 
+# partition_window_audit (pass 438): an inside wall that runs into the middle
+# of a window (Elicia's bathroom partition through the living-room window).
+echo "── partition_window_audit.py ── t+${SECONDS}s"
+python3 partition_window_audit.py || { echo "REGRESSION  partition_window_audit (ceiling 0)"; DEFERRED="$DEFERRED partition_window_audit"; }
+echo ""
+
 echo "── prop_budget_audit.py ── t+${SECONDS}s"
 python3 prop_budget_audit.py || { echo "REGRESSION  prop_budget_audit (ceiling 0)"; DEFERRED="$DEFERRED prop_budget_audit"; }
 echo ""

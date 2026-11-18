@@ -314,11 +314,8 @@ offset_bottom = 980.0
 script = ExtResource("14_dbgm")
 
 ; first inserts, authored by marker_author.py (2026-09-10): the locale had no vn_shot markers
-[node name="shot_insert_banner" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.045, 2.125, 7.000)
-rotation = Vector3(-0.2068, 1.5708, 0.0)
-metadata/fov = 35.0
-
+; (pass 438: shot_insert_banner deleted — no line cues it, and it stood on the
+; banner's own line, seeing it edge-on)
 [node name="shot_insert_dawn_milk_truck" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.700, 1.325, 13.588)
 rotation = Vector3(-0.4158, 2.8352, 0.0)
