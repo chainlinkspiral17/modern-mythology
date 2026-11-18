@@ -150,6 +150,7 @@ SYNONYMS = {
     # matched only by accident, through a door's `__caltech_hallway_1945` view tag,
     # until view tags left name matching
     "hallways": ["aquarium"], "hallway": ["aquarium"],
+    "chandelier": ["chand"],
     # (2026-11-04) "He looks at the paper": the folded Newspaper (one CamelCase word)
     "paper": ["paper", "newspaper"],
     # (pass 388) restaurant tables named by their seats: El Rancho's

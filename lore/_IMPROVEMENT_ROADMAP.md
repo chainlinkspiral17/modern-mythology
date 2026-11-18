@@ -3835,6 +3835,40 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-18 · pass 440: Miller's office — the work phone, the chandelier that is not lit; Natalie's rug.**
+Twelve more lines rendered (vol 1 ch3/ch7, vol 5 ch18, vol 6 ch4/ch6) and read.
+- vol6 ch4 (Miller's office). The phone insert framed the PERSONAL phone,
+  dark on the dark walnut; the text's phone is the work phone on the desk
+  ("The phone on the desk buzzes. He turns it over"; "He picks up the phone
+  on the desk"). It looks at that one now, from his chair, by the lamp.
+- "The chandelier above his desk — which is not lit — rattles very faintly
+  ... Chief Miller looks at the ceiling": the line played over a desk
+  insert, and the chandelier had TWO lights on it — a 1.7 "Chandelier_
+  Practical" at the ceiling beside it and practical_author's candle
+  practical. The candle light is gone; the other is the room's warm fill at
+  standing height off the fixture (Fill_Room_Warm). New insert `chandelier`
+  (up at it from behind the desk; the cue gate learns chandelier → Chand_).
+- vol5 ch18 n22 "she had stayed where she was — on the rug, the cards around
+  her, the candle she had lit at midnight burning low": the sill insert
+  (n20, the streetlight) held over it. New insert `rug` (night view): the
+  reading rug, the fanned cards and the low candle on its saucer.
+- The phones on Miller's desk were centred at the desk top's surface (half
+  sunk); under the lamp the work phone read as an outline. Both sit on it
+  now, the face-down one with its camera bump and lens. Re-read by render.
+- Read and left: the bar exterior's second scene (close-up A and the
+  establish), the ink studio, the 5 AM vision (silent-film grade), Sam's
+  bedroom and her door, the vigil and twelve mural frames (the wall wedge
+  gone at fov 40), vol2 scumm (the painted diner), flotsam's cave, vol7
+  cale / per / morning.
+- Draft N+1 (found, not fixed): vol5 ch9 n95–105, Joanna at the sinkhole —
+  the text has her animals with her (the crow "behind her, took flight";
+  the cat and Rumpus follow her home at n107), and graustark_ruins at the
+  sinkhole has none of them (the set's three crows stand at the chalk wall,
+  a roof and the bandstand). The view is shared with other chapters, so the
+  fix is a twin (graustark_ruins_hermit) with the crow on a stub of I-beam
+  behind her, the cat and the dog at the lip, and `insert crow` at n105.
+- Deck must REBUILD miller_office.
+
 **2026-11-18 · pass 439: playtest vol 2–4, the pizza party's plates.**
 Fifteen lines rendered across vol 2 ch2, vol 3 ch5/ch11 and vol 4 (goggles,
 the poems, the scraps) and read.

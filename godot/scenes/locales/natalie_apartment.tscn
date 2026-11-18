@@ -522,6 +522,15 @@ position = Vector3(-0.400, 1.500, -1.600)
 rotation = Vector3(-0.0291, 2.9956, 0.0)
 metadata/fov = 45.0
 
+; (pass 440) "she had stayed where she was — on the rug, the cards around her,
+; the candle she had lit at midnight burning low" (vol5 ch18): the reading rug
+; from above her shoulder, the fanned cards and the low candle on its saucer;
+; the sill insert had held over the line
+[node name="shot_insert_rug__natalie_apartment_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.2, 1.2, -1.6)
+rotation = Vector3(-0.7034, 0.8111, 0.0)
+metadata/fov = 45.0
+
 ; ── draft 6 (pass 336, 2026-11-11) ──
 ; "She set it face-up on the windowsill" / "The Hanged Man, on the windowsill, watched" (ch12)
 [node name="shot_insert_sill" type="Marker3D" parent="." groups=["vn_shot"]]
