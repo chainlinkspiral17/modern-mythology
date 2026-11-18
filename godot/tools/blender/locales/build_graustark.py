@@ -5187,6 +5187,29 @@ def _h01(a, b):
     return v - math.floor(v)
 
 
+def build_hermit_sinkhole_animals_2026_11():
+    """vol5 ch9 at the sinkhole (pass 441): her animals came with her. The
+    text has the crow "behind her" at the lip ("The crow, behind her, took
+    flight", n105) and the cat and Rumpus following her home (n107-108);
+    graustark_ruins at the sinkhole had none of them, and the view serves
+    other chapters, so they stand in its twin graustark_ruins_hermit only:
+    Rumpus lying at the lip with his head up, the calico sitting beside him,
+    both facing the void; the crow on the top of fence post 6 behind them.
+
+    Draft N+1: the crow in flight for n105 (a second pose, wings out, a
+    metre off the post) and her flashlight on the lip."""
+    from _props import creatures as _cr
+    from _props.view_tags import Views
+    V = Views("gr", {"h": "graustark_ruins_hermit"})
+    with V.tagged("h", _cr):
+        _cr.make_dog("Rumpus_Sinkhole", 12.6, -339.6, 0.0, heading='+Y', pose='lying', one_eyed=True)
+        _cr.make_cat("Joanna_Cat_Sinkhole", 13.9, -340.2, 0.0, heading='+Y', pose='sitting')
+        # fence post 6 (r 42.5, angle -1.40): its top at 1.82
+        px, py = SINK_X + 42.5 * math.cos(-1.40), SINK_Y + 42.5 * math.sin(-1.40)
+        _cr.make_crow("Sinkhole_Crow", px, py, 1.82, facing=1.0)
+    V.check()
+
+
 def build_sinkhole_bowl_2026_10():
     """THE SINKHOLE, draft 2 (2026-10-04). "At the lip of the sinkhole
     proper she paused ... The void breathed up at her." Draft 1 was four
@@ -6288,6 +6311,7 @@ def main():
     build_world_shore_2026_09()
     build_chalk_wall_2026_09()
     build_sinkhole_bowl_2026_10()
+    build_hermit_sinkhole_animals_2026_11()
     build_haberdashery_2026_10()
     build_shotgun_house_2026_10()
     build_minstral_wreck_2026_10()

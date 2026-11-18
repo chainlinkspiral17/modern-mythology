@@ -21,6 +21,10 @@
       "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
       "gain": 0.95
     },
+    "graustark_ruins_hermit": {
+      "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
+      "gain": 0.95
+    },
     "board_lords_interior": {
       "bed": "assets/audio/bgm/vol7_shop_signal_bell.wav",
       "gain": 0.82

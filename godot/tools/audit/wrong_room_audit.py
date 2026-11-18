@@ -80,6 +80,7 @@ KEPT_INSERT = {
     ("graustark_wreck", "shot_insert_notebook"): "Sofia's notebook in Rio — no set of its own; the shotgun house's notebook stands in",
     ("graustark_wreck", "shot_insert_smoke_ring"): "the Frog on the bank over the wreck",
     ("graustark_ruins", "shot_insert_sinkhole"): "the sinkhole, across the ruins",
+    ("graustark_ruins_hermit", "shot_insert_sinkhole"): "the sinkhole, across the ruins (the hermit's twin, pass 441)",
     ("graustark_chalk_wall", "shot_wide_threshold"): "the shotgun house's threshold, from the wall",
     ("graustark_cottage", "shot_insert_herbs"): "Joanna's herb patch outside",
     ("highway_101", "shot_insert_marker"): "the mile marker up the road",

@@ -399,12 +399,13 @@ metadata/fov = 42.0
 
 ; insert: the phone on the desk buzzes — Movement Wednesday 23:00
 ; (pass 440) "The phone on the desk buzzes ... He picks up the phone on the
-; desk": the work phone, face-down by the lamp, from his chair — it framed the
-; personal phone, dark on the dark walnut
+; desk": the work phone, face-down by the lamp, from his chair, the desk round
+; it (at half a metre the trip's paint ate its face) — it framed the personal
+; phone, dark on the dark walnut
 [node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.45, 1.12, -4.15)
-rotation = Vector3(-0.7365, -2.8633, 0.0)
-metadata/fov = 34.0
+position = Vector3(0.30, 1.30, -4.45)
+rotation = Vector3(-0.6322, -2.7744, 0.0)
+metadata/fov = 40.0
 
 ; (pass 440) "The chandelier above his desk — which is not lit — rattles very
 ; faintly ... Chief Miller looks at the ceiling": up at the kept brass

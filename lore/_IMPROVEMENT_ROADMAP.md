@@ -3835,6 +3835,23 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-18 · pass 441: the hermit's animals at the sinkhole; the work phone reads.**
+- vol5 ch9 n94–105 (Joanna at the sinkhole): pass 440's draft-N+1 target.
+  `view_twin.py graustark_ruins graustark_ruins_hermit` (camera, rig and the
+  face frames copied; n94's bg points at it), and in the twin only: Rumpus
+  lying at the lip, head up, the calico sitting beside him, both facing the
+  void; the crow on fence post 6 behind them (builder stand-in + a crow hero
+  prop). n105 "The crow, behind her, took flight" cues `insert crow`, a new
+  frame on the post with the void beyond. wrong_room keeps the plain sinkhole
+  insert in the twin as in its original. Draft N+1: the crow in flight (a
+  wings-out pose a metre off the post) and her flashlight on the lip.
+- vol6 ch4 the work phone: seated on the desk last pass, it still read as an
+  outline — the chapter's macro_haze paint drew a near-black phone and the
+  walnut as one tone. A grey rugged case (a department phone; the text gives
+  no colour), and the insert from further back with the lamp, papers and
+  laptop round it.
+- Deck must REBUILD graustark, miller_office.
+
 **2026-11-18 · pass 440: Miller's office — the work phone, the chandelier that is not lit; Natalie's rug.**
 Twelve more lines rendered (vol 1 ch3/ch7, vol 5 ch18, vol 6 ch4/ch6) and read.
 - vol6 ch4 (Miller's office). The phone insert framed the PERSONAL phone,

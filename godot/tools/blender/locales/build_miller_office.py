@@ -122,8 +122,10 @@ def build_desk():
     # surface, half sunk, and under the lamp the work phone read as an outline
     desk_top = top_z + 0.03
     make_box("Phone_Personal", (dx + 0.30, dy - 0.30, desk_top + 0.01), (0.09, 0.17, 0.02), COL_PHONE)
-    make_box("Phone_FaceDown", (dx + 0.55, dy + 0.10, desk_top + 0.0075), (0.09, 0.17, 0.015), COL_PHONE)
-    make_box("Phone_FaceDown_Back", (dx + 0.55, dy + 0.10, desk_top + 0.017), (0.06, 0.10, 0.004), COL_SCANNER)
+    # the work phone in a grey rugged case (a department phone): near-black on
+    # the walnut, the chapter's trip paint drew the two as one tone (pass 441)
+    make_box("Phone_FaceDown", (dx + 0.55, dy + 0.10, desk_top + 0.0075), (0.09, 0.17, 0.015), (0.56, 0.58, 0.61, 1.0))
+    make_box("Phone_FaceDown_Back", (dx + 0.55, dy + 0.10, desk_top + 0.017), (0.06, 0.10, 0.004), (0.40, 0.42, 0.45, 1.0))
     # its camera, a lens in a raised square at the top end: a phone's back
     make_box("Phone_FaceDown_CamBump", (dx + 0.575, dy + 0.165, desk_top + 0.0175), (0.028, 0.030, 0.005), (0.04, 0.04, 0.05, 1.0))
     make_cyl("Phone_FaceDown_Lens", (dx + 0.575, dy + 0.168, desk_top + 0.021), 0.007, 0.002, (0.30, 0.34, 0.40, 1.0), segments=10)

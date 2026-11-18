@@ -476,7 +476,7 @@
     },
     {
       "t": "bg",
-      "src": "3d:graustark_ruins"
+      "src": "3d:graustark_ruins_hermit"
     },
     {
       "t": "narrate",
@@ -530,7 +530,7 @@
     },
     {
       "t": "narrate",
-      "text": "The crow, behind her, took flight.",
+      "text": "[shot:insert crow]The crow, behind her, took flight.",
       "voice": "assets/audio/voice/vol5_ch9_hermit/104.mp3"
     },
     {

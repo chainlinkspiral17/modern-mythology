@@ -463,6 +463,13 @@ position = Vector3(40.500, 2.950, 372.600)
 rotation = Vector3(-0.0300, 0.0000, 0.0)
 metadata/fov = 20.0
 
+; (pass 441) "The crow, behind her, took flight" (vol5 ch9 n105): the crow on the
+; fence post behind her at the sinkhole's lip, the void beyond
+[node name="shot_insert_crow__graustark_ruins_hermit" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(19.0, 1.75, 344.6)
+rotation = Vector3(0.0614, 0.5794, 0.0)
+metadata/fov = 24.0
+
 [node name="shot_insert_letter" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(53.150, 1.620, 380.850)
 rotation = Vector3(-0.6426, -2.0577, 0.0)
@@ -554,7 +561,19 @@ position = Vector3(54.600, 1.550, 387.200)
 rotation = Vector3(0.0103, 0.6683, 0.0)
 metadata/fov = 45.0
 
+; (view_twin) graustark_ruins's frame in graustark_ruins_hermit
+[node name="shot_closeup_person__graustark_ruins_hermit" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(54.600, 1.550, 387.200)
+rotation = Vector3(0.0103, 0.6683, 0.0)
+metadata/fov = 45.0
+
 [node name="shot_closeup_person_b__graustark_ruins" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(57.200, 1.400, 384.000)
+rotation = Vector3(-0.2808, 0.3652, 0.0)
+metadata/fov = 45.0
+
+; (view_twin) graustark_ruins's frame in graustark_ruins_hermit
+[node name="shot_closeup_person_b__graustark_ruins_hermit" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(57.200, 1.400, 384.000)
 rotation = Vector3(-0.2808, 0.3652, 0.0)
 metadata/fov = 45.0
@@ -790,6 +809,20 @@ perch_axis = "z"
 head_dir = 1
 stand_in_root = NodePath("../Interior")
 hide_prefixes = PackedStringArray("Star_Crow_")
+
+; (pass 441) the hermit's crow at the sinkhole, on fence post 6 behind her
+; (vol5 ch9, graustark_ruins_hermit only)
+[node name="HP_Sinkhole_Crow__graustark_ruins_hermit" type="Node3D" parent="."]
+position = Vector3(17.224, 1.820, 341.811)
+script = ExtResource("hp_hero_prop")
+glb_path = "res://assets/3d/props/crow.glb"
+size_m = 0.34
+upright = true
+seat_center = true
+perch_axis = "z"
+head_dir = 1
+stand_in_root = NodePath("../Interior")
+hide_prefixes = PackedStringArray("Sinkhole_Crow_")
 
 [node name="HP_Roof_Crow" type="Node3D" parent="."]
 position = Vector3(52.500, 5.180, 383.179)

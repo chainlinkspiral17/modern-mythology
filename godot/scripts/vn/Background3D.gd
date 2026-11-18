@@ -484,6 +484,27 @@ const CAMERA_PRESETS := {
 		"suppress_input": true,
 		"far": 1100.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
+	"graustark_ruins_hermit": {
+		# vol5 ch9 at the sinkhole: Joanna's animals with her (Rumpus, the calico, the crow on the fence post behind her — 'The crow, behind her, took flight')
+		"scene": "res://scenes/locales/graustark.tscn",
+		"requires_glb": "res://assets/3d/locales/graustark.glb",
+		# THE RUIN QUARTER is at blender (−12..66, −300..−390) —
+		# sinkhole (10,−300), chalked wall (44,−374), rubble field
+		# (46,−368), cottage (50,−380), skyline shells + leaning
+		# chimneys ringing it. The old vantage stood at the
+		# riverfront ORIGIN looking west: 350m from every chapter's
+		# staging, i.e. flat brown dirt ("world/judgement/star all
+		# same plain brown"). Now SE of the quarter looking NW:
+		# rubble + chalked wall near-right, fallen arch mid, broken
+		# rooflines and chimneys on the skyline.
+		# blender cam (66, −390, 2.4) → godot (66, 2.4, +390);
+		# aim at shells (18,−335,4): yaw=atan2(48,55), slight down.
+		"camera_origin": Vector3(63.50, 3.20, 393.50),
+		"camera_rotation": Vector3(-0.037, 0.653, 0.0),
+		"fov": 58.0,
+		"suppress_input": true,
+		"far": 1100.0,   # (2026-10-31) its far scenery stood past the 200 m default
+	},
 	# ── VOL 5 — Hermit — Joanna's chalked wall + the crow's perch ─
 	"graustark_chalk_wall": {
 		"scene": "res://scenes/locales/graustark.tscn",
