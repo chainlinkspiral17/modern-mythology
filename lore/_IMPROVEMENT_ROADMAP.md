@@ -3835,6 +3835,30 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-18 · pass 439: playtest vol 2–4, the pizza party's plates.**
+Fifteen lines rendered across vol 2 ch2, vol 3 ch5/ch11 and vol 4 (goggles,
+the poems, the scraps) and read.
+- vol3 ch11 n10, "I push my empty plate to the pile": the insert sat at chair
+  height among the seated party, aimed dead-on at a DIFFERENT pile 4.4 m off
+  behind a whole pizza and two backs (which is why the aim gate passed it);
+  the piles were each one white box. The four piles are stacks of paper
+  plates now, askew, greasy, a crust on top, his own pushed on and hanging
+  off the edge; the insert looks down at it from the table's end.
+- The vigil mural inserts (pass 438) moved half a metre off the annex wall
+  and narrowed to fov 40: the lit wall stood in the frame's right edge as a
+  yellow wedge (the alley is 3 m wide; at fov 50 the edge ray meets it).
+- Also read and left from vol 6–7: the café's "afternoon held", Lena at the
+  rainy window, Mateo in the shop, Kai at the storefront, Sam's list on her
+  desk, the cul-de-sac through her window.
+- Read and left: vol2 cliffside (the main building on the cliff edge, the
+  Jarvis windows), vol3 flight (the plane cabin), the bathroom, vol4 goggles
+  (the monitor room; the text game on the screen), the poem bedroom.
+- Probe, no gate: inserts whose name-matched subject is tiny in frame. The
+  match catches one small part of a larger subject (a booth's plaque, a
+  guardrail's reflector, a bedroll 400 m away for a van's rolls of quarters)
+  too often to gate on; read the list when an insert looks empty.
+- Deck must REBUILD vol3_rooms.
+
 **2026-11-18 · pass 438: playtest ahead of the user — the bar's street, the plaster, edge-on inserts.**
 Eighteen lines rendered across vol 1 ch 3 and vol 5 ch 1–3 and read; two
 frames were broken and every gate had passed them.

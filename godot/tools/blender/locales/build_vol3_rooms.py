@@ -688,7 +688,26 @@ def build_pizza():
         # (pass 390) at a table's END, clear of its two pizzas (±0.55, 0.44
         # boxes): pile 0 stood in the middle of the first table's pizza
         pk, pr = ((0, 0), (1, 1), (2, 0), (2, 1))[k]
-        make_box(f"Plate_Pile_{k}", (x0 + 2.4 + pk * 2.6 - 0.98, (2.4, 5.2)[pr], 0.78), (0.26, 0.26, 0.08), (0.94, 0.94, 0.92, 1.0))
+        # (pass 439) "I push my empty plate to the pile": a pile of paper
+        # plates, each a little askew, greasy and with a crust on the top
+        # one — it was one white box. Pile 0 is the narrator's, his plate
+        # just pushed onto it and not yet square.
+        import random
+        px, py = x0 + 2.4 + pk * 2.6 - 0.98, (2.4, 5.2)[pr]
+        rp = random.Random(4390 + k)
+        n_pl = 7 if k == 0 else 5
+        for j in range(n_pl):
+            ox, oy = rp.uniform(-0.012, 0.012), rp.uniform(-0.012, 0.012)
+            make_cyl(f"Plate_Pile_{k}_Plate_{j}", (px + ox, py + oy, 0.744 + j * 0.009), 0.115, 0.008, (0.94, 0.94, 0.92, 1.0), segments=16)
+        top = 0.744 + (n_pl - 1) * 0.009 + 0.004
+        cx, cy = px, py
+        if k == 0:
+            # his plate, pushed on and hanging 5 cm off the pile's edge
+            cx, cy = px + 0.05, py - 0.04
+            make_cyl("Plate_Pile_0_Pushed", (cx, cy, top + 0.0045), 0.115, 0.008, (0.94, 0.94, 0.92, 1.0), segments=16)
+            top += 0.009
+        make_cyl(f"Plate_Pile_{k}_Grease", (cx, cy, top + 0.0007), 0.06, 0.0014, (0.86, 0.70, 0.46, 1.0), segments=12)
+        make_rot_box(f"Plate_Pile_{k}_Crust", (cx + 0.03, cy - 0.02, top + 0.012), (0.10, 0.025, 0.022), (0.80, 0.58, 0.34, 1.0), yaw=0.6 + k)
         make_cyl(f"Party_Cup_{k}", (x0 + 2.2 + k * 2.2, 2.2 + (k % 2) * 2.8, 0.80), 0.04, 0.12, (0.86, 0.20, 0.20, 1.0), segments=8)
     make_box("Pizza_Box_Open", (x0 + 4.9, 5.2, 0.76), (0.40, 0.40, 0.03), (0.86, 0.80, 0.66, 1.0))
     make_box("Projection_Screen_Hang", (x0 + 6.0, 8.0 - 0.08 - 0.04, 1.6), (3.0, 0.02, 1.9), (0.94, 0.94, 0.92, 1.0))

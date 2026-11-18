@@ -761,11 +761,12 @@ metadata/fov = 44.0
 ; (pass 438) from the alley's south side, high over the heads, east of the
 ; back-door lamp and half a metre off the annex wall: the face on the wall and
 ; the Nebula with the people at its foot — it looked ALONG the wall from 0.7 m
-; off it and the mural was a grazing purple plane
+; off it and the mural was a grazing purple plane (fov 40: at 50 the lit annex
+; wall stood in the frame's right edge)
 [node name="shot_insert_mural__salty_tome_vigil" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-2.8, 3.0, -9.65)
 rotation = Vector3(-0.2232, -1.0401, 0.0)
-metadata/fov = 50.0
+metadata/fov = 40.0
 
 ; "with the bowls and the bell-piece and the notebook at the milk crate at the foot": the crate's top
 [node name="shot_insert_notebook__salty_tome_vigil" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -912,11 +913,12 @@ metadata/fov = 38.0
 ; (pass 438) from the alley's south side, high over the heads, east of the
 ; back-door lamp and half a metre off the annex wall: the face on the wall and
 ; the Nebula with the people at its foot — it looked ALONG the wall from 0.7 m
-; off it and the mural was a grazing purple plane
+; off it and the mural was a grazing purple plane (fov 40: at 50 the lit annex
+; wall stood in the frame's right edge)
 [node name="shot_insert_mural__salty_tome_twelve" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-2.8, 3.0, -9.65)
 rotation = Vector3(-0.2232, -1.0401, 0.0)
-metadata/fov = 50.0
+metadata/fov = 40.0
 
 ; "She got in the wagon. Kai got in the passenger seat": the wagon at the alley's mouth, from the sidewalk
 [node name="shot_insert_wagon__salty_tome_twelve" type="Marker3D" parent="." groups=["vn_shot"]]
