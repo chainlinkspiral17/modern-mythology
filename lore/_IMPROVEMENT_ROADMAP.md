@@ -3835,6 +3835,22 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-19 · pass 443: MELODY on Chuck's counter.**
+Fourteen lines rendered (vol2 field notes, vol3 oil men, vol4 ourobouros,
+vol5 hermit, vol6 Maya's bedroom and the Pit Stop, vol7 the pool) and read.
+- vol2 ch12x n20–21 ("Chuck pulled the tape out from behind the counter";
+  "Need to get a VHS player to check it out"): the counter insert stood with
+  its lens 6 cm over the counter top, pitched down at the front panel — the
+  frame was a flat brown wall. From the customer's side now, down at
+  MELODY's case on the top with the racks behind; the cue is `insert tape`
+  (the counter was the place, the tape the subject — the aim gate rightly
+  wanted the 5 m counter's middle for `counter`).
+- Confirmed by render: pass 442's Roy opening (the supper, not black) and
+  the dusk montage out Sam's window.
+- Read and left: the field notes' night road, the oil field at sunset (hero
+  art), Steven at the mirror, the hermit's chalk wall and verse, Maya's
+  bedroom and F.T.'s text, the Pit Stop's phone and shelves, the pool.
+
 **2026-11-19 · pass 442: no chapter opens on black; the town at dusk from Sam's window; the bar's alley.**
 Sixteen lines rendered (vol1 link booth / coat, vol5 ch2 / ch21, vol6 ch4 /
 ch15 / ch23, vol7 ch8 Roy) and read.

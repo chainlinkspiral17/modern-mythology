@@ -329,10 +329,14 @@ offset_bottom = 980.0
 script = ExtResource("14_dbgm")
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_counter__video_store_counter" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(43.638, 1.103, -5.729)
-rotation = Vector3(-0.2618, 0.1083, 0.0)
-metadata/fov = 35.0
+; (pass 443) "Chuck pulled the tape out from behind the counter": from the
+; customer's side, down at MELODY on the counter top, the racks behind (the cue
+; is `insert tape` now — the counter was the place, the tape the subject); the
+; lens stood 6 cm over the top and the frame was the counter's front panel
+[node name="shot_insert_tape__video_store_counter" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(44.0, 1.55, -6.0)
+rotation = Vector3(-0.4882, -0.2187, 0.0)
+metadata/fov = 38.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_radio__radio_studio" type="Marker3D" parent="." groups=["vn_shot"]]
