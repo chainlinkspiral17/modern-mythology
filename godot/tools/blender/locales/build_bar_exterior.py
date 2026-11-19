@@ -91,7 +91,8 @@ def build_building():
         make_box(f"Up_Win_{i}", (wx, 4.47, 4.55), (1.1, 0.06, 1.5), COL_WIN_DARK)
         make_box(f"Up_Sill_{i}", (wx, 4.43, 3.75), (1.3, 0.14, 0.08), COL_LINTEL)
     # Neighbor frontage beyond the alley gap, west
-    make_box("Alley_Gap", (-8.6, 5.2, 2.6), (1.2, 1.4, 5.2), (0.05, 0.05, 0.07, 1.0))
+    # (2026-11-19, draft 3) the alley is a real gap now — build_alley_2026_11();
+    # it was a black box flush with the two facades
     make_box("Neighbor", (-11.5, 5.0, 2.6), (4.6, 1.0, 5.2), COL_BRICK_DK)
 
 
@@ -126,7 +127,7 @@ def build_backdrop():
     # a low distant block face beyond the building's roof
     # to the ground (2026-09-24: a slab hanging 6 m up — it only read as
     # "a block beyond the roof" from one camera)
-    make_box("Far_Block", (6.0, 11.0, 4.2), (20.0, 0.06, 8.4), (0.07, 0.07, 0.10, 1.0))
+    make_box("Far_Block", (6.0, 16.0, 4.2), (20.0, 0.06, 8.4), (0.07, 0.07, 0.10, 1.0))
 
 
 def main():
@@ -138,6 +139,7 @@ def main():
     build_backdrop()
     build_block_2026_11()
     build_far_side_2026_11()
+    build_alley_2026_11()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/bar_exterior.glb"))
     print(f"\n[build_bar_exterior] exporting to {out}")
@@ -243,6 +245,38 @@ def build_block_2026_11():
     make_cyl("Road_Manhole", (5.5, -1.6, 0.0225), 0.33, 0.004, (0.20, 0.20, 0.21, 1.0), segments=14)
     for k, dx in enumerate((-7.6, 9.2)):
         make_box(f"Road_Drain_{k}", (dx, 1.70, 0.0225), (0.90, 0.40, 0.004), (0.08, 0.08, 0.09, 1.0))
+
+
+def build_alley_2026_11():
+    """DRAFT 3 (2026-11-19): the alley between the bar and its west
+    neighbour, 1.2 m wide, 8 m deep to a plank fence — the bar's own side
+    wall with the side door the smokers use under a caged bulb, two milk
+    crates and a coffee-can ashtray by it, a dumpster wedged at the back.
+    The two buildings get their depth behind their facades (they were 1 m
+    slabs), so the alley has walls.
+
+    Draft 4 targets: a fire escape on the neighbour; wires across; the
+    bulb's practical shadow; litter."""
+    AX0, AX1, AY0, AY1 = -9.2, -8.0, 4.5, 12.5
+    make_box("Bar_Body", (0.0, (5.5 + AY1) / 2.0, 3.1), (16.0, AY1 - 5.5, 6.2), COL_BRICK)
+    make_box("Neighbor_Body", (-11.5, (5.5 + AY1) / 2.0, 2.6), (4.6, AY1 - 5.5, 5.2), COL_BRICK_DK)
+    make_box("Alley_Ground", ((AX0 + AX1) / 2.0, (AY0 + AY1) / 2.0, 0.03), (AX1 - AX0, AY1 - AY0, 0.06), (0.17, 0.17, 0.18, 1.0))
+    make_box("Alley_Fence", ((AX0 + AX1) / 2.0, AY1 - 0.04, 1.0), (AX1 - AX0, 0.06, 2.0), (0.34, 0.27, 0.19, 1.0))
+    for k in range(4):
+        make_box(f"Alley_Fence_Gap_{k}", (AX0 + 0.15 + k * 0.3, AY1 - 0.075, 1.0), (0.012, 0.01, 2.0), (0.20, 0.16, 0.12, 1.0))
+    # the dumpster wedged lengthwise at the back
+    make_box("Alley_Dumpster", (-8.6, 11.35, 0.66), (1.0, 1.8, 1.2), (0.18, 0.32, 0.22, 1.0))
+    make_box("Alley_Dumpster_Lid", (-8.6, 11.35, 1.29), (1.04, 1.84, 0.06), (0.12, 0.22, 0.15, 1.0))
+    # the side door in the bar's west wall, its caged bulb, the smokers' seats
+    make_box("Alley_Side_Door", (AX1 - 0.03, 7.5, 1.08), (0.06, 0.92, 2.04), COL_DOOR)
+    make_box("Alley_Side_Door_Frame", (AX1 - 0.04, 7.5, 2.14), (0.08, 1.06, 0.08), COL_FRAME)
+    make_box("Alley_Side_Door_Plate", (AX1 - 0.065, 7.85, 1.05), (0.01, 0.10, 0.30), COL_LINTEL)
+    make_box("Alley_Bulb_Bracket", (AX1 - 0.08, 7.5, 2.42), (0.16, 0.04, 0.04), COL_POLE)
+    make_cyl("Alley_Bulb_Cage", (AX1 - 0.17, 7.5, 2.34), 0.06, 0.14, (0.22, 0.22, 0.24, 1.0), segments=8)
+    make_cyl("Alley_Bulb", (AX1 - 0.17, 7.5, 2.34), 0.035, 0.08, COL_LAMP, segments=8)
+    for k, (cx, cy, cz) in enumerate(((-8.78, 6.85, 0.225), (-8.78, 6.85, 0.555))):
+        make_box(f"Alley_Milk_Crate_{k}", (cx, cy, cz), (0.33, 0.33, 0.33), (0.62, 0.14, 0.12, 1.0) if k == 0 else (0.16, 0.28, 0.52, 1.0))
+    make_cyl("Alley_Ashtray_Can", (-8.25, 8.2, 0.15), 0.08, 0.18, (0.46, 0.44, 0.40, 1.0), segments=10)
 
 
 def build_far_side_2026_11():

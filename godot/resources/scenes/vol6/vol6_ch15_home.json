@@ -229,7 +229,7 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Outside, the Texas dusk is doing its slow gold thing.",
+   "text": "[shot:insert window]Outside, the Texas dusk is doing its slow gold thing.",
    "voice": "assets/audio/voice/vol6_ch15_home/044.mp3"
   },
   {
@@ -248,7 +248,7 @@
   },
   {
    "t": "narrate",
-   "text": "Mark and Lucy, in Room 7 of the Cypress, are asleep by seven PM, having eaten the small early dinner the gas-station-adjacent McDonald's had provided them for fourteen dollars, and having decided, between them,",
+   "text": "[shot:insert window]Mark and Lucy, in Room 7 of the Cypress, are asleep by seven PM, having eaten the small early dinner the gas-station-adjacent McDonald's had provided them for fourteen dollars, and having decided, between them,",
    "voice": "assets/audio/voice/vol6_ch15_home/048.ogg"
   },
   {
@@ -263,7 +263,7 @@
   },
   {
    "t": "narrate",
-   "text": "He does not tell Lucy.",
+   "text": "[shot:insert window]He does not tell Lucy.",
    "voice": "assets/audio/voice/vol6_ch15_home/051.mp3"
   },
   {

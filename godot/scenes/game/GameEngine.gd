@@ -706,6 +706,15 @@ func _load_scene(scene_id: String, start_at: int = 0) -> void:
 		if ttl != "":
 			parts.append(ttl)
 		_hud.call("set_chapter", ("·  " + "  ·  ".join(parts)) if parts.size() > 0 else "")
+	# (pass 442) a scene whose first lines come BEFORE its first bg node
+	# names the room they play in as "bg_in" (vol7 ch8 Roy opens mid-supper,
+	# reached in play by a jump from finn_speaks, whose supper is still on
+	# the stage). A start with nothing on the stage — a load, chapter
+	# select — shows it, instead of five lines over black. A bg node before
+	# the target, replayed below, still wins.
+	var bg_in: String = String(_scene_data.get("bg_in", ""))
+	if bg_in != "" and not _stage_has_bg():
+		_do_bg({"t": "bg", "src": bg_in})
 	# Resume fast-forward: a mid-scene start (save resume) must not
 	# open on a bare stage. Replay the silent side effects of every
 	# node before the target — bg / bgm / stage / flags — and re-assert
@@ -2070,6 +2079,12 @@ func _portrait_side_for(preset_id: String) -> String:
 	var presets: Dictionary = _portrait_sides.get("presets", {})
 	var side: String = String(presets.get(preset_id, _portrait_sides.get("default", "right")))
 	return "left" if side == "left" else "right"
+
+
+func _stage_has_bg() -> bool:
+	if _bg_3d_node != null and is_instance_valid(_bg_3d_node) and _bg_3d_node.visible:
+		return true
+	return _bg != null and _bg.texture != null
 
 
 func _clear_bg_3d() -> void:

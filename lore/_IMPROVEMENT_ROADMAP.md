@@ -3835,6 +3835,32 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-19 · pass 442: no chapter opens on black; the town at dusk from Sam's window; the bar's alley.**
+Sixteen lines rendered (vol1 link booth / coat, vol5 ch2 / ch21, vol6 ch4 /
+ch15 / ch23, vol7 ch8 Roy) and read.
+- vol7 ch8 Roy's first five lines come BEFORE its first bg node (n5): in play
+  the jump from finn_speaks leaves the supper on the stage, but a load or a
+  chapter select into them played over black. Scenes may now name the room
+  their opening lines play in — a top-level `"bg_in"` (node indices, and so
+  the voice files, untouched); GameEngine shows it when the stage is empty
+  (`_stage_has_bg`), and a bg node before a resume target still wins. Roy's
+  is `3d:lena_apartment_supper`. New gate `scene_open_bg_audit.py` (in the
+  suite): 477 scenes, 0 open on a bare stage.
+- vol6 ch15 n44–52, the omniscient dusk montage ("Outside, the Texas dusk
+  ...", Bianca on the porch, the Peugeot in Bobby's lot, Mark and Lucy in
+  Room 7 of the Cypress) played over Sam's bedroom interior. Cue tags only
+  (voiced): `insert window` at n44, n48 and n51 — the town out her window
+  carries it.
+- bar_exterior draft 3: the alley is a real gap (the two buildings get their
+  depth; side walls, the bar's side door under a caged bulb with its
+  practical, two milk crates and a coffee-can ashtray, a dumpster at the
+  back, a plank fence). Draft 4: a fire escape, wires across, litter.
+- Read and left: the Link booth's photo wall (its pictures are Drive art),
+  the coat-question night exterior, the ruins in ch21, Elicia in the
+  studio, the tea-party desk insert, the Cypress from the road, the night
+  cul-de-sac ("The town holds."), Sam's bedroom.
+- Deck must REBUILD bar_exterior.
+
 **2026-11-18 · pass 441: the hermit's animals at the sinkhole; the work phone reads.**
 - vol5 ch9 n94–105 (Joanna at the sinkhole): pass 440's draft-N+1 target.
   `view_twin.py graustark_ruins graustark_ruins_hermit` (camera, rig and the

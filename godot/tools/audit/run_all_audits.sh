@@ -716,6 +716,12 @@ echo "── partition_window_audit.py ── t+${SECONDS}s"
 python3 partition_window_audit.py || { echo "REGRESSION  partition_window_audit (ceiling 0)"; DEFERRED="$DEFERRED partition_window_audit"; }
 echo ""
 
+# scene_open_bg_audit (pass 442): no chapter's first lines play before any
+# bg without a "bg_in" (vol7 ch8 Roy opened on black from a load).
+echo "── scene_open_bg_audit.py ── t+${SECONDS}s"
+python3 scene_open_bg_audit.py || { echo "REGRESSION  scene_open_bg_audit (ceiling 0)"; DEFERRED="$DEFERRED scene_open_bg_audit"; }
+echo ""
+
 echo "── prop_budget_audit.py ── t+${SECONDS}s"
 python3 prop_budget_audit.py || { echo "REGRESSION  prop_budget_audit (ceiling 0)"; DEFERRED="$DEFERRED prop_budget_audit"; }
 echo ""

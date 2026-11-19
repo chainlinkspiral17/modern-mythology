@@ -386,6 +386,14 @@ light_energy = 2.6
 shadow_enabled = false
 omni_range = 9.0
 
+; draft 3 (2026-11-19): the caged bulb over the bar's side door in the alley
+[node name="Alley_Bulb_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.17, 2.30, -7.5)
+light_color = Color(1.0, 0.80, 0.50, 1)
+light_energy = 1.1
+shadow_enabled = false
+omni_range = 4.5
+
 [node name="Laundromat_Glow" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.8, 11.0)
 light_color = Color(0.78, 0.90, 0.96, 1)
