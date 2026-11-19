@@ -3835,6 +3835,24 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-19 · pass 444: Jiggles' cabinet.**
+Fourteen lines rendered (vol1 the Link outside / q_where, vol2 history,
+vol5 Ravensway, vol6 the radio night, vol7 morning and cedar) and read.
+- vol2 ch1 n46–47 ("A cabinet of sorts held a broken marionette ... The
+  buttons and levers that controlled the nickelodeon automaton still
+  worked"): the cabinet insert stood 2 m off at fov 52 — a small dark box in
+  the barn's X-bracing. In close now (1.4 m, fov 46), centred on the stage:
+  Jiggles behind the glass, his clubs, the curtains, his name in red, the
+  levers and buttons and coin plate under it. Read by render — the
+  chapter's old-film grade and the dark barn flatten it; draft N+1: a shaft
+  of sun through a gap in the roof onto the cabinet (the text's own light,
+  n44 "The sunlight poking through") — not a bulb: the barn has no power.
+- Read and left: the Link stranger by the diner's lit windows, the night
+  road in the old-film grade, Ravensway (hero art), the grandmother's radio
+  room (n24's "upstairs window is lit" plays on her window from inside — an
+  exterior needs a bg node the voiced chapter cannot take), vol7 morning
+  and the cabin.
+
 **2026-11-19 · pass 443: MELODY on Chuck's counter.**
 Fourteen lines rendered (vol2 field notes, vol3 oil men, vol4 ourobouros,
 vol5 hermit, vol6 Maya's bedroom and the Pit Stop, vol7 the pool) and read.
