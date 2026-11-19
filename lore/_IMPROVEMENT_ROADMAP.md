@@ -3835,6 +3835,26 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-19 · pass 445: the brochure rack at the Briar Falls rest stop.**
+Sixteen lines rendered (vol1 the Link's name question, vol2 bf_lot, vol4
+the pinecone poem and the careful-veneer scrap, vol5 Death, vol6 the porch
+and the Henderson kitchen, vol7 eight) and read.
+- vol2 bf_lot n5–6 ("The tween sister is at the brochure rack. She takes
+  one of everything"; the Missing Link brochure folded square): the insert
+  stood 2.3 m up OUTSIDE the alcove, in line with the rack on its west wall
+  — the brochures edge-on, the frame the alcove's dark side under the
+  lithograph grade. From inside the alcove now, across to the rack's face.
+  EDGE-ON missed it: "brochure" was not in READABLE (now brochure,
+  pamphlet, leaflet; all 2,010 frames still pass). Read by render: the
+  3×3 rack in the lithograph grade's red line art — the brochures are
+  blank faces. Draft N+1: a roster art entry for the rack's face (the
+  Missing Link brochure among the region's tourist folds) for the user to
+  generate.
+- Read and left: the Link stranger, the pinecone poem room, the veneer
+  scrap's porch, Alice's rooms in Death, the grandmother's radio and porch
+  room, the Henderson kitchen and the prints, the four blocks to Lena's,
+  Cale at the face on the wall.
+
 **2026-11-19 · pass 444: Jiggles' cabinet.**
 Fourteen lines rendered (vol1 the Link outside / q_where, vol2 history,
 vol5 Ravensway, vol6 the radio night, vol7 morning and cedar) and read.
@@ -3844,9 +3864,11 @@ vol5 Ravensway, vol6 the radio night, vol7 morning and cedar) and read.
   the barn's X-bracing. In close now (1.4 m, fov 46), centred on the stage:
   Jiggles behind the glass, his clubs, the curtains, his name in red, the
   levers and buttons and coin plate under it. Read by render — the
-  chapter's old-film grade and the dark barn flatten it; draft N+1: a shaft
-  of sun through a gap in the roof onto the cabinet (the text's own light,
-  n44 "The sunlight poking through") — not a bulb: the barn has no power.
+  chapter's old-film grade and the dark barn flatten it. (pass 445 tried a
+  narrow sun shaft through the missing roof onto the stage — the text's own
+  light, not a bulb: the barn has no power — and the render did not change:
+  the silent_film grade is the limiter, not the light. Removed. Draft N+1:
+  read the chapter's grade, not the set.)
 - Read and left: the Link stranger by the diner's lit windows, the night
   road in the old-film grade, Ravensway (hero art), the grandmother's radio
   room (n24's "upstairs window is lit" plays on her window from inside — an

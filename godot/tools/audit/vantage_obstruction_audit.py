@@ -560,7 +560,7 @@ _HALF_KNOWN = None
 # off the wall looking ALONG it; marker_aim and this gate's occlusion test
 # both passed it, the subject being in line and unblocked.
 EDGE_ON_DEG = 80.0
-READABLE = re.compile(r"sign|banner|poster|paper|page|photo|picture|mural|screen|monitor|letter|note|"
+READABLE = re.compile(r"sign|banner|poster|paper|page|photo|picture|mural|screen|monitor|letter|note|brochure|pamphlet|leaflet|"
                       r"card(?!board|_bale)|map|flyer|book|plaster|label|menu|calendar|painting|canvas|"
                       r"print|list|folder|envelope|ticket|receipt|wallpaper|display|chalk|whiteboard|"
                       r"clock|dial|plaque|certificate|diploma|drawing|sketch|lyric|script|newspaper", re.I)

@@ -332,10 +332,13 @@ offset_bottom = 980.0
 script = ExtResource("14_dbgm")
 
 ; first inserts, authored by marker_author.py (2026-09-10): the locale had no vn_shot markers
+; (pass 445) "The tween sister is at the brochure rack": from inside the alcove,
+; across to the rack on its west wall — it stood in line with the rack 2.3 m up
+; outside the alcove, the brochures edge-on and the frame a dark wall
 [node name="shot_insert_brochure" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.420, 2.300, -6.818)
-rotation = Vector3(-0.5098, 0.0000, 0.0)
-metadata/fov = 35.0
+position = Vector3(0.85, 1.5, -8.2)
+rotation = Vector3(-0.1134, 1.3016, 0.0)
+metadata/fov = 40.0
 
 ; (2026-11-02) "The pay phone does not ring": from the alcove's mouth to the phone on the front wall
 [node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
