@@ -3835,6 +3835,51 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-21 · pass 446: the Briar Falls rack by the text — three titles, the flyer.**
+Pass 445's draft-N+1 target. vol2 bf_building n5–10 reads the rack out:
+"The plastic slots are the kind that always sag at one end. The brochures,
+top to bottom: COVERED BRIDGES OF YAMHILL COUNTY ... SMOLVUD: THE TOWN AT
+THE EDGE OF THE WOOD — green ink on cream stock, illustrated with a
+hand-drawn sanderling ... THE MISSING LINK — eat, drink, wait", then "A
+flyer, taped to the inside of the alcove ... HAVE YOU SEEN THIS MAN".
+- The set had a checkerboard of nine two-colour cards and no flyer. One
+  title to a row now, each row on a clear plastic slot (a shelf and a lip)
+  that sags at one end; the flyer is a letter sheet on the alcove's back
+  wall at eye height, a strip of tape at each top corner.
+- The list played over `insert alcove`, which sees the rack 76° off its
+  face. n6 cues `insert brochure` and n9 a new `insert flyer`; cue tags
+  only, the chapter is voiced. wrong_room keeps the flyer: the alcove is the
+  building's east end. The brochure frame took four tries, read by render:
+  fov 40 from inside the 1.4 m alcove lost the bottom row — the Missing
+  Link's — behind the text box while its own line played; two tries tilted
+  DOWN by hand to clear the box each lost the top row, because the director
+  already lifts every insert's centre to INSERT_CENTER (36 % from the top,
+  VnDirector) — the hand tilt doubled it. It stands in the alcove's mouth
+  now, level with the rack's middle, 38° off its face, fov 66, aimed at the
+  rack's CENTRE. Rule: aim an insert at its subject's centre and size the
+  lens so the whole subject fits 58 % of the frame's height; never tilt for
+  the text box.
+- FOUR ART ENTRIES for the user to generate (roster, byte-exact; placement
+  audit 13/13 clean): briar_falls_brochure_covered_bridges, _smolvud,
+  _missing_link (each one picture on its row's three slots) and
+  briar_falls_alcove_flyer. A first try with a clear pocket PANE over the
+  covers' lower third read COVERED 37 % — the gate does not see through
+  glass in front of a picture; the pocket front is a 2.6 cm lip.
+- Draft N+1 — INSERT FIT: a box-math probe of the same rule over every
+  readable insert (the subject's parts within the clear picture after the
+  director's lift) flags 60 of 226; its cluster is too greedy to gate on
+  (it takes the whole puppet for "jiggles", a tray for a print). Read the
+  top of the list by render: crumpled_barn jiggles ("His name in red
+  paint"), faust_apartment canvas / easel, graustark letter, centro
+  fridge note, school_newspaper page, missing_link juke, wagner_home
+  record; then tighten the cluster and gate it.
+- For Andy (do not fix): the Missing Link's roster signs (the enamel sign,
+  the pole sign, the menu board, SASQUATCH CROSSING) carry a Sasquatch, and
+  no scene text or manuscript in the repo mentions one — it came from a
+  builder. The brochure's cover is written without it ("eat, drink, wait"
+  only). Does the diner have a Sasquatch?
+- Deck must REBUILD briar_falls.
+
 **2026-11-19 · pass 445: the brochure rack at the Briar Falls rest stop.**
 Sixteen lines rendered (vol1 the Link's name question, vol2 bf_lot, vol4
 the pinecone poem and the careful-veneer scrap, vol5 Death, vol6 the porch

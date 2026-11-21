@@ -25,10 +25,10 @@ Vantages wired in Background3D.CAMERA_PRESETS:
   briar_falls_overlook  — at the rail, valley + falls beyond.
   briar_falls_picnic    — among the tables on the west grass.
 """
-import os, sys
+import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb, _finalize_mesh
+from _props.geometry import clear_scene, make_box, make_cyl, make_rot_box, export_glb, _finalize_mesh
 
 # ── Palette (mountain day) ──
 COL_GRASS = (0.42, 0.52, 0.30, 1.0)
@@ -130,11 +130,35 @@ def build_building():
     make_box("Alcove_Roof", (0.30, 8.55, 3.04), (1.70, 1.30, 0.12), COL_ROOF)
     make_box("Alcove_Floor_Slab", (0.30, 8.55, 0.04), (1.60, 1.20, 0.08), COL_STONE_DK)
     make_box("Rack_Frame", (-0.46, 8.55, 1.30), (0.06, 0.9, 1.20), COL_TIMBER)
+    # (pass 446) THE RACK BY THE TEXT (vol2 bf_building n5-8): "The plastic
+    # slots are the kind that always sag at one end. The brochures, top to
+    # bottom: COVERED BRIDGES OF YAMHILL COUNTY ... SMOLVUD: THE TOWN AT THE
+    # EDGE OF THE WOOD — green ink on cream stock ... THE MISSING LINK". One
+    # title to a row (it was a checkerboard of two colours), each row on a
+    # clear plastic slot (a shelf and a lip) that sags at its north end. The faces are stand-ins
+    # for the roster's three brochure pictures.
+    rows = (((0.56, 0.44, 0.36, 1.0), (0.30, 0.22, 0.18, 1.0)),      # covered bridges: barn red-brown
+            ((0.90, 0.87, 0.74, 1.0), (0.24, 0.42, 0.30, 1.0)),      # Smolvud: green ink on cream
+            ((0.88, 0.84, 0.72, 1.0), (0.62, 0.20, 0.16, 1.0)))      # the Missing Link: its sign's cream and brick red
     for r in range(3):
+        face, ink = rows[r]
+        rz = 1.72 - r * 0.42
         for cslot in range(3):
-            make_box(f"Brochure_{r}_{cslot}", (-0.42, 8.25 + cslot * 0.30, 1.72 - r * 0.42),
-                     (0.03, 0.22, 0.30),
-                     COL_SIGN if (r + cslot) % 2 == 0 else (0.55, 0.62, 0.48, 1.0))
+            make_box(f"Brochure_{r}_{cslot}", (-0.42, 8.25 + cslot * 0.30, rz), (0.03, 0.22, 0.30), face)
+            make_box(f"Brochure_{r}_{cslot}_Title", (-0.4045, 8.25 + cslot * 0.30, rz + 0.09), (0.001, 0.18, 0.05), ink)
+        make_rot_box(f"Rack_Slot_Shelf_{r}", (-0.412, 8.55, rz - 0.172), (0.05, 0.88, 0.006),
+                     (0.80, 0.84, 0.86, 0.45), roll=math.radians(-2.0))
+        # the pocket's clear front is a LIP at the brochures' feet, not a pane
+        # over their lower third: a pane hid 37 % of each cover (hero_art COVERED)
+        make_rot_box(f"Rack_Slot_Lip_{r}", (-0.3905, 8.55, rz - 0.160), (0.005, 0.88, 0.026),
+                     (0.80, 0.84, 0.86, 0.45), roll=math.radians(-2.0))
+    # "A flyer, taped to the inside of the alcove, no border, just a
+    # photocopied face: HAVE YOU SEEN THIS MAN" (n9-10): a letter sheet on the
+    # alcove's back wall at eye height, a strip of tape at each top corner
+    make_box("Alcove_Flyer", (0.45, 9.099, 1.55), (0.216, 0.002, 0.279), (0.86, 0.85, 0.80, 1.0))
+    make_box("Alcove_Flyer_Photo", (0.45, 9.0975, 1.555), (0.15, 0.001, 0.13), (0.36, 0.36, 0.36, 1.0))
+    for k, tx in enumerate((0.36, 0.54)):
+        make_box(f"Alcove_Flyer_Tape_{k}", (tx, 9.0972, 1.682), (0.045, 0.0012, 0.018), (0.84, 0.80, 0.62, 0.8))
     # The bench beside the building (the mother's)
     # at the building's west corner, west of door 0's swing (x -4.50)
     # — 2026-09-25: it stood across the door

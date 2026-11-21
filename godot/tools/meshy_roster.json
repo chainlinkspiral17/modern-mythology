@@ -30042,6 +30042,304 @@
       "inspect": true
     },
     {
+      "slug": "briar_falls_brochure_covered_bridges",
+      "kind": "art",
+      "name": "the COVERED BRIDGES OF YAMHILL COUNTY brochure in the Briar Falls rack",
+      "file": "briar_falls_brochure_covered_bridges.png",
+      "vol": [
+        2
+      ],
+      "keys": [
+        "briar_falls_brochure_covered_bridges"
+      ],
+      "tag": "picture · briar_falls · 0.22 x 0.3 m · 68 lines play here, 1 mention it",
+      "prompt": "Front cover of a tri-fold county tourist brochure standing in a rack at an old state-park rest stop in the Oregon coast range, tall narrow portrait (3:4). Title across the top in a plain bold serif: COVERED BRIDGES OF YAMHILL COUNTY. Under it one offset-printed colour photograph of a wooden covered bridge over a creek among firs and alders, its colours gone a little blue-green with age. Cheap coated paper, a soft crease across the middle from having been folded into a pocket and put back, a thumbed lower corner. Flat, straight-on, evenly lit, the cover only, no rack and no hands.",
+      "canon": [
+        {
+          "src": "godot/resources/scenes/vol2/vol2_bf_building.json",
+          "text": "COVERED BRIDGES OF YAMHILL COUNTY — three creased, two fresh."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-11-21, pass 446, written from the text) The top row of the rack (\"The brochures, top to bottom\"), one picture on its three slots. Canon gives the title and that three copies are creased; the bridge photograph and the paper are proposed. No date on it: the text gives the rack none.",
+      "art_cat": "PICTURE",
+      "score_lines": 68,
+      "score_mentions": 1,
+      "apply": [
+        {
+          "locale": "briar_falls",
+          "label": "Brochure",
+          "center": [
+            -0.405,
+            8.25,
+            1.72
+          ],
+          "size": [
+            0.22,
+            0.3
+          ],
+          "facing": "+x",
+          "hide": [
+            "Brochure_0_0"
+          ]
+        },
+        {
+          "locale": "briar_falls",
+          "label": "Brochure",
+          "center": [
+            -0.405,
+            8.55,
+            1.72
+          ],
+          "size": [
+            0.22,
+            0.3
+          ],
+          "facing": "+x",
+          "hide": [
+            "Brochure_0_1"
+          ]
+        },
+        {
+          "locale": "briar_falls",
+          "label": "Brochure",
+          "center": [
+            -0.405,
+            8.85,
+            1.72
+          ],
+          "size": [
+            0.22,
+            0.3
+          ],
+          "facing": "+x",
+          "hide": [
+            "Brochure_0_2"
+          ]
+        }
+      ],
+      "lettering": "COVERED BRIDGES OF YAMHILL COUNTY",
+      "aspect": "3:4"
+    },
+    {
+      "slug": "briar_falls_brochure_smolvud",
+      "kind": "art",
+      "name": "the SMOLVUD: THE TOWN AT THE EDGE OF THE WOOD brochure in the Briar Falls rack",
+      "file": "briar_falls_brochure_smolvud.png",
+      "vol": [
+        2
+      ],
+      "keys": [
+        "briar_falls_brochure_smolvud"
+      ],
+      "tag": "picture · briar_falls · 0.22 x 0.3 m · 68 lines play here, 2 mention it",
+      "prompt": "Front cover of a small-town tourist brochure, tall narrow portrait (3:4), printed in one colour only: dark green ink on uncoated cream card stock. Title in green capitals: SMOLVUD, and under it, smaller, THE TOWN AT THE EDGE OF THE WOOD. Below the title a hand-drawn pen illustration of a single sanderling, a small plump shorebird with a short straight bill, standing on wet sand, drawn small and carefully by someone who loved the bird. A thin green rule for a border and nothing else. Soft corners, the stock a little yellowed. Flat, straight-on, evenly lit, the cover only, no rack and no hands.",
+      "canon": [
+        {
+          "src": "godot/resources/scenes/vol2/vol2_bf_building.json",
+          "text": "SMOLVUD: THE TOWN AT THE EDGE OF THE WOOD — green ink on cream stock, illustrated with a hand-drawn sanderling. The address on the back has been corrected in pen."
+        },
+        {
+          "src": "godot/resources/scenes/vol2/vol2_bf_picnic.json",
+          "text": "Below those: a small careful sanderling, the same shorebird the Smolvud brochure has on its cover. Whoever drew it loved the bird."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-11-21, pass 446, written from the text) The middle row of the rack, one picture on its three slots. Title, ink, stock and the sanderling are the text's; the corrected address is on the BACK and is not drawn.",
+      "art_cat": "PICTURE",
+      "score_lines": 68,
+      "score_mentions": 2,
+      "apply": [
+        {
+          "locale": "briar_falls",
+          "label": "Brochure",
+          "center": [
+            -0.405,
+            8.25,
+            1.3
+          ],
+          "size": [
+            0.22,
+            0.3
+          ],
+          "facing": "+x",
+          "hide": [
+            "Brochure_1_0"
+          ]
+        },
+        {
+          "locale": "briar_falls",
+          "label": "Brochure",
+          "center": [
+            -0.405,
+            8.55,
+            1.3
+          ],
+          "size": [
+            0.22,
+            0.3
+          ],
+          "facing": "+x",
+          "hide": [
+            "Brochure_1_1"
+          ]
+        },
+        {
+          "locale": "briar_falls",
+          "label": "Brochure",
+          "center": [
+            -0.405,
+            8.85,
+            1.3
+          ],
+          "size": [
+            0.22,
+            0.3
+          ],
+          "facing": "+x",
+          "hide": [
+            "Brochure_1_2"
+          ]
+        }
+      ],
+      "lettering": "SMOLVUD · THE TOWN AT THE EDGE OF THE WOOD",
+      "aspect": "3:4"
+    },
+    {
+      "slug": "briar_falls_brochure_missing_link",
+      "kind": "art",
+      "name": "THE MISSING LINK brochure in the Briar Falls rack",
+      "file": "briar_falls_brochure_missing_link.png",
+      "vol": [
+        2
+      ],
+      "keys": [
+        "briar_falls_brochure_missing_link"
+      ],
+      "tag": "picture · briar_falls · 0.22 x 0.3 m · 68 lines play here, 3 mention it",
+      "prompt": "Front cover of a roadside diner's own brochure, tall narrow portrait (3:4), cheaply printed on cream paper (about RGB 0.88/0.84/0.72) in brick red and black. Across the top in hand-lettered sign-painter capitals: THE MISSING LINK. Under it, small and in lower case: eat, drink, wait. The rest of the cover is almost empty: a plain line drawing of a diner coffee cup on a saucer, and a great deal of cream paper. No address, no telephone number, no hours, no map. A slightly crooked print, soft corners. Flat, straight-on, evenly lit, the cover only, no rack and no hands.",
+      "canon": [
+        {
+          "src": "godot/resources/scenes/vol2/vol2_bf_building.json",
+          "text": "THE MISSING LINK — eat, drink, wait. A diner you have not been to. The hand-printed map on the back shows a bus depot apron and a single dotted line that does not end. Underneath, in different ink: Shillelagh stops daily. Hours of operation: Yes."
+        },
+        {
+          "src": "godot/resources/scenes/vol2/vol2_bf_lot.json",
+          "text": "She is folding the Missing Link brochure into a small careful square, the way you fold something you are going to put in a sock drawer and find seven years later and not throw out."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-11-21, pass 446, written from the text) The bottom row of the rack, one picture on its three slots; the one the tween sister folds (bf_lot, bf_end). Title and \"eat, drink, wait\" are the text's; the map and \"Shillelagh stops daily. Hours of operation: Yes.\" are on the BACK and are not drawn. The coffee cup is proposed. No Sasquatch: the diner's other roster signs carry one, and no scene text mentions it (a knot for Andy in the roadmap). Cream and brick red follow missing_link_exterior_sign_1.",
+      "art_cat": "PICTURE",
+      "score_lines": 68,
+      "score_mentions": 3,
+      "apply": [
+        {
+          "locale": "briar_falls",
+          "label": "Brochure",
+          "center": [
+            -0.405,
+            8.25,
+            0.88
+          ],
+          "size": [
+            0.22,
+            0.3
+          ],
+          "facing": "+x",
+          "hide": [
+            "Brochure_2_0"
+          ]
+        },
+        {
+          "locale": "briar_falls",
+          "label": "Brochure",
+          "center": [
+            -0.405,
+            8.55,
+            0.88
+          ],
+          "size": [
+            0.22,
+            0.3
+          ],
+          "facing": "+x",
+          "hide": [
+            "Brochure_2_1"
+          ]
+        },
+        {
+          "locale": "briar_falls",
+          "label": "Brochure",
+          "center": [
+            -0.405,
+            8.85,
+            0.88
+          ],
+          "size": [
+            0.22,
+            0.3
+          ],
+          "facing": "+x",
+          "hide": [
+            "Brochure_2_2"
+          ]
+        }
+      ],
+      "lettering": "THE MISSING LINK · eat, drink, wait.",
+      "aspect": "3:4"
+    },
+    {
+      "slug": "briar_falls_alcove_flyer",
+      "kind": "art",
+      "name": "the HAVE YOU SEEN THIS MAN flyer taped inside the Briar Falls alcove",
+      "file": "briar_falls_alcove_flyer.png",
+      "vol": [
+        2
+      ],
+      "keys": [
+        "briar_falls_alcove_flyer"
+      ],
+      "tag": "picture · briar_falls · 0.22 x 0.28 m · 68 lines play here, 2 mention it",
+      "prompt": "A missing-person flyer photocopied on plain letter paper, portrait (about 3:4), with no border. At the top in heavy black capitals: HAVE YOU SEEN THIS MAN. Under it a high-contrast photocopy of a snapshot: a young man in a trench coat sitting on a bench at what looks like a bus depot, the copier having blown his face out to little more than a pale shape. Under the photograph, typewritten: LAST SEEN: rain. and CONTACT NATE D. followed by a telephone number the copier has half eaten, and a date smeared past reading. Copier streaks, toner speckle, a damp ripple in the paper, a strip of yellowed tape across each top corner. Flat, straight-on, evenly lit.",
+      "canon": [
+        {
+          "src": "godot/resources/scenes/vol2/vol2_bf_building.json",
+          "text": "A flyer, taped to the inside of the alcove, no border, just a photocopied face: HAVE YOU SEEN THIS MAN. Underneath, a young man in a trench coat at what appears to be a bus depot bench."
+        },
+        {
+          "src": "godot/resources/scenes/vol2/vol2_bf_building.json",
+          "text": "The flyer says CONTACT NATE D. and a phone number. The flyer says LAST SEEN: rain. The date is illegible."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-11-21, pass 446, written from the text) New stand-in Alcove_Flyer on the alcove's back wall at eye height (the set had no flyer). Every word on it is the text's; the number is left unreadable because the text gives none.",
+      "art_cat": "PICTURE",
+      "score_lines": 68,
+      "score_mentions": 2,
+      "apply": [
+        {
+          "locale": "briar_falls",
+          "label": "Alcove_Flyer",
+          "center": [
+            0.45,
+            9.098,
+            1.55
+          ],
+          "size": [
+            0.216,
+            0.279
+          ],
+          "facing": "-y",
+          "hide": [
+            "Alcove_Flyer"
+          ]
+        }
+      ],
+      "lettering": "HAVE YOU SEEN THIS MAN · LAST SEEN: rain · CONTACT NATE D.",
+      "aspect": "3:4"
+    },
+    {
       "slug": "nexcorp_fueling_station_canopy_logo",
       "kind": "art",
       "name": "the NexCorp logo on the fuel canopy fascia",

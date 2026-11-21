@@ -158,6 +158,35 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-21 · the gates pass a frame for reasons the line does not share (passes 439–446)
+
+- **What happened:** eight playtest batches (about 120 random lines, read by
+  render) found a broken frame in most batches, each one clean on every gate:
+  the pizza party's `insert plate` aimed dead-on at a DIFFERENT plate pile
+  4 m off behind a pizza (the aim gate matched the name); Miller's `insert
+  phone` framed his other phone; the video store's `insert counter` framed
+  the counter's front panel when the line's subject was the tape ON it; the
+  Briar Falls list of brochures played over a frame 76° off their faces
+  because the cue named the alcove; vol7 ch8 opened on black from a load
+  because its first lines precede its first bg node.
+- **The rule:** a cue word is matched by name, and the line means one
+  instance, one object, one face. When reading a frame ask what the LINE is
+  about, then check the cue names that thing and the marker stands where
+  that instance is. New standing gates from the batch: EDGE-ON (readable
+  plates, now brochures too), `partition_window_audit`, `scene_open_bg_audit`
+  (a scene whose lines precede its bg names a `bg_in`).
+- **Also:** read the text for a list before dressing a prop — the rack's
+  three titles and the flyer were in the scene all along. A translucent
+  pane in front of a picture is COVER to hero_art (37 %); keep clear plastic
+  to a lip. And when a frame stays flat after its light is fixed, the
+  chapter's GRADE may be the limiter (Jiggles' cabinet under silent_film):
+  a light that changes nothing in the render is removed, not kept.
+- **And the text box is the director's job:** VnDirector tilts every insert
+  so its marker's centre sits 36 % from the top (INSERT_CENTER), clear of
+  the reading box. Aim the marker at the subject's centre and choose the
+  lens so the subject fits ~58 % of the frame's height (letterbox above,
+  box below). Two hand-tilted tries at the brochure rack each lost a row.
+
 ### 2026-11-18 · in line and unblocked is not seen (pass 438)
 
 - **What happened:** Elicia's plaster insert stood 5 cm off the wall looking

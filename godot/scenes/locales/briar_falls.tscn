@@ -335,10 +335,22 @@ script = ExtResource("14_dbgm")
 ; (pass 445) "The tween sister is at the brochure rack": from inside the alcove,
 ; across to the rack on its west wall — it stood in line with the rack 2.3 m up
 ; outside the alcove, the brochures edge-on and the frame a dark wall
+; (pass 446) from the alcove's mouth, level with the rack's middle and 38 degrees
+; off its face, wide enough that all three rows stand in the clear picture
+; (the letterbox above, the text box below). Aimed at the rack's CENTRE: the
+; director lifts every insert over the text box itself (INSERT_CENTER), and two
+; hand-tilted tries each lost a row to it.
 [node name="shot_insert_brochure" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.85, 1.5, -8.2)
-rotation = Vector3(-0.1134, 1.3016, 0.0)
-metadata/fov = 40.0
+position = Vector3(0.95, 1.30, -7.50)
+rotation = Vector3(0.0, 0.9115, 0.0)
+metadata/fov = 66.0
+
+; (pass 446) "A flyer, taped to the inside of the alcove ... HAVE YOU SEEN THIS
+; MAN": close on the letter sheet on the alcove's back wall
+[node name="shot_insert_flyer" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.38, 1.55, -7.85)
+rotation = Vector3(0.0, -0.0560, 0.0)
+metadata/fov = 30.0
 
 ; (2026-11-02) "The pay phone does not ring": from the alcove's mouth to the phone on the front wall
 [node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]

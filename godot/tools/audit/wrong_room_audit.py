@@ -82,6 +82,8 @@ KEPT_INSERT = {
     ("graustark_ruins", "shot_insert_sinkhole"): "the sinkhole, across the ruins",
     ("graustark_ruins_hermit", "shot_insert_sinkhole"): "the sinkhole, across the ruins (the hermit's twin, pass 441)",
     ("graustark_chalk_wall", "shot_wide_threshold"): "the shotgun house's threshold, from the wall",
+    # (pass 446) the alcove IS the building's east end ("A brochure rack just inside the alcove")
+    ("briar_falls_building", "shot_insert_flyer"): "the flyer taped inside the same alcove",
     ("graustark_cottage", "shot_insert_herbs"): "Joanna's herb patch outside",
     ("highway_101", "shot_insert_marker"): "the mile marker up the road",
     ("new_auburn_cedar_route", "shot_insert_cypress"): "the Cypress's sign, passed on the ride",
