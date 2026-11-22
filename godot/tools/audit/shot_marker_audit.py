@@ -134,7 +134,9 @@ EXCLUDE = {
     # (2026-11-04) the Frog is a speaker (the VN's portrait, out of the set
     # since pass 292); the Frog Knows Best shop across town is not him
     "frog": ["shop"],
-    "window": ["car", "truck", "van", "cab"],
+    # (pass 450) a window's furniture is not the window: WinChair, WinTable
+    # (the Kwik Stop's "tables by the window"), an oven's window, a news rack's
+    "window": ["car", "truck", "van", "cab", "chair", "table", "oven", "rack", "dial"],
     "photograph": ["door", "window"],
     "phone": ["booth"],
     "cooler": ["novelty", "souvenir", "toy"],
@@ -186,7 +188,9 @@ SYNONYMS = {
     "lot": ["car_peugeot"],
     "crow": ["crow", "bird", "corvid"],
     "notebook": ["notebook", "note", "journal", "ledger"],
-    "window": ["window", "win_", "sash", "pane"],
+    # ("win_" is a name PART — Win_LR, Facade_LitWin — never a substring:
+    # marker_aim_audit.matches_for, pass 450)
+    "window": ["window", "win_", "sash", "pane", "windshield", "windscreen"],
     "tide_pool": ["tide", "pool", "anemone"],
     # (2026-11-11, pass 343) the New Orleans office: the warehouse a storey down
     # through the lookout (the cypress beam is its centre), Jimmy's window unit

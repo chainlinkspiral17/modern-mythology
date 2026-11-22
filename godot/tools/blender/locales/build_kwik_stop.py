@@ -2524,7 +2524,12 @@ def build_baseboard_quarter_round():
 def build_soda_bottle_pyramid():
     # 2L bottle pyramid on a foreground end-cap — replaces a generic
     # cardboard pyramid with proper cylindrical bottle stack.
-    bx, by = -2.40, 1.60      # (2026-10-07: 0.40 m off aisle 0's face at -1.40, 2.60 — the entry zone, clear all round)
+    # (2026-10-07: 0.40 m off aisle 0's face at -1.40, 2.60 — moved to -2.40, 1.60, "the entry zone, clear
+    # all round".) (pass 450) It was not: that is the north chair of the third window table (WinChair_2_1,
+    # x -2.99..-2.61, y 1.36..1.74) — a chair inside a soda display, and the display between every camera
+    # and "the table by the window" where vol 6 ch15 sits Mark and Lucy. Against the wall pier between
+    # the door and the west window now, its back to the wall, the chairs 0.24 m clear of its end.
+    bx, by = -1.95, 0.32
     base_z = 0.40
     # the riser the bottom tier stands on (2026-09-22: the pyramid
     # began 25 cm above the floor)
@@ -3153,6 +3158,53 @@ def _peugeot_fades(prefix, cx, cy, z0):
         make_box(f"{prefix}_Fade_{fi}", (fx, fy, z0 + fz), (fw, fl, 0.004), COL_PEUGEOT_FADE)
 
 
+def build_window_table_2026_11():
+    """MARK AND LUCY'S TABLE BY THE WINDOW (vol 6 ch15; pass 450, 2026-11-22).
+    "Mark comes in a minute later. He sits across from Lucy. He sets the two
+    water bottles on the table." · "They are sitting across from each other
+    with the two bottles of water between them and Lucy is fanning herself
+    with the brochure" · "Jen looks at the table by the window. The two
+    empty water bottles are on the table. The brochure-fan is on the table.
+    Mark and Lucy are gone." · "The brochure is for a national park she has
+    never been to: the Channel Islands ... on the front, a photograph of a
+    small sailboat in an inlet at sunset." · "She clears the water bottles.
+    She leaves the brochure where it was."
+
+    The table had nothing on it in any view, and its close-up (`insert
+    window`) had been turned 38 degrees down onto the chair backs. On
+    WinTable_2 — the one nearest the door, which Sam can see from the
+    counter — in the views from the hood going up to her lunch there
+    afterwards (VIEW_GROUPS ks_htda: hood, tow, towed, after).
+
+    Honest gap: the bottles stand on the table from the hood view's first
+    line (n43); Mark sets them down at n131. A view cannot change its
+    dressing without loading the set again.
+
+    Draft N+1: the six twenties Sam sets beside the bottles (n231-); the
+    brochure's inside back panel, Lucy's pencilled expenses (n326), as a
+    second picture; the bottles gone and the brochure alone after n339.
+    """
+    from _props.view_tags import Views
+    V = Views("ks", {"h": "kwik_stop_hood", "t": "kwik_stop_tow", "d": "kwik_stop_towed", "a": "kwik_stop_after"})
+    tag = V.tag("htda")
+    tx, ty, top = -2.80, 1.05, 0.76
+    water = (0.78, 0.88, 0.94, 0.55)
+    for bi, (dx, dy) in enumerate(((-0.07, -0.06), (0.06, 0.07))):
+        bx, by = tx + dx, ty + dy
+        make_cyl(f"ML_Water_Bottle_{bi}" + tag, (bx, by, top + 0.085), 0.031, 0.170, water, segments=12)
+        make_cyl(f"ML_Water_Bottle_{bi}_Shoulder" + tag, (bx, by, top + 0.185), 0.022, 0.030, water, segments=12)
+        make_cyl(f"ML_Water_Bottle_{bi}_Cap" + tag, (bx, by, top + 0.210), 0.014, 0.020, (0.92, 0.92, 0.90, 1.0), segments=10)
+        make_cyl(f"ML_Water_Bottle_{bi}_Label" + tag, (bx, by, top + 0.105), 0.0318, 0.055, (0.22, 0.44, 0.72, 1.0), segments=12)
+    # the brochure, folded in three and fanned with: flat on the table by
+    # Lucy's (south) chair, its cover up — a panel 10 x 22 cm
+    make_box("ML_Brochure" + tag, (tx + 0.20, ty - 0.14, top + 0.003), (0.100, 0.220, 0.006), (0.93, 0.91, 0.84, 1.0))
+    # the cover photograph's stand-in: "a small sailboat in an inlet at sunset"
+    make_box("ML_Brochure_Photo" + tag, (tx + 0.20, ty - 0.11, top + 0.0065), (0.086, 0.120, 0.001), (0.88, 0.52, 0.30, 1.0))
+    make_box("ML_Brochure_Photo_Water" + tag, (tx + 0.20, ty - 0.145, top + 0.0072), (0.086, 0.046, 0.0006), (0.26, 0.38, 0.52, 1.0))
+    make_box("ML_Brochure_Title" + tag, (tx + 0.20, ty - 0.215, top + 0.0065), (0.076, 0.022, 0.001), (0.20, 0.30, 0.26, 1.0))
+    V.check()
+
+
 def build_red_peugeot():
     """THE RED PEUGEOT (vol6 ch15). "The car is small. The car is European.
     The car is ... red, in the way of a car that has been red for forty
@@ -3301,6 +3353,7 @@ def main():
     build_hero_props_2026_09()
     build_forecourt_world()
     build_red_peugeot()
+    build_window_table_2026_11()
     export_glb()
 
 

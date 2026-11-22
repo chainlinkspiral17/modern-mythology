@@ -24557,6 +24557,61 @@
       "inspect": true
     },
     {
+      "slug": "kwik_stop_brochure_channel_islands",
+      "kind": "art",
+      "name": "Lucy's Channel Islands brochure on the table by the window (Kwik Stop)",
+      "file": "kwik_stop_brochure_channel_islands.png",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "kwik_stop_brochure_channel_islands"
+      ],
+      "tag": "picture · kwik_stop · 0.1 x 0.22 m · 94 lines play here, 11 mention it",
+      "prompt": "Front cover panel of a national park visitor brochure folded in three, a tall narrow portrait (about 4:9). A dark band across the top with the title in white capitals: CHANNEL ISLANDS, and smaller under it, NATIONAL PARK · CALIFORNIA. Below the band, filling the rest of the panel, one photograph: a small sailboat at anchor in a rocky inlet at sunset, the water still, the sky orange going to rose, the cliffs dark on either side. Printed on thin coated paper that has been folded and unfolded many times and used as a fan: soft vertical creases, the corners a little worn. Flat, straight-on, evenly lit, the cover panel only, no table and no hands.",
+      "canon": [
+        {
+          "src": "godot/resources/scenes/vol6/vol6_ch15_kwik_stop.json",
+          "text": "The brochure is for a national park she has never been to: the Channel Islands, off the coast of California. The brochure has, on the front, a photograph of a small sailboat in an inlet at sunset."
+        },
+        {
+          "src": "godot/resources/scenes/vol6/vol6_ch15_kwik_stop.json",
+          "text": "Jen looks at the table by the window. The two empty water bottles are on the table. The brochure-fan is on the table. Mark and Lucy are gone."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-11-22, pass 450, written from the text) Lies cover-up on Mark and Lucy's table (WinTable_2) in the views from the hood going up to Sam's lunch there (kwik_stop_hood, _tow, _towed, _after). The park, the sailboat, the inlet and the sunset are the text's; the title band is how such a brochure is laid out and is not in the text. The inside back panel with Lucy's pencilled expenses (n326) is a later picture.",
+      "art_cat": "PICTURE",
+      "score_lines": 94,
+      "score_mentions": 11,
+      "apply": [
+        {
+          "locale": "kwik_stop",
+          "label": "ML_Brochure",
+          "center": [
+            -2.6,
+            0.91,
+            0.7672
+          ],
+          "size": [
+            0.1,
+            0.22
+          ],
+          "facing": "up",
+          "hide": [
+            "ML_Brochure_Photo",
+            "ML_Brochure_Title"
+          ],
+          "not_presets": [
+            "kwik_stop_godseye",
+            "kwik_stop_interior",
+            "kwik_stop_peugeot",
+            "kwik_stop_morning"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "graustark_billboard_1",
       "kind": "art",
       "name": "the billboard on the far shore facing the river",

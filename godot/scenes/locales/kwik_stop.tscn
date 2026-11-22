@@ -473,9 +473,11 @@ metadata/fov = 42.0
 ; insert: the south glass, the lot beyond (ch4)
 ; (2026-10-07: it was pitched 56 deg down into the tables; the wall is
 ; cut now — out through the west picture window, decals and the lot)
+; (pass 450) it was pitched 38 degrees down again, at the chair backs: the aim gate's "win_" matched WinChair
+; and the re-aim tool followed it. Square to the west picture window from the aisle, the lot beyond it.
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-3.000, 1.550, -3.000)
-rotation = Vector3(-0.6553, 3.1040, 0.0)
+position = Vector3(-3.500, 1.500, -2.750)
+rotation = Vector3(0.0190, 3.1416, 0.0)
 metadata/fov = 50.0
 
 ; insert: the NexCorp van, engine running, facing her (ch15)
@@ -510,10 +512,15 @@ metadata/fov = 28.0
 
 ; insert (hood): from the window tables, seated, under the lottery decal — the car
 ; out in its corner with its hood up (ch15 "Lucy goes to the table by the window")
-[node name="shot_insert_window__kwik_stop_hood" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-2.950, 1.180, -2.600)
-rotation = Vector3(-0.6848, -2.9958, 0.0)
-metadata/fov = 36.0
+; (pass 450) "The hood ... has a small steady plume of steam coming out of it": through the west half of the
+; window at the car in its corner (it too had been turned down onto the chairs). The lines about THE TABLE by the
+; window cue `insert table`.
+; from the second table's window chair, seated, close to the glass: below the decals (the lottery's, the
+; cigarettes') and left of the propane cage on the walk outside, which a first try from the aisle looked into
+[node name="shot_insert_steam__kwik_stop_hood" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.500, 1.200, -0.620)
+rotation = Vector3(0.0341, 2.6937, 0.0)
+metadata/fov = 22.0
 
 ; HERO PROPS (2026-10-27): the red Peugeot's morning, one per state (each node's
 ; suffix drops it, with its stand-in group, in every other preset): the car on the
@@ -613,9 +620,23 @@ metadata/fov = 45.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_table__kwik_stop_hood" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.606, 0.825, -1.421)
-rotation = Vector3(-0.0679, 1.8721, 0.0)
-metadata/fov = 35.0
+position = Vector3(-1.450, 1.100, -1.850)
+rotation = Vector3(-0.2000, 2.1058, 0.0)
+metadata/fov = 46.0
+
+; (pass 450) THE TABLE BY THE WINDOW, Mark and Lucy's (WinTable_2): from the door's side along the row, the two
+; chairs in profile, the bottles between them, the window and the lot behind. It stood at table height, edge-on.
+; The same frame after they have gone (kwik_stop_after).
+[node name="shot_insert_table__kwik_stop_after" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.450, 1.100, -1.850)
+rotation = Vector3(-0.2000, 2.1058, 0.0)
+metadata/fov = 46.0
+
+; (pass 450) "The brochure is for a national park she has never been to: the Channel Islands" — its cover, on the table
+[node name="shot_insert_brochure__kwik_stop_after" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.300, 1.300, -1.450)
+rotation = Vector3(-0.7156, 2.6345, 0.0)
+metadata/fov = 32.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_lottery__kwik_stop_hood" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -628,6 +649,12 @@ metadata/fov = 35.0
 position = Vector3(5.554, 1.563, -3.223)
 rotation = Vector3(-0.2618, 2.2540, 0.0)
 metadata/fov = 35.0
+
+; (view_twin) kwik_stop_interior's frame in kwik_stop_after
+[node name="shot_insert_bottles__kwik_stop_after" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.750, 1.050, -1.600)
+rotation = Vector3(-0.1590, 2.0534, 0.0)
+metadata/fov = 28.0
 
 ; (pass 388) "She gets a Post-it from the small pad by the register" (vol 6 ch15): from Sam's side, the pad and the register's flank
 [node name="shot_insert_postit__kwik_stop_hood" type="Marker3D" parent="." groups=["vn_shot"]]

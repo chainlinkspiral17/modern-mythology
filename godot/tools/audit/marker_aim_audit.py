@@ -82,6 +82,9 @@ KNOWN_UNRESOLVED = {
     ("caldwell_radio_room_night", "shot_insert_hands"): "ch2: her grandmother's hand on hers, on the bed in the dark — the cue reads the bed",
     ("vehicle_cab", "shot_insert_five__vehicle_cab_altima"): "ch16 Dawn: \"for the first time in five weeks\" — an abstract cue; the marker reads the Altima's dash",
     ("vehicle_cab", "shot_insert_five__vehicle_cab_altima_night"): "ch16 Dawn: \"for the first time in five weeks\" — an abstract cue; the marker reads the Altima's dash",
+    # (pass 450) it "aimed" at the Peugeot only while view_tags could not read the builder's group
+    # table and took the car for part of every view; the car is on the truck here
+    ("kwik_stop", "shot_insert_lot__kwik_stop_towed"): "vol6 ch15: after the tow the frame holds the Peugeot's EMPTY corner of the lot — the cue reads the absence",
 }
 
 MARKER_RE = re.compile(
@@ -194,7 +197,13 @@ def matches_for(cue_id, geo):
     # Single words match name PARTS exactly ("crow" must not match
     # "Crown"); multi-word stems (pot_roast) match the flattened name.
     words = {s for s in stems if "_" not in s}
-    flats = {s.replace("_", "") for s in stems if "_" in s}
+    # (pass 450) a stem that ENDS in "_" names a name PART: "win_" is Win_LR,
+    # Win_W_FrameB, Facade_LitWin. Flattened to "win" and matched as a
+    # substring it was also WinChair, Twine_Knot, WB_Drawing — the Kwik
+    # Stop's two window inserts and the bakery's were re-aimed 38 degrees
+    # down onto chair backs by it, and passed.
+    words |= {s[:-1] for s in stems if s.endswith("_") and "_" not in s[:-1]}
+    flats = {s.replace("_", "") for s in stems if "_" in s and not s.endswith("_")}
     hits = []
     excl = [e for e in EXCLUDE.get(cue_id, [])]
     for name, pos in geo:

@@ -361,6 +361,7 @@
   "kowalski_kitchen_night": "shot_closeup_person_b: void 3%→7%, sky 9%→25%",
   "kwik_stop_hood": "shot_establish_b: void 0%→0%, sky 0%→28%",
   "kwik_stop_interior": "shot_establish_b: void 0%→0%, sky 0%→28%",
+  "kwik_stop_after": "shot_establish_b: void 0%→0%, sky 0%→28%",
   "kwik_stop_morning": "shot_establish_b: void 0%→0%, sky 0%→28%",
   "kwik_stop_peugeot": "shot_establish_b: void 0%→0%, sky 0%→28%",
   "kwik_stop_tow": "shot_establish_b: void 0%→0%, sky 0%→28%",

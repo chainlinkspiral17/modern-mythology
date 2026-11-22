@@ -33,6 +33,7 @@ does the copy the same way every time:
      until pass 400 (hero_art_placement_audit DUPLICATE). Byte-exact.
   8. A copied frame already judged by render (half_hidden_baseline.json
      `judged`) is judged in TO too: it is the same frame.
+  9. Background3D.VIEW_GROUPS: every group FROM is in gains TO (pass 450).
 
     python3 godot/tools/view_twin.py FROM TO --scenes vol7/vol7_ch13_marina.json:0 \
         [--note "why this view exists"] [--dry]
@@ -107,6 +108,22 @@ def main():
     twin = blk.replace('\t"%s": {\n' % FROM, '\t"%s": {\n%s' % (TO, note), 1)
     b3d = b3d[:m.end()] + twin + b3d[m.end():]
     log = ["preset %s → %s (%s)" % (FROM, TO, scene)]
+
+    # (pass 450) VIEW_GROUPS: a part tagged with a GROUP that FROM is in is in
+    # the twin too — the Kwik Stop's office clock (`__ks_pm`) was gone from
+    # kwik_stop_after until the group was edited by hand.
+    gm = re.search(r"const VIEW_GROUPS := \{\n(.*?)\n\}", b3d, re.S)
+    if gm:
+        body = gm.group(1)
+
+        def _join(m2):
+            views = re.findall(r'"(\w+)"', m2.group(2))
+            if FROM in views and TO not in views:
+                log.append("   group %s gains %s" % (m2.group(1), TO))
+                return m2.group(0)[:-1] + ', "%s"]' % TO
+            return m2.group(0)
+        body2 = re.sub(r'"(\w+)":\s*\[([^\]]*)\]', _join, body)
+        b3d = b3d[:gm.start(1)] + body2 + b3d[gm.end(1):]
 
     # the moved segments, and the inserts they cue
     moves, cued = [], set()

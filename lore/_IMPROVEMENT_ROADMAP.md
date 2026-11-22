@@ -3835,6 +3835,61 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-22 · pass 450: the Kwik Stop's table by the window; "win" is not a window.**
+Playtest 450a (21 random lines): vol 6 ch15 "They sit, the two of them, at
+the table by the window." showed a chair back, a shelf of soda bottles and
+floor. The Kwik Stop is a model chapter.
+- CAUSE, a gate's word list: the aim gate's synonym for "window" was `win_`
+  (meant for parts named Win_LR, Facade_LitWin), flattened to "win" and
+  matched as a SUBSTRING — WinChair, WinTable, Twine_Knot, WB_Drawing. The
+  re-aim tool followed it: three window inserts had been turned 28-50
+  degrees down onto furniture (Kwik Stop's plain one and its hood view's,
+  Hans's bakery kitchen's) and passed. A stem ending in "_" is a name PART
+  now; a window's chair, table, oven, rack and dial are excluded;
+  windshields are named. marker_aim reported exactly those three.
+- A SECOND gate gap found on the way: view_tags did not read a builder's
+  TABLE of view groups (`("TowTruck__kwik_stop_tow__kwik_stop_towed",
+  ("TowTruck_",))` — the Kwik Stop's Peugeot states, Meadowlark's curb
+  cars), so every gate took the tow truck, the towed car and the steam for
+  parts of every view. It reads the table now; a prefix another set's
+  builder also uses ("Home_", "Corolla", "Ben_Truck") counts only when the
+  caller names the set. `shot_insert_lot__kwik_stop_towed` had "aimed" at a
+  car that is on the truck by then: recorded as the empty corner it frames.
+- A LAYOUT fault behind the frame: the soda pyramid stood IN the third
+  window table's north chair (moved there in October as "clear all round").
+  Against the wall pier between the door and the window now.
+- THE TABLE (build_window_table_2026_11, VIEW_GROUPS ks_htda): Mark and
+  Lucy's two water bottles and her brochure on WinTable_2, in the hood, tow
+  and towed views and a new `kwik_stop_after` (the plain view for n274-:
+  "The two empty water bottles are on the table. The brochure-fan is on the
+  table. Mark and Lucy are gone.").
+- FRAMES, read by render: `insert table` (hood + after) from the door's side
+  along the row — the chairs in profile, the bottles between them, the
+  window and the lot behind; on n131 ("He sets the two water bottles on the
+  table"), n149, n290, n320. `insert steam` (n48 "The hood ... a small
+  steady plume of steam") from the second table's window chair, close to
+  the glass, under the decals and left of the propane cage: two tries from
+  the aisle looked into the cage. `insert brochure` (n322), `insert
+  bottles` (n339 "She clears the water bottles"). The plain `insert window`
+  looks out of the west picture window again (ch6 "She looks out the window
+  at the parking lot"); the bakery's at its sill and Hemlock (vol 7 ch15).
+- view_twin: a twin joins every VIEW_GROUP its original is in (the office
+  clock, tagged `__ks_pm`, was gone from kwik_stop_after).
+- ONE ART ENTRY for the user to generate (roster, byte-exact; placement
+  gate clean): kwik_stop_brochure_channel_islands — "on the front, a
+  photograph of a small sailboat in an inlet at sunset".
+- Honest gap: the bottles stand on the table from the hood view's first
+  line (n43); Mark sets them down at n131. No close-up shows the table
+  before n131 (n127's cue is gone); the wide sees them 9 m off. A view
+  cannot change its dressing without loading the set again.
+- Draft N+1: the six twenties beside the bottles (n231-); the brochure's
+  inside back panel with Lucy's pencilled expenses (n326); the bottles
+  cleared after n339. shot_marker_audit.object_exists still matches
+  synonyms as substrings of the builder's whole name list (a blind-cue
+  check that "win" passes anywhere): tighten it to name parts and read what
+  falls out. THE TOWN MONTAGES (pass 449's list) are still next.
+- Deck must REBUILD kwik_stop.
+
 **2026-11-22 · pass 449: three more dreams cut to their places; a gate for the class.**
 Pass 447's rule ("a dream is a place") read back over the corpus: three
 more of Diego's dreams played over the room he slept in. All voiced; all

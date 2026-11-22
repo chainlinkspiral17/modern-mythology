@@ -44,7 +44,10 @@ const ArtMaskScript := preload("res://scripts/vn/ArtMask.gd")
 ## part in EVERY view); tools/audit/view_tags.py reads it for the gates.
 const VIEW_GROUPS := {
 	# (pass 432) every Kwik Stop view but ch6's morning: the office clock at eight oh-two
-	"ks_pm": ["kwik_stop_godseye", "kwik_stop_interior", "kwik_stop_peugeot", "kwik_stop_hood", "kwik_stop_tow", "kwik_stop_towed"],
+	"ks_pm": ["kwik_stop_godseye", "kwik_stop_interior", "kwik_stop_peugeot", "kwik_stop_hood", "kwik_stop_tow", "kwik_stop_towed", "kwik_stop_after"],
+	# (pass 450) vol 6 ch15: Mark and Lucy's table by the window — the two water bottles and her brochure,
+	# from the hood going up to Sam's lunch at that table after they have gone
+	"ks_htda": ["kwik_stop_hood", "kwik_stop_tow", "kwik_stop_towed", "kwik_stop_after"],
 	# (pass 427) the all-night drugstore (vol1 ch11): the waterfront and the reception desk, and the stretch
 	# with the gray cat out of her carrier
 	"purg": ["drugstore_purgatory", "drugstore_purgatory_cat"],
@@ -6765,6 +6768,41 @@ const CAMERA_PRESETS := {
 		"suppress_input": true,
 	},
 	"kwik_stop_interior": {
+		"scene": "res://scenes/locales/kwik_stop.tscn",
+		"requires_glb": "res://assets/3d/locales/kwik_stop.glb",
+		# SAM'S POV — behind the east-wall counter looking west into
+		# the store. Counter is at Blender X=+5, Y∈[3,7]; Sam stands
+		# at X≈+5.5 (just east of counter), Y≈+5 (mid-run), 1.65m
+		# eye-level. Looking west (-X) sees: register edge in the
+		# near foreground, aisles running E-W down the middle, the
+		# coffee/slurpee station on the far west wall, and the front
+		# door at south-left framing in some streetlight.
+		# Counter front box spans Blender X∈[+4.5,+5.5] — camera must
+		# sit EAST of that edge (clerk-side aisle, X∈[+5.5,+6.0]) or
+		# we render from inside the counter geometry. Use +5.78 so
+		# we're firmly in Sam's stance band but still ~12cm from the
+		# east wall at +5.9 (WALL_THICK=0.20, wall centered at +6.0).
+		# Camera height 2.05m — Sam-on-a-rubber-mat eye level, lifted
+		# so she looks DOWN over the counter top (top at Z≈1.0)
+		# instead of having the counter-front face fill mid-frame
+		# (that was the "pink box" — counter formica catching warm
+		# ambient + saturation adjustment, reading as a flat panel).
+		# Pitch is positive-ish (+0.04 rad slight UP) so the gaze
+		# clears the counter top and lands on the aisles + west wall.
+		# Blender (+5.78, +5.0, 2.05) → Godot (+5.78, 2.05, -5.0).
+		# +90° Y rotation swings default -Z gaze to -X (west, into
+		# the store). (Right-hand rule around +Y: -Z → -X under +π/2.
+		# The diner_interior preset uses -π/2 because its "front
+		# door" actually faces +X-out; the kwik_stop east wall is a
+		# solid backing for Sam, so the camera looks the OTHER way.)
+		# RE-VANTAGED 2026-09-03: vantage_obstruction_audit --propose (the register edge filled a third of frame within 1 m)
+		"camera_origin": Vector3(5.28, 2.05, -3.00),
+		"camera_rotation": Vector3(0.04, 1.178, 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"kwik_stop_after": {
+		# AFTER (vol 6 ch15 n274-, pass 450): the store once Mark and Lucy have gone — 'The two empty water bottles are on the table. The brochure-fan is on the table.' The plain view with their table as they left it (ML_* parts).
 		"scene": "res://scenes/locales/kwik_stop.tscn",
 		"requires_glb": "res://assets/3d/locales/kwik_stop.glb",
 		# SAM'S POV — behind the east-wall counter looking west into

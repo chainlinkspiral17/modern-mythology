@@ -687,7 +687,7 @@ def _near_fraction_owned(origin_b, pitch, yaw, fov, boxes, subj):
 def _in_view(name, view):
     # (pass 374) the one rule, shared with the engine: tags and VIEW GROUPS
     import view_tags
-    own = view_tags.owners(name)
+    own = view_tags.owners(name, view_tags.scenes().get(view))
     return own is None or view in own
 
 

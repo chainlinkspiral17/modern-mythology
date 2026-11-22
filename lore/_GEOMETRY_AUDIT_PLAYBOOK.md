@@ -158,6 +158,37 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-22 · a gate's word list steers the tools that obey it (pass 450)
+
+- **What happened:** the Kwik Stop's "table by the window" close-up showed
+  a chair back and floor. Nobody aimed it there: the aim gate's synonym
+  for "window" was `win_`, matched as the substring "win", so WinChair was
+  "the window nearest the lens" and `marker_reaim --tight` turned three
+  window inserts 28-50 degrees down onto furniture — and the gate, reading
+  the same list, passed them. A hand note from October ("it was pitched 56
+  degrees down into the tables; the wall is cut now") had already fixed
+  this frame once; the tool undid it.
+- **Why:** a matcher that is too generous does not only miss faults, it
+  MAKES them, because the re-aim and seeding tools trust it. And its
+  errors are invisible to it by construction.
+- **Rule:** a synonym matches a name PART, never a substring; a stem that
+  ends in "_" says so. When a frame is wrong and its gate is green, read
+  what the gate thinks the subject is (`best_subject`) before touching the
+  marker — the answer here was a chair.
+- **Rule:** a gate must read every way a builder says "this part is in
+  these views". view_tags knew name tags, groups and one parent-empty
+  idiom; a TABLE of groups in two builders was unread, and every gate took
+  a tow truck for scenery in all seven Kwik Stop views. When a builder
+  invents a way to scope parts, the same pass teaches view_tags to read it.
+- **Rule:** a prefix is only a name inside its own set ("Home_" is cars at
+  home on Meadowlark and home plate at the ballfield): scope group
+  prefixes by set, and ignore the ambiguous ones when the set is unknown.
+- **Rule:** `marker_reaim.py <locale> --tight` re-aims EVERY insert in the
+  locale past the tight angle, not the one you were thinking of (it changed
+  three hand-judged bakery frames; `--help` is not a flag and ran the whole
+  corpus). Take the one rotation you wanted from its output and restore the
+  file.
+
 ### 2026-11-21 · the gates pass a frame for reasons the line does not share (passes 439–446)
 
 - **What happened:** eight playtest batches (about 120 random lines, read by

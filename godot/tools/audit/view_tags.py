@@ -14,7 +14,8 @@ belong to some of them only:
                                 object under (pass 390: the pharmacy's
                                 Purgatory dock, `Purg_*` under
                                 "Purgatory__drugstore_purgatory") — the
-                                prefix is in that empty's views
+                                prefix is in that empty's views; a builder's
+                                TABLE of such groups counts too (pass 450)
 
 Every gate that asks "is this part there?" asks here, so the engine's rule
 and the audits' are one rule:
@@ -35,6 +36,7 @@ GD = os.path.normpath(os.path.join(HERE, "..", "..", "scripts", "vn", "Backgroun
 LOCALES = os.path.normpath(os.path.join(HERE, "..", "blender", "locales"))
 _STATE = None
 _PARENTED = None
+_AMBIG = None
 
 
 def _parented():
@@ -52,7 +54,33 @@ def _parented():
                 pm = re.search(r'name\.startswith\("(\w+)"\)', tail)
                 if pm:
                     _PARENTED[pm.group(1)] = m.group(2)
+            # (pass 450) … or a TABLE of groups, `("<Name>__<tags>", ("<Prefix>", …))`
+            # (the Kwik Stop's PEUGEOT_GROUPS, Meadowlark's curb groups): first
+            # match wins in the builder, so the table's order is kept here. The
+            # gates took the tow truck for part of every Kwik Stop view until
+            # they read it — it "stood between the lens and" the Peugeot's steam
+            # an hour before it arrives.
+            for m in re.finditer(r'\(\s*"(\w+?)__(\w+)",\s*\(([^()]*)\)\s*\)', src):
+                for pf in re.findall(r'"(\w+)"', m.group(3)):
+                    _PARENTED.setdefault(pf, m.group(2))
     return _PARENTED
+
+
+def _ambiguous():
+    """Group prefixes that ANOTHER set's builder also names parts with
+    ("Home_" is Meadowlark's cars at home and the ballfield's Home_Plate;
+    "Corolla" is three sets'). Without the set in hand such a prefix says
+    nothing: owners(name) ignores it unless it is told the set."""
+    global _AMBIG
+    if _AMBIG is None:
+        import glob as _g
+        srcs = {p: open(p, encoding="utf-8").read() for p in _g.glob(os.path.join(LOCALES, "build_*.py"))}
+        _AMBIG = set()
+        for pf in _parented():
+            rx = re.compile(r'["\']' + re.escape(pf))
+            if sum(1 for src in srcs.values() if rx.search(src)) > 1:
+                _AMBIG.add(pf)
+    return _AMBIG
 
 
 def _load():
@@ -97,15 +125,25 @@ def scenes():
     return _load()[3]
 
 
-def owners(name):
+def owners(name, scene=None):
     """The views `name` is tagged for (groups expanded), or None when it
-    carries no view tag (it is in every view of its set)."""
+    carries no view tag (it is in every view of its set). `scene` is the
+    set the part is in (a .tscn name), when the caller knows it: a group
+    prefix shared with another set's builder counts only there."""
     ids, _strips, grp, _scene = _load()
     out = set()
     tags = name.split("__")[1:]
     if not tags:
         for pf, tg in _parented().items():
             if name.startswith(pf):
+                if scene is not None:
+                    tv = set()
+                    for part in tg.split("__"):
+                        tv.update(grp.get(part, [part]))
+                    if not any(_scene.get(v) == scene for v in tv):
+                        continue
+                elif pf in _ambiguous():
+                    continue
                 tags = tg.split("__")
                 break
     for part in tags:
@@ -117,7 +155,7 @@ def owners(name):
 
 
 def in_view(name, view):
-    own = owners(name)
+    own = owners(name, _load()[3].get(view))
     if own is not None and view not in own:
         return False
     return not any(name.startswith(pf) for pf in strips(view))
