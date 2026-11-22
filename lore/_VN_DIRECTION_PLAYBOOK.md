@@ -77,6 +77,7 @@ Directives lead a VN script line, square-bracketed:
                                without a node (pass 447). FIRST in the
                                text; `[view:preset fade]` names the
                                transition (cut / fade / dissolve / flash)
+                               — the music stays where it was (pass 451)
 
 `~` suffix = drift. Unknown marker/panel/spot/model/mood = silent
 no-op (fallback discipline — a script must never crash the reader).
@@ -361,6 +362,13 @@ stillness is the player's own camera.
   Reading the rule back over the corpus found three more (the stockroom,
   the kitchen, the Gas & Go at night); a rule found by one frame is a
   search to run before the pass closes.
+- **Montage (pass 451):** a run of lines that goes round the town a line
+  at a time ("Sam, at the Kwik Stop, is on shift. Ben is at football.") is
+  a montage: `[view:preset dissolve]` on each line, the room's own view on
+  the line that returns. Check each target view for another chapter's
+  dressing before using it (the Caldwell yard view carries a birthday
+  cake). The music does not follow an inline view: it is a cut of the
+  picture, not a change of place.
 - **Rule (tools):** one meaning, one reader. The tag went into the engine
   and 28 tools in the same pass, through one helper, with the reports
   compared before and after — a tag only the engine understood would have

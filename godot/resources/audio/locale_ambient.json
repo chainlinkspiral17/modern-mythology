@@ -765,6 +765,10 @@
       "bed": "assets/audio/bgm/vol6_ambient.wav",
       "gain": 0.72
     },
+    "meadowlark_circle_day": {
+      "bed": "assets/audio/bgm/vol6_ambient.wav",
+      "gain": 0.72
+    },
     "meadowlark_circle_night": {
       "bed": "assets/audio/bgm/vol6_ambient.wav",
       "gain": 0.72

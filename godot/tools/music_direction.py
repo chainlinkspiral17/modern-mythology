@@ -358,13 +358,8 @@ def simulate(sid, scene, direction, cat_by_src):
         elif t == 'cg':
             infer(dv('cg_intensity', 0.9), True)
         elif t in ('narrate', 'say', 'think'):
-            # (pass 447) a line that changes the room itself ([view:preset]):
-            # a place change for the music, as in MusicDirector.on_node
-            iv = IV.of(n)
-            if iv and not cue.get('track') and not has_bgm and reason == 'chapter':
-                lt = locale_track(direction, '3d:' + iv, vol)
-                if lt:
-                    tracks.append((lt, 'locale')); reason = 'locale'
+            # (pass 451) an inline view ([view:preset]) cuts the picture, not the
+            # music: no locale track, as in MusicDirector.on_node
             sc = text_score(str(n.get('text', '')), direction)
             if t == 'think':
                 sc += dv('think_offset', -0.1)
@@ -501,7 +496,7 @@ def report(direction, cat, sc):
         elif any(n.get('t') == 'bgm' for n in nodes):
             why = 'bgm directive'
         else:
-            for n in IV.nodes(nodes):
+            for n in nodes:      # bg NODES only: an inline view does not choose the music
                 if n.get('t') == 'bg' and n.get('src'):
                     m = direction['locales'].get(n['src']) or direction['locales_auto'].get(n['src'])
                     if m and (isinstance(m, str) or vol in m):

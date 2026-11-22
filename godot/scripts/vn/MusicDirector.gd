@@ -157,14 +157,11 @@ func on_node(idx: int, n: Dictionary) -> void:
 		"cg":
 			_infer(_d("cg_intensity", 0.9), "cg — reveal", true)
 		"narrate", "say", "think":
-			# (pass 447) a line that changes the room itself ([view:preset]
-			# first in its text) is a place change for the music too
-			var vt: String = str(n.get("text", ""))
-			if vt.begins_with("[view:") and not _cue.has("track") and not _scene_has_bgm:
-				var vsrc: String = "3d:" + vt.substr(6, vt.find("]") - 6).strip_edges().get_slice(" ", 0)
-				var vlt := _locale_track(vsrc)
-				if not _quiet and vlt != "" and _track_reason.begins_with("chapter"):
-					_play_track(vlt, false, "locale · " + vsrc)
+			# (pass 451) a line that changes the room itself ([view:preset]) is a
+			# cut of the PICTURE — a dream, a memory, "elsewhere in town" — and
+			# the music stays with the story: no locale track here. (Pass 447
+			# switched it, as for a bg node; a nine-line montage would have
+			# changed track nine times, and a dream is heard from the bed.)
 			var s := _text_score(str(n.get("text", "")))
 			if t == "think":
 				s += _d("think_offset", -0.1)

@@ -357,57 +357,57 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish~]Elsewhere in town, Diego, who had gotten home at eight thirty and had eaten eggs with his grandmother and had climbed into bed by nine, is asleep.",
+   "text": "[view:diego_bedroom dissolve][shot:establish~]Elsewhere in town, Diego, who had gotten home at eight thirty and had eaten eggs with his grandmother and had climbed into bed by nine, is asleep.",
    "voice": "assets/audio/voice/vol6_ch17_porch/071.mp3"
   },
   {
    "t": "narrate",
-   "text": "Sam, at the Kwik Stop, is on shift.",
+   "text": "[view:kwik_stop_interior dissolve]Sam, at the Kwik Stop, is on shift.",
    "voice": "assets/audio/voice/vol6_ch17_porch/072.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben is at football.",
+   "text": "[view:school_field_day dissolve]Ben is at football.",
    "voice": "assets/audio/voice/vol6_ch17_porch/073.mp3"
   },
   {
    "t": "narrate",
-   "text": "Maya is at the comic shop.",
+   "text": "[view:cosmic_comics_interior dissolve]Maya is at the comic shop.",
    "voice": "assets/audio/voice/vol6_ch17_porch/074.mp3"
   },
   {
    "t": "narrate",
-   "text": "Jesse, who is on the eleven-to-seven at the Pit Stop, is just now arriving.",
+   "text": "[view:pit_stop_interior dissolve]Jesse, who is on the eleven-to-seven at the Pit Stop, is just now arriving.",
    "voice": "assets/audio/voice/vol6_ch17_porch/075.mp3"
   },
   {
    "t": "narrate",
-   "text": "Linda, at her own porch, is watching the morning do its morning thing.",
+   "text": "[view:meadowlark_circle_day dissolve][shot:insert porch]Linda, at her own porch, is watching the morning do its morning thing.",
    "voice": "assets/audio/voice/vol6_ch17_porch/076.mp3"
   },
   {
    "t": "narrate",
-   "text": "Peggy, across the fence from Eileen's house, is canning.",
+   "text": "[view:kowalski_kitchen dissolve]Peggy, across the fence from Eileen's house, is canning.",
    "voice": "assets/audio/voice/vol6_ch17_porch/077.mp3"
   },
   {
    "t": "narrate",
-   "text": "Anita, in her own bed, is asleep.",
+   "text": "[view:meadowlark_circle_day dissolve]Anita, in her own bed, is asleep.",
    "voice": "assets/audio/voice/vol6_ch17_porch/078.mp3"
   },
   {
    "t": "narrate",
-   "text": "Eileen, in her kitchen, is talking to Jim about a piano.",
+   "text": "[view:henderson_kitchen dissolve]Eileen, in her kitchen, is talking to Jim about a piano.",
    "voice": "assets/audio/voice/vol6_ch17_porch/079.mp3"
   },
   {
    "t": "narrate",
-   "text": "The Friday, in the small ways Fridays in mid-August do this work, moves forward.",
+   "text": "[view:meadowlark_circle_day dissolve]The Friday, in the small ways Fridays in mid-August do this work, moves forward.",
    "voice": "assets/audio/voice/vol6_ch17_porch/080.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert table]Bianca, at her kitchen table, with the second pot's coffee finished, does the thing she has been, all summer, getting better at,",
+   "text": "[view:miller_kitchen dissolve][shot:insert table]Bianca, at her kitchen table, with the second pot's coffee finished, does the thing she has been, all summer, getting better at,",
    "voice": "assets/audio/voice/vol6_ch17_porch/081.mp3"
   },
   {

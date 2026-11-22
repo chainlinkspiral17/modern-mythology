@@ -2745,6 +2745,27 @@ const CAMERA_PRESETS := {
 		"suppress_input": true,
 		"far": 650.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
+	"meadowlark_circle_day": {
+		# MID-MORNING (vol 6 ch17 n76-80, pass 451): the cul-de-sac by day for the Friday montage — 'Linda, at her own porch, is watching the morning do its morning thing.' The dawn view's street under a day sky and a high sun (Sun_Day); the cars that are home at dawn are out.
+		"scene": "res://scenes/locales/meadowlark_circle.tscn",
+		"requires_glb": "res://assets/3d/locales/meadowlark_circle.glb",
+		# The street runs E-W along blender y=0 from x=-80 to the bulb at
+		# x=46; lots 1402..1428 on the north side, 18 m apart (houses at
+		# y 19.5, 2026-11-08: Texas lawns), the Miller house at x=34 with
+		# the cracked head at (25.9, 5.5). Dawn:
+		# camera in the street at the west end (blender -22, -1.5) looking
+		# EAST down the block — sprinkler fans lot by lot, the bulb and
+		# the Geller house closing the view, the water tower off right.
+		"camera_origin": Vector3(-22.0, 1.6, 1.5),
+		"camera_rotation": Vector3(-0.02, -1.5708, 0.0),
+		"fov": 60.0,
+		"env": {"sky_top": Color(0.40, 0.58, 0.84, 1), "sky_horizon": Color(0.88, 0.86, 0.78, 1),
+			"ground_horizon": Color(0.62, 0.60, 0.52, 1), "ground_bottom": Color(0.30, 0.30, 0.26, 1),
+			"ambient_color": Color(0.86, 0.86, 0.82, 1), "ambient_energy": 0.95, "fog_color": Color(0.82, 0.80, 0.74, 1)},
+		"wide": "expand",          # the street runs past a 21:9 frame on both sides
+		"suppress_input": true,
+		"far": 650.0,   # (2026-10-31) its far scenery stood past the 200 m default
+	},
 	# (2026-11-09) THE SAME FRAME IN CHAPTER 4's STORM. The street's cars
 	# belong to views now (the builder's VIEW_GROUPS): the prelude's Sunday
 	# dawn has every car in its driveway and no vigil; the storm has the cars

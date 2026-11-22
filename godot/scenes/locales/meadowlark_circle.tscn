@@ -241,6 +241,13 @@ light_color = Color(0.56, 0.64, 0.86, 1)
 light_energy = 0.18
 shadow_enabled = false
 
+; (pass 451) mid-morning: meadowlark_circle_day — a high white sun from the south-east over the dawn rig
+[node name="Sun_Day__meadowlark_circle_day" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.819, -0.406, 0.406, 0, 0.707, 0.707, -0.574, -0.579, 0.579, 0, 8, 0)
+light_color = Color(1.00, 0.98, 0.93, 1)
+light_energy = 0.9
+shadow_enabled = false
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="SprinklerFX" type="Node3D" parent="." groups=["world_render"]]
@@ -516,3 +523,10 @@ metadata/fov = 35.0
 position = Vector3(-6.000, 1.600, 1.500)
 rotation = Vector3(-0.1328, 2.4297, 0.0)
 metadata/fov = 45.0
+
+; (pass 451) "Linda, at her own porch, is watching the morning do its morning thing" (vol 6 ch17): the
+; Caldwell house's porch from the street, by day
+[node name="shot_insert_porch__meadowlark_circle_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-24.500, 1.600, 4.000)
+rotation = Vector3(-0.0100, 2.9997, 0.0)
+metadata/fov = 48.0

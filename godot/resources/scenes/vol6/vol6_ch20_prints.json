@@ -855,32 +855,32 @@
     },
     {
       "t": "narrate",
-      "text": "Across town, at a different house in a different cul-de-sac, Ben is asleep with the alarm set for ten and Mister the cat at his feet.",
+      "text": "[view:ben_bedroom dissolve]Across town, at a different house in a different cul-de-sac, Ben is asleep with the alarm set for ten and Mister the cat at his feet.",
       "voice": "assets/audio/voice/vol6_ch20_prints/136.mp3"
     },
     {
       "t": "narrate",
-      "text": "At the Cypress Motel, Chess and Ramón have, by midnight, gone back to their rooms — Chess in 12, Ramón in 14. The lighting cues are locked. The set is ready.",
+      "text": "[view:cypress_motel dissolve]At the Cypress Motel, Chess and Ramón have, by midnight, gone back to their rooms — Chess in 12, Ramón in 14. The lighting cues are locked. The set is ready.",
       "voice": "assets/audio/voice/vol6_ch20_prints/137.mp3"
     },
     {
       "t": "narrate",
-      "text": "In a different cul-de-sac, Diego, at Centro, is doing the inventory — three hours into a count that is going to last until eight.",
+      "text": "[view:centro_grocery_aisle dissolve]In a different cul-de-sac, Diego, at Centro, is doing the inventory — three hours into a count that is going to last until eight.",
       "voice": "assets/audio/voice/vol6_ch20_prints/138.mp3"
     },
     {
       "t": "narrate",
-      "text": "In yet a different cul-de-sac, Maya is asleep. Linda is asleep. The cat that is half-Kowalski is not, this evening, at the Caldwell house. The cat is at the Kowalskis'.",
+      "text": "[view:maya_bedroom dissolve]In yet a different cul-de-sac, Maya is asleep. Linda is asleep. The cat that is half-Kowalski is not, this evening, at the Caldwell house. The cat is at the Kowalskis'.",
       "voice": "assets/audio/voice/vol6_ch20_prints/139.mp3"
     },
     {
       "t": "narrate",
-      "text": "In yet a different cul-de-sac, Bianca is asleep. Sam is asleep.",
+      "text": "[view:miller_master_bedroom_night dissolve]In yet a different cul-de-sac, Bianca is asleep. Sam is asleep.",
       "voice": "assets/audio/voice/vol6_ch20_prints/140.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The town, in the small ways towns in mid-August on a Friday night before a Saturday do this work, holds.",
+      "text": "[view:meadowlark_circle_night dissolve][shot:establish]The town, in the small ways towns in mid-August on a Friday night before a Saturday do this work, holds.",
       "voice": "assets/audio/voice/vol6_ch20_prints/141.mp3"
     },
     {
@@ -900,7 +900,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert notebook]Tonight, in the dark, the bridge is on the small spiral notebook page on Jesse's nightstand, in his own handwriting, in the small kid's-handwriting it has been written in, waiting for tomorrow.",
+      "text": "[view:jesse_bedroom dissolve][shot:insert notebook]Tonight, in the dark, the bridge is on the small spiral notebook page on Jesse's nightstand, in his own handwriting, in the small kid's-handwriting it has been written in, waiting for tomorrow.",
       "voice": "assets/audio/voice/vol6_ch20_prints/145.mp3"
     },
     {

@@ -3835,6 +3835,43 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-22 · pass 451: the town montages — each line in its own place.**
+Two chapters close a scene by going round the town a line at a time, and
+both held one room for the whole round.
+- vol 6 ch17_porch n71-81 (Friday morning, Bianca's kitchen): "Elsewhere in
+  town, Diego ... is asleep" -> his bedroom · "Sam, at the Kwik Stop, is on
+  shift" -> the Kwik Stop · "Ben is at football" -> the field · "Maya is at
+  the comic shop" -> Cosmic Comics · "Jesse ... at the Pit Stop" -> the
+  diner · "Linda, at her own porch" -> the Caldwell house's porch from the
+  street (it stands on Meadowlark Circle's south side) · "Peggy ... is
+  canning" -> the Kowalski kitchen · "Anita, in her own bed" -> the
+  cul-de-sac · "Eileen, in her kitchen" -> the Hendersons' · "The Friday
+  ... moves forward" -> the cul-de-sac · n81 "Bianca, at her kitchen table"
+  returns.
+- The street had only dawn, night and storm views: new view
+  `meadowlark_circle_day` (a day sky, a high sun over the dawn rig) and its
+  `insert porch` on the Caldwell house. Read by render.
+- vol 6 ch20_prints n136-145 (Friday midnight, Jesse's bedroom): Ben's
+  bedroom · the Cypress Motel · Centro's aisle (the inventory) · Maya's
+  bedroom · the Millers' bedroom · "The town ... holds" -> the cul-de-sac at
+  night · n145 "the bridge is on the small spiral notebook page on Jesse's
+  nightstand" returns.
+- Each is `[view:preset dissolve]`: the dissolve holds the last frame while
+  the next set loads.
+- THE MUSIC STAYS: an inline view is a cut of the picture, not a change of
+  place — no locale track (MusicDirector.on_node; music_direction.py's
+  mirror). Pass 447 had switched it as for a bg node; this montage would
+  have changed track nine times, and a dream is heard from the bed.
+- Draft N+1: Linda ON her porch (a figure, her chair) and Anita's bedroom
+  as a view; the day street still shows two lit windows and a pink
+  horizon; Maya's bedroom is lamp-lit while she sleeps; vol 6 ch4_kitchen n82-87 (the white sedan in
+  the Kwik Stop lot in the rain, the van, Chief Miller in his truck in his
+  own driveway — no night-rain lot or driveway view exists); vol 7 ch2
+  n102-103 (the two mural patches, the crow on Finn's dashboard); a Deck
+  check of the dissolve's hitch on the bigger sets (the Kwik Stop's GLB is
+  9.7 MB).
+- No rebuild.
+
 **2026-11-22 · pass 450: the Kwik Stop's table by the window; "win" is not a window.**
 Playtest 450a (21 random lines): vol 6 ch15 "They sit, the two of them, at
 the table by the window." showed a chair back, a shelf of soda bottles and
