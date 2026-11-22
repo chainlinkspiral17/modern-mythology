@@ -356,6 +356,11 @@ stillness is the player's own camera.
   inside the segment (`dream_blur`) ends with the return cut, because the
   room's own look loads with it — without the cut it runs on to the next
   mood cue (ch10's blur covered eight waking lines).
+- **Gate (pass 449):** `dream_place_audit.py` — a dream that starts in
+  present-tense narration changes the room within two lines or is judged.
+  Reading the rule back over the corpus found three more (the stockroom,
+  the kitchen, the Gas & Go at night); a rule found by one frame is a
+  search to run before the pass closes.
 - **Rule (tools):** one meaning, one reader. The tag went into the engine
   and 28 tools in the same pass, through one helper, with the reports
   compared before and after — a tag only the engine understood would have

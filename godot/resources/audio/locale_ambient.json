@@ -1093,6 +1093,10 @@
       "bed": "assets/audio/bgm/vol6_gas_and_go_interior.wav",
       "gain": 0.82
     },
+    "nexcorp_gas_go_dream": {
+      "bed": "assets/audio/bgm/vol6_gas_and_go_interior.wav",
+      "gain": 0.82
+    },
     "nexcorp_gas_go_handoff": {
       "bed": "assets/audio/bgm/vol6_gas_and_go_interior.wav",
       "gain": 0.82

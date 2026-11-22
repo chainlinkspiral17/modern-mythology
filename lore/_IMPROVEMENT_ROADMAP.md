@@ -3835,6 +3835,63 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-22 · pass 449: three more dreams cut to their places; a gate for the class.**
+Pass 447's rule ("a dream is a place") read back over the corpus: three
+more of Diego's dreams played over the room he slept in. All voiced; all
+cut with `[view:]`.
+- ch18_letter n10–16 "He dreams of the stockroom ... standing at the bale
+  with his hand on its side" -> `centro_stockroom` (its own frame under
+  `dream_blur`, `insert bale` on n11); n17 wakes into `diego_bedroom`.
+- ch22_inventory n309–311 "He dreams of the kitchen. He dreams of his
+  grandmother at the table picking up his right hand" ->
+  `grandmother_kitchen_morning` under `dream_blur`; n312 wakes behind the
+  blackout curtains.
+- ch9_room n106–120 "In the dream he is back at the Gas & Go. It is night.
+  He is alone behind the counter. The lot is empty." — fifteen lines,
+  Sam's "We are coming, mi vida" among them, over the cell. New view
+  `nexcorp_gas_go_dream`: the store from the same place at NIGHT. The set's
+  three daylight directionals were untagged (in every view); they are the
+  day views' own now, and the dream has a dim cool fill, two canopy lights
+  over the pumps and the street light on Gallatin, a night sky, and no
+  pickup, no Skip's phone / vape / cooler. n121 "Diego wakes." returns to
+  `nightmare_cell`.
+- GATE `dream_place_audit.py` (suite, ceiling 0): a dream that STARTS in
+  present-tense narration ("he dreams of ...", "In the dream he is ...")
+  changes the room on that line or within two, or is judged. 6 starts, 0
+  open; one judged (Sam dreams of her father in a photograph she has never
+  seen: a picture, not a place).
+- vol6 ch1 n6 "Skip Donnelly is ... vaping behind the counter" cut to
+  `insert counter`: a frame 0.58 m off the floor on a case of bags BEHIND
+  the counter (the part named "Counter" nearest the lens). The counter is
+  the view's own frame; the cue is `insert vape` now — his vape and phone
+  on the counter top, from the stool's side.
+- The dream's FACES: the set's generic face pair stands in the snack
+  aisle. The dream has its own, on one axis at the counter — Sam from
+  behind it with the glass door and the lit canopy behind her, Diego from
+  where she stands. A first try square to the south wall was one window
+  pane 2.2 m off (vantage_obstruction: OBSTRUCTED). A tube practical over
+  Skip's side of the counter (Tube_0_1): the counter read black in the
+  view's own frame.
+- hero_art_placement caught the Louisiana pickup's manila envelope still
+  laid in the dream, where the pickup is stripped (STRIPPED): its roster
+  row skips the dream view (byte-exact).
+- Read next (playtest 450a, pass 450): the Kwik Stop's `insert window` is
+  pitched 38 degrees down at chair backs — both the hood view's and the
+  plain one — under "Lucy goes to the table by the window" and "The two
+  empty water bottles are on the table". Cause found: the aim gate's
+  synonym `win_` matches any name containing "win" (WinChair, Twine,
+  Drawing), so the re-aim tool turned three window inserts onto furniture
+  (Kwik Stop x2, Hans's bakery kitchen). And the TOWN MONTAGES — ch17_porch
+  n71-79 ("Elsewhere in town, Diego ... is asleep. Sam, at the Kwik Stop,
+  is on shift. Ben is at football ..."), ch20_prints n136-141, ch4_kitchen
+  n82-87, vol7 ch2 n102-103 — nine lines in nine places over one room: a
+  `[view:x cut]` each.
+- Draft N+1: the same reading for MEMORIES ("is back in", "remembers the
+  kitchen in", "that summer") and the other end of a PHONE CALL — a probe
+  first, most will be judged; the Gas & Go dream wants Sam at the counter
+  as a figure, and the door's bell.
+- No rebuild: scenes, presets and the .tscn only.
+
 **2026-11-21 · pass 448: Diego's blackout curtains are DRAWN when the text draws them.**
 Found reading pass 447's frames; the bedroom builder's own draft-6 target.
 `diego_bedroom` and `diego_bedroom_night` both hung the blackout pair pushed

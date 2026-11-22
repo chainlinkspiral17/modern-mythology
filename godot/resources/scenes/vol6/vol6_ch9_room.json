@@ -573,7 +573,7 @@
     },
     {
       "t": "narrate",
-      "text": "In the dream he is back at the Gas & Go. It is night. He is alone behind the counter. The lot is empty.",
+      "text": "[view:nexcorp_gas_go_dream][mood:dream_blur]In the dream he is back at the Gas & Go. It is night. He is alone behind the counter. The lot is empty.",
       "voice": "assets/audio/voice/vol6_ch9_room/106.mp3"
     },
     {
@@ -661,7 +661,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:night][shot:establish]Diego wakes.",
+      "text": "[view:nightmare_cell][mood:night][shot:establish]Diego wakes.",
       "voice": "assets/audio/voice/vol6_ch9_room/121.mp3"
     },
     {

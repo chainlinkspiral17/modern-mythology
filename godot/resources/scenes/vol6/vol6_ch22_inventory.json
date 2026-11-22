@@ -1807,7 +1807,7 @@
   },
   {
    "t": "narrate",
-   "text": "[beat:still]He dreams of the kitchen.",
+   "text": "[view:grandmother_kitchen_morning][mood:dream_blur][beat:still]He dreams of the kitchen.",
    "voice": "assets/audio/voice/vol6_ch22_inventory/309.mp3"
   },
   {
@@ -1822,7 +1822,7 @@
   },
   {
    "t": "narrate",
-   "text": "He wakes at three forty-two.",
+   "text": "[view:diego_bedroom_blackout]He wakes at three forty-two.",
    "voice": "assets/audio/voice/vol6_ch22_inventory/312.mp3"
   },
   {

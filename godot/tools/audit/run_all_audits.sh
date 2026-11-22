@@ -729,6 +729,13 @@ echo "── inline_view.py ── t+${SECONDS}s"
 python3 inline_view.py || { echo "REGRESSION  inline_view (ceiling 0)"; DEFERRED="$DEFERRED inline_view"; }
 echo ""
 
+# dream_place_audit (pass 449): a dream that starts in the narration ("he
+# dreams of the dock") changes the room there, or is judged (five of Diego's
+# dreams played over the room he was asleep in).
+echo "── dream_place_audit.py ── t+${SECONDS}s"
+python3 dream_place_audit.py || { echo "REGRESSION  dream_place_audit (ceiling 0)"; DEFERRED="$DEFERRED dream_place_audit"; }
+echo ""
+
 echo "── prop_budget_audit.py ── t+${SECONDS}s"
 python3 prop_budget_audit.py || { echo "REGRESSION  prop_budget_audit (ceiling 0)"; DEFERRED="$DEFERRED prop_budget_audit"; }
 echo ""

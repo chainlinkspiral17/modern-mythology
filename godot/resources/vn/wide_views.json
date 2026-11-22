@@ -415,6 +415,7 @@
   "nexcorp_fueling_station": "shot_closeup_vince: void 0%→0%, sky 60%→92%",
   "nexcorp_fueling_store": "shot_closeup_vince: void 0%→0%, sky 60%→92%",
   "nexcorp_gas_go": "shot_insert_pickup: void 14%→29%, sky 73%→50%",
+  "nexcorp_gas_go_dream": "shot_insert_pickup: void 14%→29%, sky 73%→50%",
   "nexcorp_van_cargo": "shot_closeup_vince: void 0%→0%, sky 60%→92%",
   "nick_house_front": "the frame: void 75%→75%, sky 68%→80%",
   "onei_office": "shot_insert_door__onei_office: void 6%→8%, sky 12%→17%",

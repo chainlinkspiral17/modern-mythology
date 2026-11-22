@@ -54,12 +54,12 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:dream_blur][shot:establish~]He dreams of the stockroom.",
+      "text": "[view:centro_stockroom][mood:dream_blur][shot:establish~]He dreams of the stockroom.",
       "voice": "assets/audio/voice/vol6_ch18_letter/010.mp3"
     },
     {
       "t": "narrate",
-      "text": "The dream is the stockroom at two-fifteen, with the fluorescents and the bale and the pile of pallets to his right. He is standing at the bale with his hand on its side, the way he had been standing at the bale in real time.",
+      "text": "[shot:insert bale]The dream is the stockroom at two-fifteen, with the fluorescents and the bale and the pile of pallets to his right. He is standing at the bale with his hand on its side, the way he had been standing at the bale in real time.",
       "voice": "assets/audio/voice/vol6_ch18_letter/011.mp3"
     },
     {
@@ -89,7 +89,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:day_bright][shot:closeup diego]He wakes at three eleven.",
+      "text": "[view:diego_bedroom][mood:day_bright][shot:closeup diego]He wakes at three eleven.",
       "voice": "assets/audio/voice/vol6_ch18_letter/017.mp3"
     },
     {

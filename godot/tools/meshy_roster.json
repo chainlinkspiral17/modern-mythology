@@ -49697,6 +49697,9 @@
           "facing": "up",
           "hide": [
             "Pickup_Bed_Manila_Envelope"
+          ],
+          "not_presets": [
+            "nexcorp_gas_go_dream"
           ]
         }
       ]

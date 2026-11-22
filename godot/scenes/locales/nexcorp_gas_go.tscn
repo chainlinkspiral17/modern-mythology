@@ -170,19 +170,20 @@ glow_hdr_scale = 2.4
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Locale")
 
-[node name="Key_Overhead" type="DirectionalLight3D" parent="."]
+; (pass 449) the DAYLIGHT is the day views' own: the dream view (nexcorp_gas_go_dream) is the same store at night
+[node name="Key_Overhead__nexcorp_gas_go__nexcorp_gas_go_handoff" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707, 0.707, 0, -0.707, 0.707, 0, 7, 0)
 light_color = Color(0.9, 0.92, 0.95, 1)
 light_energy = 1.0
 shadow_enabled = false
 
-[node name="Fill_Canopy" type="DirectionalLight3D" parent="."]
+[node name="Fill_Canopy__nexcorp_gas_go__nexcorp_gas_go_handoff" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 4, 2)
 light_color = Color(0.72, 0.78, 0.88, 1)
 light_energy = 0.4
 shadow_enabled = false
 
-[node name="Back" type="DirectionalLight3D" parent="."]
+[node name="Back__nexcorp_gas_go__nexcorp_gas_go_handoff" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 4, 4)
 light_color = Color(0.55, 0.6, 0.7, 1)
 light_energy = 0.25
@@ -202,12 +203,50 @@ light_energy = 1.3
 shadow_enabled = false
 omni_range = 5.0
 
+; (pass 449) the tube over Skip's side of the counter (Tube_0_1): the counter, the register and whoever stands
+; behind them were lit only by the aisle tubes 3 m off — the counter read black in the view's own frame
+[node name="Tube_0_1_Practical" type="OmniLight3D" parent="."]
+position = Vector3(2.400, 2.750, -2.500)
+light_color = Color(0.90, 0.93, 0.96, 1)
+light_energy = 1.4
+shadow_enabled = false
+omni_range = 4.5
+
 [node name="Canopy_Spill" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 2.5)
 light_color = Color(0.8, 0.86, 0.95, 1)
 light_energy = 1.2
 shadow_enabled = false
 omni_range = 6.0
+
+; ── THE NIGHT (pass 449): nexcorp_gas_go_dream — "It is night. He is alone behind the counter. The lot is empty."
+; a dim cool fill for the room's shape; the canopy's lights over the two pumps; the street light out on Gallatin
+[node name="Night_Fill__nexcorp_gas_go_dream" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 4, 2)
+light_color = Color(0.46, 0.54, 0.80, 1)
+light_energy = 0.18
+shadow_enabled = false
+
+[node name="Night_Canopy_W__nexcorp_gas_go_dream" type="OmniLight3D" parent="."]
+position = Vector3(-1.500, 4.100, 4.000)
+light_color = Color(0.86, 0.92, 1.00, 1)
+light_energy = 1.8
+shadow_enabled = false
+omni_range = 7.0
+
+[node name="Night_Canopy_E__nexcorp_gas_go_dream" type="OmniLight3D" parent="."]
+position = Vector3(1.500, 4.100, 4.000)
+light_color = Color(0.86, 0.92, 1.00, 1)
+light_energy = 1.8
+shadow_enabled = false
+omni_range = 7.0
+
+[node name="Night_Street__nexcorp_gas_go_dream" type="OmniLight3D" parent="."]
+position = Vector3(2.000, 7.600, 17.100)
+light_color = Color(1.00, 0.72, 0.40, 1)
+light_energy = 2.2
+shadow_enabled = false
+omni_range = 14.0
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -380,7 +419,31 @@ rotation = Vector3(-0.2618, -2.8798, 0.0)
 metadata/fov = 45.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_counter__nexcorp_gas_go" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.321, 0.580, -3.132)
-rotation = Vector3(-0.2618, 2.8624, 0.0)
-metadata/fov = 35.0
+; (pass 449) "Skip Donnelly is ... vaping behind the counter": the vape and his phone on the counter top, from his
+; stool's side. It was `insert counter`, 0.58 m off the floor on a case of bags behind the counter (the part named
+; "Counter" nearest the lens); the counter itself is the view's own frame.
+[node name="shot_insert_vape__nexcorp_gas_go" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.220, 1.500, -2.450)
+rotation = Vector3(-0.4636, -3.1297, 0.0)
+metadata/fov = 24.0
+
+; ── THE DREAM'S FACES (pass 449, nexcorp_gas_go_dream): "Sam comes in ... leans across the counter". The set's
+; generic face pair stands in the snack aisle; here the two of them are at the counter, on one axis: she at its
+; west end by the door, he behind it.
+; Sam from behind the counter: the glass door and the lit canopy behind her (square to the south wall it was one
+; window pane 2.2 m off — vantage_obstruction: OBSTRUCTED 56 %)
+[node name="shot_closeup_sam__nexcorp_gas_go_dream" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.600, 1.580, -2.200)
+rotation = Vector3(-0.0200, 2.2036, 0.0)
+metadata/fov = 42.0
+
+; Diego, behind the counter, from where she stands
+[node name="shot_closeup_person__nexcorp_gas_go_dream" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.070, 1.580, -1.000)
+rotation = Vector3(-0.0200, -0.8412, 0.0)
+metadata/fov = 42.0
+
+[node name="shot_closeup_person_b__nexcorp_gas_go_dream" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.600, 1.580, -2.200)
+rotation = Vector3(-0.0200, 2.2036, 0.0)
+metadata/fov = 42.0

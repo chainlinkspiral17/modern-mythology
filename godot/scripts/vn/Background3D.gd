@@ -7604,6 +7604,30 @@ const CAMERA_PRESETS := {
 		"fov": 62.0,
 		"suppress_input": true,
 	},
+	"nexcorp_gas_go_dream": {
+		# Diego's DREAM in the cell (vol 6 ch9, pass 449): 'In the dream he is back at the Gas & Go. It is night. He is alone behind the counter. The lot is empty.' The same store from the same place, at night: the daylight rig is the day views' own, the pickup and Skip's things are gone, the canopy and the street light are what is lit outside.
+		"scene": "res://scenes/locales/nexcorp_gas_go.tscn",
+		"requires_glb": "res://assets/3d/locales/nexcorp_gas_go.glb",
+		# The Harmony Creek Gas & Go (Skip's shift) — interior 12×9,
+		# pumps + canopy beyond the south glass, locker room back-NW
+		# (#4 is Skip's). (2026-10-06: the camera stood 1.5 m from the
+		# aisle and saw only shelving.) From the store's east side by
+		# the office looking S over Skip's side of the counter — his
+		# stool, the register, the pump controller — to the door and the
+		# pumps under the canopy through the south glass.
+		"camera_origin": Vector3(3.00, 1.70, -5.50),
+		"camera_rotation": Vector3(-0.161, -3.049, 0.0),
+		"fov": 62.0,
+		# night: a dark sky and a low ambient; the store's tubes, the canopy
+		# and one street light do the rest (the .tscn's Night_* lights)
+		"env": {"sky_top": Color(0.03, 0.04, 0.09, 1), "sky_horizon": Color(0.10, 0.10, 0.16, 1),
+			"ground_horizon": Color(0.06, 0.06, 0.08, 1), "ground_bottom": Color(0.02, 0.02, 0.03, 1),
+			"ambient_color": Color(0.34, 0.38, 0.52, 1), "ambient_energy": 0.32, "fog_color": Color(0.08, 0.09, 0.13, 1)},
+		# "The lot is empty." · "He is alone behind the counter." (Skip's
+		# phone, vape and cooler are Skip's shift, not the dream's)
+		"strip": ["Pickup", "Skip_Phone", "Skip_Vape", "Skip_Cooler"],
+		"suppress_input": true,
+	},
 	"nexcorp_gas_go_handoff": {
 		"scene": "res://scenes/locales/nexcorp_gas_go.tscn",
 		"requires_glb": "res://assets/3d/locales/nexcorp_gas_go.glb",
