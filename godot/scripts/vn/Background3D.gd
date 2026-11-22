@@ -1464,6 +1464,32 @@ const CAMERA_PRESETS := {
 		"suppress_input": true,
 		"far": 550.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
+	"centro_dock_dream": {
+		# Diego's DREAM of the dock (vol 6 ch10 / ch16): 'the rust-colored haze, in the dream, is closer than it is in life ... only a few miles out ... moving toward him.' The dock as it is, and the haze bank (Dream_Haze_*, this view only) risen over the cedar.
+		# Cut to by an inline [view:] on the line itself — both chapters are voiced.
+		"scene": "res://scenes/locales/centro_stockroom.tscn",
+		"requires_glb": "res://assets/3d/locales/centro_stockroom.glb",
+		# Same GLB, outside — Diego's second break (ch10 / ch16 dawn).
+		# Camera on the EMPTY apron (drops 1.1 below dock floor),
+		# looking back SE at the open roll-up: fluorescent light
+		# spilling out over the dock edge and bumpers, the warm dock
+		# lamp above, pre-dawn blue everywhere else. The truck has not
+		# come yet.
+		# (2026-10-05) at the dock's edge where Diego stands with his coffee,
+		# looking out over the apron and the cedar at the pre-dawn sky and the
+		# smear — it looked back into the stockroom from the black apron.
+		# (2026-10-08) tilted down 12 degrees: the contact sheet showed
+		# only sky and a black tree line — the dock edge, its bumpers and
+		# the apron's lane stripes are the foreground now, the horizon and
+		# the smear in the upper third.
+		"camera_origin": Vector3(-0.90, 1.62, -7.70),
+		# (pass 447) the dream looks UP from the dock's edge at what is coming:
+		# the horizon just above the text box, the bank over it to the top
+		"camera_rotation": Vector3(-0.060, -0.053, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+		"far": 550.0,   # (2026-10-31) its far scenery stood past the 200 m default
+	},
 	"darkroom": {
 		"scene": "res://scenes/locales/darkroom.tscn",
 		"requires_glb": "res://assets/3d/locales/darkroom.glb",
@@ -1754,6 +1780,29 @@ const CAMERA_PRESETS := {
 		"env": {"sky_top": Color(0.05, 0.06, 0.13, 1), "sky_horizon": Color(0.16, 0.15, 0.21, 1),
 			"ground_horizon": Color(0.08, 0.08, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
 			"ambient_color": Color(0.36, 0.36, 0.46, 1), "ambient_energy": 0.40, "fog_color": Color(0.12, 0.12, 0.16, 1)},
+		"suppress_input": true,
+	},
+	"diego_bedroom_blackout": {
+		# THE BLACKOUT CURTAINS DRAWN (pass 448): he sleeps the day behind them — 'The blackout curtains are drawn. The room is dark.' (vol 6 ch10, ch16, ch22, ch23). The night view's room with the blackout pair across the glass (Curtain_BlackDrawn_*, this view only), the desk lamp off, the day a thin line at the curtain's edges.
+		"scene": "res://scenes/locales/diego_bedroom.tscn",
+		"requires_glb": "res://assets/3d/locales/diego_bedroom.glb",
+		# DRAFT 5 (2026-10-09): Diego's room at his grandmother's, 4.4 x 4.8
+		# (godot x in [-2.2,2.2], z in [0,-4.8]) — plain, as the prose says:
+		# the twin bed W, the small desk E under the periodic table, the
+		# dresser + mirror (Sam's photo) by the door, the window's two
+		# curtains N, the fan. Camera inside the door looking NW at the bed.
+		# (2026-10-11, pass 60) THE SAME ROOM at the other hour: ch23 Sleep (ten PM at the desk), ch23 Sunday (mood:night, the blackout
+		# curtains), ch16 Dawn and ch22 Inventory (he sleeps the day behind the
+		# blackout curtains) on the day rig and its day sky.
+		# The authored rig is suffixed to diego_bedroom; this twin has its own lights and env.
+		"camera_origin": Vector3(1.20, 1.58, -0.70),
+		"camera_rotation": Vector3(-0.156, deg_to_rad(36.9), 0.0),
+		"fov": 60.0,
+		"env": {"sky_top": Color(0.05, 0.06, 0.13, 1), "sky_horizon": Color(0.16, 0.15, 0.21, 1),
+			"ground_horizon": Color(0.08, 0.08, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.36, 0.36, 0.46, 1), "ambient_energy": 0.30, "fog_color": Color(0.12, 0.12, 0.16, 1)},
+		# the pushed-aside pair is the drawn one here (Curtain_BlackDrawn_*)
+		"strip": ["Curtain_Blackout_Panel", "Curtain_Blackout_TieBack"],
 		"suppress_input": true,
 	},
 	# ── VOL 6/7/8 — batch 2 additions ────────────────────

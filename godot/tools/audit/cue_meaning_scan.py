@@ -21,6 +21,9 @@ the unread rows. Report only (not a gate).
       --generic: cues on a generic surface (table, door, window ...) whose line
       names a specific object with its own frame (pass 413)
 """
+import os as _os, sys as _sys
+_sys.path.append(_os.path.join(_os.path.dirname(_os.path.abspath(__file__))))
+import inline_view as IV   # a line can change the room itself: [view:preset] (pass 447)
 import json
 import os
 import re
@@ -199,7 +202,7 @@ def main():
             nodes = j.get("nodes", []) if isinstance(j, dict) else j
             sid = j.get("id", fn[:-5]) if isinstance(j, dict) else fn[:-5]
             cur = ""
-            for k, n in enumerate(nodes):
+            for k, n in IV.walk(nodes):
                 if not isinstance(n, dict):
                     continue
                 if n.get("t") == "bg":

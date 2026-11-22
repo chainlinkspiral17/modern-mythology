@@ -23,6 +23,9 @@ Markers are appended as position-form Marker3D nodes.
     python3 godot/tools/audit/marker_author.py --closeup-b [locale…]   # its reverse shot, from the far side
     python3 godot/tools/audit/marker_author.py --establish-b [locale…] # a room's second wide, ≥ 90° round
 """
+import os as _os, sys as _sys
+_sys.path.append(_os.path.join(_os.path.dirname(_os.path.abspath(__file__))))
+import inline_view as IV   # a line can change the room itself: [view:preset] (pass 447)
 import collections
 import json
 import math
@@ -79,7 +82,7 @@ def chapter_text_for(scene_names):
             except Exception:
                 continue
             nodes = j.get("nodes", [])
-            uses = any(n.get("t") == "bg" and str(n.get("src", ""))[3:] in presets for n in nodes)
+            uses = any(n.get("t") == "bg" and str(n.get("src", ""))[3:] in presets for n in IV.nodes(nodes))
             if not uses:
                 continue
             for n in nodes:

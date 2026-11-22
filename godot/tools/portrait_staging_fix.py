@@ -24,6 +24,9 @@ byte-for-byte unchanged at its own indent.
     python3 tools/portrait_staging_fix.py --dry      # what would change
     python3 tools/portrait_staging_fix.py            # write
 """
+import os as _os, sys as _sys
+_sys.path.append(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "audit"))
+import inline_view as IV   # a line can change the room itself: [view:preset] (pass 447)
 import glob
 import json
 import os
@@ -45,7 +48,7 @@ def plan(nodes):
     retire = set()
     stage = {}            # pos -> (char, show_index, line_at_show)
     line = 0
-    for i, n in enumerate(nodes):
+    for i, n in IV.walk(nodes):
         if not isinstance(n, dict):
             continue
         t = n.get("t")
@@ -77,7 +80,7 @@ def plan(nodes):
                 if not isinstance(m, dict):
                     continue
                 mt = m.get("t")
-                if mt == "bg" or mt == "jump" or mt == "end" or mt == "choice":
+                if mt == "bg" or mt == "jump" or mt == "end" or mt == "choice" or IV.of(m):
                     break
                 if mt in TEXT:
                     lines_ahead += 1

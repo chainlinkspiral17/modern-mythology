@@ -36,6 +36,9 @@ nothing is the failure this whole pass exists to fix.
 
 Idempotent: a scene already named by any entry is left alone.
 """
+import os as _os, sys as _sys
+_sys.path.append(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "../audit"))
+import inline_view as IV   # a line can change the room itself: [view:preset] (pass 447)
 import json
 import os
 import sys
@@ -230,7 +233,7 @@ def scenes():
                 continue
             j = json.load(open(os.path.join(vd, fn), encoding="utf-8"))
             sid = j.get("id", fn[:-5])
-            bgs = [str(nd.get("src") or "") for nd in j.get("nodes", [])
+            bgs = [str(nd.get("src") or "") for nd in IV.nodes(j.get("nodes", []))
                    if nd.get("t") == "bg"]
             locs = [b[3:] for b in bgs if b.startswith("3d:")]
             out.append((vol, sid, locs, len(j.get("nodes", []))))

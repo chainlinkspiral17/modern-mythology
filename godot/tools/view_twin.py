@@ -20,7 +20,12 @@ does the copy the same way every time:
      are copied as `__TO` (the director reaches for them unasked); an insert
      frame is copied only when a moved segment cues it (an uncued copy would
      be an orphan frame).
-  5. The bg nodes named by --scenes (`file.json:node`) point at TO.
+  5. The bg nodes named by --scenes (`file.json:node`) point at TO. A node
+     that is a LINE (pass 447) gets `[view:TO]` first in its text instead —
+     the inline view, for a voiced chapter where a bg node cannot go in: a
+     line already on `[view:FROM]` is re-pointed, a line with no view tag
+     gains one (and the tool says where the segment ends, so the line the
+     story returns on can carry the room's own `[view:]`).
   6. Builder parts tagged FROM are LISTED, not changed (a GLB part's name is
      the builder's): tag them by hand or with a VIEW_GROUPS group.
   7. The hero-art roster: a picture that skips FROM (`not_presets`) skips TO
@@ -40,6 +45,9 @@ import re
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.join(HERE, "audit"))
+import inline_view as IV   # a line can change the room itself: [view:preset] (pass 447)
+
 GODOT = os.path.normpath(os.path.join(HERE, ".."))
 B3D = os.path.join(GODOT, "scripts", "vn", "Background3D.gd")
 AMBIENT = os.path.join(GODOT, "resources", "audio", "locale_ambient.json")
@@ -62,15 +70,18 @@ def segment_cues(path, node):
     data = json.load(open(path, encoding="utf-8"))
     nodes = data if isinstance(data, list) else data.get("nodes", [])
     cues = set()
-    for n in nodes[node + 1:]:
+    end = len(nodes)
+    # from the node itself: a LINE that cuts carries cues of its own
+    for k, n in enumerate(nodes[node:]):
         if not isinstance(n, dict):
             continue
-        if n.get("t") == "bg":
+        if k > 0 and (n.get("t") == "bg" or IV.of(n)):
+            end = node + k
             break
         for m in CUE.finditer(n.get("text") or ""):
             kind, name = m.group(1), m.group(2)
             cues.add("shot_%s_%s" % (kind, name) if name else "shot_%s" % kind)
-    return nodes, cues
+    return nodes, cues, end
 
 
 def main():
@@ -102,10 +113,19 @@ def main():
     for spec in [s for s in a.scenes.split(",") if s.strip()]:
         f, _, n = spec.strip().rpartition(":")
         path = os.path.join(SCENES, f)
-        nodes, cues = segment_cues(path, int(n))
-        src_ = str(nodes[int(n)].get("src", ""))
-        if nodes[int(n)].get("t") != "bg" or src_ != "3d:" + FROM:
-            sys.exit("%s node %s is not a bg on 3d:%s (%s)" % (f, n, FROM, src_))
+        nodes, cues, seg_end = segment_cues(path, int(n))
+        nd_ = nodes[int(n)]
+        if nd_.get("t") in IV.TEXT:
+            # an inline view: re-point [view:FROM], or give a line its first
+            if IV.of(nd_) not in (None, FROM):
+                sys.exit("%s node %s cuts to %s, not %s" % (f, n, IV.of(nd_), FROM))
+            if IV.of(nd_) is None:
+                log.append("   NOTE %s#%s gains [view:%s]; its segment runs to node %d — put the "
+                           "room's own [view:] on the line the story returns on" % (f, n, TO, seg_end))
+        else:
+            src_ = str(nd_.get("src", ""))
+            if nd_.get("t") != "bg" or src_ != "3d:" + FROM:
+                sys.exit("%s node %s is not a bg on 3d:%s (%s)" % (f, n, FROM, src_))
         moves.append((path, int(n)))
         cued |= cues
 
@@ -200,6 +220,22 @@ def main():
         raw = open(path, encoding="utf-8").read()
         nodes = json.loads(raw)
         lst = nodes if isinstance(nodes, list) else nodes["nodes"]
+        if lst[n].get("t") in IV.TEXT:
+            old = lst[n]["text"]
+            vm = re.match(r"\[view:\S+( [^\]\r\n]+)?\]", old)
+            new = "[view:%s%s]" % (TO, (vm.group(1) or "") if vm else "") + IV.strip(old)
+            for asc in (False, True):
+                eo = '"text": ' + json.dumps(old, ensure_ascii=asc)
+                if raw.count(eo) == 1:
+                    raw = raw.replace(eo, '"text": ' + json.dumps(new, ensure_ascii=asc))
+                    break
+            else:
+                sys.exit("%s#%d: the line's text is not in the file exactly once" % (path, n))
+            assert json.loads(raw)
+            if not a.dry:
+                open(path, "w", encoding="utf-8").write(raw)
+            log.append("scene %s#%d → [view:%s]" % (os.path.relpath(path, SCENES), n, TO))
+            continue
         lst[n]["src"] = "3d:" + TO
         # rewrite only that node's src: find the n-th bg occurrence textually
         idx, count = -1, 0

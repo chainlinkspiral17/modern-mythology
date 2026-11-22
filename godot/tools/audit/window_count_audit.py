@@ -12,6 +12,9 @@ first. No gate: the list is the drafting program's queue for the window pass.
     python3 godot/tools/audit/window_count_audit.py            # text
     python3 godot/tools/audit/window_count_audit.py --json out.json
 """
+import os as _os, sys as _sys
+_sys.path.append(_os.path.join(_os.path.dirname(_os.path.abspath(__file__))))
+import inline_view as IV   # a line can change the room itself: [view:preset] (pass 447)
 import glob
 import json
 import math
@@ -45,7 +48,7 @@ def lines_by_locale():
         if not isinstance(d, dict):
             continue
         sid, cur = d.get("id", ""), None
-        for n in d.get("nodes", []):
+        for n in IV.nodes(d.get("nodes", [])):
             if not isinstance(n, dict):
                 continue
             if n.get("t") == "bg" and isinstance(n.get("src"), str):

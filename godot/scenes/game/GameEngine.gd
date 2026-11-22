@@ -172,7 +172,7 @@ var _music:      MusicDirector = null
 # [shot:...] / [panel:...] directives lead narrate/say/think text;
 # they're stripped before display and dispatched to the director.
 var _director:   Node        = null
-var _direct_rx:  RegEx       = RegEx.create_from_string("^\\[(shot|panel|stage|mood|beat|trip|register|portrait):([^\\]\\r\\n]+)\\]\\s*")
+var _direct_rx:  RegEx       = RegEx.create_from_string("^\\[(view|shot|panel|stage|mood|beat|trip|register|portrait):([^\\]\\r\\n]+)\\]\\s*")
 
 
 func _ready() -> void:
@@ -759,6 +759,17 @@ func _fast_forward_to(target: int) -> void:
 	# (2026-10-27) a page panel open at the save point is open after the resume
 	# too: the last [panel:id] not closed by a [panel:off] or a new bg
 	var last_panel: String = ""
+	# (pass 447) node index -> "3d:preset" for a line that changed the room
+	# itself ([view:preset]): the resume's bg is the LAST of the bg nodes
+	# and these
+	var view_src: Dictionary = {}
+	# (pass 447) the room the walk is in: a [mood:] belongs to the room it
+	# was set in. In play a change of view loads the set afresh with its own
+	# look (Background3D.load_location), so the mood ends there; the resume
+	# carried the chapter's LAST mood into whatever room the save was in —
+	# vol 6 ch16's `dawn_warm` (set at the dock, node 6) came back over
+	# Diego's bedroom 145 nodes and four rooms later.
+	var cur_bg: String = ""
 	var limit: int = mini(target, nodes.size())
 	_replaying = true
 	for i in limit:
@@ -787,6 +798,10 @@ func _fast_forward_to(target: int) -> void:
 			"bg", "substrate", "composition", "bgm":
 				last_env[String(n.get("t", ""))] = i
 				if String(n.get("t", "")) == "bg":
+					var bsrc: String = resolve_bg(_s(n, "src"), _scene_id)
+					if bsrc != cur_bg:
+						last_mood = ""
+					cur_bg = bsrc
 					last_panel = ""
 					# (2026-11-12, pass 347) a new room starts at its own
 					# frame, as it does in play (VnDirector.on_locale_changed
@@ -811,6 +826,16 @@ func _fast_forward_to(target: int) -> void:
 							break
 						var arg: String = m.get_string(2).strip_edges()
 						match m.get_string(1):
+							"view":
+								view_src[i] = "3d:" + arg.get_slice(" ", 0)
+								if String(view_src[i]) != cur_bg:
+									last_mood = ""
+								cur_bg = String(view_src[i])
+								last_env["bg"] = i
+								last_panel = ""
+								last_shot = ""
+								had_shot = false
+								since_shot.clear()
 							"mood": last_mood = arg
 							"shot":
 								last_shot = arg
@@ -833,6 +858,9 @@ func _fast_forward_to(target: int) -> void:
 	var env_indices: Array = last_env.values()
 	env_indices.sort()
 	for idx_v in env_indices:
+		if view_src.has(int(idx_v)):
+			_do_bg({"t": "bg", "src": String(view_src[int(idx_v)])})
+			continue
 		var n2: Dictionary = nodes[int(idx_v)]
 		match n2.get("t", ""):
 			"bg":          _do_bg(n2)
@@ -1011,6 +1039,14 @@ func _dispatch(n: Dictionary) -> void:
 		_give_item(String(n.get("item")))
 	if n.has("drop_item"):
 		_drop_item(String(n.get("drop_item")))
+	# (pass 447) THE LINE CHANGES THE ROOM: `[view:preset]` first in a
+	# line's text is a bg node without a node — the cut (and its
+	# transition) plays, then the line. For a voiced chapter, where a
+	# node cannot go in without moving every index after it.
+	var view: String = _inline_view(n)
+	if view != "":
+		_view_then_line(n, view)
+		return
 	match n.get("t", ""):
 		"narrate":    _do_narrate(_directed_seen(n, "narrate"))
 		"say":        _do_say(_directed_seen(n, "say"))
@@ -1054,6 +1090,38 @@ func _s(n: Dictionary, key: String, default: String = "") -> String:
 	return v as String if v is String else default
 
 
+# ── The inline view · [view:preset] (pass 447) ───────────────────
+# The preset a line cuts to before it shows: `[view:x]` FIRST in the
+# text of a narrate / say / think / interlude ("" for any other node).
+# tools/audit/inline_view.py reads the same rule for every gate that
+# asks which room a line is in.
+func _inline_view(n: Dictionary) -> String:
+	var t: String = _s(n, "t")
+	if t != "narrate" and t != "say" and t != "think" and t != "interlude":
+		return ""
+	var text: String = _s(n, "text")
+	if not text.begins_with("[view:"):
+		return ""
+	var m := _direct_rx.search(text)
+	if m == null or m.get_string(1) != "view":
+		return ""
+	return m.get_string(2).strip_edges()
+
+
+func _view_then_line(n: Dictionary, view: String) -> void:
+	# `[view:preset]`, or `[view:preset fade]` to name the transition
+	var parts: PackedStringArray = view.split(" ", false)
+	var bgn: Dictionary = {"t": "bg", "src": "3d:" + parts[0]}
+	if parts.size() > 1:
+		bgn["transition"] = parts[1]
+	await _bg_cut(bgn, true)
+	match _s(n, "t"):
+		"narrate":   _do_narrate(_directed_seen(n, "narrate"))
+		"say":       _do_say(_directed_seen(n, "say"))
+		"think":     _do_think(_directed_seen(n, "think"))
+		"interlude": _do_interlude(_directed(n))
+
+
 # ── Direction directives ─────────────────────────────────────────
 # Strip leading [shot:...] / [panel:...] directives off a text
 # node, dispatching each to the director, and return the node with
@@ -1074,6 +1142,14 @@ func _directed(n: Dictionary) -> Dictionary:
 		if m == null:
 			break
 		var arg := m.get_string(2).strip_edges()
+		if m.get_string(1) == "view":
+			# first in the text: _dispatch already played the cut. Anywhere
+			# else (scene_view_tag_audit refuses it) it still changes the
+			# room, as a plain cut, so the line is never in the wrong one.
+			if stripped != text:
+				_do_bg({"t": "bg", "src": "3d:" + arg.get_slice(" ", 0)})
+			stripped = stripped.substr(m.get_end(0))
+			continue
 		if m.get_string(1) == "shot" and _frame_2d_live():
 			# a painting has no set to cut in: it reframes (pass 300)
 			_frame_shot(arg, _s(n, "char") if _s(n, "t") == "say" else "")
@@ -1742,21 +1818,26 @@ var _xf_walk_rx: RegEx = null
 
 
 func _bg_with_transition(n: Dictionary) -> void:
+	await _bg_cut(n)
+	_run_next()
+
+
+# The change of place itself, with its transition; the caller decides
+# what plays next (a bg node: the next node; an inline view: its line).
+func _bg_cut(n: Dictionary, inline: bool = false) -> void:
 	var src: String = resolve_bg(_s(n, "src"), _scene_id)
 	# another place, OR another view of the same set (the porch → the
 	# cabin's interior is one model and still a jump of the camera)
 	var moving: bool = _xf_src != "" and src != _xf_src
 	var style: String = String(n.get("transition", ""))
 	if style == "" and moving:
-		style = _transition_for(_node_idx - 1)
+		style = _transition_for(_node_idx - 1, inline)
 	if not moving or style == "cut" or style == "":
 		_do_bg(n)
-		_run_next()
 		return
 	_transition_lock = true
 	await _transition_play(n, style)
 	_transition_lock = false
-	_run_next()
 
 
 func _transition_play(n: Dictionary, style: String) -> void:
@@ -1851,7 +1932,7 @@ func _xf_wait_ready() -> void:
 
 # The director reads the text: the line before the place change and the
 # two after it.
-func _transition_for(bg_index: int) -> String:
+func _transition_for(bg_index: int, inline: bool = false) -> String:
 	if _xf_time_rx == null:
 		_xf_time_rx = RegEx.new()
 		_xf_time_rx.compile("(?i)\\b(later|the next (morning|day|night|evening|week)|next morning|that (night|evening|afternoon|morning)|hours? (later|passed)|days? later|weeks? later|the following|by (morning|evening|nightfall|dawn|dusk)|at (one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|noon|midnight|dawn|dusk|\\d)|\\d{1,2}:\\d\\d|(monday|tuesday|wednesday|thursday|friday|saturday|sunday))\\b")
@@ -1861,11 +1942,13 @@ func _transition_for(bg_index: int) -> String:
 		_xf_walk_rx.compile("(?i)\\b(went (in|into|out|through|up|down|back)|walked (in|into|out|through|over|back)|came (in|into|out|through)|stepped (in|into|out|through)|followed|led (her|him|them)|inside|out back|through the door|crossed (to|into))\\b")
 	var nodes: Array = _scene_data.get("nodes", [])
 	var around: String = ""
-	for j: int in [bg_index - 1, bg_index + 1, bg_index + 2, bg_index + 3]:
+	# an inline view sits BEFORE its own line: "after" starts at that line
+	var f: int = bg_index - 1 if inline else bg_index
+	for j: int in [bg_index - 1, f + 1, f + 2, f + 3]:
 		if j >= 0 and j < nodes.size() and nodes[j] is Dictionary:
 			around += " " + String((nodes[j] as Dictionary).get("text", ""))
 	var after: String = ""
-	for j: int in [bg_index + 1, bg_index + 2]:
+	for j: int in [f + 1, f + 2]:
 		if j >= 0 and j < nodes.size() and nodes[j] is Dictionary:
 			after += " " + String((nodes[j] as Dictionary).get("text", ""))
 	if _xf_flash_rx.search(after) != null:

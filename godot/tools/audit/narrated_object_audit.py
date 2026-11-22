@@ -20,6 +20,9 @@ Words match whole words (plural and singular), so `glass` does not fire on
 Common words that are also cues (`door`, `window`, `table`) are listed but
 marked `common` — read the line before cutting on them.
 """
+import os as _os, sys as _sys
+_sys.path.append(_os.path.join(_os.path.dirname(_os.path.abspath(__file__))))
+import inline_view as IV   # a line can change the room itself: [view:preset] (pass 447)
 import glob
 import json
 import os
@@ -73,7 +76,7 @@ def main():
     for f in sorted(glob.glob(os.path.join(SCENES, "vol*", "*.json"))):
         cur = None
         recent = []          # the inserts cut to in the last few lines: no re-cut on a repeat mention
-        for i, n in enumerate(nodes_of(f)):
+        for i, n in IV.walk(nodes_of(f)):
             if not isinstance(n, dict):
                 continue
             if n.get("t") == "bg":

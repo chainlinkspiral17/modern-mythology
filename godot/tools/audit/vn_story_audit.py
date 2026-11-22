@@ -34,6 +34,9 @@ Usage:
     python3 godot/tools/audit/vn_story_audit.py vol5 vol6  # some
     python3 godot/tools/audit/vn_story_audit.py --chars    # char report
 """
+import os as _os, sys as _sys
+_sys.path.append(_os.path.join(_os.path.dirname(_os.path.abspath(__file__))))
+import inline_view as IV   # a line can change the room itself: [view:preset] (pass 447)
 import json
 import os
 import re
@@ -174,7 +177,7 @@ def main():
             continue
         nodes = data.get("nodes", [])
         n_count = len(nodes)
-        for i, n in enumerate(nodes):
+        for i, n in IV.walk(nodes):
             t = str(n.get("t", ""))
             where = "%s#%d" % (rel, i)
             if t not in NODE_TYPES:

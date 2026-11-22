@@ -33,6 +33,9 @@ Usage:
     python3 godot/tools/audit/shot_seed.py <chapter.json>…
     python3 godot/tools/audit/shot_seed.py --light <chapter.json>…   # authored chapters: fewer, wider cuts
 """
+import os as _os, sys as _sys
+_sys.path.append(_os.path.join(_os.path.dirname(_os.path.abspath(__file__))))
+import inline_view as IV   # a line can change the room itself: [view:preset] (pass 447)
 import json
 import os
 import re
@@ -43,7 +46,7 @@ sys.path.insert(0, HERE)
 import shot_marker_audit as SM
 
 ROOT = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
-DIRECT_RX = re.compile(r"^\[(shot|panel|stage|mood|beat|trip):([^\]\r\n]+)\]\s*")
+DIRECT_RX = re.compile(r"^\[(view|shot|panel|stage|mood|beat|trip|register|portrait):([^\]\r\n]+)\]\s*")
 SHOT_RX = re.compile(r"\[shot:([^\]~]+)~?\]")
 
 MIN_GAP_CLOSEUP = 3
@@ -105,7 +108,7 @@ def strip_directives(text):
 def plan(path):
     d = json.load(open(path))
     nodes = d.get("nodes", [])
-    bgs = [n for n in nodes if n.get("t") == "bg"]
+    bgs = [n for n in IV.nodes(nodes) if n.get("t") == "bg"]
     src = str(bgs[0].get("src", "")) if bgs else ""
     locale, markers = locale_markers(src)
     if not markers:
@@ -141,7 +144,7 @@ def plan(path):
     # film rule — don't cross the line): the first speaker takes the
     # generic frame, the second its reverse, and they alternate from there
     speaker_side = {}
-    for i, nd in enumerate(nodes):
+    for i, nd in IV.walk(nodes):
         t = nd.get("t")
         text = nd.get("text") if isinstance(nd.get("text"), str) else None
         if t == "bg" and i > 0:
@@ -293,7 +296,11 @@ def splice(path, nodes, edits):
             raise RuntimeError("node %d text not found in raw file: %r" % (i, text[:40]))
         if i in edit_at:
             q = raw.find(enc, found)           # start of the encoded string (the opening quote)
-            ins = q + 1 + offset
+            # (pass 447) a [view:] tag stays FIRST in its line: the engine
+            # plays the cut before the line's other cues, so a cue goes in
+            # after it (the tag is plain ASCII: its encoded length is its own)
+            vm = re.match(r"\[view:[^\]\r\n]+\]", text)
+            ins = q + 1 + (len(vm.group(0)) if vm else 0) + offset
             out = out[:ins] + edit_at[i] + out[ins:]
             offset += len(edit_at[i])
         pos = found + len(enc)

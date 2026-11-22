@@ -289,6 +289,10 @@
       "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.85
     },
+    "diego_bedroom_blackout": {
+      "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
+      "gain": 0.85
+    },
     "jesse_bedroom": {
       "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.85
@@ -670,6 +674,10 @@
       "gain": 0.74
     },
     "centro_dock": {
+      "bed": "assets/audio/bgm/vol6_ambient.wav",
+      "gain": 0.7
+    },
+    "centro_dock_dream": {
       "bed": "assets/audio/bgm/vol6_ambient.wav",
       "gain": 0.7
     },

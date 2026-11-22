@@ -13,6 +13,9 @@ Fails on:
   - an insert cue on a painting that HAS spots, naming one it does not have
 Reports how many insert cues on paintings are aimed vs seeded.
 """
+import os as _os, sys as _sys
+_sys.path.append(_os.path.join(_os.path.dirname(_os.path.abspath(__file__))))
+import inline_view as IV   # a line can change the room itself: [view:preset] (pass 447)
 import json
 import os
 import re
@@ -57,7 +60,7 @@ def main():
             if not isinstance(j, dict):
                 continue
             src = ""
-            for i, n in enumerate(j.get("nodes", [])):
+            for i, n in IV.walk(j.get("nodes", [])):
                 if n.get("t") == "bg":
                     raw = n.get("src") or ""
                     src = "" if bg_resolve.preset_of(raw, j.get("id", fn[:-5])) else \

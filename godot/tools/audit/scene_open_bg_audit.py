@@ -13,6 +13,9 @@ Stubs, tests, trailers, interludes and _demo scenes are skipped.
 
     python3 godot/tools/audit/scene_open_bg_audit.py
 """
+import os as _os, sys as _sys
+_sys.path.append(_os.path.join(_os.path.dirname(_os.path.abspath(__file__))))
+import inline_view as IV   # a line can change the room itself: [view:preset] (pass 447)
 import glob
 import json
 import os
@@ -45,7 +48,7 @@ def main():
             continue
         n += 1
         first_line = first_bg = None
-        for i, nd in enumerate(nodes):
+        for i, nd in IV.walk(nodes):
             t = nd.get("t") if isinstance(nd, dict) else None
             if t == "bg" and first_bg is None:
                 first_bg = i

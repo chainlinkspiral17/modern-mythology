@@ -28,6 +28,9 @@ JUDGED_DARK with the reason.
 Without GODOT_BIN it lists the jobs and exits 0. A full run is ~1 minute
 a preset (322 presets on 2026-11-08): run it in the background.
 """
+import os as _os, sys as _sys
+_sys.path.append(_os.path.join(_os.path.dirname(_os.path.abspath(__file__))))
+import inline_view as IV   # a line can change the room itself: [view:preset] (pass 447)
 import collections
 import json
 import os
@@ -165,7 +168,7 @@ def jobs():
             m = re.search(r"vol(\d+)", fn) or re.search(r"vol(\d+)", dirpath)
             vol = int(m.group(1)) if m else int(j.get("vol", 1) or 1)
             cur = ""
-            for n in j.get("nodes", []):
+            for n in IV.nodes(j.get("nodes", [])):
                 if n.get("t") == "bg":
                     cur = bg_resolve.preset_of(n.get("src"), j.get("id", fn[:-5])) or ""
                 if not cur:

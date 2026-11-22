@@ -21,6 +21,9 @@ plus every hero GLB × every Portrait3D expression.
 Re-run whenever presets, markers or scene moods change; the file is
 committed so the Deck run needs no Python.
 """
+import os as _os, sys as _sys
+_sys.path.append(_os.path.join(_os.path.dirname(_os.path.abspath(__file__))))
+import inline_view as IV   # a line can change the room itself: [view:preset] (pass 447)
 import glob
 import json
 import os
@@ -50,7 +53,7 @@ def preset_usage():
     for f in glob.glob(os.path.join(SCENES, "vol*", "*.json")):
         vol = int(os.path.basename(os.path.dirname(f))[3:])
         cur = None
-        for n in json.load(open(f, encoding="utf-8")).get("nodes", []):
+        for n in IV.nodes(json.load(open(f, encoding="utf-8")).get("nodes", [])):
             if n.get("t") == "bg":
                 s = str(n.get("src") or "")
                 cur = s[3:] if s.startswith("3d:") else None

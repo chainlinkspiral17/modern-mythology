@@ -10,6 +10,9 @@ weren't. This keeps each class fixed. Zero output = clean, exit 0.
 
 Usage: python3 godot/tools/vn_asset_audit.py
 """
+import os as _os, sys as _sys
+_sys.path.append(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "audit"))
+import inline_view as IV   # a line can change the room itself: [view:preset] (pass 447)
 import json, os, re, sys
 
 ROOT = os.path.join(os.path.dirname(__file__), "..")
@@ -101,7 +104,7 @@ for path in scene_files():
         continue
     nodes = doc.get("nodes", [])
     has_bg = False
-    for n in walk_nodes(nodes):
+    for n in IV.nodes(list(walk_nodes(nodes))):
         t = n.get("t")
         if t == "bg":
             has_bg = True

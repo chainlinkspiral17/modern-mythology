@@ -25,6 +25,9 @@ calling it out). Families already covered by an art entry are marked.
     python3 godot/tools/audit/hero_art_candidates.py                # text report
     python3 godot/tools/audit/hero_art_candidates.py --json out.json
 """
+import os as _os, sys as _sys
+_sys.path.append(_os.path.join(_os.path.dirname(_os.path.abspath(__file__))))
+import inline_view as IV   # a line can change the room itself: [view:preset] (pass 447)
 import glob
 import json
 import os
@@ -95,7 +98,7 @@ def lines_by_locale(pre):
         if not isinstance(nodes, list):
             continue
         cur = None
-        for n in nodes:
+        for n in IV.nodes(nodes):
             if not isinstance(n, dict):
                 continue
             if n.get("t") == "bg":

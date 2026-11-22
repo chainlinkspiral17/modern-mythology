@@ -22,6 +22,9 @@ DIR is a scenes folder (…/resources/scenes) — e.g. one extracted from
 claude/vol1-4-source-text with `git archive`, while those volumes live on
 that branch. Nothing is written except --json.
 """
+import os as _os, sys as _sys
+_sys.path.append(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "audit"))
+import inline_view as IV   # a line can change the room itself: [view:preset] (pass 447)
 import argparse
 import collections
 import glob
@@ -177,7 +180,7 @@ def main():
     bgs = collections.defaultdict(set)
     bgm = collections.defaultdict(set)
     for vol, sid, d in scenes:
-        for n in d.get("nodes") or []:
+        for n in IV.nodes(d.get("nodes") or []):
             t = n.get("t")
             if t in ("say", "think", "show") and n.get("char"):
                 k = char_key(n["char"])

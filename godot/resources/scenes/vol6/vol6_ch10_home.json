@@ -277,7 +277,7 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert curtains]He pulls the blackout curtains in his bedroom — the ones he had installed in mid-July, after his mother had driven up from San Antonio and helped him put them in on a Saturday afternoon while his grandmother had made lunch and had, occasionally, brought up cold lemonade.",
+   "text": "[view:diego_bedroom_blackout][shot:insert curtains]He pulls the blackout curtains in his bedroom — the ones he had installed in mid-July, after his mother had driven up from San Antonio and helped him put them in on a Saturday afternoon while his grandmother had made lunch and had, occasionally, brought up cold lemonade.",
    "voice": "assets/audio/voice/vol6_ch10_home/047.ogg"
   },
   {
@@ -295,7 +295,7 @@
   },
   {
    "t": "bg",
-   "src": "3d:diego_bedroom"
+   "src": "3d:diego_bedroom_blackout"
   },
   {
    "t": "narrate",
@@ -304,7 +304,7 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:dream_blur][shot:establish~]In his sleep, sometime around eleven AM Central, he dreams of the dock.",
+   "text": "[view:centro_dock_dream][mood:dream_blur][shot:establish~]In his sleep, sometime around eleven AM Central, he dreams of the dock.",
    "voice": "assets/audio/voice/vol6_ch10_home/053.mp3"
   },
   {
@@ -371,7 +371,7 @@
   },
   {
    "t": "narrate",
-   "text": "He wakes, in his bedroom, at four eleven PM.",
+   "text": "[view:diego_bedroom_blackout]He wakes, in his bedroom, at four eleven PM.",
    "voice": "assets/audio/voice/vol6_ch10_home/066.mp3"
   },
   {
@@ -415,7 +415,7 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:day_bright][shot:insert window]He pulls back one of the blackout curtains. The afternoon light comes in. The light is the specific late-summer light Texas does in mid-August, gold and heavy, with the small visible motes of dust the air carries when the AC has been running all day.",
+   "text": "[view:diego_bedroom][mood:day_bright][shot:insert window]He pulls back one of the blackout curtains. The afternoon light comes in. The light is the specific late-summer light Texas does in mid-August, gold and heavy, with the small visible motes of dust the air carries when the AC has been running all day.",
    "voice": "assets/audio/voice/vol6_ch10_home/074.mp3"
   },
   {

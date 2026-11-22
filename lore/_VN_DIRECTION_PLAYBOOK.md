@@ -73,8 +73,23 @@ Directives lead a VN script line, square-bracketed:
     [mood:dambrosios_3am]      apply a MoodCycler STYLE_PACK (or bare
                                mood) by name — lighting + post as one look
 
+    [view:centro_dock_dream]   CHANGE THE ROOM on this line: a bg node
+                               without a node (pass 447). FIRST in the
+                               text; `[view:preset fade]` names the
+                               transition (cut / fade / dissolve / flash)
+
 `~` suffix = drift. Unknown marker/panel/spot/model/mood = silent
 no-op (fallback discipline — a script must never crash the reader).
+
+`[view:]` is for a VOICED chapter, where a bg node cannot go in without
+moving every node index after it (voice lines, saves, trip beats). Where
+a node can go in, use the bg node. Rules: the tag comes first (the cut
+plays before the line's other cues — a `[shot:]` before it would be
+cleared by the new room); the line the story RETURNS on carries the old
+room's own `[view:]` (nothing else ends the segment but the next bg);
+`tools/audit/inline_view.py` gates both, and every tool that asks "which
+room is this line in" walks nodes through `IV.walk()` — a new tool that
+tracks bg nodes must too.
 
 ## Cast staging (v3)
 
@@ -322,6 +337,29 @@ stillness is the player's own camera.
   nothing does.
 
 ## Recent lessons
+
+### 2026-11-21 · a dream is a place: the line changes the room (pass 447)
+
+- **What happened:** Diego dreams of the grocery's loading dock twice (vol
+  6 ch10, ch16) — eleven and nine lines of "the dock is the dock ... the
+  haze is, in the dream, only a few miles out" — and both played over his
+  bed. Every gate passed: no line carried a cue the bedroom lacked. The
+  chapters are voiced, so the fix "add a bg node" was closed.
+- **Why:** the room a line plays in was only ever set by a node, and a
+  voiced chapter's node list is frozen. The gap had been on the roadmap for
+  three passes as "NEXT" while each playtest batch worked around it.
+- **Rule:** when the prose says where we are and the picture is somewhere
+  else, that is a missing place change — a dream, a memory, a phone call's
+  other end, "meanwhile". Read for "dreams of", "remembers", "is back in",
+  "across town". In a voiced chapter cut with `[view:preset]` on the line,
+  and put the old room's `[view:]` on the line that returns. A mood set
+  inside the segment (`dream_blur`) ends with the return cut, because the
+  room's own look loads with it — without the cut it runs on to the next
+  mood cue (ch10's blur covered eight waking lines).
+- **Rule (tools):** one meaning, one reader. The tag went into the engine
+  and 28 tools in the same pass, through one helper, with the reports
+  compared before and after — a tag only the engine understood would have
+  left every room-tracking gate judging the dream lines against the bedroom.
 
 ### 2026-11-15 · a cue word can be a verb: "register" (pass 388)
 

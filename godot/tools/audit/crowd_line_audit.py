@@ -23,6 +23,9 @@ metaphor are not people in the room). The fix for a real one is a view of
 the set by the clock, with its own frames (the VN direction playbook,
 passes 373-375).
 """
+import os as _os, sys as _sys
+_sys.path.append(_os.path.join(_os.path.dirname(_os.path.abspath(__file__))))
+import inline_view as IV   # a line can change the room itself: [view:preset] (pass 447)
 import collections
 import glob
 import json
@@ -76,7 +79,7 @@ def main():
             continue
         ch = os.path.basename(f)[:-5]
         pid = None
-        for i, n in enumerate(j.get("nodes", [])):
+        for i, n in IV.walk(j.get("nodes", [])):
             if n.get("t") == "bg":
                 pid = bg_resolve.preset_of(n.get("src"), j.get("id", ch))
             if pid not in scenes or n.get("t") not in ("narrate", "say", "think"):

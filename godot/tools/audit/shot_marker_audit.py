@@ -28,6 +28,9 @@ Usage:
     python3 godot/tools/audit/shot_marker_audit.py --all    # every gap
 """
 import os as _os, sys as _sys
+_sys.path.append(_os.path.join(_os.path.dirname(_os.path.abspath(__file__))))
+import inline_view as IV   # a line can change the room itself: [view:preset] (pass 447)
+import os as _os, sys as _sys
 _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
 import bg_resolve
 import collections
@@ -278,7 +281,7 @@ def main():
                 continue
             cur = ""
             sid_ = j.get("id", fn[:-5]) if isinstance(j, dict) else fn[:-5]
-            for n in j.get("nodes", []):
+            for n in IV.nodes(j.get("nodes", [])):
                 if n.get("t") == "bg":
                     # the engine's reading: a painting bg_places swaps for a set
                     cur = bg_resolve.preset_of(n.get("src"), sid_) or ""

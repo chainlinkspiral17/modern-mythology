@@ -392,10 +392,22 @@ position = Vector3(-1.286, 1.250, -9.719)
 rotation = Vector3(0.0000, -2.3562, 0.0)
 metadata/fov = 45.0
 
+; (view_twin) centro_dock's frame in centro_dock_dream
+[node name="shot_closeup_person__centro_dock_dream" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.286, 1.250, -9.719)
+rotation = Vector3(0.0000, -2.3562, 0.0)
+metadata/fov = 45.0
+
 
 ; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
 ; the far side of the same spot, so two speakers alternate sides
 [node name="shot_closeup_person_b__centro_dock" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.875, 1.612, -8.052)
+rotation = Vector3(-0.2618, 1.0472, 0.0)
+metadata/fov = 45.0
+
+; (view_twin) centro_dock's frame in centro_dock_dream
+[node name="shot_closeup_person_b__centro_dock_dream" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.875, 1.612, -8.052)
 rotation = Vector3(-0.2618, 1.0472, 0.0)
 metadata/fov = 45.0

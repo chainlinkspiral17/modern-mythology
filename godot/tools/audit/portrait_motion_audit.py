@@ -18,6 +18,9 @@ three-shot's remapped centre slides home when its edge's owner arrives.
     python3 tools/audit/portrait_motion_audit.py [N]     # the N worst chapters
 """
 
+import os as _os, sys as _sys
+_sys.path.append(_os.path.join(_os.path.dirname(_os.path.abspath(__file__))))
+import inline_view as IV   # a line can change the room itself: [view:preset] (pass 447)
 import json, glob, re, sys
 def key(c): return re.sub(r'[^a-z0-9]+','_',str(c).lower()).strip('_')
 mode3d = "--2d" not in sys.argv
@@ -35,7 +38,7 @@ for f in sorted(glob.glob('resources/scenes/**/*.json',recursive=True)):
         if s: 
             disp[s[0]]=[p,0]; left_at[s[0]]=line
             if line-s[2]<=1: c["POPS"]+=1
-    for n in j['nodes']:
+    for n in IV.nodes(j['nodes']):
         if not isinstance(n,dict): continue
         t=n.get('t')
         if t in('narrate','say','think'):

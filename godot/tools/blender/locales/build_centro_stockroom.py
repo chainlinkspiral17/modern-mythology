@@ -315,6 +315,58 @@ def build_dawn_east_2026_10():
 
 
 
+def build_dream_haze_2026_11():
+    """THE DOCK IN DIEGO'S DREAM (vol 6 ch10 / ch16; pass 447, 2026-11-21).
+    "In the dream the dock is the dock, and the cedar scrub is the cedar
+    scrub, and the eastern horizon is the eastern horizon. But the
+    rust-colored haze, in the dream, is closer than it is in life. The haze
+    is, in the dream, only a few miles out ... moving toward him. He stands
+    on the dock and watches it come."
+
+    Both dreams played over his bedroom until the inline `[view:]` tag
+    (both chapters are voiced: a bg node could not go in). This is the
+    view's one difference from `centro_dock`: the far thin smear has become
+    a BANK — a rust wall standing over the cedar line and up through most
+    of the sky, densest low, its top ragged, and its leading edge already
+    lying across the far scrub. Parts of `centro_dock_dream` only.
+
+    Draft 2 targets: the bank MOVES (a slow drift toward the dock over the
+    lines it is on screen — Background3D has no per-view motion yet); what
+    is inside the haze ("whatever is inside the haze to arrive with it") as
+    a darker core that the last dream line reaches; BT beside him at the
+    dock's edge in ch10 n62 / ch16 n153 as a figure, not only a portrait.
+    """
+    from _props.view_tags import Views
+    V = Views("cs", {"d": "centro_dock_dream"})
+    tag = V.tag("d")
+    rust, core = (0.84, 0.50, 0.33), (0.70, 0.36, 0.22)
+    # THE BANK: sky cards 46-53 m out (in front of the 60 m treeline band and
+    # of life's smear at 55 m). Its FOOT runs right across the frame (160 m:
+    # past an ultrawide's edges at this distance), three overlapping courses,
+    # densest low. (z bottom, height, alpha)
+    for k, (z0, h, a) in enumerate(((2.2, 5.2, 0.50), (4.6, 5.0, 0.40), (6.8, 4.6, 0.30))):
+        make_box(f"Dream_Haze_Bank_{k}" + tag, (0.0, 53.0 - 0.6 * k, z0 + h / 2.0), (160.0, 0.3, h),
+                 (core[0], core[1], core[2], a))
+    # ITS TOP is ragged and soft: many thin veils, each faint, their ends
+    # falling in different places (the first draft's five wide cards ended in
+    # hard rectangles against the sky). (dx, z bottom, height, width, alpha)
+    top = ((-38.0, 9.6, 3.0, 62.0, 0.12), (-12.0, 10.2, 3.6, 70.0, 0.12), (20.0, 9.8, 3.2, 66.0, 0.12),
+           (44.0, 9.4, 2.6, 50.0, 0.10), (-52.0, 9.0, 2.2, 44.0, 0.10), (2.0, 11.6, 3.0, 48.0, 0.10),
+           (-26.0, 11.8, 2.4, 36.0, 0.09), (30.0, 11.4, 2.8, 40.0, 0.09), (-6.0, 13.2, 2.2, 30.0, 0.08),
+           (14.0, 13.8, 1.8, 22.0, 0.07), (-40.0, 12.6, 1.6, 24.0, 0.07), (50.0, 11.8, 1.6, 26.0, 0.07))
+    for k, (dx, z0, h, w, a) in enumerate(top):
+        make_box(f"Dream_Haze_Top_{k}" + tag, (dx, 51.0 - 0.25 * k, z0 + h / 2.0), (w, 0.2, h),
+                 (rust[0], rust[1], rust[2], a))
+    # ITS LEADING EDGE, come in over the far scrub: low veils among the
+    # cedars 34-44 m out, so the middle distance has already gone rust
+    lead = ((-14.0, 44.0, 0.4, 3.4, 46.0, 0.24), (16.0, 41.0, 0.3, 2.8, 52.0, 0.20),
+            (-2.0, 38.0, 0.3, 2.2, 38.0, 0.16), (-24.0, 35.5, 0.2, 1.8, 30.0, 0.12),
+            (21.0, 34.0, 0.2, 1.6, 28.0, 0.10))
+    for k, (dx, y, z0, h, w, a) in enumerate(lead):
+        make_box(f"Dream_Haze_Lead_{k}" + tag, (dx, y, z0 + h / 2.0), (w, 0.3, h), (rust[0], rust[1], rust[2], a))
+    V.check()
+
+
 def build_back_of_house_2026_10():
     """THE STOCKROOM'S WALLS (2026-10-08; "too bare and empty" — 12 % of the
     walls held anything at eye height). Back of house: the workbench with
@@ -387,6 +439,7 @@ def main():
     build_fluorescents()
     build_hero_props_2026_09()
     build_dawn_east_2026_10()
+    build_dream_haze_2026_11()
     build_back_of_house_2026_10()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/centro_stockroom.glb"))

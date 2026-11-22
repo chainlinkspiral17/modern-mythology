@@ -57,7 +57,7 @@ SEAT_MAX = 0.10
 CROWNISH = re.compile(r"crown|canopy|foliage|lobe|frond", re.I)
 # Non-solid volumetrics: sprinkler spray arcs, light shafts, steam —
 # they interpenetrate everything by design.
-NONSOLID = re.compile(r"spray|mist|steam|smoke|shaft|glow|beam\b|dust|fog|surf|foam|wake|"
+NONSOLID = re.compile(r"spray|mist|steam|smoke|shaft|glow|beam\b|dust|fog|haze|surf|foam|wake|"
     r"falls?_|veil|cascade|plunge|water|thread|pool|liquid", re.I)
 # Infrastructure DESIGNED to be buried — culverts under roads,
 # pipes through creek beds, footings in the ground.

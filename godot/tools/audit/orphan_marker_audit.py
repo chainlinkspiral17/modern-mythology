@@ -26,6 +26,9 @@ line left (a copied scene's leftovers, a cut passage) is deleted.
 CEILING is a ratchet: lower it when a pass cues or deletes; never raise it
 (a new marker ships with its cue).
 """
+import os as _os, sys as _sys
+_sys.path.append(_os.path.join(_os.path.dirname(_os.path.abspath(__file__))))
+import inline_view as IV   # a line can change the room itself: [view:preset] (pass 447)
 import collections
 import glob
 import json
@@ -64,7 +67,7 @@ def survey():
             continue
         ch = os.path.basename(f)[:-5]
         pid = None
-        for i, n in enumerate(j.get("nodes", [])):
+        for i, n in IV.walk(j.get("nodes", [])):
             if n.get("t") == "bg":
                 pid = bg_resolve.preset_of(n.get("src"), j.get("id", ch))
             if pid not in pre:

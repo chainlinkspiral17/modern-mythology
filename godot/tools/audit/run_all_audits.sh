@@ -722,6 +722,13 @@ echo "── scene_open_bg_audit.py ── t+${SECONDS}s"
 python3 scene_open_bg_audit.py || { echo "REGRESSION  scene_open_bg_audit (ceiling 0)"; DEFERRED="$DEFERRED scene_open_bg_audit"; }
 echo ""
 
+# inline_view (pass 447): a line that changes the room itself ([view:preset])
+# — the tag is FIRST in its text, names a real camera preset, and sits only
+# on a line (a tag after a [shot:] would cut the room out from under it).
+echo "── inline_view.py ── t+${SECONDS}s"
+python3 inline_view.py || { echo "REGRESSION  inline_view (ceiling 0)"; DEFERRED="$DEFERRED inline_view"; }
+echo ""
+
 echo "── prop_budget_audit.py ── t+${SECONDS}s"
 python3 prop_budget_audit.py || { echo "REGRESSION  prop_budget_audit (ceiling 0)"; DEFERRED="$DEFERRED prop_budget_audit"; }
 echo ""

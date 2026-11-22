@@ -42,6 +42,9 @@ in KEPT_INSERT with the reason, or fixed: the preset's own marker
 Gate at zero.
 """
 import os as _os, sys as _sys
+_sys.path.append(_os.path.join(_os.path.dirname(_os.path.abspath(__file__))))
+import inline_view as IV   # a line can change the room itself: [view:preset] (pass 447)
+import os as _os, sys as _sys
 _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
 import bg_resolve
 import glob
@@ -198,7 +201,7 @@ def insert_areas(pre, show_all):
             continue
         sid = j.get("id", os.path.basename(f)[:-5])
         pid = None
-        for i, n in enumerate(j.get("nodes", [])):
+        for i, n in IV.walk(j.get("nodes", [])):
             if n.get("t") == "bg":
                 pid = bg_resolve.preset_of(n.get("src"), sid)
             if pid not in pre:
@@ -241,7 +244,7 @@ def main():
         j = json.load(open(f, encoding="utf-8"))
         sid = j.get("id", os.path.basename(f)[:-5])
         pid = None
-        for i, n in enumerate(j.get("nodes", [])):
+        for i, n in IV.walk(j.get("nodes", [])):
             if n.get("t") == "bg":
                 # the engine's reading: a painting bg_places swaps for a set
                 pid = bg_resolve.preset_of(n.get("src"), sid)

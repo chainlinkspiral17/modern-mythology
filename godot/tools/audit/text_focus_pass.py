@@ -23,6 +23,9 @@ is not an insert.
     python3 godot/tools/audit/text_focus_pass.py <vol>…              # author markers + cue the lines
     python3 godot/tools/audit/text_focus_pass.py --dry --chapter vol7_ch2_x
 """
+import os as _os, sys as _sys
+_sys.path.append(_os.path.join(_os.path.dirname(_os.path.abspath(__file__))))
+import inline_view as IV   # a line can change the room itself: [view:preset] (pass 447)
 import glob
 import json
 import math
@@ -150,7 +153,7 @@ def boxes(scene):
 def chapter_presets(nodes, sid, places, pre):
     """node index -> the preset loaded there (None: a 2D or unresolved bg)."""
     cur, out = None, {}
-    for i, n in enumerate(nodes):
+    for i, n in IV.walk(nodes):
         if n.get("t") == "bg":
             s = str(n.get("src") or "")
             if s.startswith("3d:"):
@@ -489,7 +492,7 @@ def run_chapter(path, pre, places, cast, dry, stats):
         if t not in ("narrate", "think") or not text:
             continue
         lead = DIRECT_RX.match(text)
-        if lead and lead.group(1) not in ("trip", "mood", "beat"):
+        if lead and lead.group(1) not in ("trip", "mood", "beat", "view"):
             continue
         preset = at.get(i)
         if preset is None:
@@ -604,11 +607,12 @@ def strip_cues(drop_cues, pre, places):
             changed = False
             for i, n in enumerate(nodes):
                 t = str(n.get("text") or "")
-                m = re.match(r"\[shot:insert (\w+)\]", t)
+                # the cue may sit after the line's [view:] tag (pass 447)
+                m = re.match(r"(?:\[view:[^\]\r\n]+\])?\[shot:insert (\w+)\]", t)
                 if m and at.get(i) in cue_rx and m.group(1) in cue_rx[at.get(i)] \
                         and not has_marker(pre[at.get(i)][0], at.get(i), m.group(1)):
                     old = json.dumps(t, ensure_ascii=False)[1:-1]
-                    new = json.dumps(t[m.end():], ensure_ascii=False)[1:-1]
+                    new = json.dumps(t[:m.start(1) - len("[shot:insert ")] + t[m.end():], ensure_ascii=False)[1:-1]
                     if old in raw:
                         raw = raw.replace(old, new, 1)
                         changed = True

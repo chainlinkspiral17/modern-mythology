@@ -193,13 +193,13 @@ shadow_enabled = false
 
 ; ── THE NIGHT (pass 60): diego_bedroom_night — the moon and the street through the N window;
 ; the desk lamp (unsuffixed) is the room's light
-[node name="Moon_Window__diego_bedroom_night" type="DirectionalLight3D" parent="."]
+[node name="Moon_Window__diego_bedroom_night__diego_bedroom_blackout" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.7071, -0.4056, 0.5792, 0.0000, 0.8192, 0.5736, -0.7071, 0.4056, -0.5792, 0, 5, -6)
 light_color = Color(0.60, 0.68, 0.90, 1)
 light_energy = 0.3
 shadow_enabled = false
 
-[node name="Street_Glow__diego_bedroom_night" type="OmniLight3D" parent="."]
+[node name="Street_Glow__diego_bedroom_night__diego_bedroom_blackout" type="OmniLight3D" parent="."]
 position = Vector3(0.000, 2.600, -6.000)
 light_color = Color(1.00, 0.72, 0.38, 1)
 light_energy = 0.9
@@ -327,7 +327,8 @@ offset_bottom = 980.0
 script = ExtResource("14_dbgm")
 
 ; DRAFT 5 (2026-10-09): Diego's room as the prose has it — the desk lamp, the fan's light, his cues
-[node name="Lamp_Bulb_Practical" type="OmniLight3D" parent="."]
+; (pass 448) off behind the blackout curtains ("The room is dark"): in the day and night views only
+[node name="Lamp_Bulb_Practical__diego_bedroom__diego_bedroom_night" type="OmniLight3D" parent="."]
 position = Vector3(1.950, 1.020, -3.070)
 light_color = Color(1.0, 0.84, 0.58, 1)
 light_energy = 1.2
@@ -400,7 +401,7 @@ metadata/fov = 38.0
 ; the window's two curtain pairs, the blackout on the outer rod
 [node name="shot_insert_curtains" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.200, 1.500, -2.550)
-rotation = Vector3(0.1227, 0.1378, 0.0)
+rotation = Vector3(-0.0140, 0.1957, 0.0)
 metadata/fov = 50.0
 
 ; "The fan, on the ceiling, clicks on the third rotation" — from the bed, looking up

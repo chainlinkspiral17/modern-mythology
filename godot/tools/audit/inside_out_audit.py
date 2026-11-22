@@ -29,6 +29,9 @@ and never flagged.
 Gate at zero once the current list is worked; DELIBERATE holds the
 ones read and kept.
 """
+import os as _os, sys as _sys
+_sys.path.append(_os.path.join(_os.path.dirname(_os.path.abspath(__file__))))
+import inline_view as IV   # a line can change the room itself: [view:preset] (pass 447)
 import glob
 import io
 import json
@@ -155,7 +158,7 @@ def main():
         kind, pid = "?", ""
         gone_inside = False
         recent = []   # the last two narrate lines, for the window test
-        for i, n in enumerate(j.get("nodes", [])):
+        for i, n in IV.walk(j.get("nodes", [])):
             t = n.get("t")
             if t == "bg":
                 src = str(n.get("src") or "")

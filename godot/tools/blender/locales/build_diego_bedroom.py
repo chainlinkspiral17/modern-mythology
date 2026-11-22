@@ -32,8 +32,11 @@ desk, the closet, his door.
 Coordinate frame: Blender Z-up. y=0 is the door (S) wall; the window is
 in the N wall over the back yard. glTF export remaps to Godot (x, z, -y).
 
-Draft 6 targets: the hall and Graciela's room (vol6 ch0's next beat);
-the blackout curtains DRAWN as a per-scene state; Deck framing.
+Draft 6 (pass 448, 2026-11-21): the blackout curtains DRAWN, as the view
+`diego_bedroom_blackout` (build_window).
+Draft 7 targets: the hall and Graciela's room (vol6 ch0's next beat);
+the REGULAR pair drawn for ch18; one blackout panel pulled back as he
+opens it; Deck framing.
 """
 import math
 import os, sys
@@ -108,6 +111,35 @@ def build_window():
     for sgn in (-1, +1):
         make_box(f"Curtain_Regular_Bracket_Arm_{sgn:+d}", (wx + sgn * ((ww + 0.70) / 2.0 - 0.08), YN - 0.04, wz + wh / 2.0 + 0.20),
                  (0.02, 0.08, 0.03), (0.40, 0.38, 0.34, 1.0))
+    # (pass 448, 2026-11-21) THE BLACKOUT PAIR DRAWN — the view
+    # `diego_bedroom_blackout`. "The blackout curtains are drawn. The room
+    # is dark." (ch16) · "The room, behind the blackout curtains, is the
+    # dark of any room at any hour." (ch10) · "keeping his bedroom in the
+    # kind of dark that has no relation to the hour" (ch23). Both views of
+    # the room hung this pair pushed aside with sky in the window under
+    # those lines, in five chapters. The same dark cloth right across the
+    # glass on the outer rod now: spread, so its folds are wide and slack,
+    # and no tie-backs. The pushed-aside pair leaves this view by the
+    # preset's `strip` (Curtain_Blackout_Panel / _TieBack); the regular
+    # pair hangs in front of it as before.
+    # Draft N+1: ch18's REGULAR pair drawn ("not the blackout ones ...
+    # dimmer than the day outside but not fully dim") as its own view;
+    # one panel pulled back as he opens it (ch10 n75, ch16 n162).
+    from _props.geometry import make_soft_box
+    from _props.view_tags import Views
+    V = Views("db", {"b": "diego_bedroom_blackout"})
+    tag = V.tag("b")
+    span = ww + 0.40
+    nf = int(span / 0.11)
+    fw = span / nf
+    top = wz + 0.05 + wh / 2.0 + 0.18
+    bot = wz + 0.05 - wh / 2.0 - 0.55
+    for k in range(nf):
+        off = -span / 2.0 + fw * (k + 0.5)
+        col = (0.16, 0.18, 0.24, 1.0) if k % 2 == 0 else (0.128, 0.144, 0.192, 1.0)
+        make_soft_box(f"Curtain_BlackDrawn_Fold_{k}" + tag, (wx + off, YN - (0.10 if k % 2 == 0 else 0.075), (top + bot) / 2.0),
+                      (fw * 1.15, 0.05, top - bot), col, round=0.5)
+    V.check()
     make_view("View_N", "N", ROOM_D, 0.0, kind="back", ground_z=0.0, seed=11)
 
 

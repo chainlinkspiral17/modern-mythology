@@ -826,7 +826,7 @@
   },
   {
    "t": "bg",
-   "src": "3d:diego_bedroom_night"
+   "src": "3d:diego_bedroom_blackout"
   },
   {
    "t": "hide",
@@ -844,7 +844,7 @@
   },
   {
    "t": "narrate",
-   "text": "He dreams, at one PM, of the dock.",
+   "text": "[view:centro_dock_dream][mood:dream_blur]He dreams, at one PM, of the dock.",
    "voice": "assets/audio/voice/vol6_ch16_dawn/151.mp3"
   },
   {
@@ -889,7 +889,7 @@
   },
   {
    "t": "narrate",
-   "text": "Diego wakes at four eleven PM.",
+   "text": "[view:diego_bedroom_blackout]Diego wakes at four eleven PM.",
    "voice": "assets/audio/voice/vol6_ch16_dawn/160.mp3"
   },
   {
@@ -899,7 +899,7 @@
   },
   {
    "t": "narrate",
-   "text": "The afternoon light comes in.",
+   "text": "[view:diego_bedroom]The afternoon light comes in.",
    "voice": "assets/audio/voice/vol6_ch16_dawn/162.mp3"
   },
   {

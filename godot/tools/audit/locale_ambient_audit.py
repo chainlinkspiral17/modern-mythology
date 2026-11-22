@@ -20,6 +20,9 @@ Three checks, per preset a scene uses:
 
 Gate at zero.
 """
+import os as _os, sys as _sys
+_sys.path.append(_os.path.join(_os.path.dirname(_os.path.abspath(__file__))))
+import inline_view as IV   # a line can change the room itself: [view:preset] (pass 447)
 import glob
 import json
 import os
@@ -47,7 +50,7 @@ def main():
     use = defaultdict(Counter)
     for f in glob.glob(os.path.join(SCENES, "vol*", "*.json")):
         vol = int(os.path.basename(os.path.dirname(f))[3:])
-        for n in json.load(open(f, encoding="utf-8")).get("nodes", []):
+        for n in IV.nodes(json.load(open(f, encoding="utf-8")).get("nodes", [])):
             if n.get("t") == "bg":
                 s = str(n.get("src") or "")
                 if s.startswith("3d:"):

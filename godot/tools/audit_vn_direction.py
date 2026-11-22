@@ -13,6 +13,9 @@ Two jobs, mirroring the gauntlet locale director pass:
 Run from repo root: python3 godot/tools/audit_vn_direction.py
 Exit 1 if any broken bg ref is found.
 """
+import os as _os, sys as _sys
+_sys.path.append(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "audit"))
+import inline_view as IV   # a line can change the room itself: [view:preset] (pass 447)
 import json, re, os, sys
 
 ROOT = os.path.join(os.path.dirname(__file__), "..")
@@ -61,7 +64,7 @@ def main():
             stage_cues = 0
             interludes = 0
             has_bgm = False
-            for n in nodes:
+            for n in IV.nodes(nodes):
                 if not isinstance(n, dict): continue
                 t = n.get("t", "")
                 if t == "interlude":

@@ -19,6 +19,9 @@ past 200 m from one room is the next room, not a horizon.
 
     python3 godot/tools/audit/far_plane_audit.py        # report + exit 1 on any cut
 """
+import os as _os, sys as _sys
+_sys.path.append(_os.path.join(_os.path.dirname(_os.path.abspath(__file__))))
+import inline_view as IV   # a line can change the room itself: [view:preset] (pass 447)
 import glob
 import json
 import math
@@ -75,7 +78,7 @@ def used_presets():
             nodes = json.load(open(f, encoding="utf-8")).get("nodes", [])
         except Exception:
             continue
-        for n in nodes:
+        for n in IV.nodes(nodes):
             if not isinstance(n, dict) or n.get("t") != "bg":
                 continue
             s = str(n.get("src") or "")

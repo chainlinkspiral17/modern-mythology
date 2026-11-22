@@ -664,7 +664,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert curtains]The blackout curtains are doing what they do.",
+      "text": "[view:diego_bedroom_blackout][shot:insert curtains]The blackout curtains are doing what they do.",
       "voice": "assets/audio/voice/vol6_ch23_sleep/115.mp3"
     },
     {

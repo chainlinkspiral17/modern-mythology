@@ -3835,6 +3835,92 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-21 · pass 448: Diego's blackout curtains are DRAWN when the text draws them.**
+Found reading pass 447's frames; the bedroom builder's own draft-6 target.
+`diego_bedroom` and `diego_bedroom_night` both hung the blackout pair pushed
+aside, sky in the window, under "The blackout curtains are drawn. The room
+is dark." (ch16), "the dark of any room at any hour" (ch10), "the kind of
+dark that has no relation to the hour" (ch23) — five chapters, and every
+`insert curtains` on those lines framed an open window.
+- View `diego_bedroom_blackout` (twin of the night view): the blackout cloth
+  right across the glass on the outer rod (Curtain_BlackDrawn_Fold_*, wide
+  slack folds, no tie-backs; the pushed-aside pair leaves by `strip`), the
+  desk lamp OFF (Lamp_Bulb_Practical is tagged to the day and night views),
+  ambient 0.40 -> 0.30. The regular pair hangs in front as before.
+- Where it plays: ch10 n48 ("He pulls the blackout curtains", `[view:]`),
+  bg n52, n67 (waking from the dream) until n75 ("He pulls back one of the
+  blackout curtains. The afternoon light comes in." -> `[view:diego_bedroom]`);
+  ch16 bg 148, n161 (waking) until n163 ("The afternoon light comes in." ->
+  the day room; the chapter stayed in the night view to its next bg);
+  ch22 bg 302; ch23_sleep n115 ("The blackout curtains are doing what they
+  do." — the desk scene before it keeps the night view and its lamp);
+  ch23_sunday bg 0. ch23_sunday bg 30 (the letter at the desk after dinner)
+  stays the night view.
+- Draft N+1: ch18's REGULAR pair drawn ("not the blackout ones ... dimmer
+  than the day outside but not fully dim") as its own view; one blackout
+  panel pulled back on the lines he opens it; the day at the curtain's edge
+  (a light the lighting playbook can motivate — there is no emissive
+  material in this pipeline).
+- Deck must REBUILD diego_bedroom.
+
+**2026-11-21 · pass 447: a line can change the room — `[view:preset]`; Diego dreams of the dock AT the dock.**
+Playtest batch 447a: vol 6 ch10 n54–64 and ch16 n152–160 ("In his sleep
+... he dreams of the dock ... the rust-colored haze, in the dream, is closer
+than it is in life ... BT is on the dock with him") played over his bedroom.
+Both chapters are voiced and ch16 has no spare staging node: a bg node could
+not go in without moving every index after it. The roadmap's standing NEXT.
+- THE INLINE VIEW: `[view:preset]` FIRST in a line's text is a bg node
+  without a node (`[view:preset fade]` names the transition). GameEngine
+  plays the cut and its transition, then the line (`_inline_view`,
+  `_view_then_line`; `_bg_with_transition` is `_bg_cut` + next node now); a
+  resume treats it as the latest bg (`_fast_forward_to`), the MusicDirector
+  as a place change. The transition is chosen as for a bg node standing just
+  before the line ("dream" in the next two lines -> flash; a clock time ->
+  fade).
+- ONE RULE FOR THE GATES: `tools/audit/inline_view.py` — `IV.walk(nodes)` is
+  enumerate() with a bg node (same index) before each line that cuts. All 28
+  tools that track "which room is this line in" walk through it (the audits,
+  music_direction, the ambience tools, shot_seed, text_focus_pass,
+  portrait_staging_fix, vol_assets). Verified by output: 18 read-only tools
+  gave byte-identical reports before and after on the unchanged corpus.
+  The two that write cues put them AFTER a view tag (shot_seed.splice;
+  text_focus_pass strips a cue from behind one). `inline_view.py` is a gate
+  too (in the suite): the tag is first, alone, on a line, names a real
+  preset.
+- `view_twin.py FROM TO --scenes file.json:<line>`: a LINE spec gains
+  `[view:TO]` (or has `[view:FROM]` re-pointed), and the tool says where the
+  segment ends so the line the story returns on can carry the room's own
+  view.
+- THE DREAM: twin `centro_dock_dream` of `centro_dock`; ch10 n54 and ch16
+  n152 cut to it, ch10 n67 ("He wakes, in his bedroom") cuts back to
+  `diego_bedroom` and ch16 n161 to `diego_bedroom_night` — which also ends
+  ch10's `dream_blur`, which had stayed on for eight waking lines until the
+  next mood cue. ch16's dream takes `mood:dream_blur` like ch10's. The view's
+  one difference from life (build_dream_haze_2026_11, parts of this view
+  only): the far thin smear is a BANK — three dense courses right across the
+  horizon, twelve faint veils for a ragged top, five low veils already lying
+  over the far scrub — and the camera looks up at it (pitch −0.06) with the
+  horizon just above the text box. Read by render: first draft's five wide
+  cards ended in hard rectangles against the sky; the top is many faint
+  veils now.
+- A RESUME KEPT A MOOD THE PLAY HAD DROPPED: in play a change of view loads
+  the set afresh with its own look, so a `[mood:]` ends at the next bg; the
+  resume re-applied the chapter's LAST mood to whatever room the save was in
+  (ch16's `dawn_warm`, set at node 6, came back over the bedroom at node
+  151). `_fast_forward_to` clears the mood at a change of view now, as pass
+  347 did for the shot. VnLineShot renders through the resume, so frames
+  read after a bg change in a chapter with an earlier mood were graded
+  wrong in the reading, not in play.
+- prop_overlap: `haze` joins the non-solids (fog, mist, smoke): the dream's
+  veils cross the cedars by design (6 clips -> 0).
+- The blackout curtains (found reading these frames) are pass 448, above.
+- Draft N+1 — the dream: the bank MOVES toward the dock over its lines
+  (Background3D has no per-view motion); a darker core for "whatever is
+  inside the haze"; BT at the dock's edge as a figure.
+- Also NEXT with the tag: vol6_ch5_radio n24 ("upstairs window is lit", an
+  exterior in a voiced chapter); ch10_cabin n89–98 / ch11_per n0–9 twins.
+- Deck must REBUILD centro_stockroom.
+
 **2026-11-21 · pass 446: the Briar Falls rack by the text — three titles, the flyer.**
 Pass 445's draft-N+1 target. vol2 bf_building n5–10 reads the rack out:
 "The plastic slots are the kind that always sag at one end. The brochures,
