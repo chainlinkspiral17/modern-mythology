@@ -3835,6 +3835,37 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-22 · pass 452: the Millers' Wednesday dinner and its midnight; the Sasquatch.**
+Playtest 452a (25 random lines, vols 1-7): one fault, in a model-chapter
+kitchen.
+- vol 6 ch4_kitchen: sixty lines of dinner — "Her mother brings the platter
+  to the table. Pasta. Chicken. Bread she made this afternoon. A salad ...",
+  "eating his wife's cacciatore, drinking a glass of red wine" — at a bare
+  table (a runner, a napkin holder). The view `miller_kitchen_ch4` carried
+  only the uniform. dress_ch4_dinner: the platter, three places and their
+  forks, the loaf on its board, the salad, his glass of red wine. n20 cues
+  `insert table`.
+- The same table at 12:11 ("There is coffee. There is, on the kitchen table,
+  the blue tin from his sock drawer"): new view `miller_kitchen_ch4_late`,
+  the night kitchen with the tin and two cups, cut to on n88 with `[view:]`.
+  No white sedan at the curb that night — it is following the van.
+- A part named for a PERSON is that person to the aim gate: `Dinner_Fork_Sam`
+  became the subject of `closeup sam` (110 degrees off). Places are named
+  for the seat (Head / Long / End).
+- vol 7 ch2 n102-105: "Across town the patch on the sanderling mural was
+  where it was" -> Main Street and its `insert patch`; "The crow was on the
+  dashboard" -> Finn's truck (cabin_road_truck); n105 returns to the Daily
+  Grind.
+- ANDY (2026-11-22): "Yes, sasquatch for missing Link diner." The Briar
+  Falls rack's Missing Link brochure carries the diner's striding Sasquatch
+  (roster prompt, byte-exact) in place of the proposed coffee cup.
+- Draft N+1: the plates cleared by n60 ("Sam and her mother sit at the
+  table"); rain on the sink window all chapter; ch4 n82-87 (the sedan in the
+  Kwik Stop lot in the rain, Chief Miller in his truck in his own driveway)
+  still play over the kitchen — no night-rain lot or driveway view; the
+  Cosmic Comics till close-up (ch12 n222) frames the counter's edge.
+- Deck must REBUILD miller_kitchen.
+
 **2026-11-22 · pass 451: the town montages — each line in its own place.**
 Two chapters close a scene by going round the town a line at a time, and
 both held one room for the whole round.
@@ -4108,11 +4139,10 @@ flyer, taped to the inside of the alcove ... HAVE YOU SEEN THIS MAN".
   paint"), faust_apartment canvas / easel, graustark letter, centro
   fridge note, school_newspaper page, missing_link juke, wagner_home
   record; then tighten the cluster and gate it.
-- For Andy (do not fix): the Missing Link's roster signs (the enamel sign,
-  the pole sign, the menu board, SASQUATCH CROSSING) carry a Sasquatch, and
-  no scene text or manuscript in the repo mentions one — it came from a
-  builder. The brochure's cover is written without it ("eat, drink, wait"
-  only). Does the diner have a Sasquatch?
+- ANSWERED (2026-11-22, Andy: "Yes, sasquatch for missing Link diner"): the
+  diner has its Sasquatch. The brochure's cover carries the diner's mark —
+  the striding figure of the enamel sign — in place of the proposed coffee
+  cup (roster, pass 452).
 - Deck must REBUILD briar_falls.
 
 **2026-11-19 · pass 445: the brochure rack at the Briar Falls rest stop.**

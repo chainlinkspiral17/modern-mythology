@@ -113,7 +113,7 @@
     },
     {
       "t": "narrate",
-      "text": "Her mother brings the platter to the table. Pasta. Chicken. Bread she made this afternoon. A salad with the vinaigrette Sam has loved since she was six. They sit. They eat.",
+      "text": "[shot:insert table]Her mother brings the platter to the table. Pasta. Chicken. Bread she made this afternoon. A salad with the vinaigrette Sam has loved since she was six. They sit. They eat.",
       "voice": "assets/audio/voice/vol6_ch4_kitchen/020.mp3"
     },
     {
@@ -490,7 +490,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert table]At twelve-oh-eleven, he goes inside. His wife is awake. His wife is in the kitchen. There is coffee. There is, on the kitchen table, the blue tin from his sock drawer. He sits across from her. He begins to talk.",
+      "text": "[view:miller_kitchen_ch4_late][shot:insert table]At twelve-oh-eleven, he goes inside. His wife is awake. His wife is in the kitchen. There is coffee. There is, on the kitchen table, the blue tin from his sock drawer. He sits across from her. He begins to talk.",
       "voice": "assets/audio/voice/vol6_ch4_kitchen/088.mp3"
     },
     {

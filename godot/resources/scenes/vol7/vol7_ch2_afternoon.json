@@ -628,12 +628,12 @@
       "voice": "assets/audio/voice/vol7_ch2_afternoon/101.mp3"
     },
     {
-      "text": "Across town the patch on the sanderling mural was where it was. In Lena's alley the patch on the Starfish Nebula was where it was.",
+      "text": "[view:main_street_early dissolve][shot:insert patch]Across town the patch on the sanderling mural was where it was. In Lena's alley the patch on the Starfish Nebula was where it was.",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch2_afternoon/102.mp3"
     },
     {
-      "text": "The piece of charred wood was in Finn's duffel in his truck on the way to his apartment. The crow was on the dashboard.",
+      "text": "[view:cabin_road_truck dissolve]The piece of charred wood was in Finn's duffel in his truck on the way to his apartment. The crow was on the dashboard.",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch2_afternoon/103.mp3"
     },
@@ -643,7 +643,7 @@
       "voice": "assets/audio/voice/vol7_ch2_afternoon/104.mp3"
     },
     {
-      "text": "Tem sat at the corner table. Lena came back from the back with her bag and her coat. The two of them walked the four blocks to Lena's apartment in the rain.",
+      "text": "[view:daily_grind_interior dissolve]Tem sat at the corner table. Lena came back from the back with her bag and her coat. The two of them walked the four blocks to Lena's apartment in the rain.",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch2_afternoon/105.mp3"
     },

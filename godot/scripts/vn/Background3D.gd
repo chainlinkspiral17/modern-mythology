@@ -106,8 +106,8 @@ const VIEW_GROUPS := {
 	# tools/view_twin.py); the rigs; Mike's things before he leaves (ch8:
 	# "a house her father does not, today, live in")
 	"mk_day": ["miller_kitchen", "miller_kitchen_ch0", "miller_kitchen_ch3", "miller_kitchen_ch4", "miller_kitchen_ch5", "miller_kitchen_ch9", "miller_kitchen_ch11", "miller_kitchen_ch11e", "miller_kitchen_ch17"],
-	"mk_night": ["miller_kitchen_night"],
-	"mk_mike": ["miller_kitchen_ch0", "miller_kitchen_ch3", "miller_kitchen_ch4", "miller_kitchen_ch5", "miller_kitchen_night"],
+	"mk_night": ["miller_kitchen_night", "miller_kitchen_ch4_late"],
+	"mk_mike": ["miller_kitchen_ch0", "miller_kitchen_ch3", "miller_kitchen_ch4", "miller_kitchen_ch5", "miller_kitchen_night", "miller_kitchen_ch4_late"],
 	# (pass 406) HANS'S BAKERY by chapter (twins of hans_bakery_back_kitchen):
 	# the coffee press at Saturday's breakfast and on Sunday, the box from
 	# Sunday at six on; the back door shut except in ch18's view
@@ -1087,6 +1087,24 @@ const CAMERA_PRESETS := {
 		"suppress_input": true,
 	},
 	"miller_kitchen_night": {
+		"scene": "res://scenes/locales/miller_kitchen.tscn",
+		"requires_glb": "res://assets/3d/locales/miller_kitchen.glb",
+		# The Miller kitchen on Meadowlark Circle built big (2026-10-07): a
+		# 9 x 7 m open kitchen, family room and front hall (_props/miller_kitchen.py).
+		# From the family room side of the wide opening, looking N across the island to the sink window (the cul-de-sac), the range, the fridge; the breakfast table at right.
+		# (2026-10-11, pass 61) THE SAME PLACE at the other hour: ch2 (the kitchen table at night, after the Gas & Go lot) on the day
+		# key through the sink window.
+		# The authored rig is suffixed to miller_kitchen; this twin has its own lights and env.
+		"camera_origin": Vector3(1.60, 1.65, 0.50),
+		"camera_rotation": Vector3(-0.061, 0.391, 0.0),
+		"fov": 62.0,
+		"env": {"sky_top": Color(0.05, 0.06, 0.13, 1), "sky_horizon": Color(0.16, 0.15, 0.21, 1),
+			"ground_horizon": Color(0.08, 0.08, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.36, 0.36, 0.46, 1), "ambient_energy": 0.40, "fog_color": Color(0.12, 0.12, 0.16, 1)},
+		"suppress_input": true,
+	},
+	"miller_kitchen_ch4_late": {
+		# MIDNIGHT (vol 6 ch4 n88, pass 452): 'At twelve-oh-eleven, he goes inside. His wife is awake. His wife is in the kitchen. There is coffee. There is, on the kitchen table, the blue tin from his sock drawer.' The night kitchen with the tin and two cups on the table (parts of this view); the white sedan is not at the curb tonight — it is following the van.
 		"scene": "res://scenes/locales/miller_kitchen.tscn",
 		"requires_glb": "res://assets/3d/locales/miller_kitchen.glb",
 		# The Miller kitchen on Meadowlark Circle built big (2026-10-07): a

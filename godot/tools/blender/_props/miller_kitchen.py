@@ -565,6 +565,70 @@ def dress_family():
         make_box(f"Photographs_{pi}__miller_kitchen_ch5", (IX + 0.50 + dx, IY - 0.10 + dy, 0.9806 + pi * 0.0012), (0.10, 0.15, 0.001), (0.78, 0.76, 0.70, 1.0))
         make_box(f"Photographs_{pi}_Picture__miller_kitchen_ch5", (IX + 0.50 + dx, IY - 0.10 + dy, 0.9806 + pi * 0.0012 + 0.0007),
                  (0.084, 0.13, 0.0004), ((0.36, 0.33, 0.30, 1.0), (0.30, 0.34, 0.40, 1.0), (0.44, 0.38, 0.30, 1.0))[pi])
+    dress_ch4_dinner()
+
+
+def dress_ch4_dinner():
+    """THE WEDNESDAY DINNER and its midnight (vol 6 ch4; pass 452, 2026-11-22).
+    "Her father is at the kitchen table ... He has a glass of red wine." ·
+    "Her mother brings the platter to the table. Pasta. Chicken. Bread she
+    made this afternoon. A salad with the vinaigrette Sam has loved since
+    she was six. They sit. They eat." · "her father sets down his fork" ·
+    "Her mother is looking at her plate." And at 12:11: "There is coffee.
+    There is, on the kitchen table, the blue tin from his sock drawer."
+
+    The chapter played its sixty lines of dinner at a bare table (the
+    napkin holder and the runner), and `insert table` on "eating his
+    wife's cacciatore, drinking a glass of red wine" framed that. The
+    dinner is the view `miller_kitchen_ch4`'s; the tin and the two cups
+    are `miller_kitchen_ch4_late`'s (the night kitchen, cut to on n88).
+
+    Draft N+1: the plates cleared and the wine gone by n60 ("Sam and her
+    mother sit at the table"); the rain on the sink window; the three of
+    them as figures.
+    """
+    top = 0.77
+    D, L = "__miller_kitchen_ch4", "__miller_kitchen_ch4_late"
+    cream = (0.93, 0.91, 0.85, 1.0)
+    # three places: Sam at the head (-X), her mother on the long side (-Y), her father at the short end (+X).
+    # Named for the SEAT, not the person: a part with "Sam" in its name is the subject of `closeup sam`
+    # to the aim gate (it read her fork, 110 degrees off her face frame).
+    for nm, px, py, fx, fy, along in (("Head", TX - 0.58, TY - 0.08, TX - 0.58, TY - 0.26, 'X'),
+                                      ("Long", TX + 0.02, TY - 0.30, TX - 0.17, TY - 0.30, 'Y'),
+                                      ("End", TX + 0.56, TY - 0.04, TX + 0.56, TY - 0.22, 'X')):
+        make_cyl(f"Dinner_Plate_{nm}" + D, (px, py, top + 0.008), 0.125, 0.016, cream, segments=16)
+        make_cyl(f"Dinner_Plate_{nm}_Pasta" + D, (px - 0.02, py + 0.01, top + 0.026), 0.07, 0.022, (0.90, 0.80, 0.52, 1.0), segments=10)
+        make_box(f"Dinner_Plate_{nm}_Chicken" + D, (px + 0.045, py - 0.03, top + 0.030), (0.07, 0.05, 0.03), (0.62, 0.36, 0.20, 1.0))
+        make_box(f"Dinner_Plate_{nm}_Sauce" + D, (px + 0.04, py - 0.025, top + 0.0465), (0.05, 0.035, 0.003), (0.66, 0.16, 0.10, 1.0))
+        fs = (0.15, 0.018, 0.004) if along == 'X' else (0.018, 0.15, 0.004)
+        make_box(f"Dinner_Fork_{nm}" + D, (fx, fy, top + 0.002), fs, STEEL)
+    # the platter down the middle of the table, on the runner: pasta, the chicken
+    make_box("Dinner_Platter" + D, (TX - 0.08, TY + 0.02, top + 0.013), (0.44, 0.26, 0.020), cream)
+    make_box("Dinner_Platter_Pasta" + D, (TX - 0.16, TY + 0.02, top + 0.040), (0.22, 0.19, 0.034), (0.90, 0.80, 0.52, 1.0))
+    for ci, (dx, dy) in enumerate(((0.05, 0.05), (0.11, -0.04), (0.02, -0.06))):
+        make_box(f"Dinner_Platter_Chicken_{ci}" + D, (TX - 0.08 + dx, TY + 0.02 + dy, top + 0.042), (0.08, 0.06, 0.038), (0.60, 0.34, 0.18, 1.0))
+        make_box(f"Dinner_Platter_Sauce_{ci}" + D, (TX - 0.08 + dx, TY + 0.02 + dy, top + 0.0625), (0.06, 0.045, 0.003), (0.66, 0.16, 0.10, 1.0))
+    # "Bread she made this afternoon": a round loaf on a board, two slices cut
+    make_box("Dinner_Bread_Board" + D, (TX + 0.28, TY + 0.30, top + 0.008), (0.30, 0.20, 0.016), OAK_DK)
+    make_blob("Dinner_Bread_Loaf" + D, (TX + 0.31, TY + 0.31, top + 0.060), 0.075, (0.72, 0.52, 0.30, 1.0), noise=0.10, seed=4, squash=0.62)
+    for bi in range(2):
+        make_box(f"Dinner_Bread_Slice_{bi}" + D, (TX + 0.18, TY + 0.26 + bi * 0.035, top + 0.024 + bi * 0.006), (0.09, 0.075, 0.014), (0.90, 0.84, 0.68, 1.0))
+    # the salad
+    make_taper_cyl("Dinner_Salad_Bowl" + D, (TX - 0.28, TY + 0.28, top + 0.045), 0.07, 0.115, 0.09, (0.80, 0.84, 0.86, 1.0), segments=14)
+    make_cyl("Dinner_Salad_Greens" + D, (TX - 0.28, TY + 0.28, top + 0.085), 0.10, 0.02, (0.34, 0.56, 0.28, 1.0), segments=12)
+    # his glass of red wine, at his right hand
+    gx, gy = TX + 0.44, TY + 0.16
+    make_cyl("Dinner_Wine_Glass_Foot" + D, (gx, gy, top + 0.002), 0.032, 0.004, (0.86, 0.90, 0.92, 0.5), segments=10)
+    make_cyl("Dinner_Wine_Glass_Stem" + D, (gx, gy, top + 0.040), 0.004, 0.072, (0.86, 0.90, 0.92, 0.5), segments=6)
+    make_taper_cyl("Dinner_Wine_Glass_Bowl" + D, (gx, gy, top + 0.118), 0.028, 0.038, 0.084, (0.86, 0.90, 0.92, 0.35), segments=12)
+    make_taper_cyl("Dinner_Wine_Glass_Wine" + D, (gx, gy, top + 0.100), 0.024, 0.031, 0.044, (0.42, 0.06, 0.10, 0.92), segments=12)
+    # ── midnight: the blue tin from his sock drawer, and coffee ──
+    make_box("Blue_Tin" + L, (TX + 0.12, TY - 0.02, top + 0.035), (0.17, 0.12, 0.070), (0.18, 0.32, 0.62, 1.0))
+    make_box("Blue_Tin_Lid" + L, (TX + 0.12, TY - 0.02, top + 0.074), (0.176, 0.126, 0.012), (0.24, 0.40, 0.70, 1.0))
+    make_cyl("Late_Coffee_Cup_Hers" + L, (TX - 0.05, TY - 0.30, top + 0.045), 0.04, 0.09, (0.94, 0.92, 0.88, 1.0), segments=10)
+    make_cyl("Late_Coffee_Cup_Hers_Coffee" + L, (TX - 0.05, TY - 0.30, top + 0.088), 0.034, 0.004, (0.20, 0.12, 0.08, 1.0), segments=10)
+    make_cyl("Late_Coffee_Cup_His" + L, (TX + 0.50, TY + 0.02, top + 0.045), 0.04, 0.09, (0.30, 0.36, 0.52, 1.0), segments=10)
+    make_cyl("Late_Coffee_Cup_His_Coffee" + L, (TX + 0.50, TY + 0.02, top + 0.088), 0.034, 0.004, (0.20, 0.12, 0.08, 1.0), segments=10)
 
 
 def dress_dawn():

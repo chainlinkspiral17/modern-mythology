@@ -30272,7 +30272,7 @@
         "briar_falls_brochure_missing_link"
       ],
       "tag": "picture · briar_falls · 0.22 x 0.3 m · 68 lines play here, 3 mention it",
-      "prompt": "Front cover of a roadside diner's own brochure, tall narrow portrait (3:4), cheaply printed on cream paper (about RGB 0.88/0.84/0.72) in brick red and black. Across the top in hand-lettered sign-painter capitals: THE MISSING LINK. Under it, small and in lower case: eat, drink, wait. The rest of the cover is almost empty: a plain line drawing of a diner coffee cup on a saucer, and a great deal of cream paper. No address, no telephone number, no hours, no map. A slightly crooked print, soft corners. Flat, straight-on, evenly lit, the cover only, no rack and no hands.",
+      "prompt": "Front cover of a roadside diner's own brochure, tall narrow portrait (3:4), cheaply printed on cream paper (about RGB 0.88/0.84/0.72) in brick red and black. Across the top in hand-lettered sign-painter capitals: THE MISSING LINK. Under it, small and in lower case: eat, drink, wait. The rest of the cover is almost empty: the diner's mark, a hand-painted brown silhouette of a Sasquatch — a creature halfway between a man and an ape — walking left mid-stride with one arm swinging, the same figure as on the diner's enamel sign, small, and a great deal of cream paper. No address, no telephone number, no hours, no map. A slightly crooked print, soft corners. Flat, straight-on, evenly lit, the cover only, no rack and no hands.",
       "canon": [
         {
           "src": "godot/resources/scenes/vol2/vol2_bf_building.json",
@@ -30284,7 +30284,7 @@
         }
       ],
       "prompt_mode": "append",
-      "notes": "(2026-11-21, pass 446, written from the text) The bottom row of the rack, one picture on its three slots; the one the tween sister folds (bf_lot, bf_end). Title and \"eat, drink, wait\" are the text's; the map and \"Shillelagh stops daily. Hours of operation: Yes.\" are on the BACK and are not drawn. The coffee cup is proposed. No Sasquatch: the diner's other roster signs carry one, and no scene text mentions it (a knot for Andy in the roadmap). Cream and brick red follow missing_link_exterior_sign_1.",
+      "notes": "(2026-11-21, pass 446, written from the text) The bottom row of the rack, one picture on its three slots; the one the tween sister folds (bf_lot, bf_end). Title and \"eat, drink, wait\" are the text's; the map and \"Shillelagh stops daily. Hours of operation: Yes.\" are on the BACK and are not drawn. (2026-11-22, pass 452) The Sasquatch is the diner's: Andy, asked, said so (\"Yes, sasquatch for missing Link diner\"); it replaces the proposed coffee cup and matches missing_link_interior_linksign. Cream and brick red follow missing_link_exterior_sign_1.",
       "art_cat": "PICTURE",
       "score_lines": 68,
       "score_mentions": 3,
@@ -49599,7 +49599,8 @@
             "miller_kitchen_ch3",
             "miller_kitchen_ch4",
             "miller_kitchen_ch5",
-            "miller_kitchen_night"
+            "miller_kitchen_night",
+            "miller_kitchen_ch4_late"
           ]
         }
       ],
