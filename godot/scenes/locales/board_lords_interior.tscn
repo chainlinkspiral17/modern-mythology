@@ -390,9 +390,9 @@ rotation = Vector3(-1.0005, -0.6889, 0.0)
 metadata/fov = 42.0
 
 [node name="shot_insert_bread__board_lords_interior_bread" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.45, 1.35, -4.5)
-rotation = Vector3(-0.4153, -0.0567, 0.0)
-metadata/fov = 42.0
+position = Vector3(1.750, 1.750, -4.750)
+rotation = Vector3(-0.7628, 0.4571, 0.0)
+metadata/fov = 32.0
 
 [node name="shot_insert_hexagon__board_lords_office" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(3.000, 1.500, -8.750)

@@ -465,10 +465,9 @@ def build_hero_props():
     # (ch10_per n13) — on the counter from those lines on only: bl_bread
     make_box("Bread_Board__bl_bread", (1.45, 5.35, top + 0.015), (0.46, 0.32, 0.03),
              (0.56, 0.42, 0.26, 1.0))
-    make_chamfer_box("Bread_Loaf__bl_bread", (1.42, 5.38, top + 0.10), (0.32, 0.17, 0.13),
-                     (0.46, 0.32, 0.18, 1.0))
-    make_box("Bread_Slice__bl_bread", (1.66, 5.26, top + 0.05), (0.03, 0.15, 0.11),
-             (0.62, 0.50, 0.34, 1.0))
+    # (pass 457) a LOAF with a cut end and two slices — it was a brown brick
+    from _props.objects import make_loaf, make_smartphone
+    make_loaf("Bread_Loaf__bl_bread", 1.36, 5.38, top + 0.03, along="X", length=0.24, r=0.085, crust=(0.74, 0.54, 0.28, 1.0))
     make_box("Bread_Knife__bl_bread", (1.45, 5.18, top + 0.035), (0.34, 0.035, 0.012),
              COL_STEEL)
 
@@ -481,10 +480,7 @@ def build_hero_props():
     for bi in range(8):
         make_box(f"Bearings_Set_{bi}", (2.95 + (bi % 4) * 0.10, 5.13 + (bi // 4) * 0.14, top + 0.045), (0.08, 0.11, 0.05),
                  DECK_TINTS[(bi * 3 + 1) % len(DECK_TINTS)])
-    make_box("Shop_Phone", (1.90, 5.78, top + 0.008), (0.16, 0.075, 0.014),
-             (0.10, 0.10, 0.12, 1.0))
-    make_box("Shop_Phone_Screen", (1.90, 5.78, top + 0.0165), (0.14, 0.062, 0.004),
-             (0.42, 0.50, 0.58, 1.0))
+    make_smartphone("Shop_Phone", 1.90, 5.78, top, state="text", along="X", w=0.075, l=0.16)   # (pass 457) "At eight-fifteen Lena texted"
 
 
 def build_main_street_2026_09():

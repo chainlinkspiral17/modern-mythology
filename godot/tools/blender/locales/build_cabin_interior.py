@@ -324,9 +324,10 @@ def build_kitchen():
                 see_through=True)
     # …and the black rotary phone on a small table beside it
     make_box("Phone_Table", (-2.60, 5.35, 0.30), (0.45, 0.45, 0.60), COL_WOOD)
-    make_box("Phone_Body", (-2.60, 5.35, 0.66), (0.24, 0.20, 0.10), (0.10, 0.10, 0.11, 1.0))
-    make_cyl("Phone_Dial", (-2.60, 5.28, 0.72), 0.07, 0.02, (0.80, 0.78, 0.72, 1.0), axis='Y', segments=10)
-    make_box("Phone_Handset", (-2.60, 5.42, 0.735), (0.22, 0.07, 0.05), (0.10, 0.10, 0.11, 1.0))   # in the cradle (2026-09-23: 1.5 cm over it)
+    # (pass 457) the telephone itself (make_rotary_phone): "the cabin's
+    # landline rang ... Eddvard had run a copper line up from town" (ch21)
+    from _props.objects import make_rotary_phone
+    make_rotary_phone("Phone", -2.60, 5.35, 0.60)
 
 
 def build_loft():

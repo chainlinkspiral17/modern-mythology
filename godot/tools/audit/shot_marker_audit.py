@@ -162,6 +162,9 @@ SYNONYMS = {
     # SixTop_* / TwoTop_* (the brawl's "tables and counters", vol 4)
     "tables": ["table", "six_top", "two_top", "four_top"],
     "door": ["door", "doorway"],
+    # (pass 457) "in the kerosene light", "The kerosene lamp on the table stayed
+    # lit": the LAMP — the cue had only the fuel can by the door to answer it
+    "kerosene": ["kerosene", "lantern"],
     # 2026-09-07 · the position-form markers came into the audit and
     # sixteen insert cues had no geometry answering to their names
     "fardoor": ["far_door"],

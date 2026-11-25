@@ -64,7 +64,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]At one-oh-eight Tem's phone buzzed. She looked at it. She said: \"Finn passed the second creek crossing. He's an hour out. The road is holding.\"",
+      "text": "At one-oh-eight Tem's phone buzzed. She looked at it. She said: \"Finn passed the second creek crossing. He's an hour out. The road is holding.\"",
       "voice": "assets/audio/voice/vol7_ch1_finn/012.mp3"
     },
     {
@@ -93,7 +93,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]Tem looked at her phone again.",
+      "text": "Tem looked at her phone again.",
       "voice": "assets/audio/voice/vol7_ch1_finn/016.mp3"
     },
     {

@@ -507,6 +507,25 @@ def build_hero_props_2026_09():
         make_olaf_bowl(f"Cedar_Bowl_{bi}", BX, by, 0.78, "hb_bowls", s=sc, slicker=slk, phase=ph,
                        kit=kit, totem_names=True)
 
+    # (pass 457) THE CHAPBOOK and THE FOLDER. "insert chapbook" framed a
+    # drawer front: "She read the closing lines ... She closed the chapbook"
+    # (ch17_aria n132, n145) and "He came back with a folder. He set the
+    # folder on the dining table at his end and opened it" (ch15_bread n48)
+    # had nothing on the table to show. A stapled booklet by the bowls; a
+    # manila folder, open, a sheet in it, at the head of the table.
+    make_rot_box("Chapbook__hb_bowls", (0.27, 3.32, 0.784), (0.14, 0.21, 0.008), (0.88, 0.84, 0.72, 1.0), yaw=-0.2)
+    make_rot_box("Chapbook_Title__hb_bowls", (0.275, 3.36, 0.7885), (0.09, 0.022, 0.001), (0.22, 0.20, 0.20, 1.0), yaw=-0.2)
+    make_rot_box("Chapbook_Rule__hb_bowls", (0.268, 3.325, 0.7885), (0.06, 0.004, 0.001), (0.50, 0.20, 0.16, 1.0), yaw=-0.2)
+    make_rot_box("Chapbook_Spine__hb_bowls", (0.203, 3.306, 0.7885), (0.006, 0.21, 0.001), (0.60, 0.56, 0.48, 1.0), yaw=-0.2)
+    for _k, _st in enumerate((-0.06, 0.06)):
+        make_rot_box(f"Chapbook_Staple_{_k}__hb_bowls", (0.203 + _st * 0.2, 3.306 + _st, 0.789), (0.004, 0.012, 0.001), (0.70, 0.70, 0.72, 1.0), yaw=-0.2)
+    manila = (0.84, 0.72, 0.46, 1.0)
+    make_box("Chapbook_Folder__hans_bakery_breakfast", (0.0, 0.86, 0.782), (0.50, 0.33, 0.004), manila)
+    make_box("Chapbook_Folder_Tab__hans_bakery_breakfast", (0.16, 1.035, 0.782), (0.10, 0.02, 0.004), manila)
+    make_box("Chapbook_Folder_Sheet__hans_bakery_breakfast", (0.125, 0.86, 0.7855), (0.215, 0.28, 0.003), (0.95, 0.94, 0.90, 1.0))
+    for _k in range(6):
+        make_box(f"Chapbook_Folder_Line_{_k}__hans_bakery_breakfast", (0.125, 0.96 - _k * 0.035, 0.7875), (0.16 if _k % 3 else 0.11, 0.005, 0.001), (0.26, 0.26, 0.30, 1.0))
+
     # ── KAI'S CROW · on the substrate-bowl's west rim, looking down into it ──
     # make_crow faces -Y; three quarter-turns about its feet face it +X, across
     # the row, its tail over the open table (along the row it lay on the

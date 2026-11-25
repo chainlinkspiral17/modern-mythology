@@ -339,6 +339,22 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-11-25 · the cue word can name the wrong thing in the right room (pass 457)
+
+- **"kerosene" is the lamp, not the can.** Three lines about kerosene LIGHT
+  framed the fuel can by the door because the can was the only part with the
+  word in its name. When a cue is a material or a quality (kerosene, cedar,
+  coffee), ask which object the sentence is lit by, drunk from or made of.
+- **A notebook in a vision is not the notebook in the room.** "the boy's
+  notebook" was in the basement Kai had just been seeing; the cabin has
+  another. Cues on remembered, dreamed or reported objects come off.
+- **A frame can stand in the right place and face the wrong way.** The
+  rotary phone's dial faced the wall; the desk phone's keys faced away. Build
+  the prop toward the marker that will read it, and render it once.
+- **The same object in the next room.** The cabin's bowls, the bakery's
+  bowls; every phone; the loaf at Lena's and the loaf at Board Lords. When a
+  prop is rebuilt, grep the other builders for its twins before closing.
+
 ### 2026-11-25 · the second 48: boxes and word matches (pass 456)
 
 - **One fault, every room.** Six of 48 failures were the same dark slab

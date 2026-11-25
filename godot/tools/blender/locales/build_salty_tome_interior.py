@@ -347,10 +347,11 @@ def build_back_annex_2026_08():
             make_box(f"Cat_Chair_Leg_{lx_:+d}_{ly_:+d}", (-0.5 + lx_ * 0.18, 6.7 + ly_ * 0.18, 0.20), (0.03, 0.03, 0.40), COL_WOOD)
     make_box("Cat_Chair_Back", (-0.28, 6.7, 0.72), (0.05, 0.44, 0.52), COL_WOOD)
     make_box("Cat_Cushion", (-0.5, 6.7, 0.47), (0.38, 0.38, 0.06), (0.52, 0.30, 0.26, 1.0))
-    make_box("Cat_Loaf_Body", (-0.5, 6.7, 0.56), (0.30, 0.20, 0.13), (0.28, 0.26, 0.24, 1.0))
-    make_box("Cat_Loaf_Head", (-0.36, 6.74, 0.60), (0.11, 0.11, 0.09), (0.30, 0.28, 0.26, 1.0))
-    for ei2, eyo in enumerate([-0.035, 0.035]):
-        make_box(f"Cat_Ear_{ei2}", (-0.33, 6.74+eyo, 0.66), (0.03, 0.025, 0.03), (0.26, 0.24, 0.22, 1.0))
+    # (pass 457) a CAT (creatures.make_cat, loafed on the cushion) — she was
+    # two grey boxes with box ears: "the cat ... was on her wool pillow on the
+    # chair beside the radiator" (ch14_petra n6)
+    from _props.creatures import make_cat
+    make_cat("Cat_Loaf", -0.5, 6.7, 0.50, heading='-X', pose='loaf', scale=1.05)
 
 
 def build_office_2026_10():

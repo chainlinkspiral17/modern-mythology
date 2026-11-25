@@ -405,3 +405,70 @@ def make_desk_phone(prefix, x, y, base_z, *, yaw=0.0, body=(0.16, 0.16, 0.18, 1.
     # the coiled cord, from the handset's mouth end round to the base's side
     for k in range(6):
         B(f"_Cord_{k}", -0.108 - 0.006 * (k % 2), -0.075 + k * 0.022, 0.012, 0.014, 0.016, 0.014, body)
+
+
+def make_rotary_phone(prefix, x, y, base_z, *, yaw=0.0, body=(0.10, 0.10, 0.11, 1.0)):
+    """A black rotary telephone (pass 457): a stepped body, the dial on its
+    sloped face — a pale number plate, ten finger holes round it, the centre
+    card and the finger stop — two cradle horns, and the handset across them
+    with its ear and mouth cups. It was a box, a disc and a bar. The dial
+    faces local -v."""
+    import math
+    from .geometry import make_rot_box
+    at = _local(x, y, yaw)
+    def B(part, u, v, z, su, sv, sz, col, pitch=0.0):
+        px, py = at(u, v)
+        make_rot_box(f"{prefix}{part}", (px, py, base_z + z), (su, sv, sz), col, yaw=yaw, pitch=pitch)
+    def C(part, u, v, z, r, h, col, seg=10):
+        px, py = at(u, v)
+        make_cyl(f"{prefix}{part}", (px, py, base_z + z), r, h, col, segments=seg)
+    B("_Body", 0.0, 0.0, 0.030, 0.24, 0.20, 0.060, body)
+    B("_Body_Upper", 0.0, 0.035, 0.080, 0.20, 0.12, 0.040, body)
+    # the dial, lying on the body's front shelf
+    C("_Dial", 0.0, -0.045, 0.064, 0.070, 0.008, (0.86, 0.84, 0.76, 1.0), 14)
+    C("_Dial_Wheel", 0.0, -0.045, 0.071, 0.062, 0.006, (0.16, 0.16, 0.17, 1.0), 14)
+    for k in range(10):
+        a = math.radians(-60 + k * 30)
+        C(f"_Dial_Hole_{k}", 0.046 * math.cos(a), -0.045 + 0.046 * math.sin(a), 0.0745, 0.0095, 0.002, (0.86, 0.84, 0.76, 1.0), 8)
+    C("_Dial_Card", 0.0, -0.045, 0.0745, 0.022, 0.002, (0.92, 0.90, 0.84, 1.0), 10)
+    B("_Dial_Stop", 0.058, -0.082, 0.076, 0.022, 0.006, 0.006, (0.78, 0.78, 0.76, 1.0))
+    # the cradle horns and the handset across them
+    for sg in (-1, 1):
+        B(f"_Horn_{sg:+d}", sg * 0.075, 0.045, 0.112, 0.030, 0.050, 0.026, body)
+    B("_Handset", 0.0, 0.045, 0.138, 0.230, 0.040, 0.030, body)
+    for sg, nm in ((-1, "Ear"), (1, "Mouth")):
+        C(f"_Handset_{nm}", sg * 0.100, 0.045, 0.126, 0.034, 0.034, body, 10)
+    for k in range(5):
+        B(f"_Cord_{k}", -0.130 - 0.006 * (k % 2), 0.02 - k * 0.022, 0.012, 0.014, 0.016, 0.014, body)
+
+
+def make_loaf(prefix, x, y, base_z, *, along="X", length=0.30, r=0.075,
+              crust=(0.66, 0.44, 0.22, 1.0), crumb=(0.93, 0.86, 0.68, 1.0), slices=2):
+    """A loaf of bread with one end cut (pass 457): a low base, a round crown
+    along its length, the pale cut face at local +v, and slices lying by it.
+    Loaves were bricks. `prefix` may carry a `__view` tag."""
+    head, _, tag = prefix.partition("__")
+    tag = ("__" + tag) if tag else ""
+    def nm(part):
+        return head + (("_" + part) if part else "") + tag
+    def W(u, v):                          # u across, v along
+        return (x + v, y + u) if along == "X" else (x + u, y + v)
+    def S(su, sv, sz):
+        return (sv, su, sz) if along == "X" else (su, sv, sz)
+    cx, cy = W(0.0, 0.0)
+    make_box(nm(""), (cx, cy, base_z + r * 0.30), S(r * 2.0, length, r * 0.60), crust)
+    make_cyl(nm("Crown"), (cx, cy, base_z + r * 0.62), r * 0.98, length, crust, segments=12, axis=along)
+    # the baker's slashes across the crown, floured pale: what says BREAD from above
+    from .geometry import make_rot_box
+    for k in range(3):
+        sx, sy = W(0.0, -length * 0.28 + k * length * 0.24)
+        make_rot_box(nm(f"Score_{k}"), (sx, sy, base_z + r * 1.585), S(r * 1.25, 0.014, 0.006), (0.90, 0.80, 0.60, 1.0),
+                     yaw=(0.55 if along == "X" else -0.55))
+    fx, fy = W(0.0, length / 2.0 + 0.002)
+    make_cyl(nm("Face"), (fx, fy, base_z + r * 0.62), r * 0.90, 0.004, crumb, segments=12, axis=along)
+    lx, ly = W(0.0, length / 2.0 + 0.003)
+    make_box(nm("Face_Low"), (lx, ly, base_z + r * 0.30), S(r * 1.80, 0.008, r * 0.56), crumb)
+    for k in range(slices):
+        sx, sy = W((-1) ** k * r * 0.5, length / 2.0 + 0.07 + k * 0.045)     # close by the cut end: further out they left the board
+        make_cyl(nm(f"Slice_{k}"), (sx, sy, base_z + 0.007 + k * 0.012), r * 0.90, 0.012, crumb, segments=12)
+        make_cyl(nm(f"Slice_{k}_Crust"), (sx, sy, base_z + 0.0065 + k * 0.012), r * 0.98, 0.010, crust, segments=12)

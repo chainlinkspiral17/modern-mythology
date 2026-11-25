@@ -5178,7 +5178,12 @@ def build_chalk_wall_2026_09():
     # (was Joanna_Notebook: the cue word "joanna" now names HER —
     # build_shotgun_house_2026_10 stages the figure — so the notebook
     # carries the cue word "notebook" only.) On the desk, z top 1.185.
-    _mb("Writing_Notebook", (53.97, -380.98, 1.191), (0.15, 0.20, 0.012), (0.30, 0.26, 0.24, 1.0))
+    # (pass 457) a notebook — cover, the cream page-block at its edges, an
+    # elastic band, a ribbon — not a brown slab ("She closed the notebook.
+    # She put it back", ch21)
+    from _props.objects import make_notebook
+    make_notebook("Writing_Notebook", 53.97, -380.98, 1.185, yaw=0.22, w=0.15, l=0.20,
+                  cover=(0.40, 0.24, 0.16, 1.0), band=(0.86, 0.74, 0.40, 1.0))
 
 
 def _h01(a, b):

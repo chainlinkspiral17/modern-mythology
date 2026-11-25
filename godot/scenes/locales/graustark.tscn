@@ -459,9 +459,9 @@ rotation = Vector3(0.3000, -1.7680, 0.0)
 metadata/fov = 55.0
 
 [node name="shot_insert_crow" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(40.500, 2.950, 372.600)
-rotation = Vector3(-0.0300, 0.0000, 0.0)
-metadata/fov = 20.0
+position = Vector3(41.600, 3.050, 372.600)
+rotation = Vector3(-0.0248, 0.3970, 0.0)
+metadata/fov = 34.0
 
 ; (pass 441) "The crow, behind her, took flight" (vol5 ch9 n105): the crow on the
 ; fence post behind her at the sinkhole's lip, the void beyond
@@ -481,9 +481,9 @@ rotation = Vector3(-0.2714, -2.1763, 0.0)
 metadata/fov = 36.0
 
 [node name="shot_insert_steamship" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(42.000, 2.000, 141.000)
-rotation = Vector3(0.0250, 0.1244, 0.0)
-metadata/fov = 40.0
+position = Vector3(54.000, 1.800, 122.000)
+rotation = Vector3(0.1059, 1.5084, 0.0)
+metadata/fov = 50.0
 
 [node name="shot_closeup_child" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(39.750, -0.750, 135.300)

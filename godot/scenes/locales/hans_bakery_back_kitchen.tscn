@@ -206,6 +206,18 @@ position = Vector3(0.750, 1.250, -4.350)
 rotation = Vector3(-0.472, 0.767, 0.0)
 metadata/fov = 35.0
 
+; (pass 457) the chapbook on the table by the bowls (ch17 n132, n145)
+[node name="shot_insert_chapbook__hans_bakery_bowls" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.850, 1.250, -4.050)
+rotation = Vector3(-0.5523, 0.8898, 0.0)
+metadata/fov = 28.0
+
+; (pass 457) the folder Hans opens at his end of the table (ch15_bread n48)
+[node name="shot_insert_chapbook__hans_bakery_breakfast" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.550, 1.300, -1.450)
+rotation = Vector3(-0.5645, 0.7337, 0.0)
+metadata/fov = 34.0
+
 [node name="shot_insert_chapbook" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 1.1, -4.2)
 rotation = Vector3(-0.1923, 0.7548, 0.0)

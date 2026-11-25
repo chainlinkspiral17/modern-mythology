@@ -195,8 +195,9 @@ shadow_enabled = false
 ; (pass 435) the kitchen-window crow's frame is gone with that crow
 ; Desk notebook: blender (1.72, 0.52, 0.775) → godot (1.72, 0.775, -0.52).
 [node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.970, 1.220, -1.080)
-rotation = Vector3(-0.6715, -3.1416, 0.0)
+position = Vector3(0.950, 1.200, -3.750)
+rotation = Vector3(-0.4748, 0.7854, 0.0)
+metadata/fov = 30.0
 
 ; (pass 401) ch1's one piece / ch4's three
 ; (pass 409) on the one piece on its cloth; it looked at the stove's ember glow
@@ -510,9 +511,9 @@ metadata/fov = 52.0
 
 ; insert: the phone table
 [node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-2.994, 1.307, -6.300)
-rotation = Vector3(-0.5236, 0.5236, 0.0)
-metadata/fov = 36.0
+position = Vector3(-1.850, 1.250, -4.750)
+rotation = Vector3(-0.5201, 0.8961, 0.0)
+metadata/fov = 32.0
 
 ; (pass 408) the wooden box at the head of the table, Per's elbow (ch13_cale:
 ; "Per at the head, with the wooden box at his elbow"): Per's (ch10-13),
@@ -552,6 +553,16 @@ rotation = Vector3(-0.2726, -0.4636, 0.0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.350, 1.300, -3.450)
 rotation = Vector3(-0.3896, 0.8823, 0.0)
 metadata/fov = 28.0
+
+; (pass 457) the lamp's bounce on the door wall, the night views: "He looked at
+; the door. The cedar Olaf had milled" (ch19_ring n64) framed black
+[node name="Fill_Door_Bounce__cab_night" type="OmniLight3D" parent="."]
+position = Vector3(0.250, 1.450, -1.350)
+light_color = Color(1.00, 0.80, 0.52, 1)
+light_energy = 2.20
+omni_range = 3.40
+omni_attenuation = 1.2
+shadow_enabled = false
 
 ; [shot:insert door] (4x) — the south door + its iron latch
 [node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -1439,21 +1450,21 @@ metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_kerosene__cabin_interior" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.238, 0.540, -0.713)
-rotation = Vector3(-0.2618, 1.9048, 0.0)
-metadata/fov = 35.0
+position = Vector3(0.950, 1.150, -3.050)
+rotation = Vector3(-0.2409, 0.8288, 0.0)
+metadata/fov = 30.0
 
 ; (view_twin) cabin_interior's frame in cabin_interior_four
 [node name="shot_insert_kerosene__cabin_interior_four" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.238, 0.540, -0.713)
-rotation = Vector3(-0.2618, 1.9048, 0.0)
-metadata/fov = 35.0
+position = Vector3(0.950, 1.150, -3.050)
+rotation = Vector3(-0.2409, 0.8288, 0.0)
+metadata/fov = 30.0
 
 ; (view_twin) cabin_interior_four's frame in cabin_interior_four_perch
 [node name="shot_insert_kerosene__cabin_interior_four_perch" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.238, 0.540, -0.713)
-rotation = Vector3(-0.2618, 1.9048, 0.0)
-metadata/fov = 35.0
+position = Vector3(0.950, 1.150, -3.050)
+rotation = Vector3(-0.2409, 0.8288, 0.0)
+metadata/fov = 30.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_kettle__cabin_interior" type="Marker3D" parent="." groups=["vn_shot"]]

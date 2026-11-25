@@ -3835,6 +3835,47 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-25 · pass 457: ranks 97–144 by the stranger test, and Graustark's three close-ups.**
+One line of each of the next 48 (set, cue) pairs rendered and read: 36 pass.
+- GRAUSTARK (left from 456): the STEAMSHIP frame stood 11 m off the stern
+  under a cypress and showed a green wall — it is side-on from across the
+  slough now (hull, paddle box and wheel, deckhouse, pilothouse, stack); the
+  writing NOTEBOOK is `make_notebook` (cover, page-block, band); the CROW on
+  the I-beam is framed from beside the beam (the beam's own flange hid it
+  from a low lens). Graustark rebuilt.
+- THE CABIN: "in the kerosene light" and "The kerosene lamp on the table
+  stayed lit" framed the fuel CAN by the door — the three kerosene frames
+  are the lamp on the table (gate synonym kerosene → lantern); "She picked
+  up the notebook" framed a bare patch of floor — it is Brandon's notebook
+  on the table; the door at night was black (the lamp's bounce on the door
+  wall, cab_night); the landline is a rotary telephone (`make_rotary_phone`:
+  dial, finger holes, horns, handset) turned to its frame. Dropped: "insert
+  notebook" on two lines about a notebook somewhere else (a vision, a
+  memory), "insert phone" on Tem's mobile (the frame is the landline).
+- BOARD LORDS: Hans's bread is a loaf with the baker's slashes, a cut end
+  and slices (`make_loaf`), framed from above; the shop phone a phone showing
+  Lena's text.
+- THE BOOKSTORE'S CAT: `creatures.make_cat` loafed on her cushion — she was
+  two grey boxes with box ears.
+- HANS'S TABLE: "insert chapbook" framed a drawer front. A stapled chapbook
+  lies by the bowls (ch17 "She closed the chapbook") and a manila folder,
+  open, at Hans's end (ch15 "He set the folder on the dining table"), each
+  with its own frame.
+- GATES caught two of this pass's own: the steamship frame stood on another
+  level from the scene's camera (wrong_room; lowered), and the loaf's second
+  slice lay off its board (overhang).
+Draft 1 shipped. DRAFT 2 TARGETS (read in this band, not fixed):
+- the cathedral's model riverboat ("crafted from tarnished silver spoons")
+  is a stack of blocks; Graustark's smoke ring is a dot in a wide frame;
+- the Millers' back-porch "insert door" (the doorbell line) frames a corner;
+- Natalie's record player and tonearm at night are grey on grey;
+- the cabin truck at night (ch16) is a shadow; chillwave's workbench and
+  Lena's bowl did not render in this batch — read them;
+- the desk-phone helper for the other box telephones (unchanged from 456);
+- ranks 145–192 by the same question.
+Deck must REBUILD board_lords_interior, cabin_interior, graustark,
+hans_bakery_back_kitchen, salty_tome_interior.
+
 **2026-11-25 · pass 456: the next 48 most-cued close-ups (ranks 49–96), same question. 31 pass; the rest are objects that were boxes, and cues that were word matches.**
 One line of each rendered in game and read.
 - EVERY SLAB PHONE IN THE GAME (the largest class: six of the 48 were a dark

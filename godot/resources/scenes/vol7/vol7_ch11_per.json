@@ -218,7 +218,7 @@
     },
     {
       "char": "per",
-      "text": "[shot:insert notebook]He had been writing about the bowls. He had been writing in a notebook he had kept in the bottom drawer of the desk, in the back, behind a folder of insurance papers.",
+      "text": "He had been writing about the bowls. He had been writing in a notebook he had kept in the bottom drawer of the desk, in the back, behind a folder of insurance papers.",
       "expr": "serious",
       "t": "say"
     },
