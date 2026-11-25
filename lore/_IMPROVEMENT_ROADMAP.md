@@ -3835,6 +3835,51 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-25 · pass 455: the other five close-ups that failed the stranger test, rebuilt at the object.**
+Pass 454's remaining five (of the 48 most-cued), same question.
+- THE GROCERY PALLET (9 lines; ch10, ch16, ch18): one slab under one crate.
+  `_props.objects.make_pallet` — stringers, bottom boards, seven deck boards
+  with gaps — and a LOAD of twelve taped, labelled cases in two tiers, the top
+  tier "packed ... wrong": shifted off the lower one. The stockroom's pallet,
+  its stack of empties and the apron's take the same helper (every pallet in
+  the game was a box).
+- THE BREAK ROOM'S COFFEE (7 lines): plain cylinders on the table. Paper cups
+  (`make_paper_cup`: tapered wall, kraft sleeve, rolled rim, coffee in it),
+  Diego's by the ring it left. The two lines that are about "the pot Jessa
+  keeps going on the counter" (ch10 n102, n105) cue `insert pot` now — a new
+  frame on the two-pot brewer.
+- THE CEDAR TOWER DOOR (7 lines; ch22): a slab the colour of its wall, a 5 cm
+  knob, the window in its middle; the frame stood 0.8 m off it and showed
+  brown. Now a dark casing, five cedar planks, a lever on its plate and the
+  window where the text has it — "Above the door's handle was a window, six
+  inches by six ... milky" — framed whole from the landing. "There was a door
+  on the room's far side" (n22, n29, n39) is the FAR door: cue
+  `insert far_door`, its own frame inside the portal room.
+- OLAF'S CARVED HAND (cabin table 2 lines, porch rail 1): the bell-piece was
+  five boxes 3 cm across, the porch piece a chamfered block.
+  `_props/cedar_bowls.make_cedar_hand` — palm, wrist, four fingers in two
+  joints, the thumb, and for the bell-piece "a bell the size of a thimble"
+  standing in the palm. It IS thumb-size in the text, so the frame is a macro
+  (0.3 m, fov 22), on the table and on the rail.
+- FINN'S CROW (11 lines; ch12, ch18): a dark crow against a dark bed. The
+  night frame dropped to the chair back's height and looks level, so the bird
+  stands against the wall.
+- Gates: the window's marker followed the window; the empties' stretch wrap
+  came down 2.6 cm with the shorter stack (support gate).
+Draft 1 of these five shipped. DRAFT 2 TARGETS:
+- the pallet jack and hand truck by the same test; the cases' labels as art;
+- the brewer: a lit warmer light, steam is the trip layer's;
+- the tower door OPEN on "She opened it. She walked through" (n39) and the
+  figure at the far door for n23–n32 (a twin view);
+- the carved hand's wet colour on the rail by hour; the two other "pieces of
+  cedar carved by hands of dead men" (ch13_cale n31) wherever the text sets
+  them;
+- Finn's crow: a practical it can catch (the bedside lamp is the only source
+  the text gives) rather than a low frame alone;
+- the next 48 (set, cue) pairs by line count.
+Deck must REBUILD cabin_interior, cedar_tower, centro_break_room,
+centro_grocery_aisle, centro_stockroom.
+
 **2026-11-25 · pass 454: the 48 most-cued close-ups, judged by one question — would a stranger name the object? Ten failed; the top five rebuilt at the OBJECT.**
 The 48 (set, cue) pairs with the most lines (about 450 lines) rendered in
 game and read. 38 pass. The ten that fail, and this draft's five:

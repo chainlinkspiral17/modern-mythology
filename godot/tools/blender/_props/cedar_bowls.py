@@ -70,3 +70,37 @@ def make_olaf_bowl(pfx, bx, by, top_z, tag, s=1.0, mark=True, slicker=False, pha
                [(0.104 * s, 0.0), (0.122 * s, 0.0), (0.122 * s, 0.020 * s), (0.104 * s, 0.020 * s), (0.104 * s, 0.0)],
                cedar_lt, segments=16)
     make_cyl(T_("Hollow"), (bx, by, top_z + 0.121 * s), 0.104 * s, 0.002, cedar_dk, segments=16)
+
+
+def make_cedar_hand(pfx, x, y, top_z, tag, bell=False, s=1.0, colors=None, kit=None):
+    """Olaf's carved hand: "The figure was a hand. The hand was small. The
+    hand was open, palm up, the way a hand was open when it was offering
+    something" (vol7 ch13), "the size of his thumb" — and, for the piece Finn
+    brings back, "The hand was holding a bell the size of a thimble" (ch18).
+    It was five boxes two centimetres across (pass 455): a palm on a wrist
+    stub, four fingers in two joints that curl up at the tips, a thumb, and
+    the bell — a flared lathe on a loop — standing in the palm.
+    The fingers point +Y. `s` scales the piece; 1.0 is 6 cm long."""
+    k = {n: getattr(_G, n) for n in _KIT}
+    if kit:
+        k.update(kit)
+    make_cyl, make_taper_cyl, make_tube, make_blob, make_lathe = (k[n] for n in _KIT)
+    make_box = (kit or {}).get("make_box", _G.make_box)
+    cedar_dk, cedar_md, cedar_lt, char = colors or (CEDAR_DK, CEDAR_MD, CEDAR_LT, CHAR)
+    T_ = lambda nm: "%s_%s__%s" % (pfx, nm, tag) if tag else "%s_%s" % (pfx, nm)
+    make_box(T_("Wrist"), (x, y - 0.021 * s, top_z + 0.005 * s), (0.018 * s, 0.014 * s, 0.010 * s), cedar_md)
+    make_box(T_("Palm"), (x, y, top_z + 0.006 * s), (0.030 * s, 0.028 * s, 0.012 * s), cedar_lt)
+    make_cyl(T_("Palm_Hollow"), (x, y + 0.001 * s, top_z + 0.0125 * s), 0.010 * s, 0.001 * s, cedar_md, segments=10)
+    for fi, fx in enumerate((-0.0112, -0.0038, 0.0038, 0.0112)):
+        ln = (0.011, 0.013, 0.012, 0.010)[fi] * s
+        make_box(T_("Finger_%d" % fi), (x + fx * s, y + 0.014 * s + ln / 2.0, top_z + 0.0055 * s), (0.0062 * s, ln, 0.009 * s), cedar_lt)
+        make_box(T_("Finger_%d_Tip" % fi), (x + fx * s, y + 0.014 * s + ln + 0.0035 * s, top_z + 0.0085 * s), (0.0058 * s, 0.007 * s, 0.009 * s), cedar_md)
+    make_box(T_("Thumb"), (x + 0.0185 * s, y - 0.002 * s, top_z + 0.0065 * s), (0.007 * s, 0.016 * s, 0.009 * s), cedar_lt)
+    make_box(T_("Thumb_Tip"), (x + 0.0200 * s, y + 0.009 * s, top_z + 0.0095 * s), (0.006 * s, 0.007 * s, 0.008 * s), cedar_md)
+    if bell:
+        bz = top_z + 0.0125 * s
+        make_lathe(T_("Bell"), (x, y + 0.001 * s, bz),
+                   [(0.0085 * s, 0.0), (0.0080 * s, 0.0015 * s), (0.0058 * s, 0.006 * s), (0.0045 * s, 0.010 * s), (0.0022 * s, 0.0125 * s), (0.0, 0.013 * s)],
+                   cedar_dk, segments=10)
+        make_cyl(T_("Bell_Loop"), (x, y + 0.001 * s, bz + 0.0145 * s), 0.0022 * s, 0.003 * s, char, segments=6)
+        make_cyl(T_("Bell_Lip"), (x, y + 0.001 * s, bz + 0.0006 * s), 0.0090 * s, 0.0012 * s, char, segments=10)

@@ -409,15 +409,15 @@ metadata/fov = 24.0
 
 ; insert: the unmarked cedar door
 [node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 16.3, -2.2)
-rotation = Vector3(-0.1616, -0.2102, 0.0)
-metadata/fov = 42.0
+position = Vector3(-0.450, 16.450, -0.750)
+rotation = Vector3(-0.0892, -0.2027, 0.0)
+metadata/fov = 50.0
 
 ; insert: the six-by-six window above the handle
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 16.42, -2.45)
-rotation = Vector3(0, 0, 0)
-metadata/fov = 42.0
+position = Vector3(0.300, 16.420, -2.450)
+rotation = Vector3(0.0000, 0.0000, 0.0)
+metadata/fov = 35.0
 
 ; insert: the same book she had on the cedar shelf at the cabin
 [node name="shot_insert_book" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -543,6 +543,13 @@ metadata/fov = 45.0
 
 
 ; closeup (pass 292): Tem at the portal door's window, from the landing where Kai and Finn stand (vol7 ch22 portal)
+; (pass 455) "There was a door on the room's far side" — the FAR door, from
+; inside the portal room (ch22 n22, n29, n39): "insert door" framed the near one
+[node name="shot_insert_far_door__cedar_tower_portal" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.900, 16.500, -18.750)
+rotation = Vector3(-0.1280, 0.3965, 0.0)
+metadata/fov = 52.0
+
 [node name="shot_closeup_tem__cedar_tower_portal" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.600, 16.550, -0.900)
 rotation = Vector3(-0.0692, 0.2808, 0.0)

@@ -195,3 +195,37 @@ def make_smartphone(prefix, x, y, base_z, *, state="call", along="Y", head=1,
         P(0, sl * 0.12, z, 0.024, 0.004, 0.001, nm("Screen_Date"), (0.70, 0.74, 0.80, 1.0))
     else:
         P(sw * 0.22, 0, z, 0.010, sl * 0.6, 0.001, nm("Screen_Glare"), (0.10, 0.11, 0.14, 1.0))
+
+
+def make_pallet(prefix, x, y, base_z, *, along="Y", w=1.00, l=1.20,
+                wood=(0.62, 0.50, 0.34, 1.0), wood_dk=(0.50, 0.39, 0.26, 1.0)):
+    """A wooden pallet you can see THROUGH (pass 455). Every pallet in the
+    game was one solid box: the grocery aisle's "insert pallet" framed a
+    slab under a crate. Three stringers, three bottom boards, seven deck
+    boards with gaps — 144 mm tall, 1.0 x 1.2 m. `along` is the stringers'
+    axis. Returns the deck's top z (stand the load on it)."""
+    def B(name, u, v, z, su, sv, sz, col):
+        # u across the stringers, v along them
+        if along == "Y":
+            make_box(name, (x + u, y + v, base_z + z), (su, sv, sz), col)
+        else:
+            make_box(name, (x + v, y + u, base_z + z), (sv, su, sz), col)
+    for i, u in enumerate((-w / 2 + 0.05, 0.0, w / 2 - 0.05)):
+        B(f"{prefix}_Stringer_{i}", u, 0.0, 0.022 + 0.050, 0.045, l, 0.100, wood_dk)
+    for i, v in enumerate((-l / 2 + 0.05, 0.0, l / 2 - 0.05)):
+        B(f"{prefix}_Bottom_{i}", 0.0, v, 0.011, w, 0.095, 0.022, wood)
+    n = 7
+    for i in range(n):
+        v = -l / 2 + 0.05 + i * (l - 0.10) / (n - 1)
+        B(f"{prefix}_Deck_{i}", 0.0, v, 0.122 + 0.011, w, 0.095, 0.022, wood if i % 2 == 0 else wood_dk)
+    return base_z + 0.144
+
+
+def make_paper_cup(prefix, x, y, base_z, *, h=0.095, sleeve=(0.56, 0.40, 0.24, 1.0),
+                   paper=(0.95, 0.94, 0.90, 1.0), coffee=(0.20, 0.12, 0.07, 1.0), full=True):
+    """A paper hot cup, no lid: tapered white wall, a kraft sleeve, the
+    rolled rim, the coffee in it. `full=False` leaves it drained."""
+    make_taper_cyl(f"{prefix}", (x, y, base_z + h / 2.0), 0.029, 0.040, h, paper, segments=14)
+    make_taper_cyl(f"{prefix}_Sleeve", (x, y, base_z + h * 0.50), 0.0335, 0.0385, h * 0.42, sleeve, segments=14)
+    make_cyl(f"{prefix}_Rim", (x, y, base_z + h + 0.002), 0.0425, 0.005, paper, segments=14)
+    make_cyl(f"{prefix}_Coffee", (x, y, base_z + (h - 0.008 if full else 0.006)), 0.037 if full else 0.028, 0.003, coffee, segments=14)

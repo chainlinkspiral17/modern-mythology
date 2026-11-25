@@ -339,6 +339,24 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-11-25 · small things need macro frames; two doors need two cues (pass 455)
+
+- **Frame at the object's real size.** The bell-piece is "the size of his
+  thumb": a 0.6 m insert shows a dot however well it is carved. Build it true
+  and stand the lens 0.3 m off at fov 22. The rule of thumb: the subject
+  should fill a third of the frame's height.
+- **One cue word, two objects, is two cues.** "insert door" in the portal
+  chapter was the landing door AND "a door on the room's far side": the far
+  door is `insert far_door` with its own marker. Same for "coffee" that is
+  the pot on the counter (`insert pot`) and the cup on the table.
+- **A dark subject wants a light ground, and the camera can find one.** Finn's
+  crow was lost against the bed; dropping the lens to the chair back's height
+  and looking level put the wall behind it. Try the frame before adding a
+  light the text does not give.
+- **A moved part takes its markers with it.** The tower door's window moved to
+  above the handle (the text) and `shot_insert_window` was 32 degrees off: run
+  the aim gate after every builder change, not only for the cue being fixed.
+
 ### 2026-11-25 · the stranger test, run on the frames that matter most (pass 454)
 
 - **Rank the close-ups by lines, read from the top.** 48 (set, cue) pairs

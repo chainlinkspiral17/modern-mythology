@@ -102,7 +102,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert door]There was a door on the room's far side. The door was cedar. It had no markings. The door's handle was at the far wall directly opposite the door Tem was looking through.",
+      "text": "[shot:insert far_door]There was a door on the room's far side. The door was cedar. It had no markings. The door's handle was at the far wall directly opposite the door Tem was looking through.",
       "t": "narrate"
     },
     {
@@ -130,7 +130,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert door]She had not yet opened the far door. She was at the door with her hand on the handle.",
+      "text": "[shot:insert far_door]She had not yet opened the far door. She was at the door with her hand on the handle.",
       "t": "narrate"
     },
     {
@@ -170,7 +170,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert door]She turned back to the far door. She opened it. She walked through.",
+      "text": "[shot:insert far_door]She turned back to the far door. She opened it. She walked through.",
       "t": "narrate"
     },
     {

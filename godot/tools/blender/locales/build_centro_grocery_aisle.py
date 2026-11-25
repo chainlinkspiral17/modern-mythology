@@ -333,17 +333,34 @@ def build_aisles():
     # truck parked behind it; the dented can leaking under 4F
     gx_w = GONDOLA_XS[2] + 0.35                  # Aisle Seven's west shelf face
     plx, ply = gx_w + 0.52, 11.60
-    make_box("Pallet", (plx, ply, 0.08), (1.00, 1.20, 0.16), (0.62, 0.48, 0.30, 1.0))
-    make_chamfer_box("Pallet_Load", (plx, ply, 0.46), (0.90, 1.05, 0.60), (0.68, 0.56, 0.38, 1.0))
-    for k in range(3):
-        make_box(f"Pallet_Load_Case_Label_{k}", (plx - 0.451, ply - 0.35 + k * 0.35, 0.50), (0.003, 0.20, 0.12), (0.80, 0.20, 0.16, 1.0))
+    # (pass 455) it was one slab under one crate: nine "insert pallet" lines
+    # framed a big box. A slatted pallet (_props.objects.make_pallet) and a
+    # LOAD of cases — two tiers of six, taped and labelled, the top tier
+    # "packed ... wrong" (ch10 n5): shifted off the lower one, "the centers
+    # o[ff]" (ch16), one case turned. The clipboard stays on top (z 0.76).
+    from _props.objects import make_pallet
+    deck = make_pallet("Pallet", plx, ply, 0.0)
+    kraft, kraft_dk, tape = (0.70, 0.57, 0.38, 1.0), (0.62, 0.49, 0.32, 1.0), (0.84, 0.78, 0.62, 1.0)
+    ch = 0.300
+    for tier, (ox, oy) in enumerate(((0.0, 0.0), (0.045, -0.06))):
+        for cx_i in range(2):
+            for cy_i in range(3):
+                nm = f"Pallet_Load_Case_{tier}_{cx_i}_{cy_i}"
+                bx = plx + ox - 0.225 + cx_i * 0.45
+                by = ply + oy - 0.35 + cy_i * 0.35
+                bz = deck + tier * (ch + 0.004) + ch / 2.0
+                col = kraft if (tier + cx_i + cy_i) % 2 == 0 else kraft_dk
+                make_box(nm, (bx, by, bz), (0.44, 0.34, ch), col)
+                make_box(nm + "_Tape", (bx, by, bz + ch / 2.0 + 0.0015), (0.44, 0.05, 0.003), tape)
+                if cx_i == 0:      # the aisle-side face: the red case label
+                    make_box(nm + "_Label", (bx - 0.2215, by, bz + 0.02), (0.003, 0.20, 0.12), (0.80, 0.20, 0.16, 1.0))
     hx, hy = gx_w + 0.40, ply - 1.10
     make_rot_box("HandTruck_Frame", (hx, hy, 0.60), (0.40, 0.08, 1.20), (0.62, 0.28, 0.24, 1.0), roll=0.0)
     make_box("HandTruck_Toe", (hx, hy + 0.04, 0.04), (0.44, 0.30, 0.03), STEEL)
     for wi3, wx3 in enumerate((hx - 0.22, hx + 0.22)):
         make_lathe(f"HandTruck_Wheel_{wi3}", (wx3, hy - 0.05, 0.0), [(0.0, 0.0), (0.12, 0.0), (0.12, 0.05), (0.0, 0.05)],
                    P.METAL_BLACK, segments=10)
-    top = 0.76
+    top = 0.755     # the top tier's tape (pass 455: the load is cases now)
     make_box("Manager_Clipboard", (plx, ply - 0.15, top + 0.006), (0.240, 0.320, 0.012), (0.55, 0.42, 0.28, 1.0))
     make_box("Clipboard_Sheet", (plx, ply - 0.14, top + 0.0135), (0.210, 0.280, 0.002), (0.94, 0.93, 0.88, 1.0))
     make_box("Clipboard_Clip", (plx, ply - 0.295, top + 0.022), (0.060, 0.030, 0.020), STEEL)

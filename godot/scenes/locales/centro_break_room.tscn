@@ -339,10 +339,16 @@ position = Vector3(1.193, 1.306, -2.314)
 rotation = Vector3(-0.5236, 0.6306, 0.0)
 metadata/fov = 40.0
 
+; (pass 455) "the pot Jessa keeps going on the counter" (ch10 n102, n105)
+[node name="shot_insert_pot" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.900, 1.350, -2.200)
+rotation = Vector3(-0.1668, 1.2351, 0.0)
+metadata/fov = 34.0
+
 [node name="shot_insert_coffee" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.450, 1.200, -2.300)
-rotation = Vector3(-0.5169, 0.9415, 0.0)
-metadata/fov = 40.0
+rotation = Vector3(-0.4748, 1.0453, 0.0)
+metadata/fov = 34.0
 
 [node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.600, 1.400, -1.500)

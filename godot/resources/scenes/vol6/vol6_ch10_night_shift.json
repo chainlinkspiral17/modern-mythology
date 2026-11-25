@@ -544,7 +544,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert coffee]Diego is at the door to the dock with a paper cup of coffee from the pot Jessa keeps going on the counter. BT is in the corner near the bulletin board, on his phone.",
+      "text": "[shot:insert pot]Diego is at the door to the dock with a paper cup of coffee from the pot Jessa keeps going on the counter. BT is in the corner near the bulletin board, on his phone.",
       "voice": "assets/audio/voice/vol6_ch10_night_shift/102.ogg"
     },
     {
@@ -560,7 +560,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert coffee]She comes in for forty-five seconds, which is what she does on every break — she walks in, refills her own coffee from the pot, takes one sip, and walks back out. She does not, on breaks, sit. She does not, on breaks, talk.",
+      "text": "[shot:insert pot]She comes in for forty-five seconds, which is what she does on every break — she walks in, refills her own coffee from the pot, takes one sip, and walks back out. She does not, on breaks, sit. She does not, on breaks, talk.",
       "voice": "assets/audio/voice/vol6_ch10_night_shift/105.ogg"
     },
     {

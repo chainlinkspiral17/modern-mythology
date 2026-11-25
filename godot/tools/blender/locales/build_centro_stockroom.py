@@ -118,9 +118,9 @@ def build_dock():
     make_cyl("DockLamp_Lens", (1.2, ROOM_D + 0.42, 3.52), 0.075, 0.02,
              (0.95, 0.80, 0.50, 1.0), segments=10, axis='Y')
     # A stack of empty pallets waiting outside, right of the door
+    from _props.objects import make_pallet
     for k in range(4):
-        make_box(f"Apron_Pallet_{k}", (-2.9, ROOM_D + 1.4, -1.02 + k * 0.14),   # (pass 454) west: the dock door's landing is east
-                 (1.1, 1.1, 0.12), COL_PALLET)
+        make_pallet(f"Apron_Pallet_{k}", -2.9, ROOM_D + 1.4, -1.09 + k * 0.146, w=1.1, l=1.1)   # (pass 454) west: the dock door's landing is east · (pass 455) slatted
 
 
 def _rack_row(prefix, x, y0, y1):
@@ -168,7 +168,8 @@ def build_floor_stock():
     """Mid-floor: pallet of shrink-wrapped cases with the jack parked
     in it, a hand truck against the east rack, a broom leaning."""
     px, py = -0.45, 5.2
-    make_box("Pallet", (px, py, 0.07), (1.1, 1.1, 0.13), COL_PALLET)
+    from _props.objects import make_pallet
+    make_pallet("Pallet", px, py, 0.0, w=1.1, l=1.1)   # (pass 455) slats, not a slab
     for r in range(2):
         for c in range(2):
             for lv in range(3):
@@ -473,9 +474,10 @@ def build_back_of_house_2026_10():
     make_box("Receiving_Clipboard", (WF + 0.008, by, 1.45), (0.015, 0.24, 0.32), (0.60, 0.46, 0.30, 1.0))
     make_box("Receiving_Clipboard_Sheet", (WF + 0.017, by, 1.42), (0.002, 0.21, 0.26), white)
     # the empty pallets stacked against the dock wall, west of the door
+    from _props.objects import make_pallet
     for k in range(6):
-        make_box(f"Empty_Pallet_{k}", (-2.35, NF - 0.62, 0.075 + k * 0.15), (1.00, 1.20, 0.14), (0.62, 0.50, 0.34, 1.0))
-    make_cyl("Stretch_Wrap", (-2.35, NF - 0.62, 0.90 + 0.25), 0.06, 0.50, (0.80, 0.86, 0.90, 0.7), segments=10)
+        make_pallet(f"Empty_Pallet_{k}", -2.35, NF - 0.62, k * 0.146)   # (pass 455) slatted
+    make_cyl("Stretch_Wrap", (-2.35, NF - 0.62, 0.874 + 0.25), 0.06, 0.50, (0.80, 0.86, 0.90, 0.7), segments=10)
     # the mop sink and the bucket by the swing doors
     make_box("Mop_Sink", (-2.95, SF + 0.30, 0.25), (0.70, 0.60, 0.50), (0.86, 0.86, 0.84, 1.0))
     make_box("Mop_Sink_Basin", (-2.95, SF + 0.30, 0.49), (0.58, 0.48, 0.02), (0.56, 0.58, 0.60, 1.0))

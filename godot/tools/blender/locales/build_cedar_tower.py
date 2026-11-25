@@ -244,6 +244,36 @@ def build_quarters():
     make_box("Q_Book_Open_R", (1.35, 4.1, z0 + 0.80), (0.14, 0.20, 0.012), (0.88, 0.86, 0.78, 1.0))
 
 
+def _cedar_door(prefix, yc, z0, *, face=-1, handle_x=0.30, window=False, casing=True):
+    """A cedar plank door in a 0.90 x 2.50 opening, its near face toward
+    `face` (-1: seen from the south). Parts: <prefix> (the leaf's core),
+    _Plank_i, _Casing_*, _Handle, _Handle_Plate and, with `window`,
+    _Window_Frame / _Window (named so the old markers and art still find
+    Portal_Window)."""
+    yf = yc + face * 0.04                       # the leaf's near face
+    make_box(prefix, (0.0, yc, z0 + 1.25), (0.90, 0.07, 2.50), FRAME)        # the core: dark in the plank gaps
+    tones = (CEDAR, (0.62, 0.45, 0.30, 1.0), (0.55, 0.39, 0.26, 1.0), (0.60, 0.43, 0.28, 1.0), CEDAR)
+    for i in range(5):
+        make_box(f"{prefix}_Plank_{i}", (-0.36 + i * 0.18, yf, z0 + 1.25), (0.172, 0.012, 2.48), tones[i])
+    for nm, rz in (("Rail_Top", 2.28), ("Rail_Bottom", 0.22)):
+        make_box(f"{prefix}_{nm}", (0.0, yf + face * 0.009, z0 + rz), (0.88, 0.008, 0.14), CEDAR_DK)
+    if casing:
+        for sgn in (-1, 1):
+            make_box(f"{prefix}_Casing_{sgn:+d}", (sgn * 0.495, yc + face * 0.085, z0 + 1.29), (0.09, 0.05, 2.58), FRAME)
+        make_box(f"{prefix}_Casing_Top", (0.0, yc + face * 0.085, z0 + 2.58), (1.08, 0.05, 0.10), FRAME)
+        make_box(f"{prefix}_Threshold", (0.0, yc + face * 0.07, z0 + 0.06), (0.90, 0.10, 0.02), BRASS)
+    hz = z0 + 1.05
+    make_box(f"{prefix}_Handle_Plate", (handle_x, yf + face * 0.010, hz), (0.05, 0.008, 0.18), BRASS)
+    make_cyl(f"{prefix}_Handle", (handle_x, yf + face * 0.035, hz), 0.012, 0.05, BRASS, axis='Y', segments=8)
+    lever_dx = -0.055 if handle_x > 0 else 0.055
+    make_box(f"{prefix}_Handle_Lever", (handle_x + lever_dx, yf + face * 0.055, hz), (0.13, 0.016, 0.020), BRASS)
+    if window:
+        wz = z0 + 1.42
+        base = prefix.replace("_Door", "")
+        make_box(f"{base}_Window_Frame", (handle_x, yf + face * 0.012, wz), (0.21, 0.012, 0.21), FRAME)
+        make_box(f"{base}_Window", (handle_x, yf + face * 0.020, wz), (0.152, 0.006, 0.152), (0.92, 0.95, 0.93, 1.0))
+
+
 def build_portal_floor():
     """Fourth floor: landing + the unmarked cedar door with the
     six-inch window, and beyond it the 18×18 portal room — the
@@ -259,11 +289,14 @@ def build_portal_floor():
     for sgn in (-1, 1):
         make_box(f"Landing_DoorWall_{sgn:+d}", (sgn * 1.55, 3.0, z0 + C/2.0), (1.3, 0.20, C), CEDAR_PANEL)
     make_box("Landing_DoorWall_Header", (0.0, 3.0, z0 + C - 0.35), (0.9, 0.20, 0.70), CEDAR_PANEL)
-    make_box("Portal_Door", (0.0, 2.98, z0 + 1.25), (0.90, 0.08, 2.50), CEDAR_DK)
-    make_cyl("Portal_Door_Handle", (0.32, 2.92, z0 + 1.10), 0.025, 0.05, BRASS, axis='Y', segments=8)
-    # The six-by-six window, chest height, translucent
-    make_box("Portal_Window_Frame", (0.0, 2.96, z0 + 1.40), (0.20, 0.10, 0.20), CEDAR)
-    make_box("Portal_Window", (0.0, 2.94, z0 + 1.40), (0.15, 0.06, 0.15), (0.80, 0.85, 0.86, 0.45))
+    # (pass 455) THE DOOR. It was one slab the colour of its wall with a
+    # 5 cm knob and a window in its middle: the seven "insert door" lines
+    # framed brown. "The door was unmarked. It was cedar. Above the door's
+    # handle was a window, six inches by six, set into the cedar at chest
+    # height ... The window itself was milky" (ch22). Now a dark casing, a
+    # leaf of five cedar planks, a lever on its plate, and the window ABOVE
+    # THE HANDLE, its glass the brightest thing on the landing.
+    _cedar_door("Portal_Door", 2.98, z0, face=-1, handle_x=0.30, window=True)
     # THE PORTAL ROOM beyond, 18×18 (sixty feet)
     make_box("Portal_Room_Floor", (0.0, 12.0, z0 + 0.02), (18.4, 18.4, 0.06), CEDAR)
     for nm, x in (("Portal_Wall_W", -9.1), ("Portal_Wall_E", 9.1)):
@@ -280,8 +313,7 @@ def build_portal_floor():
     for si, (sx, sy) in enumerate(((-4.0, 9.0), (3.0, 13.0), (0.0, 17.0))):
         make_box(f"Air_Shimmer_{si}", (sx, sy, z0 + 1.5), (3.5, 3.0, 2.4), (0.78, 0.84, 0.86, 0.10))
     # The FAR DOOR — cedar, unmarked, handle opposite; Aria's exit
-    make_box("Far_Door", (0.0, 20.92, z0 + 1.25), (0.90, 0.08, 2.50), CEDAR_DK)
-    make_cyl("Far_Door_Handle", (-0.32, 20.86, z0 + 1.10), 0.025, 0.05, BRASS, axis='Y', segments=8)
+    _cedar_door("Far_Door", 20.92, z0, face=-1, handle_x=-0.30, window=False, casing=False)
 
 
 

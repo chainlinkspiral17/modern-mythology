@@ -658,10 +658,13 @@ def build_table():
     # palm was up", holding "a bell the size of a thimble" (ch18); "beside
     # the four bowls" (ch19), "beside the two bowls" (ch21). cab_bell
     bpx, bpy = tx + 0.30, ty + 0.22
-    make_box("Cedar_Bell_Palm__cab_bell", (bpx, bpy, top_z + 0.007), (0.030, 0.024, 0.014), cedar_lt)
-    for fi, fx in enumerate((-0.009, -0.003, 0.003, 0.009)):
-        make_box("Cedar_Bell_Finger_%d__cab_bell" % fi, (bpx + fx, bpy + 0.019, top_z + 0.006), (0.005, 0.016, 0.009), cedar_lt)
-    make_cyl("Cedar_Bell_Thimble__cab_bell", (bpx, bpy, top_z + 0.0185), 0.0065, 0.009, cedar_md, segments=8)
+    # (pass 455) it was five boxes 3 cm across — nobody could name it. The
+    # carved hand with the bell standing in its palm (_props/cedar_bowls).
+    from _props.cedar_bowls import make_cedar_hand, _KIT as _CK
+    _g = globals()
+    _kit = {n: _g[n] for n in _CK}; _kit["make_box"] = _g["make_box"]
+    make_cedar_hand("Cedar_Bell", bpx, bpy, top_z, "cab_bell", bell=True,
+                    colors=(cedar_dk, cedar_md, cedar_lt, char), kit=_kit)
     # BRANDON'S NOTEBOOK: "leather-bound, palm-sized", with its pencil,
     # "beside the cedar" (ch19-20; Cale keeps it in ch21). cab_ch19
     make_box("Brandon_Notebook__cab_ch19", (tx + 0.40, ty + 0.40, top_z + 0.009), (0.090, 0.130, 0.018), (0.30, 0.20, 0.13, 1.0))
@@ -2010,10 +2013,14 @@ def build_porch_2026_10():
     # Eddvard's hand: "a piece of cedar, the size of his thumb, not
     # recently placed by the wet color of it" — palm-up, fingers curled
     hx, hy = -1.30, PY
-    make_chamfer_box("Porch_Cedar_Hand", (hx, hy, CAP + 0.0125), (0.075, 0.040, 0.025), cedar_wet, chamfer=0.006)
-    make_cyl("Porch_Cedar_Hand_Palm", (hx + 0.008, hy, CAP + 0.0255), 0.014, 0.002, cedar, segments=8)
-    for fi in range(4):
-        make_box(f"Porch_Cedar_Hand_Finger_{fi}", (hx - 0.024, hy - 0.012 + fi * 0.008, CAP + 0.027), (0.018, 0.005, 0.004), cedar)
+    # (pass 455) the carved hand itself (_props/cedar_bowls.make_cedar_hand):
+    # "The figure was a hand. The hand was small. The hand was open, palm up"
+    # (ch13_cale n21). It was a chamfered block with four slivers on it.
+    from _props.cedar_bowls import make_cedar_hand, _KIT as _CK
+    _g = globals()
+    _kit = {n: _g[n] for n in _CK}; _kit["make_box"] = _g["make_box"]
+    make_cedar_hand("Porch_Cedar_Hand", hx, hy, CAP, "", bell=False,
+                    colors=((0.36, 0.24, 0.15, 1.0), cedar_wet, cedar, (0.20, 0.13, 0.09, 1.0)), kit=_kit)
     # her coffee, set on the railing when she saw it was Finn's truck
     mx, my = 1.25, PY
     make_lathe("Porch_Coffee_Mug", (mx, my, CAP),

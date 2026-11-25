@@ -243,8 +243,12 @@ def build_hero_props_2026_09():
              (0.86, 0.84, 0.80, 1.0), segments=10)
     make_cyl("Horchata_Straw", (TABLE_X + 0.56, TABLE_Y + 0.21, T + 0.20), 0.005, 0.100,
              (0.86, 0.36, 0.30, 1.0), segments=6)
-    make_cyl("Dougs_Coffee_Cup", (TABLE_X + 0.70, TABLE_Y + 0.26, T + 0.04), 0.040, 0.080,
-             (0.82, 0.80, 0.76, 1.0), segments=10)
+    # (pass 455) paper cups, not plain cylinders: "a paper cup of coffee from
+    # the pot Jessa keeps going on the counter" (ch10 n102); Diego's stands
+    # by the ring it has left on the table ("He drinks his coffee", ch18, ch22)
+    from _props.objects import make_paper_cup
+    make_paper_cup("Dougs_Coffee_Cup", TABLE_X + 0.70, TABLE_Y + 0.26, T, h=0.085, full=False)
+    make_paper_cup("Table_Coffee_Cup", TABLE_X + 0.46, TABLE_Y - 0.21, T)
 
 
 

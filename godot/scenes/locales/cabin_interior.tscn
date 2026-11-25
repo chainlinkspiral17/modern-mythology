@@ -225,9 +225,9 @@ rotation = Vector3(-0.4252, -0.8622, 0.0)
 ; (pass 404) ch19's "the cedar" is the bell-piece Finn unwraps from the
 ; handkerchief and sets "beside the four bowls" (godot 0.30, 0.80, -4.12)
 [node name="shot_insert_cedar__cabin_interior_day_four" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.620, 1.150, -3.780)
-rotation = Vector3(-0.6430, 0.7550, 0.0)
-metadata/fov = 30.0
+position = Vector3(0.120, 0.930, -3.940)
+rotation = Vector3(-0.4722, -0.7854, 0.0)
+metadata/fov = 22.0
 
 ; (pass 414) the same, at night: ch19's "The bell-piece on the table at the cabin tonight"
 ; (pass 423) the crow on the table beside the bell-piece, both in frame —
@@ -254,22 +254,22 @@ rotation = Vector3(-0.2531, 0.7797, 0.0)
 metadata/fov = 34.0
 
 [node name="shot_insert_cedar__cabin_interior_four" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.100, 1.150, -3.720)
-rotation = Vector3(-0.5538, -0.7854, 0.0)
-metadata/fov = 30.0
+position = Vector3(0.120, 0.930, -3.940)
+rotation = Vector3(-0.4722, -0.7854, 0.0)
+metadata/fov = 22.0
 
 ; (view_twin) cabin_interior_four's frame in cabin_interior_four_crow
 ; (pass 423) ring n76: the crow walks to the bell-piece and stands beside it — both in frame
 [node name="shot_insert_cedar__cabin_interior_four_crow" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.100, 1.150, -3.720)
-rotation = Vector3(-0.5538, -0.7854, 0.0)
-metadata/fov = 30.0
+position = Vector3(0.120, 0.930, -3.940)
+rotation = Vector3(-0.4722, -0.7854, 0.0)
+metadata/fov = 22.0
 
 ; (view_twin) cabin_interior_four's frame in cabin_interior_four_perch
 [node name="shot_insert_cedar__cabin_interior_four_perch" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.620, 1.150, -3.780)
-rotation = Vector3(-0.6430, 0.7550, 0.0)
-metadata/fov = 30.0
+position = Vector3(0.120, 0.930, -3.940)
+rotation = Vector3(-0.4722, -0.7854, 0.0)
+metadata/fov = 22.0
 
 ; ── THE DAY (2026-10-11, preset cabin_interior_day): ch1 Morning ("the light at this hour
 ; in this room"), ch1 Finn (ten-thirty to two), ch2 (Finn at the cabin until eleven), ch10
@@ -772,9 +772,9 @@ rotation = Vector3(-0.0639, 1.2548, 0)
 metadata/fov = 56.0
 
 [node name="shot_insert_cedar__cabin_porch" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.050, 1.300, 1.250)
-rotation = Vector3(-0.5251, 2.7150, 0)
-metadata/fov = 35.0
+position = Vector3(-1.180, 1.080, 1.560)
+rotation = Vector3(-0.4646, 2.6606, 0.0)
+metadata/fov = 22.0
 
 [node name="shot_insert_cigarette__cabin_porch" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.850, 1.400, 1.000)
@@ -1008,9 +1008,9 @@ rotation = Vector3(-0.1987, 1.0122, 0)
 metadata/fov = 40.0
 
 [node name="shot_insert_cedar__cabin_porch_day" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.050, 1.300, 1.250)
-rotation = Vector3(-0.5251, 2.7150, 0)
-metadata/fov = 35.0
+position = Vector3(-1.180, 1.080, 1.560)
+rotation = Vector3(-0.4646, 2.6606, 0.0)
+metadata/fov = 22.0
 
 [node name="shot_insert_cigarette__cabin_porch_day" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.850, 1.400, 1.000)
@@ -1258,9 +1258,9 @@ rotation = Vector3(-0.0639, 1.2548, 0)
 metadata/fov = 56.0
 
 [node name="shot_insert_cedar__cabin_porch_dawn" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.050, 1.300, 1.250)
-rotation = Vector3(-0.5251, 2.7150, 0)
-metadata/fov = 35.0
+position = Vector3(-1.180, 1.080, 1.560)
+rotation = Vector3(-0.4646, 2.6606, 0.0)
+metadata/fov = 22.0
 
 [node name="shot_insert_cigarette__cabin_porch_dawn" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.850, 1.400, 1.000)
