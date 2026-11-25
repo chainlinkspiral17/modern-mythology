@@ -187,7 +187,7 @@ def build_counter():
     top_z = make_counter("Counter", (2.25, 5.380, 0.0), length=1.00, depth=2.40, height=0.95,
                          palette={"formica": (0.52, 0.42, 0.30, 1.0),
                                   "top": (0.30, 0.22, 0.14, 1.0), "kick": (0.24, 0.18, 0.12, 1.0)})
-    make_register("Register", (2.6, 5.280, top_z))
+    make_register("Register", (2.6, 5.280, top_z), operator='+Y')   # (pass 453) Devon stands north of it, by the back office
     # The small drawer under the register (the pieces of paper live here)
     make_box("Register_Drawer", (1.75, 4.900, 0.72), (0.40, 0.02, 0.14), (0.34, 0.24, 0.16, 1.0))
     make_box("Register_Drawer_Pull", (1.75, 4.880, 0.72), (0.10, 0.015, 0.03), COL_STEEL)

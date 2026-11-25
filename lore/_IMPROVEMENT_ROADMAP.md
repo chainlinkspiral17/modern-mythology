@@ -3835,6 +3835,55 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-25 · pass 453: the register reads as a register (ten rooms); three close-ups re-aimed.**
+Playtest 453a + 454a (44 random lines) and the till flagged in 452a.
+- THE USER, of the first re-frame of the comic shop's till: "That doesn't
+  read as a register." It did not, and the report that it did was wrong: the
+  frame was fixed and the OBJECT was four near-black boxes (drawer, body,
+  plate, display) — `_props.store_fixtures.make_register`, in nine rooms.
+  Rebuilt: a putty case; the cash drawer with its face, pull and lock; a key
+  deck toward the cashier with sixteen pale keycaps and four coloured
+  function keys; the operator's read-out; the receipt printer with paper
+  out of its slot; the customer display where it was. `operator=` says
+  which side the cashier stands on (the old one had no front): Board Lords,
+  El Rancho, the Pit Stop and Hans's bakery +Y, Chillwave -X, the rest +X.
+  Each room's register was looked at in Blender from its cashier's side.
+- Cosmic Comics `insert till` (six lines: "She counts the till ... She runs
+  the register report"): it stood 0.69 m from the counter's bullnose trim,
+  looking down at it. From the cashier's side now, on the keys, the
+  read-out and the drawer. Read by render in game.
+- Chillwave's reverse face frame hung over the counter 12 cm from the
+  register; behind the counter on Cale's side now.
+- THE KWIK STOP's register was its own copy of the same four boxes (a model
+  chapter; its close-up looked down at the back of a dark block from the
+  customers' side). It is the shared register now, its customer display in
+  the same place under the roster's picture, and `insert register` stands
+  on Sam's side of the counter, along it. Read by render.
+- Pit Stop, vol 6 ch4 n44 "the bell over the diner door chimes": the cue was
+  `insert door` and the marker had been turned 13 degrees DOWN onto the
+  door's push bar. The subject is the bell: marker and cue are `insert
+  bell`, aimed at Door_Bell 2.4 m up, the door's glass under it.
+- Lake Palestine `insert truck` ("Her father pulls into the lot near the
+  north boat ramp"): from 1.3 m high at the tail corner the frame was a
+  bumper, one wheel and the rocker panel, and read as a wheel on a loose
+  axle (the model is sound — checked in Blender). From further back,
+  standing: the whole truck in the lot.
+- Probed, not gated: inserts whose anchor is trim (bullnose, kick, lip,
+  apron, casing ...) while a body part of the same cue is 25+ degrees off —
+  3 in the corpus besides the till (lighthouse column base, Finn's door
+  casing, a Graustark street edge), all read as intended.
+- The other lines read right or are noted below.
+- Draft N+1: the register's drawer OPEN with its bill wells on the lines
+  that count the till (a per-view part); the key deck sloped; vol 5 ch6 "The
+  casserole had not, in the end, helped" frames an island top with no dish;
+  vol 1 ch4 "Pukes in the toilet" frames the sink; the Lake Palestine dock insert ("the same metal cleat at the
+  far end") is a field of planks — a cleat frame; night_shift's pallet-top
+  frame holds under lines about other aisles.
+- Deck must REBUILD board_lords_interior, centro_grocery_aisle,
+  chillwave_interior, cosmic_comics, cosmic_comics_interior,
+  el_rancho_taqueria, hans_bakery_back_kitchen, kwik_stop,
+  pit_stop_interior, salty_tome_interior.
+
 **2026-11-22 · pass 452: the Millers' Wednesday dinner and its midnight; the Sasquatch.**
 Playtest 452a (25 random lines, vols 1-7): one fault, in a model-chapter
 kitchen.
@@ -3859,8 +3908,9 @@ kitchen.
 - ANDY (2026-11-22): "Yes, sasquatch for missing Link diner." The Briar
   Falls rack's Missing Link brochure carries the diner's striding Sasquatch
   (roster prompt, byte-exact) in place of the proposed coffee cup.
-- Draft N+1: the plates cleared by n60 ("Sam and her mother sit at the
-  table"); rain on the sink window all chapter; ch4 n82-87 (the sedan in the
+- Draft N+1: his place pushed back and his glass empty after he leaves at
+  n58 (NOT the plates cleared, as first written here: at n78 "Eat your
+  pasta." and Sam does); rain on the sink window all chapter; ch4 n82-87 (the sedan in the
   Kwik Stop lot in the rain, Chief Miller in his truck in his own driveway)
   still play over the kitchen — no night-rain lot or driveway view; the
   Cosmic Comics till close-up (ch12 n222) frames the counter's edge.

@@ -339,6 +339,27 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-11-25 · the cue names the thing; the frame must find its face (pass 453)
+
+- **What happened:** three inserts passed every gate and framed the wrong
+  part of the right object: a counter's trim strip for "the till", a
+  door's push bar for "the bell over the diner door", a truck's tail
+  corner and one wheel for "her father pulls into the lot".
+- **Why:** the aim gate's subject is "the matching part nearest the lens",
+  and a thing's nearest part is its edge. A marker placed close gets trim.
+- **And the object has to be the object.** The first re-frame of the till
+  was reported as reading; the user: "That doesn't read as a register."
+  The frame was right and the prop was four dark boxes. A close-up's
+  subject is judged by one question — would a stranger name it from this
+  frame? — and when the answer is no, the fix is the builder (here a shared
+  helper, nine rooms), not the camera. Do not report "reads as X" for a
+  silhouette that only its part names identify.
+- **Rule:** cue the NOUN THE LINE IS ABOUT (the bell, not the door it hangs
+  over), and stand far enough back that the whole thing is the frame —
+  for a machine or a vehicle, on the side its face is on (a register's
+  display and drawer face the shop; from the cashier's side it is a dark
+  box).
+
 ### 2026-11-21 · a dream is a place: the line changes the room (pass 447)
 
 - **What happened:** Diego dreams of the grocery's loading dock twice (vol

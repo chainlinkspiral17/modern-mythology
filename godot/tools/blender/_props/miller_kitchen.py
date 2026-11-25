@@ -583,9 +583,10 @@ def dress_ch4_dinner():
     dinner is the view `miller_kitchen_ch4`'s; the tin and the two cups
     are `miller_kitchen_ch4_late`'s (the night kitchen, cut to on n88).
 
-    Draft N+1: the plates cleared and the wine gone by n60 ("Sam and her
-    mother sit at the table"); the rain on the sink window; the three of
-    them as figures.
+    The table stays set to the end of the dinner view: at n78 her mother
+    says "Eat your pasta." and Sam does.
+    Draft N+1: his place pushed back and his glass empty after he leaves
+    (n58); the rain on the sink window; the three of them as figures.
     """
     top = 0.77
     D, L = "__miller_kitchen_ch4", "__miller_kitchen_ch4_late"

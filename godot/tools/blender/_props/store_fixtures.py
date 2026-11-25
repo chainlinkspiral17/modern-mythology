@@ -74,25 +74,77 @@ def make_counter_bullnose(prefix, anchor, *, length=4.40,
                      0.025, seg_len, col, axis='Y', segments=8)
 
 
-def make_register(prefix, anchor, *, palette=None):
-    """1990s point-of-sale terminal sitting on a counter top.
-    anchor=(center_x, center_y, counter_top_z)."""
+def make_register(prefix, anchor, *, palette=None, operator='+X'):
+    """A cash register on a counter top. anchor=(center_x, center_y,
+    counter_top_z). `operator` is the side the cashier stands on ('+X'
+    default, '-X', '+Y', '-Y'): the keys and the drawer face it, the
+    customer display the other way.
+
+    (pass 453, 2026-11-25) The user, of the comic shop's till close-up:
+    "That doesn't read as a register." It was four near-black boxes — a
+    drawer, a body, a plate between them and a display — in nine rooms, and
+    from the cashier's side a dark block. A register is its KEYS: so, in a
+    putty case, the cash drawer with its face and pull; a low key deck
+    toward the operator with a grid of pale keycaps and a column of
+    coloured function keys; the taller back half with the operator's
+    read-out on its face; a receipt printer with its paper standing out of
+    the slot; the customer display on the -X edge (its place and size
+    unchanged: a roster picture is laid on it).
+
+    Draft N+1: the drawer OPEN with its bill wells for the lines that count
+    the till (a per-view part); the key deck sloped rather than stepped.
+    """
     palette = palette or {}
-    body = palette.get("body", (0.22, 0.20, 0.22, 1.0))
+    body = palette.get("body", (0.72, 0.70, 0.64, 1.0))
     keys = palette.get("keys", (0.32, 0.32, 0.34, 1.0))
     screen = palette.get("screen", (0.10, 0.32, 0.16, 1.0))
+    dark = (0.16, 0.16, 0.17, 1.0)
+    drawer = (body[0] * 0.84, body[1] * 0.84, body[2] * 0.84, 1.0)
+    cap = (0.93, 0.92, 0.87, 1.0)
     cx, cy, top_z = anchor
+    op = str(operator).upper()
+    assert op in ('+X', '-X', '+Y', '-Y'), operator
+    _mb = globals()["make_box"]         # the module's; the name is shadowed below
+
+    def make_box(name, c, sz, col):          # local frame: +x is the operator's side
+        lx, ly = c[0] - cx, c[1] - cy
+        if op == '+X':
+            dx, dy, s2 = lx, ly, (sz[0], sz[1], sz[2])
+        elif op == '-X':
+            dx, dy, s2 = -lx, -ly, (sz[0], sz[1], sz[2])
+        elif op == '+Y':
+            dx, dy, s2 = -ly, lx, (sz[1], sz[0], sz[2])
+        else:
+            dx, dy, s2 = ly, -lx, (sz[1], sz[0], sz[2])
+        return _mb(name, (cx + dx, cy + dy, c[2]), s2, col)
     # the cash drawer ON the counter, the body on the drawer (2026-09-22:
     # the drawer was buried 15 cm in the counter and the body hung 5 cm
     # over it, in eight rooms)
-    make_box(f"{prefix}_Drawer", (cx, cy, top_z + 0.05),
-             (0.50, 0.40, 0.10), body)
-    make_box(f"{prefix}_Body",   (cx, cy, top_z + 0.26),
-             (0.42, 0.40, 0.32), body)
+    make_box(f"{prefix}_Drawer", (cx, cy, top_z + 0.05), (0.50, 0.40, 0.10), drawer)
+    make_box(f"{prefix}_Drawer_Face", (cx + 0.252, cy, top_z + 0.05), (0.006, 0.36, 0.07), body)
+    make_box(f"{prefix}_Drawer_Pull", (cx + 0.258, cy, top_z + 0.074), (0.008, 0.16, 0.012), dark)
+    make_box(f"{prefix}_Drawer_Lock", (cx + 0.256, cy + 0.14, top_z + 0.045), (0.004, 0.018, 0.018), dark)
+    # the back half: the taller case
+    make_box(f"{prefix}_Body", (cx - 0.095, cy, top_z + 0.265), (0.23, 0.40, 0.31), body)
+    # the key deck, toward the operator
+    make_box(f"{prefix}_Deck", (cx + 0.125, cy, top_z + 0.155), (0.21, 0.40, 0.09), body)
+    make_box(f"{prefix}_Keypad", (cx + 0.125, cy, top_z + 0.202), (0.19, 0.36, 0.004), keys)
+    fn = ((0.80, 0.22, 0.18, 1.0), (0.92, 0.78, 0.22, 1.0), (0.26, 0.62, 0.34, 1.0), (0.24, 0.42, 0.74, 1.0))
+    for r in range(4):                      # rows, away from the operator
+        kx = cx + 0.20 - r * 0.046
+        for c in range(4):                  # the number block
+            make_box(f"{prefix}_Key_{r}_{c}", (kx, cy - 0.15 + c * 0.062, top_z + 0.210), (0.032, 0.046, 0.012), cap)
+        make_box(f"{prefix}_Key_{r}_Fn", (kx, cy + 0.135, top_z + 0.210), (0.032, 0.058, 0.012), fn[r])
+    # the operator's read-out on the back half's face
+    make_box(f"{prefix}_Readout", (cx + 0.023, cy - 0.04, top_z + 0.33), (0.006, 0.24, 0.06), screen)
+    make_box(f"{prefix}_Readout_Digits", (cx + 0.027, cy - 0.01, top_z + 0.33), (0.002, 0.13, 0.026),
+             (min(1.0, screen[0] + 0.5), min(1.0, screen[1] + 0.5), min(1.0, screen[2] + 0.5), 1.0))
+    # the receipt printer, its paper out of the slot
+    make_box(f"{prefix}_Printer", (cx - 0.07, cy + 0.12, top_z + 0.425), (0.12, 0.10, 0.01), dark)
+    make_box(f"{prefix}_Receipt", (cx - 0.05, cy + 0.12, top_z + 0.465), (0.003, 0.076, 0.07), (0.96, 0.95, 0.92, 1.0))
+    # the customer display (unchanged)
     make_box(f"{prefix}_Display",(cx - 0.22, cy, top_z + 0.43),
              (0.04, 0.34, 0.14), screen)
-    make_box(f"{prefix}_Keypad", (cx, cy, top_z + 0.11),
-             (0.36, 0.36, 0.02), keys)
 
 
 def make_cigarette_rack(prefix, anchor, *, shelves=3, columns=12,

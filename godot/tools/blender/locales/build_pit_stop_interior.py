@@ -189,7 +189,7 @@ def build_counter():
         sx = -1.0 + si * 0.96
         make_cyl(f"Stool_{si}_Post", (sx, ccy-0.95, 0.28), 0.05, 0.56, COL_STEEL_DK, segments=8)
         make_cyl(f"Stool_{si}_Seat", (sx, ccy-0.95, 0.60), 0.19, 0.07, COL_BOOTH, segments=10)
-    make_register("RegisterMachine", (4.0, ccy+0.05, top_z))
+    make_register("RegisterMachine", (4.0, ccy+0.05, top_z), operator='+Y')   # (pass 453) the stools are the customers' side (-Y)
     make_credit_card_terminal("CardTerm", (3.4, ccy-0.25, top_z))
     make_donut_display("PieCase", (-0.9, ccy+0.05, top_z))
     make_paper_cup_stack("CupStack", (0.2, ccy+0.10, top_z), count=12)

@@ -64,7 +64,7 @@ def build_register_counter():
     # Orleans bar and the pit stop's lunch counter).
     top_z = make_counter("Register", (ROOM_W/4.0, ROOM_D-1.5, 0.0), length=1.00, depth=2.40, height=0.95,
                          palette={"formica": COL_WOOD, "top": (0.18, 0.12, 0.20, 1.0), "kick": (0.18, 0.12, 0.20, 1.0)})
-    make_register("RegisterMachine", (ROOM_W/4.0, ROOM_D-1.5-0.30, top_z))
+    make_register("RegisterMachine", (ROOM_W/4.0, ROOM_D-1.5-0.30, top_z), operator='+Y')   # (pass 453) the cashier is on the wall side
     # Chip warmer on the counter — metal case, warm lamp, tortilla chips.
     cx, cy = ROOM_W/4.0-0.85, ROOM_D-1.5
     # an open shell on the counter top, the lamp under its lid, chips on

@@ -422,18 +422,13 @@ def build_counter():
 
     # ── Register on counter top, southern half ──────────────────
     # (2026-09-22: the drawer was buried in the counter, the body 2 cm over it)
-    make_box("Register_Drawer",
-             (cx, cy - 1.20, 1.12),
-             (0.50, 0.40, 0.10), (0.22, 0.20, 0.22, 1.0))
-    make_box("Register_Body",
-             (cx, cy - 1.20, 1.33),
-             (0.42, 0.40, 0.32), (0.22, 0.20, 0.22, 1.0))
-    make_box("Register_Display",
-             (cx - 0.22, cy - 1.20, 1.50),
-             (0.04, 0.34, 0.14), (0.10, 0.32, 0.16, 1.0))
-    make_box("Register_Keypad",
-             (cx, cy - 1.20, 1.18),
-             (0.36, 0.36, 0.02), (0.32, 0.32, 0.34, 1.0))
+    # (pass 453) the shared register (keys, read-out, drawer, receipt): this
+    # one was the same four dark boxes as the helper's old one — "That
+    # doesn't read as a register" (the user, of the comic shop's). Sam stands
+    # east of the counter (+X); the customer display keeps its place, where
+    # the roster's picture is laid (kwik_stop_register_display).
+    from _props.store_fixtures import make_register
+    make_register("Register", (cx, cy - 1.20, 1.07), operator='+X')
     # (pass 388) "She gets a Post-it from the small pad by the register"
     # (vol 6 ch15): on the clerk's side of it, by her hand
     make_box("Register_Postit_Pad", (cx + 0.36, cy - 1.10, 1.078), (0.076, 0.076, 0.016), (0.96, 0.88, 0.36, 1.0))
@@ -2615,9 +2610,8 @@ def build_register_recess_detail():
         make_cyl(f"Register_Bezel_{sgn_x:+d}_{sgn_z:+d}",
                  (rx - 0.22, ry - 0.15 * sgn_x, rz + 0.16 + 0.06 * sgn_z),
                  0.012, 0.024, (0.62, 0.42, 0.18, 1.0))
-    # Receipt-feed tube on top of the register
-    make_cyl("Register_ReceiptTube", (rx, ry, rz + 0.22),
-             0.025, 0.10, COL_METAL_STEEL)
+    # (pass 453: the receipt-feed tube that stood here is the register's own
+    # printer and paper now — _props.store_fixtures.make_register)
 
 
 def build_yellow_bollards_outside():

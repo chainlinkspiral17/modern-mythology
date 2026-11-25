@@ -325,10 +325,12 @@ script = ExtResource("14_dbgm")
 
 ; ── vn_shot · lake_palestine (2026-09-03) ─────────────────────────
 ; insert: her father pulls into the lot near the north boat ramp
+; (pass 453) from further back and standing: at 1.3 m and 5 m off its tail corner the frame was a bumper, one
+; wheel and the rocker panel — it read as a wheel on a loose axle. The whole truck in its space now.
 [node name="shot_insert_truck" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.3, -5.5)
-rotation = Vector3(-0.1274, 0.8448, 0.0)
-metadata/fov = 42.0
+position = Vector3(1.200, 1.700, -4.000)
+rotation = Vector3(-0.1046, 0.6645, 0.0)
+metadata/fov = 40.0
 
 ; insert: the same dock, twelve years on — the same wood, the same metal cleat at the far end
 [node name="shot_insert_dock" type="Marker3D" parent="." groups=["vn_shot"]]

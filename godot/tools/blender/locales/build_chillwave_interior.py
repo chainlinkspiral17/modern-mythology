@@ -187,7 +187,7 @@ def build_counter_front():
     top_z = make_counter("Shop", (-1.1, ccy, 0.0), length=2.60, depth=0.70, height=0.95,
                          palette={"formica": COL_CEDAR, "top": COL_CEDAR_DK,
                                   "kick": (0.30, 0.22, 0.16, 1.0)})
-    make_register("RegisterMachine", (-1.1, ccy+0.75, top_z))   # ON the N-S counter (2026-09-23: 15 cm west of it)
+    make_register("RegisterMachine", (-1.1, ccy+0.75, top_z), operator='-X')   # ON the N-S counter (2026-09-23: 15 cm west of it)
     make_cyl("Counter_Bell_Base", (-0.95, ccy-0.10, top_z+0.01), 0.05, 0.02, COL_STEEL, segments=10)   # on the counter (2026-09-23: 20 cm east of it)
     make_cyl("Counter_Bell_Dome", (-0.95, ccy-0.10, top_z+0.045), 0.045, 0.05, COL_BRASS, segments=10)
     # The paperback, face-down, spine cracked, mid-read.

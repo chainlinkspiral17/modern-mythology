@@ -725,7 +725,7 @@ def build_front_2026_11():
     make_lathe("Front_Loaf_Country", (cx + 0.38, -2.0, top + 0.03), [(0.11, 0.0), (0.13, 0.03), (0.11, 0.08), (0.05, 0.11), (0.0, 0.115)], crust, segments=10)
     for ri in range(12):
         make_cyl(f"Front_Roll_{ri}", (cx - 0.62 + (ri % 6) * 0.24, -1.88 - (ri // 6) * 0.15, top + 0.311), 0.045, 0.05, pale, segments=8)
-    make_register("Front_Register", (3.75, -1.95, top))
+    make_register("Front_Register", (3.75, -1.95, top), operator='+Y')   # (pass 453) the case's glass faces the shop (-Y)
     make_box("Front_Paper_Stack", (3.15, -1.92, top + 0.04), (0.22, 0.30, 0.08), (0.72, 0.60, 0.42, 1.0))
     # the bread shelves on the east wall behind the counter
     for k, sz in enumerate((1.25, 1.65, 2.05)):

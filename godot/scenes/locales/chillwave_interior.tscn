@@ -452,8 +452,10 @@ metadata/fov = 45.0
 
 ; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
 ; the far side of the same spot, so two speakers alternate sides
+; (pass 453) it hung over the counter top 12 cm from the register; Cale's side of the counter now (west), looking
+; across it into the shop — the new register's customer display filled a third of the old frame
 [node name="shot_closeup_person_b__chillwave_interior" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.134, 1.612, -3.966)
+position = Vector3(-1.950, 1.612, -3.200)
 rotation = Vector3(-0.0700, -1.8326, 0.0)
 metadata/fov = 45.0
 
