@@ -165,6 +165,8 @@ def make_smartphone(prefix, x, y, base_z, *, state="call", along="Y", head=1,
         else:
             make_cyl(name, (x + head * v, y + u, base_z + z), r, h, color, segments=10)
 
+    if state == "back" and case == (0.10, 0.10, 0.12, 1.0):
+        case = (0.30, 0.35, 0.42, 1.0)      # a face-down phone is its case: a colour, not a black bar
     P(0, 0, 0.0035, w + 0.004, l + 0.004, 0.007, nm("Rim"), (0.74, 0.75, 0.77, 1.0))
     P(0, 0, 0.0045, w, l, 0.009, nm(""), case)
     if state == "back":
@@ -229,3 +231,177 @@ def make_paper_cup(prefix, x, y, base_z, *, h=0.095, sleeve=(0.56, 0.40, 0.24, 1
     make_taper_cyl(f"{prefix}_Sleeve", (x, y, base_z + h * 0.50), 0.0335, 0.0385, h * 0.42, sleeve, segments=14)
     make_cyl(f"{prefix}_Rim", (x, y, base_z + h + 0.002), 0.0425, 0.005, paper, segments=14)
     make_cyl(f"{prefix}_Coffee", (x, y, base_z + (h - 0.008 if full else 0.006)), 0.037 if full else 0.028, 0.003, coffee, segments=14)
+
+
+def _local(x, y, yaw):
+    """(u, v) offsets in an object's own frame -> world x, y, for a yaw."""
+    import math
+    c, s = math.cos(yaw), math.sin(yaw)
+    return lambda u, v: (x + u * c - v * s, y + u * s + v * c)
+
+
+def make_cordless(prefix, x, y, base_z, *, yaw=0.0, body=(0.88, 0.87, 0.82, 1.0),
+                  dark=(0.20, 0.20, 0.22, 1.0)):
+    """A cordless handset lying on its back (pass 456): the earpiece end
+    thicker, a lit green screen, twelve keys in a grid, the talk key, the
+    stub antenna. It was a cream bar with a grey patch. Its top (antenna)
+    points local +v."""
+    from .geometry import make_rot_box
+    at = _local(x, y, yaw)
+    if sum(body[:3]) < 1.2 and dark == (0.20, 0.20, 0.22, 1.0):
+        dark = (0.80, 0.80, 0.76, 1.0)      # a dark handset: pale keys
+    def B(part, u, v, z, su, sv, sz, col):
+        px, py = at(u, v)
+        make_rot_box(f"{prefix}{part}", (px, py, base_z + z), (su, sv, sz), col, yaw=yaw)
+    B("", 0.0, 0.0, 0.0125, 0.052, 0.170, 0.025, body)
+    B("_Ear", 0.0, 0.066, 0.029, 0.050, 0.036, 0.008, body)
+    B("_Ear_Grille", 0.0, 0.068, 0.0335, 0.026, 0.012, 0.001, dark)
+    B("_Screen", 0.0, 0.034, 0.0256, 0.036, 0.024, 0.0012, (0.56, 0.82, 0.52, 1.0))
+    B("_Talk", 0.0, 0.010, 0.0256, 0.030, 0.010, 0.0012, (0.24, 0.62, 0.30, 1.0))
+    for r in range(4):
+        for c in range(3):
+            B(f"_Key_{r}_{c}", -0.013 + c * 0.013, -0.008 - r * 0.014, 0.0258, 0.009, 0.009, 0.0016, dark)
+    B("_Mic", 0.0, -0.074, 0.0256, 0.010, 0.004, 0.0012, dark)
+    px, py = at(0.016, 0.092)
+    make_rot_box(f"{prefix}_Antenna", (px, py, base_z + 0.015), (0.010, 0.022, 0.012), dark, yaw=yaw)
+
+
+def make_milk_crate(prefix, x, y, base_z, *, s=0.33, h=0.28, color=(0.20, 0.34, 0.60, 1.0), upside_down=False):
+    """A plastic milk crate you can see through (pass 456): corner posts, a
+    rim, a mid band, slats on each side with gaps, and the grid of its
+    bottom — the three in the alley were solid tan cubes. `upside_down`
+    puts the bottom grid on top (a seat, a stand)."""
+    hs = s / 2.0
+    t = 0.022
+    prefix, _, _tag = prefix.partition("__")
+    _mbx = globals()["make_box"]      # the def below makes the name local: read the module's
+
+    def make_box(name, *a, **k):          # every part keeps the view tag at its END
+        return _mbx(name + (("__" + _tag) if _tag else ""), *a, **k)
+    for i, (ex, ey) in enumerate(((-1, -1), (1, -1), (1, 1), (-1, 1))):
+        make_box(f"{prefix}_Post_{i}", (x + ex * (hs - t / 2), y + ey * (hs - t / 2), base_z + h / 2.0), (t, t, h), color)
+    for nm, z, hh in (("Rim", h - 0.018, 0.036), ("Band", h * 0.48, 0.030), ("Foot", 0.012, 0.024)):
+        for e in (-1, 1):
+            make_box(f"{prefix}_{nm}_X{e:+d}", (x, y + e * (hs - 0.007), base_z + z), (s - 2 * t, 0.014, hh), color)
+            make_box(f"{prefix}_{nm}_Y{e:+d}", (x + e * (hs - 0.007), y, base_z + z), (0.014, s - 2 * t, hh), color)
+    n = 3
+    for k in range(n):
+        off = -hs + t + (k + 0.5) * (s - 2 * t) / n
+        for e in (-1, 1):
+            make_box(f"{prefix}_Slat_X{e:+d}_{k}", (x + off, y + e * (hs - 0.007), base_z + h / 2.0), (0.020, 0.010, h - 0.05), color)
+            make_box(f"{prefix}_Slat_Y{e:+d}_{k}", (x + e * (hs - 0.007), y + off, base_z + h / 2.0), (0.010, 0.020, h - 0.05), color)
+    gz = base_z + (h - 0.008 if upside_down else 0.008)
+    for k in range(4):
+        off = -hs + t + (k + 0.5) * (s - 2 * t) / 4
+        make_box(f"{prefix}_Grid_X_{k}", (x, y + off, gz), (s - 2 * t, 0.018, 0.012), color)
+        make_box(f"{prefix}_Grid_Y_{k}", (x + off, y, gz), (0.018, s - 2 * t, 0.012), color)
+    return base_z + h
+
+
+def make_notebook(prefix, x, y, base_z, *, yaw=0.0, w=0.14, l=0.21, state="closed",
+                  cover=(0.14, 0.14, 0.16, 1.0), band=(0.74, 0.18, 0.14, 1.0)):
+    """A pocket notebook that reads as one (pass 456): the cover a shade off
+    the table, the cream page-block showing at three edges, an elastic band
+    and a ribbon; `state="open"` lays two cream pages with ruled lines and a
+    pen in the gutter. They were dark slabs."""
+    from .geometry import make_rot_box
+    at = _local(x, y, yaw)
+    def B(part, u, v, z, su, sv, sz, col):
+        px, py = at(u, v)
+        make_rot_box(f"{prefix}{part}", (px, py, base_z + z), (su, sv, sz), col, yaw=yaw)
+    page = (0.93, 0.91, 0.84, 1.0)
+    if state == "open":
+        B("", 0.0, 0.0, 0.003, 2 * w + 0.012, l + 0.008, 0.006, cover)
+        for sg, nm in ((-1, "L"), (1, "R")):
+            B(f"_Page_{nm}", sg * (w / 2 + 0.002), 0.0, 0.009, w - 0.004, l - 0.006, 0.006, page)
+            for k in range(6):
+                B(f"_Rule_{nm}_{k}", sg * (w / 2 + 0.002), l * 0.36 - k * l * 0.13, 0.0125, w * (0.78 if (k + (sg > 0)) % 3 else 0.52), 0.003, 0.001, (0.26, 0.28, 0.40, 1.0))
+        B("_Pen", 0.0, -0.01, 0.0155, 0.008, 0.135, 0.008, (0.16, 0.20, 0.44, 1.0))
+        return
+    B("_Pages", 0.004, 0.0, 0.008, w - 0.004, l - 0.006, 0.012, page)
+    B("_Back", 0.0, 0.0, 0.001, w, l, 0.002, cover)
+    B("", 0.0, 0.0, 0.015, w, l, 0.002, cover)
+    B("_Spine", -w / 2 + 0.003, 0.0, 0.008, 0.006, l, 0.016, cover)
+    B("_Band", w / 2 - 0.022, 0.0, 0.0165, 0.008, l + 0.002, 0.001, band)
+    B("_Ribbon", -0.01, -l / 2 - 0.012, 0.004, 0.006, 0.030, 0.001, band)
+
+
+def make_scanner_gun(prefix, x, y, base_z, *, yaw=0.0, body=(0.20, 0.20, 0.23, 1.0)):
+    """A hand-held inventory scanner lying on its side: the head with its red
+    scan window and a small screen, the pistol grip, the yellow trigger."""
+    from .geometry import make_rot_box
+    at = _local(x, y, yaw)
+    def B(part, u, v, z, su, sv, sz, col):
+        px, py = at(u, v)
+        make_rot_box(f"{prefix}{part}", (px, py, base_z + z), (su, sv, sz), col, yaw=yaw)
+    B("", 0.0, 0.03, 0.025, 0.075, 0.150, 0.050, body)
+    B("_Window", 0.0, 0.106, 0.025, 0.056, 0.004, 0.030, (0.84, 0.16, 0.12, 1.0))
+    B("_Screen", 0.0, 0.03, 0.0508, 0.050, 0.060, 0.0016, (0.60, 0.84, 0.78, 1.0))
+    for k in range(3):
+        B(f"_Key_{k}", -0.018 + k * 0.018, -0.022, 0.0508, 0.012, 0.012, 0.0016, (0.70, 0.70, 0.72, 1.0))
+    B("_Grip", 0.0, -0.085, 0.020, 0.044, 0.110, 0.040, body)
+    B("_Trigger", 0.0, -0.036, 0.008, 0.018, 0.030, 0.016, (0.92, 0.76, 0.14, 1.0))
+
+
+def make_speak_spell(prefix, x, y, base_z, *, yaw=0.0, body=(0.84, 0.26, 0.12, 1.0), lit=False):
+    """The talking spelling toy on its back (pass 456): a red-orange slab
+    with the carrying handle cut through its top, the display strip, the
+    speaker grille's slots, and the membrane keyboard — four rows of
+    letter keys and a row of function keys. It was a red block with a tan
+    patch. `lit`: the display's segments glow (vol 6: "The grille is dim"
+    is the default). The handle end is local +v."""
+    from .geometry import make_rot_box
+    at = _local(x, y, yaw)
+    def B(part, u, v, z, su, sv, sz, col):
+        px, py = at(u, v)
+        make_rot_box(f"{prefix}{part}", (px, py, base_z + z), (su, sv, sz), col, yaw=yaw)
+    W, L, H = 0.19, 0.26, 0.036
+    B("_Body", 0.0, -0.02, H / 2, W, L - 0.04, H, body)
+    # the handle: two cheeks and the bar across the top, a slot between
+    for sg in (-1, 1):
+        B(f"_Handle_Cheek_{sg:+d}", sg * (W / 2 - 0.022), L / 2 - 0.022, H / 2, 0.044, 0.044, H, body)
+    B("_Handle_Bar", 0.0, L / 2 - 0.008, H / 2, W - 0.08, 0.016, H * 0.8, body)
+    top = H + 0.0008
+    dark = (0.10, 0.10, 0.11, 1.0)
+    B("_Display", 0.0, 0.060, top, 0.150, 0.024, 0.0016, (0.06, 0.10, 0.08, 1.0))
+    for k in range(8):
+        B(f"_Display_Seg_{k}", -0.060 + k * 0.017, 0.060, top + 0.0012, 0.010, 0.014, 0.0008,
+          (0.36, 0.96, 0.56, 1.0) if lit else (0.12, 0.22, 0.16, 1.0))
+    for k in range(5):
+        B(f"_Grille_{k}", 0.062, 0.036 - k * 0.0042 + 0.004, top, 0.040, 0.0018, 0.0012, dark)
+    B("_Brand", -0.040, 0.034, top, 0.090, 0.012, 0.0012, (0.96, 0.82, 0.26, 1.0))
+    keycols = ((0.98, 0.86, 0.50, 1.0), (0.96, 0.78, 0.36, 1.0))
+    for r in range(4):
+        for c in range(10):
+            B(f"_Key_{r}_{c}", -0.0765 + c * 0.017, 0.012 - r * 0.019, top, 0.0135, 0.0145, 0.0014, keycols[(r + c) % 2])
+    for c, col in enumerate(((0.30, 0.52, 0.86, 1.0), (0.30, 0.52, 0.86, 1.0), (0.90, 0.90, 0.86, 1.0), (0.30, 0.70, 0.40, 1.0), (0.86, 0.22, 0.18, 1.0))):
+        B(f"_Fn_{c}", -0.068 + c * 0.034, -0.068, top, 0.028, 0.0145, 0.0014, col)
+
+
+def make_desk_phone(prefix, x, y, base_z, *, yaw=0.0, body=(0.16, 0.16, 0.18, 1.0)):
+    """An office desk telephone (pass 456): a wedge base, the handset lying
+    across its left side with its two fat ends, a twelve-key pad and a row
+    of line buttons (one lit), a display strip, the coiled cord. It was a
+    black box with a bar on it. The front (keypad low edge) is local -v."""
+    from .geometry import make_rot_box
+    at = _local(x, y, yaw)
+    def B(part, u, v, z, su, sv, sz, col, pitch=0.0):
+        px, py = at(u, v)
+        make_rot_box(f"{prefix}{part}", (px, py, base_z + z), (su, sv, sz), col, yaw=yaw, pitch=pitch)
+    key = (0.82, 0.82, 0.78, 1.0) if sum(body[:3]) < 1.2 else (0.22, 0.22, 0.24, 1.0)
+    B("", 0.0, 0.0, 0.020, 0.22, 0.20, 0.040, body)
+    B("_Back", 0.0, 0.065, 0.052, 0.22, 0.07, 0.030, body)
+    # the handset on its cradle, left
+    B("_Handset", -0.070, 0.0, 0.075, 0.045, 0.200, 0.030, body)
+    B("_Handset_Ear", -0.070, 0.082, 0.062, 0.056, 0.050, 0.040, body)
+    B("_Handset_Mouth", -0.070, -0.082, 0.062, 0.056, 0.050, 0.040, body)
+    B("_Display", 0.040, 0.066, 0.0685, 0.100, 0.030, 0.003, (0.52, 0.78, 0.62, 1.0))
+    for r in range(4):
+        for c in range(3):
+            B(f"_Key_{r}_{c}", 0.012 + c * 0.024, 0.022 - r * 0.024, 0.0415, 0.017, 0.017, 0.004, key)
+    for k in range(4):
+        B(f"_Line_{k}", 0.092, 0.022 - k * 0.024, 0.0415, 0.014, 0.012, 0.004,
+          (0.90, 0.30, 0.20, 1.0) if k == 0 else (0.40, 0.42, 0.44, 1.0))
+    # the coiled cord, from the handset's mouth end round to the base's side
+    for k in range(6):
+        B(f"_Cord_{k}", -0.108 - 0.006 * (k % 2), -0.075 + k * 0.022, 0.012, 0.014, 0.016, 0.014, body)

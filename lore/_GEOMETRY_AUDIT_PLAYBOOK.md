@@ -158,6 +158,27 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-25 · a helper swapped in for a box must move the way the box moved (pass 456)
+
+- **`shifted()` only moves the names it knows.** Twenty slab phones became
+  `make_smartphone` calls; inside shifted blocks the box had been moved by
+  the block and the helper was not — Kowalski's phone stood 2.4 m off its
+  table, the Speak & Spell floated. The aim and support gates caught it the
+  same hour. New name-x-y-z props are listed in `_props.plan._OBJ_XY` and
+  moved at the module too, so a function-local import is covered.
+- **Replacing a part renames its children.** A phone named `Table_Phone`
+  became `Table_Phone_Screen…` and the TABLE close-up took the screen for its
+  subject (edge-on, 83 degrees). Name a prop for what it is, not what it
+  lies on.
+- **A helper that defines a local `make_box` cannot also read the global one
+  by that name** (UnboundLocalError — the register in pass 453, the milk
+  crate here). Take it from `globals()` before the def.
+- **Old stand-in children collide.** Several slabs had a `<name>_Screen` box
+  beside them; the helper makes a part of that name. Remove the old one in
+  the same edit.
+- **A box thinner than its chamfer draws black.** 3 mm became degenerate
+  under the auto-chamfer; 8 mm is the floor for a visible face.
+
 ### 2026-11-25 · the stub only sees what the helpers were told (pass 454)
 
 - **A new shared `_props` module must be added to the stub's real-module

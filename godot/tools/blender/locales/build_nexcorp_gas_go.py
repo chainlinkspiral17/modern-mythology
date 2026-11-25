@@ -507,8 +507,8 @@ def build_merchandise_2026_10():
         for k in range(8):
             make_box(f"Impulse_Rack_Gum_{r}_{k}", (cx - 0.68 + k * 0.135, cy - 0.366, 0.38 + r * 0.22), (0.11, 0.012, 0.16),
                      BRAND_TINTS[(r * 5 + k) % len(BRAND_TINTS)])
-    make_box("Skip_Phone", (cx - 0.35, cy + 0.22, top + 0.004), (0.075, 0.15, 0.008), (0.10, 0.10, 0.12, 1.0))
-    make_box("Skip_Phone_Screen", (cx - 0.35, cy + 0.22, top + 0.0085), (0.065, 0.13, 0.001), (0.36, 0.52, 0.70, 1.0))
+    from _props.objects import make_smartphone
+    make_smartphone("Skip_Phone", cx - 0.35, cy + 0.22, (top + 0.004) - 0.004, state="lock", along="Y", w=0.075, l=0.150)   # (pass 456) a phone, not a dark slab
     make_cyl("Skip_Vape", (cx - 0.20, cy + 0.20, top + 0.009), 0.009, 0.11, (0.22, 0.24, 0.30, 1.0), axis='X', segments=6)
     make_cyl("Skip_Vape_Tip", (cx - 0.14, cy + 0.20, top + 0.009), 0.006, 0.02, (0.70, 0.72, 0.74, 1.0), axis='X', segments=6)
     make_cyl("Tip_Jar", (cx - 1.55, cy - 0.10, top + 0.08), 0.06, 0.16, (0.80, 0.86, 0.90, 1.0), segments=10)

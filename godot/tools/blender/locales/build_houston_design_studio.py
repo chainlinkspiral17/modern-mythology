@@ -35,6 +35,7 @@ _LOC = os.path.dirname(os.path.abspath(__file__))
 if _LOC not in sys.path: sys.path.insert(0, _LOC)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, make_chamfer_box, make_lathe, make_tube, make_rot_box, make_blob, export_glb
+from _props.objects import make_smartphone
 from _props.structure import make_floor, make_wall, make_wall_with_openings
 from _props.detail import make_wall_outlet, make_traffic_wear
 
@@ -100,7 +101,7 @@ def build_desk():
     make_lathe("Cold_Brew", (dx - 0.20, dy - 0.50, top), [(0.0, 0.0), (0.035, 0.0), (0.04, 0.15), (0.0, 0.15)], (0.70, 0.56, 0.42, 0.7), segments=10)
     make_cyl("Cold_Brew_Straw", (dx - 0.19, dy - 0.50, top + 0.19), 0.004, 0.14, WHITE, segments=6)
     make_box("Anna_Glasses", (dx - 0.22, dy - 0.20, top + 0.008), (0.05, 0.15, 0.016), BLACK)
-    make_box("Anna_Phone", (dx - 0.24, dy + 0.18, top + 0.005), (0.07, 0.14, 0.01), (0.86, 0.84, 0.82, 1.0))
+    make_smartphone("Anna_Phone", dx - 0.24, dy + 0.18, (top + 0.005) - 0.005, state="text", along="Y", w=0.070, l=0.140)   # (pass 456) a phone, not a dark slab
     make_box("Desk_Notepad", (dx - 0.20, dy + 0.85, top + 0.004), (0.15, 0.21, 0.008), WHITE)
     # the mesh task chair, facing the screens (east)
     cx, cy = dx - 0.72, dy

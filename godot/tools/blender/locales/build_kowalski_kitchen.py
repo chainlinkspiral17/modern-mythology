@@ -41,6 +41,7 @@ if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.furniture import make_table, make_chair, make_sofa
 from _props import palette as P
 from _props.geometry import make_blob   # module-level: plan.shifted moves it (2026-10-09)
+from _props.objects import make_smartphone
 from _props.geometry import (clear_scene, make_box, make_chamfer_box, make_cyl, make_lathe,
                              make_tube, make_rot_box, export_glb)
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_wall_with_openings
@@ -228,12 +229,24 @@ def build_hero_props_2026_09():
       of bacon. He sets it in front of Maya without comment."):
       the plate as served.
     """
-    make_box("Table_Phone", (0.30, 2.30, 0.7715), (0.070, 0.140, 0.011),
-             (0.13, 0.13, 0.15, 1.0))
+    make_smartphone("Kitchen_Phone", 0.30, 2.30, (0.7715) - 0.0055, state="lock", along="Y", w=0.070, l=0.140)   # (pass 456) a phone, not a dark slab
     make_box("Crossword_Page", (-0.30, 2.60, 0.761), (0.200, 0.280, 0.002),
              (0.90, 0.88, 0.83, 1.0))
-    make_box("Crossword_Grid", (-0.30, 2.54, 0.7625), (0.100, 0.100, 0.001),
-             (0.30, 0.30, 0.33, 1.0))
+    # (pass 456) a GRID: it was one black square on a page. Seven by seven,
+    # the white squares on the dark grid, a pattern of blocks, five filled in
+    # pencil; the clue columns ruled beside and below it.
+    make_box("Crossword_Grid", (-0.30, 2.545, 0.7625), (0.122, 0.122, 0.001), (0.12, 0.12, 0.14, 1.0))
+    _blk = {(0, 3), (1, 1), (1, 5), (2, 2), (3, 0), (3, 3), (3, 6), (4, 4), (5, 1), (5, 5), (6, 3)}
+    _pen = {(0, 0), (0, 1), (0, 2), (2, 4), (2, 5)}
+    for _r in range(7):
+        for _c in range(7):
+            if (_r, _c) in _blk:
+                continue
+            make_box(f"Crossword_Cell_{_r}_{_c}", (-0.351 + _c * 0.017, 2.596 - _r * 0.017, 0.7635), (0.0145, 0.0145, 0.001),
+                     (0.62, 0.62, 0.60, 1.0) if (_r, _c) in _pen else (0.95, 0.94, 0.90, 1.0))
+    for _k in range(5):
+        make_box(f"Crossword_Clue_A_{_k}", (-0.245, 2.70 - _k * 0.012, 0.7625), (0.07 if _k % 2 else 0.085, 0.004, 0.001), (0.36, 0.36, 0.38, 1.0))
+        make_box(f"Crossword_Clue_D_{_k}", (-0.345, 2.70 - _k * 0.012, 0.7625), (0.085 if _k % 2 else 0.07, 0.004, 0.001), (0.36, 0.36, 0.38, 1.0))
     make_cyl("Crossword_Pencil", (-0.13, 2.70, 0.766), 0.005, 0.130,
              (0.86, 0.72, 0.28, 1.0), axis='Y', segments=6)
     make_cyl("Breakfast_Plate", (0.28, 2.66, 0.771), 0.120, 0.012,

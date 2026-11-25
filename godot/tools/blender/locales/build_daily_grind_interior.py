@@ -65,6 +65,7 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, make_lathe, make_rot_box, export_glb
+from _props.objects import make_smartphone
 from _props.views import make_view
 from _props.structure import make_floor, make_wall, make_window, make_wall_with_openings
 from _props.furniture import make_chair, make_stool
@@ -396,7 +397,7 @@ def build_corner_table():
     # hinged on the far (E) edge, the display facing Kai in the W chair
     make_box("Kai_Laptop_Screen", (tx - 0.066, ty - 0.05, t + 0.12), (0.012, 0.32, 0.21), (0.60, 0.62, 0.64, 1.0))
     make_box("Kai_Laptop_Display", (tx - 0.073, ty - 0.05, t + 0.12), (0.002, 0.29, 0.18), (0.40, 0.56, 0.70, 1.0))
-    make_box("Kais_Phone", (tx - 0.25, ty + 0.22, t + 0.0055), (0.070, 0.140, 0.011), (0.13, 0.13, 0.15, 1.0))
+    make_smartphone("Kais_Phone", tx - 0.25, ty + 0.22, (t + 0.0055) - 0.0055, state="lock", along="Y", w=0.070, l=0.140)   # (pass 456) a phone, not a dark slab
     # the Frequency paperback, Wren's notebook
     make_box("Frequency_Book", (tx + 0.12, ty + 0.30, t + 0.010), (0.130, 0.200, 0.020), (0.62, 0.50, 0.36, 1.0))
     make_cyl("Frequency_Book_Dial", (tx + 0.12, ty + 0.30, t + 0.0215), 0.035, 0.002, (0.28, 0.28, 0.30, 1.0), segments=10)

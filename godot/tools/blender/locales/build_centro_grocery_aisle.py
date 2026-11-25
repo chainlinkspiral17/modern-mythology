@@ -49,6 +49,7 @@ if _BT not in sys.path:
 from _props import palette as P
 from _props.geometry import (clear_scene, make_box, make_chamfer_box, make_cyl, make_lathe,
                              make_tube, make_rot_box, make_blob, export_glb)
+from _props.objects import make_smartphone
 from _props.structure import make_floor, make_wall, make_wall_with_openings, make_ceiling, make_frame_ring
 from _props.store_fixtures import make_counter, make_register, make_credit_card_terminal
 from _props.shelving import make_endcap
@@ -365,9 +366,9 @@ def build_aisles():
     make_box("Clipboard_Sheet", (plx, ply - 0.14, top + 0.0135), (0.210, 0.280, 0.002), (0.94, 0.93, 0.88, 1.0))
     make_box("Clipboard_Clip", (plx, ply - 0.295, top + 0.022), (0.060, 0.030, 0.020), STEEL)
     make_cyl("Manager_Pen", (plx + 0.06, ply - 0.08, top + 0.0195), 0.005, 0.130, (0.24, 0.28, 0.52, 1.0), axis='Y', segments=6)
-    make_box("Aisle_Phone", (plx + 0.25, ply + 0.20, top + 0.0055), (0.070, 0.140, 0.011), (0.13, 0.13, 0.15, 1.0))
-    make_box("Chain_Scanner", (plx - 0.20, ply + 0.30, top + 0.0225), (0.060, 0.150, 0.045), (0.22, 0.22, 0.25, 1.0))
-    make_box("Scanner_Window", (plx - 0.20, ply + 0.2214, top + 0.0225), (0.036, 0.006, 0.020), (0.70, 0.24, 0.20, 1.0))
+    make_smartphone("Aisle_Phone", plx + 0.25, ply + 0.20, (top + 0.0055) - 0.0055, state="lock", along="Y", w=0.070, l=0.140)   # (pass 456) a phone, not a dark slab
+    from _props.objects import make_scanner_gun
+    make_scanner_gun("Chain_Scanner", plx - 0.20, ply + 0.30, top, yaw=3.14159)   # (pass 456) a scanner gun: it was a black block
     make_cyl("Dented_Can", (GONDOLA_XS[3] - 0.55, 9.40, 0.055), 0.05, 0.11, (0.84, 0.80, 0.70, 1.0), axis='X', segments=10)
     make_cyl("Can_Puddle", (GONDOLA_XS[3] - 0.62, 9.38, 0.006), 0.09, 0.005, (0.72, 0.68, 0.56, 1.0), segments=10)
     make_box("Wear_Lane_Seven", (AISLE_7_X, (G_Y0 + G_Y1) / 2.0, 0.0018), (0.70, G_Y1 - G_Y0, 0.002), (0.72, 0.71, 0.66, 1.0))

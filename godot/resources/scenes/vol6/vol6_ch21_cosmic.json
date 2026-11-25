@@ -288,7 +288,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert twenty]By twelve forty-five the shop has had twenty-two customers and the floor is at fifteen people simultaneously — three at the new arrivals shelf, four at the back issues, two at the manga wall, two at the Pokémon section, two at the YA section,",
+      "text": "By twelve forty-five the shop has had twenty-two customers and the floor is at fifteen people simultaneously — three at the new arrivals shelf, four at the back issues, two at the manga wall, two at the Pokémon section, two at the YA section,",
       "voice": "assets/audio/voice/vol6_ch21_cosmic/051.mp3"
     },
     {
@@ -803,7 +803,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert twenty]By eight twenty-six the close is done.",
+      "text": "By eight twenty-six the close is done.",
       "voice": "assets/audio/voice/vol6_ch21_cosmic/142.mp3"
     },
     {

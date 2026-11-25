@@ -6,6 +6,7 @@ import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
+from _props.objects import make_smartphone
 from _props.furniture import make_lamp
 from _props.geometry import clear_scene, make_box, make_cyl, export_glb, make_chamfer_box
 from _props.structure import make_floor, make_wall, make_ceiling, make_window, make_crown_molding
@@ -185,7 +186,7 @@ def build_hero_props():
         make_box(f"Desk_Leg_{lx:.2f}_{ly:.2f}", (lx, ly, 0.37), (0.05, 0.05, 0.72), wood)
     make_box("Desk_Paper_Drift_A", (-2.45, 3.30, 0.775), (0.45, 0.35, 0.04), (0.88, 0.86, 0.80, 1.0))
     make_box("Desk_Paper_Drift_B", (-1.95, 3.55, 0.79), (0.38, 0.30, 0.06), (0.84, 0.82, 0.74, 1.0))
-    make_box("Desk_Phone", (-2.05, 3.20, 0.775), (0.08, 0.15, 0.012), (0.12, 0.12, 0.14, 1.0))
+    make_smartphone("Desk_Phone", -2.05, 3.20, (0.775) - 0.006, state="lock", along="Y", w=0.080, l=0.150)   # (pass 456) a phone, not a dark slab
     make_box("Task_Chair", (-1.50, 3.40, 0.46), (0.44, 0.44, 0.05), (0.28, 0.28, 0.30, 1.0))
     make_cyl("Task_Chair_Post", (-1.50, 3.40, 0.22), 0.03, 0.44, (0.20, 0.20, 0.22, 1.0), segments=8)   # pedestal + base (2026-09-09)
     make_cyl("Task_Chair_Base", (-1.50, 3.40, 0.02), 0.28, 0.04, (0.20, 0.20, 0.22, 1.0), segments=12)

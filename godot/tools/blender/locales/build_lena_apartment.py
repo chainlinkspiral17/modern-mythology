@@ -58,6 +58,7 @@ import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.furniture import make_chair, make_lamp, make_bed, make_sofa
+from _props.objects import make_smartphone
 from _props import palette as P
 from _props.geometry import (clear_scene, make_box, make_cyl, make_lathe, make_chamfer_box,
                              make_tube, make_rot_box, export_glb)
@@ -672,8 +673,7 @@ def build_hero_props_2026_09():
         # door" (ch8) — and lays it here once, in a memory.
         # (pass 414) so it lies here in the two views whose lines go to it:
         # ch6's morning ("reached for her phone") and ch7-8's night (la_phone)
-        make_box("Lena_Phone__la_phone", (1.40, 0.95, 0.546), (0.070, 0.140, 0.012), (0.16, 0.16, 0.18, 1.0))
-        make_box("Lena_Phone_Screen__la_phone", (1.40, 0.95, 0.553), (0.058, 0.124, 0.002), (0.30, 0.36, 0.44, 1.0))
+        make_smartphone("Lena_Phone__la_phone", 1.40, 0.95, (0.546) - 0.006, state="text", along="Y", w=0.070, l=0.140)   # (pass 456) a phone, not a dark slab
 
     # (pass 400) the hexagon itself: _props/charred_wood (outside the shift,
     # so its place is given shifted: the cloth's centre, (-0.90, 0.85) + (-0.3, 0.3))
@@ -706,10 +706,16 @@ def build_hero_props_2026_09():
     with shifted(globals(), -1.0, 0.0, ROOM_W=OLD_W, ROOM_D=OLD_D):   # the counter
         # ── THE BREAD · counter between drainer and grinder ──
         make_box("Bread_Board__la_bread", (-2.14, 2.08, 0.935), (0.30, 0.20, 0.018), COL_WOOD)
-        make_box("Bread_Loaf__la_bread", (-2.18, 2.10, 0.979), (0.150, 0.095, 0.070),
-                 (0.76, 0.58, 0.34, 1.0))
-        make_box("Bread_Slice__la_bread", (-2.03, 2.04, 0.951), (0.020, 0.090, 0.014),
-                 (0.88, 0.78, 0.58, 1.0))
+        # (pass 456) a LOAF: it was a tan brick. A round-topped crust (two
+        # lathes on their side would need a helper: a low lathe dome over a
+        # base), its cut face pale, and two slices fallen from it.
+        make_chamfer_box("Bread_Loaf__la_bread", (-2.19, 2.10, 0.966), (0.150, 0.100, 0.044), (0.66, 0.44, 0.22, 1.0), chamfer=0.014)
+        make_cyl("Bread_Loaf_Crown__la_bread", (-2.19, 2.10, 0.986), 0.050, 0.150, (0.72, 0.50, 0.26, 1.0), segments=12, axis='X')
+        make_cyl("Bread_Loaf_Face__la_bread", (-2.113, 2.10, 0.984), 0.046, 0.003, (0.93, 0.86, 0.68, 1.0), segments=12, axis='X')
+        make_box("Bread_Loaf_Face_Low__la_bread", (-2.111, 2.10, 0.965), (0.008, 0.088, 0.040), (0.93, 0.86, 0.68, 1.0))   # 8 mm: a 3 mm box chamfered to nothing and drew black
+        for _si, (_sx, _sy, _sz) in enumerate(((-2.050, 2.055, 0.951), (-2.045, 2.125, 0.963))):
+            make_cyl(f"Bread_Slice_{_si}__la_bread", (_sx, _sy, _sz), 0.046, 0.012, (0.93, 0.86, 0.68, 1.0), segments=12)
+            make_cyl(f"Bread_Slice_{_si}_Crust__la_bread", (_sx, _sy, _sz - 0.0005), 0.050, 0.010, (0.72, 0.50, 0.26, 1.0), segments=12)
         make_box("Bread_Knife__la_bread", (-2.10, 1.99, 0.947), (0.190, 0.024, 0.006), COL_STEEL)
         make_box("Bread_Knife_Handle__la_bread", (-1.985, 1.99, 0.947), (0.040, 0.028, 0.014), COL_WOOD)
 

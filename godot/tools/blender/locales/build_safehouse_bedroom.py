@@ -35,6 +35,7 @@ import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
+from _props.objects import make_smartphone
 from _props.geometry import clear_scene, make_box, make_cyl, make_tube, make_lathe, make_chamfer_box, make_rot_box, make_blob, export_glb
 from _props.structure import make_floor, make_wall, make_wall_with_openings
 from _props.furniture import make_bed, make_chair, make_lamp
@@ -130,7 +131,7 @@ def build_bedside():
     make_box("Slushie_Tape", (tx + 0.12, ty - 0.10, top + 0.1625), (0.10, 0.02, 0.001), (0.92, 0.90, 0.80, 1.0))
     make_rot_box("Slushie_Spoon", (tx + 0.12, ty - 0.10, top + 0.21), (0.012, 0.004, 0.12), (0.86, 0.18, 0.16, 1.0), roll=0.15)
     make_lathe("Water_Glass", (tx - 0.06, ty - 0.12, top), [(0.0, 0.0), (0.03, 0.0), (0.034, 0.11), (0.0, 0.11)], (0.80, 0.86, 0.90, 0.5), segments=10)
-    make_box("Diego_Phone", (tx + 0.04, ty + 0.12, top + 0.005), (0.07, 0.14, 0.01), (0.10, 0.10, 0.12, 1.0))
+    make_smartphone("Diego_Phone", tx + 0.04, ty + 0.12, (top + 0.005) - 0.005, state="lock", along="Y", w=0.070, l=0.140)   # (pass 456) a phone, not a dark slab
     make_box("Sam_Notebook", (tx - 0.02, ty - 0.02, top + 0.006), (0.15, 0.20, 0.012), (0.30, 0.46, 0.70, 1.0))
     make_box("Sam_Notebook_Wire", (tx - 0.095, ty - 0.02, top + 0.007), (0.01, 0.20, 0.014), STEEL)
     for i, (dx, dy) in enumerate(((0.16, 0.12), (0.19, 0.06))):

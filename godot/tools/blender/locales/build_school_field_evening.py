@@ -54,6 +54,7 @@ import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
+from _props.objects import make_smartphone
 from _props.geometry import (clear_scene, make_box, make_cyl, make_lathe, make_tube,
                              make_rot_box, make_chamfer_box, make_taper_cyl, export_glb)
 
@@ -429,8 +430,22 @@ def build_hero_props():
         # the 8.4->12.6 bay is the swing gate's opening
         make_cyl(f"SFence_Post_{i}", (fx, -3.0, 0.9), 0.05, 1.8, steel, segments=6)
     make_cyl("SFence_Rail", (13.2, -3.0, 1.78), 0.035, 24.0, steel, segments=6, axis='X')
-    make_box("Field_Gate", (10.5, -3.0, 0.90), (2.8, 0.06, 1.7), steel)
-    make_box("Field_Gate_Mesh", (10.5, -3.02, 0.90), (2.6, 0.02, 1.5), (0.55, 0.57, 0.58, 0.35))
+    # (pass 456) THE FIELD GATE. It was a solid steel slab: "By seven-thirty
+    # the team is at the field gate" framed a wall. A chain-link swing gate:
+    # a pipe frame, a middle stile and rail, the mesh you see through, hinges
+    # on the west post, the latch fork and its chain on the east.
+    pipe = (0.66, 0.68, 0.70, 1.0)
+    for nm, gz in (("Top", 1.72), ("Mid", 0.92), ("Bottom", 0.10)):
+        make_cyl(f"Field_Gate_Rail_{nm}", (10.5, -3.0, gz), 0.028, 2.8, pipe, segments=8, axis='X')
+    for nm, gx in (("W", 9.13), ("C", 10.5), ("E", 11.87)):
+        make_cyl(f"Field_Gate_Stile_{nm}", (gx, -3.0, 0.91), 0.028, 1.62, pipe, segments=8)
+    make_tube("Field_Gate_Brace", [(9.16, -3.0, 0.14), (10.47, -3.0, 0.88)], 0.016, pipe, segments=5)
+    make_tube("Field_Gate_Brace_2", [(10.53, -3.0, 0.14), (11.84, -3.0, 0.88)], 0.016, pipe, segments=5)
+    make_box("Field_Gate_Mesh", (10.5, -3.0, 0.91), (2.70, 0.012, 1.58), (0.62, 0.64, 0.66, 0.30))
+    for hi, hz in enumerate((0.35, 1.45)):
+        make_box(f"Field_Gate_Hinge_{hi}", (9.06, -3.0, hz), (0.10, 0.05, 0.07), (0.30, 0.31, 0.33, 1.0))
+    make_box("Field_Gate_Latch", (11.93, -3.0, 1.00), (0.10, 0.05, 0.06), (0.30, 0.31, 0.33, 1.0))
+    make_tube("Field_Gate_Chain", [(11.92, -3.03, 0.98), (11.97, -3.05, 0.80), (12.04, -3.04, 0.72), (12.10, -3.03, 0.86)], 0.010, (0.44, 0.45, 0.47, 1.0), segments=5)
     # Field house + THE CORKBOARD outside its door
     make_box("Field_House", (-14.0, -8.5, 1.45), (7.0, 3.4, 2.9), (0.55, 0.50, 0.44, 1.0))
     make_box("Field_House_Roof", (-14.0, -8.5, 3.02), (7.5, 3.9, 0.24), (0.32, 0.28, 0.24, 1.0))
@@ -530,8 +545,7 @@ def build_hero_props_2026_09():
     make_box("Stopwatch_Strap", (26.4, 44.075, 0.5015), (0.012, 0.090, 0.003),
              (0.16, 0.16, 0.18, 1.0))
     # ── BEN'S PHONE · same bench, further north ──
-    make_box("Bens_Phone", (26.4, 48.5, 0.5055), (0.070, 0.140, 0.011),
-             (0.13, 0.13, 0.15, 1.0))
+    make_smartphone("Bens_Phone", 26.4, 48.5, (0.5055) - 0.0055, state="lock", along="Y", w=0.070, l=0.140)   # (pass 456) a phone, not a dark slab
 
 
 def build_horizon_2026_08():

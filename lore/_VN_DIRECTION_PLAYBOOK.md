@@ -339,6 +339,23 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-11-25 · the second 48: boxes and word matches (pass 456)
+
+- **One fault, every room.** Six of 48 failures were the same dark slab
+  called a phone. Fix the class (a shared prop, swapped in by script, the
+  gates run after) rather than the six frames.
+- **Numbers and memories make false cues.** "insert twenty" sat on "six
+  twenty-two" and "twenty-two customers"; "insert phone" on a remembered
+  call; "insert door" on a door Jesse is thinking about in another building.
+  Read the line: the cue must be a thing in THIS room, NOW.
+- **A view is a time as well as a place.** `jesse_bedroom_late` is the room
+  after "He turns off the lamp"; nine lines before it (he plays, he writes)
+  were in it. Put the lamp-lit view on the bg and cut to the dark one on the
+  line that turns the lamp off.
+- **A panel and a close-up share the top of the frame.** The director puts an
+  insert's subject at 36 % from the top, where an open panel sits. The panel
+  now hides while the insert shows something it does not name.
+
 ### 2026-11-25 · small things need macro frames; two doors need two cues (pass 455)
 
 - **Frame at the object's real size.** The bell-piece is "the size of his

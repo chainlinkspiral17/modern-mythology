@@ -3090,10 +3090,8 @@ def build_hero_props_2026_09():
     # ── SAM'S PHONE · counter top (Z=1.07) ──
     # (pass 388) "on the counter beside the register", on Sam's side of it:
     # at (4.90, 4.05) it lay through the hot case's side wall
-    make_box("Counter_Phone", (5.38, 3.75, 1.0755), (0.070, 0.140, 0.011),
-             (0.13, 0.13, 0.15, 1.0))
-    make_box("Counter_Phone_Screen", (5.38, 3.75, 1.0820), (0.058, 0.124, 0.002),
-             (0.32, 0.40, 0.48, 1.0))
+    from _props.objects import make_smartphone
+    make_smartphone("Counter_Phone", 5.38, 3.75, (1.0755) - 0.0055, state="lock", along="Y", w=0.070, l=0.140)   # (pass 456) a phone, not a dark slab
     # ── THE CARD · by the register ──
     make_box("Roofing_Card", (5.00, 3.75, 1.0705), (0.089, 0.051, 0.001),
              (0.93, 0.91, 0.84, 1.0))

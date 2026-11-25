@@ -44,6 +44,7 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, make_lathe, make_tube, make_rot_box, make_blob, export_glb
+from _props.objects import make_smartphone
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_wall_with_openings
 from _props.views import make_view
 from _props.furniture import make_bed, make_chair, make_lamp
@@ -167,8 +168,8 @@ def build_bed():
     make_box("Nightstand_Drawer", (nx + 0.205, ny, 0.44), (0.012, 0.32, 0.12), COL_WOOD_DK)
     make_box("Nightstand_Phone_Charger", (nx + 0.05, ny + 0.08, 0.565), (0.06, 0.04, 0.01), (0.90, 0.90, 0.88, 1.0))
     # (pass 96) the phone itself, face up ("His phone, on the nightstand, has not vibrated")
-    make_box("Nightstand_Phone", (nx - 0.06, ny - 0.06, 0.566), (0.075, 0.150, 0.010), (0.10, 0.10, 0.11, 1.0))
-    make_box("Nightstand_Phone_Screen", (nx - 0.06, ny - 0.06, 0.5715), (0.066, 0.138, 0.001), (0.16, 0.20, 0.26, 1.0))
+    make_smartphone("Nightstand_Phone", nx - 0.06, ny - 0.06, (0.566) - 0.005, state="lock", along="Y", w=0.075, l=0.150)   # (pass 456) a phone, not a dark slab
+    make_smartphone("Nightstand_Phone_Screen", nx - 0.06, ny - 0.06, (0.5715) - 0.0005, state="lock", along="Y", w=0.066, l=0.138)   # (pass 456) a phone, not a dark slab
     make_wall_outlet("Outlet_Bed", (-ROOM_W / 2.0, ny + 0.32), axis='Y', face_sign=1)
 
 

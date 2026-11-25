@@ -89,6 +89,7 @@ _BT = os.path.normpath(os.path.join(_SCRIPT_DIR, ".."))
 if _BT not in sys.path:
     sys.path.insert(0, _BT)
 from _props.geometry import make_lathe, make_tube, make_chamfer_box
+from _props.objects import make_smartphone
 from _props.furniture import make_table, make_chair
 from _props.detail import make_floor_stain, make_wall_outlet
 
@@ -576,14 +577,9 @@ def build_living_room():
     make_box("LR_ScriptPage",
              (table_x + 0.04, table_y + 0.05, 0.638),
              (0.21, 0.27, 0.003), COL_PAPER)
-    # 2026-08 tail pass: the FACE-DOWN PHONE beside the script page
-    # (screen against the wood, on purpose).
-    make_box("LR_Phone_FaceDown",
-             (table_x - 0.15, table_y - 0.10, 0.642),
-             (0.075, 0.15, 0.009), (0.16, 0.16, 0.18, 1.0))
-    make_box("LR_Phone_CameraBump",
-             (table_x - 0.17, table_y - 0.15, 0.649),
-             (0.03, 0.03, 0.005), (0.10, 0.10, 0.12, 1.0))
+    # (pass 456) the face-down phone that lay here was invented, and against
+    # the text: "Her phone, on the kitchen counter, buzzed. She did not look
+    # at it" (ch2_b n5) — it is on the kitchen counter now (build_kitchen).
     # THE PLASTER (2026-11-18): "The walls were crumbling. Not just the
     # bungalow's plaster — which was atrocious". Over the window's east
     # corner, where a house settles: a hole where a plate of plaster has
@@ -881,6 +877,9 @@ def build_kitchen():
     make_box("Kitchen_Counter",
              (+2.375, counter_y, 0.90),
              (3.25, 0.60, 0.06), COL_TRIM_WHITE)
+    # (pass 456) HER PHONE, buzzing: "Her phone, on the kitchen counter,
+    # buzzed ... It would be Philip, or Mackenzie, or both" (ch2_b n5, n11, n47)
+    make_smartphone("Kitchen_Phone", 2.45, counter_y - 0.12, 0.93, state="call", along="X")
     # Counter base cabinets
     make_box("Kitchen_BaseCabinet",
              (+2.375, counter_y, 0.42),

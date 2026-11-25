@@ -642,7 +642,7 @@
     },
     {
       "t": "bg",
-      "src": "3d:jesse_bedroom_late"
+      "src": "3d:jesse_bedroom"
     },
     {
       "t": "narrate",
@@ -696,7 +696,7 @@
     },
     {
       "t": "narrate",
-      "text": "He turns off the lamp.",
+      "text": "[view:jesse_bedroom_late]He turns off the lamp.",
       "voice": "assets/audio/voice/vol6_ch14_live_oak/115.mp3"
     },
     {
@@ -710,7 +710,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert door]He thinks, in the dark: the door was open two inches.",
+      "text": "He thinks, in the dark: the door was open two inches.",
       "voice": "assets/audio/voice/vol6_ch14_live_oak/118.mp3"
     },
     {

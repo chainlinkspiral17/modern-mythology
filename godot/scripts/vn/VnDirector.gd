@@ -440,6 +440,7 @@ func _try_apply_shot() -> void:
 	if _featured != was_featured:
 		featured_changed.emit(featured_key())
 	_insert_words = _line_words(shot_id.replace("_", " ")) if shot_type == "insert" else PackedStringArray()
+	_sync_panel_to_shot()
 
 	var marker: Node3D = null
 	# The generic face pair on a line someone says: the speaker's own frame
@@ -777,6 +778,22 @@ func _hero_art_for_panel(id: String) -> String:
 		if (f.ends_with(".png") or f.ends_with(".jpg")) and (base == key or base.ends_with("_" + key)):
 			return HERO_ART_DIR + f
 	return ""
+
+
+## A PANEL STEPS ASIDE FOR ANOTHER OBJECT'S CLOSE-UP (pass 456). An open
+## panel sits top-centre, where an insert's subject is framed: vol 6 ch12
+## reads Rick's list under his notebook's panel, and the Speak & Spell
+## line's close-up played behind the picture. The card hides while an insert
+## shows something the panel does not name, and returns with the room.
+func _sync_panel_to_shot() -> void:
+	if _panel_card == null or not is_instance_valid(_panel_card):
+		return
+	var other: bool = not _insert_words.is_empty()
+	for w: String in _insert_words:
+		if w in _panel_words:
+			other = false
+			break
+	_panel_card.visible = not other
 
 
 func _dismiss_panel() -> void:

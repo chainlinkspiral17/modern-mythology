@@ -224,10 +224,12 @@ def build_hero_props():
     # corner, on the shelf above the file cabinet. Grille is its own
     # emissive object so the red glow can read (dim ch12, red ch21).
     make_box("SpeakSpell_Shelf", (-1.45, 1.0, 1.62), (0.60, 0.30, 0.035), (0.44, 0.32, 0.20, 1.0))
-    make_chamfer_box("SpeakSpell_Body", (-1.45, 1.0, 1.665), (0.26, 0.20, 0.05), (0.72, 0.16, 0.14, 1.0))
-    make_box("SpeakSpell_Keys", (-1.48, 0.96, 1.695), (0.16, 0.10, 0.01), (0.92, 0.88, 0.72, 1.0))
-    make_box("SpeakSpell_Grille", (-1.36, 1.05, 1.695), (0.06, 0.06, 0.012), (0.94, 0.42, 0.30, 1.0))
-    make_box("SpeakSpell_Crack", (-1.57, 0.92, 1.66), (0.03, 0.03, 0.045), (0.44, 0.10, 0.09, 1.0))
+    # (pass 456) the toy itself (_props.objects.make_speak_spell): handle,
+    # display, grille, forty keys. It was a red block with a tan patch. The
+    # crack in its corner stays.
+    from _props.objects import make_speak_spell
+    make_speak_spell("SpeakSpell", -1.45, 1.0, 1.6375, yaw=-1.5708)
+    make_box("SpeakSpell_Crack", (-1.565, 0.915, 1.6745), (0.022, 0.004, 0.0012), (0.30, 0.06, 0.05, 1.0))
     # One-way mirror to the sales floor (installed 1983) — WEST of the
     # door (2026-10-09: the shop has it there; the two sets disagreed)
     make_box("OneWay_Mirror_Frame", (-1.55, 0.12, 1.70), (1.20, 0.04, 0.95), (0.30, 0.26, 0.22, 1.0))
@@ -239,8 +241,9 @@ def build_hero_props():
         make_box(f"Desk_Drawer_{di}", (0.62 + DESK_DX, 3.13 + DESK_DY, 0.62 - di * 0.21), (0.44, 0.02, 0.16), (0.34, 0.24, 0.16, 1.0))
         make_box(f"Desk_Drawer_{di}_Pull", (0.62 + DESK_DX, 3.11 + DESK_DY, 0.62 - di * 0.21), (0.12, 0.015, 0.03), iron)
     # Desk phone (Rick's long calls)
-    make_box("Desk_Phone", (0.55 + DESK_DX, 3.72 + DESK_DY, 0.80), (0.22, 0.16, 0.08), (0.16, 0.16, 0.18, 1.0))   # on the desk
-    make_box("Desk_Phone_Handset", (0.55 + DESK_DX, 3.72 + DESK_DY, 0.86), (0.20, 0.06, 0.04), (0.12, 0.12, 0.14, 1.0))   # on its cradle
+    # (pass 456) a telephone: "The phone rings" (ch12 n71) framed a black box
+    from _props.objects import make_desk_phone
+    make_desk_phone("Desk_Phone", 0.55 + DESK_DX, 3.72 + DESK_DY, 0.76)   # on the desk, its keys toward the chair (south)
     # Overturned milk crate — Sam's seat, opposite the desk
     make_chamfer_box("Milk_Crate", (-0.20 + DESK_DX, 2.40 + DESK_DY, 0.16), (0.36, 0.36, 0.32), (0.62, 0.28, 0.24, 1.0))
     make_box("Milk_Crate_Rim", (-0.20 + DESK_DX, 2.40 + DESK_DY, 0.315), (0.38, 0.38, 0.03), (0.52, 0.22, 0.20, 1.0))

@@ -60,6 +60,7 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, make_chamfer_box, make_lathe, make_tube, make_rot_box, export_glb
+from _props.objects import make_smartphone
 from _props.furniture import make_chair, make_lamp
 from _props.structure import make_floor, make_wall, make_wall_with_openings
 from _props.detail import make_wall_outlet, make_traffic_wear
@@ -192,7 +193,7 @@ def build_desk():
     # the phone, the chrome lamp, the photograph on the corner
     make_chamfer_box("Desk_Phone_Base", (dx - 0.82, dy + 0.05, top + 0.025), (0.20, 0.24, 0.05), P.METAL_BLACK, chamfer=0.012)
     make_tube("Desk_Phone_Handset", [(dx - 0.90, dy + 0.12, top + 0.065), (dx - 0.82, dy + 0.12, top + 0.095), (dx - 0.74, dy + 0.12, top + 0.065)], 0.016, (0.12, 0.12, 0.14, 1.0), segments=8)
-    make_box("Desk_Phone_Cell", (dx + 0.55, dy + 0.30, top + 0.005), (0.075, 0.15, 0.01), (0.10, 0.10, 0.12, 1.0))
+    make_smartphone("Desk_Phone_Cell", dx + 0.55, dy + 0.30, (top + 0.005) - 0.005, state="lock", along="Y", w=0.075, l=0.150)   # (pass 456) a phone, not a dark slab
     make_lamp("Erica_Lamp", dx + 0.88, dy - 0.25, base_z=top, h=0.52, shade_col=CHROME, body_col=CHROME)
     # (draft 5) square to her chair, so a picture can be laid on it: it was
     # turned 20 degrees and no art plane could face it

@@ -923,8 +923,8 @@ def dress_afternoon_rosary():
     make_cyl("Coffee_Cup_Black_Surface", (TX + 0.14, TY + 0.30, top + 0.0705), 0.030, 0.002, (0.12, 0.08, 0.06, 1.0), segments=10)
     make_cyl("Coffee_Cup_Black_Saucer", (TX + 0.14, TY + 0.30, top + 0.004), 0.065, 0.008, (0.96, 0.94, 0.90, 1.0), segments=12)
     make_box("Cordless_Base", (TX - 0.22, TY - 0.16, top + 0.015), (0.10, 0.14, 0.03), (0.22, 0.22, 0.24, 1.0))
-    make_box("Cordless_Handset", (TX - 0.22, TY - 0.16, top + 0.045), (0.05, 0.16, 0.03), (0.26, 0.26, 0.28, 1.0))
-    make_box("Cordless_Handset_Screen", (TX - 0.22, TY - 0.12, top + 0.0605), (0.03, 0.04, 0.001), (0.62, 0.74, 0.66, 1.0))
+    from .objects import make_cordless
+    make_cordless("Cordless_Handset", TX - 0.22, TY - 0.16, top + 0.030, body=(0.26, 0.26, 0.28, 1.0))   # (pass 456) a handset on its base, not a bar
     make_box("Cordless_Charge_Light", (TX - 0.22, TY - 0.235, top + 0.022), (0.012, 0.004, 0.008), (0.30, 0.96, 0.40, 1.0))
     make_cyl("Cordless_Cord", (TX - 0.22, TY - 0.38, top + 0.003), 0.003, 0.30, (0.12, 0.12, 0.12, 1.0), axis='Y', segments=4)
     for nm, hx, hy in (("A", TX - 0.02, TY - 0.20), ("B", TX + 0.30, TY + 0.06)):

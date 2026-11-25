@@ -33,6 +33,7 @@ import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
+from _props.objects import make_smartphone
 from _props.geometry import clear_scene, make_box, make_cyl, make_chamfer_box, make_lathe, make_tube, make_rot_box, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_wall_with_openings, make_window
 from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, make_calendar
@@ -235,8 +236,19 @@ def build_hero_props():
     make_cyl("Ashtray_Volcano", (0.35, 5.50, 0.988), 0.07, 0.04, (0.30, 0.30, 0.32, 1.0), segments=10)
     make_box("Ash_Heap", (0.35, 5.50, 1.02), (0.08, 0.08, 0.035), (0.55, 0.53, 0.50, 1.0))
     make_cyl("Warm_Bourbon", (0.72, 5.62, 1.07), 0.045, 0.26, (0.52, 0.32, 0.14, 0.85), segments=8)
-    make_box("Microwave_Greasy", (1.20, 5.60, 1.12), (0.50, 0.38, 0.30), (0.58, 0.56, 0.52, 1.0))
-    make_box("Microwave_Cavity", (1.20, 5.405, 1.12), (0.36, 0.01, 0.22), (0.12, 0.12, 0.12, 1.0))
+    # (pass 456) THE MICROWAVE. It was a grey box with a dark panel: the four
+    # "insert microwave" lines ("He caught his reflection in the greasy
+    # microwave door") framed a picture frame. Now the case, the
+    # cavity, the control panel with its display, a keypad and the start bar,
+    # the door (below) with a frame, a dark glass and a handle.
+    make_box("Microwave_Greasy", (1.20, 5.60, 1.12), (0.50, 0.38, 0.30), (0.62, 0.60, 0.55, 1.0))
+    make_box("Microwave_Cavity", (1.13, 5.405, 1.12), (0.36, 0.01, 0.24), (0.10, 0.10, 0.10, 1.0))
+    make_box("Microwave_Panel", (1.385, 5.404, 1.12), (0.11, 0.012, 0.26), (0.20, 0.20, 0.22, 1.0))
+    make_box("Microwave_Display", (1.385, 5.397, 1.215), (0.085, 0.003, 0.035), (0.30, 0.86, 0.52, 1.0))
+    for _r in range(4):
+        for _c in range(3):
+            make_box(f"Microwave_Key_{_r}_{_c}", (1.358 + _c * 0.027, 5.397, 1.165 - _r * 0.030), (0.020, 0.003, 0.020), (0.78, 0.77, 0.72, 1.0))
+    make_box("Microwave_Start", (1.385, 5.397, 1.035), (0.085, 0.003, 0.022), (0.86, 0.36, 0.20, 1.0))
     # The yellowed lace curtain over the W window (draft 3: inside the
     # room, between the shutters — it hung inside the wall)
     make_box("Lace_Curtain", (-2.50, 0.14, 1.80), (1.4, 0.03, 1.9), (0.86, 0.82, 0.66, 0.5))
@@ -300,8 +312,13 @@ def build_use_states_d4():
     # Microwave door ajar (a container open)
     # (draft 3: hinged at the microwave's west edge, swung 70° out —
     # it floated half a metre west of the microwave)
-    make_rot_box("Microwave_Door_Ajar", (1.01, 5.24, 1.12), (0.36, 0.02, 0.22),
-                 (0.36, 0.38, 0.40, 1.0), yaw=-1.22)
+    # (pass 456) SHUT: "He caught his reflection in the greasy microwave door"
+    # — swung 70 degrees out it showed its edge. A frame, the dark glass with
+    # one smear of light across it, the handle bar.
+    make_box("Microwave_Door", (1.13, 5.399, 1.12), (0.37, 0.012, 0.27), (0.46, 0.46, 0.44, 1.0))
+    make_box("Microwave_Door_Glass", (1.12, 5.3915, 1.12), (0.27, 0.004, 0.19), (0.05, 0.06, 0.07, 1.0))
+    make_rot_box("Microwave_Door_Glare", (1.07, 5.3885, 1.13), (0.035, 0.002, 0.20), (0.34, 0.38, 0.42, 1.0), roll=0.5)
+    make_box("Microwave_Handle", (1.292, 5.385, 1.12), (0.018, 0.022, 0.22), (0.80, 0.80, 0.78, 1.0))
     # Cans: two standing on the TV stand, one on its side by the bin
     make_can("Can_TV_0", 2.945, 2.08, 0.66, (0.72, 0.20, 0.18, 1.0))
     make_can("Can_TV_1", 2.945, 2.30, 0.66, (0.72, 0.20, 0.18, 1.0))
@@ -326,8 +343,7 @@ def build_hero_props_2026_09():
     THE PHONE ("The screen, when it came on, was not Antonio. The
     screen said Q. PAUL."): face-up on the rented sofa's far
     cushion, screen lit."""
-    make_box("Antonios_Phone", (-2.32, 2.75, 0.6055), (0.070, 0.140, 0.011), (0.13, 0.13, 0.15, 1.0))
-    make_box("Antonios_Phone_Screen", (-2.32, 2.75, 0.6120), (0.058, 0.124, 0.002), (0.42, 0.50, 0.60, 1.0))
+    make_smartphone("Antonios_Phone", -2.32, 2.75, (0.6055) - 0.0055, state="call", along="Y", w=0.070, l=0.140)   # (pass 456) a phone, not a dark slab
 
 
 def build_draft3_2026_09():

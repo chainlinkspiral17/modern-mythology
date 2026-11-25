@@ -41,6 +41,7 @@ import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
+from _props.objects import make_smartphone
 from _props.geometry import (clear_scene, make_box, make_chamfer_box, make_cyl, make_lathe,
                              make_tube, make_rot_box, export_glb)
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_wall_with_openings
@@ -201,8 +202,7 @@ def build_dresser_closet():
         for j, ox in enumerate((-0.27, 0.27)):
             make_box(f"Dresser_Drawer_{i}_{j}", (ddx + ox, ddy + 0.245, 0.18 + i * 0.27), (0.50, 0.012, 0.22), (0.88, 0.88, 0.86, 1.0))
             make_box(f"Dresser_Drawer_{i}_{j}_Pull", (ddx + ox, ddy + 0.255, 0.22 + i * 0.27), (0.10, 0.012, 0.015), (0.72, 0.64, 0.40, 1.0))
-    make_box("Nightstand_Phone", (ddx + 0.25, ddy + 0.05, 0.9255), (0.072, 0.145, 0.011), (0.14, 0.14, 0.16, 1.0))
-    make_box("Nightstand_Phone_Screen", (ddx + 0.25, ddy + 0.05, 0.9315), (0.062, 0.128, 0.001), (0.32, 0.44, 0.58, 1.0))
+    make_smartphone("Nightstand_Phone", ddx + 0.25, ddy + 0.05, (0.9255) - 0.0055, state="lock", along="Y", w=0.072, l=0.145)   # (pass 456) a phone, not a dark slab
     make_box("Kwik_Name_Tag", (ddx - 0.10, ddy + 0.08, 0.923), (0.08, 0.025, 0.006), COL_KWIK)
     make_lathe("Dresser_Dish", (ddx - 0.32, ddy + 0.02, 0.92), [(0.0, 0.0), (0.05, 0.0), (0.08, 0.025), (0.07, 0.03), (0.0, 0.008)], (0.80, 0.76, 0.86, 1.0), segments=12)
     make_box("Car_Keys", (ddx - 0.32, ddy + 0.02, 0.935), (0.06, 0.03, 0.01), (0.70, 0.70, 0.66, 1.0))

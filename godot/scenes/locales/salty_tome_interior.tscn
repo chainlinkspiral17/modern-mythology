@@ -446,9 +446,9 @@ metadata/fov = 55.0
 
 ; insert: the milk crate at the foot of the wall
 [node name="shot_insert_crate" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0.8, -10.9)
-rotation = Vector3(-0.6978, 0.5517, 0.0)
-metadata/fov = 42.0
+position = Vector3(-1.750, 0.850, -10.850)
+rotation = Vector3(-0.7217, -0.2111, 0.0)
+metadata/fov = 40.0
 
 
 ; insert: the brush in the jar of medium

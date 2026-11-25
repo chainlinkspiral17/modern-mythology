@@ -61,6 +61,7 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_chamfer_box, make_blob, make_cyl, make_lathe, make_tube, make_prism, make_rot_box, export_glb
+from _props.objects import make_smartphone
 from _props.furniture import make_chair, make_lamp
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_wall_with_openings
 from _props.decor import make_floor_plant, make_faded_poster
@@ -265,7 +266,7 @@ def build_living():
     make_box("Desk_Apron", (DESK_X, DESK_Y, 0.70), (1.02, 0.52, 0.04), (0.40, 0.29, 0.18, 1.0))
     make_lamp("Lamp", DESK_X - 0.38, DESK_Y + 0.12, base_z=0.76, h=0.55, shade_col=COL_ACCENT, body_col=P.METAL_BLACK)
     make_chair("Desk_Chair", DESK_X, DESK_Y + 0.62, yaw=math.pi, wood=wood, seat_col=COL_ACCENT, w=0.42)
-    make_box("Finns_Phone", (DESK_X + 0.20, DESK_Y - 0.10, 0.7655), (0.070, 0.140, 0.011), (0.13, 0.13, 0.15, 1.0))
+    make_smartphone("Finns_Phone", DESK_X + 0.20, DESK_Y - 0.10, (0.7655) - 0.0055, state="lock", along="Y", w=0.070, l=0.140)   # (pass 456) a phone, not a dark slab
     make_box("Finns_Notebook", (DESK_X - 0.02, DESK_Y + 0.02, 0.766), (0.150, 0.200, 0.012), (0.36, 0.30, 0.24, 1.0))
     make_box("Finns_Notebook_Wire", (DESK_X - 0.101, DESK_Y + 0.02, 0.767), (0.010, 0.200, 0.014), (0.55, 0.56, 0.58, 1.0))
     make_box("Carved_Cedar", (DESK_X + 0.38, DESK_Y + 0.10, 0.785), (0.030, 0.020, 0.050), (0.52, 0.34, 0.22, 1.0))

@@ -463,9 +463,9 @@ def build_hero_props_2026_09():
     under-shelf lives inside the solid counter body). Serves both cue spellings via the existing speakspell
     synonym.
     """
-    make_box("SpeakSpell_Body", (3.2, 6.4, 0.0175), (0.25, 0.19, 0.035), (0.85, 0.30, 0.16, 1.0))
-    make_box("SpeakSpell_Keys", (3.2, 6.37, 0.0361), (0.18, 0.08, 0.002), (0.90, 0.82, 0.62, 1.0))
-    make_box("SpeakSpell_Display", (3.2, 6.465, 0.0361), (0.16, 0.045, 0.002), (0.16, 0.30, 0.18, 1.0))
+    # (pass 456) the toy itself, as in the back office (make_speak_spell)
+    from _props.objects import make_speak_spell
+    make_speak_spell("SpeakSpell", 3.2, 6.4, 0.0, yaw=-1.5708)
 
 
 def build_draft4_2026_09():

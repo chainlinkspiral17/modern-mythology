@@ -24,6 +24,14 @@ _CENTER = ("make_box", "make_cyl", "make_lathe", "make_chamfer_box", "make_rot_b
            "make_prism", "make_blob", "make_wall", "make_window", "make_frame_ring", "make_floor_plant",
            "make_faded_poster", "make_smoke_detector", "make_calendar", "make_soft_box")
 _XY = ("make_chair", "make_table", "make_bed", "make_stool", "make_bench", "make_lamp", "make_sofa")
+# (pass 456) the small readable props (_props.objects, name-x-y-z): moved with
+# their block whether a builder imported them at the top or inside a function
+# — unmoved, the phones swapped in for slab boxes inside shifted blocks stood
+# a room's shift away from their tables (Kowalski's 2.4 m off, floating).
+# The OLDER objects helpers (make_bottle, make_mug ...) stay opt-in: builders
+# already compensate those by hand.
+_OBJ_XY = ("make_smartphone", "make_cordless", "make_milk_crate", "make_notebook", "make_scanner_gun",
+           "make_speak_spell", "make_pallet", "make_paper_cup", "make_desk_phone")
 _PATH = ("make_tube",)
 
 
@@ -63,7 +71,7 @@ def shifted(g, dx, dy, extra=(), extra_paths=(), prefix="", dz=0.0, **consts):
         return w
 
     saved_g, saved_m = {}, []
-    for names, wrap in ((_CENTER + tuple(extra), c3), (_XY, xy), (_PATH + tuple(extra_paths), path)):
+    for names, wrap in ((_CENTER + tuple(extra), c3), (_XY + _OBJ_XY, xy), (_PATH + tuple(extra_paths), path)):
         for n in names:
             if n in g and n not in saved_g:     # never wrap a name twice
                 saved_g[n] = g[n]
@@ -74,6 +82,11 @@ def shifted(g, dx, dy, extra=(), extra_paths=(), prefix="", dz=0.0, **consts):
         if hasattr(mod, n):
             saved_m.append((mod, n, getattr(mod, n)))
             setattr(mod, n, wrap(getattr(mod, n)))
+    import _props.objects as _O
+    for n in _OBJ_XY:
+        if hasattr(_O, n):
+            saved_m.append((_O, n, getattr(_O, n)))
+            setattr(_O, n, xy(getattr(_O, n)))
     for k, v in consts.items():
         saved_g[k] = g[k]
         g[k] = v

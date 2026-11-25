@@ -48,6 +48,7 @@ import sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.geometry import clear_scene, make_box, make_cyl, make_rot_box, export_glb
+from _props.objects import make_smartphone
 from _props.structure import make_floor, make_wall, make_wall_with_openings, make_ceiling, make_window
 from _props.safety import make_fluorescent_tube_fixture
 from _props.merch import stock_gondola
@@ -260,7 +261,7 @@ def build_store():
     make_box("Ice_Chest", (-2.4, -0.80, 0.08 + 0.60), (1.50, 0.70, 1.20), COL_WHITE)
     make_box("Ice_Chest_Band", (-2.4, -1.152, 0.08 + 0.80), (1.40, 0.004, 0.30), (0.20, 0.50, 0.80, 1.0))
     # Boyd's phone and his Gatorade, put down on the ice chest (named for where they lie: "closeup boyd" would find a Boyd_ part) ("He calls his handler")
-    make_box("Ice_Chest_Phone", (-2.15, -0.80, 0.08 + 1.20 + 0.0055), (0.070, 0.140, 0.011), (0.13, 0.13, 0.15, 1.0))
+    make_smartphone("Ice_Chest_Phone", -2.15, -0.80, (0.08 + 1.20 + 0.0055) - 0.0055, state="lock", along="Y", w=0.070, l=0.140)   # (pass 456) a phone, not a dark slab
     make_cyl("Ice_Chest_Gatorade", (-2.65, -0.75, 0.08 + 1.20 + 0.12), 0.04, 0.24, (0.94, 0.56, 0.12, 1.0), segments=10)
     make_cyl("Ice_Chest_Gatorade_Cap", (-2.65, -0.75, 0.08 + 1.20 + 0.255), 0.025, 0.03, (0.16, 0.30, 0.62, 1.0), segments=8)
     make_box("Propane_Cage", (2.6, -0.80, 0.08 + 0.75), (1.40, 0.70, 1.50), (0.40, 0.42, 0.44, 1.0))

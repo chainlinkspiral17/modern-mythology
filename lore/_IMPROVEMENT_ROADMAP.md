@@ -3835,6 +3835,86 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-25 · pass 456: the next 48 most-cued close-ups (ranks 49–96), same question. 31 pass; the rest are objects that were boxes, and cues that were word matches.**
+One line of each rendered in game and read.
+- EVERY SLAB PHONE IN THE GAME (the largest class: six of the 48 were a dark
+  rectangle on a table). `make_smartphone` now stands for the box in 21
+  rooms — bungalow (face-down), grocery aisle, Daily Grind, Diego's and Sam's
+  nightstands, Finn's desk, both Houston rooms, Jesse's floor (face-down),
+  the Kowalski table, the Kwik Stop counter, Lena's, Montreal, Natalie's,
+  Antonio's apartment (ringing: "His phone buzzed. Rattling against the
+  formica"), both NexCorp stations, the Pit Stop island, the safehouse,
+  the field bench. Old stand-in screen boxes removed.
+- ELICIA'S PHONE, BY THE TEXT: the bungalow had a face-down phone on the
+  living-room side table (invented in an earlier pass); the text has "Her
+  phone, on the kitchen counter, buzzed. She did not look at it" (ch2_b).
+  It is on the kitchen counter, ringing; the close-up goes there; the cue on
+  "Damn it, MrMyst." (a thought) dropped.
+- THE CORDLESS on the Millers' back porch (5 lines): `make_cordless` — the
+  earpiece, a lit screen, twelve keys, the antenna stub; the frame came
+  round the mug that hid it. The Millers' table handset and the two Ramos
+  kitchens' take the same helper (dark body, pale keys).
+- THE COMIC SHOP'S DESK PHONE: `make_desk_phone` (wedge base, handset, keys,
+  display, a lit line button) for "The phone rings" — READ: better, but the
+  desk's papers still cover its front (draft 2).
+- THE MICROWAVE in Antonio's apartment (4): the door SHUT (it was swung 70
+  degrees out and showed its edge — "He caught his reflection in the greasy
+  microwave door"), dark glass, handle, keypad, display.
+- THE CROSSWORD (5): a seven-by-seven grid with its blocks, five squares
+  pencilled, clue columns — it was one black square on a page.
+- THE FIELD GATE (5): a chain-link swing gate (pipe frame, braces, mesh,
+  hinges, latch and chain) — it was a solid steel slab.
+- THE MILK CRATES in the alley (5): `make_milk_crate`, lattice sides and a
+  grid — three solid cubes.
+- THE SCANNER on the pallet (5): `make_scanner_gun` — head, red window,
+  screen, grip, trigger.
+- THE SPEAK & SPELL (4), back office and under the register:
+  `make_speak_spell` — handle, display, grille, forty keys.
+- THE LOAF at Lena's (5): a crusted loaf with a cut face and two slices — a
+  tan brick.
+- CUES THAT WERE WORD MATCHES, dropped: "insert twenty" on "six twenty-two",
+  "twenty-two customers", "eight twenty-six" (the twenty is the bill in ch2);
+  "insert phone" on "Russell is in dry pasta" and on a memory of a call;
+  "insert bread" on the fridge line; "insert door" on Jesse's "the door was
+  open two inches" (the substation's door, remembered).
+- JESSE'S ROOM AT NIGHT (ch14): n107–115 play with the lamp ON (he closes the
+  door, plays, writes) and were in the lamp-off view — a black frame. The bg
+  is the lamp-lit room now; "He turns off the lamp" cuts to the dark one
+  (`[view:jesse_bedroom_late]`). The door wall has the lamp's bounce
+  (Fill_Door_Bounce): the hall spill alone left the door black.
+- ENGINE: an open art panel steps aside while a close-up shows an object it
+  does not name (VnDirector._sync_panel_to_shot) — Rick's notebook panel
+  sat over the Speak & Spell line's close-up.
+- TOOLS: `_props.plan.shifted` moves the new small props with their block,
+  however the builder imported them (unmoved, Kowalski's phone stood 2.4 m
+  off its table). The milk crate helper hit the shadowed-name bug the
+  register did (a local def of make_box): read the module's through
+  globals(). A 3 mm box chamfers to nothing and draws black.
+Draft 1 shipped. DRAFT 2 TARGETS:
+- GRAUSTARK close-ups, left for a pass of their own (the builder is the
+  game's largest): the steamship frame stands too close to name the ship
+  (4 lines), the notebooks are slabs (5 — `make_notebook` is written), the
+  crow on the I-beam is dark on dark (5);
+- phones by line: face-down where the text sets one down, the caller where
+  it rings, dark for a dead one (twin views; all five states are built);
+  Maya's and the Caldwell side-table phones still boxes (art sits on one);
+- the comic shop's desk phone: clear the papers off its front; the same
+  helper for the other box telephones (school newspaper, police desks, the
+  Gas & Go office, Ember & Ash, the cabin's);
+- the cordless in her HAND is the portrait's; the base it charges on;
+- the crossword's newspaper around it; the gate OPEN for "out the back gate";
+- the crate upright and empty where the text carries it;
+- ranks 97–144 by the same question.
+Deck must REBUILD the 29 sets this pass touched (the --stale rebuild finds
+them): bungalow, centro_grocery_aisle, cosmic_comics_back_office,
+cosmic_comics_interior, daily_grind_interior, diego_bedroom, finn_apartment,
+houston_design_studio, houston_office, jesse_bedroom, kowalski_kitchen,
+kwik_stop, lena_apartment, miller_back_porch, montreal_apartment,
+natalie_apartment, new_orleans_apartment, nexcorp_fueling_station,
+nexcorp_gas_go, pit_stop_interior, safehouse_bedroom, salty_tome_interior,
+sam_bedroom, school_field_evening, miller_kitchen,
+grandmother_kitchen_morning, ramos_kitchen_morning.
+
 **2026-11-25 · pass 455: the other five close-ups that failed the stranger test, rebuilt at the object.**
 Pass 454's remaining five (of the 48 most-cued), same question.
 - THE GROCERY PALLET (9 lines; ch10, ch16, ch18): one slab under one crate.

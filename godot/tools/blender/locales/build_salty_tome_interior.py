@@ -424,7 +424,8 @@ def build_alley_2026_08():
         make_cyl(f"Dumpster_Wheel_{wi2}", (2.4+wxo, 10.2, 0.08), 0.07, 0.05, COL_BLACK,
                  axis='X', segments=8)
     # A milk crate reading-perch and a downspout for texture.
-    make_box("Alley_Crate", (1.1, 10.6, 0.16), (0.35, 0.35, 0.32), (0.55, 0.45, 0.30, 1.0))
+    from _props.objects import make_milk_crate
+    make_milk_crate("Alley_Crate", 1.1, 10.6, 0.0, s=0.35, h=0.32, color=(0.62, 0.20, 0.16, 1.0))   # (pass 456) a crate, not a cube
     make_cyl("Downspout", (-3.9, 9.15, 1.40), 0.05, 2.80, (0.44, 0.44, 0.46, 1.0), segments=8)
 
 
@@ -662,7 +663,8 @@ def build_alley_2026_09():
     # the face's picture.
     make_box("Face_Hair_Brick", (-0.8, AL_Y1 - 0.135, 1.715), (1.60, 0.002, 1.93), (0.50, 0.33, 0.26, 1.0))
     # the milk crate at the foot of the wall + what is on it
-    make_box("Wall_Crate", (-1.6, 11.55, 0.16), (0.35, 0.35, 0.32), (0.55, 0.45, 0.30, 1.0))
+    from _props.objects import make_milk_crate
+    make_milk_crate("Wall_Crate", -1.6, 11.55, 0.0, s=0.35, h=0.32, upside_down=True)   # (pass 456) "the milk crate at the foot of the wall": a crate, not a cube
     make_cyl("Brush_Jar", (-1.70, 11.66, 0.375), 0.040, 0.11, (0.72, 0.76, 0.74, 0.6), segments=10)
     make_cyl("Paint_Brush", (-1.70, 11.66, 0.52), 0.007, 0.18, (0.62, 0.50, 0.32, 1.0), segments=6)
     make_box("Carved_Cedar", (-1.48, 11.66, 0.345), (0.07, 0.05, 0.05), cedar_dk)
@@ -896,7 +898,8 @@ def build_vigil_2026_11():
     bx, by, bz = stand("Vv_Marit", -1.60, 11.03, 1.58, wool, white, "v", arms="front", stoop=0.10)
     make_cyl("Vv_Marit_Bowl" + T("v"), (bx, by, bz + 0.03), 0.046, 0.045, cedar, segments=12)
     make_cyl("Vv_Marit_Bowl_Rim" + T("v"), (bx, by, bz + 0.054), 0.036, 0.004, cedar_dk, segments=12)
-    make_box("Seat_Crate" + T("abc"), (-0.95, 11.15, 0.16), (0.35, 0.35, 0.32), (0.50, 0.42, 0.30, 1.0))
+    from _props.objects import make_milk_crate
+    make_milk_crate("Seat_Crate" + T("abc"), -0.95, 11.15, 0.0, s=0.35, h=0.32, color=(0.20, 0.42, 0.30, 1.0), upside_down=True)
     with _tagged("a"):
         lx, ly, lz = FIG.make_seated_figure("Va_Marit", -0.95, 11.15, heading=0.20, seat_h=0.32, h=1.58,
                                             coat=wool, hair=white, arms="lap")

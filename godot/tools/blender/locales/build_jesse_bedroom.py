@@ -10,6 +10,7 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.objects import make_smartphone
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_wall_with_openings
 from _props.views import make_view
 from _props.store_fixtures import make_counter, make_counter_bullnose, make_register
@@ -198,7 +199,7 @@ def build_hero_props():
     make_box("Guitar_Case_Ridge", (1.33, 0.35, 0.17), (0.92, 0.28, 0.03), (0.22, 0.19, 0.17, 1.0))
     # The carpet (the phone lands face-down on it) + the phone
     make_cyl("Carpet", (-0.4, 2.0, 0.010), 1.05, 0.008, (0.46, 0.40, 0.34, 1.0), segments=16)
-    make_box("Phone_Facedown", (-0.55, 1.9, 0.024), (0.08, 0.16, 0.012), (0.14, 0.14, 0.16, 1.0))
+    make_smartphone("Phone_Facedown", -0.55, 1.9, (0.024) - 0.006, state="back", along="Y", w=0.080, l=0.160)   # (pass 456) a phone, not a dark slab
 
 
 

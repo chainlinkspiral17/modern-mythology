@@ -392,8 +392,10 @@ def build_bianca_night_2026_10():
     with anyone." The cordless handset, face-up on the side table's top by the
     rocker, its antenna stub."""
     cy = ROOM_D - 0.70          # (draft 4) the table is at the wicker's arm
-    make_rot_box("Cordless_Phone", (0.60, cy + 0.08, 0.46 + 0.0125), (0.055, 0.17, 0.025), (0.86, 0.85, 0.80, 1.0), yaw=0.35)
-    make_rot_box("Cordless_Phone_Keys", (0.60, cy + 0.08, 0.46 + 0.0255), (0.040, 0.08, 0.001), (0.30, 0.30, 0.32, 1.0), yaw=0.35)
+    # (pass 456) a handset — earpiece, lit screen, twelve keys, the antenna —
+    # not a cream bar with a grey patch ("She sits with the cordless in her hand")
+    from _props.objects import make_cordless
+    make_cordless("Cordless_Phone", 0.60, cy + 0.08, 0.46, yaw=0.35)
 
 def build_don_geller_2026_11():
     """DON'S PORCH, ACROSS THE CUL-DE-SAC (pass 424). Bianca's Saturday: "Don's

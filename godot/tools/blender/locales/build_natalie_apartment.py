@@ -81,6 +81,7 @@ if _BLENDER_TOOLS not in sys.path:
     sys.path.insert(0, _BLENDER_TOOLS)
 
 from _props import palette as P
+from _props.objects import make_smartphone
 from _props.geometry import clear_scene, make_box, make_cyl, make_chamfer_box, make_lathe, make_tube, make_blob, make_rot_box, make_soft_box, export_glb
 from _props.furniture import make_table, make_chair, make_lamp
 from _props.structure import (make_wall_with_openings, 
@@ -542,9 +543,7 @@ def build_hero_props_2026_09():
     # ── NATALIE'S PHONE · kitchen counter north (top 0.98) ──
     # (2026-10-02: "Natalies_Phone" carried the closeup-natalie cue word)
     # its screen lit: it rings (ch12) — the phone was a black slab on a dark counter
-    make_box("Her_Phone_Screen", (-1.85, 5.05, 0.9915), (0.058, 0.120, 0.001), (0.78, 0.88, 0.98, 1.0))
-    make_box("Her_Phone", (-1.85, 5.05, 0.9855), (0.070, 0.140, 0.011),
-             (0.13, 0.13, 0.15, 1.0))
+    make_smartphone("Her_Phone", -1.85, 5.05, (0.9855) - 0.0055, state="lock", along="Y", w=0.070, l=0.140)   # (pass 456) a phone, not a dark slab
 
 
 def build_draft3_2026_09():

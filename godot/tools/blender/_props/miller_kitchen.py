@@ -646,8 +646,8 @@ def dress_dawn():
     make_box("Kettle_Handle", (RANGE_X + 0.19, YN - 0.33 + 0.16, TOP_Z + 0.215), (0.16, 0.02, 0.03), (0.14, 0.14, 0.15, 1.0))
     make_box("Coffee_Grinder", (-2.80, YN - 0.40, TOP_Z + 0.10), (0.12, 0.12, 0.20), (0.20, 0.20, 0.22, 1.0))
     make_cyl("Coffee_Cup_Bianca", (TX + 0.55, TY, top + 0.045), 0.04, 0.09, (0.94, 0.92, 0.88, 1.0), segments=10)
-    make_box("Cordless_Handset", (TX + 0.35, TY - 0.25, top + 0.015), (0.05, 0.18, 0.03), (0.18, 0.18, 0.20, 1.0))
-    make_box("Cordless_Handset_Screen", (TX + 0.35, TY - 0.20, top + 0.0305), (0.034, 0.05, 0.001), (0.62, 0.74, 0.66, 1.0))
+    from .objects import make_cordless
+    make_cordless("Cordless_Handset", TX + 0.35, TY - 0.25, top, yaw=0.25, body=(0.18, 0.18, 0.20, 1.0))   # (pass 456) a handset, not a bar
     make_box("Stationery_Sheet", (TX - 0.20, TY - 0.20, top + 0.001), (0.16, 0.21, 0.002), PAPER)
     for k in range(5):
         make_box(f"Stationery_Line_{k}", (TX - 0.20, TY - 0.13 - k * 0.025, top + 0.0025), (0.12, 0.004, 0.001), (0.24, 0.26, 0.40, 1.0))

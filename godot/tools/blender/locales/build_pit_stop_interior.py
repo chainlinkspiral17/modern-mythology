@@ -47,6 +47,7 @@ import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.furniture import make_table, make_chair
+from _props.objects import make_smartphone
 from _props import palette as P
 from _props.vehicles import make_car
 from _props.geometry import make_blob, make_lathe,  clear_scene, make_box, make_cyl, make_tube, export_glb, make_rot_box
@@ -739,8 +740,7 @@ def build_hero_props_2026_09():
     make_box("Bill_Pencil_Line", (1.7, 4.45, 1.0109), (0.100, 0.008, 0.0005),
              (0.38, 0.37, 0.36, 1.0))
     # ── BEN'S PHONE · on the prep line (top 0.95) ──
-    make_box("Island_Phone", (1.15, 8.12, 0.9555), (0.070, 0.140, 0.011),
-             (0.13, 0.13, 0.15, 1.0))
+    make_smartphone("Island_Phone", 1.15, 8.12, (0.9555) - 0.0055, state="lock", along="Y", w=0.070, l=0.140)   # (pass 456) a phone, not a dark slab
 
 
 def build_prints_2026_09():
