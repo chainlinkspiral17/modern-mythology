@@ -155,7 +155,8 @@ def build_squad_room():
         make_table(f"Squad_Desk_{k}", dx, dy, w=1.5, d=0.75, h=0.76, wood=(0.50, 0.44, 0.36, 1.0))
         make_box(f"Squad_Desk_{k}_CRT", (dx - 0.35, dy + 0.12, 0.94), (0.40, 0.38, 0.36), (0.80, 0.78, 0.70, 1.0))
         make_box(f"Squad_Desk_{k}_CRT_Screen", (dx - 0.35, dy - 0.075, 0.96), (0.30, 0.01, 0.22), (0.16, 0.22, 0.20, 1.0))
-        make_box(f"Squad_Desk_{k}_Phone", (dx + 0.40, dy, 0.80), (0.20, 0.22, 0.08), (0.22, 0.22, 0.22, 1.0))
+        from _props.objects import make_desk_phone
+        make_desk_phone(f"Squad_Desk_{k}_Phone", dx + 0.40, dy, 0.76, body=(0.22, 0.22, 0.22, 1.0))   # (pass 458) a telephone, not a box
         make_box(f"Squad_Desk_{k}_Tray", (dx + 0.10, dy + 0.18, 0.80), (0.28, 0.34, 0.08), (0.30, 0.30, 0.30, 1.0))
         make_chair(f"Squad_Desk_{k}_Chair", dx, dy - 0.75, yaw=0.0, seat_col=(0.20, 0.22, 0.30, 1.0))
     for k in range(4):

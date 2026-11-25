@@ -427,9 +427,9 @@ metadata/fov = 42.0
 
 ; insert: the seventh floor's smart-glass running the garden
 [node name="shot_insert_tower" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 1.7, 5.0)
-rotation = Vector3(0.1013, 0.0867, 0.0)
-metadata/fov = 42.0
+position = Vector3(45.000, 1.700, 28.000)
+rotation = Vector3(0.2203, 0.0000, 0.0)
+metadata/fov = 50.0
 
 ; insert: the tower's doors from the clearing
 ; (2026-11-04) "They walked across the gravel to the double-doors of the

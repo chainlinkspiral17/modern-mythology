@@ -3835,6 +3835,44 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-25 · pass 458: ranks 145–192 by the stranger test; the last box telephones.**
+One line of each of the next 48 (set, cue) pairs rendered and read: 38 pass.
+- THE ICED TEA on Linda's porch (3 lines): glasses of tea — glass, amber,
+  ice, a lemon wedge (`make_iced_tea`); they were tan cylinders and read as
+  wooden cups.
+- MAYA'S THINKPAD (4): `make_laptop` — keys, trackpad, the red dot, the chat
+  window lit on its screen ("The message from F.T. sits at the top of the
+  chat window"); it was a grey slab and a pale-blue slab.
+- JESSE'S PHONE (3): face-up and lit on the carpet, with its own small glow
+  (Phone_Facedown_Screen_Practical) — "His phone pings" comes BEFORE "He puts
+  the phone face-down on the carpet", and the frame was black.
+- THE UNIT'S BACK DOOR (ch14 n22, "Tonight the door is open. Two inches. A
+  faint light is visible through the gap"): the plain door frame faced the
+  other way. Its own frame on the unit's door and its lit gap; the door is
+  "painted institutional gray" now (it was near-black).
+- THE TEN-DOLLAR BILL (2): a banknote (border, oval, seal, corner numerals)
+  in a macro frame — a plain slip in a wide one.
+- CEDAR TOWER from the clearing: the frame stood 12 m off the wall and showed
+  a dumpster; it stands back and looks up the seven stories.
+- THE BOX TELEPHONES: the school newspaper's, the three police desks', the
+  Gas & Go office's take `make_desk_phone`.
+- A CUE CORRECTED BY THE TEXT: "The cut was the hand Kai had seen in the lid
+  of the box" (ch11_per n18) is the CARVER'S hand — his style — and the line
+  is about the bowl: `insert bowl`. (A frame on a carved hand in the lid was
+  written and taken out before the commit; the lid has a spiral, as ch10
+  says.) Dropped as word matches: "insert stove" on Tem's line about the
+  cabin's stove, "insert hand" on two lines about people's hands.
+Draft 1 shipped. DRAFT 2 TARGETS (read in this band, not fixed):
+- the Henderson garage workbench at dusk is dark (ch5); the stopwatch on the
+  bench is a pale dot; the Pit Stop prints are black rectangles until their
+  pictures are made; Finn's duffel is a dark lump;
+- Lena's studio canvas did not render — read it;
+- the laptop helper for the other slab laptops in the game (grep them);
+- ranks 193–240 by the same question.
+Deck must REBUILD caldwell_porch_night, jesse_bedroom, maya_bedroom,
+new_auburn_road, nexcorp_gas_go, pit_stop_interior, school_newspaper,
+small_wood_police.
+
 **2026-11-25 · pass 457: ranks 97–144 by the stranger test, and Graustark's three close-ups.**
 One line of each of the next 48 (set, cue) pairs rendered and read: 36 pass.
 - GRAUSTARK (left from 456): the STEAMSHIP frame stood 11 m off the stern

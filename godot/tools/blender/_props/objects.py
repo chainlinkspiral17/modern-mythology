@@ -472,3 +472,57 @@ def make_loaf(prefix, x, y, base_z, *, along="X", length=0.30, r=0.075,
         sx, sy = W((-1) ** k * r * 0.5, length / 2.0 + 0.07 + k * 0.045)     # close by the cut end: further out they left the board
         make_cyl(nm(f"Slice_{k}"), (sx, sy, base_z + 0.007 + k * 0.012), r * 0.90, 0.012, crumb, segments=12)
         make_cyl(nm(f"Slice_{k}_Crust"), (sx, sy, base_z + 0.0065 + k * 0.012), r * 0.98, 0.010, crust, segments=12)
+
+
+def make_iced_tea(prefix, x, y, base_z, *, h=0.145, r=0.036, lemon=True, straw=False):
+    """A tall glass of iced tea (pass 458): the glass, the amber tea to
+    three-quarters, ice at the surface, a lemon wedge on the rim. They were
+    tan cylinders — wooden cups in the frame."""
+    make_cyl(f"{prefix}", (x, y, base_z + h / 2.0), r, h, (0.80, 0.88, 0.90, 0.32), segments=14)
+    make_cyl(f"{prefix}_Tea", (x, y, base_z + h * 0.39), r * 0.90, h * 0.74, (0.66, 0.34, 0.10, 0.92), segments=14)
+    for k, (dx, dy) in enumerate(((0.012, 0.006), (-0.012, 0.004), (0.0, -0.013))):
+        make_box(f"{prefix}_Ice_{k}", (x + dx, y + dy, base_z + h * 0.78), (0.018, 0.018, 0.016), (0.92, 0.95, 0.96, 0.85))
+    make_cyl(f"{prefix}_Base", (x, y, base_z + 0.004), r * 0.94, 0.008, (0.86, 0.92, 0.94, 0.6), segments=14)
+    if lemon:
+        make_box(f"{prefix}_Lemon", (x + r * 0.92, y, base_z + h + 0.004), (0.010, 0.030, 0.022), (0.96, 0.86, 0.24, 1.0))
+    if straw:
+        make_cyl(f"{prefix}_Straw", (x - r * 0.45, y, base_z + h * 0.72), 0.004, h * 0.85, (0.90, 0.28, 0.24, 1.0), segments=5)
+
+
+def make_laptop(prefix, x, y, base_z, *, yaw=0.0, w=0.34, d=0.24, body=(0.16, 0.16, 0.18, 1.0), screen="chat"):
+    """An open laptop (pass 458): the base with its keyboard — five rows of
+    keys, the trackpad, a red pointing-stick dot — and the lid standing
+    behind it, its screen LIT with what the line says: "chat" (a window, a
+    side list, message bubbles, the input bar) or "doc" (ruled text). They
+    were a grey slab and a pale-blue slab. The lid stands at local +v, the
+    screen facing -v."""
+    from .geometry import make_rot_box
+    at = _local(x, y, yaw)
+    def B(part, u, v, z, su, sv, sz, col, pitch=0.0):
+        px, py = at(u, v)
+        make_rot_box(f"{prefix}{part}", (px, py, base_z + z), (su, sv, sz), col, yaw=yaw, pitch=pitch)
+    B("_Base", 0.0, 0.0, 0.009, w, d, 0.018, body)
+    key = (0.30, 0.30, 0.33, 1.0)
+    for r in range(5):
+        for c in range(11):
+            B(f"_Key_{r}_{c}", -w * 0.42 + c * w * 0.084, d * 0.36 - r * d * 0.115, 0.0188, w * 0.068, d * 0.085, 0.0016, key)
+    B("_Trackpad", 0.0, -d * 0.36, 0.0188, w * 0.30, d * 0.20, 0.0012, (0.24, 0.24, 0.27, 1.0))
+    B("_Stick", 0.0, d * 0.13, 0.0200, 0.008, 0.008, 0.002, (0.86, 0.16, 0.14, 1.0))
+    sh = d * 0.96                       # the lid's height
+    lv = d / 2.0 + 0.004
+    B("_Lid", 0.0, lv, 0.018 + sh / 2.0, w, 0.010, sh, body)
+    sv = lv - 0.0065
+    lit = (0.92, 0.94, 0.97, 1.0)
+    B("_Screen", 0.0, sv, 0.018 + sh / 2.0, w * 0.90, 0.003, sh * 0.86, lit)
+    z0 = 0.018 + sh / 2.0
+    f = sv - 0.0022
+    if screen == "chat":
+        B("_Screen_Bar", 0.0, f, z0 + sh * 0.385, w * 0.90, 0.0014, sh * 0.07, (0.24, 0.30, 0.44, 1.0))
+        B("_Screen_List", -w * 0.33, f, z0 - sh * 0.03, w * 0.22, 0.0014, sh * 0.74, (0.80, 0.83, 0.88, 1.0))
+        for k, (uu, zz, ww, col) in enumerate(((0.02, 0.24, 0.30, (0.78, 0.80, 0.84, 1.0)), (0.22, 0.10, 0.26, (0.26, 0.54, 0.94, 1.0)),
+                                               (0.04, -0.04, 0.34, (0.78, 0.80, 0.84, 1.0)), (0.20, -0.17, 0.22, (0.26, 0.54, 0.94, 1.0)))):
+            B(f"_Screen_Bubble_{k}", w * uu, f, z0 + sh * zz, w * ww, 0.0014, sh * 0.09, col)
+        B("_Screen_Input", w * 0.11, f, z0 - sh * 0.36, w * 0.62, 0.0014, sh * 0.06, (0.84, 0.86, 0.90, 1.0))
+    else:
+        for k in range(7):
+            B(f"_Screen_Line_{k}", -w * 0.04 if k % 3 else -w * 0.10, f, z0 + sh * (0.30 - k * 0.095), w * (0.70 if k % 3 else 0.56), 0.0014, sh * 0.03, (0.20, 0.22, 0.28, 1.0))

@@ -244,7 +244,8 @@ def build_north_wall():
     for i, ly in enumerate((-0.33, 0.33)):
         make_box(f"Advisor_Desk_Leg_{i}", (dx - 0.71, dy + ly, 0.365), (0.04, 0.04, 0.73), (0.40, 0.42, 0.44, 1.0))
     t = 0.76
-    make_box("Advisor_Phone", (dx - 0.50, dy + 0.18, t + 0.05), (0.22, 0.20, 0.10), COL_BEIGE)
+    from _props.objects import make_desk_phone
+    make_desk_phone("Advisor_Phone", dx - 0.50, dy + 0.18, t, body=COL_BEIGE)   # (pass 458) a telephone, not a beige box
     make_box("Advisor_Proofs", (dx, dy - 0.05, t + 0.02), (0.30, 0.40, 0.04), COL_PAPER)
     make_lathe("Advisor_Mug", (dx + 0.30, dy - 0.20, t), [(0.0, 0.0), (0.04, 0.0), (0.042, 0.10), (0.0, 0.10)], (0.62, 0.18, 0.16, 1.0), segments=10)
     make_cyl("Advisor_Lamp_Base", (dx + 0.55, dy + 0.22, t + 0.01), 0.07, 0.02, COL_DARK, segments=10)

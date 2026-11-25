@@ -462,6 +462,14 @@ omni_range = 6.0
 shadow_enabled = false
 
 ; insert: the unit's back door open two inches, a faint light through the gap
+; (pass 458) THE UNIT'S BACK DOOR, ajar: "Tonight the door is open. Two inches. A
+; faint light is visible through the gap" (ch14 n22). The plain door frame
+; faces the other way (the Foxhole's).
+[node name="shot_insert_door__new_auburn_strip_mall_early" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(8.600, 1.450, -42.600)
+rotation = Vector3(-0.0995, -1.2815, 0.0)
+metadata/fov = 34.0
+
 [node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 1.4, -41.5)
 rotation = Vector3(-0.1626, 3.0119, 0.0)

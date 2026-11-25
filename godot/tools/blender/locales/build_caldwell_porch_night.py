@@ -177,10 +177,10 @@ def build_dressing():
     # Canon (vol6 ch21): "two glasses of iced tea — the one she
     # poured for herself and the one she poured for Maya"
     for gi, gx in enumerate((tx-0.10, tx+0.08)):
-        make_cyl(f"IcedTea_Glass_{gi}", (gx, ty-0.05, 0.61), 0.04, 0.14,
-                 (0.62,0.52,0.34,0.8))
-        make_cyl(f"IcedTea_Ice_{gi}", (gx, ty-0.05, 0.66), 0.032, 0.03,
-                 (0.86,0.88,0.86,0.9), segments=6)
+        # (pass 458) glasses of TEA — glass, amber, ice, a lemon wedge; they
+        # were tan cylinders and read as wooden cups
+        from _props.objects import make_iced_tea
+        make_iced_tea(f"IcedTea_Glass_{gi}", gx, ty-0.05, 0.54)
     make_box("Paper", (tx+0.12, ty+0.12, 0.55), (0.20, 0.14, 0.03), P.NEWSPRINT)
     # Maya's bike, leaned at the porch's east end past the railing
     # Leaned AGAINST the east rail, not through it (the rear

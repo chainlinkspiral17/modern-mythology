@@ -1011,7 +1011,7 @@
     },
     {
       "char": "tem",
-      "text": "[shot:insert stove]The chair is the chair at the cabin in front of the wood stove. The reader is the reader my grandfather kept at the cabin from 2042 until I inherited it in 2046. The reader is a good reader.",
+      "text": "The chair is the chair at the cabin in front of the wood stove. The reader is the reader my grandfather kept at the cabin from 2042 until I inherited it in 2046. The reader is a good reader.",
       "expr": "serious",
       "t": "say"
     },

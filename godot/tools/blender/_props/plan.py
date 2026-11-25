@@ -31,7 +31,7 @@ _XY = ("make_chair", "make_table", "make_bed", "make_stool", "make_bench", "make
 # The OLDER objects helpers (make_bottle, make_mug ...) stay opt-in: builders
 # already compensate those by hand.
 _OBJ_XY = ("make_smartphone", "make_cordless", "make_milk_crate", "make_notebook", "make_scanner_gun",
-           "make_speak_spell", "make_pallet", "make_paper_cup", "make_desk_phone", "make_rotary_phone", "make_loaf")
+           "make_speak_spell", "make_pallet", "make_paper_cup", "make_desk_phone", "make_rotary_phone", "make_loaf", "make_iced_tea", "make_laptop")
 _PATH = ("make_tube",)
 
 

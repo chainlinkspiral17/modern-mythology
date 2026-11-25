@@ -342,7 +342,7 @@ def build_foxhole_strip_mall_2026_08():
     # door repainted darker than its neighbors, no lamp.
     ux = mx - 5.02
     make_box("Unit_BackDoor", (ux, my - 3.5, 1.05), (0.06, 0.95, 2.10),
-             (0.24, 0.23, 0.24, 1.0))
+             (0.50, 0.51, 0.52, 1.0))   # (pass 458) "a metal service door, painted institutional gray" (ch14 n21) — it was near-black
     make_box("Unit_Window_Frame", (ux, my - 4.8, 1.60), (0.05, 1.30, 1.00), stucco_dk)
     for pi2, (poy, poz, w, h) in enumerate((
             (-0.30, 0.18, 0.62, 0.55), (0.28, -0.12, 0.66, 0.60),

@@ -344,8 +344,8 @@ def build_office():
     make_box("Monitor_Screen", (dx, dy + 0.135, 1.00),
              (0.46, 0.001, 0.32), (0.16, 0.32, 0.56, 1.0))
     # Phone (Skip takes the dispatch calls here)
-    make_box("Office_Phone", (dx + 0.50, dy, 0.81),
-             (0.20, 0.30, 0.10), (0.32, 0.30, 0.28, 1.0))
+    from _props.objects import make_desk_phone
+    make_desk_phone("Office_Phone", dx + 0.50, dy, 0.76, yaw=1.5708, body=(0.32, 0.30, 0.28, 1.0))   # (pass 458) a telephone, not a box
     # Office chair
     make_box("OfficeChair_Seat", (dx, dy - 0.40, 0.46),
              (0.46, 0.46, 0.08), (0.18, 0.16, 0.16, 1.0))

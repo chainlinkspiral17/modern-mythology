@@ -737,8 +737,17 @@ def build_hero_props_2026_09():
     # ── THE TEN · flat on the lunch counter (top 1.005) ──
     make_box("Ten_Dollar_Bill", (1.7, 4.45, 1.0113), (0.156, 0.066, 0.0015),
              (0.66, 0.66, 0.58, 1.0))
-    make_box("Bill_Pencil_Line", (1.7, 4.45, 1.0109), (0.100, 0.008, 0.0005),
+    make_box("Bill_Pencil_Line", (1.7, 4.438, 1.0131), (0.100, 0.006, 0.0005),
              (0.38, 0.37, 0.36, 1.0))
+    # (pass 458) a BANKNOTE: a pale border, the oval, the seal, four corner
+    # numerals — it was a plain green slip in a wide frame
+    for _nm, _c, _sz, _col in (("Border", (1.7, 4.45, 1.01215), (0.150, 0.060, 0.0004), (0.70, 0.78, 0.66, 1.0)),
+                               ("Field", (1.7, 4.45, 1.01245), (0.140, 0.050, 0.0004), (0.36, 0.52, 0.38, 1.0))):
+        make_box("Ten_Dollar_Bill_" + _nm, _c, _sz, _col)
+    make_cyl("Ten_Dollar_Bill_Oval", (1.7, 4.45, 1.01285), 0.019, 0.0006, (0.74, 0.80, 0.70, 1.0), segments=12)
+    make_cyl("Ten_Dollar_Bill_Seal", (1.745, 4.45, 1.01285), 0.008, 0.0006, (0.22, 0.40, 0.26, 1.0), segments=8)
+    for _k, (_ux, _uy) in enumerate(((-0.062, 0.018), (0.062, 0.018), (-0.062, -0.018), (0.062, -0.018))):
+        make_box(f"Ten_Dollar_Bill_Num_{_k}", (1.7 + _ux, 4.45 + _uy, 1.01285), (0.010, 0.010, 0.0006), (0.86, 0.90, 0.80, 1.0))
     # ── BEN'S PHONE · on the prep line (top 0.95) ──
     make_smartphone("Island_Phone", 1.15, 8.12, (0.9555) - 0.0055, state="lock", along="Y", w=0.070, l=0.140)   # (pass 456) a phone, not a dark slab
 

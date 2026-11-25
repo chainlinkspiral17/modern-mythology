@@ -339,6 +339,22 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-11-25 · read the sentence before building its subject (pass 458)
+
+- **"hand" is not always a hand.** "The cut was the hand Kai had seen in the
+  lid of the box" — the carver's hand, his style. A frame on a carved hand in
+  the lid was half built before the lines around it were read. Before adding
+  geometry for a cue, read three lines either side and grep the object's
+  first description (ch10 says the lid has a spiral).
+- **Order of events decides the state.** "His phone pings" precedes "He puts
+  the phone face-down on the carpet": the prop named Phone_Facedown was built
+  for the later line and played black under the earlier one.
+- **One marker cannot serve two doors.** `shot_insert_door` at the strip mall
+  faced the Foxhole; ch14's door is the unit's, behind it. A view-specific
+  marker (`shot_insert_door__<view>`) keeps both.
+- **A material and a container:** iced tea needs the glass to be glass (alpha)
+  and the tea to be tea (amber) or the pair reads as wood.
+
 ### 2026-11-25 · the cue word can name the wrong thing in the right room (pass 457)
 
 - **"kerosene" is the lamp, not the can.** Three lines about kerosene LIGHT

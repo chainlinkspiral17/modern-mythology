@@ -102,8 +102,11 @@ def build_desk_lamp():
     make_lathe("Lamp_Head", (dx-0.20, dy+0.20, 1.10), [(0.0, 0.0), (0.03, 0.0), (0.065, 0.10), (0.06, 0.11), (0.0, 0.11)], COL_ACCENT, segments=10)
     make_lathe("Lamp_Bulb", (dx-0.20, dy+0.20, 1.11), [(0.0, 0.0), (0.02, 0.005), (0.024, 0.03), (0.0, 0.05)], (0.98, 0.94, 0.80, 1.0), segments=8)
     # A laptop, open, on the desk
-    make_box("Laptop_Base", (dx+0.16, dy+0.06, 0.77), (0.34, 0.24, 0.03), P.METAL_STEEL)
-    make_box("Laptop_Screen", (dx+0.16, dy+0.18, 0.90), (0.34, 0.02, 0.24), (0.62, 0.80, 0.92, 1.0))
+    # (pass 458) THE THINKPAD: keys, trackpad, the red dot, and the chat
+    # window lit on its screen ("The message from F.T. sits at the top of
+    # the chat window") — it was a grey slab and a pale-blue slab
+    from _props.objects import make_laptop
+    make_laptop("Laptop", dx+0.16, dy+0.06, 0.76, screen="chat")
     # A little stack of paperbacks
     for bi in range(3):
         make_box(f"Desk_Book_{bi}", (dx-0.36, dy-0.14+bi*0.05, 0.79+bi*0.05), (0.16, 0.24, 0.05),
