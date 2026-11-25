@@ -414,6 +414,9 @@ def install_stubs():
                      # (pass 400) Finn's wood, one look in five rooms: stubbed,
                      # the hexagon was nobody's subject and nobody's clip
                      "charred_wood",
+                     # (pass 454) Olaf's bowls, one bowl in two rooms: stubbed,
+                     # the bakery's four bowls recorded as nothing at all
+                     "cedar_bowls",
                      # whole ROOMS shared by two locales (2026-10-06: the
                      # Ramos kitchen is one room dressed twice) — last, as
                      # they import the modules above

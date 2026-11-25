@@ -236,9 +236,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.450, 1.420, -5.450)
 rotation = Vector3(-0.5041, 0.3430, 0.0)
 metadata/fov = 32.0
 
+; (pass 454) the whole front door from the first aisle: leaf, pull, deadbolt,
+; bottom lock, chain, the card, the bell over it. It stood high by the display
+; tower and looked down at a dark slab.
 [node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.000, 2.189, -2.646)
-rotation = Vector3(-0.2965, 2.9828, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200, 1.550, -2.900)
+rotation = Vector3(-0.1455, -2.9008, 0.0)
+metadata/fov = 42.0
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 

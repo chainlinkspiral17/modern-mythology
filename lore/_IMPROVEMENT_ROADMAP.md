@@ -3835,6 +3835,80 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-25 · pass 454: the 48 most-cued close-ups, judged by one question — would a stranger name the object? Ten failed; the top five rebuilt at the OBJECT.**
+The 48 (set, cue) pairs with the most lines (about 450 lines) rendered in
+game and read. 38 pass. The ten that fail, and this draft's five:
+- THE CABIN'S COFFEE (13 lines; ch1, ch4, ch11, ch19, ch20): the frame was
+  a bare ten-sided cylinder. Now the stoneware mug has a handle and coffee in
+  it, and the chapters that serve coffee at the table have what the text
+  has: the pot Tem pours from ("Tem brought the coffee. Tem poured Lena's cup
+  first") on "the cabin's folded towel" (ch11) — an enamel pot, spout, lid,
+  handle, on a striped towel — and a mug for each person seated: one (ch4,
+  alone), two (ch1's breakfast), four (ch11, ch19, ch20). Groups cab_coffee /
+  cab_cup2 / cab_cup4. The table is ROUND: the first placement hung the towel
+  off its edge (caught in the Blender read). The pot then stood between the
+  lens and ch19's cedar bell-piece (vantage gate): that marker moved, not the
+  pot.
+- THE CENTRO DOCK DOOR (8 lines; ch10, ch16): the frame was the yellow floor
+  stripe from inside. The text has a door, and the set had none: "goes out
+  the dock door", "The dock door behind him opens", "closes behind him", "The
+  dock door is unlocked", "BT is at the dock door with his keys", "push the
+  dock door open" (ch22). Built: a steel personnel door east of the roll-up
+  (lit wired-glass lite, lever, deadbolt, kick plate; panic bar, closer and
+  EXIT box inside), a caged lamp over it (DockDoor_Lamp_Practical), a
+  concrete landing, yellow pipe rails, five steps to the apron. The east rack
+  lost its second bay (it stood across the door), the dock board went to the
+  east wall, the apron's empty pallets to the west of the roll-up. Four
+  "insert dock" cues that mean the dock as a PLACE (n199, n204, n234, n240)
+  dropped; "The dock is empty" (ch10 n189, ch16 n64) returns to the wide.
+- THE COMIC SHOP'S FRONT DOOR (11 lines; ch12, ch21, ch2, ch4): it was one
+  1.9 m slab with its glass buried inside it, a brass box for a deadbolt and
+  a grey bar for a chain. Now a shopfront door: bronze frame, fixed sidelight,
+  the glazed leaf, a pull bar, the deadbolt with its thumb-turn, the bottom
+  lock, the chain on its jamb plate ("front door deadbolt first, then the
+  bottom lock, then the chain inside"), the card on its string, the bell over
+  the leaf. Framed whole from the first aisle. READ: better, still dim — the
+  hardware is small in the frame and the glass is night-blue (draft 2 below).
+- THE PHONES (New Orleans office 11 lines, Miller kitchen 9): one dark box
+  each, the colour of the desk. `_props.objects.make_smartphone` — a case, a
+  bright rim, a LIT screen in the state the line says (call / text / lock /
+  off / back). Antonio's rings ("The screen said Q. PAUL"); Mike's and
+  Eileen's shows a message thread, and moved clear of the range (ch11's
+  skillet handle lay across it).
+- HANS'S BOWLS AND KAI'S CROW (15 lines; ch17 Aria): the four bowls were
+  plain 17 cm lathes and the crow two boxes standing on one for the whole
+  segment. Now the bakery stands the SAME bowl the cabin does (new
+  `_props/cedar_bowls.make_olaf_bowl`, the cabin's builder calls it too: the
+  spiral, the three totems, the rim; totems named so "the crow on Roy's bowl"
+  has a subject), and Kai's crow is `make_crow`, turned to stand across the
+  row (`creatures.quarter_turn`), present only for n76–87 — the twin view
+  `hans_bakery_bowls_crow`, cut to and back by inline `[view:]`.
+- Two "insert cedar" cues that were word matches, not the bell-piece, dropped
+  (ch20_each n8 "how cedar held what it had to hold"; ch1 n44 "the cedar
+  roof").
+- GATE: `cedar_bowls` added to the audit stub's real modules (unlisted, the
+  bakery's bowls recorded as nothing). The first crow turn was a bpy rotation
+  after the build: the stub could not see it and silently dropped a third of
+  the room's parts — the turn is done on the helpers' arguments now.
+Draft 1 of five objects shipped. DRAFT 2 TARGETS:
+- the other five that failed: Centro break room "insert coffee" (no pot or
+  cup reads), Cedar Tower "insert door" (door the colour of its wall), the
+  cabin's cedar bell-piece (2 cm of geometry — needs its real form and a
+  macro frame; ch19_cedar n25, ch19_ring n48, ch13_porch n10), the grocery
+  aisle's "insert pallet" (a box: no slats), Finn's "insert crow" (dark crow
+  on a dark frame);
+- the comic shop door: hardware larger and brighter, daylight in the glass by
+  hour, the leaf OPEN on the lines somebody comes in, the card's two faces;
+- the phones by chapter: Antonio's face-DOWN after "He put the phone
+  face-down on the desk" (ch7) and dark for "the dead phone" (ch5) — twin
+  views, `state="back"` / `"off"` are built; Mike's "face-down again" (ch3);
+- the dock door open on the two lines it opens; the roll-up down before the
+  truck; the landing in the dream view;
+- the bowls' figures that MOVE in ch17 (the totems turn, the eyes open);
+- the next 48 (set, cue) pairs by line count, same question.
+Deck must REBUILD cabin_interior, centro_stockroom, cosmic_comics_interior,
+hans_bakery_back_kitchen, miller_kitchen, new_orleans_office.
+
 **2026-11-25 · pass 453: the register reads as a register (ten rooms); three close-ups re-aimed.**
 Playtest 453a + 454a (44 random lines) and the till flagged in 452a.
 - THE USER, of the first re-frame of the comic shop's till: "That doesn't

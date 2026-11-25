@@ -62,7 +62,7 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path:
     sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.objects import make_bottle
+from _props.objects import make_bottle, make_smartphone
 from _props.geometry import (clear_scene, make_box, make_cyl, make_chamfer_box, make_lathe, make_tube,
                              make_rot_box, make_blob, make_taper_cyl, export_glb)
 from _props.structure import make_floor, make_ceiling, make_crown_molding, make_wall_with_openings
@@ -190,9 +190,12 @@ def build_desk_and_chairs():
                COL_BRASS, segments=10)
     make_tube("Lamp_Arm", [(lx_, ly_, top + 0.21), (lx_, ly_ - 0.06, top + 0.27)], 0.008, COL_BRASS, segments=5)
     make_cyl("Lamp_Shade", (lx_, ly_ - 0.06, top + 0.27), 0.075, 0.34, COL_BANKER_GREEN, axis='X', segments=10)
-    # the smartphone, face-down ("The screen said Q. PAUL")
-    make_box("Cell_Phone", (dx + 0.30, dy - 0.10, top + 0.0045), (0.075, 0.155, 0.009), (0.12, 0.12, 0.14, 1.0))
-    make_box("Cell_Phone_Camera", (dx + 0.28, dy - 0.04, top + 0.0105), (0.025, 0.025, 0.003), (0.30, 0.30, 0.32, 1.0))
+    # the smartphone (pass 454: it was one dark box on the dark desk — eleven
+    # "insert phone" lines framed a slab). Face-up and ringing: "The phone on
+    # the desk was buzzing ... The screen said Q. PAUL" (ch7). DRAFT 2: the
+    # face-down state after "He put the phone face-down on the desk" (ch7),
+    # as a twin view — make_smartphone(state="back") is ready for it.
+    make_smartphone("Cell_Phone", dx + 0.30, dy - 0.10, top, state="call")
     # the bourbon and the chipped glass
     make_lathe("Bourbon_Bottle", (dx - 0.25, dy + 0.15, top), [(0.0, 0.0), (0.045, 0.0), (0.05, 0.03), (0.05, 0.17), (0.03, 0.22), (0.016, 0.24), (0.016, 0.28), (0.0, 0.28)],
                (0.48, 0.30, 0.12, 0.9), segments=8)

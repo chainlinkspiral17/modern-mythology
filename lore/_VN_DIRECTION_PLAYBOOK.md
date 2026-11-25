@@ -339,6 +339,33 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-11-25 · the stranger test, run on the frames that matter most (pass 454)
+
+- **Rank the close-ups by lines, read from the top.** 48 (set, cue) pairs
+  carry about 450 lines. Rendering one line of each and asking "would a
+  stranger name the object?" found ten failures the aim / obstruction gates
+  all pass: the gates prove the lens points at the part, not that the part is
+  the thing.
+- **When the frame fails, look for what the TEXT has that the set lacks.**
+  The dock close-up framed a floor stripe because the set had no dock door;
+  the text names it nine times (goes out, opens, closes, unlocked, keys,
+  pushed open). The coffee close-up framed a tube because there was no pot;
+  the text pours from one. Grep the verbs around the cue before touching the
+  camera.
+- **A cue is a word; check it means the object.** "insert dock" sat on four
+  lines about the dock as a place, "insert cedar" on "the cedar roof" and
+  "how cedar held what it had to hold". Dropped — the wide is the right frame.
+- **An insert holds until something releases it.** The line after "goes out
+  the dock door" is "The dock is empty": it needs `[shot:establish]` or the
+  door stays on screen over the empty apron.
+- **A thing that is only there for some lines is a twin view** (Kai's crow on
+  the bowl, n76–87): `view_twin.py FROM TO --scenes file:<line>`, the return
+  `[view:FROM]` by hand on the line the story returns on, the builder parts
+  tagged to the twin, parts both views share moved to a VIEW_GROUP.
+- **Lit screens are bright vertex colour**, not emission: a phone reads when
+  its screen is the brightest thing on the desk and carries the shapes of
+  what the line says (call buttons, message bubbles).
+
 ### 2026-11-25 · the cue names the thing; the frame must find its face (pass 453)
 
 - **What happened:** three inserts passed every gate and framed the wrong

@@ -608,46 +608,13 @@ def build_table():
     # size of his palm" (it stood here at Marit's size). The water in it was
     # invented (no line puts water in a bowl).
     def olaf_bowl(pfx, bx, by, tag, s=1.0, mark=True, slicker=False, phase=None):
-        T_ = lambda nm: "%s_%s__%s" % (pfx, nm, tag)
-        make_cyl(T_("Foot"), (bx, by, top_z + 0.012 * s), 0.052 * s, 0.024 * s, cedar_dk, segments=14)
-        if mark:
-            make_cyl(T_("FlameMark"), (bx, by, top_z + 0.003), 0.026 * s, 0.004, char, segments=8)
-        make_taper_cyl(T_("Body"), (bx, by, top_z + 0.072 * s), 0.058 * s, 0.115 * s, 0.096 * s, cedar_md, segments=16)
-        # (pass 408) THE SPIRAL is one carved line, not three rings: "A spiral
-        # was cut into the outside that ran from the rim down to the base in a
-        # single continuous curve" (ch11_per n13), two and a half turns here.
-        # The figures are "Risen" (n14): three totems a quarter-turn apart from
-        # the rim — "A crow on a fencepost at the level of the rim … An octopus
-        # a quarter of the way around … A ferret on a stair-rail another
-        # quarter around" (n15-16) — and "Between the totems other figures,
-        # smaller" (n17). At this size, reliefs the light catches.
-        def r_at(h):              # the body's outer radius, h (scaled) above its foot
-            return (0.058 + 0.057 * h / (0.096 * s)) * s
-        ph = (bx * 7.0 + by * 3.0) % 6.2832 if phase is None else phase
-        sl = max(s, 0.85)          # the carving does not shrink with a palm-size bowl
-        pts = []
-        for k in range(41):
-            u = k / 40.0
-            h = (0.088 - 0.076 * u) * s
-            a = ph + u * 2.5 * 6.2832
-            r = r_at(h) + 0.0010 * s
-            pts.append((bx + r * _m.cos(a), by + r * _m.sin(a), top_z + 0.024 * s + h))
-        make_tube(T_("Spiral"), pts, 0.0030 * sl, cedar_dk, segments=5)
-        for fi, (u, rr) in enumerate(((0.02, 0.0095), (0.12, 0.0095), (0.22, 0.0095),
-                                      (0.07, 0.0060), (0.17, 0.0060), (0.27, 0.0060))):
-            h = (0.088 - 0.076 * u) * s
-            a = ph + u * 2.5 * 6.2832
-            r = r_at(h) + 0.0015 * s
-            # the substrate-bowl's young woman: "the woman's slicker was the
-            # yellow of a slicker Kai had not … seen carved into any bowl"
-            # (ch11_bowl n55) — the small figure between the 2nd and 3rd totems
-            rcol = (0.88, 0.72, 0.18, 1.0) if (slicker and fi == 4) else cedar_lt
-            make_blob(T_("Relief_%d" % fi), (bx + r * _m.cos(a), by + r * _m.sin(a), top_z + 0.024 * s + h - 0.006 * s),
-                      rr * sl, rcol, noise=0.25, seed=31 + fi, rings=4, segments=7, squash=1.0)
-        make_lathe(T_("Rim"), (bx, by, top_z + 0.120 * s),
-                   [(0.104 * s, 0.0), (0.122 * s, 0.0), (0.122 * s, 0.020 * s), (0.104 * s, 0.020 * s), (0.104 * s, 0.0)],
-                   cedar_lt, segments=16)
-        make_cyl(T_("Hollow"), (bx, by, top_z + 0.121 * s), 0.104 * s, 0.002, cedar_dk, segments=16)
+        # (pass 454) the bowl itself lives in _props/cedar_bowls (Hans's bakery
+        # stands the same four on its table); this passes the cabin's own
+        # (shifted) geometry helpers and its cedar.
+        from _props.cedar_bowls import make_olaf_bowl, _KIT
+        g = globals()
+        make_olaf_bowl(pfx, bx, by, top_z, tag, s=s, mark=mark, slicker=slicker, phase=phase,
+                       colors=(cedar_dk, cedar_md, cedar_lt, char), kit={n: g[n] for n in _KIT})
 
     def eddvard_bowl(pfx, ex, ey, tag, z0=None):
         # Eddvard's: "the small cedar bowl" — smaller and plainer than Olaf's
@@ -1539,9 +1506,54 @@ def build_hero_props_2026_09():
         make_box("Charred_Package__cabin_interior_day_package", (-0.45, 2.35, T + 0.0015), (0.30, 0.26, 0.003), waxpaper)
         # ── THE ONE PIECE · ch1's night, on "the small folded cloth" ──
         make_box("Charred_Wood_Cloth__cabin_interior_piece", (-0.45, 2.35, T + 0.004), (0.22, 0.18, 0.008), (0.78, 0.74, 0.64, 1.0))
-        # ── THE CUP · table north-east ──
-        make_cyl("Ceramic_Cup", (0.58, 3.30, T + 0.050), 0.045, 0.100, (0.52, 0.44, 0.36, 1.0), segments=10)
-        make_cyl("Ceramic_Cup_Coffee", (0.58, 3.30, T + 0.1015), 0.036, 0.003, (0.24, 0.16, 0.10, 1.0), segments=10)
+        # ── THE COFFEE · table north-east (pass 454). The cup was a bare
+        # ten-sided cylinder: thirteen "insert coffee" lines framed a tube
+        # nobody would name. Now a stoneware mug with a handle and coffee
+        # in it, and in the chapters that serve coffee at this table the
+        # pot Tem pours from, on "the cabin's folded towel" (ch11), with
+        # a mug for each person the text seats: one (ch4, alone), two
+        # (ch1's breakfast), four (ch11, ch19, ch20). The text names the
+        # kettle (copper, on the stove) and the cone, not the pot: a plain
+        # enamel one.
+        stone = (0.80, 0.76, 0.68, 1.0)
+        def _mug(name, mx, my, hdx, hdy):
+            make_lathe(name, (mx, my, T),
+                       [(0.036, 0.0), (0.041, 0.006), (0.043, 0.085), (0.045, 0.095), (0.039, 0.095), (0.0, 0.090)],
+                       stone, segments=14)
+            cn = name.split("__")
+            make_cyl("__".join([cn[0] + "_Coffee"] + cn[1:]), (mx, my, T + 0.084), 0.037, 0.004, (0.20, 0.12, 0.07, 1.0), segments=14)
+            make_tube("__".join([cn[0] + "_Handle"] + cn[1:]),
+                      [(mx + hdx * 0.040, my + hdy * 0.040, T + 0.078), (mx + hdx * 0.092, my + hdy * 0.092, T + 0.078),
+                       (mx + hdx * 0.092, my + hdy * 0.092, T + 0.024), (mx + hdx * 0.040, my + hdy * 0.040, T + 0.024)],
+                      0.009, stone, segments=6)
+        _mug("Ceramic_Cup", 0.58, 3.30, 0.80, -0.60)
+        _mug("Coffee_Cup_B__cab_cup2", -0.10, 3.58, -0.70, 0.71)
+        _mug("Coffee_Cup_C__cab_cup4", -0.60, 2.60, -0.90, -0.44)
+        _mug("Coffee_Cup_D__cab_cup4", 0.58, 2.42, 0.94, -0.34)
+        px, py = 0.54, 2.92   # the table is ROUND (r 0.85): at the north edge the towel hung off it
+        towel = (0.86, 0.82, 0.72, 1.0)
+        make_box("Coffee_Towel__cab_coffee", (px, py, T + 0.006), (0.30, 0.22, 0.012), towel)
+        make_box("Coffee_Towel_Fold__cab_coffee", (px + 0.005, py - 0.004, T + 0.016), (0.28, 0.20, 0.008), (0.82, 0.78, 0.68, 1.0))
+        for ti, tdx in enumerate((-0.11, -0.085, 0.10)):
+            make_box(f"Coffee_Towel_Stripe_{ti}__cab_coffee", (px + 0.005 + tdx, py - 0.004, T + 0.0205), (0.012, 0.20, 0.001), (0.60, 0.20, 0.16, 1.0))
+        enamel = (0.90, 0.88, 0.82, 1.0)
+        rim_c = (0.14, 0.20, 0.36, 1.0)
+        pz = T + 0.020
+        make_lathe("Coffee_Pot_Body__cab_coffee", (px, py, pz),
+                   [(0.070, 0.0), (0.076, 0.008), (0.072, 0.060), (0.060, 0.150), (0.056, 0.185), (0.0, 0.185)],
+                   enamel, segments=16)
+        make_cyl("Coffee_Pot_Rim__cab_coffee", (px, py, pz + 0.187), 0.059, 0.008, rim_c, segments=16)
+        make_lathe("Coffee_Pot_Lid__cab_coffee", (px, py, pz + 0.191),
+                   [(0.054, 0.0), (0.050, 0.012), (0.030, 0.026), (0.0, 0.030)], enamel, segments=16)
+        make_cyl("Coffee_Pot_Knob__cab_coffee", (px, py, pz + 0.230), 0.012, 0.020, rim_c, segments=8)
+        make_cyl("Coffee_Pot_Foot__cab_coffee", (px, py, pz + 0.004), 0.077, 0.008, rim_c, segments=16)
+        # the spout, west; the handle, east (her right hand)
+        make_tube("Coffee_Pot_Spout__cab_coffee",
+                  [(px - 0.060, py, pz + 0.075), (px - 0.095, py, pz + 0.110), (px - 0.112, py, pz + 0.165), (px - 0.128, py, pz + 0.182)],
+                  0.013, enamel, segments=6)
+        make_tube("Coffee_Pot_Handle__cab_coffee",
+                  [(px + 0.058, py, pz + 0.165), (px + 0.108, py, pz + 0.160), (px + 0.116, py, pz + 0.085), (px + 0.070, py, pz + 0.050)],
+                  0.009, rim_c, segments=5)
         # ── THE DISC-CASE · table east ──
         make_box("Disc_Case__cab_disc", (0.72, 2.90, T + 0.0075), (0.14, 0.125, 0.015), (0.18, 0.18, 0.20, 1.0))
         make_box("Disc_Case_Label__cab_disc", (0.72, 2.90, T + 0.0158), (0.10, 0.06, 0.001), (0.82, 0.80, 0.74, 1.0))

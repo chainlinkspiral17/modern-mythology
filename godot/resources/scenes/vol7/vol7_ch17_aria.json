@@ -347,7 +347,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert crow]The crow on Kai's shoulder hopped down to Kai's lap, then to the table. The crow walked across the table to the substrate-bowl. The crow stood on the rim of the substrate-bowl and looked down at the young woman inside it.",
+      "text": "[view:hans_bakery_bowls_crow][shot:insert crow]The crow on Kai's shoulder hopped down to Kai's lap, then to the table. The crow walked across the table to the substrate-bowl. The crow stood on the rim of the substrate-bowl and looked down at the young woman inside it.",
       "t": "narrate"
     },
     {
@@ -396,7 +396,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:establish]The crow on the rim of the substrate-bowl hopped back across the table and back up to Kai's shoulder.",
+      "text": "[view:hans_bakery_bowls][shot:establish]The crow on the rim of the substrate-bowl hopped back across the table and back up to Kai's shoulder.",
       "t": "narrate"
     },
     {

@@ -1013,7 +1013,7 @@
     },
     {
       "t": "narrate",
-      "text": "The dock is empty. The truck has not come yet. The trucks come at six on Tuesdays. He has fifty-four minutes before the day side starts arriving and the morning load starts being staged.",
+      "text": "[shot:establish]The dock is empty. The truck has not come yet. The trucks come at six on Tuesdays. He has fifty-four minutes before the day side starts arriving and the morning load starts being staged.",
       "voice": "assets/audio/voice/vol6_ch10_night_shift/189.mp3"
     },
     {
@@ -1063,7 +1063,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert dock]He has not, in five weeks, mentioned to anybody on the team that the smear is visible from this dock. He has not mentioned it to Sam. He has not mentioned it to his grandmother. He has not mentioned it to Dr. Patel.",
+      "text": "He has not, in five weeks, mentioned to anybody on the team that the smear is visible from this dock. He has not mentioned it to Sam. He has not mentioned it to his grandmother. He has not mentioned it to Dr. Patel.",
       "voice": "assets/audio/voice/vol6_ch10_night_shift/199.mp3"
     },
     {
@@ -1088,7 +1088,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert dock]stand at the edge of the dock and look at the visible aftermath of the thing that had set the spring in motion, and feel — he does not have a word for what he feels — something that is not nothing.",
+      "text": "stand at the edge of the dock and look at the visible aftermath of the thing that had set the spring in motion, and feel — he does not have a word for what he feels — something that is not nothing.",
       "voice": "assets/audio/voice/vol6_ch10_night_shift/204.ogg"
     },
     {
@@ -1263,7 +1263,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert dock]The question is whether Diego will, on this dock in the four AM blue, be the one person at Centro who lets him be a peer.",
+      "text": "The question is whether Diego will, on this dock in the four AM blue, be the one person at Centro who lets him be a peer.",
       "voice": "assets/audio/voice/vol6_ch10_night_shift/234.ogg"
     },
     {
@@ -1295,7 +1295,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert dock]BT, on the dock, registers this.",
+      "text": "BT, on the dock, registers this.",
       "voice": "assets/audio/voice/vol6_ch10_night_shift/240.mp3"
     },
     {

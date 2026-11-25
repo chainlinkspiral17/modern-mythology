@@ -207,6 +207,14 @@ omni_range = 5.0
 omni_attenuation = 1.5
 shadow_enabled = false
 
+[node name="DockDoor_Lamp_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.55, 2.38, -8.48)
+light_color = Color(0.98, 0.82, 0.52, 1)
+light_energy = 1.1
+omni_range = 4.5
+omni_attenuation = 1.4
+shadow_enabled = false
+
 [node name="PreDawn_Sky" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -11.5)
 light_color = Color(0.45, 0.55, 0.75, 1)
@@ -415,9 +423,13 @@ metadata/fov = 45.0
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 ; (2026-11-04) from inside the dock door, out over the edge to the apron
 ; (it stood behind a bollard, which filled the frame)
+; (pass 454) THE DOCK DOOR from the apron: the steel door, its lit lite, the
+; landing, the rails and the steps. It looked down at the yellow floor stripe
+; from inside — the lines are "goes out the dock door", "The dock door behind
+; him opens", "closes behind him", "The dock door is unlocked".
 [node name="shot_insert_dock__centro_dock" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.000, 1.500, -5.900)
-rotation = Vector3(-0.6345, -0.0000, 0.0)
+position = Vector3(2.100, 0.500, -13.000)
+rotation = Vector3(0.1513, -3.0500, 0.0)
 metadata/fov = 40.0
 
 [node name="shot_insert_pallet__centro_stockroom" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -433,6 +445,6 @@ metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_pallets__centro_dock" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.900, 1.500, -8.300)
-rotation = Vector3(-0.7219, -0.9944, 0.0)
+position = Vector3(-0.900, 1.500, -8.300)
+rotation = Vector3(-0.7219, 0.9944, 0.0)
 metadata/fov = 40.0

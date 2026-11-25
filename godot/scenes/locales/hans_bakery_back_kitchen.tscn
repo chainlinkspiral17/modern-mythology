@@ -383,24 +383,42 @@ metadata/fov = 42.0
 ; insert: the substrate-bowl close (ch17_aria "He took the bowl out")
 ; (pass 406) on its chapter's view
 [node name="shot_insert_bowl__hans_bakery_bowls" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 1.3, -3.95)
-rotation = Vector3(-0.6292, 0.7929, 0.0)
-metadata/fov = 42.0
+position = Vector3(0.620, 1.280, -4.050)
+rotation = Vector3(-0.4316, 1.1170, 0.0)
+metadata/fov = 34.0
+
+; (view_twin) hans_bakery_bowls's frame in hans_bakery_bowls_crow
+[node name="shot_insert_bowl__hans_bakery_bowls_crow" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.450, 1.200, -4.050)
+rotation = Vector3(-0.3404, 1.2231, 0.0)
+metadata/fov = 32.0
 
 ; insert: the four bowls from above, beginning to align (ch17_aria)
 ; (pass 406) on its chapter's view
 ; (pass 406) along the row from the table's side: Roy's, Marit's, the substrate's, Marina's
 [node name="shot_insert_bowls__hans_bakery_bowls" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.750, 1.300, -4.420)
-rotation = Vector3(-0.5130, 1.5708, 0.0)
-metadata/fov = 42.0
+position = Vector3(0.950, 1.450, -4.450)
+rotation = Vector3(-0.4740, 1.5708, 0.0)
+metadata/fov = 36.0
+
+; (view_twin) hans_bakery_bowls's frame in hans_bakery_bowls_crow
+[node name="shot_insert_bowls__hans_bakery_bowls_crow" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.950, 1.450, -4.450)
+rotation = Vector3(-0.4740, 1.5708, 0.0)
+metadata/fov = 36.0
 
 ; insert: the crow on the substrate-bowl's rim (ch17_aria)
 ; (pass 406) on its chapter's view
 [node name="shot_insert_crow__hans_bakery_bowls" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 1.2, -3.85)
-rotation = Vector3(-0.4222, 0.9888, 0.0)
-metadata/fov = 42.0
+position = Vector3(0.750, 1.250, -4.450)
+rotation = Vector3(-0.3714, 1.5708, 0.0)
+metadata/fov = 40.0
+
+; (view_twin) hans_bakery_bowls's frame in hans_bakery_bowls_crow
+[node name="shot_insert_crow__hans_bakery_bowls_crow" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.550, 1.220, -3.950)
+rotation = Vector3(-0.2683, 1.1584, 0.0)
+metadata/fov = 34.0
 
 ; insert: the brioche on the table held the room (vol7)
 ; (pass 406) on its chapter's view
@@ -659,6 +677,12 @@ position = Vector3(1.619, 2.578, -1.740)
 rotation = Vector3(-0.5042, 0.4805, 0.0)
 metadata/fov = 35.0
 
+; (view_twin) hans_bakery_bowls's frame in hans_bakery_bowls_crow
+[node name="shot_insert_table__hans_bakery_bowls_crow" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.619, 2.578, -1.740)
+rotation = Vector3(-0.5042, 0.4805, 0.0)
+metadata/fov = 35.0
+
 ; (view_twin) hans_bakery_back_kitchen's frame in hans_bakery_sunday
 [node name="shot_insert_table__hans_bakery_sunday" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.619, 2.578, -1.740)
@@ -667,6 +691,12 @@ metadata/fov = 35.0
 
 ; (view_twin) hans_bakery_back_kitchen's frame in hans_bakery_bowls
 [node name="shot_insert_crows__hans_bakery_bowls" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.688, 1.099, -3.620)
-rotation = Vector3(-0.2618, 0.7458, 0.0)
-metadata/fov = 35.0
+position = Vector3(0.780, 1.280, -4.400)
+rotation = Vector3(-0.3800, 1.5300, 0.0)
+metadata/fov = 40.0
+
+; (view_twin) hans_bakery_bowls's frame in hans_bakery_bowls_crow
+[node name="shot_insert_crows__hans_bakery_bowls_crow" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.780, 1.280, -4.400)
+rotation = Vector3(-0.3800, 1.5300, 0.0)
+metadata/fov = 40.0

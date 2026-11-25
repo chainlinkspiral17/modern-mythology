@@ -350,7 +350,7 @@
   },
   {
    "t": "narrate",
-   "text": "The dock is empty.",
+   "text": "[shot:establish]The dock is empty.",
    "voice": "assets/audio/voice/vol6_ch16_dawn/063.mp3"
   },
   {

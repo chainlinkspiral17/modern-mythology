@@ -37,6 +37,74 @@ CROW_EYE = (0.86, 0.84, 0.76, 1.0)       # the one bright note
 CROW_LEG = (0.16, 0.15, 0.14, 1.0)
 
 
+import contextlib as _ctx
+
+
+@_ctx.contextmanager
+def quarter_turn(px, py, quarters=1, tag=""):
+    """Within the block, every creature this module builds is turned
+    `quarters` quarter-turns CLOCKWISE (seen from above) about (px, py):
+    one turns a bird that faces -Y to face -X. make_crow only faces +-Y,
+    and a crow on a bowl's rim in a ROW of bowls has to stand across the
+    row (pass 454, Hans's bakery). Done on the helpers' arguments — centres,
+    box sizes, cylinder axes — so the headless audit stub sees the turned
+    parts too (a bpy-side rotation after the fact would be invisible to it).
+    `tag` ("__view") is appended to every part's name: the bird of one view.
+    """
+    g = globals()
+    q = int(quarters) % 4
+
+    def pt(c):
+        dx, dy = c[0] - px, c[1] - py
+        for _ in range(q):
+            dx, dy = dy, -dx
+        return (px + dx, py + dy) + tuple(c[2:])
+
+    def box(f):
+        def w(name, center, size, *a, **k):
+            if q % 2:
+                size = (size[1], size[0]) + tuple(size[2:])
+            return f(str(name) + tag, pt(center), size, *a, **k)
+        return w
+
+    def blob(f):
+        return lambda name, center, *a, **k: f(str(name) + tag, pt(center), *a, **k)
+
+    def _axis(k, flip):
+        ax = k.get("axis", "Z")
+        for _ in range(q):
+            if ax == "Y":
+                ax = "X"
+            elif ax == "X":
+                ax = "Y"; flip[0] = not flip[0]
+        if "axis" in k or ax != "Z":
+            k["axis"] = ax
+
+    def cyl(f):
+        def w(name, center, *a, **k):
+            _axis(k, [False])
+            return f(str(name) + tag, pt(center), *a, **k)
+        return w
+
+    def taper(f):
+        def w(name, center, r_bottom, r_top, *a, **k):
+            flip = [False]
+            _axis(k, flip)
+            if flip[0]:
+                r_bottom, r_top = r_top, r_bottom
+            return f(str(name) + tag, pt(center), r_bottom, r_top, *a, **k)
+        return w
+
+    saved = {}
+    for n, wrap in (("make_box", box), ("make_blob", blob), ("make_cyl", cyl), ("make_taper_cyl", taper)):
+        if n in g:
+            saved[n] = g[n]; g[n] = wrap(g[n])
+    try:
+        yield
+    finally:
+        g.update(saved)
+
+
 def make_crow(prefix, x, y, z, facing=1.0, scale=1.0, perched=True):
     """A crow. `z` is the FOOT for a perched bird (give it the top of
     the rail/beam it stands on) and the BODY CENTER for a glider.

@@ -417,11 +417,12 @@ position = Vector3(4.000, 1.620, -5.600)
 rotation = Vector3(-0.0624, 2.0183, 0.0)
 metadata/fov = 58.0
 
-; insert: the landline on the west wall — it never rings
+; insert: the cell phone on the counter by the coffee maker, its screen lit
+; (pass 454: it was a dark box under ch11's skillet handle)
 [node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-2.550, 1.450, -5.850)
-rotation = Vector3(-0.6360, 0.3268, 0.0)
-metadata/fov = 34.0
+position = Vector3(-3.050, 1.450, -5.800)
+rotation = Vector3(-0.6208, 0.4568, 0.0)
+metadata/fov = 30.0
 
 ; insert: the wall phone, far enough back that the handset reads on its base
 [node name="shot_insert_landline" type="Marker3D" parent="." groups=["vn_shot"]]

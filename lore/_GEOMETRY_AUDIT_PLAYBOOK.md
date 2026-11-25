@@ -158,6 +158,30 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-25 · the stub only sees what the helpers were told (pass 454)
+
+- **A new shared `_props` module must be added to the stub's real-module
+  list** (`locale_geometry_audit.install_stubs`). `cedar_bowls` was not: the
+  bakery's four bowls recorded as nothing, with no error — every gate passed
+  a table that was, to it, empty. After adding a module, print the part
+  names the stub records for the room and look for yours.
+- **Never transform parts through bpy after they are built.** The first
+  turned crow rotated its meshes with `obj.data.transform`: the stub's bpy
+  answers anything, the loop ran over nothing, and the record came back a
+  third short (1,532 parts → 1,168) with `err None`. Do it on the helpers'
+  ARGUMENTS (centres, box sizes, cylinder axes) — `creatures.quarter_turn`
+  — the way `shifted()` does for a shift.
+- **A block that shifts a helper shifts it for you**: inside the bakery's
+  `_in(SH_TABLE)` `make_crow` is already wrapped; adding the shift by hand
+  doubled it, and the pivot of a turn must be given in the room's
+  coordinates while the bird is given in the block's.
+- **Count the record before and after a builder change** (`boxes_for(room)`
+  length): a drop that the change does not explain is a builder the stub
+  stopped following.
+- **Measure the table before dressing it.** The cabin's table is round
+  (r 0.85): a towel placed by the square of its bounding box hung off the
+  edge. Check corner distance from the centre, not x and y ranges.
+
 ### 2026-11-22 · a gate's word list steers the tools that obey it (pass 450)
 
 - **What happened:** the Kwik Stop's "table by the window" close-up showed

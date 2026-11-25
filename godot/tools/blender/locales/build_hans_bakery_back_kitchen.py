@@ -484,23 +484,39 @@ def build_hero_props_2026_09():
     # in the box". IN A ROW from Roy's chair at the far head: "Roy's at the
     # head, Marit's beside it, then the substrate-bowl, then Marina's
     # grandfather's bowl" — the substrate-bowl "the size of his palm".
-    bowl_row = ((-0.12, 3.55, 1.0), (-0.12, 3.32, 1.0), (-0.12, 3.10, 0.62), (-0.12, 2.88, 1.0))
-    for bi, (bx, by, sc) in enumerate(bowl_row):
-        # (draft 4: a bellied lathe on a foot, not a puck)
-        make_lathe(f"Cedar_Bowl_{bi}__hans_bakery_bowls", (bx, by, 0.78),
-                   [(0.040 * sc, 0.0), (0.040 * sc, 0.006 * sc), (0.072 * sc, 0.02 * sc), (0.085 * sc, 0.04 * sc), (0.085 * sc, 0.055 * sc)], cedar, segments=12)
-        make_cyl(f"Cedar_Bowl_Rim_{bi}__hans_bakery_bowls", (bx, by, 0.78 + 0.0575 * sc), 0.068 * sc, 0.005,
-                 cedar_dk, segments=12)
+    # (pass 454) THE SAME BOWLS AS THE CABIN'S (_props/cedar_bowls): they were
+    # four plain lathes 17 cm across with a crow made of two boxes standing
+    # on one for the whole segment — the fifteen "insert bowl / bowls" lines
+    # framed shallow dishes round a dark block. Now Olaf's bowl four times
+    # (the spiral, the three totems, the rim; the substrate-bowl palm-size,
+    # its young woman in the yellow slicker), the totems NAMED so "the crow
+    # on Roy's bowl" (n21-24) has its subject; and Kai's crow is a crow, and
+    # only there for the lines it is (n76-87): "The crow walked across the
+    # table to the substrate-bowl. The crow stood on the rim of the
+    # substrate-bowl and looked down at the young woman inside it" — the
+    # twin view hans_bakery_bowls_crow, cut to by an inline [view:].
+    # DRAFT 2 targets: the figures that MOVE (the totems turn, the eyes
+    # open) as a per-line twin or an art layer; the crow on Kai's shoulder
+    # for the rest of the segment is the portrait's job.
+    from _props.cedar_bowls import make_olaf_bowl, _KIT
+    g = globals()
+    kit = {n: g[n] for n in _KIT if n in g}
+    BX = -0.20
+    bowl_row = ((3.70, 1.0, False, None), (3.41, 1.0, False, None), (3.10, 0.62, True, 1.43), (2.79, 1.0, False, None))
+    for bi, (by, sc, slk, ph) in enumerate(bowl_row):
+        make_olaf_bowl(f"Cedar_Bowl_{bi}", BX, by, 0.78, "hb_bowls", s=sc, slicker=slk, phase=ph,
+                       kit=kit, totem_names=True)
 
-    # ── THE CROW · on the substrate-bowl's rim (bowl 1) ──
-    make_cyl("Crow_Leg_0__hans_bakery_bowls", (-0.084, 3.064, 0.8205), 0.004, 0.005, crow_black, segments=6)
-    make_cyl("Crow_Leg_1__hans_bakery_bowls", (-0.074, 3.052, 0.8205), 0.004, 0.005, crow_black, segments=6)
-    make_box("Crow_Body__hans_bakery_bowls", (-0.079, 3.058, 0.8540), (0.055, 0.095, 0.062), crow_black)
-    make_box("Crow_Head__hans_bakery_bowls", (-0.107, 3.086, 0.9020), (0.036, 0.036, 0.034),
-             (0.12, 0.12, 0.14, 1.0))
-    make_box("Crow_Beak__hans_bakery_bowls", (-0.140, 3.086, 0.8940), (0.030, 0.024, 0.012),
-             (0.16, 0.15, 0.14, 1.0))
-    make_box("Crow_Tail__hans_bakery_bowls", (-0.021, 3.058, 0.8630), (0.060, 0.040, 0.014), crow_black)
+    # ── KAI'S CROW · on the substrate-bowl's west rim, looking down into it ──
+    # make_crow faces -Y; three quarter-turns about its feet face it +X, across
+    # the row, its tail over the open table (along the row it lay on the
+    # next bowl). The block shifts make_crow itself, so the PIVOT is given
+    # in the room's own (shifted) coordinates and the bird in the block's.
+    import _props.creatures as _C
+    rim_z = 0.78 + 0.140 * 0.62
+    fx, fy = BX - 0.070, 3.10      # the west rim, facing east: the room's close-ups stand east of the table and see its face over the bowl
+    with _C.quarter_turn(fx + SH_TABLE[0], fy + SH_TABLE[1], quarters=3, tag="__hans_bakery_bowls_crow"):
+        _C.make_crow("Crow_Live", fx, fy, rim_z, facing=1.0, scale=0.80)
 
     # ── 2026-09-01 second pass: the three cues the first wave's
     # truncated listing hid (brioche / coffee / bag; coffee aims
@@ -776,7 +792,7 @@ def build_main_room_2026_11():
     make_cyl("Kitchenette_Faucet", (sx, ccy + 0.25, top + 0.11), 0.014, 0.22, steel, segments=6)
     make_box("Kitchenette_Spout", (sx, ccy + 0.165, top + 0.21), (0.024, 0.18, 0.02), steel)
     for k in range(3):
-        make_cyl(f"Kitchenette_Cup_{k}__hans_bakery_bowls", (sx - 0.42 - k * 0.11, ccy - 0.12 + (k % 2) * 0.10, top + 0.045), 0.038, 0.09, (0.90, 0.88, 0.82, 1.0), segments=8)
+        make_cyl(f"Kitchenette_Cup_{k}__hb_bowls", (sx - 0.42 - k * 0.11, ccy - 0.12 + (k % 2) * 0.10, top + 0.045), 0.038, 0.09, (0.90, 0.88, 0.82, 1.0), segments=8)
     # ── THE WEDDING PHOTOGRAPH: on plaster, east of the tile, at eye height ──
     py = ROOM_D - 0.10                               # the N wall's room face
     make_box("Wedding_Photo_Frame", (-0.9, py - 0.012, 1.62), (0.40, 0.024, 0.50), wood_dk)

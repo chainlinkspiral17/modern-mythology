@@ -317,17 +317,65 @@ def build_hero_props():
     for bi in range(4):
         make_box(f"Galactus_FloorBar_{bi}", (-4.1 + bi * 0.72, 1.7, 0.012),
                  (0.34, 2.6, 0.006), (0.46, 0.30, 0.58, 0.30))
-    # The brass bell above the door (1994 estate sale)
-    make_box("Bell_Bracket", (0.0, 0.16, 2.40), (0.04, 0.14, 0.04), (0.20, 0.19, 0.20, 1.0))
-    make_lathe("Brass_Bell", (0.0, 0.24, 2.30), [(0.055, 0.0), (0.05, 0.01), (0.035, 0.05), (0.02, 0.075), (0.012, 0.085), (0.0, 0.085)], brass, segments=10)
-    make_cyl("Brass_Bell_Clapper", (0.0, 0.24, 2.29), 0.008, 0.03, (0.30, 0.26, 0.18, 1.0), segments=5)
-    # The front door leaf + OPEN/CLOSED card + deadbolt + chain
-    make_box("Front_Door", (0.0, 0.03, 1.02), (1.90, 0.04, 2.04), (0.30, 0.28, 0.26, 1.0))
-    make_box("Front_Door_Glass", (0.0, 0.02, 1.20), (1.50, 0.02, 1.55), (0.45, 0.52, 0.60, 0.5))
+    # THE FRONT DOOR (pass 454). It was one 1.9 m slab with its glass buried
+    # inside it, a brass box for a deadbolt and a grey bar for a chain: the
+    # eleven "insert door" lines framed a dark panel. The text walks the
+    # door — "front door deadbolt first, then the bottom lock, then the chain
+    # inside" (ch12), "She pushes the door open" (ch21), "flips the CLOSED
+    # sign", "The brass bell above the door" — so it is a shopfront door now:
+    # a bronze frame in the 2.0 x 2.2 opening, a fixed sidelight west, the
+    # glazed leaf east (hinged at the mullion, latching at the east jamb),
+    # a pull bar, the deadbolt with its thumb-turn, the bottom lock, the
+    # chain hanging from its jamb plate beside its slide, the card on its
+    # string, the bell on its bracket over the leaf.
+    # DRAFT 2 targets: the leaf OPEN on the lines somebody comes in; the
+    # card turned (CLOSED / OPEN) by chapter once the art carries both faces.
+    from _props.geometry import make_tube
+    bronze = (0.20, 0.18, 0.17, 1.0)
+    steel = (0.62, 0.64, 0.66, 1.0)
+    glass = (0.45, 0.52, 0.60, 0.5)
+    DY = 0.03
+    for nm, fx in (("Jamb_W", -0.975), ("Jamb_E", 0.975), ("Mullion", 0.0)):
+        make_box(f"Front_Door_{nm}", (fx, DY, 1.10), (0.05, 0.10, 2.20), bronze)
+    make_box("Front_Door_Header", (0.0, DY, 2.17), (1.90, 0.10, 0.06), bronze)
+    # the sidelight (west): glass over a low kick panel
+    make_box("Front_Sidelight_Kick", (-0.4875, DY, 0.15), (0.925, 0.05, 0.30), bronze)
+    make_box("Front_Sidelight_Glass", (-0.4875, DY, 1.22), (0.925, 0.012, 1.84), glass)
+    # the leaf (east): stiles, rails, glass
+    LX0, LX1 = 0.03, 0.945
+    lc = (LX0 + LX1) / 2.0
+    for nm, sx in (("Stile_Hinge", LX0 + 0.045), ("Stile_Latch", LX1 - 0.045)):
+        make_box(f"Front_Door_{nm}", (sx, DY, 1.075), (0.09, 0.045, 2.11), bronze)
+    make_box("Front_Door_Rail_Top", (lc, DY, 2.08), (LX1 - LX0 - 0.18, 0.045, 0.10), bronze)
+    make_box("Front_Door_Rail_Bottom", (lc, DY, 0.14), (LX1 - LX0 - 0.18, 0.045, 0.24), bronze)
+    make_box("Front_Door_Glass", (lc, DY, 1.145), (LX1 - LX0 - 0.18, 0.012, 1.77), glass)
+    YF = DY + 0.0225          # the leaf's inside face
+    # the pull bar, inside, on the latch stile
+    LS = LX1 - 0.045          # the latch stile's centre line
+    make_tube("Front_Door_Pull", [(LS, YF, 1.20), (LS, YF + 0.052, 1.18), (LS, YF + 0.052, 0.82), (LS, YF, 0.80)],
+              0.012, steel, segments=6)
+    # the deadbolt: brass rose on the latch stile, its thumb-turn across it
+    make_cyl("Door_Deadbolt", (LX1 - 0.045, YF + 0.006, 1.34), 0.034, 0.012, brass, segments=12, axis='Y')
+    make_box("Door_Deadbolt_Turn", (LX1 - 0.045, YF + 0.019, 1.34), (0.052, 0.014, 0.016), brass)
+    # the bottom lock, on the bottom rail by the latch stile
+    make_cyl("Door_BottomLock", (LX1 - 0.16, YF + 0.006, 0.14), 0.028, 0.012, brass, segments=12, axis='Y')
+    make_box("Door_BottomLock_Turn", (LX1 - 0.16, YF + 0.019, 0.14), (0.014, 0.014, 0.044), brass)
+    # the chain: its plate on the east jamb, the chain hanging, the slide on the stile
+    make_box("Door_Chain_Plate", (0.975, DY + 0.056, 1.55), (0.04, 0.012, 0.09), steel)
+    make_tube("Door_Chain", [(0.972, DY + 0.066, 1.55), (0.968, DY + 0.070, 1.44), (0.962, DY + 0.068, 1.33), (0.966, DY + 0.066, 1.27)],
+              0.007, steel, segments=5)
+    make_cyl("Door_Chain_Knob", (0.966, DY + 0.066, 1.255), 0.012, 0.02, steel, segments=8)
+    make_box("Door_Chain_Slide", (LX1 - 0.075, YF + 0.006, 1.55), (0.13, 0.012, 0.034), steel)
+    make_box("Door_Chain_Slide_Slot", (LX1 - 0.075, YF + 0.0125, 1.55), (0.10, 0.002, 0.010), bronze)
+    # the OPEN / CLOSED card on its string, on the leaf's glass
     make_box("Open_Sign", (0.45, 0.055, 1.60), (0.30, 0.01, 0.20), (0.86, 0.82, 0.72, 1.0))
     make_box("Open_Sign_Text", (0.45, 0.06, 1.60), (0.22, 0.008, 0.09), (0.62, 0.20, 0.16, 1.0))
-    make_box("Door_Deadbolt", (0.80, 0.06, 1.05), (0.06, 0.03, 0.10), brass)
-    make_box("Door_Chain", (0.70, 0.06, 1.55), (0.10, 0.02, 0.03), (0.60, 0.62, 0.64, 1.0))
+    make_tube("Open_Sign_String", [(0.33, 0.052, 1.70), (0.45, 0.050, 1.80), (0.57, 0.052, 1.70)], 0.003, (0.90, 0.88, 0.80, 1.0), segments=4)
+    make_cyl("Open_Sign_Hook", (0.45, 0.046, 1.80), 0.016, 0.012, (0.90, 0.90, 0.88, 1.0), segments=8, axis='Y')
+    # The brass bell above the door (1994 estate sale), over the leaf
+    make_box("Bell_Bracket", (lc, 0.16, 2.40), (0.04, 0.14, 0.04), (0.20, 0.19, 0.20, 1.0))
+    make_lathe("Brass_Bell", (lc, 0.24, 2.30), [(0.055, 0.0), (0.05, 0.01), (0.035, 0.05), (0.02, 0.075), (0.012, 0.085), (0.0, 0.085)], brass, segments=10)
+    make_cyl("Brass_Bell_Clapper", (lc, 0.24, 2.29), 0.008, 0.03, (0.30, 0.26, 0.18, 1.0), segments=5)
     # Back-office doorway + the one-way mirror beside it (N wall)
     from _props.structure import make_frame_ring
     make_frame_ring("Office_Doorframe", (3.6, ROOM_D - 0.13, 1.05), (1.10, 0.06, 2.12), wood, bar=0.075)
@@ -448,7 +496,7 @@ def build_draft4_2026_09():
     make_floor_stain("Wear_Ring_Behind", (3.30, 5.55), radius=0.26, tint=tile_dk, segments=10)
     for ji, (ay, row_w, row_x) in enumerate(ROWS):
         make_scuff_band(f"Wear_Kick_Row_{ji}", (row_x, ay - 0.26), row_w - 0.3, axis='X', height=0.06, band_z=0.04, tint=(0.22, 0.16, 0.10, 1.0))
-    make_box("Wear_Push_Plate", (0.55, 0.055, 1.10), (0.16, 0.004, 0.22), (0.40, 0.38, 0.36, 1.0))
+    make_box("Wear_Push_Plate", (0.90, 0.0535, 1.00), (0.085, 0.002, 0.30), (0.34, 0.31, 0.28, 1.0))   # (pass 454) the hand-worn patch, on the new leaf's latch stile behind the pull
     for ti, (tx, tz) in enumerate(((-4.0, 2.10), (-2.1, 2.05), (-3.9, 0.95))):
         make_box(f"Wear_TapeGhost_{ti}", (tx, 0.1015, tz), (0.05, 0.002, 0.05), (0.62, 0.60, 0.52, 0.5))   # on the window paint
     # ── D3 ──

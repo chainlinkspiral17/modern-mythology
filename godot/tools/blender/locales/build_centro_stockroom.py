@@ -119,7 +119,7 @@ def build_dock():
              (0.95, 0.80, 0.50, 1.0), segments=10, axis='Y')
     # A stack of empty pallets waiting outside, right of the door
     for k in range(4):
-        make_box(f"Apron_Pallet_{k}", (2.9, ROOM_D + 1.4, -1.02 + k * 0.14),
+        make_box(f"Apron_Pallet_{k}", (-2.9, ROOM_D + 1.4, -1.02 + k * 0.14),   # (pass 454) west: the dock door's landing is east
                  (1.1, 1.1, 0.12), COL_PALLET)
 
 
@@ -161,7 +161,7 @@ def _rack_row(prefix, x, y0, y1):
 
 def build_racks():
     _rack_row("RackW", -2.55, 0.8, 7.2)
-    _rack_row("RackE", 2.55, 2.2, 7.2)
+    _rack_row("RackE", 2.55, 2.2, 4.6)   # (pass 454) one bay: its second stood across the dock door
 
 
 def build_floor_stock():
@@ -183,10 +183,10 @@ def build_floor_stock():
     make_box("Jack_Handle", (px, py - 1.60, 0.75), (0.06, 0.06, 0.60), COL_STEEL_DK)   # against the body
     make_box("Jack_Grip", (px, py - 1.60, 1.06), (0.30, 0.05, 0.05), COL_RUBBER)
     # Hand truck against the east rack
-    make_box("HandTruck_Frame", (1.75, 6.9, 0.65), (0.42, 0.06, 1.3), COL_STEEL)
-    make_box("HandTruck_Toe", (1.75, 6.78, 0.04), (0.42, 0.30, 0.03), COL_STEEL_DK)
+    make_box("HandTruck_Frame", (2.55, 4.72, 0.65), (0.42, 0.06, 1.3), COL_STEEL)   # (pass 454) at the rack's new north end
+    make_box("HandTruck_Toe", (2.55, 4.90, 0.04), (0.42, 0.30, 0.03), COL_STEEL_DK)
     for sgn in (-1, 1):
-        make_cyl(f"HandTruck_Wheel_{sgn:+d}", (1.75 + sgn * 0.20, 6.95, 0.12),
+        make_cyl(f"HandTruck_Wheel_{sgn:+d}", (2.55 + sgn * 0.20, 4.67, 0.12),
                  0.11, 0.05, COL_RUBBER, segments=10, axis='X')
     # Broom leaning by the swing door
     make_cyl("Broom_Handle", (-2.0, 0.35, 0.735), 0.016, 1.45, COL_DECK, segments=6)   # on the floor
@@ -367,6 +367,84 @@ def build_dream_haze_2026_11():
     V.check()
 
 
+def build_dock_door_2026_11():
+    """THE DOCK DOOR (pass 454). The text has a door, not only the roll-up:
+    Diego "goes out the dock door for his second break" (ch10, ch16), "The
+    dock door behind him opens" / "closes behind him" (ch10), "The dock door
+    is unlocked" (ch16), "BT is at the dock door with his keys in his hand"
+    (ch16), BT's footsteps "hit the dock, push the dock door open" (ch22).
+    The set had the open roll-up alone, and the eight "insert dock" lines
+    framed a yellow stripe on the floor. Now: a steel personnel door in the
+    north wall east of the roll-up (a lit wired-glass lite, lever, deadbolt,
+    kick plate; a panic bar and an EXIT box inside), a caged lamp over it,
+    a concrete landing outside with yellow pipe rails, and steps down to
+    the apron.
+
+    DRAFT 2 targets: the leaf open on the two lines it opens (a twin view);
+    a number plate / stencil by the door once hero art carries it; the
+    roll-up DOWN before the truck comes (ch10: "The dock is empty") as a
+    view of its own, read against the dawn frames that use the open door.
+    """
+    from _props.geometry import make_tube
+    DX = 2.55
+    YO, YI = ROOM_D + 0.10, ROOM_D - 0.10      # the wall's outside / inside face
+    leaf = (0.22, 0.31, 0.43, 1.0)
+    frame = (0.15, 0.16, 0.18, 1.0)
+    bright = (0.68, 0.69, 0.70, 1.0)
+    conc = COL_BASE
+    for side, y, sg in (("Out", YO, 1.0), ("In", YI, -1.0)):
+        for e in (-1, 1):
+            make_box(f"DockDoor_Frame_{side}_{e:+d}", (DX + e * 0.52, y + sg * 0.020, 1.07), (0.08, 0.05, 2.14), frame)
+        make_box(f"DockDoor_Frame_{side}_Top", (DX, y + sg * 0.020, 2.18), (1.12, 0.05, 0.08), frame)
+        make_box(f"DockDoor_Leaf_{side}", (DX, y + sg * 0.012, 1.045), (0.96, 0.03, 2.07), leaf)
+        make_box(f"DockDoor_Kick_{side}", (DX, y + sg * 0.029, 0.16), (0.90, 0.004, 0.26), bright)
+        # the narrow wired-glass lite on the latch side, lit from the stockroom
+        make_box(f"DockDoor_Lite_Trim_{side}", (DX + 0.27, y + sg * 0.029, 1.50), (0.20, 0.004, 0.68), frame)
+        make_box(f"DockDoor_Lite_{side}", (DX + 0.27, y + sg * 0.032, 1.50), (0.14, 0.003, 0.62),
+                 (0.90, 0.94, 0.86, 1.0) if side == "Out" else (0.20, 0.26, 0.36, 1.0))
+    # outside: lever, deadbolt, hinges, threshold
+    make_cyl("DockDoor_Rose", (DX + 0.38, YO + 0.034, 1.02), 0.036, 0.012, bright, segments=10, axis='Y')
+    make_box("DockDoor_Lever", (DX + 0.31, YO + 0.052, 1.02), (0.15, 0.022, 0.024), bright)
+    make_cyl("DockDoor_Deadbolt", (DX + 0.38, YO + 0.034, 1.22), 0.030, 0.012, bright, segments=10, axis='Y')
+    make_cyl("DockDoor_Deadbolt_Core", (DX + 0.38, YO + 0.042, 1.22), 0.012, 0.006, frame, segments=8, axis='Y')
+    for hi, hz in enumerate((0.25, 1.05, 1.85)):
+        make_box(f"DockDoor_Hinge_{hi}", (DX - 0.465, YO + 0.031, hz), (0.03, 0.010, 0.11), bright)
+    make_box("DockDoor_Threshold", (DX, YO + 0.05, 0.008), (1.00, 0.12, 0.016), bright)
+    # inside: the panic bar, the closer, the EXIT box over the frame
+    make_box("DockDoor_PanicBar", (DX, YI - 0.060, 1.02), (0.80, 0.05, 0.07), bright)
+    for e in (-1, 1):
+        make_box(f"DockDoor_PanicBar_End_{e:+d}", (DX + e * 0.42, YI - 0.050, 1.02), (0.05, 0.04, 0.11), frame)
+    make_box("DockDoor_Closer", (DX - 0.20, YI - 0.055, 2.04), (0.26, 0.05, 0.06), bright)
+    make_box("DockDoor_Exit_Box", (DX, YI - 0.035, 2.40), (0.36, 0.07, 0.19), (0.84, 0.84, 0.80, 1.0))
+    make_box("DockDoor_Exit_Face", (DX, YI - 0.0715, 2.40), (0.30, 0.003, 0.12), (0.82, 0.14, 0.10, 1.0))
+    # the caged lamp over the door outside
+    make_box("DockDoor_Lamp_Plate", (DX, YO + 0.020, 2.50), (0.14, 0.04, 0.14), frame)
+    make_box("DockDoor_Lamp_Arm", (DX, YO + 0.075, 2.53), (0.04, 0.11, 0.04), frame)
+    make_cyl("DockDoor_Lamp_Cap", (DX, YO + 0.13, 2.535), 0.066, 0.03, frame, segments=10)
+    make_cyl("DockDoor_Lamp", (DX, YO + 0.13, 2.45), 0.052, 0.14, (0.98, 0.86, 0.56, 1.0), segments=10)
+    # the landing: flush with the stockroom floor; Dock_Face is its west third
+    make_box("DockLanding", (2.65, ROOM_D + 0.90, -0.55), (1.70, 0.80, 1.10), conc)
+    make_box("DockLanding_Fill", (3.10, ROOM_D + 0.35, -0.55), (0.80, 0.30, 1.10), conc)   # from the floor slab's north edge (it ran 10 cm into the slab)
+    make_box("DockLanding_Nosing", (2.65, ROOM_D + 1.27, 0.003), (1.70, 0.06, 0.006), COL_STRIPE)
+    # five steps north to the apron (six risers of 0.183)
+    rise = 1.10 / 6.0
+    for k in range(5):
+        top = -rise * (k + 1)
+        make_box(f"DockStep_{k}", (DX, ROOM_D + 1.30 + 0.28 * k + 0.14, (top - 1.10) / 2.0), (1.10, 0.28, top + 1.10), conc)
+        make_box(f"DockStep_{k}_Nosing", (DX, ROOM_D + 1.30 + 0.28 * k + 0.255, top + 0.003), (1.10, 0.05, 0.006), COL_STRIPE)
+    # yellow pipe rails: the landing's two ends, and a handrail down each side
+    # of the steps
+    rail = (0.86, 0.70, 0.14, 1.0)
+    y0, y1, yb = ROOM_D + 0.16, ROOM_D + 1.26, ROOM_D + 2.76
+    for e, xr in ((-1, 1.84), (1, 3.46)):
+        xs = DX + e * 0.58        # the stair's side
+        for pi, (qx, qy) in enumerate(((xr, y0), (xr, y1), (xs, y1))):
+            make_cyl(f"DockRail_{e:+d}_Post_{pi}", (qx, qy, 0.50), 0.022, 1.00, rail, segments=8)
+        make_cyl(f"DockRail_{e:+d}_Post_Foot", (xs, yb, -0.60), 0.022, 1.00, rail, segments=8)
+        for nm, z in (("Top", 1.00), ("Mid", 0.52)):
+            make_tube(f"DockRail_{e:+d}_{nm}", [(xr, y0, z), (xr, y1, z), (xs, y1, z), (xs, yb, z - 1.10)], 0.020, rail, segments=6)
+
+
 def build_back_of_house_2026_10():
     """THE STOCKROOM'S WALLS (2026-10-08; "too bare and empty" — 12 % of the
     walls held anything at eye height). Back of house: the workbench with
@@ -409,8 +487,9 @@ def build_back_of_house_2026_10():
     for e in (-1, 1):
         make_cyl(f"Dock_Bollard_{e:+d}", (e * 1.70, NF - 0.25, 0.55), 0.10, 1.10, yellow, segments=12)
         make_cyl(f"Dock_Bollard_{e:+d}_Cap", (e * 1.70, NF - 0.25, 1.12), 0.11, 0.04, (0.20, 0.20, 0.22, 1.0), segments=12)
-    make_box("Dock_Board", (2.45, NF - 0.06, 0.70), (0.90, 0.06, 1.40), steel)
-    make_box("Dock_Board_Stripe", (2.45, NF - 0.095, 1.25), (0.90, 0.01, 0.10), yellow)
+    # (pass 454) on the E wall: it leaned on the N wall where the dock door is
+    make_box("Dock_Board", (EF - 0.06, 6.95, 0.70), (0.06, 0.90, 1.40), steel)
+    make_box("Dock_Board_Stripe", (EF - 0.095, 6.95, 1.25), (0.01, 0.90, 0.10), yellow)
     # the electrical panel on the W wall, its conduit to the ceiling; a wall fan high
     make_box("Electrical_Panel", (WF + 0.08, 7.55, 1.55), (0.16, 0.60, 0.90), (0.62, 0.64, 0.64, 1.0))
     make_box("Electrical_Panel_Label", (WF + 0.162, 7.55, 1.85), (0.002, 0.20, 0.06), yellow)
@@ -440,6 +519,7 @@ def main():
     build_hero_props_2026_09()
     build_dawn_east_2026_10()
     build_dream_haze_2026_11()
+    build_dock_door_2026_11()
     build_back_of_house_2026_10()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/centro_stockroom.glb"))

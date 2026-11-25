@@ -125,3 +125,73 @@ def make_wine_bottle(prefix, x, y, base_z, color=(0.14, 0.22, 0.14, 0.95),
              r * 0.30, h * 0.15, color, segments=segments)
     make_cyl(f"{prefix}_Foil", (x, y, base_z + h * 0.97),
              r * 0.33, h * 0.06, (0.50, 0.14, 0.14, 1.0), segments=segments)
+
+
+def make_smartphone(prefix, x, y, base_z, *, state="call", along="Y", head=1,
+                    case=(0.10, 0.10, 0.12, 1.0), w=0.075, l=0.155):
+    """A smartphone lying on a surface, readable from a close-up (pass 454).
+
+    The phones were one dark box the colour of the desk under them: the
+    New Orleans office's "insert phone" (11 lines) and the Miller
+    kitchen's (9) framed a slab nobody would name. This is a case with a
+    bright rim round it and a LIT screen that says what the line says:
+
+      state "call"  an incoming call — avatar, name bar, red and green buttons
+            "text"  a message thread — grey and blue bubbles, the input bar
+            "lock"  a dim wallpaper and the clock
+            "off"   black glass with one reflection
+            "back"  face-down: the camera block, its lenses, the maker's dot
+
+    `along` is the phone's long axis ('Y' or 'X'), `head` (+1 / -1) which
+    end is its top. `prefix` may carry a `__view` tag; every part keeps it.
+    There are no letters on it: the art layer (Hero Studio) carries words.
+    """
+    head_name, _, tag = prefix.partition("__")
+    tag = ("__" + tag) if tag else ""
+
+    def nm(part):
+        return head_name + (("_" + part) if part else "") + tag
+
+    def P(u, v, z, su, sv, sz, name, color):
+        # (u across, v along the phone, toward its top) -> world
+        if along == "Y":
+            make_box(name, (x + u, y + head * v, base_z + z), (su, sv, sz), color)
+        else:
+            make_box(name, (x + head * v, y + u, base_z + z), (sv, su, sz), color)
+
+    def D(u, v, z, r, name, color, h=0.001):
+        if along == "Y":
+            make_cyl(name, (x + u, y + head * v, base_z + z), r, h, color, segments=10)
+        else:
+            make_cyl(name, (x + head * v, y + u, base_z + z), r, h, color, segments=10)
+
+    P(0, 0, 0.0035, w + 0.004, l + 0.004, 0.007, nm("Rim"), (0.74, 0.75, 0.77, 1.0))
+    P(0, 0, 0.0045, w, l, 0.009, nm(""), case)
+    if state == "back":
+        P(-w / 2 + 0.022, l / 2 - 0.024, 0.0100, 0.030, 0.034, 0.002, nm("Camera"), (0.20, 0.20, 0.22, 1.0))
+        D(-w / 2 + 0.022, l / 2 - 0.016, 0.0115, 0.008, nm("Lens_0"), (0.03, 0.03, 0.04, 1.0))
+        D(-w / 2 + 0.022, l / 2 - 0.033, 0.0115, 0.008, nm("Lens_1"), (0.03, 0.03, 0.04, 1.0))
+        D(0, 0, 0.0095, 0.007, nm("Mark"), (0.36, 0.36, 0.38, 1.0))
+        return
+    sw, sl = w - 0.008, l - 0.012
+    lit = {"call": (0.80, 0.87, 0.97, 1.0), "text": (0.94, 0.95, 0.96, 1.0),
+           "lock": (0.22, 0.30, 0.44, 1.0), "off": (0.03, 0.03, 0.04, 1.0)}[state]
+    P(0, 0, 0.0095, sw, sl, 0.001, nm("Screen"), lit)
+    z = 0.0105
+    if state == "call":
+        D(0, sl * 0.20, z, 0.015, nm("Screen_Avatar"), (0.42, 0.50, 0.66, 1.0))
+        P(0, sl * 0.03, z, 0.040, 0.008, 0.001, nm("Screen_Name"), (0.12, 0.14, 0.20, 1.0))
+        P(0, -sl * 0.05, z, 0.026, 0.005, 0.001, nm("Screen_Sub"), (0.46, 0.50, 0.58, 1.0))
+        D(-sw * 0.27, -sl * 0.32, z, 0.010, nm("Screen_Decline"), (0.86, 0.18, 0.16, 1.0))
+        D(sw * 0.27, -sl * 0.32, z, 0.010, nm("Screen_Accept"), (0.20, 0.72, 0.30, 1.0))
+    elif state == "text":
+        P(0, sl * 0.44, z, sw, 0.012, 0.001, nm("Screen_Bar"), (0.84, 0.86, 0.88, 1.0))
+        P(-sw * 0.14, sl * 0.26, z, 0.044, 0.018, 0.001, nm("Screen_Bubble_0"), (0.78, 0.80, 0.83, 1.0))
+        P(-sw * 0.10, sl * 0.08, z, 0.050, 0.026, 0.001, nm("Screen_Bubble_1"), (0.78, 0.80, 0.83, 1.0))
+        P(sw * 0.16, -sl * 0.12, z, 0.040, 0.016, 0.001, nm("Screen_Bubble_2"), (0.22, 0.52, 0.94, 1.0))
+        P(0, -sl * 0.42, z, sw - 0.010, 0.010, 0.001, nm("Screen_Input"), (0.84, 0.86, 0.88, 1.0))
+    elif state == "lock":
+        P(0, sl * 0.24, z, 0.036, 0.014, 0.001, nm("Screen_Clock"), (0.90, 0.92, 0.95, 1.0))
+        P(0, sl * 0.12, z, 0.024, 0.004, 0.001, nm("Screen_Date"), (0.70, 0.74, 0.80, 1.0))
+    else:
+        P(sw * 0.22, 0, z, 0.010, sl * 0.6, 0.001, nm("Screen_Glare"), (0.10, 0.11, 0.14, 1.0))

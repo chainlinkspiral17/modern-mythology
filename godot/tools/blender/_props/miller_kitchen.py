@@ -66,6 +66,7 @@ from .structure import make_floor, make_ceiling, make_crown_molding, make_wall, 
 from .decor import make_wall_clock, make_calendar
 from .detail import make_wall_outlet, make_light_switch, make_traffic_wear, make_floor_stain, make_scuff_band, make_cord_run
 from . import kitchen_kit as KK
+from .objects import make_smartphone
 
 X0, X1, Y0, Y1 = -4.5, 4.5, 0.0, 7.0
 XW, XE, YS, YN = -4.4, 4.4, 0.1, 6.9
@@ -551,7 +552,9 @@ def dress_family():
     make_taper_cyl("Rack_Bowl__miller_kitchen_ch3", (0.50, YN - 0.24, TOP_Z + 0.012 + 0.035), 0.045, 0.075, 0.07, (0.92, 0.90, 0.84, 1.0), segments=12)
     # Mike's coffee and his phone at the counter by the coffee maker
     make_cyl("Mike_Coffee_Mug__mk_mike", (-2.95, YN - 0.42, TOP_Z + 0.048), 0.04, 0.095, (0.30, 0.36, 0.52, 1.0), segments=10)
-    make_box("Phone_Cell", (-2.75, YN - 0.46, TOP_Z + 0.006), (0.075, 0.15, 0.012), (0.12, 0.12, 0.14, 1.0))
+    # (pass 454) a lit message screen, not a dark box: "The text is from a
+    # number he does not have saved" (ch0), "her phone buzzes. A text" (ch3)
+    make_smartphone("Phone_Cell", -3.34, YN - 0.51, TOP_Z, state="text")   # clear of the range: ch11's skillet handle lay across it
     dress_four_thirty_table(roll="__miller_kitchen_ch11e", kolache="__miller_kitchen_ch17",
                             jar=("__miller_kitchen_ch17", -1.40, YN - 0.40))
     # (pass 405) ch17: Anita's "small white bakery bag" ("her empty kolache bag")

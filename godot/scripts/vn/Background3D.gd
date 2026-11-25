@@ -90,6 +90,9 @@ const VIEW_GROUPS := {
 	"cab_bell": ["cabin_interior_four", "cabin_interior_day_four", "cabin_interior_day", "cabin_interior_day_disc", "cabin_interior_four_perch", "cabin_interior_four_crow", "cabin_interior_day_four_crow"],
 	"cab_late": ["cabin_interior_day", "cabin_interior_day_disc", "cabin_interior_day_headset"],
 	"cab_sticks": ["cabin_interior_day_breakfast", "cabin_interior_day_sticks", "cabin_interior_day_arrival"],
+	"cab_coffee": ["cabin_interior_marit", "cabin_interior_four", "cabin_interior_four_crow", "cabin_interior_day_breakfast", "cabin_interior_early"],
+	"cab_cup2": ["cabin_interior_marit", "cabin_interior_four", "cabin_interior_four_crow", "cabin_interior_day_breakfast"],
+	"cab_cup4": ["cabin_interior_marit", "cabin_interior_four", "cabin_interior_four_crow"],
 	"cab_hex": ["cabin_interior_day_hexagon", "cabin_interior_hexagon"],
 	"cab_disc": ["cabin_interior_day_disc", "cabin_interior_day_headset"],
 	# (pass 403) LENA'S APARTMENT by chapter (twins of lena_apartment /
@@ -111,9 +114,10 @@ const VIEW_GROUPS := {
 	# (pass 406) HANS'S BAKERY by chapter (twins of hans_bakery_back_kitchen):
 	# the coffee press at Saturday's breakfast and on Sunday, the box from
 	# Sunday at six on; the back door shut except in ch18's view
-	"hb_press": ["hans_bakery_breakfast", "hans_bakery_sunday", "hans_bakery_bowls"],
-	"hb_box": ["hans_bakery_sunday", "hans_bakery_bowls"],
-	"hb_inside": ["hans_bakery_back_kitchen", "hans_bakery_ovens", "hans_bakery_breakfast", "hans_bakery_sunday", "hans_bakery_bowls"],
+	"hb_press": ["hans_bakery_breakfast", "hans_bakery_sunday", "hans_bakery_bowls", "hans_bakery_bowls_crow"],
+	"hb_bowls": ["hans_bakery_bowls", "hans_bakery_bowls_crow"],
+	"hb_box": ["hans_bakery_sunday", "hans_bakery_bowls", "hans_bakery_bowls_crow"],
+	"hb_inside": ["hans_bakery_back_kitchen", "hans_bakery_ovens", "hans_bakery_breakfast", "hans_bakery_sunday", "hans_bakery_bowls", "hans_bakery_bowls_crow"],
 	# (pass 407) THE SANDERLING AND ITS PATCH by chapter (Board Lords' window
 	# and Main Street): "about three feet on a side, in the center of the
 	# sanderling's body" (ch2, ch6); "taken the head this week" (ch9-ch12, the
@@ -3809,6 +3813,26 @@ const CAMERA_PRESETS := {
 		"suppress_input": true,
 	},
 	"hans_bakery_bowls": {
+		# (pass 406) ch17, Aria: "The four bowls were on the table … Roy's at the head, Marit's
+		# beside it, then the substrate-bowl, then Marina's grandfather's bowl".
+		"scene": "res://scenes/locales/hans_bakery_back_kitchen.tscn",
+		"requires_glb": "res://assets/3d/locales/hans_bakery_back_kitchen.glb",
+		# DRAFT 6 (2026-11-10): THE MAIN ROOM (the id is historical: 664 of
+		# its 695 lines are at the dining table, not in a back kitchen).
+		# godot x in [-4.5,4.5], z from +4.4 (the street wall: the belled
+		# door, the front window, the front counter) to -7.6 (the
+		# kitchenette wall, the wedding photograph, the doorway to the back
+		# kitchen at x 3.05). The dining table mid-room (godot 0,-1.8..-5.2),
+		# the worktable in the E aisle, the cooling rack table on the E
+		# wall, the Hemlock window and the back door W. Camera SE, just W of
+		# the cooling rack table, looking NW across the dining table.
+		"camera_origin": Vector3(3.20, 1.62, -0.90),
+		"camera_rotation": Vector3(-0.093, deg_to_rad(46.6), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"hans_bakery_bowls_crow": {
+		# ch17 n76-87: Kai's crow walks to the substrate-bowl and stands on its rim (the builder's Crow_Live)
 		# (pass 406) ch17, Aria: "The four bowls were on the table … Roy's at the head, Marit's
 		# beside it, then the substrate-bowl, then Marina's grandfather's bowl".
 		"scene": "res://scenes/locales/hans_bakery_back_kitchen.tscn",

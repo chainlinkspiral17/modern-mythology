@@ -254,16 +254,16 @@ rotation = Vector3(-0.2531, 0.7797, 0.0)
 metadata/fov = 34.0
 
 [node name="shot_insert_cedar__cabin_interior_four" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.620, 1.150, -3.780)
-rotation = Vector3(-0.6430, 0.7550, 0.0)
+position = Vector3(-0.100, 1.150, -3.720)
+rotation = Vector3(-0.5538, -0.7854, 0.0)
 metadata/fov = 30.0
 
 ; (view_twin) cabin_interior_four's frame in cabin_interior_four_crow
 ; (pass 423) ring n76: the crow walks to the bell-piece and stands beside it — both in frame
 [node name="shot_insert_cedar__cabin_interior_four_crow" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.150, 1.250, -3.420)
-rotation = Vector3(-0.3906, 0.8731, 0.0)
-metadata/fov = 34.0
+position = Vector3(-0.100, 1.150, -3.720)
+rotation = Vector3(-0.5538, -0.7854, 0.0)
+metadata/fov = 30.0
 
 ; (view_twin) cabin_interior_four's frame in cabin_interior_four_perch
 [node name="shot_insert_cedar__cabin_interior_four_perch" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -546,11 +546,12 @@ metadata/fov = 36.0
 position = Vector3(-0.320, 1.060, -3.420)
 rotation = Vector3(-0.2726, -0.4636, 0.0)
 
-; [shot:insert coffee] (3x) — the stove-side table where the pot sits
+; [shot:insert coffee] (13x) — (pass 454) the enamel pot on the folded towel
+; and the mug beside it, from the table's east side
 [node name="shot_insert_coffee" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.050, 1.250, -3.850)
-rotation = Vector3(-0.5400, 0.8071, 0.0)
-metadata/fov = 34.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.350, 1.300, -3.450)
+rotation = Vector3(-0.3896, 0.8823, 0.0)
+metadata/fov = 28.0
 
 ; [shot:insert door] (4x) — the south door + its iron latch
 [node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
