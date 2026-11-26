@@ -182,7 +182,10 @@ def build_hero_props():
         for t in range(3):
             make_cyl(f"Tee_{pi}_{t}", (px + 0.03 * t, 4.75 - 0.04 * t, h / 2.0), 0.025, h,
                      (0.90, 0.46, 0.14, 1.0), segments=6)
-    make_box("Milk_Crate_Ben", (0.75, 4.55, 0.14), (0.33, 0.33, 0.28), (0.62, 0.28, 0.24, 1.0))
+    # (pass 462) "the small overturned milk crate": the shared crate, upside
+    # down — it was a red cube
+    from _props.objects import make_milk_crate
+    make_milk_crate("Milk_Crate_Ben", 0.75, 4.55, 0.0, color=(0.66, 0.24, 0.20, 1.0), upside_down=True)
 
 
 def main():

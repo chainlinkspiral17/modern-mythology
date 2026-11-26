@@ -184,6 +184,11 @@ def build_register_counter():
     make_counter_bullnose("Register", (cx-0.55, cy, top_z), length=2.40,
                           palette={"top": (0.18, 0.12, 0.20, 1.0)})
     make_register("RegisterMachine", (cx+0.30, cy-0.30, top_z))
+    # (pass 462) "He returns to his book": Rick's paperback, open on the
+    # counter by his stool — the cue had been landing on the window's books
+    from _props.objects import make_notebook
+    make_notebook("Paperback_Book", cx+0.28, cy+0.36, top_z, yaw=math.pi / 2.0, w=0.115, l=0.185, state="open",
+                  cover=(0.72, 0.26, 0.18, 1.0), pen=False)
     # THE SHOP KEYS on the counter by the register (2026-10-26: "the keys are
     # heavy in a way Maya had not, at sixteen, expected keys to be heavy" —
     # the cue had been matching the Key Issues wall rack by name)

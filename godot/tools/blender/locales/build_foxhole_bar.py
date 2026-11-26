@@ -113,12 +113,19 @@ def build_shell():
     # sodium light in it), the restrooms' leaves shut with their signs, the
     # backstage door propped open a hand
     for li, lx in enumerate((DOOR_X - DOOR_W / 4.0, DOOR_X + DOOR_W / 4.0)):
-        make_box(f"Entrance_Door_Leaf_{li}", (lx, 0.06, 1.18), (DOOR_W / 2.0 - 0.04, 0.05, 2.34), (0.20, 0.20, 0.22, 1.0))
+        # (pass 462) oxblood leaves with steel kick plates in a steel frame:
+        # near-black leaves on a near-black wall left the insert two orange
+        # panes floating in the dark ("Jesse goes to the door")
+        make_box(f"Entrance_Door_Leaf_{li}", (lx, 0.06, 1.18), (DOOR_W / 2.0 - 0.04, 0.05, 2.34), (0.44, 0.16, 0.14, 1.0))
+        make_box(f"Entrance_Door_Leaf_{li}_Kick", (lx, 0.092, 0.17), (DOOR_W / 2.0 - 0.10, 0.014, 0.26), (0.58, 0.58, 0.60, 1.0))
         # the glass runs through the leaf, proud of both faces: at y 0.03 it hid
         # behind its own leaf from inside, and the door insert read as two black
         # slabs (pass 342); the street's sodium in it
         make_box(f"Entrance_Door_Leaf_{li}_Glass", (lx, 0.06, 1.50), (DOOR_W / 2.0 - 0.30, 0.058, 1.10), (0.88, 0.66, 0.36, 1.0))
         make_tube(f"Entrance_Door_Leaf_{li}_Bar", [(lx - 0.30, 0.11, 1.05), (lx + 0.30, 0.11, 1.05)], 0.016, COL_STEEL, segments=6)
+    for nm, fx_ in (("W", DOOR_X - DOOR_W / 2.0 - 0.04), ("E", DOOR_X + DOOR_W / 2.0 + 0.04)):
+        make_box(f"Entrance_Door_Frame_{nm}", (fx_, 0.11, 1.22), (0.08, 0.03, 2.44), (0.50, 0.50, 0.52, 1.0))
+    make_box("Entrance_Door_Frame_Head", (DOOR_X, 0.11, 2.44), (DOOR_W + 0.16, 0.03, 0.08), (0.50, 0.50, 0.52, 1.0))
     make_box("Entrance_Exit_Sign", (DOOR_X, 0.12, 2.62), (0.42, 0.06, 0.16), (0.24, 0.84, 0.36, 1.0))
     for ri, ry in enumerate((3.2, 4.6)):
         make_box(f"Restroom_Door_{ri}", (ROOM_W / 2.0 - 0.06, ry, 1.05), (0.05, 0.86, 2.08), (0.30, 0.26, 0.24, 1.0))

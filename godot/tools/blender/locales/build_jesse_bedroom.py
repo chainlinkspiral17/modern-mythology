@@ -10,7 +10,7 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, export_glb
-from _props.objects import make_smartphone
+from _props.objects import make_smartphone, make_electric_guitar
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_wall_with_openings
 from _props.views import make_view
 from _props.store_fixtures import make_counter, make_counter_bullnose, make_register
@@ -116,26 +116,17 @@ def build_dressing():
     make_box("Nightstand", (bx+0.95, by+0.7, 0.29), (0.40, 0.40, 0.58), COL_WOOD)
     make_box("Clock", (bx+1.06, by+0.84, 0.63), (0.15, 0.10, 0.10), P.METAL_BLACK)   # back corner, on the top (2026-09-23: 1 cm over it)
     # Guitar on an A-frame stand, SE corner
-    gx, gy = ROOM_W/2.0-0.5, 0.9
-    for ss in (-1, +1):
-        make_cyl(f"GuitarStand_Leg_{ss:+d}", (gx+ss*0.12, gy, 0.30), 0.02, 0.60, P.METAL_BLACK, segments=6)
-    make_cyl("GuitarStand_Cross", (gx, gy, 0.20), 0.02, 0.24, P.METAL_BLACK, axis='X', segments=6)
-    # THE TELECASTER (draft 5, 2026-10-10: the prose names it every time —
-    # "his Telecaster unplugged in his lap"; it was a round-bodied guitar):
-    # the single-cut slab in butterscotch, the black pickguard, the chrome
-    # control plate, the maple neck and its six-in-line headstock
-    from _props.geometry import make_chamfer_box
-    tele = (0.86, 0.60, 0.26, 1.0); maple = (0.88, 0.76, 0.52, 1.0)
-    make_chamfer_box("Guitar_Telecaster_Body", (gx, gy-0.04, 0.52), (0.32, 0.045, 0.40), tele, chamfer=0.02)
-    make_chamfer_box("Guitar_Telecaster_Horn", (gx-0.10, gy-0.04, 0.75), (0.11, 0.045, 0.08), tele, chamfer=0.02)
-    make_box("Guitar_Pickguard", (gx-0.03, gy-0.064, 0.56), (0.20, 0.003, 0.24), (0.08, 0.08, 0.09, 1.0))
-    make_box("Guitar_Control_Plate", (gx+0.10, gy-0.064, 0.42), (0.06, 0.003, 0.16), (0.78, 0.80, 0.82, 1.0))
-    make_box("Guitar_Bridge", (gx, gy-0.064, 0.38), (0.10, 0.004, 0.06), (0.78, 0.80, 0.82, 1.0))
-    make_box("Guitar_Neck", (gx, gy-0.04, 1.06), (0.055, 0.035, 0.68), maple)
-    make_box("Guitar_Fretboard", (gx, gy-0.059, 1.06), (0.05, 0.004, 0.66), maple)
-    make_box("Guitar_Head", (gx+0.015, gy-0.04, 1.49), (0.085, 0.025, 0.20), maple)
-    for ti in range(6):
-        make_cyl(f"Guitar_Tuner_{ti}", (gx+0.065, gy-0.04, 1.41 + ti*0.03), 0.008, 0.03, (0.78, 0.80, 0.82, 1.0), axis='X', segments=6)
+    # (pass 462) It stood in the SE corner FACING THE SOUTH WALL, its back to
+    # the room, and its pickguard, plates and fretboard were 3 mm boxes that
+    # drew black: the close-up was an orange slab. Now the shared guitar,
+    # turned to face the room (west), every part 8 mm or thicker.
+    #   THE TELECASTER (draft 5, 2026-10-10: the prose names it every time —
+    #   "his Telecaster unplugged in his lap"): the single-cut slab in
+    #   butterscotch, the black pickguard, the chrome control plate, the maple
+    #   neck and its six-in-line headstock
+    import math
+    gx, gy = ROOM_W/2.0-0.40, 0.79
+    make_electric_guitar("Guitar_Telecaster", gx, gy, 0.0, yaw=-math.pi / 2.0)
     # Practice amp next to the guitar
     ax, ay = ROOM_W/2.0-0.35, 1.7
     make_box("Amp_Cab", (ax, ay, 0.28), (0.44, 0.36, 0.56), (0.16, 0.14, 0.14, 1.0))

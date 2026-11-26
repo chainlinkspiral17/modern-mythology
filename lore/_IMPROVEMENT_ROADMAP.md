@@ -3835,6 +3835,78 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-26 · pass 462: ranks 241–288 by the stranger test (the two-line pairs begin).**
+One line of each of the next 48 (set, cue) pairs rendered (46 frames came
+back) and read: 34 pass. Fixed at the object:
+- JESSE'S TELECASTER (2 cues, `guitar` and `telecaster`): it stood in the
+  corner FACING THE SOUTH WALL with its back to the room, and its
+  pickguard, plates and fretboard were 3 mm boxes that drew black. Shared
+  `make_electric_guitar` (slab body with its horn, pickguard, bridge plate,
+  pickups, control plate and knobs, fretted maple neck, six-in-line head,
+  A-frame stand; every part 8 mm or thicker), turned to face the room.
+- MISTER, Ben's cat: a near-black chamfered box on a navy blanket in an
+  unlit corner (it read as a suitcase). The shared `make_cat` loaf in tabby
+  grey with stripes and a tail, a fill at the foot of the bed.
+- THE OVERTURNED MILK CRATE in the equipment shed: `make_milk_crate(
+  upside_down=True)` — it was a red cube.
+- THE FIELD-HOUSE CORKBOARD: cork in cork's colour in four proud frame
+  rails, the depth chart with ruled rows, a schedule, a flyer, a card, pins.
+- THE FOOTBALL at the 50: a prolate ball on its point on the tee, two white
+  stripes, laces toward the insert — it was a brown cylinder lying across
+  the tee.
+- RICK'S BOOK ("He returns to his book"): an open paperback on the counter
+  by his stool; the cue had been landing on the window display's books.
+  (`make_notebook(pen=False)`.)
+- THE FOXHOLE'S ENTRANCE: oxblood leaves, steel kick plates and frame —
+  near-black leaves on a near-black wall left two orange panes in the dark.
+- Diego's desk close-up was framed on the chair: re-aimed (marker_reaim).
+Cues that matched a word, not the object — dropped or re-cued:
+- "her own internal clock" x2 (vol 6 ch12, ch21) had cut to Maya's alarm
+  clock: cue dropped, marker removed;
+- "the song on the radio" in the TRUCK (ch16 dawn) cut to the grandmother's
+  kitchen radio: dropped;
+- "a compact serious teenager at the gas station" cut to Jesse's STATION in
+  the Pit Stop kitchen: dropped;
+- "Maya closes her book" → `closeup maya`.
+Draft 1 shipped. DRAFT 2 TARGETS (read in this band, not fixed): the Kwik
+Stop coffee close-up has a red stool across its foreground; the truck's
+sauce packet is a small red square on a dark seat; the Foxhole "bass" cue
+shows an amp head (the line means the sound); two frames did not render
+(vol6_ch5_radio:25 and the band's last). Ranks 289+ are two- and one-line
+pairs: sample by SET (the first-generation rooms), not by rank.
+
+**2026-11-26 · pass 461: vol 2's Small Wood close-ups (the recliner, the service door, the fallen-in house).**
+Three frames pass 459 read as slabs, rebuilt at the object:
+- DAD'S RECLINER ("passed out, inside on his recliner, slumped at a
+  precarious angle"): shared `make_recliner` — skirted base, seat cushion,
+  two fat arms with padded tops, a tall leaning back with its headrest, the
+  footrest out on its scissor arms, the side lever. It was two slabs and a
+  plank, framed so close only the slabs showed; the close-up steps back to
+  three metres and a warm fill reaches the back, which faced away from the
+  lamp.
+- THE SERVICE DOOR ("unlocked the door ... locked the secondary service
+  door"): shared `make_panel_door` — slab, raised panels (six, or a
+  four-light window over two), knob on its rose, deadbolt, hinge knuckles,
+  and `casing=<wall thickness>` for the boards round the opening. The
+  farmhouse's service door, porch outer door and front door use it. The
+  hall had no light of its own (the door drew as a dark red slab): a fill.
+- THE FALLEN-IN HOUSE ("the remains of fallen-in houses. Debris of lives
+  lost in transition"): from the road it was an intact shed with a lean-to
+  roof. Now half a gable with three bare rafters reaching for a ridge that
+  is gone, the south slope down in one piece, a corner with an empty
+  window, a door frame standing alone, a wall leaning out over the yard,
+  bare studs, the chimney plumb, a cookstove and a bedstead inside, boards
+  and shingles in the grass. The close-up moves to 12 m.
+- vol 2 ch2 "David Jarvis was at once both reported killed in 1910" carried
+  `insert fallen_house` at night, where the ruin is black and the line does
+  not name it: cue dropped.
+Draft 2 shipped for the three. DRAFT 3 TARGETS: the ruin's walls are flat
+(no clapboards, no window in the leaning section); the recliner's back
+still falls dark against the window; ~400 doors across the sets are still
+one slab — `make_panel_door` is there for any a close-up frames; the
+Henderson garage workbench (bench + toolboxes reads, but no vise, no
+pegboard, no paint chips or broom the line sweeps).
+
 **2026-11-26 · pass 460: the two frames pass 459 read and left (the diner's phone, Bianca's eggs).**
 - THE DINER'S JURY-RIGGED PHONE (vol 5 ch0, "He pulled out his phone"): the
   frame was centred on it and still read as a condiment caddy because a

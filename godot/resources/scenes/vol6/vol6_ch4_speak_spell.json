@@ -478,7 +478,7 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert book]Maya closes her book.",
+   "text": "[shot:closeup maya]Maya closes her book.",
    "voice": "assets/audio/voice/vol6_ch4_speak_spell/084.mp3"
   },
   {

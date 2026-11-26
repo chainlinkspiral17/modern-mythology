@@ -99,7 +99,6 @@ KEPT_INSERT = {
     ("meadowlark_circle", "shot_insert_sprinklers"): "the lawns down the circle",
     ("small_wood_roadside", "shot_insert_coop"): "the coop beside the house up the road",
     ("small_wood_roadside", "shot_insert_house"): "the lit house up the road",
-    ("small_wood_roadside", "shot_insert_fallen_house"): "the fallen-in house off the road",
     ("small_wood_road", "shot_insert_fallen_house"): "the fallen-in house off the road",
     ("lake_palestine_dock", "shot_insert_cooler"): "the cooler on the shore, from the dock",
     ("accretion_corridor", "shot_insert_door"): "the door at the corridor's far end",

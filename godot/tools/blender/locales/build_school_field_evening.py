@@ -163,7 +163,17 @@ def build_hashmarks():
     # A football teed up at the 50
     make_cyl("Tee", (0.0, MID_Y, 0.03), 0.06, 0.06, (0.92, 0.72, 0.20, 1.0), segments=10)
     # Ball rests on the tee (tee top 0.06; ball r 0.055 → centre 0.115)
-    make_cyl("Ball", (0.0, MID_Y, 0.115), 0.055, 0.28, (0.42, 0.24, 0.14, 1.0), axis='X', segments=8)
+    # (pass 462) a football: the prolate ball stood on its point on the tee,
+    # its two white stripes and its laces toward the insert — it was a brown
+    # cylinder lying across the tee and read as a red box ("The ball snaps.")
+    LEATHER, WHITE = (0.46, 0.25, 0.13, 1.0), (0.94, 0.93, 0.88, 1.0)
+    make_lathe("Ball", (0.0, MID_Y, 0.06), [(0.0, 0.0), (0.035, 0.02), (0.062, 0.06), (0.080, 0.10), (0.085, 0.14),
+                                            (0.080, 0.18), (0.062, 0.22), (0.035, 0.26), (0.0, 0.28)], LEATHER, segments=12)
+    for k, (z0, r0, r1) in enumerate(((0.040, 0.052, 0.064), (0.224, 0.064, 0.052))):
+        make_lathe(f"Ball_Stripe_{k}", (0.0, MID_Y, 0.06 + z0), [(r0 - 0.012, 0.0), (r0 + 0.003, 0.0), (r1 + 0.003, 0.016), (r1 - 0.012, 0.016)], WHITE, segments=12)
+    make_box("Ball_Lace", (0.0, MID_Y - 0.084, 0.06 + 0.14), (0.012, 0.010, 0.10), WHITE)
+    for k in range(4):
+        make_box(f"Ball_Lace_Stitch_{k}", (0.0, MID_Y - 0.086, 0.06 + 0.104 + k * 0.024), (0.036, 0.010, 0.008), WHITE)
 
 
 def build_goalposts():
@@ -451,9 +461,26 @@ def build_hero_props():
     make_box("Field_House_Roof", (-14.0, -8.5, 3.02), (7.5, 3.9, 0.24), (0.32, 0.28, 0.24, 1.0))
     # on the house's north face (y -6.80); 2026-09-22: 4-6 cm off it
     make_box("Field_House_Door", (-16.0, -6.77, 1.05), (0.90, 0.06, 2.10), (0.30, 0.32, 0.36, 1.0))
-    make_box("Corkboard", (-13.2, -6.775, 1.55), (1.40, 0.05, 1.00), (0.52, 0.38, 0.26, 1.0))
-    make_box("Corkboard_Frame", (-13.2, -6.78, 1.55), (1.50, 0.04, 1.10), wood)
-    make_box("DepthChart_Sheet", (-13.2, -6.745, 1.60), (0.30, 0.01, 0.42), (0.92, 0.90, 0.82, 1.0))
+    # (pass 462) cork in cork's colour inside four proud frame rails, the
+    # depth chart with its ruled rows, two more notices, pins — it was a dark
+    # red panel with one blank sheet ("The corkboard is outside the field-house door.")
+    CORK, PIN = (0.74, 0.58, 0.38, 1.0), (0.80, 0.16, 0.14, 1.0)
+    make_box("Corkboard", (-13.2, -6.775, 1.55), (1.40, 0.05, 1.00), CORK)
+    for nm, cxx, czz, sxx, szz in (("T", -13.2, 2.075, 1.40, 0.05), ("B", -13.2, 1.025, 1.40, 0.05),
+                                   ("L", -13.925, 1.55, 0.05, 1.10), ("R", -12.475, 1.55, 0.05, 1.10)):
+        make_box(f"Corkboard_Frame_{nm}", (cxx, -6.765, czz), (sxx, 0.07, szz), wood)
+    make_box("DepthChart_Sheet", (-13.2, -6.745, 1.60), (0.30, 0.01, 0.42), (0.95, 0.94, 0.88, 1.0))
+    make_box("DepthChart_Sheet_Title", (-13.2, -6.738, 1.775), (0.20, 0.008, 0.028), (0.12, 0.12, 0.16, 1.0))
+    for k in range(9):
+        make_box(f"DepthChart_Sheet_Row_{k}", (-13.2 - 0.02 * (k % 3 == 1), -6.738, 1.735 - k * 0.036), (0.24 - 0.04 * (k % 3 == 1), 0.008, 0.010), (0.30, 0.30, 0.36, 1.0))
+    make_box("Corkboard_Notice_Schedule", (-13.62, -6.745, 1.62), (0.22, 0.01, 0.28), (0.96, 0.90, 0.56, 1.0))
+    for k in range(5):
+        make_box(f"Corkboard_Notice_Schedule_Row_{k}", (-13.62, -6.738, 1.72 - k * 0.045), (0.17, 0.008, 0.010), (0.30, 0.30, 0.36, 1.0))
+    make_box("Corkboard_Notice_Flyer", (-12.80, -6.745, 1.50), (0.22, 0.01, 0.30), (0.70, 0.84, 0.92, 1.0))
+    make_box("Corkboard_Notice_Flyer_Band", (-12.80, -6.738, 1.60), (0.18, 0.008, 0.05), (0.20, 0.30, 0.52, 1.0))
+    make_box("Corkboard_Notice_Card", (-13.55, -6.745, 1.24), (0.16, 0.01, 0.10), (0.96, 0.96, 0.94, 1.0))
+    for k, (pxx, pzz) in enumerate(((-13.2, 1.795), (-13.62, 1.745), (-12.80, 1.635), (-13.55, 1.28))):
+        make_box(f"Corkboard_Pin_{k}", (pxx, -6.732, pzz), (0.016, 0.014, 0.016), PIN)
     # Parking lot + the staged vehicles
     make_box("Parking_Lot", (0.0, -12.0, 0.01), (56.0, 16.0, 0.04), (0.24, 0.24, 0.26, 1.0))
     for si in range(10):

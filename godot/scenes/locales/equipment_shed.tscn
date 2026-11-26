@@ -317,9 +317,9 @@ rotation = Vector3(-0.2618, 0.2618, 0.0)
 metadata/fov = 35.0
 
 [node name="shot_insert_milk" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.750, 0.399, -3.584)
-rotation = Vector3(-0.2618, 0.0000, 0.0)
-metadata/fov = 35.0
+position = Vector3(0.100, 1.050, -3.300)
+rotation = Vector3(-0.5633, -0.4795, 0.0)
+metadata/fov = 32.0
 
 [node name="shot_insert_helmet" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.325, 2.000, -0.570)

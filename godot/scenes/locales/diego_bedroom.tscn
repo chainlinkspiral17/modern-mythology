@@ -388,7 +388,7 @@ metadata/fov = 45.0
 ; insert (2026-10-10, ch10 Home): his phone on the charger on the nightstand, in the dark
 [node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-1.100, 1.150, -3.000)
-rotation = Vector3(-0.4882, 0.7076, 0.0)
+rotation = Vector3(-0.4915, 0.8501, 0.0)
 metadata/fov = 38.0
 
 ; ── THE DIRECTOR FOLLOWS THE NARRATOR (pass 96): an insert per object the prose names
@@ -436,8 +436,8 @@ metadata/fov = 38.0
 
 ; "the desk that has been his desk since he was nine"
 [node name="shot_insert_desk" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.750, 1.450, -2.450)
-rotation = Vector3(-0.9121, -0.6214, 0.0)
+position = Vector3(0.350, 1.550, -2.200)
+rotation = Vector3(-0.6999, -1.0160, 0.0)
 metadata/fov = 45.0
 
 ; "He closes the desk drawer"

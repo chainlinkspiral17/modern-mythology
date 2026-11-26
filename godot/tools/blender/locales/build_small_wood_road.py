@@ -50,7 +50,7 @@ import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_wedge, make_gable, make_tube, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_wedge, make_gable, make_tube, make_rot_box, export_glb
 from _props.trees import make_conifer, make_broadleaf
 from _props.vehicles import make_car
 from _props.buildings import make_ranch_house, make_shed
@@ -203,16 +203,73 @@ def build_fallen_house():
     house — a wall still standing, the roof slumped into the room,
     the chimney the only plumb thing left."""
     fx, fy = 18.0, -30.0
+    # (pass 461) FALLEN IN. Draft 1 was a wall, a lean-to roof and a chimney:
+    # from the road it read as an intact shed. Now the west gable stands to
+    # half its peak with three bare rafters still reaching for a ridge that
+    # is gone; the south slope has come down in one piece, its west end hung
+    # on the gable and its east end on the floor; the north wall is a corner
+    # with an empty window, a door frame standing alone, and a section
+    # leaning out over the yard; the south wall is studs.
+    ROOF_D, IN_D, RUST = (0.30, 0.27, 0.24, 1.0), (0.34, 0.31, 0.27, 1.0), (0.42, 0.26, 0.18, 1.0)
+    top = 0.20
     make_box("Fallen_House_Floor", (fx, fy, 0.10), (8.0, 7.0, 0.20), (0.44, 0.40, 0.34, 1.0))
-    make_box("Fallen_House_Wall_N", (fx, fy + 3.45, 1.3), (8.0, 0.10, 2.4), WOOD_GRAY)
-    make_box("Fallen_House_Wall_W", (fx - 3.95, fy + 1.0, 0.9), (0.10, 4.9, 1.6), WOOD_GRAY)
-    make_box("Fallen_House_Wall_E_Stub", (fx + 3.95, fy + 2.5, 0.6), (0.10, 1.9, 1.0), WOOD_GRAY)
-    make_wedge("Fallen_House_Roof", (fx, fy + 0.5, 0.20 + 1.15), (7.6, 5.8, 2.3), (0.34, 0.30, 0.26, 1.0), high_end="+Y")
+    ny = fy + 3.45
+    # north wall, west corner: the empty window
+    make_box("Fallen_House_Wall_N_Sill", (15.525, ny, top + 0.50), (2.95, 0.10, 1.00), WOOD_GRAY)
+    make_box("Fallen_House_Wall_N_Pier_W", (14.525, ny, top + 1.70), (0.95, 0.10, 1.40), WOOD_GRAY)
+    make_box("Fallen_House_Wall_N_Pier_E", (16.50, ny, top + 1.70), (1.00, 0.10, 1.40), WOOD_GRAY)
+    make_box("Fallen_House_Wall_N_Header", (15.50, ny, top + 2.15), (1.00, 0.10, 0.50), WOOD_GRAY)
+    make_box("Fallen_House_Window_Sash", (15.50, ny + 0.02, top + 1.45), (0.06, 0.05, 0.90), IN_D)
+    # the door frame, standing alone
+    for k, dx in enumerate((17.15, 18.15)):
+        make_box(f"Fallen_House_Door_Post_{k}", (dx, ny, top + 1.05), (0.12, 0.12, 2.10), IN_D)
+    make_box("Fallen_House_Door_Head", (17.65, ny, top + 2.16), (1.12, 0.12, 0.12), IN_D)
+    # a section leaning out over the yard, and the east corner's stub
+    make_rot_box("Fallen_House_Wall_N_Leaning", (19.5, ny + 0.41, top + 1.02), (2.2, 0.10, 2.2), WOOD_GRAY, roll=-0.38)
+    make_box("Fallen_House_Wall_N_Stub", (21.45, ny, top + 0.45), (1.10, 0.10, 0.90), WOOD_GRAY)
+    make_box("Fallen_House_Wall_E_Stub", (fx + 3.95, fy + 2.5, top + 0.40), (0.10, 1.9, 0.80), WOOD_GRAY)
+    # the west gable: full height to the ridge line, half its peak left
+    wx = fx - 3.95
+    make_box("Fallen_House_Wall_W_A", (wx, fy + 1.2, top + 1.20), (0.10, 4.4, 2.40), WOOD_GRAY)
+    make_wedge("Fallen_House_Gable_Half", (wx, fy + 1.70, top + 2.40 + 0.75), (0.10, 3.4, 1.5), WOOD_GRAY, high_end="-Y")
+    make_box("Fallen_House_Wall_W_Low", (wx, fy - 2.2, top + 0.55), (0.10, 2.4, 1.10), WOOD_GRAY)
+    for k, (dy, hh) in enumerate(((-1.3, 2.0), (-2.1, 1.6), (-3.0, 2.3))):
+        make_box(f"Fallen_House_Stud_W_{k}", (wx, fy + dy, top + hh / 2.0), (0.09, 0.09, hh), IN_D)
+    # the south wall: its sill and five bare studs
+    make_box("Fallen_House_Sill_S", (fx, fy - 3.45, top + 0.06), (7.8, 0.12, 0.12), IN_D)
+    for k, (dx, hh) in enumerate(((-3.2, 2.2), (-1.8, 1.2), (-0.4, 2.0), (1.4, 0.8), (3.0, 1.7))):
+        make_box(f"Fallen_House_Stud_S_{k}", (fx + dx, fy - 3.45, top + 0.12 + hh / 2.0), (0.09, 0.09, hh), IN_D)
+    # three rafters still up at the gable, two broken off short
+    for k, rx in enumerate((14.55, 15.35, 16.15)):
+        make_rot_box(f"Fallen_House_Rafter_{k}", (rx, fy + 1.72, top + 3.15), (0.07, 3.78, 0.13), IN_D, roll=-0.41)
+    make_rot_box("Fallen_House_Rafter_Broken_0", (16.95, ny - 0.75, top + 1.51), (0.07, 1.5, 0.13), IN_D, roll=0.95)
+    # one more, down: its foot on the floor, its head against the door's head
+    make_rot_box("Fallen_House_Rafter_Fallen", (17.75, ny - 0.68, top + 1.07), (0.07, 2.44, 0.13), IN_D, roll=1.037)
+    # the south slope, down in one piece: hung on the gable, on the floor at
+    # its east end; the north slope in two slabs on the floor under it
+    make_rot_box("Fallen_House_Roof_S", (fx + 0.15, fy - 1.7, top + 1.95), (7.2, 3.2, 0.12), ROOF_D, pitch=0.50, roll=-0.12)
+    make_rot_box("Fallen_House_Roof_N_0", (16.4, fy + 1.6, top + 0.30), (3.0, 2.6, 0.12), ROOF_D, roll=0.16, yaw=0.20)
+    make_rot_box("Fallen_House_Roof_N_1", (19.4, fy + 0.6, top + 0.26), (2.4, 2.8, 0.12), ROOF_D, pitch=-0.14, yaw=-0.35)
     make_box("Fallen_House_Chimney", (fx + 2.5, fy + 2.8, 2.6), (0.7, 0.7, 5.2), (0.46, 0.32, 0.26, 1.0))
     make_box("Fallen_House_Chimney_Cap", (fx + 2.5, fy + 2.8, 5.25), (0.9, 0.9, 0.10), (0.36, 0.26, 0.22, 1.0))
+    # debris of lives: the cookstove by the chimney, an iron bedstead on the
+    # floor inside the door, boards and shingles in the yard
+    make_box("Fallen_House_Stove", (19.55, fy + 2.75, top + 0.38), (0.70, 0.55, 0.76), RUST)
+    make_box("Fallen_House_Stove_Pipe", (19.55, fy + 2.75, top + 1.06), (0.14, 0.14, 0.60), RUST)
+    make_box("Fallen_House_Bed_Head", (17.2, fy + 2.3, top + 0.50), (1.30, 0.05, 1.00), (0.22, 0.22, 0.24, 1.0))
+    make_box("Fallen_House_Bed_Rail", (17.2, fy + 1.4, top + 0.28), (1.30, 1.80, 0.06), (0.22, 0.22, 0.24, 1.0))
     for di in range(6):
         make_box(f"Fallen_Debris_{di}", (fx - 3.0 + di * 1.3, fy - 4.2 + (di % 2) * 0.8, 0.12), (1.2, 0.3, 0.24), WOOD_GRAY)
-    make_blob("Fallen_House_Bramble", (fx - 3.0, fy - 2.6, 1.0), 1.0, (0.30, 0.38, 0.22, 1.0), noise=0.28, seed=91, squash=0.6)
+    for di, (bx, by, bl, byaw) in enumerate(((15.2, ny + 1.3, 2.4, 0.3), (16.8, ny + 2.2, 1.8, -0.5), (18.6, ny + 1.9, 2.8, 1.2),
+                                              (20.9, ny + 1.4, 1.6, 0.1), (12.9, fy + 1.4, 2.2, 1.4), (12.6, fy - 1.2, 1.5, 0.8),
+                                              (13.2, ny + 0.9, 1.9, -0.9))):
+        make_rot_box(f"Fallen_Board_{di}", (bx, by, 0.05), (bl, 0.18, 0.06), WOOD_GRAY if di % 2 else IN_D, yaw=byaw)
+    for di, (bx, by) in enumerate(((17.6, ny + 1.0), (14.6, ny + 0.8), (12.8, fy + 0.2))):
+        make_rot_box(f"Fallen_Shingles_{di}", (bx, by, 0.07), (0.9, 0.7, 0.10), ROOF_D, yaw=0.4 * di)
+    make_blob("Fallen_House_Bramble", (16.2, fy - 1.6, 0.85), 0.9, (0.30, 0.38, 0.22, 1.0), noise=0.28, seed=91, squash=0.6)   # (pass 461) clear of the studs
+    make_blob("Fallen_House_Bramble_Window", (15.5, ny - 0.5, top + 0.9), 0.75, (0.26, 0.36, 0.20, 1.0), noise=0.30, seed=92, squash=0.9)
+    make_blob("Fallen_House_Bramble_Door", (18.3, ny + 0.5, 0.45), 0.55, (0.30, 0.38, 0.22, 1.0), noise=0.30, seed=93, squash=0.7)
+    make_blob("Fallen_House_Bramble_Corner", (13.7, ny + 0.3, 0.55), 0.70, (0.28, 0.36, 0.20, 1.0), noise=0.30, seed=94, squash=0.7)
     make_box("Ruin_Path", (9.0, fy + 1.0, 0.004), (10.0, 0.8, 0.008), DIRT)
     # the dead snag beside the ruin, the brush that has taken the yard
     make_bare_tree("Snag", fx + 7.5, fy + 5.5, 9.0, seed=3, limbs=6)

@@ -13,6 +13,7 @@ Sizes are real-world: a longneck is 23cm, a soda can 12cm, a rocks
 glass 9cm. Callers place the BASE (z of the surface the object
 stands on).
 """
+import math
 from .geometry import make_box, make_cyl, make_taper_cyl, make_dome
 
 GLASS_CLEAR = (0.74, 0.82, 0.84, 0.55)
@@ -299,7 +300,7 @@ def make_milk_crate(prefix, x, y, base_z, *, s=0.33, h=0.28, color=(0.20, 0.34, 
 
 
 def make_notebook(prefix, x, y, base_z, *, yaw=0.0, w=0.14, l=0.21, state="closed",
-                  cover=(0.14, 0.14, 0.16, 1.0), band=(0.74, 0.18, 0.14, 1.0)):
+                  cover=(0.14, 0.14, 0.16, 1.0), band=(0.74, 0.18, 0.14, 1.0), pen=True):
     """A pocket notebook that reads as one (pass 456): the cover a shade off
     the table, the cream page-block showing at three edges, an elastic band
     and a ribbon; `state="open"` lays two cream pages with ruled lines and a
@@ -316,7 +317,8 @@ def make_notebook(prefix, x, y, base_z, *, yaw=0.0, w=0.14, l=0.21, state="close
             B(f"_Page_{nm}", sg * (w / 2 + 0.002), 0.0, 0.009, w - 0.004, l - 0.006, 0.006, page)
             for k in range(6):
                 B(f"_Rule_{nm}_{k}", sg * (w / 2 + 0.002), l * 0.36 - k * l * 0.13, 0.0125, w * (0.78 if (k + (sg > 0)) % 3 else 0.52), 0.003, 0.001, (0.26, 0.28, 0.40, 1.0))
-        B("_Pen", 0.0, -0.01, 0.0155, 0.008, 0.135, 0.008, (0.16, 0.20, 0.44, 1.0))
+        if pen:   # pen=False: an open paperback (pass 462, Rick's book)
+            B("_Pen", 0.0, -0.01, 0.0155, 0.008, 0.135, 0.008, (0.16, 0.20, 0.44, 1.0))
         return
     B("_Pages", 0.004, 0.0, 0.008, w - 0.004, l - 0.006, 0.012, page)
     B("_Back", 0.0, 0.0, 0.001, w, l, 0.002, cover)
@@ -530,3 +532,153 @@ def make_laptop(prefix, x, y, base_z, *, yaw=0.0, w=0.34, d=0.24, body=(0.16, 0.
     else:
         for k in range(7):
             B(f"_Screen_Line_{k}", -w * 0.04 if k % 3 else -w * 0.10, f, z0 + sh * (0.30 - k * 0.095), w * (0.70 if k % 3 else 0.56), 0.0014, sh * 0.03, (0.20, 0.22, 0.28, 1.0))
+
+
+def _split_tag(prefix):
+    """("Name", "__tag") from "Name__tag": parts are named Name_Part__tag."""
+    i = prefix.find("__")
+    return (prefix, "") if i < 0 else (prefix[:i], prefix[i:])
+
+
+def _tint(c, k):
+    return (min(1.0, c[0] * k), min(1.0, c[1] * k), min(1.0, c[2] * k), c[3])
+
+
+def make_recliner(prefix, x, y, base_z, *, yaw=0.0, w=0.88, color=(0.40, 0.30, 0.24, 1.0), reclined=True):
+    """An upholstered recliner (pass 461): a skirted base, a seat cushion,
+    two fat arms with padded tops, a tall back in two tufted cushions with a
+    headrest roll, the footrest out on its scissor arms and the side lever.
+    It was two slabs and a plank. The front (footrest) is local +v; the back
+    leans toward -v. `reclined=False` folds the footrest under the seat."""
+    from .geometry import make_rot_box
+    name, tag = _split_tag(prefix)
+    at = _local(x, y, yaw)
+    pad, dark, metal = _tint(color, 1.16), _tint(color, 0.74), (0.20, 0.20, 0.21, 1.0)
+    def B(part, u, v, z, su, sv, sz, col, roll=0.0):
+        px, py = at(u, v)
+        make_rot_box(f"{name}{part}{tag}", (px, py, base_z + z), (su, sv, sz), col, yaw=yaw, roll=roll)
+    inner = w - 0.36
+    B("_Base", 0.0, 0.0, 0.13, w - 0.04, 0.78, 0.22, dark)
+    B("_Foot_L", -(w / 2.0 - 0.08), 0.0, 0.01, 0.08, 0.70, 0.02, metal)
+    B("_Foot_R", (w / 2.0 - 0.08), 0.0, 0.01, 0.08, 0.70, 0.02, metal)
+    B("_Seat", 0.0, 0.05, 0.33, inner, 0.62, 0.18, pad)
+    for s, nm in ((-1, "L"), (1, "R")):
+        B(f"_Arm_{nm}", s * (w / 2.0 - 0.09), 0.0, 0.40, 0.18, 0.82, 0.32, color)
+        B(f"_Arm_{nm}_Pad", s * (w / 2.0 - 0.09), 0.02, 0.59, 0.20, 0.78, 0.06, pad)
+    lean = 0.42 if reclined else 0.14
+    # the back: a frame, two tufted cushions and the headrest roll
+    B("_Back", 0.0, -0.42 - 0.10 * math.sin(lean), 0.74, inner + 0.10, 0.14, 0.86, color, roll=lean)
+    for k, zz in enumerate((0.56, 0.84)):
+        B(f"_Back_Cushion_{k}", 0.0, -0.33 - (zz - 0.40) * math.tan(lean) * 0.9, zz, inner - 0.02, 0.10, 0.25, pad, roll=lean)
+    B("_Headrest", 0.0, -0.33 - (1.06 - 0.40) * math.tan(lean) * 0.9, 1.06, inner - 0.06, 0.13, 0.15, pad, roll=lean)
+    if reclined:
+        B("_Footrest", 0.0, 0.74, 0.37, inner + 0.04, 0.42, 0.09, pad, roll=-0.10)
+        for s, nm in ((-1, "L"), (1, "R")):
+            B(f"_Footrest_Arm_{nm}", s * (inner / 2.0 - 0.04), 0.50, 0.29, 0.03, 0.36, 0.03, metal, roll=0.30)
+    else:
+        B("_Footrest", 0.0, 0.40, 0.20, inner + 0.04, 0.05, 0.30, pad)
+    B("_Lever", (w / 2.0 + 0.012), 0.12, 0.36, 0.024, 0.04, 0.18, metal, roll=-0.5)
+    B("_Lever_Grip", (w / 2.0 + 0.012), 0.165, 0.45, 0.034, 0.05, 0.06, (0.50, 0.38, 0.26, 1.0), roll=-0.5)
+
+
+def make_panel_door(prefix, x, y, base_z, *, axis="Y", w=0.84, h=2.0, t=0.045, color=(0.64, 0.56, 0.44, 1.0),
+                    faces=(-1, 1), glass=False, knob_side=1, deadbolt=True, casing=0.0,
+                    trim=(0.86, 0.84, 0.78, 1.0), brass=(0.72, 0.58, 0.28, 1.0), pane=(0.10, 0.13, 0.19, 1.0)):
+    """A shut door that reads as a door (pass 461): the slab, raised panels
+    on each face named in `faces` (six, or with `glass=True` a four-light
+    window over two panels), a knob on its rose, a deadbolt above it and
+    three hinge knuckles on the other stile. `axis` is the axis the door's
+    WIDTH runs along; `faces` are the signs, across the slab, that get the
+    detail; `knob_side` is the sign, along the width, of the latch stile.
+    `casing` is the thickness of the wall the door hangs in: given, each
+    detailed face also gets the casing boards round the opening, on the wall.
+    It was one flat slab in an opening."""
+    name, tag = _split_tag(prefix)
+    hi, lo = _tint(color, 1.10), _tint(color, 0.80)
+    def B(part, a, c, z, sa, sc, sz, col):
+        if axis == "Y":
+            make_box(f"{name}{part}{tag}", (x + c, y + a, base_z + z), (sc, sa, sz), col)
+        else:
+            make_box(f"{name}{part}{tag}", (x + a, y + c, base_z + z), (sa, sc, sz), col)
+    B("", 0.0, 0.0, h / 2.0, w, t, h, color)
+    for s in faces:
+        f = "N" if s < 0 else "P"
+        c1 = s * (t / 2.0 + 0.005)
+        if glass:
+            z0, z1 = 0.54 * h, 0.92 * h
+            B(f"_{f}_Light", 0.0, c1, (z0 + z1) / 2.0, w * 0.66, 0.010, z1 - z0, pane)
+            B(f"_{f}_Muntin_V", 0.0, s * (t / 2.0 + 0.011), (z0 + z1) / 2.0, 0.024, 0.012, z1 - z0, hi)
+            B(f"_{f}_Muntin_H", 0.0, s * (t / 2.0 + 0.010), (z0 + z1) / 2.0, w * 0.66, 0.010, 0.024, hi)
+            rows = ((0.10 * h, 0.46 * h),)
+        else:
+            rows = ((0.10 * h, 0.40 * h), (0.45 * h, 0.76 * h), (0.80 * h, 0.93 * h))
+        for r, (z0, z1) in enumerate(rows):
+            for k, a in enumerate((-w * 0.215, w * 0.215)):
+                B(f"_{f}_Panel_{r}_{k}", a, c1, (z0 + z1) / 2.0, w * 0.33, 0.010, z1 - z0, lo)
+                B(f"_{f}_Panel_{r}_{k}_Field", a, s * (t / 2.0 + 0.014), (z0 + z1) / 2.0, w * 0.33 - 0.07, 0.008, z1 - z0 - 0.07, hi)
+        if casing > 0.0:
+            cc = s * (casing / 2.0 + 0.007)
+            for k in (-1, 1):
+                B(f"_{f}_Casing_{'A' if k < 0 else 'B'}", k * (w / 2.0 + 0.055), cc, (h + 0.09) / 2.0, 0.08, 0.014, h + 0.09, trim)
+            B(f"_{f}_Casing_Head", 0.0, cc, h + 0.055, w + 0.19, 0.014, 0.09, trim)
+        ka = knob_side * (w / 2.0 - 0.07)
+        B(f"_{f}_Rose", ka, c1, 0.96, 0.07, 0.010, 0.07, brass)
+        B(f"_{f}_Knob_Stem", ka, s * (t / 2.0 + 0.022), 0.96, 0.024, 0.024, 0.024, brass)
+        B(f"_{f}_Knob", ka, s * (t / 2.0 + 0.052), 0.96, 0.056, 0.036, 0.056, brass)
+        if deadbolt:
+            B(f"_{f}_Deadbolt", ka, c1, 1.12, 0.06, 0.010, 0.06, brass)
+            B(f"_{f}_Deadbolt_Turn", ka, s * (t / 2.0 + 0.018), 1.12, 0.016, 0.016, 0.040, brass)
+        for k, zz in enumerate((0.20, h / 2.0, h - 0.20)):
+            B(f"_{f}_Hinge_{k}", -knob_side * (w / 2.0 - 0.008), s * (t / 2.0 + 0.008), zz, 0.016, 0.016, 0.10, (0.50, 0.48, 0.44, 1.0))
+
+
+def make_electric_guitar(prefix, x, y, base_z, *, yaw=0.0, body=(0.86, 0.60, 0.26, 1.0), guard=(0.08, 0.08, 0.09, 1.0),
+                         neck=(0.88, 0.76, 0.52, 1.0), stand=True):
+    """A single-cutaway slab electric on an A-frame stand (pass 462: Jesse's
+    Telecaster): the body with its one horn, the pickguard, the bridge plate
+    and neck pickup, the control plate with two knobs, the maple neck with
+    frets and dots, the six-in-line headstock and its tuners. The FRONT is
+    local -v. Every part is 8 mm or thicker (the old one's 3 mm pickguard,
+    plate and fretboard drew black) and stands proud of the part under it."""
+    from .geometry import make_rot_box
+    name, tag = _split_tag(prefix)
+    at = _local(x, y, yaw)
+    chrome, dark = (0.78, 0.80, 0.82, 1.0), (0.10, 0.10, 0.11, 1.0)
+    def B(part, u, v, z, su, sv, sz, col):
+        px, py = at(u, v)
+        make_rot_box(f"{name}{part}{tag}", (px, py, base_z + z), (su, sv, sz), col, yaw=yaw)
+    if stand:
+        for s, nm in ((-1, "L"), (1, "R")):
+            B(f"_Stand_Leg_{nm}", s * 0.13, 0.07, 0.31, 0.03, 0.03, 0.62, dark)
+            B(f"_Stand_Foot_{nm}", s * 0.13, 0.02, 0.015, 0.03, 0.30, 0.03, dark)
+            B(f"_Stand_Cradle_{nm}", s * 0.10, 0.02, 0.285, 0.03, 0.13, 0.03, dark)
+        B("_Stand_Cross", 0.0, 0.07, 0.285, 0.29, 0.03, 0.03, dark)
+        B("_Stand_Post", 0.0, 0.07, 0.72, 0.03, 0.03, 0.84, dark)
+        B("_Stand_Yoke", 0.0, 0.045, 1.13, 0.09, 0.08, 0.03, dark)
+    # the slab body: lower bout, waist, the one (bass-side) horn
+    B("_Body", 0.0, 0.0, 0.43, 0.33, 0.045, 0.26, body)
+    B("_Body_Waist", -0.01, 0.0, 0.62, 0.29, 0.045, 0.14, body)
+    B("_Body_Horn", -0.095, 0.0, 0.735, 0.12, 0.045, 0.10, body)
+    f1 = -0.0225 - 0.005
+    B("_Pickguard", -0.03, f1, 0.60, 0.20, 0.010, 0.20, guard)
+    B("_Bridge_Plate", 0.0, f1, 0.405, 0.09, 0.010, 0.11, chrome)
+    B("_Bridge_Pickup", 0.0, f1 - 0.008, 0.425, 0.07, 0.008, 0.022, dark)
+    B("_Neck_Pickup", -0.005, f1 - 0.009, 0.665, 0.075, 0.008, 0.032, chrome)
+    B("_Control_Plate", 0.115, f1, 0.44, 0.036, 0.010, 0.15, chrome)
+    for k, zz in enumerate((0.395, 0.445)):
+        B(f"_Knob_{k}", 0.115, f1 - 0.013, zz, 0.024, 0.016, 0.024, chrome)
+    B("_Switch_Tip", 0.115, f1 - 0.012, 0.495, 0.012, 0.014, 0.012, dark)
+    # the neck, its fretboard, frets and dots; the headstock and tuners
+    B("_Neck", 0.0, -0.004, 1.04, 0.056, 0.030, 0.70, neck)
+    B("_Fretboard", 0.0, -0.029, 1.045, 0.052, 0.010, 0.68, _tint(neck, 1.08))
+    zf = 1.375
+    for k in range(10):
+        B(f"_Fret_{k}", 0.0, -0.036, zf, 0.052, 0.008, 0.008, chrome)
+        if k in (2, 4, 6):
+            B(f"_Dot_{k}", 0.0, -0.036, zf - 0.028, 0.012, 0.008, 0.012, dark)
+        zf -= 0.075 - k * 0.004
+    B("_Nut", 0.0, -0.036, 1.392, 0.054, 0.012, 0.010, (0.94, 0.92, 0.86, 1.0))
+    B("_Head", -0.012, -0.004, 1.49, 0.084, 0.022, 0.20, neck)
+    for k in range(6):
+        B(f"_Tuner_{k}", -0.066, -0.004, 1.415 + k * 0.030, 0.026, 0.016, 0.016, chrome)
+        B(f"_Tuner_Post_{k}", -0.035, -0.019, 1.415 + k * 0.030, 0.010, 0.010, 0.010, chrome)

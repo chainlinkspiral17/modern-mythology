@@ -108,11 +108,14 @@ def build_bed():
     # Mister, curled at the foot — a low mound with a tail sweep
     # (2026-11-04) a cat, not a puck: the body a soft loaf curled on the
     # blanket, the head tucked at one end, the tail swept round the flank
-    make_chamfer_box("Cat_Mister", (bx - 0.75, by + 0.15, 0.595), (0.36, 0.24, 0.15), COL_CAT, chamfer=0.05, yaw=0.35)
-    make_blob("Cat_Mister_Head", (bx - 0.92, by + 0.05, 0.615), 0.075, COL_CAT, noise=0.06, seed=12, squash=0.85)
-    for k, (ex, ey) in enumerate(((-0.035, -0.02), (-0.035, 0.05))):
-        make_rot_box(f"Cat_Mister_Ear_{k}", (bx - 0.92 + ex, by + 0.05 + ey, 0.675), (0.03, 0.025, 0.035), COL_CAT, yaw=0.3)
-    make_rot_box("Cat_Tail", (bx - 0.58, by + 0.30, 0.545), (0.26, 0.045, 0.03), COL_CAT, yaw=-0.5)
+    # (pass 462) the shared cat, loafed, in a readable tabby grey — the
+    # chamfered box in near-black read as a suitcase on the blanket
+    from _props.creatures import make_cat
+    make_cat("Cat_Mister", bx - 0.74, by + 0.12, 0.52, heading='-X', pose='loaf', scale=1.30,
+             coat=(0.54, 0.48, 0.40, 1.0), dark=(0.26, 0.22, 0.18, 1.0))
+    make_rot_box("Cat_Mister_Tail", (bx - 0.66, by + 0.30, 0.545), (0.30, 0.05, 0.05), (0.26, 0.22, 0.18, 1.0), yaw=-0.35)
+    for k, sx in enumerate((-0.06, 0.02, 0.10)):
+        make_rot_box(f"Cat_Mister_Stripe_{k}", (bx - 0.74 + sx, by + 0.12, 0.52 + 0.222 - abs(sx - 0.02) * 0.25), (0.022, 0.20, 0.012), (0.26, 0.22, 0.18, 1.0))
     # Footlocker at the foot of the bed
     # its east face 2 cm off the platform's foot (2026-09-25: 7 cm — it read as standing in the room)
     make_box("Footlocker", (bx - 1.20, by, 0.20), (0.35, 0.9, 0.38), COL_FRAME_DK)

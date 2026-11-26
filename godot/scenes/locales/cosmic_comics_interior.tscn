@@ -785,9 +785,9 @@ metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_book__cosmic_comics_interior" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(4.782, 1.422, -1.764)
-rotation = Vector3(-0.2391, 2.2798, 0.0)
-metadata/fov = 35.0
+position = Vector3(3.500, 1.500, -6.860)
+rotation = Vector3(-0.6200, 1.5708, 0.0)
+metadata/fov = 32.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_bars__cosmic_comics_interior" type="Marker3D" parent="." groups=["vn_shot"]]

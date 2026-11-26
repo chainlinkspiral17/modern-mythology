@@ -158,6 +158,40 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-26 · which way a prop faces; a name is a cue (pass 462)
+- Jesse's guitar stood facing the wall behind it. A close-up of a
+  one-sided object (guitar, TV, clock, framed picture on an easel, book
+  spine) starts with "which way is its face, and can a camera stand in
+  front of it inside the room?" — turn the prop before moving the camera.
+- A part's NAME is matched by every marker's cue word: `Rick_Paperback_Book`
+  made the aim gate treat the book as the subject of `shot_closeup_rick`.
+  Never put a character's name (or another cue word in that set) in a
+  prop's name.
+- Removing a node from a .tscn with a regex: the header itself contains
+  `[` (`groups=["vn_shot"]`), so `[^\[]*` stops mid-header and leaves
+  half a node behind. Cut from the header to the next blank line instead,
+  then `git diff --stat` the file.
+- A lathe makes the round things boxes cannot (the football, a bowl, a
+  bell); two frame rails that overlap at a corner z-fight to black squares
+  — butt them.
+- `marker_reaim.py --tight <set>` re-aims EVERY tight-failing insert in the
+  set, not only the one you meant: re-render the others it names.
+
+### 2026-11-26 · a ruin is its silhouette; a slab door is a wall (pass 461)
+- "Fallen-in" has to read against the SKY from the insert's side: a broken
+  gable, bare rafters, a door frame standing alone, a leaning wall. A
+  collapsed roof modelled inside the walls is invisible from eye height
+  outside them — hang one end of it above the wall line.
+- A shut door drawn as one slab reads as wall or as a void (lit by nothing,
+  recessed in a 20 cm wall). `objects.make_panel_door` (panels, light, knob,
+  deadbolt, hinges, casing) and `objects.make_recliner` are shared; both
+  take `Name__tag` prefixes and name their parts `Name_Part__tag`.
+- Two coplanar proud strips (the muntins' crossing) z-fight to a black
+  square: give them different proud depths.
+- `support_audit` skips TERRAIN locales (small_wood_road among them): "0
+  locale(s) · 0 floating" there means not read, not clean. Check leaning
+  parts by eye in the viewer.
+
 ### 2026-11-26 · a frame centred on its subject can still show something else (pass 460)
 - The diner's phone close-up passed every gate (aimed, unobstructed, not
   clipped, supported) and read as a condiment caddy: a later dressing pass

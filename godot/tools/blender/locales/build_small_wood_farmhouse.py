@@ -47,6 +47,7 @@ from _props.geometry import (clear_scene, make_box, make_cyl, make_chamfer_box, 
                              join_stock, export_glb)
 from _props.structure import make_floor, make_wall, make_wall_with_openings
 from _props.furniture import make_table, make_chair, make_lamp
+from _props.objects import make_recliner, make_panel_door
 from _props.trees import make_broadleaf
 try:
     import bpy
@@ -99,9 +100,11 @@ def build_house():
     for nm, ax, al, at, cz, w, h in (("Picture_Window_S", 'Y', 3.8, -8.0, 1.35, 2.2, 1.5), ("Picture_Window_N", 'Y', 7.6, -8.0, 1.35, 2.2, 1.5),
                                      ("Porch_Window", 'X', -5.0, 0.0, 1.35, 1.2, 1.2), ("Kitchen_Window", 'Y', 7.0, 6.0, 1.45, 1.2, 1.0)):
         frame(nm, ax, al, at, cz, w, h)
-    make_box("Front_Door_Shut" + KITCH, (-1.2, 0.0, 1.0), (0.88, 0.04, 2.0), (0.50, 0.36, 0.24, 1.0))
+    make_panel_door("Front_Door_Shut" + KITCH, -1.2, 0.0, 0.0, axis="X", w=0.88, h=2.0, casing=T, color=(0.50, 0.36, 0.24, 1.0))
     make_box("Front_Door_Ajar" + LIVE + PORCH, (-1.2 + 0.44, 0.10 + 0.30, 1.0), (0.04, 0.60, 2.0), (0.50, 0.36, 0.24, 1.0))
-    make_box("Service_Door_Shut", (6.0, 2.0, 1.0), (0.04, 0.84, 2.0), (0.64, 0.56, 0.44, 1.0))
+    # (pass 461) "unlocked the door ... locked the secondary service door": a
+    # half-glazed door with its knob and deadbolt — it was one slab
+    make_panel_door("Service_Door_Shut", 6.0, 2.0, 0.0, axis="Y", w=0.84, h=2.0, glass=True, casing=T, color=(0.74, 0.70, 0.60, 1.0))
     # the stair along the kitchen wall, its banister, the afghan on it
     for k in range(12):
         make_box(f"Stair_Tread_{k}", (-0.6, 4.4 + k * 0.42, 0.10 + k * 0.20), (1.0, 0.44, 0.20 * (k + 1)), WOOD)
@@ -120,10 +123,9 @@ def build_house():
     make_box("TV_Screen_Glow", (-4.4, 9.9 - 0.30 - 0.202, 0.80), (0.34, 0.004, 0.26), (0.54, 0.60, 0.76, 1.0))
     make_rot_box("TV_Rabbit_Ears", (-4.36, 9.9 - 0.30, 1.14), (0.02, 0.02, 0.30), (0.70, 0.70, 0.70, 1.0), pitch=0.5)
     make_lamp("Recliner_Lamp", -5.7, 0.40, base_z=0.0, h=1.45)       # Dad's reading lamp (pass 170)
-    make_box("Recliner_Base", (-5.0, 1.0, 0.24), (0.86, 0.90, 0.48), (0.40, 0.30, 0.24, 1.0))
-    make_rot_box("Recliner_Back", (-5.0, 0.60, 0.78), (0.86, 0.16, 0.66), (0.40, 0.30, 0.24, 1.0), roll=0.30)
-    make_box("Recliner_Footrest", (-5.0, 1.70, 0.34), (0.70, 0.50, 0.10), (0.40, 0.30, 0.24, 1.0))
-    make_box("Recliner_Footrest_Arm", (-5.0, 1.50, 0.33), (0.10, 0.10, 0.12), (0.20, 0.20, 0.20, 1.0))
+    # (pass 461) Dad's recliner, footrest out ("passed out, inside on his
+    # recliner, slumped at a precarious angle") — it was two slabs and a plank
+    make_recliner("Recliner", -5.0, 1.10, 0.0, yaw=0.0, color=(0.44, 0.31, 0.22, 1.0), reclined=True)
     make_lamp("Living_Lamp", -7.5, 5.7, base_z=0.0, h=1.40)
     make_box("Living_Rug", (-4.4, 7.4, 0.004), (2.6, 1.8, 0.008), (0.46, 0.32, 0.26, 1.0))
     make_box("Tea_Mug_Honey" + LIVE, (-4.05, 9.72, 0.65), (0.08, 0.08, 0.10), (0.86, 0.84, 0.78, 1.0))
@@ -144,7 +146,7 @@ def build_house():
     make_box("Service_Porch_Wall_S_W", (6.685, 0.0, 1.2), (1.37, 0.12, 2.4), SIDING)
     make_box("Service_Porch_Wall_S_E", (8.615, 0.0, 1.2), (0.77, 0.12, 2.4), SIDING)
     make_box("Service_Porch_Wall_S_Over", (7.8, 0.0, 2.25), (0.86, 0.12, 0.3), SIDING)
-    make_box("Service_Porch_Outer_Door", (7.8, 0.0, 1.05), (0.86, 0.04, 2.1), (0.64, 0.56, 0.44, 1.0))
+    make_panel_door("Service_Porch_Outer_Door", 7.8, 0.0, 0.0, axis="X", w=0.86, h=2.1, glass=True, color=(0.74, 0.70, 0.60, 1.0))
     make_box("Service_Porch_Roof", (7.5, 2.0, 2.46), (3.4, 4.4, 0.12), ROOF)
     # the upper storey as a shell (its windows dark), the roof over all
     make_box("Upper_Storey_Wall_S", (-1.0, 0.0, H + 0.08 + 1.25), (14.4, 0.20, 2.5), SIDING)
