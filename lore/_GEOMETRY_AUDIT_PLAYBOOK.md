@@ -158,6 +158,26 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-26 · linework moods read by outline; cloth holds nothing (pass 463)
+- In an edge mood (`lithograph`, the blue cliffside look) fill colour is
+  gone: a box is a rectangle whatever it is meant to be. A prop cued in
+  such a chapter needs a SILHOUETTE made of its parts (the phone's hood and
+  hanging handset, the key's bow and teeth, the feather's vane) and a lens
+  tight enough that the outline is the frame. Check the scene's `[mood:]`
+  before judging or building a close-up.
+- The support gate reads ribbon / cloth names as cloth: nothing hangs FROM
+  a ribbon. Lay the hung thing against something solid (the key against the
+  mid rail).
+- `make_lathe` caps its profile's ends: an open "ring" profile comes out a
+  disc. A ring that must show a hole needs the hole's content drawn on top
+  (the toilet's water), or four boxes.
+- A cabinet built open for one line shows its inside to every other line.
+  Which line carries the cue decides the state; the other line gets a view
+  twin or nothing.
+- A 57-shot render at ~60 s a frame overruns a 3500 s timeout: split bands
+  over 45 shots, and start long jobs detached (`setsid nohup`) — a worker
+  restart killed a suite and an import mid-run.
+
 ### 2026-11-26 · which way a prop faces; a name is a cue (pass 462)
 - Jesse's guitar stood facing the wall behind it. A close-up of a
   one-sided object (guitar, TV, clock, framed picture on an easel, book

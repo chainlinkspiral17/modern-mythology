@@ -3835,6 +3835,50 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-26 · pass 463: vol 1–4 close-ups by the stranger test (the first-generation sets).**
+The 57 one-line (set, cue) pairs left in vol 1–4 scenes, rendered and read
+(50 in the first run): 38 pass. Fixed at the object:
+- FAUST'S MIRROR ("Faust looks in the mirror at his early-morning
+  haggard"): the cabinet door had been swung back 110 degrees to show the
+  vitamins, so its mirror faced the west wall and the close-up was an open
+  white box of bottles. The door stands a hand ajar now, its MIRROR to the
+  room (enamel leaf, glass proud of it, two glints, a knob).
+- FAUST'S TOILET ("Pukes in the toilet"): shared `make_toilet` — tank and
+  lid, lever, lathe bowl, a ring seat with the water in it, the lid up. The
+  seat was a slab and the fixture read as a box from above.
+- WAGNER'S SKATEBOARDS: shared `make_skateboard` (narrowed nose and tail,
+  grip, graphic, two trucks, four wheels; any wall or the floor by axis).
+  Each was a slab with two wheels on its centreline.
+- THE LINK'S JUKEBOX: the close-up was a tilted detail of its panel; it
+  stands back 2.6 m and frames the whole Wurlitzer.
+- THE LINK'S MENU: typed rows with prices under its header.
+- THE LINK'S DOOR from outside: the frame looked along the wall at 28
+  degrees; it faces the door and its bell now.
+- THE EDITING SUITE'S DOORS: `make_panel_door`.
+- BRIAR FALLS (the chapter plays in `lithograph`: red LINEWORK on black, so
+  a close-up reads by OUTLINE only): the pay phone was four boxes = a set
+  of parallel lines. Hooded enclosure, keypad, coin slot, the pried coin
+  return, hook, the armoured cord in a curve, the handset hanging on it;
+  the camera stands between the info panel and the wall. The ribbon wraps
+  the rail, knots and hangs in two tails; the key has a loop, a bow, a
+  shank and two teeth. The feather has a quill, a swelling vane and a white
+  tip (and a 7-degree lens: it lies 8 m below the rail). The paperback is
+  tented on its covers, spine up.
+- The Henderson garage workbench close-up stands back to take in the
+  pegboard and its tools (pass 460's target).
+Draft 1 shipped for the vol 1-4 band. DRAFT 2 TARGETS: the Briar Falls
+vending machine's lit face is built INSIDE its own cabinet (y 7.80 in a
+body spanning 7.33..7.88); the coop at night is nearly black; the Little
+Switzerland "river" line shows a field and no water; the Link's photo wall
+and enamel sign wait on their pictures; the Kwik Stop coffee stool, the
+truck's sauce packet (pass 462's list).
+DECISION THE USER OWNS: Briar Falls opens every scene on `[mood:lithograph]`
+(set 2026-08-30). The 2026-07-12 rule says stylized moods are beats, not a
+chapter's baseline ("a weird effect, always"). In linework the brochure
+covers, the flyer's face and the polaroid can never show their pictures.
+Keep the whole chapter in linework, or open it clean and save the linework
+for the overlook?
+
 **2026-11-26 · pass 462: ranks 241–288 by the stranger test (the two-line pairs begin).**
 One line of each of the next 48 (set, cue) pairs rendered (46 frames came
 back) and read: 34 pass. Fixed at the object:

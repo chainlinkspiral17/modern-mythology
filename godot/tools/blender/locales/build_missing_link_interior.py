@@ -221,6 +221,14 @@ def build_counter_and_stools():
     # the laminated menu, typed, standing in its chrome holder at the third stool
     make_box("Laminated_Menu", (STOOL_XS[2] + 0.22, cy + 0.02, top + 0.002), (0.24, 0.34, 0.004), (0.92, 0.90, 0.80, 1.0))
     make_box("Laminated_Menu_Header", (STOOL_XS[2] + 0.22, cy + 0.15, top + 0.0045), (0.18, 0.04, 0.001), COL_BLACK)
+    # (pass 463) "hand-typed on a typewriter": the typed rows, each item with
+    # its price at the right margin, a rule under the two sections — the
+    # sheet was blank under its header
+    for ri in range(11):
+        yy = cy + 0.105 - ri * 0.022 - (0.012 if ri > 5 else 0.0)
+        make_box(f"Laminated_Menu_Row_{ri}", (STOOL_XS[2] + 0.22 - 0.03 - 0.008 * (ri % 3), yy, top + 0.0045), (0.12 - 0.016 * (ri % 3), 0.006, 0.001), (0.24, 0.24, 0.28, 1.0))
+        make_box(f"Laminated_Menu_Price_{ri}", (STOOL_XS[2] + 0.22 + 0.085, yy, top + 0.0045), (0.022, 0.006, 0.001), (0.24, 0.24, 0.28, 1.0))
+    make_box("Laminated_Menu_Rule", (STOOL_XS[2] + 0.22, cy - 0.028, top + 0.0045), (0.20, 0.003, 0.001), (0.24, 0.24, 0.28, 1.0))
     for ci, cxx in enumerate((-1.6, 0.1, 1.9)):
         make_box(f"Napkin_{ci}", (cxx, cy + 0.05, top + 0.05), (0.10, 0.08, 0.10), COL_CHROME)
         make_cyl(f"Salt_{ci}", (cxx + 0.14, cy + 0.05, top + 0.045), 0.02, 0.09, COL_GLASS, segments=8)

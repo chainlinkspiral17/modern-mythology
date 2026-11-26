@@ -354,14 +354,14 @@ metadata/fov = 30.0
 
 ; (2026-11-02) "The pay phone does not ring": from the alcove's mouth to the phone on the front wall
 [node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.200, 1.600, -7.350)
-rotation = Vector3(-0.1370, 1.0619, 0.0)
-metadata/fov = 40.0
+position = Vector3(-0.200, 1.450, -7.000)
+rotation = Vector3(-0.0300, 0.5740, 0.0)
+metadata/fov = 66.0
 
 [node name="shot_insert_feather" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(8.200, 1.780, -15.320)
 rotation = Vector3(-1.0889, -0.0412, 0.0)
-metadata/fov = 14.0
+metadata/fov = 7.0
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
 ; every closeup of a person cued here cuts to it (the scene had no closeup marker)
@@ -392,7 +392,7 @@ metadata/fov = 50.0
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_bench__briar_falls_rest_stop" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-4.080, 1.450, -6.065)
-rotation = Vector3(-0.5295, 0.6663, 0.0)
+rotation = Vector3(-0.4467, 0.7421, 0.0)
 metadata/fov = 35.0
 
 ; (2026-11-02) "The dog stands a moment at the open door"; "It waits at the open door ... and gets in": the van and its open side door (cue van: the gates read a bare "door" as a building's)
@@ -404,9 +404,9 @@ metadata/fov = 45.0
 ; (pass 420) "Tied to the railing … a faded piece of red ribbon and, attached to the
 ; ribbon by a brass loop, a key" (vol2 bf_overlook n6) — the 707 key on the top rail
 [node name="shot_insert_key__briar_falls_overlook" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(9.720, 1.320, -14.720)
-rotation = Vector3(-0.3028, -0.6147, 0.0)
-metadata/fov = 34.0
+position = Vector3(10.120, 1.150, -14.620)
+rotation = Vector3(-0.2474, -0.0620, 0.0)
+metadata/fov = 44.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_falls__briar_falls_overlook" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -416,9 +416,9 @@ metadata/fov = 40.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_ribbon__briar_falls_overlook" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(9.780, 1.372, -14.728)
-rotation = Vector3(-0.2618, -0.5586, 0.0)
-metadata/fov = 35.0
+position = Vector3(10.300, 1.250, -14.780)
+rotation = Vector3(-0.0850, 0.1707, 0.0)
+metadata/fov = 40.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_shelter__briar_falls_picnic" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -428,9 +428,9 @@ metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_table__briar_falls_picnic" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-5.508, 1.123, -7.873)
-rotation = Vector3(-0.2872, 0.9567, 0.0)
-metadata/fov = 35.0
+position = Vector3(-6.550, 1.250, -11.550)
+rotation = Vector3(-0.4666, 0.5743, 0.0)
+metadata/fov = 36.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_falls__briar_falls_trail" type="Marker3D" parent="." groups=["vn_shot"]]

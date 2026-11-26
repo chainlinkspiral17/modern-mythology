@@ -363,13 +363,13 @@ metadata/fov = 35.0
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_door__suite_wide" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(2.200, 1.330, -1.162)
-rotation = Vector3(-0.2618, -3.1416, 0.0)
+rotation = Vector3(-0.3216, -3.0111, 0.0)
 metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_door__suite_4am" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.639, 1.191, -1.353)
-rotation = Vector3(-0.2618, -2.2214, 0.0)
+rotation = Vector3(-0.1096, -2.2053, 0.0)
 metadata/fov = 35.0
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10)

@@ -116,10 +116,37 @@ def build_building():
     make_box("Vending_Face", (-2.90, 7.80, 1.15), (0.40, 0.05, 1.30), COL_VENDING_FACE)
     make_box("Vending_Slot", (-2.45, 7.80, 0.55), (0.22, 0.04, 0.14), COL_DOOR)
     # Pay phone bracketed to the wall, receiver dangling by the cord
-    make_box("Phone_Shell", (-0.75, 7.94, 1.55), (0.40, 0.14, 0.55), COL_PHONE)
-    make_box("Phone_Body", (-0.75, 7.88, 1.55), (0.26, 0.06, 0.38), COL_STONE_DK)
-    make_box("Phone_Cord", (-0.66, 7.86, 1.12), (0.02, 0.02, 0.50), COL_DOOR)
-    make_box("Phone_Receiver", (-0.66, 7.84, 0.84), (0.07, 0.06, 0.22), COL_DOOR)
+    # (pass 463) "A pay phone bracketed to the wall outside. The receiver
+    # dangles by the cord. The coin-return slot has been pried at by something
+    # with a flathead." It was a box, a smaller box, a straight bar and a
+    # block: in this chapter's linework the insert was a set of parallel
+    # lines. A hooded enclosure, the phone with its keypad, coin slot, hook
+    # and pried coin return, the armoured cord in a curve, the handset hanging.
+    px_, wy = -0.75, 7.99
+    make_box("Phone_Shell", (px_, wy - 0.05, 1.55), (0.46, 0.10, 0.70), COL_PHONE)
+    for nm, sx_ in (("W", -0.24), ("E", 0.24)):
+        make_box(f"Phone_Shell_Wing_{nm}", (px_ + sx_, wy - 0.19, 1.60), (0.025, 0.38, 0.60), COL_PHONE)
+    make_box("Phone_Shell_Hood", (px_, wy - 0.19, 1.915), (0.505, 0.38, 0.03), COL_PHONE)
+    make_box("Phone_Shell_Shelf", (px_, wy - 0.12, 1.22), (0.46, 0.14, 0.03), COL_PHONE)
+    make_box("Phone_Body", (px_, wy - 0.135, 1.56), (0.28, 0.07, 0.46), COL_STONE_DK)
+    steel, dark = (0.70, 0.71, 0.72, 1.0), (0.14, 0.14, 0.15, 1.0)
+    for r in range(4):
+        for c in range(3):
+            make_box(f"Phone_Key_{r}_{c}", (px_ - 0.045 + c * 0.045, wy - 0.176, 1.60 - r * 0.045), (0.032, 0.012, 0.032), steel)
+    make_box("Phone_Coin_Slot", (px_ + 0.095, wy - 0.176, 1.74), (0.012, 0.012, 0.05), dark)
+    make_box("Phone_Card_Plate", (px_ - 0.03, wy - 0.176, 1.73), (0.15, 0.012, 0.06), steel)
+    make_box("Phone_Coin_Return", (px_ + 0.08, wy - 0.176, 1.385), (0.08, 0.012, 0.06), dark)
+    for k in range(2):   # the flathead's work: two bright gouges at the return's edge
+        make_rot_box(f"Phone_Coin_Return_Gouge_{k}", (px_ + 0.03 + k * 0.012, wy - 0.180, 1.40 - k * 0.02), (0.05, 0.010, 0.008), steel, pitch=0.7 + 0.3 * k)
+    make_box("Phone_Hook", (px_ - 0.115, wy - 0.185, 1.66), (0.05, 0.03, 0.05), steel)
+    # the armoured cord from the body's foot, and the receiver hanging on it
+    from _props.geometry import make_tube
+    # (the cord leaves the body's face and hangs clear of the shelf's lip)
+    make_tube("Phone_Cord", [(px_ - 0.10, wy - 0.168, 1.345), (px_ - 0.115, wy - 0.235, 1.30), (px_ - 0.13, wy - 0.25, 1.10),
+                             (px_ - 0.135, wy - 0.25, 0.97)], 0.011, steel, segments=6)
+    make_box("Phone_Receiver", (px_ - 0.135, wy - 0.25, 0.86), (0.045, 0.045, 0.21), dark)
+    make_box("Phone_Receiver_Ear", (px_ - 0.135, wy - 0.265, 0.95), (0.065, 0.075, 0.065), dark)
+    make_box("Phone_Receiver_Mouth", (px_ - 0.135, wy - 0.265, 0.77), (0.065, 0.075, 0.065), dark)
     # Brochure-rack alcove at the building's east end. (2026-11-02) A real
     # nook: "A brochure rack just inside the alcove"; "You stand in the alcove
     # a moment longer". The side wall stood 19 cm off the building's face and
@@ -217,8 +244,27 @@ def build_overlook():
     # The ribbon + 707 key, tied at the top rail east of center
     # the key hangs to the mid rail and rests on it (2026-09-23: it hung
     # 3.5 cm over it on a ribbon the support gate reads as cloth)
-    make_box("Ribbon", (10.2, 15.40, 1.16), (0.05, 0.03, 0.25), COL_RIBBON)
-    make_box("Key_707", (10.2, 15.40, 0.985), (0.045, 0.02, 0.10), COL_KEY)
+    # (pass 463) "Tied to the railing, with three half-hitches ...: a faded
+    # piece of red ribbon and, attached to the ribbon by a brass loop, a key."
+    # They were two small boxes: in this chapter's linework, two rectangles.
+    # The ribbon wraps the rail, knots under it and hangs in two tails; the
+    # long tail carries the loop, and the key hangs in front of the mid rail
+    # with its bow, its shank and its two teeth.
+    rx_, ry_ = 10.2, 15.391      # the key lies back against the mid rail (the support gate reads ribbon as cloth)
+    make_box("Ribbon", (rx_, 15.42, 1.32), (0.06, 0.114, 0.114), COL_RIBBON)                       # round the rail
+    make_box("Ribbon_Knot", (rx_, ry_ - 0.010, 1.262), (0.075, 0.045, 0.05), COL_RIBBON)
+    make_rot_box("Ribbon_Tail_Long", (rx_ - 0.025, ry_ - 0.012, 1.135), (0.036, 0.014, 0.22), COL_RIBBON, pitch=0.10)
+    make_rot_box("Ribbon_Tail_Short", (rx_ + 0.040, ry_ - 0.012, 1.185), (0.036, 0.014, 0.12), COL_RIBBON, pitch=-0.22)
+    kx_, ky_ = rx_ - 0.036, ry_ - 0.012
+    for nm, ox, oz, sx_, sz_ in (("T", 0.0, 0.016, 0.044, 0.012), ("B", 0.0, -0.016, 0.044, 0.012),
+                                 ("L", -0.016, 0.0, 0.012, 0.044), ("R", 0.016, 0.0, 0.012, 0.044)):
+        make_box(f"Key_Loop_{nm}", (kx_ + ox, ky_, 1.012 + oz), (sx_, 0.012, sz_), (0.80, 0.66, 0.30, 1.0))
+    for nm, ox, oz, sx_, sz_ in (("T", 0.0, 0.021, 0.056, 0.014), ("B", 0.0, -0.021, 0.056, 0.014),
+                                 ("L", -0.021, 0.0, 0.014, 0.056), ("R", 0.021, 0.0, 0.014, 0.056)):
+        make_box(f"Key_707_Bow_{nm}", (kx_ + ox, ky_, 0.962 + oz), (sx_, 0.014, sz_), COL_KEY)
+    make_box("Key_707", (kx_, ky_, 0.895), (0.016, 0.014, 0.085), COL_KEY)                         # the shank
+    for k, oz in enumerate((0.0, 0.026)):
+        make_box(f"Key_707_Tooth_{k}", (kx_ + 0.017, ky_, 0.860 + oz), (0.020, 0.014, 0.014), COL_KEY)
     # (2026-10-30, draft 2: the falls, the mist and the gorge are
     # build_gorge_2026_10's. They were boxes on FLAT ground — the shelf a
     # slab 0.9 m above the lot, the mist two translucent boxes that read as
@@ -255,7 +301,15 @@ def build_picnic():
             make_box(f"Table_{ti}_Leg_{lx:.1f}", (lx, ty, 0.37), (0.10, 1.9, 0.74), COL_TIMBER)
     # The dressing the prose leaves on the tables: the face-down
     # paperback and the snapped sunglasses
-    make_box("Paperback", (cx + 1.4, cy + 1.0, 0.79), (0.22, 0.15, 0.03), (0.60, 0.46, 0.26, 1.0))
+    # (pass 463) "a paperback face-down, splayed, the spine cracked": tented
+    # on its covers, spine up, the page-blocks showing under them — it was a
+    # tan slab
+    bx_, by_, bz_ = cx + 1.4, cy + 1.0, 0.775
+    cov, page = (0.74, 0.26, 0.18, 1.0), (0.93, 0.90, 0.80, 1.0)
+    for nm, sg in (("A", -1), ("B", 1)):
+        make_rot_box(f"Paperback_Cover_{nm}", (bx_ + sg * 0.050, by_, bz_ + 0.036), (0.112, 0.180, 0.012), cov, pitch=sg * 0.50)
+        make_rot_box(f"Paperback_Pages_{nm}", (bx_ + sg * 0.044, by_, bz_ + 0.024), (0.100, 0.172, 0.012), page, pitch=sg * 0.50)
+    make_box("Paperback", (bx_, by_, bz_ + 0.064), (0.024, 0.180, 0.014), cov)                    # the cracked spine, up
     make_box("Sunglasses", (cx - 1.2, cy - 1.85, 0.485), (0.16, 0.05, 0.02), COL_DOOR)
 
 
@@ -509,8 +563,14 @@ def build_gorge_2026_10():
     # the feather on the wet shelf below the rail ("long and grey, with a white tip")
     fy_ = SH0 + 1.5 * (SH1 - SH0) / 16.0          # (round 5) mid-strip, not on a strip's seam
     fz = shelf_z(fy_) + 0.10
-    make_rot_box("Feather", (8.3, fy_, fz), (0.34, 0.06, 0.02), (0.55, 0.55, 0.56, 1.0), roll=-slope)
-    make_rot_box("Feather_Tip", (8.5, fy_, fz + 0.005), (0.07, 0.05, 0.02), (0.86, 0.86, 0.86, 1.0), roll=-slope)
+    # (pass 463) a feather's outline: the bare quill, the vane swelling and
+    # narrowing along it, the white tip — it was a bar and a block, and in
+    # this chapter's linework a rectangle
+    grey, white_ = (0.55, 0.55, 0.57, 1.0), (0.90, 0.90, 0.90, 1.0)
+    make_rot_box("Feather", (8.30, fy_, fz + 0.008), (0.56, 0.014, 0.016), (0.34, 0.34, 0.36, 1.0), roll=-slope)   # the quill
+    for k, (fx_, fl, fw) in enumerate(((8.16, 0.082, 0.050), (8.24, 0.082, 0.086), (8.32, 0.082, 0.104), (8.40, 0.082, 0.092), (8.47, 0.064, 0.070))):
+        make_rot_box(f"Feather_Vane_{k}", (fx_, fy_, fz), (fl, fw, 0.016), grey, roll=-slope)
+    make_rot_box("Feather_Tip", (8.53, fy_, fz), (0.060, 0.046, 0.016), white_, roll=-slope)
     # the creek in its cut, falling onto the shelf from the east
     for i in range(6):
         x0_, x1_ = 13.0 + i * 8.0, 21.0 + i * 8.0

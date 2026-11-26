@@ -377,8 +377,8 @@ rotation = Vector3(-0.8803, -2.1401, 0.0)
 metadata/fov = 40.0
 
 [node name="shot_insert_mirror" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.450, 1.650, -1.750)
-rotation = Vector3(-0.0551, 3.0987, 0.0)
+position = Vector3(2.300, 1.620, -1.700)
+rotation = Vector3(-0.0290, -3.0858, 0.0)
 metadata/fov = 40.0
 
 ; (2026-11-03) "Faust has an easel set up": the easel and its canvas (it looked down at the stool, then stood in the bathroom door)
@@ -435,9 +435,9 @@ metadata/fov = 40.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_toilet__faust_bedroom" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.388, 1.262, -2.772)
-rotation = Vector3(-0.2618, -2.9002, 0.0)
-metadata/fov = 35.0
+position = Vector3(2.750, 1.250, -1.750)
+rotation = Vector3(-0.5520, -2.8680, 0.0)
+metadata/fov = 38.0
 
 [node name="shot_insert_paint__faust_apartment_day" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.960, 0.596, -2.631)

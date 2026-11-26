@@ -34,6 +34,7 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.geometry import (clear_scene, make_box, make_cyl, make_chamfer_box, make_rot_box, make_tube, catenary,
                              join_stock, export_glb)
+from _props.objects import make_panel_door
 from _props.structure import make_floor, make_wall, make_wall_with_openings
 from _props.furniture import make_chair, make_lamp
 from _props.detail import make_wall_outlet, make_light_switch
@@ -70,8 +71,10 @@ def build_suite():
     make_wall_with_openings("Suite_Wall_S", (cx, 0.0, 0), length=X1 - X0 + 0.4, height=H, thickness=T, axis='X', palette=PAL,
                             baseboard_face_sign=+1, openings=[(2.4, 1.02, 0.90, 2.04)])
     # the door, shut, the gap under it (the coffee goes out under it)
-    make_box("Suite_Door", (2.4, 0.0, 1.05), (0.88, 0.05, 2.0), (0.40, 0.30, 0.24, 1.0))
-    make_cyl("Suite_Door_Knob", (2.0, 0.045, 1.0), 0.026, 0.04, (0.70, 0.64, 0.44, 1.0), axis='Y', segments=10)
+    # (pass 463) the shared panelled door ("Enter the FOOL"): it was a brown
+    # slab with a knob
+    make_panel_door("Suite_Door", 2.4, 0.0, 0.05, axis="X", w=0.88, h=2.0, t=0.05, faces=(1,), knob_side=-1,
+                    color=(0.46, 0.34, 0.26, 1.0), deadbolt=False)
     make_light_switch("Suite_Switch", (1.6, 0.0), axis='X', face_sign=1)
     # the monitor wall on the N: a rack, the four monitors and the big one
     make_box("Monitor_Rack", (0.0, D - 0.10 - 0.30, 0.45), (4.4, 0.60, 0.90), (0.14, 0.14, 0.16, 1.0))
@@ -149,7 +152,7 @@ def build_edit_station():
     make_box("Edit_Window_Night", (x0, 1.8, 1.5), (0.02, 1.0, 1.0), (0.04, 0.05, 0.08, 1.0))
     make_wall_with_openings("Edit_Wall_S", (cx, 0.0, 0), length=x1 - x0 + 0.4, height=h, thickness=0.2, axis='X', palette=pal,
                             baseboard_face_sign=+1, openings=[(x1 - 0.8, 1.0, 0.86, 2.0)])
-    make_box("Edit_Door", (x1 - 0.8, 0.0, 1.0), (0.84, 0.05, 2.0), (0.52, 0.42, 0.32, 1.0))
+    make_panel_door("Edit_Door", x1 - 0.8, 0.0, 0.0, axis="X", w=0.84, h=2.0, t=0.05, faces=(1,), color=(0.52, 0.42, 0.32, 1.0), deadbolt=False)
     dx, dy = cx, d - 0.10 - 0.38
     make_box("Edit_Desk_Top", (dx, dy, 0.74), (1.80, 0.76, 0.03), (0.50, 0.40, 0.30, 1.0))
     for s in (-1, 1):

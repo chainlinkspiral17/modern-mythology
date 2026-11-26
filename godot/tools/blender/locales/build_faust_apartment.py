@@ -209,9 +209,21 @@ def build_bathroom():
     # the mirror door is hinged on its W edge and swung right back (it
     # stood across the cabinet's mouth at 35 degrees and hid the vitamins)
     hx2, hy2, lw = sx - mw / 2.0, YS + 0.13, mw - 0.02
-    b = math.radians(110.0)
-    make_rot_box("Mirror_Door_Leaf", (hx2 + lw / 2.0 * math.cos(b), hy2 + lw / 2.0 * math.sin(b), cz),
-                 (lw, 0.02, mz1 - mz0 - 0.02), (0.70, 0.78, 0.82, 1.0), yaw=b)
+    # (pass 463) "Faust looks in the mirror at his early-morning haggard" is
+    # the line that cues the close-up, and at 110 degrees the mirror faced
+    # the west wall: the frame was an open white box of bottles. The door now
+    # stands a hand ajar (the next line opens it for the vitamins), its
+    # MIRROR to the room: an enamel leaf, the glass proud of it, two glints.
+    b = math.radians(18.0)
+    def _leaf(nm, a_, n_, zz, sa, sn, sz, col, pitch=0.0):
+        make_rot_box(nm, (hx2 + a_ * math.cos(b) - n_ * math.sin(b), hy2 + a_ * math.sin(b) + n_ * math.cos(b), zz),
+                     (sa, sn, sz), col, yaw=b, pitch=pitch)
+    lh = mz1 - mz0 - 0.02
+    _leaf("Mirror_Door_Leaf", lw / 2.0, 0.0, cz, lw, 0.02, lh, COL_ENAMEL)
+    _leaf("Mirror_Door_Glass", lw / 2.0, 0.014, cz, lw - 0.07, 0.008, lh - 0.07, (0.56, 0.68, 0.76, 1.0))
+    _leaf("Mirror_Door_Glint_0", lw * 0.36, 0.022, cz + 0.06, 0.034, 0.008, 0.36, (0.90, 0.95, 0.97, 1.0), pitch=0.50)
+    _leaf("Mirror_Door_Glint_1", lw * 0.56, 0.022, cz - 0.02, 0.014, 0.008, 0.28, (0.90, 0.95, 0.97, 1.0), pitch=0.50)
+    _leaf("Mirror_Door_Knob", lw - 0.018, 0.022, cz - 0.12, 0.018, 0.024, 0.018, COL_STEEL)
     for i, (ox, h, col) in enumerate(((-0.14, 0.09, (0.66, 0.52, 0.24, 1.0)), (-0.06, 0.11, (0.86, 0.86, 0.84, 1.0)),
                                       (0.04, 0.07, (0.56, 0.30, 0.20, 1.0)))):
         make_cyl(f"Vitamin_Bottle_{i}", (sx + ox, YS + 0.07, 1.59 + h / 2.0), 0.024, h, col, segments=8)
@@ -222,12 +234,11 @@ def build_bathroom():
     make_box("Bath_Vanity_Plate", (sx, YS + 0.005, 2.02), (0.50, 0.01, 0.13), COL_STEEL)
     # toilet beside the basin
     tx = 3.10
-    make_box("Toilet_Tank", (tx, 0.20, 0.62), (0.44, 0.20, 0.38), COL_ENAMEL)
-    make_box("Toilet_Tank_Lid", (tx, 0.20, 0.825), (0.46, 0.22, 0.03), COL_ENAMEL)
-    make_box("Toilet_Flush", (tx - 0.15, 0.305, 0.74), (0.06, 0.01, 0.02), COL_STEEL)
-    make_lathe("Toilet_Bowl", (tx, 0.52, 0.0), [(0.13, 0.0), (0.10, 0.08), (0.12, 0.25), (0.19, 0.40), (0.0, 0.40)], COL_ENAMEL, segments=12)
-    make_box("Toilet_Seat", (tx, 0.52, 0.415), (0.38, 0.42, 0.03), (0.82, 0.80, 0.76, 1.0))
-    make_box("Toilet_Lid_Leaf", (tx, 0.34, 0.65), (0.38, 0.03, 0.44), (0.82, 0.80, 0.76, 1.0))
+    # (pass 463) the shared toilet: a ring seat with the water in it, the lid
+    # up against the tank ("Pukes in the toilet") — the seat was a slab and
+    # the fixture read as a box from above
+    from _props.objects import make_toilet
+    make_toilet("Toilet", tx, 0.52, 0.0, yaw=0.0, lid_up=True, enamel=COL_ENAMEL)
     make_cyl("Toilet_Paper", (tx - 0.36, 0.30, 0.62), 0.055, 0.11, (0.94, 0.94, 0.92, 1.0), segments=10, axis='X')
     make_box("Toilet_Paper_Bracket", (tx - 0.36, 0.21, 0.62), (0.13, 0.18, 0.02), COL_STEEL)
     # tub along the E wall

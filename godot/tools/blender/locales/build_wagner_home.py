@@ -59,6 +59,7 @@ from _props.geometry import clear_scene, make_box, make_cyl, make_lathe, make_ro
 from _props.structure import make_floor, make_wall, make_wall_with_openings, make_ceiling, make_window
 from _props.views import make_view
 from _props.vehicles import make_car
+from _props.objects import make_skateboard
 
 X0, X1 = -3.6, 3.6
 Y0, Y1 = 0.0, 6.0
@@ -197,11 +198,14 @@ def build_door_corner():
     for k, z in enumerate((1.25, 1.62)):
         for h in (-1, 1):
             make_box(f"Skate_Rack_Hook_{k}_{h:+d}", (face + 0.05, 0.85 + h * 0.30, z - 0.04), (0.10, 0.03, 0.03), COL_DARK)
-        make_box(f"Skateboard_{k}_Deck", (face + 0.10, 0.85, z), (0.02, 0.80, 0.20), ((0.10, 0.10, 0.12, 1.0), (0.60, 0.20, 0.16, 1.0))[k])
-        for w in (-1, 1):
-            make_cyl(f"Skateboard_{k}_Wheel_{w:+d}", (face + 0.135, 0.85 + w * 0.28, z), 0.027, 0.05, (0.92, 0.88, 0.72, 1.0), segments=8, axis='X')
-    # his board, just put up — leaning under the rack, tail on the floor
-    make_rot_box("Skateboard_His_Deck", (face + 0.12, 0.85, 0.40), (0.04, 0.20, 0.80), (0.30, 0.42, 0.24, 1.0), roll=0.12)
+        # (pass 463) the shared skateboard, hung wheels-out: each was a slab
+        # with two wheels on its centreline (rectangles with dots in the insert)
+        make_skateboard(f"Skateboard_{k}", face + 0.107, 0.85, z, L="Y", W="Z", N="+X",
+                        deck=((0.10, 0.10, 0.12, 1.0), (0.60, 0.20, 0.16, 1.0))[k],
+                        graphic=((0.86, 0.72, 0.20, 1.0), (0.92, 0.90, 0.84, 1.0))[k])
+    # his board, just put up — stood on its tail under the rack, wheels out
+    make_skateboard("Skateboard_His", face + 0.03, 0.85, 0.40, L="Z", W="Y", N="+X",
+                    deck=(0.30, 0.42, 0.24, 1.0), graphic=(0.90, 0.46, 0.16, 1.0))
     make_box("Shoe_Mat", (-2.5, 0.55, 0.005), (0.90, 0.50, 0.01), (0.30, 0.26, 0.20, 1.0))
     for k, (sx, sy, yaw) in enumerate(((-2.75, 0.45, 0.2), (-2.55, 0.60, -0.3), (-2.30, 0.48, 0.1))):
         make_rot_box(f"Shoe_{k}", (sx, sy, 0.055), (0.11, 0.28, 0.09), ((0.10, 0.10, 0.12, 1.0), (0.80, 0.78, 0.74, 1.0), (0.12, 0.12, 0.14, 1.0))[k], yaw=yaw)

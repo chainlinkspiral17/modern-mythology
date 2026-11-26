@@ -682,3 +682,67 @@ def make_electric_guitar(prefix, x, y, base_z, *, yaw=0.0, body=(0.86, 0.60, 0.2
     for k in range(6):
         B(f"_Tuner_{k}", -0.066, -0.004, 1.415 + k * 0.030, 0.026, 0.016, 0.016, chrome)
         B(f"_Tuner_Post_{k}", -0.035, -0.019, 1.415 + k * 0.030, 0.010, 0.010, 0.010, chrome)
+
+
+_AX = {"X": (1.0, 0.0, 0.0), "Y": (0.0, 1.0, 0.0), "Z": (0.0, 0.0, 1.0)}
+
+
+def make_skateboard(prefix, x, y, z, *, L="Y", W="Z", N="+X", length=0.80, width=0.20,
+                    deck=(0.12, 0.12, 0.14, 1.0), graphic=(0.80, 0.30, 0.20, 1.0), wheel=(0.92, 0.88, 0.72, 1.0)):
+    """A skateboard (pass 463): a deck with a narrowed nose and tail, grip
+    tape on top, a graphic and two stripes underneath, two trucks (baseplate
+    and hanger) and four wheels on the hanger ends. (x, y, z) is the deck's
+    centre; L and W are the world axes its length and width run along, N the
+    signed axis from the deck toward its WHEELS ("+X": hung on a wall, wheels
+    out into the room; "-Z": on the floor, at z 0.072). It was a slab with two
+    wheels on its centreline."""
+    name, tag = _split_tag(prefix)
+    sgn = -1.0 if N[0] == "-" else 1.0
+    lv, wv, nv = _AX[L], _AX[W], tuple(sgn * c for c in _AX[N[-1]])
+    def P(l, w, n):
+        return (x + l * lv[0] + w * wv[0] + n * nv[0], y + l * lv[1] + w * wv[1] + n * nv[1], z + l * lv[2] + w * wv[2] + n * nv[2])
+    def Sz(sl, sw, sn):
+        return tuple(abs(sl * lv[i]) + abs(sw * wv[i]) + abs(sn * nv[i]) for i in range(3))
+    def B(part, l, w, n, sl, sw, sn, col):
+        make_box(f"{name}{part}{tag}", P(l, w, n), Sz(sl, sw, sn), col)
+    steel = (0.62, 0.63, 0.65, 1.0)
+    B("_Deck", 0.0, 0.0, 0.0, length - 0.16, width, 0.014, deck)
+    for s, nm in ((-1, "Tail"), (1, "Nose")):
+        B(f"_Deck_{nm}", s * (length / 2.0 - 0.055), 0.0, 0.0, 0.05, width - 0.03, 0.014, deck)
+        B(f"_Deck_{nm}_Tip", s * (length / 2.0 - 0.015), 0.0, 0.0, 0.03, width - 0.09, 0.014, deck)
+    B("_Grip", 0.0, 0.0, -0.011, length - 0.18, width - 0.012, 0.008, (0.07, 0.07, 0.08, 1.0))
+    B("_Graphic", 0.0, 0.0, 0.011, length * 0.34, width - 0.05, 0.008, graphic)
+    for s, nm in ((-1, "A"), (1, "B")):
+        B(f"_Graphic_Stripe_{nm}", s * length * 0.235, 0.0, 0.011, 0.022, width - 0.05, 0.008, _tint(graphic, 1.25))
+        B(f"_Truck_{nm}_Base", s * 0.26, 0.0, 0.017, 0.07, 0.055, 0.020, steel)
+        B(f"_Truck_{nm}_Hanger", s * 0.26, 0.0, 0.040, 0.030, width - 0.07, 0.026, steel)
+        for ws, wn in ((-1, "L"), (1, "R")):
+            make_cyl(f"{name}_Wheel_{nm}_{wn}{tag}", P(s * 0.26, ws * (width / 2.0 - 0.017), 0.045), 0.027, 0.034, wheel, segments=10, axis=W)
+
+
+def make_toilet(prefix, x, y, base_z, *, yaw=0.0, lid_up=True, enamel=(0.86, 0.86, 0.82, 1.0)):
+    """A toilet (pass 463): the tank and its lid, the flush lever, the bowl
+    as a lathe, the SEAT as a ring with the water showing in it, and the lid
+    stood up against the tank (or shut). The bowl's centre is (x, y); the
+    tank is toward local -v. The seat was a solid slab: from above the
+    fixture read as a box."""
+    from .geometry import make_rot_box, make_lathe
+    name, tag = _split_tag(prefix)
+    at = _local(x, y, yaw)
+    seat = _tint(enamel, 0.94)
+    def B(part, u, v, z, su, sv, sz, col, roll=0.0):
+        px, py = at(u, v)
+        make_rot_box(f"{name}{part}{tag}", (px, py, base_z + z), (su, sv, sz), col, yaw=yaw, roll=roll)
+    B("_Tank", 0.0, -0.32, 0.62, 0.44, 0.20, 0.38, enamel)
+    B("_Tank_Lid", 0.0, -0.32, 0.825, 0.46, 0.22, 0.03, enamel)
+    B("_Flush", -0.15, -0.212, 0.74, 0.07, 0.016, 0.024, (0.62, 0.63, 0.65, 1.0))
+    B("_Neck", 0.0, -0.20, 0.30, 0.22, 0.14, 0.24, enamel)
+    make_lathe(f"{name}_Bowl{tag}", (x, y, base_z), [(0.13, 0.0), (0.10, 0.08), (0.12, 0.25), (0.20, 0.39), (0.0, 0.39)], enamel, segments=14)
+    make_lathe(f"{name}_Seat{tag}", (x, y, base_z + 0.39), [(0.135, 0.0), (0.215, 0.0), (0.215, 0.028), (0.135, 0.028)], seat, segments=14)
+    # (make_lathe caps its ends, so the "ring" is a disc: the water sits ON it,
+    # a centimetre proud, and reads as the water in the bowl)
+    make_cyl(f"{name}_Water{tag}", (x, y, base_z + 0.423), 0.128, 0.010, (0.56, 0.76, 0.88, 1.0), segments=14)
+    if lid_up:
+        B("_Lid_Leaf", 0.0, -0.185, 0.63, 0.40, 0.03, 0.42, seat, roll=0.10)
+    else:
+        B("_Lid_Leaf", 0.0, 0.0, 0.433, 0.40, 0.43, 0.03, seat)
