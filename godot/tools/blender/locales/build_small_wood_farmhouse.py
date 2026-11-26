@@ -133,8 +133,23 @@ def build_house():
     # the kitchen: the sink under the E window, counters, the table
     make_box("Kitchen_Counter", (6.0 - 0.10 - 0.32, 7.0, 0.45), (0.64, 3.0, 0.90), (0.66, 0.60, 0.48, 1.0))
     make_box("Kitchen_Counter_Top", (6.0 - 0.10 - 0.33, 7.0, 0.92), (0.66, 3.04, 0.04), (0.84, 0.82, 0.76, 1.0))
-    make_box("Kitchen_Sink_Basin", (6.0 - 0.10 - 0.33, 7.0, 0.942), (0.40, 0.56, 0.004), (0.70, 0.72, 0.74, 1.0))
-    make_box("Kitchen_Sink_Mug" + KITCH, (6.0 - 0.10 - 0.33, 7.1, 0.99), (0.08, 0.08, 0.10), (0.86, 0.84, 0.78, 1.0))
+    # (pass 464) "She put her cup in the sink of the kitchen and ran it under
+    # water." The sink was a 4 mm grey plate on the counter (a placemat in
+    # the close-up) and the cup a box. A farmhouse sink: the enamel rim proud
+    # of the counter, the apron down its front, the basin's floor dark and
+    # wet inside it; the cup in it with its handle, the water running.
+    kx_ = 6.0 - 0.10 - 0.33
+    EN, WET = (0.93, 0.93, 0.89, 1.0), (0.46, 0.52, 0.58, 1.0)
+    make_box("Kitchen_Sink_Basin", (kx_, 7.0, 0.948), (0.40, 0.56, 0.016), WET)
+    for nm, oy in (("S", -0.2975), ("N", 0.2975)):
+        make_box(f"Kitchen_Sink_Rim_{nm}", (kx_, 7.0 + oy, 0.965), (0.47, 0.035, 0.05), EN)
+    for nm, ox in (("W", -0.2175), ("E", 0.2175)):
+        make_box(f"Kitchen_Sink_Rim_{nm}", (kx_ + ox, 7.0, 0.965), (0.035, 0.56, 0.05), EN)
+    make_box("Kitchen_Sink_Apron", (kx_ - 0.33 - 0.012, 7.0, 0.84), (0.024, 0.63, 0.22), EN)
+    make_box("Kitchen_Faucet_Spout_Drop", (6.0 - 0.10 - 0.29, 7.0, 1.012), (0.025, 0.025, 0.045), (0.80, 0.80, 0.82, 1.0))
+    make_cyl("Kitchen_Sink_Mug" + KITCH, (kx_ + 0.04, 7.0, 0.956 + 0.045), 0.040, 0.090, (0.90, 0.88, 0.80, 1.0), segments=10)
+    make_box("Kitchen_Sink_Mug_Handle" + KITCH, (kx_ + 0.04, 7.0 - 0.052, 1.003), (0.014, 0.030, 0.050), (0.90, 0.88, 0.80, 1.0))
+    make_box("Kitchen_Sink_Water" + KITCH, (kx_ + 0.04, 7.0, 1.02), (0.012, 0.012, 0.062), (0.74, 0.86, 0.92, 1.0))
     build_kitchen_2026_10()
     make_table("Kitchen_Table", 2.6, 7.2, w=1.2, d=0.9, h=0.75, wood=WOOD)
     for k, (dx, yaw) in enumerate(((-0.80, -math.pi / 2.0), (0.80, math.pi / 2.0))):

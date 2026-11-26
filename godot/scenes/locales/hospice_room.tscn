@@ -219,6 +219,15 @@ shadow_enabled = false
 ; under-cabinet light". The day's window key, overhead fill, window glow and bed lamp are
 ; suffixed to hospice_room; the under-cab practical and the hall spill serve both. The
 ; monitor's glow by the bed is the one light the night adds.
+; (pass 464) the floor by the door, where the unworn slippers are: the under-cabinet light did not reach it
+[node name="Fill_Door_Bounce__hospice_room_night" type="OmniLight3D" parent="."]
+position = Vector3(-0.450, 1.200, -0.800)
+light_color = Color(0.98, 0.86, 0.66, 1)
+light_energy = 0.90
+omni_range = 2.40
+omni_attenuation = 1.3
+shadow_enabled = false
+
 [node name="Monitor_Glow__hospice_room_night" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0, 1.25, -4.2)
 light_color = Color(0.40, 0.78, 0.72, 1)
@@ -395,9 +404,9 @@ metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_table__hospice_room_night" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.778, 0.870, -3.453)
-rotation = Vector3(-0.2618, -0.1175, 0.0)
-metadata/fov = 35.0
+position = Vector3(1.850, 1.500, -4.350)
+rotation = Vector3(-0.7832, 1.2998, 0.0)
+metadata/fov = 40.0
 
 ; (pass 367) "On the floor by the door: a pair of slippers Alice had not worn in three weeks."
 ; text_focus_pass (2026-10-27) had named this frame `door` and aimed it at the door's window at

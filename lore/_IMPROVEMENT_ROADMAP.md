@@ -3835,6 +3835,46 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-26 · pass 464: pass 463's carry-overs; the first 44 vol 5 one-line pairs.**
+CARRY-OVERS (vol 2):
+- THE FARMHOUSE SINK ("She put her cup in the sink ... and ran it under
+  water"): a 4 mm grey plate on the counter (a placemat) and a box. An
+  apron sink now — enamel rim proud of the counter, the apron down its
+  front, the wet floor of the basin, the cup with its handle under the
+  spout, the water running; the camera looks down into it.
+- BRIAR FALLS: the key and ribbon close-ups tighten to 26 and 28 degrees
+  (at 44 they were lost in the gorge's linework). The vending machine's
+  face and slot were built INSIDE its cabinet; they are on its front, with
+  "the row of selection buttons taped over except for B-4".
+VOL 5, 44 pairs rendered and read: 35 pass. Fixed:
+- THE DINER'S JUKEBOX (a model chapter): three stacked boxes and 5 mm
+  strips — over the booth divider it read as a brown box with slits. A
+  Wurlitzer's face: the arch of coloured tubes round the record window,
+  grille cloth and brass slats, the title strip, a row of selection keys,
+  the coin slot, THE RED EYE. It stands behind a 1.2 m booth divider, so
+  the close-up looks over it from 1.9 m. "The machine had a working theory
+  too" (the jukebox) had been cutting to the counter: re-cued, marker gone.
+- NATALIE'S APARTMENT: the fridge (one 10 cm handle on a blank body: "a wall
+  with a light switch") gets its freezer door, two handles, a kick grille,
+  a note and magnets, and the camera stands back; the rug gets a border so
+  "the worn patch of rug" reads as wear, seen from standing height (it was
+  an abstract of brown planes from 43 cm); a fill reaches the uniform on
+  the bathroom door.
+- THE HOSPICE ROOM: the bedside-table close-up looked at the table's legs
+  from below its top, and from the south the IV stand is across it: it
+  looks down from the east now (lamp, cup and straw, swabs, prayer book).
+  The slippers are slippers (sole, closed toe, opening, cuff) in a pale
+  blue, with a fill by the door.
+- NEW ORLEANS: the bourbon is a bottle (shoulders, neck, cap, label); the
+  second bottle on its side has a neck and a label.
+- ELICIA: "She set it back on the counter ... on the small porcelain saucer"
+  cut to an empty stretch of counter: re-cued to the teacup.
+Draft 1 shipped for this band. DRAFT 2 TARGETS: Graustark's charcoal is a
+2 cm black nub among chalk on a dim ledge (longer stick, a smudge, nearer
+lens — a Graustark rebuild); Natalie's "stacks of books" frame is dim; the
+New Orleans sofa close-up shows one cushion; 31 vol 5 pairs and all of
+vol 6-7's one-line pairs remain (render 44 at a time).
+
 **2026-11-26 · pass 463: vol 1–4 close-ups by the stranger test (the first-generation sets).**
 The 57 one-line (set, cue) pairs left in vol 1–4 scenes, rendered and read
 (50 in the first run): 38 pass. Fixed at the object:

@@ -113,8 +113,17 @@ def build_building():
     # Vending machine between the doors, glowing selection column
     # Stands AGAINST the south face (base front y=7.9), not in it.
     make_box("Vending", (-2.75, 7.60, 0.95), (0.85, 0.55, 1.90), COL_VENDING)
-    make_box("Vending_Face", (-2.90, 7.80, 1.15), (0.40, 0.05, 1.30), COL_VENDING_FACE)
-    make_box("Vending_Slot", (-2.45, 7.80, 0.55), (0.22, 0.04, 0.14), COL_DOOR)
+    # (pass 464) the face and the slot were at y 7.80 — INSIDE the cabinet
+    # (its front is y 7.325): the machine was a plain red box. On the front
+    # now, and "the row of selection buttons taped over except for B-4": eight
+    # buttons under the window, masking tape across seven, the last one lit.
+    make_box("Vending_Face", (-2.90, 7.30, 1.15), (0.40, 0.05, 1.30), COL_VENDING_FACE)
+    make_box("Vending_Slot", (-2.45, 7.305, 0.55), (0.22, 0.04, 0.14), COL_DOOR)
+    for k in range(8):
+        make_box(f"Vending_Select_{k}", (-3.075 + k * 0.05, 7.314, 0.36), (0.036, 0.022, 0.05),
+                 (0.96, 0.78, 0.36, 1.0) if k == 7 else (0.20, 0.20, 0.22, 1.0))
+    make_box("Vending_Select_Tape", (-3.075 + 3 * 0.05, 7.298, 0.36), (0.35, 0.012, 0.062), (0.90, 0.84, 0.66, 1.0))
+    make_box("Vending_Coin", (-2.45, 7.312, 0.86), (0.05, 0.026, 0.10), (0.20, 0.20, 0.22, 1.0))
     # Pay phone bracketed to the wall, receiver dangling by the cord
     # (pass 463) "A pay phone bracketed to the wall outside. The receiver
     # dangles by the cord. The coin-return slot has been pried at by something

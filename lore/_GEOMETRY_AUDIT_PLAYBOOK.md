@@ -158,6 +158,26 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-26 · what stands between the lens and the thing (pass 464)
+- Before placing a close-up camera, list what stands within a metre of the
+  subject on the camera's side (bbox dump of the neighbours): the diner's
+  jukebox sits behind a 1.2 m booth divider, the hospice table behind the
+  IV stand, the Briar Falls phone behind an info panel. The answer is a
+  different SIDE or HEIGHT, not a wider lens.
+- A big plain thing shot close is a wall: the fridge filled the frame as a
+  blank panel. Give a large appliance its seams, handles and grille, and
+  frame it with something beside it for scale.
+- A table's contents need a camera above the tabletop; a marker authored at
+  the table's own height shows its legs.
+- A face or panel placed by an absolute coordinate can end up inside its
+  own cabinet (the vending machine, y 7.80 in a body 7.33..7.88) and no
+  gate objects: same-family parts may overlap. Derive a face from the
+  body's front (centre - depth/2), never from a typed number.
+- Read the line before dressing a prop: "the row of selection buttons taped
+  over except for B-4" is a row, taped, one lit.
+- Adding parts to a prop moves the cluster the aim gate centres on:
+  re-run `marker_aim_audit` after any builder change, not only tscn ones.
+
 ### 2026-11-26 · linework moods read by outline; cloth holds nothing (pass 463)
 - In an edge mood (`lithograph`, the blue cliffside look) fill colour is
   gone: a box is a rectangle whatever it is meant to be. A prop cued in

@@ -235,7 +235,13 @@ def build_hero_props():
                  (0.72, 0.74, 0.70, 0.6), segments=8)
     make_cyl("Ashtray_Volcano", (0.35, 5.50, 0.988), 0.07, 0.04, (0.30, 0.30, 0.32, 1.0), segments=10)
     make_box("Ash_Heap", (0.35, 5.50, 1.02), (0.08, 0.08, 0.035), (0.55, 0.53, 0.50, 1.0))
-    make_cyl("Warm_Bourbon", (0.72, 5.62, 1.07), 0.045, 0.26, (0.52, 0.32, 0.14, 0.85), segments=8)
+    # (pass 464) "the register was just the bourbon": a BOTTLE — shoulders,
+    # neck, a dark cap, a cream label to the room, the level two fingers from
+    # the bottom. It was an amber cylinder (a red tube under this light).
+    from _props.objects import make_liquor_bottle
+    make_liquor_bottle("Warm_Bourbon", 0.72, 5.62, 0.965, (0.62, 0.38, 0.14, 0.9), h=0.29, r=0.045)
+    make_box("Warm_Bourbon_Label", (0.72, 5.62 - 0.047, 0.965 + 0.10), (0.066, 0.010, 0.085), (0.94, 0.90, 0.78, 1.0))
+    make_box("Warm_Bourbon_Label_Band", (0.72, 5.62 - 0.053, 0.965 + 0.115), (0.066, 0.008, 0.016), (0.22, 0.16, 0.12, 1.0))
     # (pass 456) THE MICROWAVE. It was a grey box with a dark panel: the four
     # "insert microwave" lines ("He caught his reflection in the greasy
     # microwave door") framed a picture frame. Now the case, the
@@ -414,6 +420,9 @@ def build_dumpster_fire_2026_10():
     make_cyl("Pan", (0.92, 5.78, 0.985), 0.12, 0.04, (0.20, 0.20, 0.22, 1.0), segments=12)
     make_cyl("Pan_Handle", (0.76, 5.78, 0.99), 0.012, 0.18, (0.20, 0.20, 0.22, 1.0), segments=6, axis='X')
     make_cyl("Second_Bottle_Side", (0.50, 5.33, 1.00), 0.035, 0.22, amber, segments=8, axis='X')
+    make_cyl("Second_Bottle_Side_Neck", (0.50 + 0.145, 5.33, 1.00), 0.013, 0.07, amber, segments=8, axis='X')
+    make_cyl("Second_Bottle_Side_Cap", (0.50 + 0.19, 5.33, 1.00), 0.016, 0.02, (0.18, 0.16, 0.14, 1.0), segments=8, axis='X')
+    make_box("Second_Bottle_Side_Label", (0.48, 5.33 - 0.036, 1.00), (0.09, 0.010, 0.05), (0.94, 0.90, 0.78, 1.0))
     make_box("Mail_Pile", (-1.00, 5.50, 0.98), (0.20, 0.28, 0.03), paper)
     make_box("Mail_Pile_Red", (-0.98, 5.52, 0.998), (0.18, 0.10, 0.004), (0.80, 0.26, 0.22, 1.0))
     make_box("Cigarette_Pack", (-0.95, 5.76, 0.975), (0.055, 0.085, 0.02), (0.20, 0.42, 0.26, 1.0))

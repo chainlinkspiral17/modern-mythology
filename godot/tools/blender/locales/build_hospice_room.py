@@ -218,8 +218,16 @@ def build_hero_props():
     make_cyl("Bent_Straw_Lower", (0.79, 4.60, 0.90), 0.006, 0.10, (0.90, 0.90, 0.92, 1.0), segments=5)
     make_box("Bent_Straw_Upper", (0.81, 4.58, 0.965), (0.012, 0.012, 0.06), (0.90, 0.90, 0.92, 1.0))
     # The slippers by the door, three weeks unworn
-    make_box("Slipper_L", (-0.75, 0.35, 0.03), (0.10, 0.26, 0.05), (0.66, 0.58, 0.50, 1.0))
-    make_box("Slipper_R", (-0.55, 0.32, 0.03), (0.10, 0.26, 0.05), (0.66, 0.58, 0.50, 1.0))
+    # (pass 464) slippers, not two bars: a sole, the closed toe over its
+    # front half, the dark of the opening behind it, a fleece cuff — in a
+    # pale quilted blue that reads under the night light
+    sl, lining, dark_ = (0.66, 0.76, 0.86, 1.0), (0.94, 0.92, 0.86, 1.0), (0.20, 0.22, 0.28, 1.0)
+    for nm, (sx_, sy_) in (("L", (-0.75, 0.35)), ("R", (-0.55, 0.32))):
+        make_box(f"Slipper_{nm}", (sx_, sy_, 0.012), (0.10, 0.26, 0.024), (0.50, 0.46, 0.42, 1.0))          # the sole
+        make_chamfer_box(f"Slipper_{nm}_Toe", (sx_, sy_ + 0.06, 0.052), (0.10, 0.14, 0.056), sl, chamfer=0.02)
+        make_box(f"Slipper_{nm}_Opening", (sx_, sy_ - 0.055, 0.028), (0.076, 0.11, 0.008), dark_)
+        make_box(f"Slipper_{nm}_Cuff", (sx_, sy_ - 0.012, 0.062), (0.10, 0.020, 0.036), lining)
+        make_box(f"Slipper_{nm}_Heel", (sx_, sy_ - 0.122, 0.036), (0.10, 0.016, 0.024), sl)
 
 
 

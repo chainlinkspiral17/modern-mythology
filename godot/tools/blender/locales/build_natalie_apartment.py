@@ -302,8 +302,23 @@ def build_kitchenette():
     # stood in the SW corner by the front door, where the record player goes)
     make_box("Fridge_Body", (0.80, 5.050, 1.00),
              (0.70, 0.70, 2.00), (0.86, 0.84, 0.80, 1.0))
-    make_box("Fridge_Handle", (0.52, 4.68, 1.40),
-             (0.03, 0.04, 0.10), P.METAL_STEEL)
+    # (pass 464) "the quiet hum of the ancient refrigerator" / "The fridge
+    # cycled": a body with one 10 cm handle read as a blank wall with a light
+    # switch. The freezer door over the fridge door, a long handle on each,
+    # the kick grille, a round-shouldered top, magnets and a note.
+    fy_ = 4.70
+    make_box("Fridge_Handle", (0.52, fy_ - 0.026, 1.02), (0.03, 0.04, 0.62), P.METAL_STEEL)
+    make_box("Fridge_Handle_Freezer", (0.52, fy_ - 0.026, 1.72), (0.03, 0.04, 0.28), P.METAL_STEEL)
+    make_box("Fridge_Door_Seam", (0.80, fy_ - 0.006, 1.49), (0.70, 0.012, 0.016), (0.40, 0.40, 0.40, 1.0))
+    make_box("Fridge_Kick_Grille", (0.80, fy_ - 0.006, 0.06), (0.64, 0.012, 0.09), (0.22, 0.22, 0.24, 1.0))
+    for k in range(5):
+        make_box(f"Fridge_Kick_Slot_{k}", (0.56 + k * 0.12, fy_ - 0.016, 0.06), (0.08, 0.010, 0.016), (0.50, 0.50, 0.52, 1.0))
+    make_box("Fridge_Badge", (1.02, fy_ - 0.006, 1.90), (0.12, 0.012, 0.03), (0.70, 0.70, 0.72, 1.0))
+    make_box("Fridge_Note", (0.90, fy_ - 0.006, 1.22), (0.11, 0.012, 0.14), (0.96, 0.94, 0.80, 1.0))
+    for k in range(3):
+        make_box(f"Fridge_Note_Line_{k}", (0.90, fy_ - 0.015, 1.25 - k * 0.03), (0.08, 0.008, 0.008), (0.30, 0.30, 0.36, 1.0))
+    for k, (mx_, mz_, col) in enumerate(((0.90, 1.30, (0.86, 0.22, 0.20, 1.0)), (0.72, 1.14, (0.24, 0.50, 0.80, 1.0)), (1.02, 0.98, (0.94, 0.78, 0.24, 1.0)))):
+        make_box(f"Fridge_Magnet_{k}", (mx_, fy_ - 0.016, mz_), (0.032, 0.012, 0.032), col)
 
 
 def build_east_wing():
@@ -421,7 +436,16 @@ def build_hero_props():
     # fanned cards
     # (draft 3: the rug + low table north of the sofa's back, y 2.9)
     make_box("Reading_Rug", (RUG_X, RUG_Y, 0.012), (2.20, 1.80, 0.02), (0.46, 0.34, 0.30, 1.0))
-    make_box("Rug_Worn_Patch", (RUG_X - 0.80, RUG_Y, 0.024), (0.55, 0.45, 0.006), (0.54, 0.42, 0.36, 1.0))
+    # (pass 464) "her stage was now the worn patch of rug between the futon
+    # and the record player": the rug gets a border and a medallion so the
+    # bare place READS as wear — the pile gone to the pale backing in an
+    # uneven oval where her feet turn
+    make_box("Rug_Worn_Patch", (RUG_X - 0.80, RUG_Y, 0.026), (0.62, 0.46, 0.008), (0.70, 0.62, 0.52, 1.0))
+    make_box("Rug_Worn_Patch_B", (RUG_X - 0.72, RUG_Y + 0.10, 0.026), (0.40, 0.58, 0.008), (0.70, 0.62, 0.52, 1.0))
+    make_box("Rug_Worn_Patch_Core", (RUG_X - 0.78, RUG_Y + 0.02, 0.034), (0.26, 0.24, 0.008), (0.78, 0.72, 0.62, 1.0))
+    bord = (0.36, 0.14, 0.16, 1.0)
+    for nm, ox, oy, sx_, sy_ in (("S", 0.0, -0.80, 2.00, 0.08), ("N", 0.0, 0.80, 2.00, 0.08), ("W", -1.00, 0.0, 0.08, 1.52), ("E", 1.00, 0.0, 0.08, 1.52)):
+        make_box(f"Reading_Rug_Border_{nm}", (RUG_X + ox, RUG_Y + oy, 0.026), (sx_, sy_, 0.008), bord)
     make_box("Low_Table", (LOW_X, LOW_Y, 0.146), (0.55, 0.55, 0.248), (0.42, 0.30, 0.20, 1.0))   # a footstool block ON the rug (2026-09-23: a top on nothing)
     for ci in range(5):
         make_box(f"Fanned_Card_{ci}", (LOW_X - 0.15 + ci * 0.09, LOW_Y + 0.02 * (ci % 2), 0.276),

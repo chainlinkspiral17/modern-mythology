@@ -756,8 +756,8 @@ metadata/fov = 36.0
 
 ; (pass 391) the jukebox in the main room's NW corner, from the floor
 [node name="shot_insert_jukebox" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-6.750, 1.550, -3.050)
-rotation = Vector3(-0.2477, 0.2932, 0.0)
+position = Vector3(-6.950, 1.900, -3.300)
+rotation = Vector3(-0.3710, 0.2783, 0.0)
 metadata/fov = 40.0
 
 ; RE-AIMED 2026-10-03: John's notebook on Booth 6's table (it looked at the formal
@@ -912,9 +912,3 @@ metadata/fov = 36.0
 position = Vector3(-0.800, 1.550, 1.900)
 rotation = Vector3(-0.3863, 2.4330, 0.0)
 metadata/fov = 36.0
-
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_machine__diner_interior" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.649, 1.625, 2.365)
-rotation = Vector3(-0.2618, 2.9552, 0.0)
-metadata/fov = 35.0

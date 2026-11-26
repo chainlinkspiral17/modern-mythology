@@ -998,20 +998,31 @@ def build_jukebox(cx, cy, base_z=0.0):
                  (cx + sgn * 0.32, cy - 0.18, base_z + 1.22),
                  0.018, 0.36, (0.98, 0.62, 0.32, 1.0),
                  segments=6, axis='Z')
-    # Selection-button panel (chrome strip across the front)
-    make_box("Jukebox_ButtonStrip",
-             (cx, cy - 0.2125, base_z + 0.85),   # on the shoulder's face
-             (0.50, 0.005, 0.10), COL_KITCHEN_STEEL)
-    # Title-strip backer (cream paper under glass — read as the
-    # printed track list when the player looks closely)
-    make_box("Jukebox_TitleStrip",
-             (cx, cy - 0.2325, base_z + 0.72),   # on the mid cabinet's face
-             (0.50, 0.005, 0.06),
-             (0.92, 0.86, 0.72, 1.0))
-    # Coin slot (small brass)
-    make_box("Jukebox_CoinSlot",
-             (cx + 0.22, cy - 0.215, base_z + 1.00),   # on the shoulder's face (2026-09-22)
-             (0.06, 0.005, 0.04), COL_BRASS)
+    # (pass 464) THE WURLITZER'S FACE. It was three stacked boxes, an amber
+    # block and three 5 mm strips: over a booth's back the close-up was a
+    # brown box with slits ("The jukebox in the corner had been blinking
+    # through its red eye all night"). A front panel now, the arch of
+    # coloured tubes rising over it round the lit record window, the grille
+    # cloth with its brass slats, the title strip, the row of selection
+    # keys, the coin slot, the red eye.
+    fy = cy - 0.29
+    dark, brass, cream = (0.14, 0.10, 0.09, 1.0), (0.78, 0.62, 0.30, 1.0), (0.93, 0.88, 0.74, 1.0)
+    for k, (rr, col) in enumerate(((0.36, COL_WOOD_TRIM), (0.33, (0.90, 0.26, 0.20, 1.0)), (0.29, (0.98, 0.72, 0.30, 1.0)),
+                                   (0.25, (0.34, 0.56, 0.86, 1.0)), (0.21, (0.98, 0.84, 0.52, 1.0)))):
+        make_cyl(f"Jukebox_Arch_{k}", (cx, cy - 0.262 - k * 0.012, base_z + 1.07), rr, 0.012, col, segments=20, axis='Y')
+    make_box("Jukebox_Arch_Record", (cx, cy - 0.320, base_z + 1.13), (0.20, 0.010, 0.012), dark)       # the tone arm's line in the window
+    make_box("Jukebox_Front", (cx, fy, base_z + 0.50), (0.76, 0.07, 1.00), COL_WOOD_TRIM)
+    make_box("Jukebox_Grille", (cx, fy - 0.041, base_z + 0.38), (0.52, 0.012, 0.50), dark)
+    for k in range(5):
+        make_box(f"Jukebox_Grille_Slat_{k}", (cx - 0.20 + k * 0.10, fy - 0.053, base_z + 0.38), (0.022, 0.012, 0.46), brass)
+    make_box("Jukebox_TitleStrip", (cx, fy - 0.041, base_z + 0.78), (0.54, 0.012, 0.08), cream)
+    for k in range(8):
+        make_box(f"Jukebox_Title_{k}", (cx - 0.224 + k * 0.064, fy - 0.051, base_z + 0.78), (0.044, 0.008, 0.012), (0.30, 0.24, 0.20, 1.0))
+    for k in range(10):
+        make_box(f"Jukebox_Key_{k}", (cx - 0.225 + k * 0.045, fy - 0.043, base_z + 0.89), (0.032, 0.016, 0.034),
+                 (0.86, 0.22, 0.18, 1.0) if k in (4, 8) else cream)
+    make_box("Jukebox_CoinSlot", (cx + 0.31, fy - 0.041, base_z + 0.92), (0.05, 0.012, 0.09), brass)
+    make_cyl("Jukebox_RedEye", (cx - 0.31, fy - 0.045, base_z + 0.93), 0.032, 0.02, (0.96, 0.16, 0.12, 1.0), segments=10, axis='Y')
 
 
 def build_west_extension():
