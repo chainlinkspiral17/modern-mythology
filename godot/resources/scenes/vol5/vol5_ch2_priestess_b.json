@@ -200,7 +200,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert mirror~]She picked up the mirror shard again. Looked into the fractal Elicias. Saw, this time, not aloof control. Not the practiced amusement she had been cultivating since her early twenties — but something [wave amp=6 freq=2]disconcertingly like fear[/wave].",
+      "text": "[shot:insert mirror_shard~]She picked up the mirror shard again. Looked into the fractal Elicias. Saw, this time, not aloof control. Not the practiced amusement she had been cultivating since her early twenties — but something [wave amp=6 freq=2]disconcertingly like fear[/wave].",
       "voice": "assets/audio/voice/vol5_ch2_priestess_b/032.mp3"
     },
     {

@@ -158,6 +158,22 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-26 · metaphors, modifiers and shifted blocks (pass 465)
+- A cue can be on a METAPHOR: "the chain rattled in his sleep" is not the
+  neon sign's chain, "her own internal clock" not the alarm clock. Read the
+  three lines before a cued line when the object seems arbitrary.
+- Cue tags can carry a modifier (`[shot:insert mirror~]`): search for the
+  cue word, not the closed bracket, before concluding a cue is absent.
+- A part's coordinates in the builder source are not its coordinates in the
+  GLB when the code runs inside a `shifted()` block (the Roberts' island is
+  0.6 m north of its numbers). Read positions from the GLB (`bbox.py`)
+  before computing a camera.
+- A helper used inside a `shifted()` block must be one `plan.shifted` knows
+  (make_box, make_cyl, the `_OBJ_XY` list): `make_rot_box` there would be
+  built unshifted. Use axis-aligned boxes or add the helper to the list.
+- When grepping a builder's log for "wrote", match the whole phrase
+  (`grep "wrote /"`): "real" matches every "Montreal" mesh name.
+
 ### 2026-11-26 · what stands between the lens and the thing (pass 464)
 - Before placing a close-up camera, list what stands within a metre of the
   subject on the camera's side (bbox dump of the neighbours): the diner's

@@ -836,12 +836,18 @@ def build_bookshelf():
     # at +0.13, a book's half-height, they floated once the solid frame went)
     shelf_3_z = 0.18 + 3 * 0.45 + 0.0125
     # Mirror shard — angular, slightly off-axis
-    make_box("Bookshelf_MirrorShard",
-             (sh_x - 0.06, sh_y - 0.28, shelf_3_z + 0.005),
-             (0.10, 0.14, 0.01), (0.92, 0.94, 0.96, 1.0))
-    make_box("Bookshelf_MirrorShard_Frame",
-             (sh_x - 0.06, sh_y - 0.28, shelf_3_z + 0.016),
-             (0.04, 0.06, 0.012), COL_METAL_STEEL)
+    # (pass 465) "a cracked mirror shard she kept there as a paperweight": a
+    # long jagged triangle of mirror on a short stack of pages, a crack
+    # across it and a glint — it was a pale rectangle with a steel block on
+    # it (a light switch in the close-up)
+    mx_, my_ = sh_x - 0.06, sh_y - 0.28
+    make_box("Bookshelf_Shard_Pages", (mx_, my_, shelf_3_z + 0.010), (0.16, 0.26, 0.020), (0.93, 0.90, 0.80, 1.0))
+    glass = (0.62, 0.74, 0.84, 1.0)
+    for k, (oy, w_) in enumerate(((-0.090, 0.110), (-0.040, 0.086), (0.010, 0.060), (0.058, 0.036), (0.098, 0.016))):
+        make_box("Bookshelf_MirrorShard" if k == 0 else f"Bookshelf_MirrorShard_{k}",
+                 (mx_ - 0.004 * k, my_ + oy, shelf_3_z + 0.025), (w_, 0.052 if k < 4 else 0.034, 0.010), glass)
+    make_box("Bookshelf_MirrorShard_Crack", (mx_, my_ - 0.045, shelf_3_z + 0.034), (0.080, 0.008, 0.008), (0.18, 0.22, 0.28, 1.0))
+    make_box("Bookshelf_MirrorShard_Glint", (mx_ + 0.022, my_ - 0.070, shelf_3_z + 0.034), (0.012, 0.070, 0.008), (0.94, 0.97, 0.99, 1.0))
     # Half-eaten cookie box ("nice cookies somebody gave you")
     make_box("Bookshelf_CookieBox",
              (sh_x - 0.05, sh_y + 0.20, shelf_3_z + 0.04),

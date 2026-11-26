@@ -524,12 +524,6 @@ light_energy = 0.8
 omni_range = 3.0
 shadow_enabled = false
 
-; insert: the mirror shard — the fractal Elicias
-[node name="shot_insert_mirror" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40, 1.9, -2.4)
-rotation = Vector3(-0.2448, -1.7802, 0.0)
-metadata/fov = 42.0
-
 ; practicals authored by practical_author.py (2026-09-11):
 ; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
 [node name="StringLight_Bulb_0_Practical" type="OmniLight3D" parent="."]

@@ -862,9 +862,9 @@ metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_charcoal__graustark_chalk_wall_star" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(41.042, 0.689, 375.878)
-rotation = Vector3(-0.2618, -2.3241, 0.0)
-metadata/fov = 35.0
+position = Vector3(41.150, 1.150, 375.950)
+rotation = Vector3(-0.7760, -2.3457, 0.0)
+metadata/fov = 34.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_envelope__graustark_shotgun_interior" type="Marker3D" parent="." groups=["vn_shot"]]

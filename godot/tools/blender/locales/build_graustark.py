@@ -5411,7 +5411,12 @@ def build_haberdashery_2026_10():
     for ci_, (ox, oy) in enumerate(((0.10, -0.12), (0.18, -0.05), (0.24, -0.16))):
         _mb(f"Joanna_Chalk_Nub_{ci_}", (41.40 + ox, -376.30 + oy, bt + 0.006), (0.012, 0.032, 0.012),
             (0.88, 0.87, 0.82, 1.0))
-    _mb("Joanna_Charcoal", (41.62, -376.42, bt + 0.007), (0.018, 0.05, 0.014), (0.07, 0.07, 0.07, 1.0))
+    # (pass 465) "She set the charcoal down": a stick, a broken stub and the
+    # smudge it leaves on the block — it was a 2 cm black nub lost among the
+    # chalk in the close-up
+    _mb("Joanna_Charcoal_Smudge", (41.63, -376.43, bt + 0.004), (0.10, 0.17, 0.008), (0.26, 0.26, 0.27, 1.0))
+    _mb("Joanna_Charcoal", (41.62, -376.42, bt + 0.017), (0.022, 0.115, 0.018), (0.07, 0.07, 0.07, 1.0))
+    _mb("Joanna_Charcoal_Stub", (41.665, -376.36, bt + 0.016), (0.020, 0.036, 0.016), (0.07, 0.07, 0.07, 1.0))
     _mc("Joanna_Lipstick", (41.30, -376.12, bt + 0.009), 0.009, 0.05, (0.62, 0.12, 0.18, 1.0), axis='X', segments=8)
     _mc("Chalk_Tin", (43.60, -374.30, FT + 0.04), 0.06, 0.08, (0.50, 0.48, 0.46, 1.0), segments=10)
     # Her animals (2026-10-05): "The cat, sensing the shift, stopped

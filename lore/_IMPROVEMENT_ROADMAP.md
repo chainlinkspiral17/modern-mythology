@@ -3835,6 +3835,30 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-26 · pass 465: the last 31 vol 5 one-line pairs (vol 5's close-ups are all read).**
+31 frames rendered and read: 26 pass. Fixed:
+- GRAUSTARK'S CHARCOAL ("She set the charcoal down", pass 464's target): a
+  stick, a broken stub and the smudge it leaves on Joanna's block, seen
+  from above the block — it was a 2 cm nub among the chalk.
+- THE BUNGALOW'S MIRROR SHARD ("a cracked mirror shard she kept there as a
+  paperweight"): a pale rectangle with a steel block on it read as a light
+  switch. A long jagged triangle of mirror on a stack of pages, a crack and
+  a glint. "She picked up the mirror shard again" had been cutting to the
+  hall MIRROR: re-cued to the shard (its `~` kept), the mirror marker gone.
+- THE ROBERTS' CASSEROLE: a flat white lid on a cream block read as a small
+  table. A dish under its foil — the side and a blue band below the crimped
+  edge, a lug at each end, creases, "the foil dimpled in the precise
+  pattern of fingers" — and the camera stands back to take in the island.
+  The loom's close-up moves in from 3.7 m to 2 m.
+- "The chain rattled, sometimes, in his sleep" (vol 5 ch8) is the beast in
+  him; the cue cut to the OPEN sign's hanging chain. Dropped, marker gone.
+Draft 1 shipped: every vol 5 close-up pair has now been read once.
+DRAFT 2 TARGETS: the bungalow's "cardboard boxes gaped like hungry mouths"
+are closed tan slabs from above; its script pages are blank cream; the
+riverboat's telephone is a dark lump; the Roberts' porch steps read as
+bands; vol 6 (about 300 one-line pairs) and vol 7 (about 200) remain —
+44 a render.
+
 **2026-11-26 · pass 464: pass 463's carry-overs; the first 44 vol 5 one-line pairs.**
 CARRY-OVERS (vol 2):
 - THE FARMHOUSE SINK ("She put her cup in the sink ... and ran it under

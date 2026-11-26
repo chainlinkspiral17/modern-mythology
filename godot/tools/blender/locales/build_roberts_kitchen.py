@@ -549,10 +549,23 @@ def build_proof_of_life_2026_10():
     isl = 0.98                                     # the island's top (make_counter: base + height + 0.06)
     # (the island runs NORTH-SOUTH: x -0.6..0.6, y 1.6..4.4 — the first
     # placement at x 0.95 stood a foot past its east edge)
-    make_box("Casserole_Dish", (0.22, 3.95, isl + 0.035), (0.34, 0.24, 0.07), (0.86, 0.84, 0.78, 1.0))
-    make_box("Casserole_Foil", (0.22, 3.95, isl + 0.08), (0.36, 0.26, 0.02), (0.78, 0.80, 0.82, 1.0))
-    make_box("Casserole_Foil_Dimple_0", (0.17, 3.92, isl + 0.094), (0.08, 0.06, 0.008), (0.70, 0.72, 0.74, 1.0))
-    make_box("Casserole_Foil_Dimple_1", (0.29, 3.99, isl + 0.094), (0.07, 0.05, 0.008), (0.70, 0.72, 0.74, 1.0))
+    # (pass 465) a casserole DISH under its foil: the dish's side and blue
+    # band showing below the foil's crimped edge, a lug handle at each end,
+    # the foil a duller silver with its creases and "the foil dimpled in the
+    # precise pattern of fingers". A flat white lid on a cream block read as
+    # a small table in the close-up.
+    foil, crease = (0.74, 0.76, 0.79, 1.0), (0.56, 0.58, 0.62, 1.0)
+    make_box("Casserole_Dish", (0.22, 3.95, isl + 0.035), (0.34, 0.24, 0.07), (0.92, 0.90, 0.84, 1.0))
+    make_box("Casserole_Dish_Band", (0.22, 3.95 - 0.121, isl + 0.030), (0.30, 0.008, 0.020), (0.30, 0.44, 0.70, 1.0))
+    for nm, ox in (("W", -0.195), ("E", 0.195)):
+        make_box(f"Casserole_Dish_Lug_{nm}", (0.22 + ox, 3.95, isl + 0.055), (0.05, 0.12, 0.016), (0.92, 0.90, 0.84, 1.0))
+    make_box("Casserole_Foil", (0.22, 3.95, isl + 0.079), (0.37, 0.27, 0.018), foil)
+    make_box("Casserole_Foil_Crimp_S", (0.22, 3.95 - 0.131, isl + 0.068), (0.37, 0.010, 0.030), foil)
+    make_box("Casserole_Foil_Crimp_N", (0.22, 3.95 + 0.131, isl + 0.068), (0.37, 0.010, 0.030), foil)
+    for k, (cx_, cy_, sx_, sy_) in enumerate(((0.12, 4.01, 0.14, 0.008), (0.31, 3.99, 0.008, 0.12), (0.24, 4.05, 0.10, 0.008))):
+        make_box(f"Casserole_Foil_Crease_{k}", (cx_, cy_, isl + 0.092), (sx_, sy_, 0.008), crease)
+    for k, (dx_, dy_) in enumerate(((0.15, 3.91), (0.20, 3.93), (0.25, 3.92), (0.30, 3.94))):
+        make_box(f"Casserole_Foil_Dimple_{k}", (dx_, dy_, isl + 0.092), (0.030, 0.045, 0.008), crease)
     # ── TWO mug rings on the island where they sit, close together
     for i, (rx, ry) in enumerate(((-0.34, 2.06), (-0.22, 2.12))):   # the island's south-west corner, by the stools
         make_floor_stain(f"Island_Ring_{i}", (rx, ry), radius=0.045, floor_z=0.98, tint=(0.56, 0.44, 0.28, 1.0))
