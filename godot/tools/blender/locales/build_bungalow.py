@@ -543,30 +543,32 @@ def build_living_room():
         (-0.2, +2.6, 0.50, 0.45, 0.40),   # stacked on first
         (+0.4, +2.6, 0.50, 0.40, 0.40),
     ]
-    # Re-emit with stack heights
+    # (pass 466) "Cardboard boxes gaped like hungry mouths ... half-filled
+    # with the detritus of a two-year stint": three boxes OPEN, flaps out,
+    # the detritus the next line lists lying in them (the tarot decks, the
+    # camera lenses "like detached insect eyes", the hard drives); one box
+    # taped shut with a smaller one on it. They were five closed slabs.
+    from _props.objects import make_open_box
     z = 0.25
-    make_box("LR_Box_1", (-0.2, +2.6, z),
-             (0.50, 0.50, 0.50), COL_CARDBOARD)
-    make_box("LR_Box_2", (+0.4, +2.6, z),
-             (0.50, 0.45, 0.50), COL_CARDBOARD)
-    make_box("LR_Box_3", (+1.0, +2.6, z),
-             (0.55, 0.50, 0.50), COL_CARDBOARD)
-    # Stack on top
-    make_box("LR_Box_4", (-0.2, +2.65, z + 0.45),
-             (0.46, 0.42, 0.40), COL_CARDBOARD)
-    make_box("LR_Box_5", (+0.7, +2.60, z + 0.45),
-             (0.60, 0.45, 0.40), COL_CARDBOARD)
-    # Tape strips on the lids
-    for i, bx in enumerate([-0.2, +0.4, +1.0, -0.2, +0.7]):
-        bz = (z + 0.50 + 0.001) if i < 3 else (z + 0.45 + 0.20 + 0.001)   # the upper boxes are 0.40 tall (2026-09-22: tape 20 cm over them)
-        make_box(f"LR_Box_Tape_{i}",
-                 (bx, +2.6, bz),
-                 (0.06, 0.40, 0.002), COL_PAPER)
-    # Marker labels — illegible at this scale, but visible
-    for i, (bx, by) in enumerate([(-0.2, +2.6), (+0.4, +2.6), (+1.0, +2.6)]):
-        make_box(f"LR_Box_Label_{i}",
-                 (bx - 0.20, by - (0.229 if i == 1 else 0.255), z + 0.25),   # on its own box's face (box 2 stands 2.5 cm further back)
-                 (0.16, 0.004, 0.06), COL_PAPER)
+    yb = 2.40                                    # off the partition, so the back flaps clear it
+    t1 = make_open_box("LR_Box_1", -0.2, yb, 0.0, w=0.50, d=0.50, h=0.46, color=COL_CARDBOARD, fill=0.55, angles=(1.25, 0.95, 0.35, 1.15))
+    for k, (ox, oy, col) in enumerate(((-0.10, -0.08, (0.50, 0.20, 0.40, 1.0)), (0.06, 0.02, (0.20, 0.34, 0.56, 1.0)), (-0.04, 0.12, (0.72, 0.56, 0.20, 1.0)))):
+        make_box(f"LR_Box_1_Deck_{k}", (-0.2 + ox, yb + oy, t1 + 0.016), (0.075, 0.125, 0.032), col)
+    make_box("LR_Box_1_Deck_Wine", (-0.14, yb + 0.02, t1 + 0.036), (0.05, 0.06, 0.008), (0.46, 0.12, 0.18, 1.0))
+    make_box("LR_Box_2", (+0.42, +2.62, z), (0.50, 0.45, 0.50), COL_CARDBOARD)
+    make_box("LR_Box_4", (+0.42, +2.64, z + 0.45), (0.46, 0.42, 0.40), COL_CARDBOARD)
+    make_box("LR_Box_Tape_0", (+0.42, +2.64, z + 0.45 + 0.20 + 0.004), (0.06, 0.40, 0.008), COL_PAPER)
+    make_box("LR_Box_Label_0", (+0.42 - 0.12, +2.62 - 0.229, z + 0.10), (0.16, 0.008, 0.06), COL_PAPER)
+    t3 = make_open_box("LR_Box_3", +1.00, yb, 0.0, w=0.50, d=0.50, h=0.46, color=COL_CARDBOARD, fill=0.5, angles=(1.30, 0.4, 1.52, 0.6))
+    for k, (ox, oy) in enumerate(((-0.12, -0.08), (0.02, 0.10))):
+        make_cyl(f"LR_Box_3_Lens_{k}", (1.00 + ox, yb + oy, t3 + 0.045), 0.045, 0.09, (0.12, 0.12, 0.13, 1.0), segments=12)
+        make_cyl(f"LR_Box_3_Lens_{k}_Glass", (1.00 + ox, yb + oy, t3 + 0.094), 0.034, 0.008, (0.40, 0.52, 0.66, 1.0), segments=12)
+    for k, (ox, oy) in enumerate(((0.14, -0.10), (0.15, 0.06))):
+        make_box(f"LR_Box_3_Drive_{k}", (1.00 + ox, yb + oy, t3 + 0.015 + k * 0.03), (0.11, 0.15, 0.030), (0.62, 0.63, 0.66, 1.0))
+    make_box("LR_Box_3_Drive_LED", (1.00 + 0.15, yb + 0.06 - 0.078, t3 + 0.050), (0.012, 0.008, 0.008), (0.30, 0.80, 0.50, 1.0))
+    t5 = make_open_box("LR_Box_5", -0.86, yb, 0.0, w=0.55, d=0.45, h=0.40, color=COL_CARDBOARD, fill=0.6, angles=(1.25, 1.2, 0.7, 0.9))
+    make_box("LR_Box_5_Scripts", (-0.90, yb, t5 + 0.02), (0.22, 0.29, 0.04), (0.93, 0.91, 0.84, 1.0))
+    make_box("LR_Box_5_Folder", (-0.74, yb + 0.02, t5 + 0.012), (0.24, 0.31, 0.024), (0.72, 0.56, 0.30, 1.0))
 
     # ── Side table next to the (south, facing the window) seating —
     # with the Whispers script page on it

@@ -931,11 +931,22 @@ def dress_afternoon_rosary():
         make_cyl(f"Hands_Worn_Patch_{nm}", (hx, hy, top + 0.0012), 0.06, 0.0012, (0.90, 0.88, 0.80, 1.0), segments=10)
     # the soup at his place
     dx, dy = TX + 0.26, TY
-    make_taper_cyl("Soup_Bowl", (dx, dy, top + 0.03), 0.05, 0.085, 0.06, (0.94, 0.90, 0.82, 1.0), segments=14)
-    make_cyl("Soup_Surface", (dx, dy, top + 0.055), 0.075, 0.004, (0.86, 0.62, 0.30, 1.0), segments=12)
-    make_blob("Soup_Avocado", (dx + 0.02, dy + 0.01, top + 0.06), 0.025, (0.56, 0.68, 0.30, 1.0), noise=0.1, seed=9)
-    make_box("Soup_Lime_Wedge", (dx - 0.03, dy - 0.02, top + 0.06), (0.03, 0.015, 0.012), (0.50, 0.70, 0.26, 1.0))
-    make_box("Soup_Spoon", (dx + 0.14, dy - 0.02, top + 0.003), (0.02, 0.17, 0.005), CHROME)
+    # (pass 466) a cream bowl on a cream cloth with its broth 3 mm INSIDE the
+    # solid bowl: "She brings the soup" showed a pale ring. A blue-glazed
+    # bowl with a cream rim, the golden broth standing proud of it, chicken,
+    # avocado, lime, cilantro, the spoon on a folded napkin.
+    make_taper_cyl("Soup_Bowl", (dx, dy, top + 0.03), 0.05, 0.085, 0.06, (0.22, 0.40, 0.68, 1.0), segments=14)
+    make_cyl("Soup_Bowl_Rim", (dx, dy, top + 0.062), 0.088, 0.008, (0.95, 0.93, 0.86, 1.0), segments=14)
+    make_cyl("Soup_Surface", (dx, dy, top + 0.070), 0.076, 0.010, (0.90, 0.68, 0.26, 1.0), segments=12)
+    for k, (ox, oy) in enumerate(((-0.03, 0.03), (0.035, -0.025), (-0.01, -0.04))):
+        make_box(f"Soup_Chicken_{k}", (dx + ox, dy + oy, top + 0.078), (0.030, 0.016, 0.010), (0.94, 0.90, 0.78, 1.0))
+    make_blob("Soup_Avocado", (dx + 0.02, dy + 0.02, top + 0.082), 0.022, (0.52, 0.70, 0.28, 1.0), noise=0.1, seed=9)
+    make_box("Soup_Lime_Wedge", (dx - 0.04, dy - 0.01, top + 0.080), (0.030, 0.016, 0.012), (0.44, 0.72, 0.24, 1.0))
+    for k, (ox, oy) in enumerate(((0.045, 0.03), (-0.05, 0.02), (0.01, -0.055))):
+        make_box(f"Soup_Cilantro_{k}", (dx + ox, dy + oy, top + 0.078), (0.012, 0.010, 0.008), (0.18, 0.50, 0.20, 1.0))
+    make_box("Soup_Napkin", (dx + 0.15, dy - 0.02, top + 0.005), (0.09, 0.19, 0.010), (0.84, 0.30, 0.24, 1.0))
+    make_box("Soup_Spoon", (dx + 0.15, dy - 0.03, top + 0.014), (0.016, 0.15, 0.008), CHROME)
+    make_cyl("Soup_Spoon_Bowl", (dx + 0.15, dy + 0.055, top + 0.014), 0.020, 0.008, CHROME, segments=10)
     # the stove
     make_cyl("Iron_Skillet", (SX - 0.19, 4.45, 0.9475), 0.13, 0.035, (0.16, 0.16, 0.17, 1.0), segments=12)
     make_box("Iron_Skillet_Handle", (SX - 0.40, 4.45, 0.955), (0.16, 0.03, 0.014), (0.14, 0.14, 0.15, 1.0))

@@ -746,3 +746,56 @@ def make_toilet(prefix, x, y, base_z, *, yaw=0.0, lid_up=True, enamel=(0.86, 0.8
         B("_Lid_Leaf", 0.0, -0.185, 0.63, 0.40, 0.03, 0.42, seat, roll=0.10)
     else:
         B("_Lid_Leaf", 0.0, 0.0, 0.433, 0.40, 0.43, 0.03, seat)
+
+
+def make_open_box(prefix, x, y, base_z, *, w=0.50, d=0.50, h=0.45, color=(0.72, 0.58, 0.36, 1.0), fill=0.5,
+                  paper=(0.88, 0.84, 0.74, 1.0), angles=(0.55, 0.95, 0.35, 1.15)):
+    """An OPEN cardboard box (pass 466): four walls round a dark inside, the
+    four flaps standing out at their own angles (N, S, E, W), a bed of
+    packing paper `fill` of the way up for the contents to lie on. Returns
+    the z the contents stand on. A closed slab reads as a crate; "cardboard
+    boxes gaped like hungry mouths" needs the mouth."""
+    from .geometry import make_rot_box
+    name, tag = _split_tag(prefix)
+    inner = _tint(color, 0.62)
+    def B(part, cx, cy, cz, sx, sy, sz, col):
+        make_box(f"{name}{part}{tag}", (cx, cy, cz), (sx, sy, sz), col)
+    B("", x, y, base_z + 0.010, w, d, 0.020, color)
+    B("_Wall_S", x, y - d / 2.0 + 0.010, base_z + h / 2.0, w, 0.020, h, color)
+    B("_Wall_N", x, y + d / 2.0 - 0.010, base_z + h / 2.0, w, 0.020, h, color)
+    B("_Wall_W", x - w / 2.0 + 0.010, y, base_z + h / 2.0, 0.020, d - 0.040, h, inner)
+    B("_Wall_E", x + w / 2.0 - 0.010, y, base_z + h / 2.0, 0.020, d - 0.040, h, inner)
+    top = base_z + h * fill
+    B("_Paper", x, y, top - 0.010, w - 0.050, d - 0.050, 0.020, paper)
+    aN, aS, aE, aW = angles
+    fd, fw = d * 0.46, w * 0.46
+    make_rot_box(f"{name}_Flap_N{tag}", (x, y + d / 2.0 + fd / 2.0 * math.cos(aN), base_z + h + fd / 2.0 * math.sin(aN)), (w - 0.01, fd, 0.012), color, roll=aN)
+    make_rot_box(f"{name}_Flap_S{tag}", (x, y - d / 2.0 - fd / 2.0 * math.cos(aS), base_z + h + fd / 2.0 * math.sin(aS)), (w - 0.01, fd, 0.012), color, roll=-aS)
+    make_rot_box(f"{name}_Flap_E{tag}", (x + w / 2.0 + fw / 2.0 * math.cos(aE), y, base_z + h + fw / 2.0 * math.sin(aE)), (fw, d - 0.05, 0.012), inner, pitch=-aE)
+    make_rot_box(f"{name}_Flap_W{tag}", (x - w / 2.0 - fw / 2.0 * math.cos(aW), y, base_z + h + fw / 2.0 * math.sin(aW)), (fw, d - 0.05, 0.012), inner, pitch=aW)
+    return top
+
+
+def make_boot(prefix, x, y, base_z, *, yaw=0.0, color=(0.36, 0.26, 0.18, 1.0), h=0.24, l=0.29, w=0.11):
+    """A work boot (pass 466): a dark lugged sole, the foot with its toe cap,
+    the shaft rising over the heel half, a padded collar, five laces up the
+    front and a pull loop. The toe is local +v. A pair of slabs read as two
+    bricks in the close-up ("a pair of boots")."""
+    from .geometry import make_rot_box
+    name, tag = _split_tag(prefix)
+    at = _local(x, y, yaw)
+    dark, lace = _tint(color, 0.45), (0.86, 0.80, 0.66, 1.0)
+    def B(part, u, v, z, su, sv, sz, col):
+        px, py = at(u, v)
+        make_rot_box(f"{name}{part}{tag}", (px, py, base_z + z), (su, sv, sz), col, yaw=yaw)
+    B("_Sole", 0.0, 0.0, 0.013, w + 0.012, l, 0.026, dark)
+    B("", 0.0, 0.0, 0.066, w, l - 0.02, 0.080, color)                       # the foot
+    B("_Toe", 0.0, l / 2.0 - 0.050, 0.070, w - 0.004, 0.075, 0.074, _tint(color, 0.86))
+    sh = h - 0.105
+    B("_Shaft", 0.0, -l * 0.20, 0.105 + sh / 2.0, w - 0.012, l * 0.50, sh, color)
+    B("_Collar", 0.0, -l * 0.20, h - 0.008, w, l * 0.52, 0.022, _tint(color, 1.18))
+    fv = -l * 0.20 + l * 0.25 + 0.006
+    for k in range(4):
+        B(f"_Lace_{k}", 0.0, fv, 0.125 + k * (sh - 0.03) / 3.0, w * 0.56, 0.012, 0.010, lace)
+    B("_Lace_Foot", 0.0, fv + 0.035, 0.110, w * 0.50, 0.012, 0.010, lace)
+    B("_Loop", 0.0, -l * 0.45 - 0.004, h - 0.03, 0.022, 0.010, 0.05, dark)

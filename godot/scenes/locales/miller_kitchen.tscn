@@ -555,9 +555,9 @@ metadata/fov = 42.0
 
 ; (view_twin) miller_kitchen's frame in miller_kitchen_ch0
 [node name="shot_insert_coffee__miller_kitchen_ch0" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.314, 1.287, 1.125)
-rotation = Vector3(-0.5263, 2.8288, 0.0)
-metadata/fov = 35.0
+position = Vector3(-2.500, 1.500, -5.600)
+rotation = Vector3(-0.2454, 0.5337, 0.0)
+metadata/fov = 36.0
 
 ; (view_twin) miller_kitchen's frame in miller_kitchen_ch3
 [node name="shot_insert_paper__miller_kitchen_ch3" type="Marker3D" parent="." groups=["vn_shot"]]

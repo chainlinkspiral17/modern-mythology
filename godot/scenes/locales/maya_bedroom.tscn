@@ -203,8 +203,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.52, 1.39, -0.73)
 rotation = Vector3(-0.3168, -1.0172, 0.0)
 
 [node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.390, 1.024, -0.687)
-rotation = Vector3(-0.1992, -1.0525, 0.0)
+position = Vector3(1.350, 1.400, -0.550)
+rotation = Vector3(-0.6900, -0.4240, 0.0)
+metadata/fov = 38.0
 
 ; ── THE DAY (pass 60): maya_bedroom_day — the sun past the N window (no direct sun through
 ; a north window: a high cool sky through it, a warm sun from the NE skimming the sill)

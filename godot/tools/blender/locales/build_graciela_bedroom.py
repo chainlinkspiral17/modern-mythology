@@ -119,12 +119,21 @@ def build_bed():
     # A rosary draped over the near bedpost, and one laid on the spread
     make_cyl("Rosary_Drape", (bx - (bw / 2.0 + 0.02), hb_y, 1.35), 0.02, 0.5,
              COL_ROSARY, segments=6)
-    for k in range(6):
-        # on the spread (2026-09-23: 3 cm over it)
-        make_box(f"Rosary_Bead_{k}", (bx - 0.2 + k * 0.05, by - 0.2, mattress_z + 0.08),
-                 (0.02, 0.02, 0.02), COL_ROSARY)
-    make_box("Rosary_Cross", (bx + 0.12, by - 0.2, mattress_z + 0.08),
-             (0.02, 0.05, 0.02), COL_BRASS)
+    # (pass 466) "sitting here now with the rosary": the one on the spread is
+    # a rosary — a loop of beads, the centre medal, the pendant strand and
+    # its crucifix — it was a row of six cubes and a bar (a line on the quilt)
+    import math as _m
+    rz = mattress_z + 0.088
+    rcx, rcy = bx - 0.05, by - 0.42
+    for k in range(18):
+        a_ = 2.0 * _m.pi * k / 18.0
+        make_box(f"Rosary_Bead_{k}", (rcx + 0.115 * _m.cos(a_), rcy + 0.085 * _m.sin(a_), rz),
+                 (0.018, 0.018, 0.016), COL_ROSARY if k % 6 else COL_BRASS)
+    make_box("Rosary_Medal", (rcx, rcy - 0.105, rz), (0.026, 0.030, 0.012), COL_BRASS)
+    for k in range(4):
+        make_box(f"Rosary_Pendant_{k}", (rcx, rcy - 0.140 - k * 0.028, rz), (0.016, 0.016, 0.016), COL_ROSARY)
+    make_box("Rosary_Cross", (rcx, rcy - 0.285, rz), (0.016, 0.075, 0.012), COL_BRASS)
+    make_box("Rosary_Cross_Arm", (rcx, rcy - 0.270, rz + 0.001), (0.050, 0.016, 0.012), COL_BRASS)
     # Small crucifix centered above the headboard on the north wall
     # on the wall face at ROOM_D-0.10 (2026-09-23: inside the N wall)
     make_box("BedCrucifix_V", (bx, ROOM_D - 0.11, 2.1), (0.05, 0.02, 0.26), COL_WOOD_DK)

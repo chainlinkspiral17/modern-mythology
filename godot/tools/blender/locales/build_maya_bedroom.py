@@ -261,8 +261,16 @@ def build_hero_props():
     # ON the desk, at its free front edge (2026-09-23: the notebook and
     # the four supply packs stayed where the desk stood before 09-07 —
     # off its W end, in the air); the packs in a stack at the E end
-    make_box("Spiral_Notebook", (1.50, 1.32, 0.766), (0.26, 0.20, 0.012), (0.30, 0.44, 0.62, 1.0))
-    make_cyl("Spiral_Coil", (1.50, 1.415, 0.772), 0.008, 0.25, (0.60, 0.62, 0.64, 1.0), axis='X', segments=6)
+    # (pass 466) "a spiral notebook open ... her rapid, cramped hand": OPEN,
+    # two ruled pages filled, the wire coil down the gutter, a pen across it —
+    # it was a closed blue slab the size of the books beside it
+    from _props.objects import make_notebook
+    # (at 1.50, 1.32 it lay UNDER the stack of books on the desk's west end:
+    # no frame ever showed it. On the clear front strip, between the books
+    # and the laptop.)
+    make_notebook("Spiral_Notebook", 1.70, 1.325, 0.760, w=0.15, l=0.21, state="open", cover=(0.30, 0.44, 0.62, 1.0))
+    for k in range(9):
+        make_box(f"Spiral_Coil_{k}", (1.70, 1.325 - 0.092 + k * 0.023, 0.774), (0.016, 0.008, 0.012), (0.62, 0.64, 0.66, 1.0))
     for si, col in enumerate(((0.62, 0.24, 0.24, 1.0), (0.24, 0.42, 0.52, 1.0),
                               (0.72, 0.62, 0.30, 1.0), (0.86, 0.82, 0.72, 1.0))):
         make_box(f"Pack_Supply_{si}", (1.80, 1.32, 0.775 + si * 0.03), (0.14, 0.10, 0.03), col)

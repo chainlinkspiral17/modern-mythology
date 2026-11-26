@@ -3835,6 +3835,34 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-26 · pass 466: vol 6's one-line pairs begin (44 of 231); the bungalow's boxes.**
+CARRY-OVER: THE BUNGALOW'S BOXES ("Cardboard boxes gaped like hungry mouths
+... half-filled with the detritus of a two-year stint"): five closed slabs.
+Shared `make_open_box` (four walls round a dark inside, four flaps each at
+its own angle, a bed of packing paper for contents): three open boxes
+holding what the next line lists — the tarot decks (one wine-stained), the
+camera lenses, the hard drives, the scripts — and one taped stack.
+VOL 6, 44 pairs rendered and read: 39 pass. Fixed:
+- DIEGO'S BOOTS ("Three shirts, a phone charger, a pair of boots"): shared
+  `make_boot` (lugged sole, toe cap, shaft, collar, laces, pull loop) —
+  the pair was two slabs.
+- GRACIELA'S ROSARY ("sitting here now with the rosary"): a loop of beads,
+  the centre medal, the pendant strand and its crucifix on the spread,
+  seen from above — it was six cubes and a bar.
+- MAYA'S SPIRAL NOTEBOOK lay UNDER the stack of books on her desk: no frame
+  had ever shown it. Open now (ruled pages, the wire coil, a pen) on the
+  clear front strip of the desk.
+- THE MILLERS' COFFEE ("waiting for his coffee to finish", ch0): the cue
+  landed on the COFFEE TABLE in the den; it frames the coffee maker.
+- GRACIELA'S SOUP ("She brings the soup"): a cream bowl on a cream cloth
+  with its broth 3 mm inside the solid bowl. A blue-glazed bowl, the broth
+  proud of the rim, chicken, avocado, lime, the spoon on a napkin.
+Draft 1 shipped for this band. DRAFT 2 TARGETS: the weight room's
+"eighty-pounders" (the `rubber` cue shows a barbell; no dumbbells built);
+Graciela's curtain frame shows the window more than the curtain; Bianca's
+dishwasher is not distinct from her cabinets; the Centro bulletin board's
+eight sheets are blank; 187 vol 6 pairs and about 200 vol 7 pairs remain.
+
 **2026-11-26 · pass 465: the last 31 vol 5 one-line pairs (vol 5's close-ups are all read).**
 31 frames rendered and read: 26 pass. Fixed:
 - GRAUSTARK'S CHARCOAL ("She set the charcoal down", pass 464's target): a

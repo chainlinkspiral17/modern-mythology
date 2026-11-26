@@ -158,6 +158,23 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-26 · things under things; contents inside solids (pass 466)
+- A flat prop can lie UNDER another prop and pass every gate (Maya's
+  notebook under her books: same desk, both "supported", no clip reported).
+  When a cued object never shows, dump the boxes within its footprint
+  (`near.py` in the scratchpad pattern: every mesh whose bbox crosses a
+  region) before touching the camera.
+- Contents of a SOLID container must stand proud of its top: soup in a
+  taper-cylinder bowl, yolk in a bowl, water in a seat ring. The primitive
+  has no inside. (Third time: passes 460, 463, 466.)
+- A cue word can be half of a compound part name: `coffee` matched
+  `Coffee_Table`. When a cue has two candidates in a set, the marker must
+  be placed by hand and the frame read.
+- "Gaped", "splayed", "half-packed", "spilled": the verb is the state. An
+  open container needs an inside, flaps or a lid off, and its contents.
+- Builds running beside a render halve its speed; a 44-shot band took 75
+  minutes with five rebuilds alongside. Batch the rebuilds.
+
 ### 2026-11-26 · metaphors, modifiers and shifted blocks (pass 465)
 - A cue can be on a METAPHOR: "the chain rattled in his sleep" is not the
   neon sign's chain, "her own internal clock" not the alarm clock. Read the

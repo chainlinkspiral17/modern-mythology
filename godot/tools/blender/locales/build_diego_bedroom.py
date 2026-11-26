@@ -44,7 +44,7 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, make_lathe, make_tube, make_rot_box, make_blob, export_glb
-from _props.objects import make_smartphone
+from _props.objects import make_smartphone, make_boot
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_wall_with_openings
 from _props.views import make_view
 from _props.furniture import make_bed, make_chair, make_lamp
@@ -252,7 +252,8 @@ def build_closet_duffel():
     make_rot_box("Duffel_Shirt_2", (gx - 0.02, gy - 0.10, 0.38), (0.24, 0.20, 0.025), (0.62, 0.20, 0.18, 1.0), yaw=0.35, pitch=0.12)
     make_tube("Duffel_Charger_Cord", [(gx + 0.14, gy - 0.02, 0.37), (gx + 0.22, gy - 0.10, 0.35), (gx + 0.30, gy - 0.05, 0.02)], 0.004, COL_WHITE, segments=4)
     for k, ox in enumerate((-0.10, 0.10)):
-        make_box(f"Duffel_Boot_{k}", (gx + ox + 0.48, gy + 0.10, 0.12), (0.12, 0.30, 0.24), (0.36, 0.26, 0.18, 1.0))
+        # (pass 466) the shared boot: sole, toe, shaft, laces — the pair was two slabs
+        make_boot(f"Duffel_Boot_{k}", gx + ox + 0.48, gy + 0.10, 0.0, yaw=0.10 if k else -0.06)
     make_box("Rug", (-0.35, 2.40, 0.006), (1.30, 0.90, 0.008), (0.52, 0.44, 0.36, 1.0))
 
 
