@@ -324,6 +324,17 @@ def build_restroom():
     make_box("Restroom_Tile_Band_W", (RX0 + 0.101, (SY1 + RY1) / 2.0, 1.20), (0.004, RY1 - SY1 - 0.2, 0.10), COL_TILE_BAND)
     make_box("Restroom_Tile_Band_E", (RX1 - 0.101, (SY1 + RY1) / 2.0, 1.20), (0.004, RY1 - SY1 - 0.2, 0.10), COL_TILE_BAND)
     make_box("Restroom_Tile_Band_N", ((RX0 + RX1) / 2.0, RY1 - 0.101, 1.20), (RX1 - RX0 - 0.2, 0.004, 0.10), COL_TILE_BAND)
+    # (pass 470) "the cool tile of the bathroom wall": the grout grid on the N
+    # wall Boyd leans on, 15 cm squares to the ceiling — the wall was a flat
+    # pale panel (blue-green under the tube)
+    GROUT = (0.62, 0.64, 0.62, 1.0)
+    gy_ = RY1 - 0.106
+    nz = int((RCEIL - 0.10) / 0.15)
+    for k in range(1, nz):
+        make_box(f"Restroom_Tile_Grout_H_{k}", ((RX0 + RX1) / 2.0, gy_, 0.10 + k * 0.15), (RX1 - RX0 - 0.22, 0.004, 0.006), GROUT)
+    nx = int((RX1 - RX0 - 0.22) / 0.15)
+    for k in range(1, nx):
+        make_box(f"Restroom_Tile_Grout_V_{k}", (RX0 + 0.11 + k * 0.15, gy_, (0.10 + RCEIL) / 2.0), (0.006, 0.004, RCEIL - 0.10), GROUT)
     # the door from the store, standing open against the E wall
     make_box("Restroom_Door", (RX1 - 0.12, SY1 + 0.55, 1.03), (0.04, 0.90, 2.06), (0.30, 0.32, 0.36, 1.0))
     # the sink and mirror on the W wall, the hand dryer, the bin

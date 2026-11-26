@@ -426,9 +426,9 @@ metadata/fov = 30.0
 
 ; insert: the wall phone, far enough back that the handset reads on its base
 [node name="shot_insert_landline" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-3.300, 1.450, -3.300)
-rotation = Vector3(-0.0949, 1.4276, 0.0)
-metadata/fov = 32.0
+position = Vector3(-3.550, 1.450, -3.250)
+rotation = Vector3(-0.1576, 1.3763, 0.0)
+metadata/fov = 26.0
 
 
 ; insert: the French toast in the skillet (ch11)

@@ -3835,6 +3835,33 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-26 · pass 470: the last 55 vol 6 one-line pairs (vol 6's close-ups are all read).**
+55 frames rendered and read: 44 pass. Every vol 6 close-up pair has now been
+read once (passes 466-470: 231 pairs).
+DROPPED (eight; the lines were read before the frames came back): a memory
+of a face and a DOOR (Maya's floor), Jesse "goes to his STATION" (it cut to
+the register), Rick "looks through the one-way MIRROR" (a purple panel),
+Vince Kane "leaning against the driver's DOOR" (it cut to the store's glass
+doors), Linda Caldwell's speech line on a WINDOW, Diego's memory of "a knock
+at his window" on the cell WALL, "two DOORS away" (his grandmother, at home),
+"She takes his HAND".
+Fixed at the object:
+- NATE'S BASS ("Nate has taken his bass off"): the garage had a bass amp and
+  no bass. A pale bass on its stand by the rig (navy disappeared on the dark
+  floor); the frame finds it.
+- THE MILLERS' LANDLINE: a beige box on a beige wall read as a switch. An
+  almond wall phone — handset hung in its cradle, keypad, coiled cord.
+- THE RESTROOM TILE ("the cool tile of the bathroom wall"): a flat panel.
+  The grout grid on the north wall; the frame faces it, past the stall.
+- BOYD'S CALENDAR ("The page is May. May has eleven red dots"): four dots on
+  a white card. A month page with its grid and eleven dots.
+Draft 1 shipped for this band. DRAFT 2 TARGETS: the courtroom side door is
+dark (an exit sign over black); the Millers' photographs on the counter are
+three dark squares (pictures — a roster question); the Miller drive's garage
+vent is a plain orange slot; the cell door's food slot is not visible;
+Maya's floorboard and the photograph under it are small in their frame.
+NEXT: vol 7's one-line pairs (about 200), 44 a render.
+
 **2026-11-26 · pass 469: vol 6 one-line pairs 133–176.**
 44 frames rendered and read: 32 pass. The cued lines were read before the
 frames this time (pass 468's lesson), which caught most of the failures.

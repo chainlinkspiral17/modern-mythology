@@ -273,14 +273,23 @@ def build_west_and_hall():
     make_cyl("Pantry_Knob", (XW + 0.07, 4.30, 1.00), 0.025, 0.04, KK.NICKEL, axis='X', segments=8)
     for sgn in (-1, 1):
         make_box(f"Pantry_Casing_{sgn:+d}", (XW + 0.01, 4.60 + sgn * 0.44, 1.06), (0.02, 0.08, 2.12), TRIM)
-    beige, beige_dk = (0.82, 0.78, 0.68, 1.0), (0.68, 0.63, 0.53, 1.0)
+    # (pass 470) "the phone in the kitchen rings. It is the landline": a beige
+    # box on a beige wall read as a light switch. An almond wall phone with
+    # the handset hung in its cradle, the keypad below it, the coiled cord
+    # looping down — its body two shades off the wall, the keys dark
+    alm, alm_dk, key = (0.95, 0.93, 0.86, 1.0), (0.84, 0.81, 0.72, 1.0), (0.32, 0.30, 0.28, 1.0)
     px, py, pz = XW, 3.40, 1.42
-    make_box("Phone_Wall_Base", (px + 0.0275, py, pz), (0.055, 0.095, 0.22), beige)
-    make_box("Phone_Wall_Handset", (px + 0.075, py, pz + 0.02), (0.045, 0.062, 0.19), beige_dk)
-    make_box("Phone_Wall_Cradle", (px + 0.065, py, pz + 0.115), (0.03, 0.075, 0.02), beige_dk)
-    make_box("Phone_Wall_Dial", (px + 0.058, py, pz - 0.055), (0.006, 0.05, 0.06), (0.30, 0.28, 0.26, 1.0))
-    for ci, (dy, dz) in enumerate(((0.05, -0.16), (0.11, -0.26), (0.16, -0.18))):
-        make_cyl(f"Phone_Wall_Cord_{ci}", (px + 0.06, py + dy, pz + dz), 0.011, 0.14, beige_dk, segments=6)
+    make_box("Phone_Wall_Base", (px + 0.030, py, pz - 0.02), (0.060, 0.110, 0.300), alm)
+    make_box("Phone_Wall_Handset", (px + 0.082, py, pz + 0.045), (0.045, 0.052, 0.170), alm_dk)
+    for nm, dz in (("Ear", 0.115), ("Mouth", -0.025)):
+        make_box(f"Phone_Wall_Handset_{nm}", (px + 0.088, py, pz + dz), (0.055, 0.070, 0.055), alm_dk)
+    make_box("Phone_Wall_Cradle", (px + 0.066, py, pz + 0.150), (0.030, 0.080, 0.020), alm_dk)
+    make_box("Phone_Wall_Dial", (px + 0.061, py, pz - 0.115), (0.004, 0.080, 0.090), alm_dk)
+    for r in range(4):
+        for c in range(3):
+            make_box(f"Phone_Wall_Key_{r}_{c}", (px + 0.064, py - 0.024 + c * 0.024, pz - 0.083 - r * 0.021), (0.006, 0.016, 0.014), key)
+    for ci in range(6):
+        make_box(f"Phone_Wall_Cord_{ci}", (px + 0.075, py + 0.010 + (ci % 2) * 0.012, pz - 0.07 - ci * 0.045), (0.018, 0.022, 0.030), alm_dk)
     make_box("Wear_Phone_HandPatch", (XW + 0.005, py, 1.28), (0.01, 0.16, 0.14), (0.86, 0.83, 0.75, 1.0))
     make_box("PhoneJack_Plate", (XW + 0.006, py, 0.42), (0.012, 0.07, 0.11), (0.82, 0.79, 0.72, 1.0))
     make_calendar("Calendar", (XW + 0.003, 2.55, 1.60))

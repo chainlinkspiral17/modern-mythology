@@ -339,6 +339,18 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-11-26 · what vol 6's 231 one-line close-ups taught (pass 470)
+- Across passes 466-470, about one cue in six was on a line with nothing to
+  frame: a body part, a memory, a person, a speech line, a place named only
+  as a location. The text-focus pass that authored them matched NOUNS; the
+  test that catches them is "can a camera point at this, in this room, now?"
+- About one in eight framed a real object that did not read: a slab, a box,
+  a colour lost on its ground (navy on a dark floor, beige on a beige wall).
+  The fix is almost always the object's parts and its contrast, rarely the
+  camera.
+- About one in twenty showed the right object from the wrong side (a pack
+  facing the wall, a guitar facing away): turn the prop, not the camera.
+
 ### 2026-11-26 · read the band's lines before its frames (pass 469)
 - Printing every cued line of a band (cue word + text) while it renders
   finds most failures before a frame comes back: speech lines with insert

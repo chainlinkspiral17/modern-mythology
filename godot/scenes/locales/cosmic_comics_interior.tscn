@@ -462,10 +462,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.550, 1.150, -11.950)
 rotation = Vector3(-0.5002, -0.6747, 0.0)
 metadata/fov = 34.0
 
-[node name="shot_insert_mirror__cosmic_comics_back_office" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(3.100, 1.780, -9.200)
-rotation = Vector3(-0.0538, 2.3562, 0.0)
-
 ; ── vn_shot coverage (2026-08-08 directing pass 3) ────────
 ; rotation B: reverse from the service door - desk, filing cabinets, office door
 [node name="shot_establish_b__cosmic_comics_back_office" type="Marker3D" parent="." groups=["vn_shot"]]

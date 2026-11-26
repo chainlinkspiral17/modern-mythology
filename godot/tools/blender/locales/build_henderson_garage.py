@@ -186,6 +186,13 @@ def build_band_gear():
                      0.018, 0.02, COL_KNOB, segments=6, axis='Y')
     # Bass rig: head on cab
     make_box("BassCab", (2.1, 3.7, 0.36), (0.60, 0.50, 0.70), COL_AMP)
+    # (pass 470) "Nate has taken his bass off": the bass itself, on its stand
+    # beside his rig — the garage had the bass amp and no bass
+    from _props.objects import make_electric_guitar
+    # (the body is a pale olympic white with a tortoise guard: navy on the
+    # dark floor and the dark cab disappeared)
+    make_electric_guitar("Bass_Guitar", 1.45, 3.35, 0.0, yaw=0.0, body=(0.92, 0.90, 0.84, 1.0), guard=(0.36, 0.20, 0.12, 1.0),
+                         neck=(0.42, 0.28, 0.18, 1.0))
     make_box("BassCab_Grille", (2.1, 3.44, 0.34), (0.52, 0.02, 0.58), COL_GRILLE)
     make_box("BassHead", (2.1, 3.7, 0.82), (0.56, 0.44, 0.20), COL_STEEL_DK)
     for k in range(5):

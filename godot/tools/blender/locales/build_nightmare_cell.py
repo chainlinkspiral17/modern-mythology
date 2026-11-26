@@ -157,10 +157,19 @@ def build_hero_props():
     make_box("Interro_Table", (0.0, 2.10, 0.72), (0.90, 0.60, 0.04), (0.55, 0.57, 0.58, 1.0))
     for lx, ly in ((-0.40, 1.85), (0.40, 1.85), (-0.40, 2.35), (0.40, 2.35)):
         make_box(f"IT_Leg_{lx:+.1f}_{ly:.2f}", (lx, ly, 0.36), (0.04, 0.04, 0.70), (0.40, 0.42, 0.44, 1.0))
-    make_box("May_Calendar", (0.0, 2.05, 0.745), (0.24, 0.30, 0.008), (0.90, 0.88, 0.82, 1.0))
-    for di in range(4):
-        make_cyl(f"Red_Dot_{di}", (-0.07 + di * 0.05, 2.00, 0.751), 0.006, 0.004,
-                 (0.86, 0.16, 0.14, 1.0), segments=5)
+    # (pass 470) "The page is May. May has eleven red dots": a calendar page —
+    # the month's name band, seven columns of day boxes in five rows — and
+    # ELEVEN red dots on eleven of the days (it was a white card with four)
+    cx_, cy_, cz_ = 0.0, 2.05, 0.745
+    make_box("May_Calendar", (cx_, cy_, cz_), (0.24, 0.30, 0.008), (0.92, 0.90, 0.84, 1.0))
+    make_box("May_Calendar_Month", (cx_, cy_ + 0.125, cz_ + 0.0045), (0.20, 0.030, 0.002), (0.26, 0.30, 0.42, 1.0))
+    for r in range(6):
+        make_box(f"May_Calendar_Rule_H_{r}", (cx_, cy_ + 0.095 - r * 0.042, cz_ + 0.0045), (0.21, 0.003, 0.001), (0.50, 0.50, 0.52, 1.0))
+    for c in range(8):
+        make_box(f"May_Calendar_Rule_V_{c}", (cx_ - 0.105 + c * 0.030, cy_ - 0.010, cz_ + 0.0045), (0.003, 0.21, 0.001), (0.50, 0.50, 0.52, 1.0))
+    days = ((0, 2), (0, 5), (1, 1), (1, 3), (1, 6), (2, 0), (2, 4), (3, 2), (3, 5), (4, 1), (4, 3))
+    for di, (r, c) in enumerate(days):
+        make_cyl(f"Red_Dot_{di}", (cx_ - 0.090 + c * 0.030, cy_ + 0.074 - r * 0.042, cz_ + 0.0065), 0.008, 0.004, COL_DOT, segments=8)
     # Boyd's chair, facing the cot
     make_box("Boyd_Chair_Seat", (0.0, 1.35, 0.44), (0.42, 0.42, 0.05), (0.44, 0.46, 0.48, 1.0))
     # legs (2026-09-08)
