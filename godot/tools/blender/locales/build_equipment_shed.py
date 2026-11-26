@@ -177,11 +177,29 @@ def build_hero_props():
     """2026-08-03 tail pass: the bin of kicking tees (the sorting IS
     the scene) + the three graded piles, and the overturned milk
     crate Ben actually sits on."""
-    make_box("Tee_Bin", (-0.55, 4.90, 0.13), (0.50, 0.40, 0.25), (0.36, 0.32, 0.28, 1.0))
-    for pi, (px, h) in enumerate(((-0.15, 0.05), (0.15, 0.065), (0.45, 0.08))):
-        for t in range(3):
-            make_cyl(f"Tee_{pi}_{t}", (px + 0.03 * t, 4.75 - 0.04 * t, h / 2.0), 0.025, h,
-                     (0.90, 0.46, 0.14, 1.0), segments=6)
+    # (pass 468) "He sorts the tee in his hand into the two-inch pile": KICKING
+    # TEES — a flared base, a stem, a cup with three prongs — in three piles by
+    # height (one-inch, two-inch, three-inch), and the open bin of the unsorted
+    # ones. They were red cylinders beside a closed box.
+    from _props.geometry import make_lathe
+    ORANGE = (0.94, 0.44, 0.12, 1.0)
+    def tee(nm, x, y, h):
+        make_lathe(nm, (x, y, 0.0), [(0.045, 0.0), (0.045, 0.006), (0.018, 0.014), (0.012, h - 0.012), (0.022, h - 0.004), (0.022, h), (0.0, h)], ORANGE, segments=10)
+        for k in range(3):
+            a_ = k * 2.094
+            make_box(f"{nm}_Prong_{k}", (x + 0.017 * math.cos(a_), y + 0.017 * math.sin(a_), h + 0.012), (0.008, 0.008, 0.024), ORANGE)
+    for pi, (px, h) in enumerate(((-0.10, 0.030), (0.20, 0.055), (0.50, 0.080))):
+        for t, (ox, oy) in enumerate(((0.0, 0.0), (0.075, 0.03), (0.02, -0.08), (0.09, -0.06))[:3 + (pi == 1)]):
+            tee(f"Tee_{pi}_{t}", px + ox, 4.75 + oy, h)
+    bx_, by_ = -0.55, 4.90
+    BIN = (0.30, 0.34, 0.40, 1.0)
+    make_box("Tee_Bin", (bx_, by_, 0.010), (0.50, 0.40, 0.020), BIN)
+    for nm, cx_, cy_, sx_, sy_ in (("S", bx_, by_ - 0.19, 0.50, 0.02), ("N", bx_, by_ + 0.19, 0.50, 0.02),
+                                   ("W", bx_ - 0.24, by_, 0.02, 0.36), ("E", bx_ + 0.24, by_, 0.02, 0.36)):
+        make_box(f"Tee_Bin_Wall_{nm}", (cx_, cy_, 0.11), (sx_, sy_, 0.20), BIN)
+    make_box("Tee_Bin_Heap", (bx_, by_, 0.07), (0.44, 0.34, 0.10), (0.80, 0.38, 0.12, 1.0))
+    for t, (ox, oy, h) in enumerate(((-0.12, -0.06, 0.055), (0.0, 0.05, 0.08), (0.12, -0.04, 0.03), (-0.05, 0.09, 0.055), (0.10, 0.10, 0.055))):
+        make_lathe(f"Tee_Bin_Tee_{t}", (bx_ + ox, by_ + oy, 0.12), [(0.045, 0.0), (0.045, 0.006), (0.018, 0.014), (0.012, h - 0.012), (0.022, h - 0.004), (0.022, h), (0.0, h)], ORANGE, segments=10)
     # (pass 462) "the small overturned milk crate": the shared crate, upside
     # down — it was a red cube
     from _props.objects import make_milk_crate

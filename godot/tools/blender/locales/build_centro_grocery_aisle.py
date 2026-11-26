@@ -431,8 +431,27 @@ def build_back():
     make_box("Cooler_Door_Handle", (hx + 1.05 * 0.7071 - 0.03, hy - 1.05 * 0.7071 - 0.03, 1.25), (0.03, 0.03, 0.30), STEEL)
     make_box("Cooler_Door_Milk_Crate_Prop", (hx + 1.20 * 0.7071 + 0.10, hy - 1.20 * 0.7071 - 0.08, 0.14), (0.32, 0.32, 0.28),
              (0.30, 0.44, 0.62, 1.0))
-    make_box("Cooler_Thermometer", (lx + 0.04, ly + 0.04, 1.70), (0.05, 0.05, 0.14), (0.90, 0.89, 0.86, 1.0))
-    make_box("Cooler_Thermometer_Needle", (lx + 0.07, ly + 0.07, 1.68), (0.01, 0.01, 0.03), (0.80, 0.22, 0.18, 1.0))
+    # (pass 468) "the thermometer Russell mounted inside the cooler door ... has
+    # been at thirty-six": a round dial — dark bezel, white face, the tick ring,
+    # the blue cold band, the red needle on 36 — on the leaf's inner face. It
+    # was a white bar with a red tick (a light switch in the close-up).
+    nx_, ny_ = 0.7071, 0.7071          # the leaf's face normal (yaw 45)
+    tx_, ty_ = -0.7071, 0.7071         # across the face, horizontal
+    def _dial(nm, u, v, off, sz, col, roll=0.0):
+        make_rot_box(nm, (lx + nx_ * off + tx_ * u, ly + ny_ * off + ty_ * u, 1.70 + v), sz, col, yaw=0.7854, roll=roll)
+    # four squares at 22.5-degree steps make a 16-gon (two made an eight-point star)
+    for k, r_ in enumerate((0.0, 0.3927, 0.7854, 1.1781)):
+        _dial(f"Cooler_Thermometer_Bezel_{k}", 0.0, 0.0, 0.030, (0.012, 0.125, 0.125), (0.16, 0.16, 0.18, 1.0), roll=r_)
+        _dial("Cooler_Thermometer" if k == 0 else f"Cooler_Thermometer_Face_{k}", 0.0, 0.0, 0.037, (0.008, 0.108, 0.108), (0.95, 0.94, 0.90, 1.0), roll=r_)
+    for k in range(12):
+        a_ = math.radians(-135.0 + k * 24.5)
+        if k > 11:
+            break
+        _dial(f"Cooler_Thermometer_Tick_{k}", 0.045 * math.sin(a_), 0.045 * math.cos(a_), 0.043, (0.006, 0.006, 0.014), (0.12, 0.12, 0.14, 1.0), roll=-a_)
+    _dial("Cooler_Thermometer_Cold_Band", -0.026, 0.026, 0.043, (0.006, 0.030, 0.010), (0.22, 0.44, 0.80, 1.0), roll=0.7854)
+    _dial("Cooler_Thermometer_Needle", -0.012, 0.012, 0.048, (0.006, 0.006, 0.040), (0.84, 0.18, 0.14, 1.0), roll=0.7854)
+    _dial("Cooler_Thermometer_Hub", 0.0, 0.0, 0.050, (0.006, 0.012, 0.012), (0.16, 0.16, 0.18, 1.0))
+    _dial("Cooler_Thermometer_Clip", 0.0, 0.080, 0.028, (0.012, 0.03, 0.04), (0.62, 0.63, 0.64, 1.0))
     make_lathe("Floor_Drain", (dx - 0.3, COOLER_WALL_Y - 1.20, 0.0), [(0.0, 0.0), (0.08, 0.0), (0.09, 0.006), (0.0, 0.008)],
                (0.36, 0.36, 0.38, 1.0), segments=12)
     # RECEIVING: the double flap doors, the sign, the bale beside them

@@ -339,6 +339,23 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-11-26 · a cue needs an object the camera can find (pass 468)
+- Before cueing an insert, ask whether the line's object exists in the set
+  as a THING at that moment. Hands, a held toy, a watcher, an inner state,
+  a passing car seat — none can be framed; a closeup of the person or no
+  cue serves the line better than the nearest part with the same word.
+- A "beat" cutaway (a pause line: "Another beat.", "She thinks for a beat.")
+  works only when the cut lands on something the scene has already placed
+  in the viewer's mind (the porch light she is sitting under). A random
+  street object reads as an error.
+- `marker_reaim.py --tight` re-aims to whatever its cue word matches: a part
+  named `Sort_Stack` captured the `sort` marker. When the reaim names a
+  subject you did not expect, the cue word is the problem, not the aim.
+- A big appliance's cluster centre is its BODY: "on the stove, the kettle"
+  aimed at the stove frames the oven door, and the director's lift (the aim
+  point placed 36 % from the top) pushes the stovetop off the top edge. Cue
+  the small thing on the big one (`kettle`), not the big one.
+
 ### 2026-11-25 · read the sentence before building its subject (pass 458)
 
 - **"hand" is not always a hand.** "The cut was the hand Kai had seen in the

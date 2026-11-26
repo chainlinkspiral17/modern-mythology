@@ -571,7 +571,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert seat]Marcus, at the lot, gets in his mother's car. Marcus's mother, in the driver's seat, has been waiting. Marcus's mother waves at Ben from the car. Ben waves back. The car pulls out.",
+      "text": "Marcus, at the lot, gets in his mother's car. Marcus's mother, in the driver's seat, has been waiting. Marcus's mother waves at Ben from the car. Ben waves back. The car pulls out.",
       "voice": "assets/audio/voice/vol6_ch19_depthchart/102.mp3"
     },
     {
@@ -894,7 +894,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert sort]He sorts the tee in his hand into the two-inch pile.",
+      "text": "[shot:insert tees]He sorts the tee in his hand into the two-inch pile.",
       "voice": "assets/audio/voice/vol6_ch19_depthchart/158.mp3"
     },
     {

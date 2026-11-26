@@ -3835,6 +3835,43 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-26 · pass 468: vol 6 one-line pairs 89–132; cues that had no object to show.**
+44 frames rendered and read: 33 pass. Of the 11 failures, seven were cues
+whose line has no object a camera can find — dropped or re-pointed:
+- DROPPED: "The watcher is ... not, this morning, standing at the corner of
+  the wall above the DOOR" (the watcher is the subject, and the frame was a
+  dark corner); "The cicadas ... are loud" on Coach K's CURTAIN (a brown
+  blur at night); "Marcus's mother, in the driver's SEAT" (it cut to a
+  folding chair on the field); "Another beat." on a CYPRESS (it showed a
+  street sign); "The red speaker GRILLE fades" (the toy is in Maya's hand —
+  the cue matched the shop's security grille).
+- RE-CUED: "He is at the bale ... when his HANDS stop" → `insert bale`;
+  "she closes the laptop lid ... with her HANDS flat on the closed lid" →
+  `closeup maya`; "He SORTS the tee in his hand into the two-inch pile" →
+  `insert tees` (`sort` had matched a paper stack named `Sort_Stack`); "The
+  Speak & Spell, on the SHELF under the register" → `insert speak_spell`
+  (the shelf's centre is inside the counter body; no frame can see it).
+Fixed at the object:
+- THE SPEAK & SPELL lay on the FLOOR at the counter's foot. It sits on the
+  open end of the shelf under the register now, and its two markers follow.
+- RUSSELL'S THERMOMETER (inside the propped cooler door): a white bar with
+  a red tick. A round dial — bezel, face, tick ring, the blue cold band,
+  the needle, the clip.
+- THE KICKING TEES: red cylinders beside a closed box. Tees (flared base,
+  stem, cup, three prongs) in three piles by height, and the open bin of the
+  unsorted ones; the close-up looks down on the piles.
+- "On the stove, the kettle his mother uses" → `insert kettle` (a new frame
+  on the kettle on its back burner, the `stove` one retired): every `stove`
+  frame settled on the OVEN DOOR, because the stove cluster's centre is the
+  oven body and the director lifts that centre to 36 % from the top.
+- The thermometer's first bezel (two squares) read as an eight-point star;
+  four squares at 22.5-degree steps make it a dial.
+Draft 1 shipped for this band. DRAFT 2 TARGETS: Bianca's green robe is a
+green slab on the door (sleeves, collar, belt); the Foxhole dressing room's
+folding chairs are dark; the Cosmic landline is small in its frame; the
+Galactus window's "long purple bars" of light on the floor are faint;
+99 vol 6 pairs and about 200 vol 7 pairs remain.
+
 **2026-11-26 · pass 467: vol 6 one-line pairs 45–88; the eighty-pounders.**
 CARRY-OVER: "He has been doing farmer's carries with the heaviest pair of
 dumbbells the school owns, which are eighty-pounders that ... have lost the

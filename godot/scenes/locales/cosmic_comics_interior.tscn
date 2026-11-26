@@ -393,13 +393,13 @@ metadata/fov = 40.0
 ; insert: the Speak & Spell from under the register
 [node name="shot_insert_speak_and_spell" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(3.750, 0.750, -6.050)
-rotation = Vector3(-0.8350, 1.0041, 0.0)
+rotation = Vector3(-0.2241, 0.7892, 0.0)
 metadata/fov = 40.0
 
 ; insert: the Speak & Spell, one second to decide
 [node name="shot_insert_speak_spell" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(3.750, 0.750, -6.050)
-rotation = Vector3(-0.8350, 1.0041, 0.0)
+rotation = Vector3(-0.2241, 0.7892, 0.0)
 metadata/fov = 40.0
 
 ; insert: the phone rings
@@ -762,7 +762,7 @@ metadata/fov = 30.0
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_register__cosmic_comics_interior" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(3.286, 1.660, -3.720)
-rotation = Vector3(-0.2608, 0.3732, 0.0)
+rotation = Vector3(-0.1761, 0.2631, 0.0)
 metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
@@ -775,12 +775,6 @@ metadata/fov = 35.0
 [node name="shot_insert_notebook__cosmic_comics_interior" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(3.094, 1.202, -11.690)
 rotation = Vector3(-0.5236, 0.1256, 0.0)
-metadata/fov = 35.0
-
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_shelf__cosmic_comics_interior" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(3.004, 1.518, -0.223)
-rotation = Vector3(-0.2618, 1.0538, 0.0)
 metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
@@ -806,12 +800,6 @@ position = Vector3(-2.300, 1.500, -3.900)
 rotation = Vector3(-0.3638, 2.3562, 0.0)
 metadata/fov = 40.0
 
-
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_grille__cosmic_comics_interior" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.376, 0.787, 4.231)
-rotation = Vector3(-0.2618, 1.1868, 0.0)
-metadata/fov = 35.0
 
 ; (pass 425) "Maya, at the back-office door" (vol 6 ch12) / "The back-office door is open" (ch21):
 ; from the shop floor past the register, the open office doorway — both cues had cut to the front door

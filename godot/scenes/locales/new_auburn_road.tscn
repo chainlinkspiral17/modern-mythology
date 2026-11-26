@@ -485,11 +485,6 @@ position = Vector3(-7.500, 1.600, -57.000)
 rotation = Vector3(-0.0046, 0.6070, 0.0)
 metadata/fov = 50.0
 
-[node name="shot_insert_cypress" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1.7, -56.0)
-rotation = Vector3(0.5540, 1.3520, 0.0)
-metadata/fov = 42.0
-
 ; ── new_auburn_road presets' inserts (2026-09-03) ──
 ; insert: the white sedan in the front lot, the Chronicle lanyard on the dash
 [node name="shot_insert_sedan" type="Marker3D" parent="." groups=["vn_shot"]]

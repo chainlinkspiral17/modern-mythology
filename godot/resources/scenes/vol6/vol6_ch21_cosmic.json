@@ -417,7 +417,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert grille]The red speaker grille fades. By the time the Speak & Spell is fully in her hand the grille is dark.",
+      "text": "The red speaker grille fades. By the time the Speak & Spell is fully in her hand the grille is dark.",
       "voice": "assets/audio/voice/vol6_ch21_cosmic/076.mp3"
     },
     {
@@ -753,7 +753,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert shelf]The Speak & Spell, on the shelf under the register, is dim for the rest of the day. Every twenty minutes or so she glances down at it. It is, every time, dim. She rings.",
+      "text": "[shot:insert speak_spell]The Speak & Spell, on the shelf under the register, is dim for the rest of the day. Every twenty minutes or so she glances down at it. It is, every time, dim. She rings.",
       "voice": "assets/audio/voice/vol6_ch21_cosmic/132.mp3"
     },
     {
@@ -918,7 +918,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert cypress]Another beat.",
+      "text": "Another beat.",
       "voice": "assets/audio/voice/vol6_ch21_cosmic/162.mp3"
     },
     {

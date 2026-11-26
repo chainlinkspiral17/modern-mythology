@@ -373,12 +373,6 @@ position = Vector3(0.600, 1.650, -1.900)
 rotation = Vector3(-0.3943, -2.1487, 0.0)
 metadata/fov = 50.0
 
-; insert: his hands stop
-[node name="shot_insert_hands" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.1, -0.95)
-rotation = Vector3(-0.5300, -2.5128, 0.0)
-metadata/fov = 42.0
-
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
 ; every closeup of a person cued here cuts to it (the scene had no closeup marker)
 [node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -435,12 +429,6 @@ metadata/fov = 40.0
 [node name="shot_insert_pallet__centro_stockroom" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.192, 0.802, -3.884)
 rotation = Vector3(-0.2618, 0.4541, 0.0)
-metadata/fov = 35.0
-
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_door__centro_stockroom" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.754, 1.617, -1.107)
-rotation = Vector3(-0.2618, 2.1815, 0.0)
 metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it

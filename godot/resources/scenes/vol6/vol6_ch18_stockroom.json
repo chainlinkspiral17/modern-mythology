@@ -788,7 +788,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert hands]He is at the bale at the eighth pallet's lid when his hands stop.",
+      "text": "[shot:insert bale]He is at the bale at the eighth pallet's lid when his hands stop.",
       "voice": "assets/audio/voice/vol6_ch18_stockroom/144.mp3"
     },
     {
@@ -893,7 +893,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert door]The watcher is in the room with him now in a different posture — the watcher is, this morning, sitting down. The watcher is not, this morning, standing at the corner of the wall above the door staring at him.",
+      "text": "The watcher is in the room with him now in a different posture — the watcher is, this morning, sitting down. The watcher is not, this morning, standing at the corner of the wall above the door staring at him.",
       "voice": "assets/audio/voice/vol6_ch18_stockroom/165.mp3"
     },
     {

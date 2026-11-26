@@ -444,11 +444,6 @@ position = Vector3(0.750, 1.250, 3.200)
 rotation = Vector3(-0.1974, 2.4981, 0.0)
 metadata/fov = 45.0
 
-[node name="shot_insert_hands" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.550, 1.150, 3.550)
-rotation = Vector3(-0.5866, 2.3306, 0.0)
-metadata/fov = 40.0
-
 [node name="shot_insert_radio" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.000, 1.050, 4.200)
 rotation = Vector3(-0.2787, -2.7595, 0.0)

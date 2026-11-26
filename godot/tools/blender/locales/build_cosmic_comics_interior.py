@@ -470,7 +470,10 @@ def build_hero_props_2026_09():
     """
     # (pass 456) the toy itself, as in the back office (make_speak_spell)
     from _props.objects import make_speak_spell
-    make_speak_spell("SpeakSpell", 3.2, 6.4, 0.0, yaw=-1.5708)
+    # (pass 468) ON "the shelf under the register" (vol 6 ch21), the part of the
+    # under-shelf that stands out past the counter on the staff side — it lay
+    # on the floor at the counter's foot, where no frame found it
+    make_speak_spell("SpeakSpell", 3.30, 6.50, 0.57, yaw=-1.5708)
 
 
 def build_draft4_2026_09():

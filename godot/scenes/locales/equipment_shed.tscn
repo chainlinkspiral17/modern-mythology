@@ -311,11 +311,6 @@ position = Vector3(0.794, 1.225, -0.344)
 rotation = Vector3(-0.7854, -1.3090, 0.0)
 metadata/fov = 35.0
 
-[node name="shot_insert_sort" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.250, 0.599, -3.917)
-rotation = Vector3(-0.2618, 0.2618, 0.0)
-metadata/fov = 35.0
-
 [node name="shot_insert_milk" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.100, 1.050, -3.300)
 rotation = Vector3(-0.5633, -0.4795, 0.0)
@@ -342,12 +337,12 @@ metadata/fov = 45.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_tees__equipment_shed" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.450, 0.553, -2.855)
-rotation = Vector3(-0.2618, 0.1812, 0.0)
-metadata/fov = 35.0
+position = Vector3(0.300, 1.000, -3.900)
+rotation = Vector3(-0.8280, 0.2318, 0.0)
+metadata/fov = 44.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_door__equipment_shed" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.400, 1.500, -3.200)
-rotation = Vector3(0.1538, 3.0172, 0.0)
+rotation = Vector3(0.2779, 3.0172, 0.0)
 metadata/fov = 56.0

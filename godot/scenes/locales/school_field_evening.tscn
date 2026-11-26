@@ -571,12 +571,6 @@ position = Vector3(-12.702, 1.812, 6.129)
 rotation = Vector3(-0.2618, 2.4622, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_seat__school_field_day" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(31.436, 1.482, -45.539)
-rotation = Vector3(-0.2618, -1.7935, 0.0)
-metadata/fov = 35.0
-
 ; insert: the equipment shed whole from its small lot (it stood 2 m from the door: a brown wall)
 [node name="shot_insert_shed__school_field_day" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-26.500, 1.600, -110.500)
