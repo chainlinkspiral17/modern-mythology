@@ -5878,7 +5878,7 @@ def build_counter_hero_props():
     # -0.65 → blender (-2.5, -3.60, top)), so the existing shot
     # frames it dead-center with no marker change. Bright screen /
     # LED colours read as glow through the post stack.
-    ph_x, ph_y = -2.50, -3.60
+    ph_x, ph_y = -2.86, -3.60     # (pass 460) clear of the sugar pourer and the packet rack: a later condiment pass stood them ON it, and the frame showed a caddy
     ph_z = top + 0.002
     COL_PHONE_BODY   = (0.09, 0.09, 0.11, 1.0)   # scorched dark chassis
     COL_PHONE_SCREEN = (1.00, 0.24, 0.86, 1.0)   # Demon-light magenta (arcana)

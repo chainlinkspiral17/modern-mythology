@@ -499,8 +499,21 @@ def dress_french_toast(tag=""):
     make_box("FrenchToast_Skillet_Handle" + tag, (sx - 0.22, sy, TOP_Z + 0.028), (0.16, 0.032, 0.022), (0.16, 0.15, 0.14, 1.0))
     for si, (ox, oy) in enumerate(((-0.055, 0.03), (0.055, -0.035))):
         make_box(f"FrenchToast_Slice_{si}" + tag, (sx + ox, sy + oy, TOP_Z + 0.050), (0.105, 0.085, 0.028), (0.83, 0.68, 0.44, 1.0))
-    make_box("FrenchToast_Challah" + tag, (-1.70, YN - 0.36, TOP_Z + 0.055), (0.30, 0.13, 0.11), (0.62, 0.44, 0.24, 1.0))
-    make_cyl("FrenchToast_EggBowl" + tag, (-1.40, YN - 0.42, TOP_Z + 0.0275), 0.095, 0.055, (0.90, 0.88, 0.84, 1.0), segments=12)
+    # (pass 460) "She gets the eggs. She gets the bread — the loaf of challah"
+    # (ch11): a loaf with a cut end (make_loaf), the bowl with the beaten egg
+    # in it, and the EGGS — an open carton, four left in it, two shells by
+    # the bowl. It was a brown block and a white tub.
+    from .objects import make_loaf
+    make_loaf("FrenchToast_Challah" + tag, -1.72, YN - 0.36, TOP_Z, along="X", length=0.26, r=0.065, crust=(0.74, 0.50, 0.22, 1.0), slices=0)
+    make_cyl("FrenchToast_EggBowl" + tag, (-1.40, YN - 0.42, TOP_Z + 0.0275), 0.095, 0.055, (0.34, 0.48, 0.64, 1.0), segments=12)
+    make_cyl("FrenchToast_EggBowl_Egg" + tag, (-1.40, YN - 0.42, TOP_Z + 0.056), 0.080, 0.010, (0.96, 0.76, 0.20, 1.0), segments=12)
+    cx_, cy_ = -1.42, YN - 0.20
+    make_box("FrenchToast_EggCarton" + tag, (cx_, cy_, TOP_Z + 0.018), (0.20, 0.105, 0.036), (0.62, 0.60, 0.56, 1.0))
+    make_box("FrenchToast_EggCarton_Lid" + tag, (cx_, cy_ + 0.062, TOP_Z + 0.050), (0.20, 0.012, 0.10), (0.66, 0.64, 0.60, 1.0))
+    for ei, (ex_, ey_) in enumerate(((-0.066, -0.024), (0.0, -0.024), (0.066, 0.024), (-0.066, 0.024))):
+        make_blob("FrenchToast_Egg_%d" % ei + tag, (cx_ + ex_, cy_ + ey_, TOP_Z + 0.046), 0.022, (0.95, 0.90, 0.80, 1.0), noise=0.02, seed=3 + ei, squash=1.25)
+    for hi, (hx_, hy_) in enumerate(((-1.27, YN - 0.47), (-1.25, YN - 0.41))):
+        make_cyl("FrenchToast_EggShell_%d" % hi + tag, (hx_, hy_, TOP_Z + 0.010), 0.020, 0.020, (0.93, 0.88, 0.78, 1.0), segments=8)
     make_cyl("FrenchToast_Cinnamon" + tag, (-1.20, YN - 0.20, TOP_Z + 0.0375), 0.028, 0.075, (0.55, 0.34, 0.18, 1.0), segments=8)
 
 

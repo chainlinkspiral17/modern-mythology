@@ -3835,6 +3835,24 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-26 · pass 460: the two frames pass 459 read and left (the diner's phone, Bianca's eggs).**
+- THE DINER'S JURY-RIGGED PHONE (vol 5 ch0, "He pulled out his phone"): the
+  frame was centred on it and still read as a condiment caddy because a
+  later condiment pass had stood the sugar pour and the packet rack ON the
+  device. The phone moves to clear counter (`ph_x, ph_y = -2.86, -3.60`) and
+  its marker follows: a chipped case, the wire, the screen's wrong light.
+- BIANCA'S EGGS (vol 6 ch11, "She gets the eggs. She gets the bread"): the
+  counter held a tub and two brown blocks. Now a scored challah
+  (`make_loaf`), an open carton with four eggs, two shells, and a blue bowl
+  of beaten egg; the close-up looks DOWN on them (at counter height an egg
+  in a carton is a grey box). `dress_french_toast` feeds TWO builders —
+  `build_miller_kitchen.py` and `build_bianca_kitchen_morning.py` — and the
+  first render showed the old blocks because only one had been rebuilt.
+  The yolk disc sat 1 mm under the top of its (solid) bowl: raised.
+Draft 2 shipped for both frames. DRAFT 3 TARGETS: the dark frames pass 459
+listed (Henderson garage workbench at dusk, the Small Wood farmhouse) and
+the rest of that list below; ranks 241+ sampled, not rendered whole.
+
 **2026-11-26 · pass 459: ranks 193–240 by the stranger test; the slab laptops.**
 One line of each of the next 48 (set, cue) pairs rendered and read: 40 pass.
 - THE LAPTOPS: `make_laptop` (keys, trackpad, a lit page or chat window) for

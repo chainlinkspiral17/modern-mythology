@@ -158,6 +158,19 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-26 · a frame centred on its subject can still show something else (pass 460)
+- The diner's phone close-up passed every gate (aimed, unobstructed, not
+  clipped, supported) and read as a condiment caddy: a later dressing pass
+  had stood two props on top of it. Small props standing ON a small prop
+  are "supported" by it. When a close-up reads as the wrong object, list
+  what stands within 10 cm of the subject before touching the camera.
+- A shared `_props` dresser can feed more than one builder (`grep -ln` the
+  module name in `locales/`). Rebuild every GLB it feeds before reading a
+  frame, or the frame shows the old parts and the fix looks like it failed.
+- Things IN a container (eggs in a carton, yolk in a bowl) need a camera
+  that looks down, and the contents must stand proud of a solid container:
+  a disc 1 mm under the rim of a solid cylinder is inside it and not drawn.
+
 ### 2026-11-26 · a stand-in may already have a picture (pass 459)
 
 - **Before replacing a screen, a sign or a page, grep the roster for its part
