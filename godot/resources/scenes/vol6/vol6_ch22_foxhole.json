@@ -427,7 +427,7 @@
   {
    "t": "say",
    "char": "Em",
-   "text": "[shot:insert setlist]The song is yours. The room is mine. We are going to play the songs we have practiced. The bridge is the bridge. Carl is going to play the kit. Nate is going to play the bass. I am going to sing.",
+   "text": "The song is yours. The room is mine. We are going to play the songs we have practiced. The bridge is the bridge. Carl is going to play the kit. Nate is going to play the bass. I am going to sing.",
    "expr": "neutral",
    "voice": "assets/audio/voice/vol6_ch22_foxhole/075.mp3"
   },

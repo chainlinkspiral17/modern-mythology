@@ -232,10 +232,18 @@ def build_hero_props_2026_09():
       wins the coffee cue over the kitchenette pots.
     """
     kx_ = DOUG_X + 0.35
-    make_box("Karamazov_Paperback", (kx_, ROOM_D - 0.45, 0.020), (0.190, 0.130, 0.040),
-             (0.36, 0.28, 0.22, 1.0))
-    make_box("Paperback_Spine_Band", (kx_, ROOM_D - 0.512, 0.020), (0.190, 0.006, 0.034),
-             (0.74, 0.62, 0.30, 1.0))
+    # (pass 469) a fat paperback, not a brown brick: the cream page block
+    # showing at three edges between the covers, the spine toward the chair
+    # with its title band, the cover's title panel on top
+    ky_ = ROOM_D - 0.45
+    cov = (0.30, 0.20, 0.18, 1.0)
+    make_box("Karamazov_Paperback_Back", (kx_, ky_, 0.003), (0.190, 0.130, 0.006), cov)
+    make_box("Karamazov_Paperback_Pages", (kx_ + 0.002, ky_ + 0.002, 0.020), (0.182, 0.122, 0.028), (0.93, 0.90, 0.80, 1.0))
+    make_box("Karamazov_Paperback", (kx_, ky_, 0.037), (0.190, 0.130, 0.006), cov)
+    make_box("Paperback_Spine_Band", (kx_, ky_ - 0.063, 0.020), (0.190, 0.008, 0.040), cov)
+    make_box("Paperback_Spine_Title", (kx_, ky_ - 0.068, 0.020), (0.120, 0.006, 0.016), (0.86, 0.74, 0.36, 1.0))
+    make_box("Karamazov_Paperback_Title", (kx_, ky_ + 0.020, 0.041), (0.130, 0.050, 0.004), (0.86, 0.74, 0.36, 1.0))
+    make_box("Karamazov_Paperback_Title_Line", (kx_, ky_ - 0.030, 0.041), (0.110, 0.012, 0.004), (0.92, 0.88, 0.80, 1.0))
     T = TABLE_Z
     make_cyl("Horchata_Cup", (TABLE_X + 0.55, TABLE_Y + 0.22, T + 0.065), 0.042, 0.130,
              (0.90, 0.86, 0.76, 0.95), segments=10)

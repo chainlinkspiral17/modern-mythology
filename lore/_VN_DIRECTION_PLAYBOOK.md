@@ -339,6 +339,19 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-11-26 · read the band's lines before its frames (pass 469)
+- Printing every cued line of a band (cue word + text) while it renders
+  finds most failures before a frame comes back: speech lines with insert
+  cues, body parts ("hand on her hand"), lists of things not in the room
+  (Jesse's notes on Diego's phone), places named only as a location ("above
+  the nook"). About half of a band's failures are of this kind.
+- A cue tag in JSON may sit before an escaped quote (`[shot:insert x]\"She`):
+  edit by loading the node's text and replacing its JSON-encoded form, never
+  by a hand-typed literal.
+- A pack, a book, a bag: give it a FACE and turn the face to the camera. The
+  backpack's first rebuild faced the door; from the room it was a red box
+  with a black stripe.
+
 ### 2026-11-26 · a cue needs an object the camera can find (pass 468)
 - Before cueing an insert, ask whether the line's object exists in the set
   as a THING at that moment. Hands, a held toy, a watcher, an inner state,

@@ -586,8 +586,3 @@ position = Vector3(-2.560, 1.943, -0.958)
 rotation = Vector3(0.1063, 1.2336, 0.0)
 metadata/fov = 35.0
 
-
-[node name="shot_insert_nook__miller_kitchen_night" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.770, 1.771, -4.438)
-rotation = Vector3(-0.2618, -0.2326, 0.0)
-metadata/fov = 35.0

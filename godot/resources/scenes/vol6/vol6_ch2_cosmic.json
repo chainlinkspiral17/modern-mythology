@@ -165,7 +165,7 @@
       "t": "say",
       "char": "Rick",
       "expr": "neutral",
-      "text": "[shot:insert oneway]\"She's fine. She's a reporter. She's following a thing. She's not a threat. Send her back. Then stay at the counter until she leaves. If anybody else walks in while she's here, tap the glass twice with your key. Got it?\"",
+      "text": "\"She's fine. She's a reporter. She's following a thing. She's not a threat. Send her back. Then stay at the counter until she leaves. If anybody else walks in while she's here, tap the glass twice with your key. Got it?\"",
       "voice": "assets/audio/voice/vol6_ch2_cosmic/028.mp3"
     },
     {

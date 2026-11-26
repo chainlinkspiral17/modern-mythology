@@ -3835,6 +3835,34 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-26 · pass 469: vol 6 one-line pairs 133–176.**
+44 frames rendered and read: 32 pass. The cued lines were read before the
+frames this time (pass 468's lesson), which caught most of the failures.
+DROPPED — the line has nothing a camera can find: Em's speech "The song is
+yours. The room is mine" (`setlist`: a pale sheet on the wall); Rick on the
+phone, "tap the glass twice" (`oneway`: a purple wall); "Coach K, on the
+SIDELINE" (painted lines from above); "Her grandmother's HAND on her hand"
+(a red blanket edge); "The local news, above the breakfast NOOK" (no TV
+there: a toaster); Jesse's list item "cross-ref red-dot system on his
+PHONE" (Diego's phone, not the Pit Stop's desk set).
+RE-CUED: "The BELL over this door is different too" → `insert bell` and a
+frame that looks up at the brass bell (the `door` frame showed the knob).
+Fixed at the object:
+- DOUG'S KARAMAZOV: a brown brick. A fat paperback — cream page block at
+  three edges, covers, spine and title band.
+- BEN'S BACKPACK ("He packs his backpack for the morning"): three green boxes
+  in the dark. A red school pack (rounded body, front pocket and zips, grab
+  loop, straps, a water bottle in its side pocket) faced to the room, a fill
+  by the door, and a frame from across the room.
+- THE BINDERY ENVELOPE ("Plain. Sealed."): a 3 mm card read as two pale
+  squares; face down now with the flap's V and side seams.
+Draft 1 shipped for this band. DRAFT 2 TARGETS: "Maya brings out three iced
+teas" (ch23) shows the two of ch21 (needs a ch23 view twin with a third
+glass); "The plate is enchiladas" frames the limes, not the plate (the plate
+is not built); the Foxhole stage door and high-top are dark; Diego's desk
+drawer is a small square at the desk's side; the Kwik Stop thermometer is a
+blank dial (no 97); 55 vol 6 pairs and about 200 vol 7 pairs remain.
+
 **2026-11-26 · pass 468: vol 6 one-line pairs 89–132; cues that had no object to show.**
 44 frames rendered and read: 33 pass. Of the 11 failures, seven were cues
 whose line has no object a camera can find — dropped or re-pointed:

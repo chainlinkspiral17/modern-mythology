@@ -162,9 +162,26 @@ def build_gear_and_pack():
     """The packed backpack by the door; football gear in the NW
     corner; jersey hung on the wall."""
     # Backpack — packed, leaning by the door (ready for morning)
-    make_box("Backpack", (-1.15, 0.55, 0.26), (0.34, 0.22, 0.5), COL_PACK)
-    make_box("Backpack_Pocket", (-1.15, 0.42, 0.18), (0.26, 0.06, 0.24), (0.18, 0.26, 0.21, 1.0))
-    make_box("Backpack_Strap", (-1.02, 0.55, 0.30), (0.04, 0.18, 0.42), (0.14, 0.20, 0.16, 1.0))
+    # (pass 469) "He packs his backpack for the morning": it was three green
+    # boxes in the dark by the door. A school pack that reads as one: the
+    # rounded body full to its top, a front pocket with its zip line and
+    # pull, the grab loop on top, both shoulder straps down the back, a
+    # water bottle in the side pocket — in team red, which carries at night;
+    # its face to the room, its straps to the door it leans by
+    from _props.geometry import make_chamfer_box
+    PACK, PACK_DK, ZIP = (0.62, 0.16, 0.14, 1.0), (0.36, 0.10, 0.10, 1.0), (0.86, 0.84, 0.80, 1.0)
+    bx_, by_ = -1.15, 0.55
+    make_chamfer_box("Backpack", (bx_, by_, 0.25), (0.34, 0.20, 0.48), PACK, chamfer=0.06)
+    make_chamfer_box("Backpack_Top", (bx_, by_, 0.49), (0.30, 0.18, 0.06), PACK, chamfer=0.03)
+    make_chamfer_box("Backpack_Pocket", (bx_, by_ + 0.115, 0.17), (0.26, 0.05, 0.22), PACK_DK, chamfer=0.02)
+    make_box("Backpack_Pocket_Zip", (bx_, by_ + 0.142, 0.27), (0.22, 0.008, 0.012), ZIP)
+    make_box("Backpack_Pocket_Pull", (bx_ + 0.09, by_ + 0.146, 0.255), (0.014, 0.008, 0.034), ZIP)
+    make_box("Backpack_Main_Zip", (bx_, by_ + 0.103, 0.44), (0.26, 0.008, 0.012), ZIP)
+    make_box("Backpack_Grab_Loop", (bx_, by_ - 0.02, 0.535), (0.10, 0.025, 0.025), PACK_DK)
+    for k, sx_ in enumerate((-0.08, 0.08)):
+        make_box(f"Backpack_Strap_{k}", (bx_ + sx_, by_ - 0.11, 0.28), (0.05, 0.025, 0.40), PACK_DK)
+    make_cyl("Backpack_Bottle", (bx_ + 0.19, by_, 0.20), 0.032, 0.20, (0.30, 0.56, 0.82, 1.0), segments=10)
+    make_cyl("Backpack_Bottle_Cap", (bx_ + 0.19, by_, 0.31), 0.028, 0.025, (0.92, 0.92, 0.90, 1.0), segments=10)
     # Gear corner NW: helmet on a crate, shoulder pads, cleats
     make_box("Gear_Crate", (-ROOM_W/2.0 + 0.33, 3.6, 0.18), (0.45, 0.45, 0.36), COL_FRAME_DK)   # against the W wall (2026-09-25: 43 cm off it)
     make_cyl("Helmet", (-1.8700, 3.6, 0.48), 0.15, 0.24, COL_HELMET, segments=12)

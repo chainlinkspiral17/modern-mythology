@@ -601,9 +601,3 @@ metadata/fov = 35.0
 position = Vector3(11.500, 1.600, -2.000)
 rotation = Vector3(-0.1360, 2.9440, 0.0)
 metadata/fov = 45.0
-
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_sideline__school_field_evening" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(24.734, 0.411, -54.246)
-rotation = Vector3(-0.5236, 0.5150, 0.0)
-metadata/fov = 35.0

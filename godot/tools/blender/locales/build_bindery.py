@@ -264,7 +264,17 @@ def build_hero_props_2026_09():
     table; THE CROW ("Overhead, a crow flies. ... simply a crow")
     perched on a ledge over the storefront, outside."""
     from _props.creatures import make_crow
-    make_box("Plain_Envelope", (0.75, 2.95, 0.0015), (0.22, 0.11, 0.003), (0.90, 0.88, 0.82, 1.0))
+    # (pass 469) "Plain. Sealed. Nothing written on the outside": face down,
+    # so the sealed flap's V and the side seams show; 8 mm thick, which is
+    # what a sealed letter's worth of envelope reads as from standing height
+    # (the 3 mm card drew as two pale squares)
+    from _props.geometry import make_rot_box
+    EN, SEAM = (0.92, 0.90, 0.84, 1.0), (0.74, 0.72, 0.66, 1.0)
+    ex_, ey_ = 0.75, 2.95
+    make_box("Plain_Envelope", (ex_, ey_, 0.004), (0.22, 0.11, 0.008), EN)
+    for k, sg in enumerate((-1, 1)):
+        make_rot_box(f"Plain_Envelope_Flap_{k}", (ex_ + sg * 0.054, ey_ + 0.016, 0.0085), (0.122, 0.006, 0.002), SEAM, yaw=-sg * 0.46)
+        make_rot_box(f"Plain_Envelope_Seam_{k}", (ex_ + sg * 0.062, ey_ - 0.030, 0.0085), (0.096, 0.004, 0.002), SEAM, yaw=sg * 0.62)
     make_box("Storefront_Ledge", (0.0, -0.14, 2.60), (1.20, 0.15, 0.08), (0.34, 0.30, 0.26, 1.0))
     make_crow("Bindery_Crow", 0.0, -0.14, 2.64, facing=-1.0)
 
