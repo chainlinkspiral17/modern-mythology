@@ -445,6 +445,27 @@ def build_back():
     make_chamfer_box("Card_Bale", (3.30, YN - 0.34, 0.70), (0.90, 0.64, 1.40), (0.44, 0.48, 0.52, 1.0))
     make_box("Card_Bale_Lid", (3.30, YN - 0.34, 1.42), (0.86, 0.60, 0.05), STEEL)
     make_box("Card_Bale_Stack", (3.30, YN - 0.36, 0.90), (0.70, 0.50, 0.30), (0.66, 0.54, 0.36, 1.0))
+    # (pass 467) "the cardboard bale at receiving": the baler was a plain
+    # grey block (a wall in the close-up) with its cardboard hidden inside
+    # it. Its chute, its door and handle, the control box, a warning label —
+    # and THE BALE, strapped, on the floor beside it.
+    by_ = YN - 0.34 - 0.32
+    make_box("Card_Bale_Chute", (3.30, by_ - 0.006, 1.14), (0.70, 0.012, 0.26), (0.10, 0.10, 0.11, 1.0))
+    make_box("Card_Bale_Chute_Cardboard", (3.30, by_ - 0.014, 1.08), (0.56, 0.010, 0.12), (0.70, 0.56, 0.36, 1.0))
+    make_box("Card_Bale_Door", (3.30, by_ - 0.006, 0.50), (0.76, 0.012, 0.72), STEEL)
+    make_box("Card_Bale_Door_Handle", (3.30, by_ - 0.024, 0.78), (0.32, 0.024, 0.034), (0.12, 0.12, 0.13, 1.0))
+    make_box("Card_Bale_Control", (3.62, by_ - 0.020, 1.32), (0.13, 0.040, 0.10), (0.88, 0.74, 0.20, 1.0))
+    make_box("Card_Bale_Control_Go", (3.59, by_ - 0.044, 1.32), (0.030, 0.010, 0.030), (0.20, 0.70, 0.30, 1.0))
+    make_box("Card_Bale_Control_Stop", (3.65, by_ - 0.044, 1.32), (0.030, 0.010, 0.030), (0.84, 0.18, 0.16, 1.0))
+    make_box("Card_Bale_Label", (2.98, by_ - 0.006, 1.32), (0.16, 0.012, 0.10), (0.94, 0.80, 0.16, 1.0))
+    card = (0.66, 0.52, 0.32, 1.0)
+    bx_, bby = 3.30, YN - 1.40      # on the floor in front of the baler door, where it drops (the dairy case stands to the west)
+    make_box("Card_Bale_Bundle", (bx_, bby, 0.39), (0.80, 0.60, 0.76), card)
+    for k in range(7):
+        make_box(f"Card_Bale_Bundle_Layer_{k}", (bx_, bby - 0.305, 0.08 + k * 0.105), (0.80, 0.010, 0.012), (0.44, 0.34, 0.22, 1.0))
+    for k, ox in enumerate((-0.22, 0.22)):
+        make_box(f"Card_Bale_Bundle_Strap_{k}", (bx_ + ox, bby - 0.312, 0.39), (0.030, 0.010, 0.76), (0.14, 0.14, 0.15, 1.0))
+        make_box(f"Card_Bale_Bundle_Strap_Top_{k}", (bx_ + ox, bby, 0.775), (0.030, 0.60, 0.010), (0.14, 0.14, 0.15, 1.0))
     # THE MEAT COUNTER: the service case along the north wall's east run
     mx0, mx1, my = 6.6, 13.2, 20.00
     make_chamfer_box("Meat_Case_Body", ((mx0 + mx1) / 2.0, my, 0.55), (mx1 - mx0, 1.10, 1.10), (0.86, 0.86, 0.84, 1.0))

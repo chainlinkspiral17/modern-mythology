@@ -3835,6 +3835,37 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-26 · pass 467: vol 6 one-line pairs 45–88; the eighty-pounders.**
+CARRY-OVER: "He has been doing farmer's carries with the heaviest pair of
+dumbbells the school owns, which are eighty-pounders that ... have lost the
+rubber coating on their handles" cued `rubber` and cut to the floor mats.
+The pair was already built, as `DB80_*` — a name no cue can match. Renamed
+`Dumbbell_Eighty_*` (the rack `Dumbbell_*`), the cue is `insert dumbbell`
+and its marker frames the rack and the pair on the floor.
+43 frames rendered and read: 36 pass. Fixed:
+- THREE WORD-MATCH CUES dropped, markers removed: "His first STEP is ... a
+  thing he can trust" (a run-up, not a stair; it cut to the bleacher step),
+  "He thinks: the BRIDGE is going to be hard" (the song's bridge; it cut to
+  the Hendersons' kitchen), "There is no permit displayed in the WINDOW"
+  (the van's; it cut to a dark windshield).
+- THE FIELD COOLER ("Ben drinks from the cooler. He sets the cup down"):
+  a wall of orange from 40 cm. A sleeve of cups on the lid, one set down
+  with water in it, and the camera stands back to take in the cooler.
+- THE CENTRO BALE ("the cardboard bale at receiving"): the baler was a plain
+  grey block (a wall in the close-up). Its chute with the cardboard in it,
+  door and handle, control box, warning label — and the strapped bale on
+  the floor in front of its door (a first try stood it inside the dairy
+  case's footprint: 17 clips).
+- BT'S ALTIMA ("a single pine-tree air freshener on the rearview mirror"):
+  the mirror hung bare and black. The string and the little green tree,
+  and a low fill on the mirror at 4 AM.
+- THE LAY-BY PICNIC TABLE ("a single picnic table that nobody uses"):
+  black at 4:15 AM; a moon fill over the pad.
+Draft 1 shipped for this band. DRAFT 2 TARGETS: the Altima interior at
+night is still mostly black past the mirror; the deadlift platform frame
+shows a bar and a bench, not the platform; Nate's driveway frame is bare
+planks; 143 vol 6 pairs and about 200 vol 7 pairs remain.
+
 **2026-11-26 · pass 466: vol 6's one-line pairs begin (44 of 231); the bungalow's boxes.**
 CARRY-OVER: THE BUNGALOW'S BOXES ("Cardboard boxes gaped like hungry mouths
 ... half-filled with the detritus of a two-year stint"): five closed slabs.

@@ -267,7 +267,7 @@
   },
   {
    "t": "narrate",
-   "text": "[panel:off][shot:insert window]The van leaves. There is no signage on the unit. There is no permit displayed in the window.",
+   "text": "[panel:off]The van leaves. There is no signage on the unit. There is no permit displayed in the window.",
    "voice": "assets/audio/voice/vol6_ch14_substation_nine/051.ogg"
   },
   {

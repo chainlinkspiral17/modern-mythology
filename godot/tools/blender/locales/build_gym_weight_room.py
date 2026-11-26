@@ -169,17 +169,17 @@ def build_dumbbells_and_plates():
     # Two-tier rack — with the end frames the shelves stand on
     # (2026-09-23: two shelves at 0.35 and 0.75 on nothing)
     for ey_ in (1.325, 3.575):
-        make_box(f"DB_Rack_End_{ey_:.1f}", (dx, ey_, 0.39), (0.50, 0.05, 0.78), COL_RACK)
+        make_box(f"Dumbbell_Rack_End_{ey_:.1f}", (dx, ey_, 0.39), (0.50, 0.05, 0.78), COL_RACK)
     for tier, tz in ((0, 0.35), (1, 0.75)):
-        make_box(f"DB_Shelf_{tier}", (dx, 2.4, tz), (0.5, 2.4, 0.06), COL_RACK)
+        make_box(f"Dumbbell_Shelf_{tier}", (dx, 2.4, tz), (0.5, 2.4, 0.06), COL_RACK)
         for i in range(6):
             dy = 1.45 + i * 0.4
             r = 0.055 + 0.012 * ((i + tier * 3) % 4)
-            make_cyl(f"DB_{tier}_{i}_L", (dx - 0.12, dy, tz + 0.09), r, 0.07,
+            make_cyl(f"Dumbbell_{tier}_{i}_L", (dx - 0.12, dy, tz + 0.09), r, 0.07,
                      COL_IRON, segments=10, axis='X')
-            make_cyl(f"DB_{tier}_{i}_R", (dx + 0.12, dy, tz + 0.09), r, 0.07,
+            make_cyl(f"Dumbbell_{tier}_{i}_R", (dx + 0.12, dy, tz + 0.09), r, 0.07,
                      COL_IRON, segments=10, axis='X')
-            make_cyl(f"DB_{tier}_{i}_Bar", (dx, dy, tz + 0.09), 0.018, 0.26,
+            make_cyl(f"Dumbbell_{tier}_{i}_Bar", (dx, dy, tz + 0.09), 0.018, 0.26,
                      COL_PLATE_RIM, segments=6, axis='X')
     # Mirror panel above the rack
     make_box("Mirror", (-ROOM_W / 2.0 + 0.11, 2.4, 1.7), (0.02, 2.6, 1.1), COL_MIRROR)
@@ -268,9 +268,9 @@ def build_vol6_hero_props_2026_08():
     # S end (too heavy for the shelf, per gym custom).
     dx = -ROOM_W / 2.0 + 0.45
     for di, dy in enumerate((0.95, 1.20)):
-        make_cyl(f"DB80_{di}_HeadA", (dx - 0.16, dy, 0.10), 0.095, 0.10, COL_IRON, segments=10, axis='X')
-        make_cyl(f"DB80_{di}_HeadB", (dx + 0.16, dy, 0.10), 0.095, 0.10, COL_IRON, segments=10, axis='X')
-        make_cyl(f"DB80_{di}_Bar", (dx, dy, 0.10), 0.02, 0.26, COL_PLATE_RIM, segments=6, axis='X')
+        make_cyl(f"Dumbbell_Eighty_{di}_HeadA", (dx - 0.16, dy, 0.10), 0.095, 0.10, COL_IRON, segments=10, axis='X')
+        make_cyl(f"Dumbbell_Eighty_{di}_HeadB", (dx + 0.16, dy, 0.10), 0.095, 0.10, COL_IRON, segments=10, axis='X')
+        make_cyl(f"Dumbbell_Eighty_{di}_Bar", (dx, dy, 0.10), 0.02, 0.26, COL_PLATE_RIM, segments=6, axis='X')
 
 
 def build_fluorescents():

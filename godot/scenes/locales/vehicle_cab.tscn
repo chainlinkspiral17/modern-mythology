@@ -374,6 +374,23 @@ shadow_enabled = false
 
 ; (pass 367) they eat in the parked car: the dome is the light they eat by. At 0.45 the driver's
 ; seat was black and the leaking packet on it read 13/255 ("The packet leaks slowly", cued 3x)
+; (pass 467) the Altima's mirror and its pine-tree freshener, and the lay-by's picnic table: both were black at 4 AM
+[node name="Fill_Rearview_Bounce__vehicle_cab_altima_night" type="OmniLight3D" parent="."]
+position = Vector3(9.500, 1.300, -1.500)
+light_color = Color(0.86, 0.84, 0.74, 1)
+light_energy = 0.55
+omni_range = 1.30
+omni_attenuation = 1.3
+shadow_enabled = false
+
+[node name="Fill_Picnic_Moon__vehicle_cab_altima_night" type="OmniLight3D" parent="."]
+position = Vector3(5.000, 2.400, 2.900)
+light_color = Color(0.62, 0.70, 0.90, 1)
+light_energy = 1.20
+omni_range = 5.50
+omni_attenuation = 1.2
+shadow_enabled = false
+
 [node name="Dome_Light__vehicle_cab_altima_night" type="OmniLight3D" parent="."]
 position = Vector3(9.500, 1.480, -0.200)
 light_color = Color(1.00, 0.90, 0.70, 1)
@@ -808,15 +825,9 @@ metadata/fov = 42.0
 
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_window__vehicle_cab" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-8.041, 1.299, 0.283)
-rotation = Vector3(-0.0873, 2.8244, 0.0)
-metadata/fov = 35.0
-
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_rearview__vehicle_cab_altima_night" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(9.500, 1.551, -1.093)
-rotation = Vector3(-0.0873, -0.0000, 0.0)
+rotation = Vector3(-0.2377, -0.0265, 0.0)
 metadata/fov = 35.0
 
 [node name="shot_insert_console__vehicle_cab" type="Marker3D" parent="." groups=["vn_shot"]]

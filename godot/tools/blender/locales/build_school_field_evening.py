@@ -329,6 +329,11 @@ def build_benches():
         make_cyl(f"Cooler_{wi}_Body", (hx + 1.0, wy, 0.30), 0.24, 0.60, (0.92, 0.48, 0.18, 1.0), segments=12)   # on the ground (2026-09-22)
         make_cyl(f"Cooler_{wi}_Lid", (hx + 1.0, wy, 0.62), 0.25, 0.06, (0.92, 0.90, 0.86, 1.0), segments=12)
         make_box(f"Cooler_{wi}_Spigot", (hx + 0.74, wy, 0.20), (0.06, 0.05, 0.05), P.METAL_BLACK)
+        # (pass 467) "Ben drinks from the cooler. He sets the cup down.": the
+        # sleeve of cups on the lid and one set down beside it
+        make_cyl(f"Cooler_{wi}_Cup_Sleeve", (hx + 1.08, wy + 0.06, 0.65 + 0.08), 0.040, 0.16, (0.95, 0.94, 0.90, 1.0), segments=10)
+        make_cyl(f"Cooler_{wi}_Cup", (hx + 0.92, wy - 0.10, 0.65 + 0.045), 0.036, 0.09, (0.95, 0.94, 0.90, 1.0), segments=10)
+        make_cyl(f"Cooler_{wi}_Cup_Water", (hx + 0.92, wy - 0.10, 0.65 + 0.094), 0.030, 0.008, (0.56, 0.74, 0.88, 1.0), segments=10)
     rx = hx + 1.6
     # (2026-09-22: two bars and five helmets in the air — the rack's
     # uprights, and the helmets sit on the lower bar)

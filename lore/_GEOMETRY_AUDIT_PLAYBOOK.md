@@ -158,6 +158,23 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-26 · a part named in shorthand is a part no cue finds (pass 467)
+- `DB80_*` was the eighty-pound dumbbells, built and correct, and the line
+  that names them cut to the floor mats because no cue word matches "DB80".
+  Name a part by the word the prose uses (`Dumbbell_Eighty`), never by an
+  abbreviation. Before ADDING a prop the text names, grep the builder for
+  its parts under any name (a first try here built a second pair through
+  the first: 2 clips).
+- A batch edit script that asserts its first anchor stops at the first
+  miss and leaves the rest unapplied — while the shell goes on to rebuild
+  and gate the unchanged sets, which then look clean. Check the script
+  printed its "applied" line before reading any gate after it.
+- An anchor line copied from a builder can occur in two functions (two
+  cars share their cab code): find the function first, then the line in it.
+- A big object placed "beside" another by coordinates alone can land in a
+  third object's footprint (the bale in the dairy case). Dump the region
+  (`near.py`) before placing a large prop.
+
 ### 2026-11-26 · things under things; contents inside solids (pass 466)
 - A flat prop can lie UNDER another prop and pass every gate (Maya's
   notebook under her books: same desk, both "supported", no clip reported).

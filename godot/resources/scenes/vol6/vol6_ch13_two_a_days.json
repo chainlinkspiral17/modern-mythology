@@ -309,7 +309,7 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert rubber]He has been doing farmer's carries with the heaviest pair of dumbbells the school owns, which are eighty-pounders that have been at the school since 1998 and have, over the years, lost the rubber coating on their handles.",
+   "text": "[shot:insert dumbbell]He has been doing farmer's carries with the heaviest pair of dumbbells the school owns, which are eighty-pounders that have been at the school since 1998 and have, over the years, lost the rubber coating on their handles.",
    "voice": "assets/audio/voice/vol6_ch13_two_a_days/060.ogg"
   },
   {
@@ -641,7 +641,7 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert step]His first step is — by his own internal sense, which is, three weeks in, becoming a thing he can trust — better.",
+   "text": "His first step is — by his own internal sense, which is, three weeks in, becoming a thing he can trust — better.",
    "voice": "assets/audio/voice/vol6_ch13_two_a_days/120.ogg"
   },
   {

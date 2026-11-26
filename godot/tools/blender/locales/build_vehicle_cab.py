@@ -469,6 +469,13 @@ def build_altima_2026_10():
         _sedan_map()
         make_tube("Cord_1", [(0.22, 1.07, 1.19), (0.22, 1.02, 1.05), (0.10, 0.96, 0.85), (0.02, 0.94, 0.80)], 0.004, (0.90, 0.90, 0.88, 1.0), segments=4)
         make_cyl("Socket_12V", (0.0, 0.925, 0.80), 0.014, 0.01, (0.12, 0.12, 0.13, 1.0), axis="Y", segments=8)
+        # (pass 467) "a single pine-tree air freshener on the rearview mirror":
+        # the string and the little green tree — the mirror hung bare
+        pine = (0.18, 0.50, 0.26, 1.0)
+        make_box("Rearview_Freshener_String", (0.03, 1.40, 1.515), (0.010, 0.010, 0.07), (0.86, 0.86, 0.82, 1.0))
+        for k, (wz, ww) in enumerate(((1.468, 0.030), (1.440, 0.050), (1.412, 0.070))):
+            make_box(f"Rearview_Freshener_Tier_{k}", (0.03, 1.40, wz), (ww, 0.010, 0.030), pine)
+        make_box("Rearview_Freshener_Trunk", (0.03, 1.40, 1.388), (0.016, 0.010, 0.020), (0.30, 0.22, 0.14, 1.0))
 
 
 def _sedan_map():
