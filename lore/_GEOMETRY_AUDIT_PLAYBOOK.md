@@ -158,6 +158,19 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-26 · a stand-in may already have a picture (pass 459)
+
+- **Before replacing a screen, a sign or a page, grep the roster for its part
+  name.** Three laptop screens had hero-art entries placed on `<x>_Display` /
+  `<x>_Screen` by name and position; the new prop renamed and moved them
+  (NO-STANDIN, OFF-FACE, SUNK at the gate). Keep the part the picture sits on
+  and rebuild around it (`make_laptop(..., lid=False)`).
+- **A helper that replaces a mis-proportioned box inherits its neighbours.**
+  Kai's old base was 0.32 deep; the new 0.22 base left the kept lid 4 cm off
+  it (support gate). Match the old footprint where other parts depend on it.
+- **Removing a cue orphans its marker.** Two "insert column" cues came off and
+  the marker count went to the ceiling: delete the marker with the cue.
+
 ### 2026-11-25 · a helper swapped in for a box must move the way the box moved (pass 456)
 
 - **`shifted()` only moves the names it knows.** Twenty slab phones became

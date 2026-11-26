@@ -185,9 +185,9 @@ def build_desk():
     make_box("Desk_Drawer", (dx, dy + 0.20, dz - 0.08), (0.48, 0.50, 0.10), COL_WOOD_DK)
     make_box("Desk_Drawer_Front", (dx - 0.245, dy + 0.20, dz - 0.08), (0.01, 0.46, 0.08), COL_WOOD)
     make_chair("Desk_Chair", dx - 0.58, dy, yaw=-math.pi / 2.0, wood=COL_WOOD, w=0.40)
-    make_box("Laptop_Base", (dx - 0.04, dy - 0.05, dz + 0.01), (0.30, 0.22, 0.02), (0.20, 0.20, 0.22, 1.0))
-    make_rot_box("Laptop_Lid", (dx + 0.10, dy - 0.05, dz + 0.12), (0.02, 0.30, 0.21), (0.20, 0.20, 0.22, 1.0), roll=0.0, pitch=0.0, yaw=0.0)
-    make_box("Laptop_Screen", (dx + 0.088, dy - 0.05, dz + 0.12), (0.004, 0.27, 0.18), (0.36, 0.44, 0.56, 1.0))
+    # (pass 459) a laptop — keys, trackpad, a lit page — not two dark slabs
+    from _props.objects import make_laptop
+    make_laptop("Laptop", dx - 0.04, dy - 0.05, dz, yaw=-1.5708, w=0.30, d=0.22, body=(0.20, 0.20, 0.22, 1.0), screen="doc")
     make_lathe("Water_Glass", (dx - 0.16, dy + 0.40, dz), [(0.0, 0.0), (0.032, 0.0), (0.036, 0.11), (0.033, 0.11), (0.029, 0.006), (0.0, 0.006)], (0.80, 0.86, 0.90, 0.6), segments=10)
     make_cyl("Water_Glass_Water", (dx - 0.16, dy + 0.40, dz + 0.02), 0.029, 0.025, (0.62, 0.74, 0.82, 0.7), segments=10)
     make_box("Textbook", (dx + 0.02, dy + 0.34, dz + 0.025), (0.22, 0.28, 0.05), (0.30, 0.46, 0.36, 1.0))

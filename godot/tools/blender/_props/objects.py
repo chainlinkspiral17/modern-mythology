@@ -489,7 +489,7 @@ def make_iced_tea(prefix, x, y, base_z, *, h=0.145, r=0.036, lemon=True, straw=F
         make_cyl(f"{prefix}_Straw", (x - r * 0.45, y, base_z + h * 0.72), 0.004, h * 0.85, (0.90, 0.28, 0.24, 1.0), segments=5)
 
 
-def make_laptop(prefix, x, y, base_z, *, yaw=0.0, w=0.34, d=0.24, body=(0.16, 0.16, 0.18, 1.0), screen="chat"):
+def make_laptop(prefix, x, y, base_z, *, yaw=0.0, w=0.34, d=0.24, body=(0.16, 0.16, 0.18, 1.0), screen="chat", lid=True):
     """An open laptop (pass 458): the base with its keyboard — five rows of
     keys, the trackpad, a red pointing-stick dot — and the lid standing
     behind it, its screen LIT with what the line says: "chat" (a window, a
@@ -508,6 +508,10 @@ def make_laptop(prefix, x, y, base_z, *, yaw=0.0, w=0.34, d=0.24, body=(0.16, 0.
             B(f"_Key_{r}_{c}", -w * 0.42 + c * w * 0.084, d * 0.36 - r * d * 0.115, 0.0188, w * 0.068, d * 0.085, 0.0016, key)
     B("_Trackpad", 0.0, -d * 0.36, 0.0188, w * 0.30, d * 0.20, 0.0012, (0.24, 0.24, 0.27, 1.0))
     B("_Stick", 0.0, d * 0.13, 0.0200, 0.008, 0.008, 0.002, (0.86, 0.16, 0.14, 1.0))
+    if not lid:
+        # the builder keeps its own lid and display: a hero-art picture is
+        # placed on that display by name (pass 459: Kai's and Bianca's)
+        return
     sh = d * 0.96                       # the lid's height
     lv = d / 2.0 + 0.004
     B("_Lid", 0.0, lv, 0.018 + sh / 2.0, w, 0.010, sh, body)

@@ -393,8 +393,12 @@ def build_corner_table():
     make_chair("CornerTable_Chair_E", tx + 0.62, ty, yaw=math.pi / 2.0, wood=COL_WOOD, w=0.42)    # Tem's, across from him
     t = 0.76
     # Kai's laptop (open) and his phone beside it
-    make_box("Kai_Laptop_Base", (tx - 0.22, ty - 0.05, t + 0.009), (0.32, 0.22, 0.018), (0.60, 0.62, 0.64, 1.0))
-    # hinged on the far (E) edge, the display facing Kai in the W chair
+    # (pass 459) hinged on the far (E) edge, the display facing Kai in the W
+    # chair: keys, trackpad, a lit page (it was three grey slabs)
+    from _props.objects import make_laptop
+    make_laptop("Kai_Laptop", tx - 0.22, ty - 0.05, t, yaw=-1.5708, w=0.32, d=0.30, body=(0.60, 0.62, 0.64, 1.0), lid=False)   # d 0.30: its back edge meets the lid that stays
+    # the lid and its display stay as they were: the hero-art pictures for the
+    # screen are placed on these two parts by name
     make_box("Kai_Laptop_Screen", (tx - 0.066, ty - 0.05, t + 0.12), (0.012, 0.32, 0.21), (0.60, 0.62, 0.64, 1.0))
     make_box("Kai_Laptop_Display", (tx - 0.073, ty - 0.05, t + 0.12), (0.002, 0.29, 0.18), (0.40, 0.56, 0.70, 1.0))
     make_smartphone("Kais_Phone", tx - 0.25, ty + 0.22, (t + 0.0055) - 0.0055, state="lock", along="Y", w=0.070, l=0.140)   # (pass 456) a phone, not a dark slab

@@ -3835,6 +3835,35 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-26 · pass 459: ranks 193–240 by the stranger test; the slab laptops.**
+One line of each of the next 48 (set, cue) pairs rendered and read: 40 pass.
+- THE LAPTOPS: `make_laptop` (keys, trackpad, a lit page or chat window) for
+  Diego's and the Millers' service laptop — each was two or three slabs.
+  Kai's (Daily Grind), Bianca's and Elicia's already have hero-art pictures
+  assigned to their screens: those three keep their own lid and display
+  (`lid=False`) and gain the keyboard only. The hero-art gate caught the
+  first attempt, which had replaced the parts the pictures are placed on.
+- THE LIGHTHOUSE PADLOCK: a brass body, a steel shackle through a hasp, the
+  keyhole — it was a yellow block ("barbed gate, padlocked and rising high").
+- "insert column" (2 lines) looked DOWN at the tower's floor from knee
+  height: dropped — the base-up view those lines play in IS the column — and
+  its marker removed.
+Draft 1 shipped. DRAFT 2 TARGETS (read in this band, not fixed):
+- VOL 2's Small Wood sets are first-generation: the farmhouse recliner and
+  the service-porch door are dark, the "fallen-in house" is an intact box;
+- the diner's jury-rigged phone: its frame is centred on it and still reads
+  as a condiment caddy — look at what stands on that counter;
+- Bianca's "She gets the eggs" shows a tub and two brown blocks (no eggs);
+- Meadowlark's sprinklers are specks in a street-wide frame; the break
+  room's thermos is a green cylinder under a chair;
+- the remaining slab laptops (New Orleans office, both Foxhole DJ decks,
+  Dabney, the bungalow studio's closed one);
+- ranks 241–288 by the same question. The pass rate has climbed band by band
+  (38/48, 31, 36, 38, 40): the next bands are mostly one- and two-line cues,
+  so sample them rather than render all.
+Deck must REBUILD daily_grind_interior, diego_bedroom, elicia_apartment,
+miller_office, oregon_lighthouse.
+
 **2026-11-25 · pass 458: ranks 145–192 by the stranger test; the last box telephones.**
 One line of each of the next 48 (set, cue) pairs rendered and read: 38 pass.
 - THE ICED TEA on Linda's porch (3 lines): glasses of tea — glass, amber,

@@ -113,10 +113,8 @@ def build_desk():
             make_box(f"Desk_Leg_{lx}_{ly}", (dx + lx, dy + ly, top_z / 2.0),
                      (0.10, 0.10, top_z), COL_WALNUT_DK)
     # Service laptop (open, faint cold screen)
-    make_box("Laptop_Base", (dx - 0.35, dy - 0.05, top_z + 0.04), (0.42, 0.30, 0.03), COL_LAPTOP)
-    # the lid on the base's back edge (2026-09-23: 2.5 cm behind it)
-    make_box("Laptop_Lid", (dx - 0.35, dy + 0.115, top_z + 0.20), (0.42, 0.03, 0.28), COL_LAPTOP)
-    make_box("Laptop_Screen", (dx - 0.35, dy + 0.09, top_z + 0.20), (0.36, 0.02, 0.22), COL_SCREEN)
+    from _props.objects import make_laptop   # (pass 459) keys, trackpad, a lit page
+    make_laptop("Laptop", dx - 0.35, dy - 0.05, top_z + 0.03, w=0.42, d=0.30, body=COL_LAPTOP, screen="doc")
     # Two phones — personal (upright) + the other FACE-DOWN
     # (pass 440) ON the desk top (top_z + 0.03): both were centred at its
     # surface, half sunk, and under the lamp the work phone read as an outline
@@ -340,7 +338,10 @@ def build_bianca_office_2026_10():
         make_box(f"Bianca_Desk_Leg_{i}", (dx + lx, dy + ly, 0.36), (0.04, 0.04, 0.72), (0.92, 0.91, 0.88, 1.0))
     make_box("Bianca_Desk_Drawer", (dx, dy - 0.29, 0.67), (0.60, 0.02, 0.11), (0.90, 0.89, 0.86, 1.0))
     top = 0.755
-    make_box("Bianca_Laptop_Base", (dx - 0.10, dy - 0.02, top + 0.009), (0.32, 0.22, 0.018), (0.70, 0.72, 0.74, 1.0))
+    from _props.objects import make_laptop   # (pass 459)
+    make_laptop("Bianca_Laptop", dx - 0.10, dy - 0.02, top, w=0.32, d=0.22, body=(0.70, 0.72, 0.74, 1.0), lid=False)
+    # the lid and its display stay as they were: the hero-art picture for the
+    # screen is placed on the display by name
     make_rot_box("Bianca_Laptop_Screen", (dx - 0.10, dy + 0.09, top + 0.12), (0.32, 0.012, 0.21), (0.70, 0.72, 0.74, 1.0), pitch=0.0, roll=0.0)
     make_box("Bianca_Laptop_Display", (dx - 0.10, dy + 0.082, top + 0.12), (0.29, 0.002, 0.18), (0.36, 0.58, 0.80, 1.0))
     # the bills: three statements and their torn envelopes

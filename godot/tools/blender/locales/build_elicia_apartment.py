@@ -188,8 +188,10 @@ def build_use_states_d4():
         make_box(f"Floor_Paper_{i}", (px + rot_off, py, 0.012 + i * 0.003),
                  (0.15, 0.21, 0.003), (0.90, 0.88, 0.82, 1.0))
     # Laptop OPEN on the desk: base + tilted-back lid (offset fake)
-    make_box("Laptop_Base", (2.95, 4.55, 0.395), (0.30, 0.21, 0.015),
-             (0.30, 0.31, 0.33, 1.0))
+    from _props.objects import make_laptop   # (pass 459) keys, trackpad, a lit page
+    make_laptop("Laptop", 2.95, 4.55, 0.3875, w=0.30, d=0.21, body=(0.30, 0.31, 0.33, 1.0), lid=False)
+    # the lid and its screen stay as they were: the hero-art picture for the
+    # screen is placed on them by name
     make_box("Laptop_Lid", (2.95, 4.68, 0.50), (0.30, 0.03, 0.20),
              (0.26, 0.27, 0.29, 1.0))
     make_box("Laptop_Screen", (2.95, 4.665, 0.50), (0.26, 0.005, 0.16),

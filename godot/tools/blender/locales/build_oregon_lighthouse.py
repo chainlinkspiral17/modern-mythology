@@ -111,7 +111,15 @@ def build_grounds():
     make_rot_box("Gate_Leaf_Open", (1.1 + 0.05, gy - 1.0, 1.2), (0.04, 2.0, 2.2), MESH, yaw=0.0)
     for nm, z in (("Top", 2.32), ("Bot", 0.08)):
         make_box(f"Gate_Leaf_Rail_{nm}", (1.15, gy - 1.0, z), (0.04, 2.0, 0.04), POST)
-    make_box("Gate_Padlock", (1.15, gy - 1.95, 1.1), (0.06, 0.04, 0.08), (0.70, 0.62, 0.36, 1.0))
+    # (pass 459) a PADLOCK: brass body, steel shackle through a hasp, the
+    # keyhole — it was a yellow block ("barbed gate, padlocked and rising high")
+    _px, _py, _pz = 1.15, gy - 1.95, 1.10
+    make_box("Gate_Padlock", (_px, _py, _pz), (0.045, 0.075, 0.065), (0.76, 0.62, 0.26, 1.0))
+    for _sg in (-1, 1):
+        make_cyl(f"Gate_Padlock_Shackle_{_sg:+d}", (_px, _py + _sg * 0.022, _pz + 0.058), 0.007, 0.052, (0.72, 0.74, 0.76, 1.0), segments=6)
+    make_cyl("Gate_Padlock_Shackle_Top", (_px, _py, _pz + 0.084), 0.007, 0.058, (0.72, 0.74, 0.76, 1.0), segments=6, axis='Y')
+    make_cyl("Gate_Padlock_Keyhole", (_px + 0.0235, _py, _pz - 0.006), 0.008, 0.003, (0.10, 0.10, 0.11, 1.0), segments=8, axis='X')
+    make_box("Gate_Padlock_Hasp", (_px, _py, _pz + 0.070), (0.012, 0.11, 0.022), (0.40, 0.42, 0.44, 1.0))
     make_box("Trail", (0.0, gy - 12.0, 0.01), (1.4, 24.0, 0.02), (0.44, 0.38, 0.30, 1.0))
     for k in range(12):
         make_blob(f"Trail_Brush_{k}", ((-1.8 if k % 2 else 1.8) + (k % 3) * 0.3, gy - 2.0 - k * 2.0, 0.3), 0.6,
