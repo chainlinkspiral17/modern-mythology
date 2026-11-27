@@ -26,7 +26,7 @@ _KIT = ("make_cyl", "make_taper_cyl", "make_tube", "make_blob", "make_lathe")
 
 
 def make_olaf_bowl(pfx, bx, by, top_z, tag, s=1.0, mark=True, slicker=False, phase=None,
-                   colors=None, kit=None, totem_names=False):
+                   colors=None, kit=None, totem_names=False, crow_look=None):
     """One bowl standing on a surface at `top_z`. Parts are `<pfx>_<Part>__<tag>`.
     `totem_names`: name the three totems Totem_Crow / Totem_Octopus /
     Totem_Ferret (a room whose lines cue "the crow on Roy's bowl") rather than
@@ -70,6 +70,29 @@ def make_olaf_bowl(pfx, bx, by, top_z, tag, s=1.0, mark=True, slicker=False, pha
                [(0.104 * s, 0.0), (0.122 * s, 0.0), (0.122 * s, 0.020 * s), (0.104 * s, 0.020 * s), (0.104 * s, 0.0)],
                cedar_lt, segments=16)
     make_cyl(T_("Hollow"), (bx, by, top_z + 0.121 * s), 0.104 * s, 0.002, cedar_dk, segments=16)
+    if totem_names:
+        # (pass 471) THE CROW ON THE RIM, readable: "The crow on Roy's bowl ...
+        # turned its head a full quarter-turn" / "The four crows were looking at
+        # Roy's chair" (vol7 ch17). The totem was a 9 mm blob on the spiral —
+        # from the table, a speck. A carved crow risen on its post at the rim,
+        # in the dark heartwood so it stands off the pale rim: body, head,
+        # beak and tail, the beak toward `crow_look` (the table's head).
+        a0 = ph + 0.02 * 2.5 * 6.2832
+        rr_ = 0.113 * s
+        px_, py_ = bx + rr_ * _m.cos(a0), by + rr_ * _m.sin(a0)
+        zr = top_z + 0.140 * s - 0.004 * s
+        lx, ly = crow_look if crow_look else (-_m.sin(a0), _m.cos(a0))
+        ln_ = max(1e-6, (lx * lx + ly * ly) ** 0.5); lx, ly = lx / ln_, ly / ln_
+        cs = sl * 1.6            # a 9 cm figure: a crow a stranger names from the table
+        make_cyl(T_("Totem_Crow_Post"), (px_, py_, zr + 0.010 * cs), 0.004 * cs, 0.020 * cs, cedar_dk, segments=6)
+        make_blob(T_("Totem_Crow_Body"), (px_ - lx * 0.004 * cs, py_ - ly * 0.004 * cs, zr + 0.030 * cs), 0.013 * cs, cedar_dk,
+                  noise=0.15, seed=41, rings=4, segments=7, squash=1.25)
+        make_blob(T_("Totem_Crow_Head"), (px_ + lx * 0.010 * cs, py_ + ly * 0.010 * cs, zr + 0.047 * cs), 0.0085 * cs, cedar_dk,
+                  noise=0.10, seed=42, rings=4, segments=7, squash=1.0)
+        make_tube(T_("Totem_Crow_Beak"), [(px_ + lx * 0.016 * cs, py_ + ly * 0.016 * cs, zr + 0.046 * cs),
+                                          (px_ + lx * 0.028 * cs, py_ + ly * 0.028 * cs, zr + 0.044 * cs)], 0.0028 * cs, char, segments=5)
+        make_tube(T_("Totem_Crow_Tail"), [(px_ - lx * 0.014 * cs, py_ - ly * 0.014 * cs, zr + 0.026 * cs),
+                                          (px_ - lx * 0.028 * cs, py_ - ly * 0.028 * cs, zr + 0.018 * cs)], 0.0040 * cs, cedar_dk, segments=5)
 
 
 def make_cedar_hand(pfx, x, y, top_z, tag, bell=False, s=1.0, colors=None, kit=None):

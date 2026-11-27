@@ -385,11 +385,53 @@ def build_communal_table():
     # (hb_press). ch15's wagon line clears it: "The dining table had to be cleared".
     make_cyl("Coffee_Press__hb_press", (0.0, 2.7, 0.90), 0.06, 0.24, (0.55, 0.62, 0.66, 0.6), segments=10)
     make_cyl("Press_Plunger", (0.0, 2.7, 1.04), 0.012, 0.08, (0.20, 0.19, 0.20, 1.0), segments=6)
-    make_chamfer_box("Brotchen_Basket__hans_bakery_breakfast", (0.0, 2.1, 0.84), (0.34, 0.28, 0.12), (0.62, 0.46, 0.26, 1.0))
-    for bi in range(3):
-        make_cyl(f"Brotchen_{bi}__hans_bakery_breakfast", (-0.08 + bi * 0.09, 2.1, 0.92), 0.05, 0.07, (0.80, 0.62, 0.36, 1.0), segments=8)
+    # (pass 471) THE BREAD. "Hans had cut a loaf of the seeded rye and a loaf
+    # of the morning's white. He had set out a pat of butter" (ch15_bread n8)
+    # and "a basket of the morning's brötchen ... in the center of the table"
+    # (n11): the basket was a chamfered slab with three upright cylinders in
+    # it — an orange box. Now a woven basket (floor, four walls, the weave as
+    # dark bands, a cloth over the rim) of round scored rolls; a breadboard
+    # with the two loaves cut, slices fanned, the bread knife; the butter pat
+    # on its dish.
+    wick, wick_dk = (0.70, 0.52, 0.30, 1.0), (0.46, 0.32, 0.18, 1.0)
+    kx, ky, kz = 0.0, 2.1, 0.78
+    make_box("Brotchen_Basket_Floor__hans_bakery_breakfast", (kx, ky, kz + 0.006), (0.30, 0.24, 0.012), wick_dk)
+    for wn, (cx_, cy_, sx_, sy_) in {"N": (0.0, 0.114, 0.30, 0.012), "S": (0.0, -0.114, 0.30, 0.012),
+                                      "E": (0.144, 0.0, 0.012, 0.24), "W": (-0.144, 0.0, 0.012, 0.24)}.items():
+        make_box(f"Brotchen_Basket_Wall_{wn}__hans_bakery_breakfast", (kx + cx_, ky + cy_, kz + 0.0325), (sx_, sy_, 0.065), wick)
+        for bn, bz in enumerate((0.020, 0.045)):
+            make_box(f"Brotchen_Basket_Weave_{wn}_{bn}__hans_bakery_breakfast", (kx + cx_ * 1.03, ky + cy_ * 1.03, kz + bz),
+                     (sx_ + (0.004 if sy_ > 0.1 else 0.0) + (0.0 if sy_ > 0.1 else 0.004), sy_ + (0.004 if sx_ < 0.1 else 0.0), 0.010), wick_dk)
+        make_box(f"Brotchen_Basket_Rim_{wn}__hans_bakery_breakfast", (kx + cx_, ky + cy_, kz + 0.068), (sx_ + 0.008, sy_ + 0.008, 0.010), wick_dk)
+    make_box("Brotchen_Basket_Cloth__hans_bakery_breakfast", (kx - 0.04, ky - 0.123, kz + 0.046), (0.20, 0.006, 0.052), (0.92, 0.90, 0.84, 1.0))
+    make_box("Brotchen_Basket_Cloth_Check__hans_bakery_breakfast", (kx - 0.04, ky - 0.1265, kz + 0.046), (0.20, 0.001, 0.012), (0.66, 0.20, 0.18, 1.0))
+    for bi, (rx_, ry_) in enumerate(((-0.075, -0.045), (0.0, -0.050), (0.075, -0.040), (-0.040, 0.045), (0.040, 0.050))):
+        make_blob(f"Brotchen_{bi}__hans_bakery_breakfast", (kx + rx_, ky + ry_, kz + 0.037 + (0.012 if bi > 2 else 0.0)), 0.042,
+                  (0.80, 0.58, 0.32, 1.0), noise=0.08, seed=70 + bi, rings=5, segments=10, squash=0.62)
+        make_box(f"Brotchen_{bi}_Score__hans_bakery_breakfast", (kx + rx_, ky + ry_, kz + 0.037 + (0.012 if bi > 2 else 0.0) + 0.025),
+                 (0.050, 0.006, 0.004), (0.56, 0.36, 0.18, 1.0))
+    # the breadboard: the seeded rye and the white, each cut, the slices fanned
+    bdx, bdy, bdz = 0.0, 1.52, 0.78
+    make_box("Bread_Board__hans_bakery_breakfast", (bdx, bdy, bdz + 0.011), (0.46, 0.26, 0.022), (0.74, 0.58, 0.38, 1.0))
+    make_box("Bread_Board_Groove__hans_bakery_breakfast", (bdx, bdy - 0.110, bdz + 0.0225), (0.42, 0.008, 0.001), (0.52, 0.38, 0.22, 1.0))
+    rye, rye_crumb = (0.36, 0.24, 0.16, 1.0), (0.60, 0.48, 0.34, 1.0)
+    white, white_crumb = (0.84, 0.62, 0.34, 1.0), (0.94, 0.90, 0.80, 1.0)
+    top = bdz + 0.022
+    make_cyl("Loaf_Rye__hans_bakery_breakfast", (bdx - 0.13, bdy + 0.04, top + 0.050), 0.050, 0.16, rye, axis='X', segments=10)
+    make_cyl("Loaf_Rye_Cut__hans_bakery_breakfast", (bdx - 0.049, bdy + 0.04, top + 0.050), 0.046, 0.002, rye_crumb, axis='X', segments=10)
+    for sd, (sx2, sy2) in enumerate(((-0.02, 0.02), (0.01, 0.0), (0.04, -0.015))):
+        make_box(f"Loaf_Rye_Seed_{sd}__hans_bakery_breakfast", (bdx - 0.047, bdy + 0.04 + sx2, top + 0.050 + sy2), (0.001, 0.006, 0.004), (0.22, 0.16, 0.10, 1.0))
+    for si in range(2):
+        make_rot_box(f"Loaf_Rye_Slice_{si}__hans_bakery_breakfast", (bdx - 0.03 + si * 0.035, bdy - 0.06, top + 0.006 + si * 0.012),
+                     (0.090, 0.090, 0.012), rye_crumb, yaw=0.35 + si * 0.25)
+    make_cyl("Loaf_White__hans_bakery_breakfast", (bdx + 0.13, bdy + 0.05, top + 0.055), 0.055, 0.15, white, axis='X', segments=10)
+    make_cyl("Loaf_White_Cut__hans_bakery_breakfast", (bdx + 0.206, bdy + 0.05, top + 0.055), 0.051, 0.002, white_crumb, axis='X', segments=10)
+    make_rot_box("Loaf_White_Slice_0__hans_bakery_breakfast", (bdx + 0.10, bdy - 0.06, top + 0.006), (0.100, 0.095, 0.012), white_crumb, yaw=-0.30)
+    make_rot_box("Bread_Knife_Blade__hans_bakery_breakfast", (bdx + 0.02, bdy - 0.095, top + 0.002), (0.20, 0.022, 0.003), (0.80, 0.80, 0.82, 1.0), yaw=0.05)
+    make_rot_box("Bread_Knife_Handle__hans_bakery_breakfast", (bdx + 0.165, bdy - 0.088, top + 0.008), (0.10, 0.024, 0.016), (0.22, 0.16, 0.12, 1.0), yaw=0.05)
     make_cyl("Preserve_Jar__hans_bakery_breakfast", (0.28, 2.45, 0.85), 0.045, 0.12, (0.48, 0.22, 0.30, 0.9), segments=8)
     make_box("Butter_Dish__hans_bakery_breakfast", (-0.28, 2.45, 0.80), (0.16, 0.10, 0.06), (0.90, 0.88, 0.80, 1.0))
+    make_box("Butter_Pat__hans_bakery_breakfast", (-0.28, 2.45, 0.83 + 0.013), (0.075, 0.050, 0.028), (0.96, 0.86, 0.48, 1.0))
 
 
 def build_window_corner():
@@ -505,7 +547,7 @@ def build_hero_props_2026_09():
     bowl_row = ((3.70, 1.0, False, None), (3.41, 1.0, False, None), (3.10, 0.62, True, 1.43), (2.79, 1.0, False, None))
     for bi, (by, sc, slk, ph) in enumerate(bowl_row):
         make_olaf_bowl(f"Cedar_Bowl_{bi}", BX, by, 0.78, "hb_bowls", s=sc, slicker=slk, phase=ph,
-                       kit=kit, totem_names=True)
+                       kit=kit, totem_names=True, crow_look=(0.0 - BX, 4.15 - by))   # each crow's beak on ONE point: Roy's chair at the head (0, 4.15)
 
     # (pass 457) THE CHAPBOOK and THE FOLDER. "insert chapbook" framed a
     # drawer front: "She read the closing lines ... She closed the chapbook"

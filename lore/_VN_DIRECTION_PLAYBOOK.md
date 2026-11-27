@@ -339,6 +339,21 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-11-27 · words a line quotes, and scenes nobody plays (pass 471)
+- When a line QUOTES the words on a thing ("The door said, in stenciled
+  letters: NO ENTRY ..."), the close-up must let the player read them. Bars
+  standing in for letters fail the stranger test every time; the words go
+  on the surface as a Label3D (shaded, discard for paint/chalk/stencil),
+  and the camera faces that surface — check which face the line's viewer
+  sees, not which face the builder happened to dress.
+- When a line says several things look at ONE point ("The four crows were
+  looking at Roy's chair"), build them looking at that point — each gets
+  its own direction to the target, not a shared "forward" — and give the
+  frame the target too.
+- Before rendering a band, check each row's scene is in
+  resources/scenes/index.json. Five vol 7 scene files are not; their lines
+  never play, and three of 44 frames came back "no scene".
+
 ### 2026-11-26 · what vol 6's 231 one-line close-ups taught (pass 470)
 - Across passes 466-470, about one cue in six was on a line with nothing to
   frame: a body part, a memory, a person, a speech line, a place named only

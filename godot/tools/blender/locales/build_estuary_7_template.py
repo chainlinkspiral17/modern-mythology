@@ -158,7 +158,7 @@ def build_town_and_road():
     make_box("Hemlock_Street", (-0.80, -0.30, Z_DECAL), (0.05, 0.60, 0.004), ROAD)
     # Marit's house on the corner of Pine and Cedar (the first of Olaf's four points)
     make_box("Marit_House", (-0.80, -0.62, Z_TOP + 0.05), (0.14, 0.14, 0.10), (0.78, 0.70, 0.58, 1.0))
-    make_gable("Marit_House_Roof", (-0.80, -0.62, Z_TOP + 0.10), (0.16, 0.16, 0.06), ROOF, ridge_axis="X")
+    make_gable("Marit_House_Roof", (-0.80, -0.62, Z_TOP + 0.10 + 0.03), (0.16, 0.16, 0.06), ROOF, ridge_axis="X")
     # the road east out of town, the diner at the roadside
     make_box("Coast_Road", (2.55, -0.35, Z_DECAL), (4.90, 0.06, 0.004), ROAD)
     make_box("Diner", (1.60, -0.56, Z_TOP + 0.04), (0.30, 0.16, 0.08), (0.84, 0.80, 0.70, 1.0))
@@ -175,9 +175,9 @@ def build_cabin_and_network():
     to the ridge toward Bandon. Tem's one drone hovers at the cabin."""
     cx, cy = 2.20, 0.15
     make_box("Cabin", (cx, cy, Z_TOP + 0.06), (0.24, 0.20, 0.12), (0.46, 0.36, 0.26, 1.0))
-    make_gable("Cabin_Roof", (cx, cy, Z_TOP + 0.12), (0.28, 0.24, 0.08), ROOF, ridge_axis="X")
+    make_gable("Cabin_Roof", (cx, cy, Z_TOP + 0.12 + 0.04), (0.28, 0.24, 0.08), ROOF, ridge_axis="X")
     # through the roof (2026-09-23: 4 cm over it)
-    make_cyl("Cabin_Chimney", (cx + 0.08, cy, Z_TOP + 0.17), 0.012, 0.06, (0.32, 0.30, 0.28, 1.0), segments=6)
+    make_cyl("Cabin_Chimney", (cx + 0.08, cy, Z_TOP + 0.20), 0.012, 0.08, (0.32, 0.30, 0.28, 1.0), segments=6)
     make_box("Cabin_Clearing", (cx, cy, Z_DECAL + 0.0001), (0.44, 0.40, 0.002), LAND_DK)
     # Marit: west along y=cy to x=-0.80, then south to her house
     make_box("Substrate_Line_Marit", ((cx - 0.12 + -0.80) / 2.0, cy, Z_TRACE), (cx - 0.12 + 0.80, 0.02, 0.003), TRACE)
@@ -206,7 +206,7 @@ def build_mill_and_grove():
     the water wheel on the bend; Marit's cedar grove east of Smolvud."""
     mx, my = 3.60, 0.52
     make_box("Mill", (mx, my, Z_TOP + 0.05), (0.16, 0.14, 0.10), (0.56, 0.44, 0.32, 1.0))
-    make_gable("Mill_Roof", (mx, my, Z_TOP + 0.10), (0.18, 0.16, 0.06), ROOF, ridge_axis="Y")
+    make_gable("Mill_Roof", (mx, my, Z_TOP + 0.10 + 0.03), (0.18, 0.16, 0.06), ROOF, ridge_axis="Y")
     make_cyl("Mill_Water_Wheel", (mx + 0.11, my + 0.06, Z_TOP + 0.10), 0.09, 0.02, (0.44, 0.34, 0.24, 1.0), axis="X", segments=12)
     make_cyl("Mill_Wheel_Hub", (mx + 0.11, my + 0.06, Z_TOP + 0.10), 0.02, 0.026, (0.30, 0.24, 0.18, 1.0), axis="X", segments=8)
     make_box("Mill_Race", (mx + 0.11, my + 0.06, Z_DECAL + 0.0001), (0.06, 0.20, 0.002), RIVER)
@@ -298,6 +298,47 @@ def build_gallery_2026_09():
     make_box("Cursor_Cross_V", (0.0, -0.06, Z_TRACE + 0.0035), (0.004, 0.05, 0.001), PALETTE_GLYPH)
 
 
+# (pass 471) make_gable's centre is the prism's MID-height: the house, cabin
+# and mill roofs were centred on their walls' tops, so the walls' top edges
+# came out through both slopes. Each roof is now raised by its half-height.
+
+
+def build_cove_2026_11():
+    """(pass 471) OLAUS'S COVE, rendered: "Olaus's submission rendered. A
+    boat, a dock, a salt-shed at a small cove south of Bandon. The smallest
+    of the builds." (epilogue_gallery). The cove was a 6 cm glyph cube and its
+    label — the close-up showed a blue box. The submission now renders beside
+    its glyph, smaller than the mill: a crescent of beach round a round of
+    sea, a plank dock on four posts, a sailboat at the dock (the mast and sail
+    are what make a stranger say "boat" at this scale), the salt-shed on the
+    beach under its gable."""
+    cx, cy = 2.75, -2.97
+    make_cyl("Cove_Beach", (cx, cy + 0.03, Z_DECAL + 0.0015), 0.21, 0.003, SAND, segments=20)
+    make_cyl("Cove_Water", (cx, cy - 0.02, Z_DECAL + 0.0035), 0.15, 0.003, SEA, segments=20)
+    make_box("Cove_Water_Swell", (cx, cy - 0.08, Z_DECAL + 0.0055), (0.16, 0.006, 0.001), SEA_LT)
+    # the dock: from the beach's north edge out over the water
+    dx_, dy0, dy1 = cx + 0.04, cy + 0.15, cy - 0.04
+    make_box("Cove_Dock", (dx_, (dy0 + dy1) / 2.0, Z_TOP + 0.016), (0.03, dy0 - dy1, 0.006), (0.52, 0.40, 0.28, 1.0))
+    for pi_, py_ in enumerate((dy0 - 0.01, (dy0 + dy1) / 2.0 + 0.02, (dy0 + dy1) / 2.0 - 0.03, dy1 + 0.01)):
+        for sx_ in (-0.014, 0.014):
+            make_cyl(f"Cove_Dock_Post_{pi_}_{'W' if sx_ < 0 else 'E'}", (dx_ + sx_, py_, Z_TOP + 0.0095),
+                     0.0028, 0.013, (0.34, 0.26, 0.18, 1.0), segments=6)
+    # the boat tied at the dock's end, on the water
+    bx_, by_ = dx_ + 0.045, cy - 0.02
+    make_box("Cove_Boat_Hull", (bx_, by_, Z_DECAL + 0.0105), (0.026, 0.066, 0.012), (0.90, 0.88, 0.82, 1.0))
+    make_box("Cove_Boat_Stripe", (bx_, by_, Z_DECAL + 0.0150), (0.027, 0.067, 0.003), (0.66, 0.22, 0.18, 1.0))
+    make_box("Cove_Boat_Bow", (bx_, by_ + 0.038, Z_DECAL + 0.0115), (0.016, 0.012, 0.012), (0.90, 0.88, 0.82, 1.0))
+    make_box("Cove_Boat_Well", (bx_, by_ - 0.004, Z_DECAL + 0.0167), (0.018, 0.040, 0.001), (0.40, 0.30, 0.22, 1.0))
+    make_cyl("Cove_Boat_Mast", (bx_, by_ + 0.010, Z_DECAL + 0.0165 + 0.030), 0.0018, 0.060, (0.46, 0.36, 0.26, 1.0), segments=6)
+    make_box("Cove_Boat_Sail", (bx_ + 0.0015, by_ - 0.006, Z_DECAL + 0.0165 + 0.030), (0.0015, 0.030, 0.048), (0.96, 0.94, 0.88, 1.0))
+    make_box("Cove_Boat_Line", (bx_ - 0.024, by_ + 0.020, Z_TOP + 0.017), (0.024, 0.0015, 0.0015), (0.80, 0.74, 0.58, 1.0))
+    # the salt-shed on the beach, west of the dock
+    sx0, sy0 = cx - 0.09, cy + 0.12
+    make_box("Cove_Salt_Shed", (sx0, sy0, Z_TOP + 0.0045 + 0.022), (0.075, 0.055, 0.044), (0.82, 0.80, 0.74, 1.0))
+    make_gable("Cove_Salt_Shed_Roof", (sx0, sy0, Z_TOP + 0.0045 + 0.044 + 0.016), (0.085, 0.065, 0.032), ROOF, ridge_axis="X")
+    make_box("Cove_Salt_Shed_Door", (sx0 + 0.010, sy0 - 0.0280, Z_TOP + 0.0045 + 0.016), (0.018, 0.002, 0.030), (0.36, 0.28, 0.20, 1.0))
+
+
 def main():
     clear_scene()
     build_plinth()
@@ -309,6 +350,7 @@ def main():
     build_headland_and_pools()
     build_palettes_and_clocks()
     build_gallery_2026_09()
+    build_cove_2026_11()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/estuary_7_template.glb"))
     print(f"\n[build_estuary_7_template] exporting to {out}")

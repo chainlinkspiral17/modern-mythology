@@ -337,12 +337,6 @@ position = Vector3(-1.6, 1.1, -4.9)
 rotation = Vector3(-0.162941, 0.762146, 0)
 metadata/fov = 38.0
 
-; insert: the creek stones, moss caps wet
-[node name="shot_insert_stones" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.8, 0.8, -8.6)
-rotation = Vector3(-0.239135, -1.0122, 0)
-metadata/fov = 36.0
-
 ; ── (2026-08-12) drone + trail markers the scripts cue ─────────
 ; [shot:insert patch] (3x), [shot:insert crow] (2x) and the drone
 ; beats had no markers — blind zooms into the treewall. The road

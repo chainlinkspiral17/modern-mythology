@@ -176,8 +176,12 @@ def build_stairwell():
     make_box("Basement_Jamb_L", (11.42, 15.5, B_FLOOR + 1.05), (0.04, WALL_T + 0.02, 2.10), FRAME)
     make_box("Basement_Jamb_R", (12.38, 15.5, B_FLOOR + 1.05), (0.04, WALL_T + 0.02, 2.10), FRAME)
     make_box("Door", (11.47, 14.95, B_FLOOR + 1.05), (0.05, 0.88, 2.08), GRAY_DOOR)
-    for li, (w, z) in enumerate(((0.62, 1.62), (0.70, 1.50), (0.52, 1.38))):
-        make_box(f"Door_Stencil_{li}", (11.443, 14.95, B_FLOOR + z), (0.004, w, 0.07), STENCIL)
+    # (pass 471) THE STENCIL: three dark bars on the room side read as
+    # nothing. The words are a Label3D in accretion_basement.tscn
+    # (Door_Stencil_Text), painted on the leaf's east face — the face that
+    # reads NO ENTRY from the stair once the door is swung in — over this
+    # pale stencil field.
+    make_box("Door_Stencil_Field", (11.4965, 14.95, B_FLOOR + 1.45), (0.002, 0.74, 0.50), (0.62, 0.64, 0.62, 1.0))
     make_box("Door_Push_Bar", (11.425, 14.95, B_FLOOR + 1.0), (0.04, 0.70, 0.06), FRAME)
 
 

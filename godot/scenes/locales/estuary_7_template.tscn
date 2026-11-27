@@ -353,11 +353,11 @@ position = Vector3(5.700, 0.720, 1.450)
 rotation = Vector3(-0.6896, -0.6011, 0.0)
 metadata/fov = 30.0
 
-; insert: Olaus's cove south of Bandon, off the south frame — the line stops at the ridge
+; insert: Olaus's cove, rendered beside its glyph at the ridge (pass 471) — boat, dock, salt-shed
 [node name="shot_insert_cove" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.507, 0.776, 3.039)
-rotation = Vector3(-0.5236, -1.8806, 0.0)
-metadata/fov = 42.0
+position = Vector3(2.350, 0.720, 2.550)
+rotation = Vector3(-0.5250, -2.3920, 0.0)
+metadata/fov = 40.0
 
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):

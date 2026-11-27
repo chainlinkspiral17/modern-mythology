@@ -421,10 +421,11 @@ metadata/fov = 36.0
 
 ; insert: the crow on the substrate-bowl's rim (ch17_aria)
 ; (pass 406) on its chapter's view
+; (pass 471) from above the table's foot, over the press: the four carved crows' beaks on Roy's chair (n24)
 [node name="shot_insert_crow__hans_bakery_bowls" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.750, 1.250, -4.450)
-rotation = Vector3(-0.3714, 1.5708, 0.0)
-metadata/fov = 40.0
+position = Vector3(0.350, 1.400, -3.300)
+rotation = Vector3(-0.3524, 0.5011, 0.0)
+metadata/fov = 46.0
 
 ; (view_twin) hans_bakery_bowls's frame in hans_bakery_bowls_crow
 [node name="shot_insert_crow__hans_bakery_bowls_crow" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -657,6 +658,13 @@ position = Vector3(0.600, 1.450, -3.250)
 rotation = Vector3(-0.1738, 2.7828, 0.0)
 metadata/fov = 42.0
 
+; (pass 471) "Hans had cut a loaf of the seeded rye and a loaf of the morning's white"
+; (ch15_bread n8): the breadboard, both loaves cut, the slices fanned, the knife
+[node name="shot_insert_loaf__hans_bakery_breakfast" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.550, 1.150, -2.350)
+rotation = Vector3(-0.4313, 0.9539, 0.0)
+metadata/fov = 42.0
+
 ; (view_twin) hans_bakery_back_kitchen's frame in hans_bakery_breakfast
 [node name="shot_insert_basket__hans_bakery_breakfast" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.634, 1.052, -2.825)
@@ -703,8 +711,8 @@ metadata/fov = 35.0
 
 ; (view_twin) hans_bakery_back_kitchen's frame in hans_bakery_bowls
 [node name="shot_insert_crows__hans_bakery_bowls" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.780, 1.280, -4.400)
-rotation = Vector3(-0.3800, 1.5300, 0.0)
+position = Vector3(0.780, 1.280, -4.450)
+rotation = Vector3(-0.3360, 1.5708, 0.0)
 metadata/fov = 40.0
 
 ; (view_twin) hans_bakery_bowls's frame in hans_bakery_bowls_crow

@@ -3835,6 +3835,55 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-27 · pass 471: vol 7 one-line pairs 1–44.**
+41 frames rendered and read (three of the 44 rows were lines in scenes the
+game never loads — see below): 30 pass.
+DROPPED (six): Kai's CAP (the line takes off the boots and the wax canvas —
+the frame was a red slab); the HEADLIGHTS in the Sitka stand and the creek
+STONES (both dark slabs from cabin_road at night); the DRONE over Smolvud
+("the drones were nearly all in" — an empty sky); FINN'S DOOR ("He was at
+Finn's door at eleven-twenty-six" — an interior corner); the CIGARETTE on the
+night porch, tried as the TRUCK first — the trucks in the clearing float in
+black at night (no ground under the night rig), so the line keeps the porch.
+Re-cued: ch15_bread n8 `coffee` → `loaf` (the line is the bread).
+Fixed at the object:
+- THE STENCIL ("The door said, in stenciled letters: NO ENTRY EXCEPT BY
+  AUTHORIZED PERSONNEL"): three dark bars on the side of the door that faced
+  away. The words, as a Label3D painted on the leaf's stair-side face over a
+  pale stencil field (shaded, discard — the shader playbook's rule for
+  writing on a surface); the frame faces the leaf.
+- THE FOUR CROWS ("The four crows were looking at Roy's chair"): the crow on
+  each bowl was a 9 mm blob on the spiral. A carved crow on a post at each
+  rim (dark heartwood, 9 cm, beak and tail), each beak turned on ONE point —
+  Roy's chair at the head — and two frames: the row from the side, and the
+  row from the table's east side with the chair past the far bowl.
+- OLAUS'S COVE ("A boat, a dock, a salt-shed at a small cove ... The
+  smallest of the builds"): a glyph cube and its label. The submission now
+  renders beside its glyph: beach, water, a plank dock on posts, a sailboat
+  at the dock, the salt-shed under its gable.
+- THE BREAD ("Hans had cut a loaf of the seeded rye and a loaf of the
+  morning's white"; "a basket of the morning's brötchen"): a chamfered slab
+  holding three upright cylinders. A woven basket of scored rolls under a
+  checked cloth; a breadboard with both loaves cut, slices fanned, the
+  knife; the butter pat on its dish.
+- Found on the way: the Estuary 7 map's house, cabin and mill ROOFS were
+  centred on their walls' tops — make_gable's centre is the prism's
+  MID-height — so the walls' top edges came out through both slopes (and the
+  cabin's chimney ended level with the ridge). Raised by their half-heights.
+UNREACHABLE SCENES: vol7_ch6_cale, ch6_sunday, ch7_bridge, ch7_night and
+ch7_six_oclock have JSON but are not in resources/scenes/index.json, so the
+game never plays them (SceneDataDB: "scene not found"). The bands now skip
+them. QUESTION FOR ANDY: are these superseded drafts (delete) or chapters
+that should be in the index?
+Draft 1 shipped for this band. DRAFT 2 TARGETS: the cabin clearing at night
+(the trucks float in black — a moon/porch-spill fill so the ground holds);
+a closed-door twin for the stair-foot line (the frame reads the stencil from
+inside, the door already swung in); the Estuary 7 map's other builds are
+still boxes (the diner, the town blocks); the carved crows read as birds,
+not yet as CROWS (a closer per-bowl insert if a line needs one).
+NEXT: vol 7 one-line pairs 45–155 (111 left after the unreachable rows), 44
+a render.
+
 **2026-11-26 · pass 470: the last 55 vol 6 one-line pairs (vol 6's close-ups are all read).**
 55 frames rendered and read: 44 pass. Every vol 6 close-up pair has now been
 read once (passes 466-470: 231 pairs).
