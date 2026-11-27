@@ -3835,6 +3835,31 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-27 · pass 478: the drive home on the right road at the right hour; the cabin road's Sitka stand rows deep (cabin_road draft 4).**
+- ch22_portal n84 — "by the time they passed Yachats at four fifty-six.
+  The light over the ocean was the long gray-gold of a Pacific Northwest
+  September dusk. They drove south." — played on the forest road to the
+  cabin, where there is no ocean. Its bg node now opens
+  highway_101_south_dusk (new): the southbound lane at the wagon's hood,
+  the ocean right, the rock cut left, a low gold sun from the WSW (~14°,
+  Low_Sun__highway_101_south_dusk in the tscn; the day Sun, the headlights
+  and Tem's own wagon stripped), a gray-gold sky; n84 cued [mood:dusk].
+- n85 — "They reached Smolvud at six-fifteen. They drove up to the cabin"
+  — cuts back with [view:cabin_road_dusk] (new): the climb under a sky
+  going dim.
+- THE STAND (cabin_road, 14 scenes): sixteen trees 7.5-10.5 m, one deep,
+  the far bands 7 m high — past the trunks a plain and the horizon. Now
+  mature Sitka and cedar 24-36 m in rows to ~45 m off the road both sides
+  (clear of the pull-out, the creek, the drones and the standing road-edge
+  trees), young trees in the gaps, salal kept back from the edge ("The
+  salal had been pruned back from the road", ch12); the far bands at forest
+  height (26-42 m, the first ring out to 75 m); the gravel runs on past
+  the bend into the trees; the pale "clearing glow" panel (it read as a
+  sign board) is gone.
+NEXT: the far ring tinted by dusk fog still shows as warm slits low
+between trunks in the dusk view — a near backdrop ring; moss and nurse
+logs; the canopy's light shafts for ch17's dawn.
+
 **2026-11-27 · pass 477: the ch22 drive relit for the text's afternoon (the pass-475 canon knot, approved by the user: "Go ahead").**
 The drive was lit for dusk ([mood:dusk] on ch22_drive n8, a low west sun,
 an orange glow slab on the sea's horizon, the headlights on), but the text

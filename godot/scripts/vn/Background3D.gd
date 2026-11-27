@@ -3408,6 +3408,26 @@ const CAMERA_PRESETS := {
 	# windows down") and vol 3's drive to the coast ("Sunlight dotting through
 	# the thickness of it all"). The 2052 road's things leave: Tem's truck, the
 	# chain and the marker of a turn not yet bypassed; the dusk lights too.
+	# (pass 478) THE DRIVE HOME: "The September coastal afternoon had gone to
+	# early evening by the time they passed Yachats at four fifty-six. The
+	# light over the ocean was the long gray-gold of a Pacific Northwest
+	# September dusk. They drove south." (ch22_portal n84 — it played on the
+	# forest road to the cabin, where there is no ocean.) The southbound lane
+	# at the wagon's hood, the ocean right, the low sun over it from the
+	# west-south-west, the rock cut left.
+	"highway_101_south_dusk": {
+		"scene": "res://scenes/locales/highway_101.tscn",
+		"requires_glb": "res://assets/3d/locales/highway_101.glb",
+		"camera_origin": Vector3(-1.8, 1.15, -100.0),
+		"camera_rotation": Vector3(0.0, PI, 0.0),
+		"fov": 62.0,
+		"strip": ["Sun", "Truck_Headlights", "Tem_Wagon"],
+		"env": {"sky_top": Color(0.42, 0.46, 0.56, 1), "sky_horizon": Color(0.92, 0.74, 0.50, 1),
+			"ground_horizon": Color(0.46, 0.42, 0.36, 1), "ground_bottom": Color(0.16, 0.15, 0.14, 1),
+			"ambient_color": Color(0.80, 0.70, 0.58, 1), "ambient_energy": 0.80, "fog_color": Color(0.80, 0.70, 0.56, 1)},
+		"suppress_input": true,
+		"far": 2000.0,
+	},
 	"coast_highway_day": {
 		"scene": "res://scenes/locales/highway_101.tscn",
 		"requires_glb": "res://assets/3d/locales/highway_101.glb",
@@ -7618,6 +7638,22 @@ const CAMERA_PRESETS := {
 		"fov": 62.0,
 		"suppress_input": true,
 		"far": 900.0,   # (2026-10-31) its far scenery stood past the 200 m default
+	},
+	# (pass 478) the road to the cabin at six-forty on the September evening
+	# of ch22 ("They reached Smolvud at six-fifteen. They drove up to the
+	# cabin. They got to the cabin at six-forty." — ch22_portal n85): the
+	# same climb under a gray-gold sky going dim, the stand dark either side.
+	"cabin_road_dusk": {
+		"scene": "res://scenes/locales/cabin_road.tscn",
+		"requires_glb": "res://assets/3d/locales/cabin_road.glb",
+		"camera_origin": Vector3(0.3, 1.70, -2.0),
+		"camera_rotation": Vector3(0.02, deg_to_rad(-4.0), 0.0),
+		"fov": 62.0,
+		"env": {"sky_top": Color(0.34, 0.36, 0.44, 1), "sky_horizon": Color(0.82, 0.66, 0.46, 1),
+			"ground_horizon": Color(0.34, 0.30, 0.26, 1), "ground_bottom": Color(0.12, 0.11, 0.10, 1),
+			"ambient_color": Color(0.66, 0.58, 0.50, 1), "ambient_energy": 0.62, "fog_color": Color(0.62, 0.56, 0.48, 1)},
+		"suppress_input": true,
+		"far": 900.0,
 	},
 	"cedar_tower_lobby": {
 		"scene": "res://scenes/locales/cedar_tower.tscn",

@@ -217,6 +217,14 @@ light_color = Color(0.70, 0.80, 0.98, 1)
 light_energy = 0.30
 shadow_enabled = false
 
+; (pass 478) the drive home at four fifty-six: the sun low over the sea from the
+; west-south-west (~14 degrees), gold; only in highway_101_south_dusk
+[node name="Low_Sun__highway_101_south_dusk" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.342, 0.227, -0.912, -0.000, 0.970, 0.242, 0.940, -0.083, 0.332, 0, 30, 0)
+light_color = Color(1.0, 0.78, 0.52, 1)
+light_energy = 1.1
+shadow_enabled = false
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]

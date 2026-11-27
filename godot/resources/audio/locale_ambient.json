@@ -929,6 +929,10 @@
       "bed": "assets/audio/bgm/vol7_ambient.wav",
       "gain": 0.55
     },
+    "highway_101_south_dusk": {
+      "bed": "assets/audio/bgm/vol7_ambient.wav",
+      "gain": 0.55
+    },
     "highway_101_turn": {
       "bed": "assets/audio/bgm/vol7_ambient.wav",
       "gain": 0.5
@@ -970,6 +974,10 @@
       "gain": 0.82
     },
     "cabin_road": {
+      "bed": "assets/audio/bgm/vol7_cabin_woodstove.wav",
+      "gain": 0.82
+    },
+    "cabin_road_dusk": {
       "bed": "assets/audio/bgm/vol7_cabin_woodstove.wav",
       "gain": 0.82
     },

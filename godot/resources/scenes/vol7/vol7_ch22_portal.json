@@ -374,15 +374,15 @@
       "t": "narrate"
     },
     {
-      "src": "3d:cabin_road",
+      "src": "3d:highway_101_south_dusk",
       "t": "bg"
     },
     {
-      "text": "The September coastal afternoon had gone to early evening by the time they passed Yachats at four fifty-six. The light over the ocean was the long gray-gold of a Pacific Northwest September dusk. They drove south.",
+      "text": "[mood:dusk]The September coastal afternoon had gone to early evening by the time they passed Yachats at four fifty-six. The light over the ocean was the long gray-gold of a Pacific Northwest September dusk. They drove south.",
       "t": "narrate"
     },
     {
-      "text": "They reached Smolvud at six-fifteen. They drove up to the cabin. They got to the cabin at six-forty.",
+      "text": "[view:cabin_road_dusk]They reached Smolvud at six-fifteen. They drove up to the cabin. They got to the cabin at six-forty.",
       "t": "narrate"
     },
     {

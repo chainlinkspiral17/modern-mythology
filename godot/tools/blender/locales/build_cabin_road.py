@@ -226,7 +226,10 @@ def build_atmosphere():
                                noise=0.24, seed=40 + k, squash=msq, rings=6, segments=12))
     # The clearing gap — a lighter break in the treewall where the
     # road disappears toward the cabin
-    make_box("Clearing_Glow", (4.5, 21.5, 2.6), (3.4, 0.3, 5.0), (0.78, 0.80, 0.74, 1.0))
+    # (pass 478) the "clearing glow" was a pale 3.4 x 5 m panel standing
+    # across the road's end — it read as a sign board. The road now runs on
+    # past the bend into the stand (build_stand_2026_11); the gap is the
+    # corridor of sky over it.
     # (Sky wall deleted 2026-08-04 — it stood between the camera
     # and the new far bands, occluding the horizon it faked.
     # The sky is the .tscn environment's job.)
@@ -421,6 +424,7 @@ def main():
     build_road_history_2026_08()
     build_draft3_2026_09()
     build_finn_truck_2026_10()
+    build_stand_2026_11()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/cabin_road.glb"))
     print(f"\n[build_cabin_road] exporting to {out}")
@@ -429,15 +433,98 @@ def main():
 
 
 
+def build_stand_2026_11():
+    """THE STAND (pass 478, draft 4 of the forest). The prose is a Sitka
+    stand — "dense Sitka spruce + cedar walls", "The mist on the cedars"
+    (ch21) — and the road climbs through it to the clearing. The stand was
+    sixteen trees 7.5-10.5 m tall, one deep each side: past their trunks a
+    flat plain and the horizon showed, the far bands 7 m high under it all.
+    Now the stand is rows deep: mature Sitka and cedar 24-36 m out to ~45 m
+    from the road both sides, young hemlock and spruce in the gaps (crowns
+    from ~1.5 m), salal and huckleberry under them — pruned back from the
+    road's edge ("The salal had been pruned back from the road", ch12) —
+    and the gravel runs on past the bend into the trees.
+    NEXT: moss on the near trunks; nurse logs; the canopy's light shafts
+    on a misty morning (ch17 dawn)."""
+    import math, random
+    from _props.trees import make_conifer
+    from _props.geometry import join_prefix
+    rnd = random.Random(478)
+    sn, cs = 0.4794, 0.8776
+    # the road runs on past the bend, rising into the stand
+    road_prism("Gravel_Upper_2", 14.0 + 12.8 * cs - 6.0, 14.0 + 12.8 * cs + 6.0, 1.05, 1.50, 0.4 + 12.8 * sn, 4.4, COL_GRAVEL, yaw=-0.50)
+    path = [(0.0, -64.0), (0.0, 14.0), (0.4 + 5.2 * sn, 14.0 + 5.2 * cs), (0.4 + 18.8 * sn, 14.0 + 18.8 * cs), (0.4 + 40.0 * sn, 14.0 + 40.0 * cs)]
+
+    def d_road(x, y):
+        best = 1e9
+        for (ax, ay), (bx, by) in zip(path, path[1:]):
+            dx, dy = bx - ax, by - ay
+            t = max(0.0, min(1.0, ((x - ax) * dx + (y - ay) * dy) / (dx * dx + dy * dy)))
+            best = min(best, math.hypot(x - (ax + dx * t), y - (ay + dy * t)))
+        return best
+    keep_out = [(-6.6, -13.6, -1.0, -2.6),           # Finn's pull-out and its truck
+                (-9.5, 8.6, 9.5, 11.4)]              # the creek
+    # the skein over the stand off the bluff (west, y ~26, 13.5 m up, spread
+    # ~9 m) and the drones over the road
+    drones = [(dx_, dy_) for dx_ in range(-21, 9, 3) for dy_ in (22.0, 26.0, 30.0)] + [(0.0, 12.0), (2.0, 6.0)]
+    # the trees already standing at the road's edges (build_forest, the pull-out)
+    standing = [(-4.5, 2.0), (-5.5, 5.5), (-4.8, 8.0), (-5.8, 12.0), (-4.6, 15.0), (-6.5, 18.0), (-7.5, 8.5), (-8.0, 14.0),
+                (4.6, 1.5), (5.6, 4.5), (4.9, 7.5), (6.0, 12.5), (7.5, 9.0), (8.2, 15.5), (7.0, 20.0), (-0.6, 20.2),
+                (-3.2, 4.0), (3.3, 6.5), (-3.4, 13.0), (3.0, 12.0), (-6.4, -11.5), (-6.8, -6.0), (2.9, -9.5), (3.2, -4.0),
+                (-8.5, -14.0), (-9.0, -4.5), (5.8, -12.0), (5.4, -2.5)]
+
+    def clear(x, y, r_crown, road_gap):
+        if d_road(x, y) < road_gap or abs(y) > 58.0 - r_crown or abs(x) > 62.0 - r_crown:
+            return False                                 # (the far bands' first ring stands at 75 m)
+        if any(x0 - r_crown < x < x1 + r_crown and y0 - r_crown < y < y1 + r_crown for (x0, y0, x1, y1) in keep_out):
+            return False
+        if any(math.hypot(x - dx_, y - dy_) < r_crown + 4.0 for dx_, dy_ in drones):
+            return False
+        if any(math.hypot(x - sx_, y - sy_) < r_crown + 3.5 for sx_, sy_ in standing):
+            return False
+        return True
+    n = 0
+    for gy in range(-62, 64, 7):
+        for gx in range(-46, 47, 7):
+            x, y = gx + rnd.uniform(-2.5, 2.5), gy + rnd.uniform(-2.5, 2.5)
+            h = rnd.uniform(24.0, 36.0)
+            if not clear(x, y, 0.32 * h, 8.5):
+                continue
+            make_conifer(f"Stand_Tree_{n}", x, y, h, (COL_SITKA, COL_SITKA_LT, COL_CEDAR)[n % 3], COL_TRUNK)
+            n += 1
+    m = 0
+    for i in range(170):
+        x, y = rnd.uniform(-40.0, 40.0), rnd.uniform(-62.0, 62.0)
+        h = rnd.uniform(4.0, 9.0)
+        if not clear(x, y, 0.36 * h, 5.0):
+            continue
+        make_conifer(f"Stand_Young_{m}", x, y, h, ((0.17, 0.28, 0.19, 1.0), (0.20, 0.32, 0.21, 1.0))[m % 2], COL_TRUNK, skirt=0.36)
+        m += 1
+    k = 0
+    for i in range(220):
+        x, y = rnd.uniform(-34.0, 34.0), rnd.uniform(-62.0, 62.0)
+        r = rnd.uniform(0.7, 1.6)
+        dr = d_road(x, y)
+        if dr < 3.6 + r or not clear(x, y, r, 0.0):
+            continue
+        make_blob(f"Stand_Salal_{k}", (x, y, r * 0.42 - 0.05), r, ((0.20, 0.32, 0.20, 1.0), (0.24, 0.36, 0.22, 1.0), (0.17, 0.27, 0.18, 1.0))[k % 3],
+                  noise=0.3, seed=4780 + k, rings=4, segments=8, squash=0.6)
+        k += 1
+    for pfx in ("Stand_Tree", "Stand_Young", "Stand_Salal"):
+        join_prefix(pfx)
+
+
 def build_horizon_2026_08():
     """STUMP HUNT (locale_geometry_audit): view stopped at 22m. The
     Oregon coast road now runs into receding Sitka ridgelines on
     every side until the marine fog takes them."""
     from _props.detail import make_far_bands
+    # (pass 478) forest height: at 7-18 m the bands sat under the stand's
+    # crowns and the plain showed between every trunk
     make_far_bands("FarSitka", COL_SITKA,
-                   [(60.0, 70.0, 7.0, 0.90), (130.0, 120.0, 9.0, 0.74),
-                    (260.0, 200.0, 12.0, 0.58), (450.0, 320.0, 15.0, 0.44),
-                    (760.0, 480.0, 18.0, 0.34)], profile="treeline")
+                   [(75.0, 85.0, 26.0, 0.90), (140.0, 130.0, 30.0, 0.74),
+                    (260.0, 200.0, 34.0, 0.58), (450.0, 320.0, 38.0, 0.44),
+                    (760.0, 480.0, 42.0, 0.34)], profile="treeline")
 
 
 if __name__ == "__main__":
