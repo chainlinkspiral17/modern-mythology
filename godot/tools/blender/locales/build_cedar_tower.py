@@ -471,78 +471,369 @@ def build_draft2_density_2026_08():
 
 
 def build_exterior():
-    """The clearing at x≈+45: gravel, the wagon, the tower — seven
-    floors of cedar band + glass band, the seventh running the
-    garden. PASS 366 (2026-11-13): the palm panel and its green LED beside
-    the right-hand door (vol 7 ch22). Next: the doors as "cedar,
-    hand-built ... the kind of doors a fishing-cabin had, scaled up"
-    (planks, strap hinges — they are two flat slabs); a variant with the
-    doors open for "The three of them stood at the open doorway"."""
+    """The clearing at x≈+45 and the tower on it (pass 476, draft 3 of the
+    exterior, by the text, vol7 ch22_drive n52-92):
+      "seventy feet on a side at the ground floor. Square. Seven stories.
+       Smart-glass on the upper six floors." / "The ground floor was cedar
+       siding above a stone foundation, with a single set of double-doors at
+       the center facing the clearing." / "the seaward face showing the
+       ocean, the inland face showing the cedars. The tower was rendering its
+       own setting onto itself." / "The seventh floor was glass-walled
+       including the roof ... what looked like vegetation. The indoor
+       garden." / "The doors were cedar, hand-built — ... the kind of doors a
+       fishing-cabin had, scaled up ... There was no handle. No doorknob. A
+       small black panel beside the right-hand door at chest height" / "The
+       gravel had been raked ... The grass at the edge of the gravel was cut."
+    It was seven stripes of cedar and grey glass (a parking garage), two flat
+    door slabs, a box van, ten small spruce and a town's rooflines beside an
+    undeveloped headland. Now: a stone plinth and steps; the ground floor in
+    cedar siding with corner boards; ledged-and-braced plank doors on iron
+    strap hinges, an open-door variant (__cedar_tower_exterior_open, "The
+    double-doors eased open"); floors 2-6 one smart-glass skin, its seams the
+    mullions and floor lines, rendering the setting — ocean on the seaward
+    (W) face, cedars and sky on the S and E; the seventh floor real glass
+    (the engine's glass pass) round a garden of beds and small trees, its
+    roof glass on a grid; raked gravel, a mown edge, rough grass to a ring
+    of tall cedars; Old Yachats Road arriving from the south-west; Tem's
+    wagon at the clearing's edge.
+    NEXT (draft 4): the rendering's sky to follow the scene's hour; moss on
+    the plinth's north side; the drone that rakes caught mid-row; the lobby
+    beyond the open doors (now a lit cedar vestibule)."""
+    from _props.geometry import make_prism, make_blob, make_tube, join_prefix
+    from _props.trees import make_conifer
+    from _props.vehicles import make_car
+    import math, random
+    rnd = random.Random(476)
     X = 45.0
-    make_box("Ext_Gravel", (X, -9.0, 0.0), (30.0, 48.0, 0.06), GRAVEL)   # the clearing runs south under the establish (2026-09-30; to y -33 for the 37 m lens, 2026-10-21)
-    # The tower: SEVENTY FEET ON A SIDE (canon: "seventy feet on a side at
-    # the ground floor. Square. Seven stories." 2026-10-21: it stood 8 m
-    # square — a column, a third of the book's building), seven floors
     TY, TS = 18.0, 21.3
-    for f in range(7):
-        fz = f * 3.7
-        # "Tower_Cedar", not "Tower_Band" (2026-09-30): the vantage audit
-        # reads any "band" as a far horizon band, so the tower's floors
-        # were invisible to it and the establish read EMPTY
-        make_box(f"Tower_Cedar_{f}", (X, TY, fz + 1.1), (TS, TS, 2.2), CEDAR_PANEL)
-        glass_col = (0.34, 0.55, 0.40, 0.9) if f == 6 else GLASS
-        make_box(f"Tower_Glass_{f}", (X, TY, fz + 2.95), (TS + 0.15, TS + 0.15, 1.5), glass_col)   # band to band (2026-09-22: 20 cm of air under each floor)
-        # mullions: the smart glass is PANES, a seam every 3 m round the
-        # four faces (the seaward + inland faces render the setting; the
-        # seams are what gives the rendering away up close)
-        for k in range(1, 7):
-            u = -TS / 2.0 + k * TS / 7.0
-            for nm, c, sz in (("S", (X + u, TY - TS / 2.0 - 0.10, fz + 2.95), (0.10, 0.06, 1.5)),
-                              ("W", (X - TS / 2.0 - 0.10, TY + u, fz + 2.95), (0.06, 0.10, 1.5)),
-                              ("E", (X + TS / 2.0 + 0.10, TY + u, fz + 2.95), (0.06, 0.10, 1.5))):
-                make_box(f"Tower_Mullion_{f}_{nm}{k}", c, sz, CEDAR_DK)
-    make_box("Tower_Cap", (X, TY, 7 * 3.7 + 0.2), (TS + 0.4, TS + 0.4, 0.4), CEDAR_DK)
-    # Garden silhouettes behind the seventh floor's glass
-    for gi, gx in enumerate((-7.5, -4.2, -1.0, 2.4, 5.6, 8.4)):
-        make_box(f"Garden_Green_{gi}", (X + gx, TY - (TS + 0.15) / 2.0 - 0.025, 6 * 3.7 + 2.8), (1.6, 0.10, 0.9 + 0.2 * (gi % 2)),
-                 (0.28, 0.48, 0.30, 1.0))
-    # Double doors at the base, S face
-    for sgn in (-1, 1):
-        # 2.1 m, inside the ground floor's 2.2 m cedar band (2026-09-30: at
-        # 2.5 m their tops ran into the glass band above, so the doorway
-        # gate could not read the tower as their wall)
-        make_box(f"Tower_Door_{sgn:+d}", (X + sgn * 0.5, TY - TS / 2.0 - 0.06, 1.05), (0.95, 0.06, 2.10), CEDAR_DK)
-    # (pass 366) "There was no handle. No doorknob. A small black panel beside
-    # the right-hand door at chest height — the size of a deck of cards ... A
-    # small green LED at the panel's corner lit up." The doors had nothing
-    # beside them. (Named for its cue, `panel`; no `door` / `tower` in the name.)
-    make_box("Palm_Panel", (X + 1.15, TY - TS / 2.0 - 0.012, 1.30), (0.065, 0.024, 0.09), (0.05, 0.05, 0.06, 1.0))
-    make_box("Palm_Panel_LED", (X + 1.15 + 0.022, TY - TS / 2.0 - 0.026, 1.30 + 0.034), (0.012, 0.006, 0.012), GREEN_LED)
-    # The wagon in the clearing
-    wx, wy = X - 6.0, 2.5
-    make_box("Wagon_Body", (wx, wy, 0.95), (1.95, 4.4, 1.15), (0.36, 0.40, 0.38, 1.0))
-    make_box("Wagon_Glass", (wx, wy - 0.2, 1.35), (1.98, 3.0, 0.45), (0.14, 0.16, 0.20, 1.0))
-    for tx in (wx - 0.9, wx + 0.9):
-        for ty in (wy - 1.5, wy + 1.5):
-            make_cyl(f"Wagon_Wheel_{tx:.0f}_{ty:.0f}", (tx, ty, 0.34), 0.34, 0.24,
-                     (0.10, 0.10, 0.11, 1.0), segments=10, axis='X')
-    # The Sitka ring around the clearing
+    H = TS / 2.0
+    YS, XW, XE, YN = TY - H, X - H, X + H, TY + H          # the four faces: S 7.35, W 34.35, E 55.65, N 28.65
+    STONE, STONE_DK, MORTAR = (0.50, 0.48, 0.44, 1.0), (0.40, 0.38, 0.35, 1.0), (0.33, 0.31, 0.29, 1.0)
+    SIDING, SIDING_DK = (0.56, 0.40, 0.26, 1.0), (0.40, 0.28, 0.18, 1.0)
+    IRON = (0.10, 0.10, 0.11, 1.0)
+    FD = 0.6                                           # the plinth's exposed height; the ground floor stands on it
+    G1 = FD + 4.0                                      # top of the ground floor (cedar) / foot of the glass
+    FLOOR_H = 3.7
+    G7 = G1 + 5 * FLOOR_H                              # foot of the seventh floor
+    TOP = G7 + FLOOR_H
+    # ── the clearing ──
+    make_box("Ext_Grass_Mown", (X, 3.0, -0.012), (40.0, 68.0, 0.024), (0.36, 0.46, 0.26, 1.0))
+    make_box("Ext_Gravel", (X, 3.0, 0.0), (34.0, 58.0, 0.06), GRAVEL)          # x 28..62, y -26..32
+    # "The gravel had been raked": the tines' rows, east-west across the front
+    for k in range(60):
+        yy = -25.4 + k * 0.55
+        if yy > YS - 0.4:
+            break
+        make_box(f"Ext_Gravel_Rake_{k}", (X, yy, 0.032), (33.2, 0.04, 0.004), (0.50, 0.46, 0.405, 1.0))   # the tines' shadow, not stripes
+    # rough grass beyond the mown edge, to the trees
+    for i in range(70):
+        ang = rnd.uniform(0.0, 2.0 * math.pi)
+        rx, ry = 21.5 + rnd.uniform(0.0, 4.0), 35.5 + rnd.uniform(0.0, 4.0)
+        gx, gy = X + rx * math.cos(ang), 3.0 + ry * math.sin(ang)
+        if gy < -30.0 and 26.0 < gx < 36.0:
+            continue                                   # the road's mouth
+        r = rnd.uniform(0.3, 0.7)
+        make_blob(f"Ext_Rough_Grass_{i}", (gx, gy, r * 0.3 - 0.04), r, ((0.40, 0.44, 0.26, 1.0), (0.32, 0.40, 0.24, 1.0), (0.46, 0.46, 0.30, 1.0))[i % 3],
+                  noise=0.35, seed=4760 + i, rings=3, segments=6, squash=0.45)
+    # Old Yachats Road arrives from the south-west ("The road ended in a
+    # clearing on top of the bluff"), the aged asphalt of the highway set
+    OLD = (0.31, 0.31, 0.30, 1.0)
+    ra, rb = (31.5, -25.8), (12.0, -52.0)
+    rl = math.hypot(rb[0] - ra[0], rb[1] - ra[1])
+    ryaw = math.atan2(rb[1] - ra[1], rb[0] - ra[0])
+    make_rot_box("Ext_Old_Road_Asphalt", ((ra[0] + rb[0]) / 2.0, (ra[1] + rb[1]) / 2.0, 0.01), (rl, 4.8, 0.03), OLD, yaw=ryaw)
+    for k in range(12):
+        t = (k + 0.5) / 12.0
+        make_rot_box(f"Ext_Old_Road_Crack_{k}", (ra[0] + (rb[0] - ra[0]) * t + rnd.uniform(-1.5, 1.5) * math.sin(ryaw),
+                                                 ra[1] + (rb[1] - ra[1]) * t - rnd.uniform(-1.5, 1.5) * math.cos(ryaw), 0.0265),
+                     (rnd.uniform(0.8, 2.4), 0.05, 0.004), (0.18, 0.18, 0.18, 1.0), yaw=ryaw + rnd.uniform(-0.3, 0.3))
+    # ── the cedars round the clearing ("Trees on either side had not been cut
+    # back"; "the inland face showing the cedars"): a ring of tall trees,
+    # thick to the north, east and south, the old road's cut through them
+    trees = []
+    for i in range(46):
+        ang = 2.0 * math.pi * i / 46.0 + rnd.uniform(-0.05, 0.05)
+        rx, ry = 27.5 + rnd.uniform(0.0, 6.0), 41.0 + rnd.uniform(0.0, 6.0)
+        tx, ty = X + rx * math.cos(ang), 3.0 + ry * math.sin(ang)
+        # the road's line out to the south-west stays open
+        d_road = abs((rb[0] - ra[0]) * (ra[1] - ty) - (ra[0] - tx) * (rb[1] - ra[1])) / rl
+        if d_road < 5.0 and ty < -20.0:
+            continue
+        trees.append((tx, ty, rnd.uniform(22.0, 32.0)))
+    for i in range(30):                                # a second row behind
+        ang = 2.0 * math.pi * (i + 0.5) / 30.0
+        tx, ty = X + 38.0 * math.cos(ang), 3.0 + 52.0 * math.sin(ang)
+        d_road = abs((rb[0] - ra[0]) * (ra[1] - ty) - (ra[0] - tx) * (rb[1] - ra[1])) / rl
+        if d_road < 6.0 and ty < -20.0:
+            continue
+        trees.append((tx, ty, rnd.uniform(26.0, 36.0)))
+    for k in range(9):                                 # along the old road, both sides
+        t = 0.18 + k * 0.1
+        for side in (-1, 1):
+            off = side * rnd.uniform(4.4, 6.0)
+            trees.append((ra[0] + (rb[0] - ra[0]) * t - off * math.sin(ryaw), ra[1] + (rb[1] - ra[1]) * t + off * math.cos(ryaw),
+                          rnd.uniform(18.0, 26.0)))
+    # depth: a forest is rows deep — through one ring the low sun showed
+    # between every trunk (bright slots round the clearing). A third row,
+    # young trees in the gaps (crowns from 2 m), salal and huckleberry under
+    for i in range(44):
+        ang = 2.0 * math.pi * (i + 0.25) / 44.0
+        tx, ty = X + (45.0 + rnd.uniform(-3.0, 3.0)) * math.cos(ang), 3.0 + (60.0 + rnd.uniform(-3.0, 3.0)) * math.sin(ang)
+        d_road = abs((rb[0] - ra[0]) * (ra[1] - ty) - (ra[0] - tx) * (rb[1] - ra[1])) / rl
+        if d_road < 6.0 and ty < -20.0:
+            continue
+        trees.append((tx, ty, rnd.uniform(26.0, 36.0)))
+    young = []
+    for i in range(52):
+        ang = 2.0 * math.pi * (i + 0.6) / 52.0
+        tx, ty = X + (30.5 + rnd.uniform(-1.5, 3.5)) * math.cos(ang), 3.0 + (44.0 + rnd.uniform(-1.5, 3.5)) * math.sin(ang)
+        d_road = abs((rb[0] - ra[0]) * (ra[1] - ty) - (ra[0] - tx) * (rb[1] - ra[1])) / rl
+        if d_road < 4.5 and ty < -20.0:
+            continue
+        young.append((tx, ty, rnd.uniform(6.5, 11.0)))
+    young = [t for t in young if not (t[0] - 0.4 * t[2] < 10.5 and -4.0 - 0.4 * t[2] < t[1] < 16.0 + 0.4 * t[2])
+             and not any(math.hypot(t[0] - bx_, t[1] - by_) < 9.0 for bx_, by_ in ((10.5, 30.0), (15.0, 38.0), (3.5, 35.0)))]
+    # the west of the ring stays low (the interior floors stand there in this
+    # GLB): young trees only, so the low sun over the sea does not show through
     for i in range(10):
-        tx = X - 13.0 + (i * 41) % 27
-        ty = -3.0 if i % 2 == 0 else 33.0 + (i % 3) * 2.5   # behind the 21 m tower (2026-10-21)
-        h = 9.0 + (i * 3) % 4
-        # 2026-08-04: crowns were BOXES. Real spruce silhouettes.
-        from _props.trees import make_conifer
-        make_conifer(f"Ext_Sitka_{i}", tx, ty, h, SITKA,
-                     (0.30, 0.24, 0.18, 1.0))
-    # The clearing's west edge: a stand of tall Sitka on the line from the
-    # establish to the interior floors (x 0, stacked to z 18), which
-    # otherwise read as brown slabs over the frame's left (2026-10-21)
-    for i, (tx, ty, th) in enumerate(((27.0, -7.0, 30.0), (23.5, -0.5, 33.0), (25.0, 3.0, 28.0), (20.5, 9.0, 31.0))):
-        make_conifer(f"Ext_Sitka_West_{i}", tx, ty, th, SITKA, (0.30, 0.24, 0.18, 1.0), skirt=0.26)
-    # (Sky wall deleted 2026-08-04 — it stood between the camera
-    # and the new far bands, occluding the horizon it faked.
-    # The sky is the .tscn environment's job.)
+        young.append((13.2 + (i % 2) * 1.6, -3.0 + i * 2.0, 6.0 + (i % 3) * 0.6))
+    for i in range(14):                                # and the south-west arc, where the low sun came through
+        ang = math.radians(196.0 + i * 4.6)
+        young.append((X + (29.0 + (i % 3) * 1.4) * math.cos(ang), 3.0 + (42.5 + (i % 2) * 1.6) * math.sin(ang), 7.0 + (i % 4) * 0.9))
+    for i, (tx, ty, th) in enumerate(young):
+        make_conifer(f"Ext_Forest_Young_{i}", tx, ty, th, (0.17, 0.28, 0.19, 1.0), (0.30, 0.24, 0.18, 1.0), skirt=0.36, z0=-0.9)
+    for i in range(64):
+        ang = 2.0 * math.pi * (i + 0.3) / 64.0
+        bx_, by_ = X + (28.5 + rnd.uniform(0.0, 4.0)) * math.cos(ang), 3.0 + (42.0 + rnd.uniform(0.0, 4.0)) * math.sin(ang)
+        d_road = abs((rb[0] - ra[0]) * (ra[1] - by_) - (ra[0] - bx_) * (rb[1] - ra[1])) / rl
+        if (d_road < 4.0 and by_ < -20.0) or (bx_ < 11.0 and -4.0 < by_ < 16.0):
+            continue
+        r = rnd.uniform(1.2, 2.3)
+        make_blob(f"Ext_Forest_Salal_{i}", (bx_, by_, r * 0.45 - 0.1), r, ((0.20, 0.32, 0.20, 1.0), (0.24, 0.36, 0.22, 1.0), (0.17, 0.27, 0.18, 1.0))[i % 3],
+                  noise=0.3, seed=4950 + i, rings=4, segments=8, squash=0.6)
+    # tall cedars at the clearing's west edge, set where their crowns stay
+    # clear of the interior floors: they hide that block from the clearing
+    for i, (tx, ty, th) in enumerate(((21.4, -3.0, 30.0), (20.8, 3.0, 31.0), (21.8, 9.0, 29.0), (21.0, 14.5, 30.0))):
+        if tx - 0.29 * th >= 11.0:
+            make_conifer(f"Ext_Forest_West_{i}", tx, ty, th, SITKA if i % 2 else (0.14, 0.24, 0.17, 1.0), (0.30, 0.24, 0.18, 1.0), skirt=0.24)
+    # behind the rows, the forest going on: a treeline wall all round but
+    # the sea side, so no slot of sky shows between trunks
+    from _props.detail import make_far_bands
+    make_far_bands("Ext_Forest_Backdrop", (0.12, 0.20, 0.14), [(72.0, 80.0, 24.0, 1.0)], profile="treeline", sides="NSE", cx=X, cy=3.0)
+    # (the interior floors stand at x 0 in this GLB, the portal floor 18 m
+    # wide: no crown may reach them)
+    # (nor crowd build_horizon's bluff cedars at (10.5, 30) and (15, 38))
+    near_bluff = lambda t, r: any(math.hypot(t[0] - bx_, t[1] - by_) < r for bx_, by_ in ((10.5, 30.0), (15.0, 38.0), (3.5, 35.0)))
+    trees = [t for t in trees if not (t[0] - 0.29 * t[2] < 11.0 and -4.0 - 0.29 * t[2] < t[1] < 16.0 + 0.29 * t[2]) and not near_bluff(t, 9.0)]
+    for i, (tx, ty, th) in enumerate(trees):
+        make_conifer(f"Ext_Forest_Tree_{i}", tx, ty, th, SITKA if i % 2 else (0.14, 0.24, 0.17, 1.0), (0.30, 0.24, 0.18, 1.0), skirt=0.24)
+    # ── THE TOWER ──
+    # the stone foundation: a plinth proud of the siding by 25 cm, its courses
+    make_box("Tower_Foundation", (X, TY, (FD - 0.4) / 2.0), (TS + 0.5, TS + 0.5, FD + 0.4), STONE)
+    for zc in (0.20, 0.40):
+        for nm, c, sz in (("S", (X, YS - 0.25 - 0.004, zc), (TS + 0.5, 0.008, 0.025)),
+                          ("W", (XW - 0.25 - 0.004, TY, zc), (0.008, TS + 0.5, 0.025)),
+                          ("E", (XE + 0.25 + 0.004, TY, zc), (0.008, TS + 0.5, 0.025))):
+            make_box(f"Tower_Foundation_Course_{nm}_{int(zc * 100)}", c, sz, MORTAR)
+    for k in range(36):                                # the head joints, staggered course to course
+        u = -H - 0.25 + 0.3 + k * 0.6
+        for row, (z0, z1) in enumerate(((0.0, 0.20), (0.20, 0.40), (0.40, FD))):
+            uu = u + (0.3 if row % 2 else 0.0)
+            if uu > H + 0.2 or abs(uu) < 2.2:
+                continue                               # (behind the steps)
+            make_box(f"Tower_Foundation_Joint_{row}_{k}", (X + uu, YS - 0.25 - 0.004, (z0 + z1) / 2.0), (0.025, 0.008, z1 - z0 - 0.03), MORTAR)
+    # the stone steps up to the doors, the top one the landing
+    for k, (y0, y1) in enumerate(((YS - 2.05, YS - 1.65), (YS - 1.65, YS - 1.25), (YS - 1.25, YS - 0.25))):   # the top one a 1 m landing
+        make_box(f"Tower_Step_{k}", (X, (y0 + y1) / 2.0, (0.2 * (k + 1) - 0.1) / 2.0), (4.4 - 0.3 * k, y1 - y0, 0.2 * (k + 1) + 0.1),
+                 STONE if k % 2 else STONE_DK)
+    # the ground floor: cedar siding, the doorway cut through it (a cedar
+    # vestibule behind, lit, for the open doors)
+    DW, DH = 2.7, 3.1                                   # the doorway: 2.7 x 3.1 m, "scaled up"
+    DX0, DX1 = X - DW / 2.0, X + DW / 2.0
+    VD = 3.2                                            # the vestibule's depth
+    make_box("Tower_Siding_W", ((XW + DX0) / 2.0, YS + VD / 2.0, (FD + G1) / 2.0), (DX0 - XW, VD, G1 - FD), SIDING)
+    make_box("Tower_Siding_E", ((DX1 + XE) / 2.0, YS + VD / 2.0, (FD + G1) / 2.0), (XE - DX1, VD, G1 - FD), SIDING)
+    make_box("Tower_Siding_Head", (X, YS + VD / 2.0, (FD + DH + G1) / 2.0), (DW, VD, G1 - FD - DH), SIDING)
+    make_box("Tower_Siding_Core", (X, (YS + VD + YN) / 2.0, (FD + G1) / 2.0), (TS, YN - YS - VD, G1 - FD), SIDING)
+    VEST = (0.66, 0.50, 0.33, 1.0)                     # polished cedar, lit
+    make_box("Tower_Vestibule_Floor", (X, YS + VD / 2.0, FD + 0.01), (DW, VD, 0.02), (0.60, 0.44, 0.29, 1.0))
+    make_box("Tower_Vestibule_Back", (X, YS + VD - 0.01, FD + DH / 2.0), (DW, 0.02, DH), VEST)
+    # the courses of the siding (S, W and E faces) and the corner boards
+    nz = int((G1 - FD - 0.2) / 0.22)
+    for k in range(nz):
+        zc = FD + 0.22 + k * 0.22
+        segs = [(XW + 0.1, DX0 - 0.2), (DX1 + 0.2, XE - 0.1)] if zc < FD + DH + 0.2 else [(XW + 0.1, XE - 0.1)]
+        for si, (a0, a1) in enumerate(segs):
+            make_box(f"Tower_Siding_Course_S_{k}_{si}", ((a0 + a1) / 2.0, YS - 0.006, zc), (a1 - a0, 0.012, 0.022), SIDING_DK)
+        for nm, xx in (("W", XW - 0.006), ("E", XE + 0.006)):
+            make_box(f"Tower_Siding_Course_{nm}_{k}", (xx, TY, zc), (0.012, TS - 0.2, 0.022), SIDING_DK)
+    for nm, (cx, cy) in (("SW", (XW, YS)), ("SE", (XE, YS)), ("NW", (XW, YN)), ("NE", (XE, YN))):
+        make_box(f"Tower_Corner_Board_{nm}", (cx, cy, (FD + G1) / 2.0), (0.22, 0.22, G1 - FD), SIDING_DK)
+    make_box("Tower_Belt", (X, TY, G1 + 0.12), (TS + 0.24, TS + 0.24, 0.24), CEDAR_DK)
+    # the doorway's casing
+    for nm, c, sz in (("L", (DX0 - 0.10, YS - 0.03, FD + DH / 2.0), (0.20, 0.06, DH)),     # the head caps them (they met coplanar)
+                      ("R", (DX1 + 0.10, YS - 0.03, FD + DH / 2.0), (0.20, 0.06, DH)),
+                      ("Head", (X, YS - 0.035, FD + DH + 0.12), (DW + 0.6, 0.07, 0.24))):
+        make_box(f"Tower_Door_Casing_{nm}", c, sz, SIDING_DK)
+    # THE DOORS: two leaves of vertical planks, three ledges, a brace between
+    # each pair, black iron strap hinges, no handle. Closed in the exterior,
+    # swung in against the vestibule's sides in the _open view.
+    LW, LH = DW / 2.0 - 0.01, DH - 0.02
+
+    def leaf(tag, side, opened):
+        sfx = "__cedar_tower_exterior_open" if opened else "__cedar_tower_exterior"
+        hinge_x = DX0 if side < 0 else DX1
+        if opened:
+            # swung in: its face along the vestibule's side, hinge at the front
+            cx, cy = hinge_x - side * 0.04, YS + 0.06 + LW / 2.0
+            make_box(f"Tower_Door_Leaf_{tag}{sfx}", (cx, cy, FD + LH / 2.0 + 0.01), (0.07, LW, LH), CEDAR)
+            for k, zz in enumerate((0.40, LH / 2.0, LH - 0.40)):
+                make_box(f"Tower_Door_Ledge_{tag}_{k}{sfx}", (cx - side * 0.05, cy, FD + zz), (0.035, LW - 0.10, 0.16), CEDAR_DK)
+            return
+        cx = hinge_x - side * LW / 2.0
+        fy = YS - 0.035                                # the leaf's face, set 3.5 cm proud of the siding
+        make_box(f"Tower_Door_Leaf_{tag}{sfx}", (cx, YS - 0.0, FD + LH / 2.0 + 0.01), (LW, 0.07, LH), CEDAR)
+        for g in range(1, 5):                           # the plank joints
+            make_box(f"Tower_Door_Groove_{tag}_{g}{sfx}", (cx - LW / 2.0 + g * LW / 5.0, fy - 0.002, FD + LH / 2.0 + 0.01), (0.012, 0.004, LH - 0.02), SIDING_DK)
+        lz = (0.40, LH / 2.0, LH - 0.40)
+        for k, zz in enumerate(lz):
+            make_box(f"Tower_Door_Ledge_{tag}_{k}{sfx}", (cx, fy - 0.0175, FD + zz), (LW - 0.10, 0.035, 0.16), CEDAR_DK)
+            # the strap hinge across the ledge from the hinge side, its knuckle at the edge
+            make_box(f"Tower_Door_Strap_{tag}_{k}{sfx}", (hinge_x - side * 0.40, fy - 0.040, FD + zz), (0.78, 0.010, 0.055), IRON)
+            make_cyl(f"Tower_Door_Pintle_{tag}_{k}{sfx}", (hinge_x - side * 0.02, fy - 0.030, FD + zz), 0.022, 0.10, IRON, segments=8)
+        for k in range(2):                              # the braces, rising toward the hinge side
+            z0_, z1_ = FD + lz[k] + 0.10, FD + lz[k + 1] - 0.10
+            run = LW - 0.30
+            ln = math.hypot(run, z1_ - z0_)
+            ang = math.atan2(z1_ - z0_, run)
+            make_rot_box(f"Tower_Door_Brace_{tag}_{k}{sfx}", (cx, fy - 0.0175, (z0_ + z1_) / 2.0), (ln, 0.035, 0.14), CEDAR_DK,
+                         pitch=(ang if side < 0 else -ang))
+    for opened in (False, True):
+        leaf("L", -1, opened)
+        leaf("R", 1, opened)
+    # (pass 366) "A small black panel beside the right-hand door at chest
+    # height — the size of a deck of cards ... A small green LED at the
+    # panel's corner lit up." Chest height over the landing (FD).
+    PX = DX1 + 0.55
+    make_box("Palm_Panel", (PX, YS - 0.012, FD + 1.30), (0.065, 0.024, 0.09), (0.05, 0.05, 0.06, 1.0))
+    make_box("Palm_Panel_LED", (PX + 0.022, YS - 0.026, FD + 1.30 + 0.034), (0.012, 0.006, 0.012), GREEN_LED)
+    # FLOORS 2-6: one smart-glass skin. Its seams — the mullions every 3 m
+    # and the floor lines — are "what gives the rendering away up close".
+    GLASS_DK = (0.16, 0.21, 0.25, 1.0)
+    make_box("Tower_Glass_Core", (X, TY, (G1 + G7) / 2.0), (TS, TS, G7 - G1), GLASS_DK)
+    SKY, SKY_HI = (0.66, 0.72, 0.76, 1.0), (0.74, 0.79, 0.82, 1.0)
+    # S face: the setting behind it — the cedars north of the tower against the sky
+    make_box("Tower_Render_S_Sky", (X, YS - 0.006, (G1 + G7) / 2.0), (TS - 0.02, 0.008, G7 - G1 - 0.02), SKY)
+    make_box("Tower_Render_S_SkyHi", (X, YS - 0.011, G7 - 3.0), (TS - 0.02, 0.004, 5.9), SKY_HI)
+    make_box("Tower_Render_E_Sky", (XE + 0.006, TY, (G1 + G7) / 2.0), (0.008, TS - 0.02, G7 - G1 - 0.02), SKY)
+
+    def render_cedars(face, n, seed):
+        rr = random.Random(seed)
+        us = sorted(rr.uniform(-H + 0.6, H - 0.6) for _ in range(n))
+        for i, u in enumerate(us):
+            top = rr.uniform(G1 + 7.0, G7 - 1.2)
+            w = rr.uniform(2.8, 4.8)
+            off = 0.015 + 0.002 * i
+            h_ = top - G1
+            # a cedar's tiers, not a spike: the outline steps in at each tier
+            right = [(w / 2.0, 0.08 * h_), (w * 0.16, 0.24 * h_), (w * 0.40, 0.27 * h_), (w * 0.12, 0.47 * h_), (w * 0.32, 0.50 * h_),
+                     (w * 0.09, 0.68 * h_), (w * 0.22, 0.71 * h_), (w * 0.05, 0.88 * h_)]
+            poly = [(-w * 0.06, 0.0), (w * 0.06, 0.0)] + right + [(0.0, h_)] + [(-u, v) for (u, v) in reversed(right)]
+            col = ((0.16, 0.27, 0.19, 1.0), (0.12, 0.22, 0.16, 1.0), (0.20, 0.31, 0.22, 1.0))[i % 3]
+            if face == "S":
+                make_prism(f"Tower_Render_S_Cedar_{i}", (X + u, YS - off, G1 + 0.01), poly, 0.004, col, axis="Y")
+            else:
+                make_prism(f"Tower_Render_E_Cedar_{i}", (XE + off, TY - u, G1 + 0.01), poly, 0.004, col, axis="X")
+        floor_col = (0.12, 0.18, 0.13, 1.0)
+        if face == "S":
+            make_box("Tower_Render_S_Understory", (X, YS - 0.052, G1 + 1.6), (TS - 0.02, 0.004, 3.2), floor_col)
+        else:
+            make_box("Tower_Render_E_Understory", (XE + 0.054, TY, G1 + 1.6), (0.004, TS - 0.02, 3.2), floor_col)
+    render_cedars("S", 16, 4761)
+    render_cedars("E", 18, 4762)
+    # W face (seaward): the ocean — the sea to a horizon, the swells closing
+    # toward it, the sky (whose wave period, up close, is not the sea's)
+    HZ = G1 + 8.6
+    make_box("Tower_Render_W_Sea", (XW - 0.006, TY, (G1 + HZ) / 2.0), (0.008, TS - 0.02, HZ - G1), (0.30, 0.42, 0.48, 1.0))
+    make_box("Tower_Render_W_Sky", (XW - 0.006, TY, (HZ + G7) / 2.0), (0.008, TS - 0.02, G7 - HZ - 0.01), SKY)
+    make_box("Tower_Render_W_Horizon", (XW - 0.012, TY, HZ), (0.004, TS - 0.02, 0.10), (0.80, 0.82, 0.80, 1.0))
+    for k, zz in enumerate((G1 + 0.8, G1 + 2.6, G1 + 4.1, G1 + 5.4, G1 + 6.4, G1 + 7.2, G1 + 7.8, G1 + 8.2)):
+        make_box(f"Tower_Render_W_Swell_{k}", (XW - 0.012, TY + rnd.uniform(-1.5, 1.5), zz), (0.004, TS - 1.5 - k * 0.6, 0.06 + 0.10 * (1.0 - k / 8.0)),
+                 (0.78, 0.84, 0.84, 1.0))
+    # the seams: mullions on S, W, E, the floor lines all round
+    for k in range(1, 7):
+        u = -H + k * TS / 7.0
+        for nm, c, sz in (("S", (X + u, YS - 0.06, (G1 + TOP) / 2.0), (0.10, 0.08, TOP - G1)),
+                          ("W", (XW - 0.06, TY + u, (G1 + TOP) / 2.0), (0.08, 0.10, TOP - G1)),
+                          ("E", (XE + 0.06, TY + u, (G1 + TOP) / 2.0), (0.08, 0.10, TOP - G1)),
+                          ("N", (X + u, YN + 0.06, (G1 + TOP) / 2.0), (0.10, 0.08, TOP - G1))):
+            make_box(f"Tower_Mullion_{nm}{k}", c, sz, (0.12, 0.12, 0.13, 1.0))
+    for f in range(1, 6):
+        zz = G1 + f * FLOOR_H
+        for nm, c, sz in (("S", (X, YS - 0.05, zz), (TS + 0.2, 0.10, 0.20)), ("N", (X, YN + 0.05, zz), (TS + 0.2, 0.10, 0.20)),
+                          ("W", (XW - 0.05, TY, zz), (0.10, TS, 0.20)), ("E", (XE + 0.05, TY, zz), (0.10, TS, 0.20))):
+            make_box(f"Tower_FloorLine_{f}_{nm}", c, sz, (0.12, 0.12, 0.13, 1.0))
+    for nm, c, sz in (("S", (X, YS - 0.06, G1 + 0.05), (TS + 0.24, 0.12, 0.10)),):
+        make_box(f"Tower_FloorLine_0_{nm}", c, sz, (0.12, 0.12, 0.13, 1.0))
+    # THE SEVENTH FLOOR: glass-walled, glass-roofed, the garden inside
+    GL = (0.72, 0.80, 0.84, 0.20)                      # the engine's glass pass draws it see-through
+    make_box("Tower_Seventh_Slab", (X, TY, G7 + 0.10), (TS, TS, 0.20), (0.30, 0.26, 0.22, 1.0))
+    for nm, c, sz in (("S", (X, YS + 0.02, G7 + FLOOR_H / 2.0 + 0.1), (TS - 0.04, 0.03, FLOOR_H - 0.2)),
+                      ("N", (X, YN - 0.02, G7 + FLOOR_H / 2.0 + 0.1), (TS - 0.04, 0.03, FLOOR_H - 0.2)),
+                      ("W", (XW + 0.02, TY, G7 + FLOOR_H / 2.0 + 0.1), (0.03, TS - 0.04, FLOOR_H - 0.2)),
+                      ("E", (XE - 0.02, TY, G7 + FLOOR_H / 2.0 + 0.1), (0.03, TS - 0.04, FLOOR_H - 0.2))):
+        make_box(f"Tower_Seventh_Glass_{nm}", c, sz, GL)
+    make_box("Tower_Seventh_Sill", (X, YS - 0.04, G7 + 0.20), (TS + 0.2, 0.12, 0.20), (0.12, 0.12, 0.13, 1.0))
+    make_box("Tower_Roof_Glass", (X, TY, TOP - 0.02), (TS - 0.04, TS - 0.04, 0.03), GL)
+    for k in range(1, 7):                              # the roof's grid
+        u = -H + k * TS / 7.0
+        make_box(f"Tower_Roof_Rib_X{k}", (X + u, TY, TOP + 0.03), (0.10, TS, 0.10), (0.12, 0.12, 0.13, 1.0))
+        make_box(f"Tower_Roof_Rib_Y{k}", (X, TY + u, TOP + 0.03), (TS, 0.10, 0.10), (0.12, 0.12, 0.13, 1.0))
+    for nm, c, sz in (("S", (X, YS, TOP + 0.08), (TS + 0.3, 0.30, 0.22)), ("N", (X, YN, TOP + 0.08), (TS + 0.3, 0.30, 0.22)),
+                      ("W", (XW, TY, TOP + 0.08), (0.30, TS - 0.3, 0.22)), ("E", (XE, TY, TOP + 0.08), (0.30, TS - 0.3, 0.22))):
+        make_box(f"Tower_Roof_Rim_{nm}", c, sz, CEDAR_DK)
+    # "The vegetation moved gently against the glass": a planting strip
+    # right inside the S, W and E glass, leaf to the glass from the sill up,
+    # so from the clearing the garden is IN the top floor's walls
+    for side, (ax, ay, dx_, dy_) in (("S", (X - H + 1.0, YS + 0.85, 1.0, 0.0)), ("W", (XW + 0.85, TY - H + 1.0, 0.0, 1.0)),
+                                     ("E", (XE - 0.85, TY - H + 1.0, 0.0, 1.0))):
+        n_ = 19
+        for j in range(n_):
+            t = j * (TS - 2.0) / (n_ - 1)
+            px, py = ax + dx_ * t, ay + dy_ * t
+            for lvl, (lz, lr) in enumerate(((0.75, 0.55), (1.55, 0.50), (2.35, 0.42))):
+                if lvl == 2 and j % 2:
+                    continue
+                r = lr * rnd.uniform(0.85, 1.15)
+                make_blob(f"Garden_Glass_Leaf_{side}_{j}_{lvl}", (px + rnd.uniform(-0.15, 0.15) * dy_, py + rnd.uniform(-0.15, 0.15) * dx_, G7 + 0.2 + lz), r,
+                          ((0.26, 0.48, 0.28, 1.0), (0.34, 0.54, 0.30, 1.0), (0.22, 0.42, 0.25, 1.0))[(j + lvl) % 3],
+                          noise=0.32, seed=5100 + j * 3 + lvl + {"S": 0, "W": 200, "E": 400}[side], rings=4, segments=7, squash=0.85)
+    # the garden: raised cedar beds, low planting, small trees under the glass
+    gz = G7 + 0.20
+    for i, (bx_, by_, bw, bd) in enumerate(((-6.5, -6.0, 5.0, 1.6), (0.0, -6.5, 4.0, 1.6), (6.5, -6.0, 5.0, 1.6),
+                                            (-6.0, 1.0, 1.6, 6.0), (6.0, 1.0, 1.6, 6.0), (0.0, 6.0, 9.0, 1.6))):
+        make_box(f"Garden_Bed_{i}", (X + bx_, TY + by_, gz + 0.25), (bw, bd, 0.50), CEDAR)
+        for j in range(int(max(bw, bd) / 0.9)):
+            t = (j + 0.5) / int(max(bw, bd) / 0.9)
+            px = X + bx_ + ((t - 0.5) * bw if bw >= bd else 0.0)
+            py = TY + by_ + ((t - 0.5) * bd if bd > bw else 0.0)
+            r = rnd.uniform(0.35, 0.6)
+            make_blob(f"Garden_Plant_{i}_{j}", (px, py, gz + 0.5 + r * 0.45), r,
+                      ((0.26, 0.48, 0.28, 1.0), (0.34, 0.54, 0.30, 1.0), (0.22, 0.40, 0.26, 1.0))[(i + j) % 3],
+                      noise=0.3, seed=4800 + i * 20 + j, rings=4, segments=7, squash=0.8)
+    for i, (tx, ty) in enumerate(((-3.0, -2.0), (3.2, -1.5), (-1.0, 3.0), (7.5, -3.0), (-8.0, 3.5))):
+        th = 2.6 + (i % 3) * 0.35                       # small trees on the slab (make_broadleaf stands on z 0)
+        make_cyl(f"Garden_Tree_{i}_Trunk", (X + tx, TY + ty, gz + th * 0.30), 0.07, th * 0.60, (0.36, 0.28, 0.20, 1.0), segments=7)
+        for li, (lx, ly, lz, lr) in enumerate(((0.0, 0.0, 0.72, 0.62), (0.35, 0.15, 0.62, 0.45), (-0.30, -0.20, 0.64, 0.48), (0.05, -0.30, 0.86, 0.40))):
+            make_blob(f"Garden_Tree_{i}_Crown_{li}", (X + tx + lx, TY + ty + ly, gz + th * lz), th * lr / 1.6,
+                      ((0.28, 0.46, 0.26, 1.0), (0.24, 0.40, 0.23, 1.0))[(i + li) % 2], noise=0.28, seed=4900 + i * 4 + li, rings=4, segments=7, squash=0.85)
+    # ── Tem's wagon, stopped at the edge of the clearing where the road comes in
+    make_car("Tem_Wagon", 34.2, -20.5, 4.6, (0.48, 0.36, 0.26, 1.0), wagon=True, along="Y", z0=0.03)
+    for pfx in ("Ext_Gravel_Rake", "Ext_Rough_Grass", "Ext_Old_Road_Crack", "Ext_Forest_Tree", "Tower_Foundation_Joint",
+                "Tower_Foundation_Course", "Tower_Siding_Course", "Tower_Render_S_Cedar", "Tower_Render_E_Cedar",
+                "Tower_Render_W_Swell", "Tower_Mullion", "Tower_FloorLine", "Tower_Roof_Rib", "Garden_Plant", "Garden_Tree",
+                "Ext_Forest_Young", "Ext_Forest_Salal", "Ext_Forest_West", "Garden_Glass_Leaf"):
+        join_prefix(pfx)
 
 
 def build_drone_dock_2026_08():
@@ -697,7 +988,9 @@ def build_horizon_2026_08():
     from _props.detail import make_far_bands
     # the horizon bands stop at the bluff's edge: N and S bands run from
     # x -33.9 east, the E bands as before; nothing hangs over the sea
-    for nm, col, bands, prof in (("FarTown", (0.30, 0.28, 0.27), [(60.0, 70.0, 7.0, 0.90), (130.0, 110.0, 8.5, 0.72)], "roofline"),
+    # (pass 476) no town: "a small unincorporated headland ... undeveloped land
+    # for forty years" — the near band is the cedar forest too, not rooflines
+    for nm, col, bands, prof in (("FarWoodNear", (0.15, 0.23, 0.16), [(80.0, 90.0, 22.0, 0.80), (150.0, 130.0, 26.0, 0.66)], "treeline"),
                                  ("FarWood", (0.16, 0.24, 0.15), [(250.0, 200.0, 12.0, 0.56), (460.0, 330.0, 15.0, 0.42)], "treeline")):
         # the E bands are measured from the exterior set (x 45), not from the
         # floors: at x 60 the first one stood 13 m off the establish's lens,

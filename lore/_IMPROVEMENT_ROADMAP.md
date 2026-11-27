@@ -3835,6 +3835,58 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-27 · pass 476: the cedar tower's clearing, by the text (cedar_tower exterior draft 3); Tem's wagon is a wagon.**
+"More detail on the backgrounds", continued down ch22: the road ends in
+the tower's clearing. Read by render against vol7_ch22_drive n52-92:
+- THE TOWER was seven stripes of cedar and grey glass — a parking garage.
+  The text: "Square. Seven stories. Smart-glass on the upper six floors.
+  ... The ground floor was cedar siding above a stone foundation, with a
+  single set of double-doors at the center facing the clearing." Now a
+  stone plinth (courses, staggered joints) and three stone steps to a
+  landing; the ground floor in cedar siding with corner boards and a belt;
+  floors 2-6 ONE smart-glass skin whose seams (mullions every 3 m, the
+  floor lines) are "what gives the rendering away", RENDERING ITS SETTING:
+  the seaward (W) face the ocean (sea, horizon, swells closing on it, sky),
+  the S and E faces cedars against sky (tiered silhouettes, an understory
+  band); the seventh floor real glass (the engine's glass pass) and a
+  glass roof on a grid, the garden inside — beds, small trees, and leaf
+  set right inside the glass ("The vegetation moved gently against the
+  glass", ch22_portal n68), which is what reads from the clearing.
+- THE DOORS were two flat slabs. "cedar, hand-built — ... the kind of doors
+  a fishing-cabin had, scaled up ... no handle. No doorknob": two leaves
+  of vertical planks, three ledges and two braces each, black strap
+  hinges with their pintles, a casing; the palm panel and its LED at chest
+  height over the landing. "The double-doors eased open": a new preset,
+  cedar_tower_exterior_open (parts tagged __cedar_tower_exterior_open),
+  the leaves swung in against a lit cedar vestibule; n92 cued
+  [view:cedar_tower_exterior_open][shot:insert doors].
+- THE CLEARING: raked gravel (the tines' rows), a mown edge, rough grass
+  to the trees; Old Yachats Road arriving from the south-west, aged and
+  cracked; the cedar forest rows deep (ring, second and third rows, young
+  trees in the gaps, salal under, a treeline wall behind) — through one
+  ring of trees the low sun showed in slots between every trunk; tall
+  cedars at the west edge hiding the interior floors (they stand at x 0
+  in the same GLB). The town's rooflines beside "a small unincorporated
+  headland ... undeveloped land for forty years" are forest now.
+- FRAMING: the establish from beside the wagon ("The three of them sat in
+  the wagon and looked at the tower"); the tower insert from the south-west
+  pitched for the director's insert lift (it tilts every insert ~7° down
+  to put the subject above the text — the top floor was cut); the doors,
+  the panel and the wagon inserts re-aimed.
+- TEM'S WAGON: "a small Toyota wagon that had been her grandfather's". It
+  was a box van at the tower, a PICKUP on the highway, and a sedan with a
+  trunk at the cabin. make_car(wagon=True): the roof to the tail, a near-
+  upright tailgate, the cargo window and D pillar, roof rails; the cabin's
+  roof rack now spans the rails. The lane gate knows the highway's hood
+  car (tem_wagon) is driving.
+Deck must REBUILD cedar_tower, highway_101, cabin_interior (and any set
+using make_car is unchanged unless it passes wagon=True).
+NEXT (cedar_tower exterior draft 4): the rendering's sky to follow the
+hour; a few slots of sky still show low between trunks at the frame's
+edges; moss on the plinth's north side; the drone that rakes, mid-row;
+the lobby proper beyond the open doors; the panel insert squarer to the
+wall.
+
 **2026-11-27 · pass 475: the hovering sign, the support gate's name loophole (~190 floats), and the coast that was not there (highway_101 draft 3).**
 The user, on the Old Yachats Road frame: "More detail on the backgrounds.
 The sign is hovering over the pole."

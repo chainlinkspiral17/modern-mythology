@@ -1638,9 +1638,11 @@ def build_hero_props_2026_09():
     # (pass 429) glass with alpha: the engine's GlassPass makes it see-through
     make_car("Toyota_Truck", -6.6, -6.2, 4.8, (0.44, 0.48, 0.42, 1.0), pickup=True, along="Y", z0=YARD_Z,
              glass_col=(0.72, 0.78, 0.82, 0.18), open_cab=True)   # (pass 431) an open cab: the crow stands on its dash
-    make_car("Station_Wagon", 3.7, -5.9, 5.0, (0.48, 0.36, 0.26, 1.0), along="Y", z0=YARD_Z)
-    # the wagon's roof rack, on the roofline (z0 + 1.46)
-    make_box("Station_Wagon_Rack", (3.7, -6.2, YARD_Z + 1.48), (1.20, 1.40, 0.04), (0.30, 0.30, 0.32, 1.0))
+    # (pass 476) a WAGON body ("a small Toyota wagon that had been her
+    # grandfather's"): it was a sedan with a trunk
+    make_car("Station_Wagon", 3.7, -5.9, 5.0, (0.48, 0.36, 0.26, 1.0), along="Y", z0=YARD_Z, wagon=True)
+    # the wagon's roof rack across its roof rails (the roof at z0 + 1.48, the rails to 1.51, 1.44 apart)
+    make_box("Station_Wagon_Rack", (3.7, -6.2, YARD_Z + 1.53), (1.50, 1.40, 0.04), (0.30, 0.30, 0.32, 1.0))
 
 
 def build_kerosene_infra_2026_09():

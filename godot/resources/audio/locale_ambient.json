@@ -985,6 +985,10 @@
       "bed": "assets/audio/bgm/vol7_ambient.wav",
       "gain": 0.82
     },
+    "cedar_tower_exterior_open": {
+      "bed": "assets/audio/bgm/vol7_ambient.wav",
+      "gain": 0.82
+    },
     "cedar_tower_lobby": {
       "bed": "assets/audio/bgm/vol7_ambient.wav",
       "gain": 0.82

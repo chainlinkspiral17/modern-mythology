@@ -3410,7 +3410,7 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(1.8, 1.2, -12.0),
 		"camera_rotation": Vector3(0.0, 0.0, 0.0),
 		"fov": 64.0,
-		"strip": ["Tem_Truck", "Truck_Headlights", "Sun", "Night_Sky_Fill", "Chain", "Road_Marker"],
+		"strip": ["Tem_Wagon", "Truck_Headlights", "Sun", "Night_Sky_Fill", "Chain", "Road_Marker"],
 		"env": {"sky_top": Color(0.16, 0.34, 0.78, 1), "sky_horizon": Color(0.70, 0.82, 0.92, 1),
 			"ground_horizon": Color(0.36, 0.40, 0.34, 1), "ground_bottom": Color(0.14, 0.16, 0.14, 1),
 			"ambient_color": Color(0.90, 0.90, 0.86, 1), "ambient_energy": 0.90, "fog_color": Color(0.76, 0.84, 0.90, 1),
@@ -7678,8 +7678,44 @@ const CAMERA_PRESETS := {
 		# tower's middle floors and five spruce 3 m off the lens).
 		# (2026-10-21: the tower is seventy feet on a side now — canon —
 		# so the lens backs off to 37 m and pitches less to keep it whole)
-		"camera_origin": Vector3(47.0, 1.70, 30.0),
-		"camera_rotation": Vector3(0.10, -0.02, 0.0),
+		# (pass 476) from beside the wagon, where the text has them: "Tem
+		# stopped the wagon at the edge of the clearing. The three of them sat
+		# in the wagon and looked at the tower." The wagon lower left at the
+		# road's mouth, the tower whole, the cedars framing it.
+		"camera_origin": Vector3(38.5, 1.65, 28.5),
+		"camera_rotation": Vector3(0.10, -0.12, 0.0),
+		"fov": 60.0,
+		# (2026-11-12, pass 356) "at three forty-three on a September Monday
+		# afternoon" / "the late-afternoon light": the view had no env and
+		# built its sky from the scene's flat brown background — the clearing
+		# and the tower read red-black. A late-afternoon coastal sky.
+		"env": {"sky_top": Color(0.44, 0.55, 0.70, 1), "sky_horizon": Color(0.86, 0.80, 0.68, 1),
+			"ground_horizon": Color(0.40, 0.40, 0.34, 1), "ground_bottom": Color(0.18, 0.18, 0.15, 1),
+			"ambient_color": Color(0.82, 0.78, 0.70, 1), "ambient_energy": 1.05, "fog_color": Color(0.72, 0.72, 0.68, 1)},
+		"suppress_input": true,
+		"far": 600.0,   # (2026-10-31) its far scenery stood past the 200 m default
+	},
+	# (pass 476) "The double-doors eased open ... The three of them stood at the
+	# open doorway for a count." The same clearing, the doors swung in (parts
+	# tagged __cedar_tower_exterior_open); vol7_ch22_drive n92-93.
+	"cedar_tower_exterior_open": {
+		"scene": "res://scenes/locales/cedar_tower.tscn",
+		"requires_glb": "res://assets/3d/locales/cedar_tower.glb",
+		# The gravel clearing: the wagon, the Sitka ring, the tower's
+		# seven cedar-and-glass floors, the seventh running the
+		# garden green behind its smart-glass. The tower (blender
+		# 45, 12; 26 m) is 30 m off, whole, top to doors; the south
+		# arc of the Sitka ring frames the left, the wagon mid-left
+		# (2026-09-30: at 18 m and pitched 17° up the frame was the
+		# tower's middle floors and five spruce 3 m off the lens).
+		# (2026-10-21: the tower is seventy feet on a side now — canon —
+		# so the lens backs off to 37 m and pitches less to keep it whole)
+		# (pass 476) from beside the wagon, where the text has them: "Tem
+		# stopped the wagon at the edge of the clearing. The three of them sat
+		# in the wagon and looked at the tower." The wagon lower left at the
+		# road's mouth, the tower whole, the cedars framing it.
+		"camera_origin": Vector3(38.5, 1.65, 28.5),
+		"camera_rotation": Vector3(0.10, -0.12, 0.0),
 		"fov": 60.0,
 		# (2026-11-12, pass 356) "at three forty-three on a September Monday
 		# afternoon" / "the late-afternoon light": the view had no env and

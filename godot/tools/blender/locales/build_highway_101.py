@@ -197,8 +197,10 @@ def build_headland_and_turn():
     # the guardrail has a gap at the spur
     make_box("Guardrail_End_S", (-5.4, 155.0, 0.72), (0.09, 0.5, 0.34), (0.86, 0.72, 0.20, 1.0))
     make_box("Guardrail_End_N", (-5.4, 165.5, 0.72), (0.09, 0.5, 0.34), (0.86, 0.72, 0.20, 1.0))
-    # Tem's truck northbound for the hood preset
-    make_car("Tem_Truck", 1.8, 8.0, 5.6, (0.44, 0.40, 0.34, 1.0), pickup=True, along="Y", z0=0.02)
+    # Tem's wagon northbound for the hood preset (pass 476: it was a pickup;
+    # "the wagon went around the chain" — her grandfather's small Toyota
+    # wagon, brown as it stands at the cabin)
+    make_car("Tem_Wagon", 1.8, 8.0, 4.6, (0.48, 0.36, 0.26, 1.0), wagon=True, along="Y", z0=0.02)
     make_cyl("Mile_Marker", (4.6, 120.0, 0.9), 0.04, 1.8, (0.80, 0.84, 0.62, 1.0), segments=6)
 
 

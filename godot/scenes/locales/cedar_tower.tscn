@@ -442,8 +442,8 @@ metadata/fov = 42.0
 
 ; insert: the seventh floor's smart-glass running the garden
 [node name="shot_insert_tower" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(45.000, 1.700, 28.000)
-rotation = Vector3(0.2203, 0.0000, 0.0)
+position = Vector3(27.000, 1.600, 18.000)
+rotation = Vector3(0.4800, -0.4636, 0.0)
 metadata/fov = 50.0
 
 ; insert: the tower's doors from the clearing
@@ -451,8 +451,15 @@ metadata/fov = 50.0
 ; lobby": the tower's doors from the gravel (it stood at the lobby interior's
 ; S wall, which the exterior never shows)
 [node name="shot_insert_doors__cedar_tower_exterior" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(45.300, 1.500, -3.000)
-rotation = Vector3(-0.0925, 0.0697, 0.0)
+position = Vector3(45.200, 1.700, 2.500)
+rotation = Vector3(0.0700, 0.0000, 0.0)
+metadata/fov = 38.0
+
+; (pass 476) "The three of them stood at the open doorway for a count" (ch22_drive n92):
+; the doors swung in on the lit vestibule, from the gravel
+[node name="shot_insert_doors__cedar_tower_exterior_open" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(45.200, 1.700, 2.500)
+rotation = Vector3(0.0700, 0.0000, 0.0)
 metadata/fov = 38.0
 
 ; practicals authored by practical_author.py (2026-09-11):
@@ -540,15 +547,15 @@ omni_range = 5.00
 ; (pass 366) "The panel registered something. A small green LED at the panel's corner lit up":
 ; the black panel beside the right-hand door, its LED lit, the door's edge at frame left
 [node name="shot_insert_panel__cedar_tower_exterior" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(45.750, 1.420, -6.450)
-rotation = Vector3(-0.1235, -0.4266, 0.0)
-metadata/fov = 30.0
+position = Vector3(46.300, 1.950, -5.900)
+rotation = Vector3(-0.0600, -0.3950, 0.0)
+metadata/fov = 34.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_wagon__cedar_tower_exterior" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(35.000, 1.500, 2.000)
-rotation = Vector3(-0.0829, -0.7266, 0.0)
-metadata/fov = 40.0
+position = Vector3(30.500, 1.450, 27.000)
+rotation = Vector3(-0.0870, -0.5170, 0.0)
+metadata/fov = 45.0
 
 ; closeup (pass 292): Kai out of the wagon, the tower's face behind him, near the preset camera (vol7 ch22 drive)
 [node name="shot_closeup_kai__cedar_tower_exterior" type="Marker3D" parent="." groups=["vn_shot"]]

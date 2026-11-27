@@ -128,7 +128,7 @@ def _audit_body(prefix, P, S, nose, tail, hw, z0, cab_u0, cab_u1, roof, deck, op
 
 
 def make_car(prefix, cx, cy, length, col, pickup=False, hatch=False, light_bar=False, along="X", z0=0.0, glass_col=None,
-             open_cab=False):
+             open_cab=False, wagon=False):
     glass = glass_col or GLASS_DK
     P, S, side_axis, wheel_axis = _frame(cx, cy, along)
     L = length
@@ -152,6 +152,13 @@ def make_car(prefix, cx, cy, length, col, pickup=False, hatch=False, light_bar=F
         prof = [(tail + 0.10, 0.42), (nose - 0.05, 0.42), (nose, 0.60), (nose - 0.10, 0.92),
                 (nose - 1.10, 0.96), (nose - 1.85, 1.44), (nose - 2.10, 1.48), (tail + 0.90, 1.44),
                 (tail + 0.20, 1.10), (tail + 0.10, 0.96)]
+    elif wagon:
+        # (pass 476) a STATION WAGON: the roof runs to the tail, the tailgate
+        # nearly upright ("a small Toyota wagon that had been her
+        # grandfather's" — Tem's; every "wagon" was a sedan with a trunk)
+        prof = [(tail + 0.10, 0.42), (nose - 0.05, 0.42), (nose, 0.60), (nose - 0.10, 0.92),
+                (nose - 1.10, 0.96), (nose - 1.70, 1.42), (nose - 1.95, 1.48), (tail + 0.34, 1.48),
+                (tail + 0.18, 1.42), (tail + 0.10, 0.98)]
     else:
         prof = [(tail + 0.10, 0.42), (nose - 0.05, 0.42), (nose, 0.60), (nose - 0.10, 0.92),
                 (nose - 1.10, 0.96), (nose - 1.70, 1.42), (nose - 1.95, 1.46), (tail + 1.35, 1.46),
@@ -177,6 +184,9 @@ def make_car(prefix, cx, cy, length, col, pickup=False, hatch=False, light_bar=F
     elif hatch:
         ws_u, ws_z, ws_h = nose - 1.48, z0 + 1.20, 0.48
         cab_u0, cab_u1 = tail + 0.95, nose - 1.10
+    elif wagon:
+        ws_u, ws_z, ws_h = nose - 1.40, z0 + 1.19, 0.46
+        cab_u0, cab_u1 = tail + 0.45, nose - 1.10
     else:
         ws_u, ws_z, ws_h = nose - 1.40, z0 + 1.19, 0.46
         cab_u0, cab_u1 = tail + 1.30, nose - 1.10
@@ -184,9 +194,10 @@ def make_car(prefix, cx, cy, length, col, pickup=False, hatch=False, light_bar=F
     # pane's top edge so the panes touch it. Pillar foot to pillar foot (the
     # first cut) put a brick's face in front of the raked windshield — the cab's
     # own window insert read as hidden behind the car.
-    gh0, gh1 = (nose - 3.44, nose - 2.19) if pickup else ((tail + 0.84, nose - 1.79) if hatch else (tail + 1.09, nose - 1.64))
+    gh0, gh1 = (nose - 3.44, nose - 2.19) if pickup else ((tail + 0.84, nose - 1.79) if hatch else
+                                                          ((tail + 0.14, nose - 1.64) if wagon else (tail + 1.09, nose - 1.64)))
     _audit_body(prefix, P, S, nose, tail, hw, z0, gh0, gh1,
-                1.70 if pickup else (1.48 if hatch else 1.46),
+                1.70 if pickup else (1.48 if (hatch or wagon) else 1.46),
                 (1.10 if open_cab else 1.04) if pickup else 1.00,     # an open cab's body ends at its beltline
                 open_cab=bool(pickup and open_cab))
     # (2026-11-01) the glass LIES ON the body's rake: a vertical plate half
@@ -209,6 +220,16 @@ def make_car(prefix, cx, cy, length, col, pickup=False, hatch=False, light_bar=F
     elif hatch:
         raked(f"{prefix}_Windshield", (nose - 1.10, 0.96), (nose - 1.85, 1.44), 2 * hw - 0.40)
         raked(f"{prefix}_Rear_Glass", (tail + 0.20, 1.10), (tail + 0.90, 1.44), 2 * hw - 0.44)
+    elif wagon:
+        raked(f"{prefix}_Windshield", (nose - 1.10, 0.96), (nose - 1.70, 1.42), 2 * hw - 0.40)
+        raked(f"{prefix}_Rear_Glass", (tail + 0.11, 1.02), (tail + 0.18, 1.42), 2 * hw - 0.44)
+        # the cargo bay's own window behind the rear door, the D pillar between,
+        # and the roof rails a wagon carries
+        for sgn, nm in ((1, "L"), (-1, "R")):
+            side = hw - 0.02
+            make_box(f"{prefix}_Pillar_C_{nm}", P(tail + 1.25, sgn * (side + 0.006), z0 + 1.25), S(0.08, 0.012, 0.36), trim)
+            make_box(f"{prefix}_Roof_Rail_{nm}", P((tail + 0.55 + nose - 2.05) / 2.0, sgn * (hw - 0.16), z0 + 1.495),
+                     S(nose - 2.05 - tail - 0.55, 0.04, 0.03), trim)
     else:
         raked(f"{prefix}_Windshield", (nose - 1.10, 0.96), (nose - 1.70, 1.42), 2 * hw - 0.40)
         raked(f"{prefix}_Rear_Glass", (tail + 0.55, 1.02), (tail + 1.15, 1.42), 2 * hw - 0.44)

@@ -84,6 +84,30 @@ henderson) got there by accumulating exactly these layers.
 
 ## Recent lessons
 
+### 2026-11-27 · a forest is rows deep; a facade the text describes is built face by face (pass 476)
+
+**What happened.** The cedar tower's clearing: one ring of tall cedars let
+the low sun through between every trunk — bright slots round the frame
+that read as windows; the tower's seven alternating cedar/glass bands read
+as a parking garage although the text says cedar on stone below and
+smart-glass rendering the setting above; the top-floor close-up lost its
+top floor to the director's insert lift.
+
+**The rules.**
+- A forest edge needs DEPTH: two or three rows, young trees in the gaps
+  (their crowns start low), undergrowth blobs, and a treeline wall behind.
+  A single ring of mature conifers is a row of poles under a canopy.
+- Build a described building face by face from its sentence: what the
+  ground floor is made of, what each upper face shows, what the doors are
+  made of and how they hang. A "smart-glass face rendering its setting"
+  is drawn as the image on the glass with the seams over it.
+- See-through needs something to see: plants set back in a room under a
+  glass wall are invisible from the ground; set the leaf against the glass
+  where the text puts it.
+- Inserts are tilted ~7° (fov-dependent) by the director so the subject
+  sits above the text box: pitch a tall subject's marker up by that much,
+  and render it in game before calling it framed.
+
 ### 2026-11-27 · a coast road must show its coast: check the eye line, not the plan (pass 475)
 
 **What happened.** "More detail on the backgrounds" on highway_101. The

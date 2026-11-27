@@ -103,7 +103,7 @@ ROADISH = re.compile(r"(road|asphalt|street|lane|highway|hwy|drive$|_drive_|blvd
 PARKINGISH = re.compile(r"(lot|parking|apron|driveway|garage|frontage|carport|pad|bay|stall|pump)", re.I)
 # Cars that are DRIVING (highway traffic, the delivery truck in its lane,
 # Tem's northbound truck under the hood preset) — not parked anywhere.
-MOVING = re.compile(r"(hwy9_car|traffic|deliverytruck|tem_truck|_moving|northbound|southbound)", re.I)
+MOVING = re.compile(r"(hwy9_car|traffic|deliverytruck|tem_truck|tem_wagon|_moving|northbound|southbound)", re.I)   # (pass 476) highway_101's hood car is Tem's wagon now
 # Designed tucks between parts of one assembly: a bullnose into a
 # counter top, liquid in a pot, a book in a shelf, a bulb in a shade.
 TUCK = re.compile(r"^(bullnose|liquid|fill|water|coffee|foam|sixpack|interior|stock|marker|riser|laundry|shade|bulb|plate|book|manga|cushion|label|decal|band|stripe|trim|edge|lip|rim|cap|glass|screen)$", re.I)
