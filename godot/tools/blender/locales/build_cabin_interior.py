@@ -785,7 +785,17 @@ def build_east_room():
         make_cyl("Desk_Pen", (1.90, 0.44, 0.754), 0.004, 0.14, (0.16, 0.16, 0.18, 1.0), axis='X', segments=5)
         # The cedar shelf above the desk — player, books, notebooks
         make_box("Cedar_Shelf", (1.75, 0.16, 1.55), (1.10, 0.24, 0.04), (0.56, 0.40, 0.24, 1.0))
-        make_box("Shelf_Player", (1.45, 0.16, 1.63), (0.24, 0.16, 0.10), (0.20, 0.20, 0.22, 1.0))
+        make_box("Shelf_Player_Body", (1.45, 0.16, 1.63), (0.24, 0.16, 0.10), (0.20, 0.20, 0.22, 1.0))
+        # (pass 474) "The player sat on the shelf in its case ... She took the
+        # player down" (epilogue_morning n15-17): a black box. Its face: the
+        # disc slot, the small display, the three buttons, the power light.
+        make_box("Shelf_Player_Slot", (1.45, 0.2405, 1.655), (0.16, 0.002, 0.006), (0.06, 0.06, 0.07, 1.0))
+        make_box("Shelf_Player_Display", (1.39, 0.2405, 1.615), (0.07, 0.002, 0.025), (0.22, 0.34, 0.30, 1.0))
+        for bi_, bx_ in enumerate((1.48, 1.51, 1.54)):
+            make_cyl(f"Shelf_Player_Button_{bi_}", (bx_, 0.2425, 1.612), 0.007, 0.005, (0.66, 0.66, 0.68, 1.0), axis='Y', segments=8)
+        make_box("Shelf_Player_Power_Light", (1.555, 0.2405, 1.648), (0.006, 0.002, 0.006), (0.30, 0.90, 0.40, 1.0))
+        from _props.geometry import join_prefix as _jp_player
+        _jp_player("Shelf_Player")     # one mesh named Shelf_Player, as before (perf_gate)
         for bi in range(4):
             make_box(f"Shelf_Book_{bi}", (1.80 + bi * 0.10, 0.16, 1.66),
                      (0.07, 0.16, 0.20), [(0.48, 0.20, 0.16, 1.0), (0.22, 0.30, 0.24, 1.0),
@@ -1590,6 +1600,10 @@ def build_hero_props_2026_09():
             make_box(f"Headset_Strap_{nm}__cabin_interior_day_headset", (0.50 + sgn * 0.0975, 3.17, T + 0.045), (0.015, 0.14, 0.03), (0.20, 0.20, 0.22, 1.0))
         make_box("Headset_Strap_Back__cabin_interior_day_headset", (0.50, 3.2475, T + 0.045), (0.21, 0.015, 0.03), (0.20, 0.20, 0.22, 1.0))
         make_box("Headset_Cable__cabin_interior_day_headset", (0.50, 3.34, T + 0.003), (0.008, 0.17, 0.006), (0.12, 0.12, 0.13, 1.0))
+        # (pass 474) "The headset's small green LED at the temple lit up"
+        # (epilogue_morning n19): the light at the right temple, where the
+        # strap meets the visor
+        make_box("Headset_LED__cabin_interior_day_headset", (0.50 + 0.1055, 3.112, T + 0.052), (0.004, 0.014, 0.012), (0.36, 1.0, 0.46, 1.0))
         # ── THE EGGS · skillet on the folded towel, table north-west ──
         make_box("Trivet_Towel__cabin_interior_day_breakfast", (-0.45, 3.40, T + 0.004), (0.30, 0.30, 0.008), (0.70, 0.62, 0.50, 1.0))
         make_cyl("Egg_Skillet__cabin_interior_day_breakfast", (-0.45, 3.40, T + 0.0255), 0.140, 0.035, (0.16, 0.16, 0.17, 1.0), segments=12)

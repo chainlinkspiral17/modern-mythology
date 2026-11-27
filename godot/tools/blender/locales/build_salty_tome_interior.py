@@ -273,7 +273,7 @@ def build_back_annex_2026_08():
     make_wall("Annex_Wall_N_E", (2.9, AN_Y1, 0), length=2.6, height=CEIL, axis='X',
               palette=PAL_WALL, baseboard_face_sign=-1)
     make_box("Annex_AboveBackDoor", (-3.3, AN_Y1, CEIL-0.30), (1.0, 0.20, 0.60), PAL_WALL["wall"])
-    make_window("Kitchenette_Window", (-1.6, AN_Y1-0.10, 1.55), width=1.10, height=1.15)
+    make_window("Annex_Window", (-1.6, AN_Y1-0.10, 1.55), width=1.10, height=1.15)
     make_box("Annex_AboveKWin", (-1.6, AN_Y1, CEIL-0.25), (1.2, 0.20, 0.50), PAL_WALL["wall"])
     make_ceiling("Annex_Ceil", (0.0, (AN_Y0+AN_Y1)/2.0, CEIL), size_x=ROOM_W+0.4, size_y=AN_Y1-AN_Y0)
     # The BACK DOOR (Lena's morning key) — mostly closed leaf.
@@ -303,8 +303,8 @@ def build_back_annex_2026_08():
               seat_h=0.44, back_h=0.86)
     # KITCHENETTE along the annex W + N walls.
     # out of the door's swing (2026-09-24, the user: doorways obstructed)
-    make_box("Kitch_Counter", (-3.55, 6.960, 0.45), (0.60, 1.8, 0.90), COL_WOOD)
-    make_box("Kitch_Counter_Top", (-3.55, 6.960, 0.92), (0.66, 1.9, 0.05), (0.72, 0.68, 0.60, 1.0))
+    make_box("Kitchenette_Counter", (-3.55, 6.960, 0.45), (0.60, 1.8, 0.90), COL_WOOD)
+    make_box("Kitchenette_Counter_Top", (-3.55, 6.960, 0.92), (0.66, 1.9, 0.05), (0.72, 0.68, 0.60, 1.0))
     make_box("Kitch_Sink", (-3.55, 6.560, 0.9315), (0.40, 0.34, 0.03), (0.60, 0.62, 0.64, 1.0))   # (pass 386) 1.5 mm proud of the counter top
     make_cyl("Kitch_Faucet", (-3.72, 6.560, 1.05), 0.015, 0.20, (0.62, 0.64, 0.66, 1.0), segments=6)
     # Petra's KETTLE on a two-ring hob.

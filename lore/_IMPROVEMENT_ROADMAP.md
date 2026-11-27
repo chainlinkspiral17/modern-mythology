@@ -3835,6 +3835,42 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-27 · pass 474: the last 21 vol 7 one-line pairs (every one-line close-up pair in vols 1–7 has now been read once).**
+23 rows; two dropped from the line alone ("The word landed the way a word
+lands ...", cue BRASS_BELL; "The mother smiled in the way Smolvud mothers
+smiled at the women behind counters", cue COUNTERS — figures of speech).
+21 frames read: 16 pass.
+Fixed at the object:
+- THE FOUNDATION BUILDING ("The foundation building in Eugene rendered. A
+  four-story office building on the corner of 11th and Olive. Brick, with
+  cedar trim"): the Estuary 7 map had its glyph cube and nothing else. The
+  build renders beside its glyph, as the cove does: four brick storeys, a
+  cedar band at each floor line and a cedar cap, rows of windows, the
+  entrance, 11th and Olive meeting at its corner.
+- THE DRONE PALETTE ("The drone-palette docked at the right of the view"):
+  plain squares on a dark panel, behind a cedar crown. Each icon a small
+  quadcopter; framed from the palette's open side.
+- THE KITCHENETTE ("Lena went to the small kitchenette in the back of the
+  store and put Petra's kettle on"): the frame found the annex window —
+  the window was named Kitchenette_Window and the counter Kitch_Counter,
+  so the cue's word named the window. Renamed (Annex_Window,
+  Kitchenette_Counter); the frame takes in the counter, sink, mugs, hob and
+  kettle.
+- THE PLAYER ("She took the player down"): a black box. The disc slot, the
+  display, three buttons, the power light (joined to one mesh).
+- THE HEADSET'S LED ("The headset's small green LED at the temple lit
+  up"): there was no LED. A green light at the right temple.
+The cabin interior is now at 10,094 of its 10,103 draw-call cap: the next
+thing added there must join something (draft 2: join the cabin's smaller
+dressings, or re-baseline with the user's say).
+Draft 1 shipped for this band. DRAFT 2 TARGETS: the Hemlock truck frame
+from Lena's window is seen from straight above; the tobacco tin at the
+jetty is a red box (a hinged lid, the tobacco); the crow at the overlook
+lands on the rail, the line says a fence post.
+THE ONE-LINE CLOSE-UPS ARE ALL READ ONCE (passes 454–474). NEXT: the
+two-line and longer close-up pairs, by volume, the same way — or a draft-2
+round on the targets these passes recorded, by room.
+
 **2026-11-27 · pass 473: vol 7 one-line pairs 89–132.**
 44 rows; three were dropped from the line alone before the render ("This
 was — Tem registered as she drove north ... — what she knew about the

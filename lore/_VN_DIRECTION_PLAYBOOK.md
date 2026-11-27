@@ -339,6 +339,23 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-11-27 · what vol 7's close-ups taught (passes 471-474)
+- A cue's WORD is matched against part NAMES: name the parts by what the
+  prose calls them, and name the neighbours so they do not steal the word
+  (the annex window was "Kitchenette_Window" and the counter
+  "Kitch_Counter", so "kitchenette" framed the window; the shut drawers
+  were "Dresser_Drawer_*" beside the open one the line meant).
+- When a line says a thing is somewhere and the builder never put it
+  there, build it — and check the line's numbers first ("Two other
+  vehicles" meant his own truck was the third; the lot had only two).
+- In a map-like set (the Estuary 7 template) a build the line says
+  "rendered" must render: a glyph cube and a label are not a cove or an
+  office building.
+- The director lifts an insert's aim point toward the top of the frame;
+  a tall subject above its aim gets cut. Put the aim on the part the line
+  quotes (the sign's words, the stencil's top line) or pull the camera
+  back until the whole subject fits at the gate's aim.
+
 ### 2026-11-27 · words a line quotes, and scenes nobody plays (pass 471)
 - When a line QUOTES the words on a thing ("The door said, in stenciled
   letters: NO ENTRY ..."), the close-up must let the player read them. Bars

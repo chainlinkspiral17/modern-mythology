@@ -245,7 +245,15 @@ def build_palettes_and_clocks():
         for gi in range(4):
             gy = y + 0.62 - gi * 0.42
             if glyph == "drone":
-                make_box(f"{name}_Glyph_{gi}", (px, gy, 0.335), (0.12, 0.12, 0.03), PALETTE_GREY if gi else DRONE)
+                # (pass 474) "The drone-palette docked at the right of the view"
+                # (epilogue_gallery n8): its icons were plain squares. Each a
+                # small quadcopter — the body, four arms, four rotor discs.
+                gcol = PALETTE_GREY if gi else DRONE
+                make_box(f"{name}_Glyph_{gi}", (px, gy, 0.333), (0.06, 0.06, 0.026), gcol)
+                make_box(f"{name}_Glyph_{gi}_Arm_X", (px, gy, 0.336), (0.13, 0.012, 0.008), gcol)
+                make_box(f"{name}_Glyph_{gi}_Arm_Y", (px, gy, 0.336), (0.012, 0.13, 0.008), gcol)
+                for ri, (rdx, rdy) in enumerate(((-0.065, 0.0), (0.065, 0.0), (0.0, -0.065), (0.0, 0.065))):
+                    make_cyl(f"{name}_Glyph_{gi}_Rotor_{ri}", (px + rdx, gy + rdy, 0.343), 0.032, 0.006, gcol, segments=10)
             elif glyph == "crew":
                 make_cyl(f"{name}_Glyph_{gi}", (px, gy, 0.35), 0.03, 0.06, PALETTE_GREY, segments=8)
                 make_cyl(f"{name}_Glyph_{gi}_Head", (px, gy, 0.395), 0.02, 0.03, PALETTE_GREY, segments=8)
@@ -339,6 +347,29 @@ def build_cove_2026_11():
     make_box("Cove_Salt_Shed_Door", (sx0 + 0.010, sy0 - 0.0280, Z_TOP + 0.0045 + 0.016), (0.018, 0.002, 0.030), (0.36, 0.28, 0.20, 1.0))
 
 
+def build_foundation_2026_11():
+    """(pass 474) "The foundation building in Eugene rendered. A four-story
+    office building on the corner of 11th and Olive. Brick, with cedar trim."
+    (epilogue_gallery n71). It was the glyph cube on the east edge and its
+    label; the build renders beside its glyph, the way the cove does: four
+    brick storeys, a cedar band at each floor line, the windows in rows,
+    the corner entrance, the two streets meeting at its corner."""
+    fx, fy = 5.60, -1.30
+    brick, cedar = (0.56, 0.28, 0.22, 1.0), (0.70, 0.50, 0.30, 1.0)
+    make_box("Foundation_Street_11th", (fx, fy - 0.15, Z_DECAL + 0.0006), (0.50, 0.06, 0.002), ROAD)
+    make_box("Foundation_Street_Olive", (fx - 0.17, fy + 0.05, Z_DECAL + 0.0007), (0.06, 0.46, 0.002), ROAD)
+    make_box("Foundation_Building", (fx + 0.03, fy + 0.04, Z_TOP + 0.10), (0.20, 0.16, 0.20), brick)
+    make_box("Foundation_Roof_Cap", (fx + 0.03, fy + 0.04, Z_TOP + 0.2035), (0.21, 0.17, 0.007), cedar)
+    for fl in range(1, 4):
+        make_box(f"Foundation_Cedar_Band_{fl}", (fx + 0.03, fy + 0.04, Z_TOP + 0.05 * fl), (0.204, 0.164, 0.006), cedar)
+    for fl in range(4):
+        for wi in range(4):
+            make_box(f"Foundation_Window_S_{fl}_{wi}", (fx - 0.045 + wi * 0.05, fy + 0.04 - 0.081, Z_TOP + 0.025 + 0.05 * fl), (0.026, 0.003, 0.024), (0.16, 0.20, 0.26, 1.0))
+            if wi < 3:
+                make_box(f"Foundation_Window_W_{fl}_{wi}", (fx + 0.03 - 0.101, fy + 0.04 - 0.045 + wi * 0.045, Z_TOP + 0.025 + 0.05 * fl), (0.003, 0.024, 0.024), (0.16, 0.20, 0.26, 1.0))
+    make_box("Foundation_Entrance", (fx - 0.06, fy + 0.04 - 0.0815, Z_TOP + 0.016), (0.03, 0.004, 0.032), (0.30, 0.22, 0.16, 1.0))
+
+
 def main():
     clear_scene()
     build_plinth()
@@ -351,6 +382,7 @@ def main():
     build_palettes_and_clocks()
     build_gallery_2026_09()
     build_cove_2026_11()
+    build_foundation_2026_11()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/estuary_7_template.glb"))
     print(f"\n[build_estuary_7_template] exporting to {out}")
