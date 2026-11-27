@@ -3835,6 +3835,56 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-27 · pass 472: vol 7 one-line pairs 45–88.**
+44 frames rendered and read (plus pass 471's crow frame again): 34 pass.
+DROPPED (two, the cabin's gray-before-dawn): "She put on the wool SWEATER"
+(a red blur — and the line is her dressing) and "The rain on the
+WINDSHIELDS was steady" (three vehicles in a dark blue wash).
+Fixed at the object:
+- HIS OWN TRUCK AT CAPE PERPETUA. "He pulled into the lot ... Two other
+  vehicles — a foundation maintenance truck ... and an older Subaru": the
+  lot held only the two others, so "Finn got in the truck" cut to the
+  maintenance truck's white tailgate. His sun-faded red pickup now parks
+  between them; the frame finds it.
+- THE CROW ON THE RAIL ("Finn did not move. The crow on the rail did not
+  move"): the crow sat just above the frame. The frame runs along the
+  rail to the crow on it.
+- THE UNUSED LAMP ("The lamp had not been used since he had been coming
+  over"): the close-up went to the floor lamp she reads by. It goes to the
+  lamp on the table outside the bedroom — the one the builder had made for
+  this line. And EVERY make_lamp shade (34 builders) was lathed upside
+  down — 11 cm at the bottom, 16 cm at the top — so every table and floor
+  lamp in the game stood like a goblet. The shade flares down now.
+- THE COFFEE ("He drank from the coffee"): a white cylinder. The handle
+  and the coffee in it.
+- THE BRICK WALL OF THE LAUNDROMAT: a brown slab behind the dumpster.
+  Mortar courses and staggered head joints on the face the alley looks at
+  (one joined mesh).
+- THE DRAWER ("The thermal had been at the bottom of his drawer"): three
+  flat slabs on a box, read from 70 cm — through the post-process a
+  patchwork. Pulls on the drawers, the bottom one pulled out with the
+  folded grey waffle thermal in it, framed from beside the dresser.
+- THE TAPED NOTE ("Family thing. Back Friday. — Kai." above the OPEN sign):
+  a blank card above a blank card. The note's words in his hand and OPEN
+  on the sign's inside face, as Label3Ds kept only in the note's presets.
+- THE PRESS stood in the row of bowls (a glass column in front of the four
+  crows) and its plunger had no view tag — wherever the press was hidden
+  the plunger hung over the table on nothing. Both at the table's west
+  edge now, tagged together; the two coffee frames re-aimed.
+ART TO MAKE (for Andy, in Hero Studio — no roster entry yet; next pass
+writes it): Hans's WEDDING PHOTOGRAPH on the back-kitchen wall ("the same
+brown eyes as Hans's wedding-photo on the wall behind her", ch15_loft
+n116) is a blank print in its frame.
+Draft 1 shipped for this band. DRAFT 2 TARGETS: the cabin's dawn rig
+(ch17_dawn) is too dark for close-ups — the loft ladder only just reads;
+the wedding photograph's roster entry; Lena's sink frame (a faucet over a
+dark counter) is marginal; the Board Lords deck wall reads dark; a gate
+for walls through gable roofs (the one-off sweep was too slow to finish);
+marker_reaim.py --tight re-aims markers the aim gate passes, and its
+re-aim of the bakery's table frame FAILS the gate (restored by hand twice
+— the tool and the gate disagree on "tight").
+NEXT: vol 7 one-line pairs 89–155 (67 left).
+
 **2026-11-27 · pass 471: vol 7 one-line pairs 1–44.**
 41 frames rendered and read (three of the 44 rows were lines in scenes the
 game never loads — see below): 30 pass.

@@ -129,6 +129,16 @@ def build_lot():
     make_box("Old_Subaru_Cabin", (2.6, -5.9, 1.18), (1.7, 2.6, 0.50), (0.42, 0.44, 0.40, 1.0))   # on the body (2026-09-24: 2 cm over it)
     for wi, (wx, wy) in enumerate(((1.675, -7.3), (3.525, -7.3), (1.675, -4.7), (3.525, -4.7))):
         make_cyl(f"Old_Subaru_Wheel_{wi}", (wx, wy, 0.32), 0.32, 0.25, (0.14, 0.14, 0.15, 1.0), axis="X", segments=10)
+    # (pass 472) HIS OWN TRUCK. "He pulled into the lot at Cape Perpetua at
+    # eight-eighteen. Two other vehicles — a foundation maintenance truck ...
+    # and an older Subaru" (vol7 ch12_morning n123): two OTHER vehicles; the
+    # lot held only those two, so "Finn got in the truck" (n160) cut to the
+    # maintenance truck's white tailgate. His truck — the older Toyota pickup
+    # in cabin_road's sun-faded red — parked between them, nose to the
+    # trailhead. Named Pickup_Truck: a part named for Finn is judged as his
+    # portrait's subject (marker_aim).
+    from _props.vehicles import make_car
+    make_car("Pickup_Truck", 0.0, -6.2, 4.40, (0.50, 0.24, 0.20, 1.0), pickup=True, along="Y", z0=0.01)
     # the trailhead post with its three-branch board
     make_box("Trailhead_Post", (0.0, -1.6, 0.6), (0.12, 0.12, 1.2), WOOD_WET)
     make_box("Trailhead_Board", (0.0, -1.53, 1.0), (0.50, 0.03, 0.30), (0.42, 0.34, 0.24, 1.0))

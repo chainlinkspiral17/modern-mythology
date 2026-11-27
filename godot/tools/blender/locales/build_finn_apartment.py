@@ -254,6 +254,12 @@ def build_kitchen_table():
     make_cyl("KT_Chair_N_Perch_Rail", (tx, ty + 0.72 + 0.17, 0.93), 0.022, 0.40, (0.36, 0.26, 0.17, 1.0), segments=6, axis='X')
     make_crow("Kitchen_Crow", tx, ty + 0.72 + 0.17, 0.952, facing=1.0)
     make_lathe("Table_Mug", (tx + 0.42, ty - 0.20, T), [(0.0, 0.0), (0.042, 0.0), (0.044, 0.09), (0.0, 0.09)], (0.86, 0.84, 0.78, 1.0), segments=10)
+    # (pass 472) "He drank from the coffee" (vol7 ch12_morning n44): the mug
+    # was a white cylinder — a stranger saw a candle. The handle, the coffee.
+    mx_, my_ = tx + 0.42, ty - 0.20
+    make_tube("Table_Mug_Handle", [(mx_ + 0.043, my_, T + 0.072), (mx_ + 0.066, my_, T + 0.068), (mx_ + 0.072, my_, T + 0.046),
+                                   (mx_ + 0.066, my_, T + 0.024), (mx_ + 0.042, my_, T + 0.020)], 0.0065, (0.86, 0.84, 0.78, 1.0), segments=6)
+    make_cyl("Table_Mug_Coffee", (mx_, my_, T + 0.0905), 0.040, 0.001, (0.20, 0.12, 0.07, 1.0), segments=10)
 
 
 def build_living():

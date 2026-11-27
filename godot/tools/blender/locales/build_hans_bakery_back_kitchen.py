@@ -383,8 +383,14 @@ def build_communal_table():
     # for the table", "set the basket in the center of the table", the plum
     # preserves, the butter) on hans_bakery_breakfast; the press on Sunday too
     # (hb_press). ch15's wagon line clears it: "The dining table had to be cleared".
-    make_cyl("Coffee_Press__hb_press", (0.0, 2.7, 0.90), 0.06, 0.24, (0.55, 0.62, 0.66, 0.6), segments=10)
-    make_cyl("Press_Plunger", (0.0, 2.7, 1.04), 0.012, 0.08, (0.20, 0.19, 0.20, 1.0), segments=6)
+    # (pass 472) the press stood in the row of bowls (x 0, beside the
+    # substrate-bowl's row at x -0.2) — in the ch17 "four crows" frame it
+    # was a glass column in front of them — and its plunger carried no view
+    # tag, so wherever the press was hidden the plunger hung over the table
+    # on nothing. The press at the west edge by the near end; the plunger
+    # goes where the press goes.
+    make_cyl("Coffee_Press__hb_press", (-0.42, 2.60, 0.90), 0.06, 0.24, (0.55, 0.62, 0.66, 0.6), segments=10)
+    make_cyl("Press_Plunger__hb_press", (-0.42, 2.60, 1.04), 0.012, 0.08, (0.20, 0.19, 0.20, 1.0), segments=6)
     # (pass 471) THE BREAD. "Hans had cut a loaf of the seeded rye and a loaf
     # of the morning's white. He had set out a pat of butter" (ch15_bread n8)
     # and "a basket of the morning's brötchen ... in the center of the table"

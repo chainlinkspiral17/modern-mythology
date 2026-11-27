@@ -85,7 +85,10 @@ def make_stool(prefix, x, y, h=0.70, wood=WOOD):
 def make_lamp(prefix, x, y, base_z=0.0, h=0.55, shade_col=(0.92, 0.86, 0.68, 1.0), body_col=BRASS):
     make_lathe(f"{prefix}_Base", (x, y, base_z), [(0.0, 0.0), (0.09, 0.0), (0.08, 0.02), (0.05, 0.03), (0.03, 0.05), (0.014, 0.06), (0.014, h * 0.55),
                                                   (0.025, h * 0.58), (0.014, h * 0.61), (0.014, h * 0.72), (0.0, h * 0.72)], body_col, segments=10)
-    make_lathe(f"{prefix}_Shade", (x, y, base_z + h * 0.62), [(0.11, 0.0), (0.16, h * 0.30), (0.0, h * 0.30)], shade_col, segments=12)
+    # (pass 471/472) the shade flares DOWN, the way a lampshade hangs: it was
+    # lathed 0.11 at the bottom to 0.16 at the top — every table and floor
+    # lamp in 33 builders stood like a goblet on a stem.
+    make_lathe(f"{prefix}_Shade", (x, y, base_z + h * 0.62), [(0.16, 0.0), (0.11, h * 0.30), (0.0, h * 0.30)], shade_col, segments=12)
     make_lathe(f"{prefix}_Bulb", (x, y, base_z + h * 0.72), [(0.0, 0.0), (0.025, 0.01), (0.03, 0.04), (0.0, 0.07)], (0.98, 0.94, 0.80, 1.0), segments=8)
 
 

@@ -325,10 +325,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4, 1.1, -11.2)
 rotation = Vector3(-0.4991, -0.6541, 0.0)
 metadata/fov = 42.0
 
-; insert: the foundation truck, the Vestergaard plaque on its tailgate
+; insert (pass 472): "Finn got in the truck" (ch12_morning n160) — his own red pickup, between the
+; maintenance truck and the Subaru (it was the maintenance truck's tailgate, the lot's only truck)
 [node name="shot_insert_truck" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.600, 1.555, 11.035)
-rotation = Vector3(-0.3081, -0.0000, 0.0)
+position = Vector3(2.600, 1.800, 12.500)
+rotation = Vector3(-0.1312, 0.3913, 0.0)
 metadata/fov = 42.0
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
@@ -367,9 +368,9 @@ hide_prefixes = PackedStringArray("Crow_")
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_rail__cape_perpetua_overlook" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-3.449, 1.345, -10.601)
-rotation = Vector3(-0.1782, 0.9364, 0.0)
-metadata/fov = 35.0
+position = Vector3(-3.200, 1.450, -10.200)
+rotation = Vector3(-0.1015, 0.9463, 0.0)
+metadata/fov = 40.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_seat__cape_perpetua_overlook" type="Marker3D" parent="." groups=["vn_shot"]]

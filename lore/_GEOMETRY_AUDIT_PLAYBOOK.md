@@ -158,6 +158,23 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-27 · shared props and what no gate sees (passes 471-472)
+- A shared prop's mistake is everywhere at once: make_lamp's shade was
+  lathed upside down (11 cm at the bottom, 16 at the top) in 34 builders,
+  and make_gable centres on the prism's MID-height, so a roof "set on" a
+  wall top lets the wall's edges out through both slopes. No gate looks at
+  a shape's orientation or a roof's seat; a close-up found each. When a
+  frame shows a shared prop wrong, fix the prop, then grep its callers for
+  the same assumption.
+- A part with no view tag beside one that has one is a floater in every
+  view the tagged part leaves: the press carried __hb_press, its plunger
+  did not, and support_audit (which reads the full build) cannot see it.
+  Tag the parts of one object together.
+- marker_reaim.py --tight and marker_aim_audit disagree: the re-aim tool
+  re-aims markers the gate passes, and its re-aim of the bakery's table
+  frame FAILS the gate. Re-aim only the markers the gate names; diff the
+  .tscn and put the others back.
+
 ### 2026-11-26 · a part named in shorthand is a part no cue finds (pass 467)
 - `DB80_*` was the eighty-pound dumbbells, built and correct, and the line
   that names them cut to the floor mats because no cue word matches "DB80".

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://board_lords_interior_locale"]
+[gd_scene load_steps=29 format=3 uid="uid://board_lords_interior_locale"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/board_lords_interior.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -16,6 +16,8 @@
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
 [ext_resource type="Script" path="res://scripts/HeroProp.gd" id="hp_hero_prop"]
+[ext_resource type="FontFile" path="res://resources/fonts/ReenieBeanie-Regular.ttf" id="472_hand"]
+[ext_resource type="FontFile" path="res://resources/fonts/BebasNeue-Regular.ttf" id="472_print"]
 
 [sub_resource type="ShaderMaterial" id="Mat_Post"]
 shader = ExtResource("4_post")
@@ -413,6 +415,35 @@ metadata/fov = 42.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.810, 2.538, 6.828)
 rotation = Vector3(-0.2618, -3.1416, 0.0)
 metadata/fov = 42.0
+
+; (pass 472) "The Tuesday note he had taped above the OPEN sign was still on the door. Family
+; thing. Back Friday. — Kai." (vol7 ch16_shop n8): the note's words in his hand on the
+; register paper, and the sign's OPEN facing in (its CLOSED side faces the street while he
+; is away) — only in the presets the note is up (bl_note)
+[node name="Taped_Note_Text__board_lords_interior_closed__board_lords_interior_note__board_lords_interior_late_note" type="Label3D" parent="."]
+position = Vector3(0.35, 1.74, -0.0652)
+rotation = Vector3(0, 3.14159, 0)
+pixel_size = 0.00016
+shaded = true
+alpha_cut = 1
+modulate = Color(0.12, 0.12, 0.16, 1)
+outline_size = 0
+text = "Family thing.\nBack Friday.\n— Kai"
+font = ExtResource("472_hand")
+font_size = 130
+line_spacing = -20.0
+
+[node name="Open_Sign_Text__board_lords_interior_closed__board_lords_interior_note__board_lords_interior_late_note" type="Label3D" parent="."]
+position = Vector3(0.35, 1.55, -0.0662)
+rotation = Vector3(0, 3.14159, 0)
+pixel_size = 0.0006
+shaded = true
+alpha_cut = 1
+modulate = Color(0.70, 0.12, 0.10, 1)
+outline_size = 0
+text = "OPEN"
+font = ExtResource("472_print")
+font_size = 130
 
 ; insert: the Tuesday note taped above the OPEN sign
 [node name="shot_insert_note" type="Marker3D" parent="." groups=["vn_shot"]]

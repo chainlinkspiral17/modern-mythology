@@ -731,6 +731,24 @@ def build_alley_2026_10():
     make_box("Laundromat_Bldg", (8.50, 10.50, 3.30), (6.0, 9.0, 6.60), (0.40, 0.28, 0.22, 1.0))
     make_box("Laundromat_Bldg_Cornice", (8.50, 10.50, 6.70), (6.0, 9.1, 0.20), brick_dk)
     make_tube("Laundromat_Downspout", [(5.46, 11.60, 6.55), (5.46, 11.60, 0.30), (5.30, 11.60, 0.12)], 0.05, (0.44, 0.44, 0.46, 1.0), segments=8)
+    # (pass 472) "The far end of the alley was the brick wall of the
+    # laundromat" (vol7 ch14_figure n39): the end wall was a brown slab —
+    # the close-up showed a dark plane behind the dumpster. Its brick: mortar
+    # courses every two bricks (0.15 m) and staggered head joints, on the
+    # face the alley looks at (x 5.50), joined to one mesh.
+    from _props.geometry import join_prefix
+    mortar = (0.60, 0.55, 0.48, 1.0)
+    y0, y1 = 9.20, 12.90
+    for ri in range(31):
+        z = 0.15 + ri * 0.15
+        make_box(f"Laundromat_Brick_Course_{ri}", (5.4985, (y0 + y1) / 2.0, z), (0.003, y1 - y0, 0.012), mortar)
+        off = 0.0 if ri % 2 == 0 else 0.225
+        hy = y0 + 0.225 + off
+        hj = 0
+        while hy < y1 - 0.05:
+            make_box(f"Laundromat_Brick_Head_{ri}_{hj}", (5.4985, hy, z + 0.075), (0.003, 0.012, 0.138), mortar)
+            hy += 0.45; hj += 1
+    join_prefix("Laundromat_Brick")
     # ── Petra's back-door light ──
     make_box("BackDoor_Lamp_Bracket", (-3.3, 9.20, 2.62), (0.06, 0.20, 0.06), COL_BLACK)
     make_lathe("BackDoor_Lamp", (-3.3, 9.30, 2.36), [(0.0, 0.0), (0.06, 0.0), (0.10, 0.10), (0.11, 0.18), (0.04, 0.24), (0.0, 0.25)],

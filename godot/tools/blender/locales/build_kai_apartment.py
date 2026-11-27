@@ -74,8 +74,31 @@ def build_dressing():
     make_box("Clock", (bx-1.15, by, 0.40), (0.15, 0.10, 0.10), P.METAL_BLACK)
     # Dresser against the east wall
     make_box("Dresser", (ROOM_W/2.0-0.30, ROOM_D-1.3, 0.45), (0.44, 1.0, 0.90), COL_WOOD)
-    for di in range(3):
-        make_box(f"Dresser_Drawer_{di}", (ROOM_W/2.0-0.52, ROOM_D-1.3, 0.24+di*0.24), (0.02, 0.86, 0.16), (0.34, 0.24, 0.16, 1.0))
+    # (pass 472) "The thermal had been at the bottom of his drawer since
+    # Tuesday ... He put the thermal on" (vol7 ch16_aud n190): three flat
+    # slabs on a box — through the post-process a patchwork panel. Pulls on
+    # each drawer; the BOTTOM drawer pulled out, its slot dark, the folded
+    # grey waffle thermal in it.
+    dfx, dcy = ROOM_W/2.0-0.52, ROOM_D-1.3
+    pull = (0.70, 0.66, 0.58, 1.0)
+    for di in range(1, 3):
+        # the shut drawers are "fronts": "drawer" (the cue) names the open one
+        make_box(f"Dresser_Front_{di}", (dfx, dcy, 0.24+di*0.24), (0.02, 0.86, 0.16), (0.34, 0.24, 0.16, 1.0))
+        for pk, py_ in enumerate((-0.22, 0.22)):
+            make_box(f"Dresser_Front_{di}_Pull_{pk}", (dfx - 0.016, dcy + py_, 0.24+di*0.24), (0.012, 0.08, 0.018), pull)
+    make_box("Dresser_Drawer_0_Slot", (dfx + 0.009, dcy, 0.24), (0.002, 0.86, 0.16), (0.08, 0.06, 0.05, 1.0))
+    ox = 0.30                                   # pulled out 30 cm
+    make_box("Dresser_Drawer_0", (dfx - ox, dcy, 0.24), (0.02, 0.86, 0.16), (0.34, 0.24, 0.16, 1.0))
+    for pk, py_ in enumerate((-0.22, 0.22)):
+        make_box(f"Dresser_Drawer_0_Pull_{pk}", (dfx - ox - 0.016, dcy + py_, 0.24), (0.012, 0.08, 0.018), pull)
+    for sk, sy_ in enumerate((-0.415, 0.415)):
+        make_box(f"Dresser_Drawer_0_Side_{sk}", (dfx - ox / 2.0 + 0.005, dcy + sy_, 0.235), (ox - 0.01, 0.015, 0.13), (0.40, 0.30, 0.20, 1.0))
+    make_box("Dresser_Drawer_0_Floor", (dfx - ox / 2.0 + 0.005, dcy, 0.175), (ox - 0.01, 0.815, 0.01), (0.44, 0.34, 0.24, 1.0))
+    heather = (0.60, 0.60, 0.58, 1.0)
+    make_box("Dresser_Thermal", (dfx - 0.15, dcy + 0.05, 0.180 + 0.022), (0.22, 0.34, 0.044), heather)
+    for wk in range(5):
+        make_box(f"Dresser_Thermal_Waffle_{wk}", (dfx - 0.15, dcy - 0.09 + wk * 0.07, 0.2245), (0.20, 0.004, 0.001), (0.46, 0.46, 0.45, 1.0))
+    make_box("Dresser_Thermal_Cuff", (dfx - 0.05, dcy + 0.05, 0.2245), (0.025, 0.30, 0.001), (0.50, 0.50, 0.49, 1.0))
     # Desk chair
     dx, dy = +ROOM_W/4.0, ROOM_D - 0.45   # 13 cm off the N wall (2026-09-07: it stood mid-room)
     make_box("Chair_Seat", (dx, dy-0.55, 0.46), (0.42, 0.42, 0.05), COL_WOOD)
