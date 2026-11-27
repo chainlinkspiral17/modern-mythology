@@ -62,6 +62,9 @@ NONSOLID = re.compile(r"spray|mist|steam|smoke|shaft|glow|beam\b|dust|fog|haze|s
 # Infrastructure DESIGNED to be buried — culverts under roads,
 # pipes through creek beds, footings in the ground.
 BURIEDISH = re.compile(r"culvert|drain|conduit|footing|foundation|piling", re.I)
+WET_WORD = re.compile(r"(^|_)(sea|ocean|terrain)(_|$)", re.I)
+TERRAIN_TILE = re.compile(r"terrain_t\d+_\d+$", re.I)
+DECAL_WORD = re.compile(r"(crack|dash|stripe|paint|decal|pothole|patch|stain|marking)", re.I)
 # Rock against rock — talus piles, jagged outcrops, scree — is
 # geology, not clipping.
 ROCKISH = re.compile(r"jag|talus|rock|outcrop|boulder|scree|crag|cliff|bluff|rim\b|rim_|face\b|face_|gorge|tepui|ledge|hill|"
@@ -417,8 +420,21 @@ def overlaps(boxes):
             # bayous, shores and docks all interlock at the edge.
             WATERY = ("ground", "river", "bayou", "shore", "bank",
                       "dock", "quay", "boat", "pier")
-            if any(w in l1 for w in WATERY) and \
-                    any(w in l2 for w in WATERY):
+            # (pass 475) the sea and the terrain it washes are wet too —
+            # highway_101's Pacific meets its headland's cliffs by design
+            # (whole words: "sea" is in "seat")
+            if (any(w in l1 for w in WATERY) or WET_WORD.search(l1)) and \
+                    (any(w in l2 for w in WATERY) or WET_WORD.search(l2)):
+                continue
+            # (pass 475) a TERRAIN TILE (locale_geometry_audit records a big
+            # heightfield as ~16 m tiles spanning their corners' heights) is
+            # a box over a slope: a decal, crack or pothole lying on the
+            # ground inside it is on the surface, not through it — flat
+            # things in their slab are buried_flat_audit's to judge
+            # (a decal pitched to a road's grade records a taller box: named
+            # paint, cracks and patches up to 0.25 m of grade pass too)
+            if (TERRAIN_TILE.search(n1) and (h2[2] <= 0.015 or (h2[2] <= 0.25 and DECAL_WORD.search(n2)))) or \
+                    (TERRAIN_TILE.search(n2) and (h1[2] <= 0.015 or (h1[2] <= 0.25 and DECAL_WORD.search(n1)))):
                 continue
             if pl1 and pl2:
                 continue

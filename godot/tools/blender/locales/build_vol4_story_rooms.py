@@ -344,6 +344,8 @@ def build_store_2026_10():
     for k in range(4):
         make_box(f"Wall_Rack_Bar_{k}", (120.4, 2.5 + k * 2.6, 1.6), (0.04, 2.0, 0.03), (0.66, 0.66, 0.68, 1.0))
         make_box(f"Wall_Rack_Slat_{k}", (120.17, 2.5 + k * 2.6, 1.4), (0.02, 2.2, 1.6), (0.56, 0.54, 0.50, 1.0))
+        for ak, ady in enumerate((-0.95, 0.95)):    # (pass 475) the bar on two arms out of the slatwall (it hung 20 cm off it)
+            make_box(f"Wall_Rack_Arm_{k}_{ak}", (120.29, 2.5 + k * 2.6 + ady, 1.6), (0.22, 0.02, 0.02), (0.66, 0.66, 0.68, 1.0))
     # the store's fascia over the mezzanine edge, the letters' ghosts
     # (round 6) hung on the mezzanine slab's edge (y 12.0, z 4.20..4.50)
     make_box("Store_Fascia_W", (126.3, 11.95, 4.20), (12.2, 0.10, 0.50), (0.80, 0.78, 0.74, 1.0))

@@ -157,8 +157,8 @@ def build_deck_wall():
             dy = 1.82 + c * 0.33
             dz = 0.85 + r * 1.05
             tint = DECK_TINTS[(r * 5 + c * 3) % len(DECK_TINTS)]
-            make_chamfer_box(f"Deck_{r}_{c}", (-4.36, dy, dz), (0.05, 0.22, 0.82), tint, chamfer=0.03)
-            make_box(f"Deck_{r}_{c}_Stripe", (-4.33, dy, dz + 0.15), (0.04, 0.18, 0.10),
+            make_chamfer_box(f"Deck_{r}_{c}", (-4.385, dy, dz), (0.05, 0.22, 0.82), tint, chamfer=0.03)   # (pass 475) flat on the backboard (it hung 2.5 cm off it)
+            make_box(f"Deck_{r}_{c}_Stripe", (-4.355, dy, dz + 0.15), (0.04, 0.18, 0.10),
                      DECK_TINTS[(r * 5 + c * 3 + 2) % len(DECK_TINTS)])
     # The glass front Kai cleans — its frame on two end posts, the glass
     # itself as two glints (2026-09-24: a 4.3 x 2.2 m "glass" slab — this
@@ -601,14 +601,16 @@ def build_draft4_2026_10():
     rx0, rx1, ry = -2.40, -0.60, 3.40
     make_box("Board_Rack_Base", ((rx0 + rx1) / 2.0, ry, 0.025), (rx1 - rx0, 0.45, 0.05), COL_WOOD)
     for ui, ux in enumerate((rx0 + 0.025, rx1 - 0.025)):
-        make_box(f"Board_Rack_Upright_{ui}", (ux, ry + 0.17, 0.50), (0.05, 0.05, 0.90), COL_WOOD)
-    make_box("Board_Rack_Rail", ((rx0 + rx1) / 2.0, ry + 0.17, 0.93), (rx1 - rx0, 0.05, 0.05), COL_WOOD)
+        make_box(f"Board_Rack_Upright_{ui}", (ux, ry + 0.13, 0.4575), (0.05, 0.05, 0.815), COL_WOOD)
+    # (pass 475) the boards stand on the base and lean on the rail: they hung
+    # 2 cm over the base and 3 cm short of a rail above their tops
+    make_box("Board_Rack_Rail", ((rx0 + rx1) / 2.0, ry + 0.13, 0.84), (rx1 - rx0, 0.05, 0.05), COL_WOOD)
     for bi in range(7):
         bx = rx0 + 0.18 + bi * 0.24
         tint = DECK_TINTS[(bi * 3 + 1) % len(DECK_TINTS)]
-        make_chamfer_box(f"Rack_Board_{bi}_Deck", (bx, ry + 0.11, 0.47), (0.20, 0.015, 0.80), tint, chamfer=0.006)
-        make_box(f"Rack_Board_{bi}_Grip", (bx, ry + 0.1015, 0.47), (0.18, 0.002, 0.76), (0.12, 0.12, 0.13, 1.0))
-        for ti, tz in enumerate((0.20, 0.74)):
+        make_chamfer_box(f"Rack_Board_{bi}_Deck", (bx, ry + 0.11, 0.455), (0.20, 0.015, 0.80), tint, chamfer=0.006)
+        make_box(f"Rack_Board_{bi}_Grip", (bx, ry + 0.1015, 0.455), (0.18, 0.002, 0.76), (0.12, 0.12, 0.13, 1.0))
+        for ti, tz in enumerate((0.185, 0.725)):
             make_box(f"Rack_Board_{bi}_Truck_{ti}", (bx, ry + 0.135, tz), (0.16, 0.035, 0.04), steel_dk)
             for wi, wx in enumerate((-0.09, 0.09)):
                 make_cyl(f"Rack_Board_{bi}_Wheel_{ti}_{wi}", (bx + wx, ry + 0.165, tz), 0.026, 0.028, urethane, axis='X', segments=10)

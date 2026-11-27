@@ -118,7 +118,7 @@ def build_shell():
         make_box(f"{nm}_Casing_Head", (cx, Y1 - 0.11, 2.12), (w + 0.16, 0.02, 0.10), COL_TRIM)
         for s in (-1, 1):
             make_box(f"{nm}_Casing_{s:+d}", (cx + s * (w / 2.0 + 0.04), Y1 - 0.11, 1.03), (0.08, 0.02, 2.06), COL_TRIM)
-    make_cyl("Ceiling_Dome", (0.3, 3.0, CEIL - 0.04), 0.18, 0.08, (0.94, 0.92, 0.84, 1.0), segments=14)
+    make_cyl("Ceiling_Dome", (0.3, 3.0, CEIL - 0.040), 0.18, 0.08, (0.94, 0.92, 0.84, 1.0), segments=14)
 
 
 def build_hall_and_kitchen():

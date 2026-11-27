@@ -71,8 +71,10 @@ def build_spiral_stair():
                      (outer_r - inner_r, 0.40, 0.04), COL_STAIR_IRON, yaw=ang)
         # Banister post (every other)
         if si % 2 == 0:
-            bx = math.cos(ang) * (outer_r - 0.06)
-            by = math.sin(ang) * (outer_r - 0.06)
+            # (pass 475) on the tread's outer end (it stops 15 cm short of the
+            # wall; the post stood 6 cm past it, on nothing)
+            bx = math.cos(ang) * (outer_r - 0.19)
+            by = math.sin(ang) * (outer_r - 0.19)
             make_cyl(f"Stair_Banister_{si}", (bx, by, sz + 0.40), 0.025, 0.80, COL_STAIR_IRON)
 
 

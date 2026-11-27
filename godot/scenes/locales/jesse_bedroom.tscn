@@ -220,7 +220,7 @@ rotation = Vector3(-0.2782, 0.0522, 0.0)   ; the bed
 ; computed by marker_reaim.py (the post-aim-gate discipline)
 [node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.216, 1.005, -3.395)
-rotation = Vector3(-0.5236, 0.4141, 0.0)
+rotation = Vector3(-0.2550, 0.4390, 0.0)
 
 [node name="shot_insert_guitar" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.200, 1.050, -0.950)

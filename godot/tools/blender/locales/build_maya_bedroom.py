@@ -145,7 +145,7 @@ def build_win():
 def build_ceiling_infra():
     # A 1991 bedroom: one dome fixture, no shop tubes (lamp is the
     # scene light — "She turns off the lamp.")
-    make_cyl("Ceiling_Dome", (0.0, 2.5, CEIL-0.10), 0.16, 0.16, (0.96, 0.90, 0.72, 1.0), segments=12)
+    make_cyl("Ceiling_Dome", (0.0, 2.5, CEIL - 0.080), 0.16, 0.16, (0.96, 0.90, 0.72, 1.0), segments=12)
     make_smoke_detector("Smoke", (0.9, ROOM_D/2.0, CEIL))
     make_hvac_vent("HVAC", (-ROOM_W/4.0, ROOM_D-0.5, CEIL), width=0.80, depth=0.40)
 

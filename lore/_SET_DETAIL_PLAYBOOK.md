@@ -84,6 +84,28 @@ henderson) got there by accumulating exactly these layers.
 
 ## Recent lessons
 
+### 2026-11-27 · a coast road must show its coast: check the eye line, not the plan (pass 475)
+
+**What happened.** "More detail on the backgrounds" on highway_101. The
+plan had a sea, a bluff and a headland; no frame showed any of it. The
+ground plane ran a kilometre out over the water, so the sea never drew;
+once cut back, the LEVEL bluff top still hid every metre of water from
+the truck's hood (1.15 m): a ray that clears a level edge 17 m off falls
+only 4 degrees, and the sea 23 m down is not reached for 300 m — by then
+the headland is in the way.
+
+**The rule.** For an exterior whose text names a view (the ocean on the
+seaward side), work out what the preset's eye actually sees: the near
+edge's depression angle against the far thing's. Fix it with the ground
+(the bluff top falls away past the rail; the headland stands farther off
+so a cove of water shows between), not by moving the camera off the
+text's position. Then D2-D6 in order: the road's history (patches,
+sealed cracks, reflectors, wheel paths), the verges to the rail, the
+infrastructure (poles, delineators, milepost), the big plain surfaces
+broken (the rock cut: ledges, drill lines, boulders, talus, trees on its
+top), and the canon objects told by the text (the chain hung loose on one
+side; the old road paved, aged, climbing, cedar both sides).
+
 ### 2026-11-16 · a driveway is finished where it meets the STREET, not the walk (pass 421)
 
 **What happened.** The user: "Curbs and driveways look broken or

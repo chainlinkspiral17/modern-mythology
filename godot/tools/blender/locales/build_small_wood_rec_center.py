@@ -194,7 +194,8 @@ def build_street():
         make_box(f"Out_Shopfront_{i}_Window", (-12.0 + i * 8.0, -15.69, 1.6), (4.0, 0.02, 1.6), (0.86, 0.72, 0.44, 1.0) if i in (1, 3) else (0.16, 0.18, 0.22, 1.0))
     make_box("Out_Sidewalk_Far", (0.0, -16.0, -0.03), (40.0, 3.0, 0.06), (0.50, 0.48, 0.44, 1.0))
     make_cyl("Out_Street_Lamp_Pole", (1.5, -3.6, 2.2), 0.06, 4.4, (0.24, 0.24, 0.26, 1.0), segments=8)
-    make_box("Out_Street_Lamp_Head", (1.5, -4.0, 4.3), (0.26, 0.60, 0.14), (0.96, 0.86, 0.58, 1.0))
+    make_box("Out_Street_Lamp_Head", (1.5, -3.96, 4.3), (0.26, 0.60, 0.14)   # (pass 475) on its pole (4 cm off it)
+            , (0.96, 0.86, 0.58, 1.0))
 
 
 def main():

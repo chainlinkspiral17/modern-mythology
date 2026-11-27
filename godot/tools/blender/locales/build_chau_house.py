@@ -591,8 +591,8 @@ def build_amanda_deck():
     make_floor_plant("Am_Planter_1", (55.4, -1.1, 0.01), kind="snake")
     make_floor_plant("Am_Planter_2", (47.6, -1.1, 0.01), kind="fern")
     # the porch light by the glass door (the door opening is y 2.3..4.1)
-    make_box("Am_Porch_Light", (AX1 + 0.20, 4.45, 2.15), (0.12, 0.14, 0.26), (0.20, 0.20, 0.22, 1.0))
-    make_box("Am_Porch_Light_Glass", (AX1 + 0.21, 4.45, 2.13), (0.10, 0.10, 0.18), (1.0, 0.90, 0.66, 1.0))
+    make_box("Am_Porch_Light", (AX1 + 0.16, 4.45, 2.15), (0.12, 0.14, 0.26), (0.20, 0.20, 0.22, 1.0))
+    make_box("Am_Porch_Light_Glass", (AX1 + 0.17, 4.45, 2.13), (0.10, 0.10, 0.18), (1.0, 0.90, 0.66, 1.0))
     # a step down from the door to the deck (off the siding's skin)
     make_box("Am_Door_Step", (AX1 + 0.38, 3.2, 0.04), (0.50, 1.90, 0.08), (0.46, 0.36, 0.26, 1.0))
 

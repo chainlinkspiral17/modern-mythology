@@ -117,8 +117,13 @@ def _house(F, pre, u, v, w, d, h, col, door=True, porch_light=False, facing_room
             _box(F, f"{pre}_Garage_Panel_{gi}", gu, face - 0.045, 0.34 + gi * 0.54, 2.24, 0.01, 0.40,
                  (0.78, 0.76, 0.72, 1.0))
     if porch_light:
-        _box(F, f"{pre}_Porch_Light_Bracket", u + 1.05, face - 0.02, 2.22, 0.06, 0.04, 0.06, (0.20, 0.20, 0.22, 1.0))
-        make_cyl(f"{pre}_Porch_Light", F.p(u + 1.05, face - 0.06, 2.10), 0.06, 0.12, (0.98, 0.86, 0.56, 1.0), segments=8)
+        # (pass 475) the lamp HANGS from its bracket: the bracket's arm runs
+        # 10 cm out from the wall and the lamp's top meets it (the lamp hung
+        # 3 cm under a 4 cm stub — support_audit, once "Porch" stopped
+        # counting as a porch floor)
+        # (the wall's front is v; `face` is 2 cm proud of it, where the trims sit)
+        _box(F, f"{pre}_Porch_Light_Bracket", u + 1.05, v - 0.05, 2.22, 0.05, 0.10, 0.06, (0.20, 0.20, 0.22, 1.0))
+        make_cyl(f"{pre}_Porch_Light", F.p(u + 1.05, v - 0.07, 2.13), 0.06, 0.12, (0.98, 0.86, 0.56, 1.0), segments=8)
 
 
 def _tree(F, pre, u, v, h=4.5, r=1.6, col=(0.30, 0.44, 0.24, 1.0), seed=0):

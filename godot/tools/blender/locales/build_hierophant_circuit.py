@@ -700,6 +700,7 @@ def build_circuit_stations_2026_08():
     make_box("Curb_Gangway", (bx - 7.2, by - 3.6, 0.75), (1.2, 2.6, 0.10), deck)
     make_box("Curb_Strip", (bx - 7.2, by - 5.2, 0.28), (6.0, 0.9, 0.12), (0.62, 0.60, 0.56, 1.0))   # on the wharf deck (2026-09-24: inside it)
     make_box("Curb_DoorFrame", (bx - 7.2, by - 2.45, 2.3), (1.4, 0.12, 1.9), wood_dk)
+    make_box("Curb_Bell_Bracket", (bx - 7.2, by - 2.5, 3.265), (0.04, 0.10, 0.03), wood_dk)   # (pass 475) on the frame's head
     make_cyl("Curb_Bell", (bx - 7.2, by - 2.5, 3.35), 0.10, 0.14, (0.72, 0.60, 0.30, 1.0),
              segments=8)
     # The long black car's SPOT at the curb is empty — the car

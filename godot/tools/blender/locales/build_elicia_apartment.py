@@ -185,7 +185,7 @@ def build_use_states_d4():
              (0.94, 0.92, 0.86, 1.0))
     for i, (px, py, rot_off) in enumerate(((0.35, 0.55, 0.0), (0.55, 0.42, 0.06),
                                            (0.22, 0.38, -0.04))):
-        make_box(f"Floor_Paper_{i}", (px + rot_off, py, 0.012 + i * 0.003),
+        make_box(f"Floor_Paper_{i}", (px + rot_off, py, 0.0016 + i * 0.0004),   # (pass 475) ON the floor (1.2-1.8 cm over it)
                  (0.15, 0.21, 0.003), (0.90, 0.88, 0.82, 1.0))
     # Laptop OPEN on the desk: base + tilted-back lid (offset fake)
     from _props.objects import make_laptop   # (pass 459) keys, trackpad, a lit page

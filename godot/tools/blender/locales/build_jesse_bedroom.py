@@ -103,7 +103,7 @@ def build_win():
 def build_ceiling_infra():
     # Teen bedroom: one warm ceiling fixture; the bedside lamp is
     # the scene light ("He turns off the lamp. / The room is dark.")
-    make_cyl("Ceiling_Dome", (0.0, 2.25, CEIL-0.10), 0.15, 0.14, (0.94, 0.88, 0.70, 1.0), segments=12)
+    make_cyl("Ceiling_Dome", (0.0, 2.25, CEIL - 0.070), 0.15, 0.14, (0.94, 0.88, 0.70, 1.0), segments=12)
     make_smoke_detector("Smoke", (0.8, 2.25, CEIL))
 
 
@@ -170,14 +170,17 @@ def build_hero_props():
     # Bedside lamp on the nightstand (2026-09-23: the lamp and both
     # notebooks stayed at y 2.95 when the bed and nightstand moved to the
     # N wall on 09-10 — on nothing, 1.2 m from the table they belong on)
-    make_cyl("Bedside_Lamp_Base", (-ROOM_W/4.0 + 0.83, ROOM_D - 0.25, 0.595),   # on the nightstand, room-relative (2026-09-24)
+    make_cyl("Bedside_Lamp_Base", (-ROOM_W/4.0 + 0.83 + 0.08, ROOM_D - 0.25 + 0.08, 0.595),   # on the nightstand, room-relative (2026-09-24)
              0.07, 0.03, wood, segments=10)
-    make_cyl("Bedside_Lamp_Post", (-ROOM_W/4.0 + 0.83, ROOM_D - 0.25, 0.71), 0.014, 0.20, (0.20, 0.19, 0.20, 1.0), segments=6)
-    make_cyl("Bedside_Lamp_Shade", (-ROOM_W/4.0 + 0.83, ROOM_D - 0.25, 0.86), 0.10, 0.14, (0.86, 0.76, 0.58, 1.0), segments=10)
+    make_cyl("Bedside_Lamp_Post", (-ROOM_W/4.0 + 0.83 + 0.08, ROOM_D - 0.25 + 0.08, 0.71), 0.014, 0.20, (0.20, 0.19, 0.20, 1.0), segments=6)
+    make_cyl("Bedside_Lamp_Shade", (-ROOM_W/4.0 + 0.83 + 0.08, ROOM_D - 0.25 + 0.08, 0.86), 0.10, 0.14, (0.86, 0.76, 0.58, 1.0), segments=10)
     # The bridge notebook + the songwriting notebook
     # the two notebooks stacked at the front of the top
-    make_box("Bridge_Notebook", (-0.08, 4.04, 0.5875), (0.15, 0.21, 0.015), (0.30, 0.44, 0.62, 1.0))
-    make_box("Song_Notebook", (-0.06, 4.05, 0.6025), (0.15, 0.21, 0.015), (0.62, 0.30, 0.26, 1.0))
+    # (pass 475) ON the nightstand's top, in front of the lamp: they were at
+    # (-0.08, 4.04), half a metre up beside the bed on nothing
+    nlx, nly = -ROOM_W/4.0 + 0.83 - 0.09, ROOM_D - 0.25 - 0.07
+    make_box("Bridge_Notebook", (nlx, nly, 0.5875), (0.15, 0.21, 0.015), (0.30, 0.44, 0.62, 1.0))
+    make_box("Song_Notebook", (nlx + 0.02, nly + 0.01, 0.6025), (0.15, 0.21, 0.015), (0.62, 0.30, 0.26, 1.0))
     # Narrow the garage-sized S gap and hang the CLOSED door
     make_box("Door_Jamb_W", (-0.72, 0.0, 1.15), (0.56, 0.20, 2.30), PAL_WALL["wall"])
     make_box("Door_Jamb_E", (0.72, 0.0, 1.15), (0.56, 0.20, 2.30), PAL_WALL["wall"])

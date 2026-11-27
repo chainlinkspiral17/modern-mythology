@@ -3835,6 +3835,71 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-27 · pass 475: the hovering sign, the support gate's name loophole (~190 floats), and the coast that was not there (highway_101 draft 3).**
+The user, on the Old Yachats Road frame: "More detail on the backgrounds.
+The sign is hovering over the pole."
+- THE SIGN: the post stopped at 2.00 m and the sign began at 2.05.
+  support_audit let it off because "Road_Marker" matched its shell word
+  ROAD — any part whose NAME carried a shell word (road, deck, step, beam,
+  wall ...) counted as ground. Now a name makes a part a shell only if the
+  part is also SURFACE-sized (its middle extent >= 0.40 m): a road is a
+  shell, a road sign is not. The repo then read ~190 floating parts in ~30
+  builders; all fixed (porch lights 2 cm off their walls in the views kit,
+  the ceiling domes centred on the ceiling plane in nine rooms, the Miller
+  stair's handrail PITCHED instead of ROLLED so it lay level over a raked
+  stair — now raked with a stringer and balusters to it, the riverboat's
+  gangway hanging in air — now a ramp to the dock on piles, Board Lords'
+  deck wall and rack, the diner's street lights and clock plate, the
+  bayou lighthouse banister, cosmic comics' shelf on no brackets, and the
+  rest). support_audit: 162 locales, 0 floating components. The sign: a
+  galvanised post up the back to its top edge, two bolts, a footing.
+- THE COAST (highway_101 draft 3): the frame had no coast in it.
+  Ground_Far ran a kilometre west over the sea at z -0.06, so the Pacific
+  never drew and the "headland" was a blob over a green plain. By the
+  text (ch22_drive n13, n43-52): the straight highway passes the
+  headland's BASE ("bypassed when the coastal highway had been
+  straightened in the 2020s"). Now: the land stops at the bluff; past the
+  rail the bluff top falls away 5 m to the cliff edge (from the hood at
+  1.15 m a level top hid every metre of water); the headland is a
+  heightfield 200 x 500 m standing out west into the sea, ~28 m up, rock
+  cliffs all round (faces steeper than ~38 degrees coloured rock), the
+  swell's foam at their foot; OLD YACHATS ROAD climbs it from the chain at
+  9% ("The road climbed"), paved and aged ("paved in the 2010s ... had not
+  ... been used much": cracks, weeds in the seams and edges, a faded
+  centre line, two potholes, gravel edges), benched into the flank, cedar
+  both sides ("The wagon brushed cedar branches on both sides") and the
+  whole headland under cedar, shore pine on the cliff tops. "The chain
+  hung loose on one side": hooked to the N post, it droops to the asphalt
+  by the bare S post. The sea stack that stood on the new land moved off.
+- DETAIL (D2/D3): asphalt patches, tar-sealed cracks, raised reflectors,
+  pale wheel paths; gravel verges to the rail (the roadbed's dark top drew
+  black in every shadow); grass and salal at the verges; the forest floor
+  under the inland cedars; white delineators; the milepost a green paddle;
+  a power line on the seaward side following the road round the bend (on
+  the inland side its wires ran through the cedar crowns: 20 clips); THE
+  ROCK CUT (one grey box the size of a building, the biggest thing in the
+  drive preset): blasted ledges, presplit drill lines broken where a ledge
+  or boulder stands off the face, boulders, talus, cedars and salal on its
+  top edge. Repeated parts joined per kind (perf).
+- GATES: locale_geometry_audit records a heightfield over 60 m as ~16 m
+  tiles spanning their corners' heights (one box over 200 x 500 m made
+  every pole arm and sea stack a clip); prop_overlap treats the sea and
+  terrain as wet (sea meets cliff), and flat named decals on a terrain
+  tile as on its surface. prop_overlap --all: 0 clips.
+- CANON KNOT (for Andy): ch22_drive n8 carries [mood:dusk] and the preset
+  is lit for dusk, but the text has them past Cape Perpetua at
+  "three-eleven" and past Yachats at "three-forty", and the tower in
+  "late-afternoon light" — a September afternoon, not dusk. Not changed
+  this pass.
+Deck must REBUILD (stale GLBs): highway_101 and every builder named in
+the float list (the update command's --stale rebuild does it).
+NEXT (highway_101 draft 4): relight for the text's late afternoon if
+Andy agrees; rock faces with strata where the cliffs are sheer; the old
+road's first bend from the drive preset; salal under the roadside cedars;
+wet asphalt after the ch22 rain; the inland cedars north of the bend (the
+land there is a bare plain); a gate that reads ROTATION (a y-long box
+pitched instead of rolled only twists — the Miller handrail).
+
 **2026-11-27 · pass 474: the last 21 vol 7 one-line pairs (every one-line close-up pair in vols 1–7 has now been read once).**
 23 rows; two dropped from the line alone ("The word landed the way a word
 lands ...", cue BRASS_BELL; "The mother smiled in the way Smolvud mothers

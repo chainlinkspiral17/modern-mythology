@@ -158,6 +158,35 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-27 · a NAME is not a surface; a TERRAIN is not its bounding box (pass 475)
+
+**What happened.** The user: "The sign is hovering over the pole." The
+Old Yachats Road marker stood 5 cm above its post. support_audit passed
+it because its name, Road_Marker, matched the shell word ROAD: any part
+named with a shell word (road, deck, step, beam, wall, porch ...) was
+ground to the gate, wherever it hung. Closing that read ~190 floating
+parts in ~30 builders. Then the highway's new headland — one heightfield
+recorded as one box from the sea floor to its crest — made every pole
+arm, sea stack and road crack over it a "clip".
+
+**The rules.**
+- A name makes a part a shell only when the part is also SURFACE-sized
+  (support_audit: its middle extent >= 0.40 m). Any gate that grants by
+  name should also test the shape; a word in a name is a claim, not a fact.
+- A big heightfield (over 60 m) is recorded as ~16 m tiles, each spanning
+  only its corners' heights (locale_geometry_audit._rec_heightfield).
+  The sea and terrain are wet to prop_overlap (water meets cliff), and a
+  flat named decal (crack, dash, paint, pothole) on a terrain tile is on
+  its surface.
+- A rotated box's axes: geometry._rot3 rolls about local X, pitches about
+  local Y, yaws about Z. A Y-long rail must ROLL to rake; pitch only
+  twists it about its own length (the Miller handrail lay level over a
+  raked stair, every baluster under it a different height). No gate reads
+  rotation yet — draft-2 target.
+- The heightfield's skirt closes with a bottom CAP at origin z - skirt.
+  Put the origin below everything the terrain must not cover (the sea):
+  at z 0 the cap was a floor at -0.3 m over 200 x 500 m that hid the water.
+
 ### 2026-11-27 · shared props and what no gate sees (passes 471-472)
 - A shared prop's mistake is everywhere at once: make_lamp's shade was
   lathed upside down (11 cm at the bottom, 16 at the top) in 34 builders,

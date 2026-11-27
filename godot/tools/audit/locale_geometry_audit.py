@@ -343,8 +343,28 @@ def install_stubs():
         lo, hi = min(zs), max(zs) 
         ox, oy, oz = (float(c) for c in origin)
         cell = float(cell); skirt = float(skirt)
-        BOXES.append((str(name), (ox + (cols - 1) * cell / 2.0, oy + (rows - 1) * cell / 2.0, oz + (hi + lo - skirt) / 2.0),
-                      ((cols - 1) * cell / 2.0, (rows - 1) * cell / 2.0, (hi - lo + skirt) / 2.0)))
+        span = max((cols - 1) * cell, (rows - 1) * cell)
+        if span <= 60.0:
+            BOXES.append((str(name), (ox + (cols - 1) * cell / 2.0, oy + (rows - 1) * cell / 2.0, oz + (hi + lo - skirt) / 2.0),
+                          ((cols - 1) * cell / 2.0, (rows - 1) * cell / 2.0, (hi - lo + skirt) / 2.0)))
+            return _obj_stub(name)
+        # (pass 475) A TERRAIN is not its bounding box. highway_101's headland
+        # (200 x 500 m, sea floor to a 28 m crest) recorded as one box made
+        # every pole arm, sea stack and road decal over it a clip. Record it
+        # as ~16 m tiles, each spanning only its own corners' heights (the
+        # rim tiles down to the skirt): what stands above the ground or off
+        # beside a slope is no longer "inside" it.
+        T = max(1, int(round(16.0 / cell)))
+        for r0 in range(0, rows - 1, T):
+            for c0 in range(0, cols - 1, T):
+                r1, c1 = min(rows - 1, r0 + T), min(cols - 1, c0 + T)
+                tz = [float(heights[r][c]) for r in range(r0, r1 + 1) for c in range(c0, c1 + 1)]
+                tlo, thi = min(tz), max(tz)
+                if r0 == 0 or c0 == 0 or r1 == rows - 1 or c1 == cols - 1:
+                    tlo = min(tlo, -skirt)
+                BOXES.append(("%s_T%d_%d" % (name, r0 // T, c0 // T),
+                              (ox + (c0 + c1) * cell / 2.0, oy + (r0 + r1) * cell / 2.0, oz + (thi + tlo) / 2.0),
+                              ((c1 - c0) * cell / 2.0, (r1 - r0) * cell / 2.0, max(0.01, (thi - tlo) / 2.0))))
         return _obj_stub(name)
 
     def _rec_soft_box(name, center, size, color=None, yaw=0.0, *a, **k):

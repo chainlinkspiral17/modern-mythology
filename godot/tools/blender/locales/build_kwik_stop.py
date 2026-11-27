@@ -1243,7 +1243,7 @@ def build_ceiling_infrastructure():
                  (-1.0 + (vs - 2.5) * 0.16, 7.5, CEIL_Z - 0.05),
                  (0.06, 0.50, 0.01), COL_METAL_BLACK)
     # Speaker dome (Muzak — corporate-spillover canon)
-    make_cyl("CeilingSpeaker", (1.5, 5.5, CEIL_Z - 0.08),
+    make_cyl("CeilingSpeaker", (1.5, 5.5, CEIL_Z - 0.04),   # (pass 475) flush to the ceiling (4 cm under it)
              0.16, 0.08, COL_PAPER)
 
 

@@ -180,8 +180,8 @@ def build_hero_props():
                      (0.035, 0.035, 0.43), (0.44, 0.46, 0.48, 1.0))
     make_box("Boyd_Chair_Back", (0.0, 1.16, 0.70), (0.42, 0.05, 0.48), (0.40, 0.42, 0.44, 1.0))
     # The ceiling camera in the opposite corner
-    make_box("Ceiling_Cam", (-1.52, 0.20, 3.10), (0.12, 0.14, 0.10), (0.16, 0.16, 0.18, 1.0))
-    make_cyl("Cam_Lens", (-1.48, 0.28, 3.05), 0.03, 0.04, (0.08, 0.08, 0.10, 1.0), axis='Y', segments=8)
+    make_box("Ceiling_Cam", (-1.54, 0.17, 3.10), (0.12, 0.14, 0.10), (0.16, 0.16, 0.18, 1.0))   # (pass 475) in the corner, on both walls (2-3 cm off them)
+    make_cyl("Cam_Lens", (-1.50, 0.25, 3.05), 0.03, 0.04, (0.08, 0.08, 0.10, 1.0), axis='Y', segments=8)
     # The bottom food slot + the sandwich just inside it
     make_box("Door_Food_Slot", (0.35, 0.08, 0.22), (0.45, 0.04, 0.10), (0.30, 0.30, 0.33, 1.0))
     make_cyl("Paper_Plate", (0.35, 0.32, 0.010), 0.11, 0.008, (0.92, 0.90, 0.86, 1.0), segments=12)

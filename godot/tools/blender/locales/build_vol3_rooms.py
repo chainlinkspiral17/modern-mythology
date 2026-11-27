@@ -813,7 +813,11 @@ def build_warehouse():
     # light is drawn as beams; the floor is full.)
     for k in range(8):
         make_cyl(f"Beam_Lamp_Can_{k}", (x0 + 4.0 + k * 3.2, 23.4, 6.0), 0.18, 0.40, (0.10, 0.10, 0.10, 1.0), axis='Y', segments=10)
-    make_box("Beam_Lamp_Bar", (x0 + 15.2, 23.55, 6.25), (24.0, 0.10, 0.10), (0.16, 0.16, 0.18, 1.0))
+    # (pass 475) the lighting bar ON the north wall, each can hung from it on
+    # a yoke (the bar stood 25 cm off the wall and 2 cm over the cans)
+    make_box("Beam_Lamp_Bar", (x0 + 15.2, 23.80, 6.25), (24.0, 0.10, 0.10), (0.16, 0.16, 0.18, 1.0))
+    for k in range(8):
+        make_box(f"Beam_Lamp_Yoke_{k}", (x0 + 4.0 + k * 3.2, 23.63, 6.20), (0.04, 0.30, 0.04), (0.16, 0.16, 0.18, 1.0))
     make_box("DJ_Riser", (x0 + 15.0, 22.6, 0.40), (6.0, 2.4, 0.80), (0.10, 0.10, 0.12, 1.0))
     make_box("DJ_Table", (x0 + 15.0, 22.4, 1.25), (2.4, 0.80, 0.90), (0.08, 0.08, 0.10, 1.0))
     for s in (-1, 1):

@@ -415,7 +415,7 @@ def build_lot_and_street():
     make_box("Street_Line", (0.0, -50.0 + SOUTH, -0.012), (300.0, 0.12, 0.01), (0.86, 0.74, 0.30, 1.0))
     for i in range(-6, 7):
         make_box(f"Streetlight_{i}_Pole", (i * 24.0, -45.0 + SOUTH, 3.6), (0.16, 0.16, 7.2), (0.40, 0.40, 0.42, 1.0))
-        make_box(f"Streetlight_{i}_Head", (i * 24.0, -46.0 + SOUTH, 7.15), (0.30, 1.8, 0.18), (0.30, 0.30, 0.32, 1.0))
+        make_box(f"Streetlight_{i}_Head", (i * 24.0, -45.95 + SOUTH, 7.15), (0.30, 1.9, 0.18), (0.30, 0.30, 0.32, 1.0))
     # the church across the street: white clapboard, a gable roof, the steeple
     cx, cy = 14.0, -66.0 + SOUTH
     make_box("Church_Nave", (cx, cy - 8.0, 3.2), (11.0, 18.0, 6.4), PAINT)

@@ -352,10 +352,11 @@ font_size = 130
 ; ── vn_shot · highway_101 (2026-09-03) ──
 ; insert (pass 473): "A green metal road-marker reading Old Yachats Road sat at the turn with a
 ; chain across it" (ch22_drive n48) — the sign's words, the chain behind it
+; (pass 475) lowered to take in the chain too: "The chain hung loose on one side"
 [node name="shot_insert_road_marker" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-3.600, 1.900, -155.000)
-rotation = Vector3(0.1452, 0.7505, 0.0)
-metadata/fov = 50.0
+position = Vector3(-1.600, 1.600, -152.600)
+rotation = Vector3(0.0350, 0.6650, 0.0)
+metadata/fov = 28.0
 
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
@@ -375,7 +376,7 @@ metadata/fov = 45.0
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_cedar__coast_highway_day" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(2.000, 1.300, -14.000)
-rotation = Vector3(0.3840, -0.6110, 0.0)
+rotation = Vector3(0.4500, -1.7390, 0.0)
 metadata/fov = 52.0
 
 [node name="shot_insert_window__coast_highway_day" type="Marker3D" parent="." groups=["vn_shot"]]

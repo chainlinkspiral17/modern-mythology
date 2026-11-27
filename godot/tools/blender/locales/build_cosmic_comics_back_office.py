@@ -196,11 +196,16 @@ def build_backoffice_detail():
     make_cyl("CoffeeMaker_Coffee", (cmx, cmy - 0.02, 1.36), 0.06, 0.03, (0.20, 0.12, 0.08, 1.0), segments=10)
     make_box("CoffeeMaker_Warmer", (cmx, cmy - 0.02, 1.33), (0.18, 0.20, 0.02), (0.10, 0.10, 0.11, 1.0))
     # ── Taped wall shelf with trade spines (west wall over table) ──
-    make_box("WallShelf_Plank", (-1.82, 2.6, 1.7), (0.22, 1.2, 0.03), (0.44, 0.34, 0.24, 1.0))
+    # (pass 475) ON the west wall (its face is x -2.20; the plank stood 27 cm
+    # off it on nothing) with two brackets, the spines standing ON the plank
+    # (their feet were 11 cm down through it)
+    make_box("WallShelf_Plank", (-2.09, 2.6, 1.7), (0.22, 1.2, 0.03), (0.44, 0.34, 0.24, 1.0))
+    for bi_, by_ in enumerate((2.15, 3.05)):
+        make_box(f"WallShelf_Bracket_{bi_}", (-2.10, by_, 1.625), (0.20, 0.02, 0.12), (0.30, 0.28, 0.26, 1.0))
     for i in range(9):
         sy = 2.05 + i * 0.13
         h = 0.24 + 0.03 * (i % 3)
-        make_box(f"WallShelf_Book_{i}", (-1.82, sy, 1.72 + (h - 0.24) / 2),
+        make_box(f"WallShelf_Book_{i}", (-2.09, sy, 1.715 + h / 2.0),
                  (0.18, 0.11, h),
                  [(0.66,0.24,0.22,1),(0.24,0.42,0.52,1),(0.72,0.60,0.28,1),
                   (0.32,0.46,0.34,1)][i % 4])

@@ -257,7 +257,7 @@ def build_room_things():
     make_box("Site_Calendar_Grid", (X1 - 0.1055, 1.45, 1.40), (0.001, 0.34, 0.20), PAPER)
     make_box("Site_Calendar_Photo", (X1 - 0.1055, 1.45, 1.66), (0.001, 0.34, 0.20), (0.40, 0.52, 0.56, 1.0))
     # the ceiling fan, its light
-    fz = CEIL - 0.04
+    fz = CEIL          # (pass 475) the mount against the ceiling (it hung 4 cm under it)
     make_cyl("Ceiling_Fan_Mount", (0.0, 1.45, fz - 0.02), 0.06, 0.04, (0.30, 0.24, 0.18, 1.0), segments=10)
     make_cyl("Ceiling_Fan_Rod", (0.0, 1.45, fz - 0.16), 0.012, 0.24, (0.30, 0.24, 0.18, 1.0), segments=6)
     make_cyl("Ceiling_Fan_Motor", (0.0, 1.45, fz - 0.33), 0.11, 0.10, (0.30, 0.24, 0.18, 1.0), segments=12)

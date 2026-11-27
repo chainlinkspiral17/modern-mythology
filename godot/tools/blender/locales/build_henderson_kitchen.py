@@ -189,7 +189,7 @@ def build_dressing():
 
 def build_ceiling_infra():
     # A night kitchen lit warm and low — dome + pendant, no tubes
-    make_cyl("Ceiling_Dome", (0.0, 1.6, CEIL-0.10), 0.16, 0.16, (0.96, 0.88, 0.68, 1.0), segments=12)
+    make_cyl("Ceiling_Dome", (0.0, 1.6, CEIL - 0.080), 0.16, 0.16, (0.96, 0.88, 0.68, 1.0), segments=12)
     make_cyl("Table_Pendant_Cord", (0.0, ROOM_D/2.0, CEIL-0.14), 0.008, 0.28, P.METAL_BLACK)
     make_cyl("Table_Pendant_Shade", (0.0, ROOM_D/2.0, CEIL-0.36), 0.15, 0.15, (0.60, 0.44, 0.28, 1.0), segments=12)
     make_smoke_detector("Smoke", (0.9, ROOM_D/2.0, CEIL))
@@ -537,7 +537,7 @@ def build_hall_2026_11():
         make_cyl(f"Hall_Hook_{hi}", (HALL_X0 + 0.15, hy - 0.27 + hi * 0.18, 1.60), 0.012, 0.06, BRASS, axis='X', segments=6)
     make_chamfer_box("Hall_Coat_0", (HALL_X0 + 0.20, hy - 0.09, 1.22), (0.12, 0.30, 0.74), (0.26, 0.32, 0.40, 1.0))
     make_chamfer_box("Hall_Coat_1", (HALL_X0 + 0.19, hy + 0.27, 1.28), (0.10, 0.26, 0.62), (0.52, 0.44, 0.30, 1.0))
-    make_cyl("Hall_Ceiling_Dome", (HALL_CX, 1.40, CEIL - 0.06), 0.15, 0.12, (0.96, 0.90, 0.72, 1.0), segments=12)
+    make_cyl("Hall_Ceiling_Dome", (HALL_CX, 1.40, CEIL - 0.060), 0.15, 0.12, (0.96, 0.90, 0.72, 1.0), segments=12)
     make_light_switch("Hall_Switch", (fdx + 0.80, 0.0), axis='X', face_sign=1, z=1.20)
     make_traffic_wear("Hall_Wear", [(fdx, 0.5), (HALL_CX, 1.5), (W_X - 0.3, DOOR_Y)], width=0.6, tint=(0.52, 0.38, 0.23, 1.0))
 

@@ -70,7 +70,18 @@ def build_shell():
     for s in range(5):
         make_box(f"Stair_{s}", (2.6, 0.25 + s * 0.30, (1.10 - s * 0.21) / 2.0),
                  (1.6, 0.32, 1.10 - s * 0.21), COL_STEP)   # solid to the floor (2026-09-08)
-    make_box("Stair_Rail", (1.85, 0.9, 1.15), (0.06, 1.6, 0.06), COL_RACK)
+    # (pass 475) the rail RAKES with the flight (it was a level bar 5 cm over
+    # the top step, held by nothing), on the WALL side on three brackets: on
+    # posts along the open edge it stood in the bench and platform close-ups
+    import math as _m
+    from _props.geometry import make_rot_box
+    ry0, rz0, ry1, rz1 = 0.10, 1.10 + 0.88, 1.55, 0.26 + 0.88
+    ang = _m.atan2(rz0 - rz1, ry1 - ry0)
+    RX = ROOM_W / 2.0 - 0.10 - 0.07          # 7 cm off the east wall's face
+    make_rot_box("Stair_Rail", (RX, (ry0 + ry1) / 2.0, (rz0 + rz1) / 2.0), (0.05, _m.hypot(ry1 - ry0, rz0 - rz1), 0.05), COL_RACK, roll=-ang)
+    for pk, py_ in enumerate((0.30, 0.85, 1.40)):
+        rz = rz0 - (py_ - ry0) * _m.tan(ang)
+        make_box(f"Stair_Rail_Bracket_{pk}", (RX + 0.045, py_, rz - 0.035), (0.04, 0.03, 0.03), COL_RACK)
     # Exposed ceiling pipe run (basement)
     make_cyl("Pipe", (-1.2, ROOM_D / 2.0, CEIL - 0.12), 0.07, ROOM_D, COL_FIXTURE,
              segments=8, axis='Y')

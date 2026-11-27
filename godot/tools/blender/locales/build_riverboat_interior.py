@@ -533,10 +533,15 @@ def build_maitre_d():
                  (cx + 0.40 + math.cos(ang) * 0.04,
                   cy + math.sin(ang) * 0.04, cz + 1.35),
                  (0.022, 0.022, 0.012), tint)
-    # Brass clock on the wall behind the stand
+    # Brass clock behind the stand — (pass 475) there is no wall there (it
+    # hung in the air 24 cm under the ceiling): a station clock hung from the
+    # ceiling on two brass rods
     make_cyl("MaitreD_Wallclock",
              (cx, cy - 0.40, cz + 2.10),
              0.16, 0.04, COL_BRASS, segments=12, axis='Y')
+    for rk, rdx in enumerate((-0.06, 0.06)):
+        make_cyl(f"MaitreD_Wallclock_Rod_{rk}", (cx + rdx, cy - 0.40, (cz + 2.25 + 5.0) / 2.0), 0.006, 5.0 - (cz + 2.25) + 0.005,
+                 COL_BRASS, segments=5)
 
     # ── Stairs UP to helm (the office staircase station marker
     # also goes here — combined entry zone)
@@ -1847,26 +1852,31 @@ def build_gangway():
     # Simulate via a flat box (we don't rotate the mesh, just slope
     # visual with the plank's center between boat + dock)
     gw_len = 3.0
-    make_box("GW_Plank",
-             (0.0, HULL_Y_S - gw_len / 2.0, cz - 0.30),
-             (1.40, gw_len, 0.10), COL_DECK_PLANK)
-    # Rope rails on both sides
-    for sgn in (-1, +1):
-        make_cyl(f"GW_Rope_{sgn}",
-                 (sgn * 0.70, HULL_Y_S - gw_len / 2.0, cz + 0.10),
-                 0.025, gw_len, (0.62, 0.46, 0.20, 1.0),
-                 segments=6, axis='Y')
-    # Posts at each end
+    # (pass 475) THE GANGWAY SLOPES from the boat's door down to the dock: it
+    # was a level plank 40 cm over the dock platform, and the platform hung in
+    # the air on nothing (support_audit, once "Dock" had to be dock-sized and
+    # touching something). A ramp, its posts standing on what they stand on,
+    # the rope rails sloping between the post tops, the platform on piles.
+    from _props.geometry import make_rot_box as _mrb, make_tube as _mt
+    dock_top = cz - 0.75
+    z_boat, z_dock = cz - 0.25, dock_top + 0.05
+    ramp_a = math.atan2(z_boat - z_dock, gw_len)
+    _mrb("GW_Plank", (0.0, HULL_Y_S - gw_len / 2.0, (z_boat + z_dock) / 2.0),
+         (1.40, math.hypot(gw_len, z_boat - z_dock), 0.10), COL_DECK_PLANK, roll=ramp_a)
     for sgn_x in (-1, +1):
-        for sgn_y, ypos in [(-1, HULL_Y_S - gw_len),
-                            (+1, HULL_Y_S - 0.10)]:
-            make_cyl(f"GW_Post_x{sgn_x}_y{sgn_y}",
-                     (sgn_x * 0.70, ypos, cz + 0.30),
-                     0.040, 1.40, COL_BRASS_DARK)
-    # Small dock platform at the far end
+        # the boat-end posts as they were; the dock-end posts on the platform
+        make_cyl(f"GW_Post_x{sgn_x}_y1", (sgn_x * 0.70, HULL_Y_S - 0.10, cz + 0.30), 0.040, 1.40, COL_BRASS_DARK)
+        make_cyl(f"GW_Post_x{sgn_x}_y-1", (sgn_x * 0.70, HULL_Y_S - gw_len, dock_top + 0.60), 0.040, 1.20, COL_BRASS_DARK)
+        _mt(f"GW_Rope_{sgn_x}", [(sgn_x * 0.70, HULL_Y_S - 0.10, cz + 0.95),
+                                (sgn_x * 0.70, HULL_Y_S - gw_len / 2.0, (cz + 0.95 + dock_top + 1.15) / 2.0 - 0.06),
+                                (sgn_x * 0.70, HULL_Y_S - gw_len, dock_top + 1.15)], 0.025, (0.62, 0.46, 0.20, 1.0), segments=6)
+    # Small dock platform at the far end, on four piles into the water
     make_box("GW_DockPlatform",
              (0.0, HULL_Y_S - gw_len - 0.50, cz - 0.80),
              (3.0, 1.0, 0.10), COL_DECK_PLANK_LT)
+    for pi_, (px_, py_) in enumerate(((-1.35, -0.10), (1.35, -0.10), (-1.35, -0.90), (1.35, -0.90))):
+        make_cyl(f"GW_Dock_Pile_{pi_}", (px_, HULL_Y_S - gw_len + py_, (cz - 0.85 - 0.6) / 2.0), 0.07, cz - 0.85 + 0.6,
+                 (0.36, 0.28, 0.20, 1.0), segments=8)
 
 
 # ════════════════════════════════════════════════════════════════
@@ -2296,8 +2306,8 @@ def build_emperor_dressing():
              (0.003, 0.10, 0.15),
              BRASS_RIGHT)
     # Brass "SIDE" plate above the door
-    make_box("Helm_SideDoor_LintelPlate",
-             (door_x - 0.022, door_y, cz + door_h + 0.05),
+    make_box("Helm_SideDoor_LintelPlate",      # (pass 475) on the wall's face (2 cm off it)
+             (door_x - 0.0015, door_y, cz + door_h + 0.05),
              (0.003, 0.20, 0.06),
              BRASS_RIGHT)
 

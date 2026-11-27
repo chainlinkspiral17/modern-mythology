@@ -170,7 +170,7 @@ def build_decor():
 
 def build_ceiling_infra():
     # Mile-End apartment: one warm dome, no shop tubes
-    make_cyl("Ceiling_Dome", (0.0, 2.5, CEIL-0.10), 0.15, 0.14, (0.94, 0.88, 0.70, 1.0), segments=12)
+    make_cyl("Ceiling_Dome", (0.0, 2.5, CEIL - 0.070), 0.15, 0.14, (0.94, 0.88, 0.70, 1.0), segments=12)
     make_smoke_detector("Smoke", (0.9, 2.5, CEIL))
 
 

@@ -3420,8 +3420,9 @@ const CAMERA_PRESETS := {
 	"highway_101_turn": {
 		"scene": "res://scenes/locales/highway_101.tscn",
 		"requires_glb": "res://assets/3d/locales/highway_101.glb",
-		# The unsigned turn: eye 1.6 on the shoulder at y 152, WNW at the
-		# chain, the green marker, the spur going off toward the bluff.
+		# The unsigned turn: eye 1.6 on the shoulder at y 152, NW at the
+		# chain, the green marker, Old Yachats Road climbing the headland
+		# into its cedars, the sea to the left (pass 475).
 		"camera_origin": Vector3(-1.5, 1.6, -152.0),
 		"camera_rotation": Vector3(-0.04, 0.80, 0.0),
 		"fov": 52.0,

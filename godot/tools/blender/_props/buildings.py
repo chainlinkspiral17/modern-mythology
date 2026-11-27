@@ -115,7 +115,7 @@ def make_ranch_house(prefix, cx, cy, front, wall_col, roof_col, w=11.0, d=8.0, h
     for pi, pz in enumerate((0.55, 1.30)):
         make_box(f"{prefix}_Door_Panel_{pi}", P(du, fv + 0.075, pz), S(0.60, 0.01, 0.55), (DOOR_COL[0] * 0.8, DOOR_COL[1] * 0.8, DOOR_COL[2] * 0.8, 1.0))
     make_box(f"{prefix}_Door_Knob", P(du + 0.36, fv + 0.095, 1.02), S(0.05, 0.05, 0.05), (0.78, 0.68, 0.36, 1.0))
-    make_box(f"{prefix}_Porch_Fixture", P(du + 0.75, fv + 0.10, 2.25), S(0.14, 0.14, 0.24), (0.86, 0.84, 0.78, 1.0))
+    make_box(f"{prefix}_Porch_Fixture", P(du + 0.75, fv + 0.07, 2.25), S(0.14, 0.14, 0.24), (0.86, 0.84, 0.78, 1.0))   # (pass 475) on the facade (it stood 3 cm off it)
     if porch:
         make_box(f"{prefix}_Porch_Slab", P(du, fv + 0.95, 0.12), S(2.6, 1.8, 0.24), CONCRETE)
         make_box(f"{prefix}_Porch_Step", P(du, fv + 2.0, 0.06), S(1.4, 0.4, 0.12), CONCRETE)

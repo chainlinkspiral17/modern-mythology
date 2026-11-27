@@ -288,8 +288,26 @@ def build_west_and_hall():
     for r in range(4):
         for c in range(3):
             make_box(f"Phone_Wall_Key_{r}_{c}", (px + 0.064, py - 0.024 + c * 0.024, pz - 0.083 - r * 0.021), (0.006, 0.016, 0.014), key)
-    for ci in range(6):
-        make_box(f"Phone_Wall_Cord_{ci}", (px + 0.075, py + 0.010 + (ci % 2) * 0.012, pz - 0.07 - ci * 0.045), (0.018, 0.022, 0.030), alm_dk)
+    # (pass 475) the coiled cord as ONE coil, from the handset's mouthpiece
+    # down in a loop and back up into the base (six 3 cm blocks with 1.5 cm
+    # gaps between them hung in the air)
+    cpts = []
+    NC = 64
+    for ci in range(NC + 1):
+        t = ci / NC
+        if t < 0.45:                       # down from the mouthpiece
+            u = t / 0.45
+            cx, cz = px + 0.080, (pz - 0.052) + u * (-0.24)
+        elif t < 0.60:                     # round the bottom of the loop
+            u = (t - 0.45) / 0.15
+            a_ = math.pi * u
+            cx, cz = px + 0.0575 + 0.0225 * math.cos(a_), (pz - 0.292) - 0.03 * math.sin(a_)
+        else:                              # back up into the base's underside
+            u = (t - 0.60) / 0.40
+            cx, cz = px + 0.035, (pz - 0.292) + u * 0.125
+        ang = ci * 1.25
+        cpts.append((cx + 0.008 * math.cos(ang), py + 0.010 * math.sin(ang), cz))
+    make_tube("Phone_Wall_Cord", cpts, 0.0035, alm_dk, segments=5)
     make_box("Wear_Phone_HandPatch", (XW + 0.005, py, 1.28), (0.01, 0.16, 0.14), (0.86, 0.83, 0.75, 1.0))
     make_box("PhoneJack_Plate", (XW + 0.006, py, 0.42), (0.012, 0.07, 0.11), (0.82, 0.79, 0.72, 1.0))
     make_calendar("Calendar", (XW + 0.003, 2.55, 1.60))
@@ -332,11 +350,22 @@ def build_west_and_hall():
     # the rail from the newel (y 0.95, z 1.13) up to the ceiling line
     run_y = (CEIL - 0.04 - 1.13) / math.tan(rake)
     make_rot_box("Stair_Handrail", (HALL_X + 1.14, 0.95 - run_y / 2.0, (1.13 + CEIL - 0.04) / 2.0),
-                 (0.05, run_y / math.cos(rake), 0.06), OAK_DK, pitch=-rake)
+                 (0.05, run_y / math.cos(rake), 0.06), OAK_DK, roll=-rake)   # (pass 475) ROLL tilts a y-long rail up the flight; pitch (about y) left it a level bar across the stairwell
+    # (pass 475) the balusters stood 3.5 cm off the flight's open face on
+    # nothing and stopped 12 cm under the rail (support_audit had let them
+    # off: "Stair_" counted as a stair). A close string along the open face
+    # — on the spandrel, into the newel — that they stand in, and each one
+    # runs up into the rail.
+    s_y0, s_y1 = 0.80, 0.80 - (NST - 1) * GOING
+    s_z0, s_z1 = RISE, RISE * NST
+    s_len = math.hypot(s_y0 - s_y1, s_z1 - s_z0)
+    make_rot_box("Stair_String", (HALL_X + 1.135, (s_y0 + s_y1) / 2.0, (s_z0 + s_z1) / 2.0 - 0.04),
+                 (0.10, s_len, 0.10), OAK_DK, roll=-rake)
     for k in range(NST):
         y = 0.80 - k * GOING
-        z0 = RISE * (k + 1)
-        top = min(z0 + 0.90, CEIL - 0.06)
+        z0 = RISE * (k + 1) - 0.05
+        z_rail = 1.13 + (0.95 - y) * math.tan(rake)
+        top = min(z_rail - 0.01, CEIL - 0.06)
         if top - z0 > 0.25:
             make_box(f"Stair_Baluster_{k}", (HALL_X + 1.14, y, (z0 + top) / 2.0), (0.025, 0.025, top - z0), TRIM)
     # the well: the ceiling opens over the flight where the headroom runs out

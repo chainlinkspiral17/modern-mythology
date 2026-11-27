@@ -426,8 +426,10 @@ def build_world_wave2_props():
              (0.28, 0.34, 0.62, 1.0))
 
     # Em's nine-step opening sheet · yellow legal-pad, in the drawer
-    open_x = -0.10
-    open_y = -0.40
+    # (pass 475) "in the drawer": there is no drawer here — at (-0.10, -0.40)
+    # it hung a metre up over the porch. On the counter by the till.
+    open_x = -0.84 + 0.24
+    open_y = +2.10
     make_box("EmsOpeningSheet_YellowPaper",
              (open_x, open_y, counter_z + 0.014),
              (0.14, 0.20, 0.001),

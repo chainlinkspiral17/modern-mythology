@@ -204,7 +204,7 @@ def build_building():
         make_box(f"Bldg_Bench_Leg_{lx:.1f}", (lx, 7.38, 0.21), (0.08, 0.36, 0.42), COL_STONE_DK)
     # Info board beside the walk: two posts + cream map panel
     for px in (-1.3, -0.3):
-        make_box(f"Info_Post_{px:.1f}", (px, 6.8, 0.85), (0.10, 0.10, 1.7), COL_TIMBER)
+        make_box(f"Info_Post_{px:.1f}", (px, 6.8, 0.905), (0.10, 0.10, 1.81), COL_TIMBER)   # (pass 475) up to the little roof (it sat 11 cm over the posts)
     make_box("Info_Panel", (-0.8, 6.82, 1.35), (1.3, 0.07, 0.85), COL_SIGN)
     make_box("Info_Roof", (-0.8, 6.8, 1.85), (1.5, 0.30, 0.08), COL_ROOF)
 

@@ -60,7 +60,7 @@ TREE_CROWN = re.compile(r"(tree|cedar|sitka|hemlock|grove|scrub|conifer|broadlea
 HARDWARE = re.compile(r"(^|_)(rod|rail|track|bracket|hook|pole|trellis)(_|$)", re.I)
 DOOR_LEAF = re.compile(r"(door|window|gate|shutter|hatch|lid)_?leaf", re.I)
 TERRAIN = {"graustark", "harmony_terrain", "small_wood_road", "riverfront", "louisiana_road", "new_auburn_road", "harmony_district"}
-SHELL = re.compile(r"(^|_)(wall|floor|ceil|ground|road|slab|apron|sidewalk|curb|terrain|lawn|grass|deck|stair|step|porch|platform|roof|beam|joist|foundation|pier|spandrel|lintel|jamb|partition|hull|shell|facade|street|path|gravel|asphalt|track|rail_bed|island|dock|bridge)|parking_lot|^lot_(asphalt|dirt|gravel|walk|curb)|^part_[a-z]+(_base)?$", re.I)
+SHELL = re.compile(r"(^|_)(wall|floor|ceil(?:ing)?|ground|road|slab|apron|sidewalk|curb|terrain|lawn|grass|deck|stair|step|porch|platform|roof|beam|joist|foundation|pier|spandrel|lintel|jamb|partition|hull|shell|facade|street|path|gravel|asphalt|track|rail_bed|island|dock|bridge)s?(?=_|$|[0-9])|parking_lot|^lot_(asphalt|dirt|gravel|walk|curb)|^part_[a-z]+(_base)?$", re.I)
 # (the vantage audit's IGNORE is not used here: its `plinth$` dropped the
 # sundial's plinth and its `band` the cedar tower's floor bands, 2026-09-22)
 # whole name PARTS only — "ridge" must not eat the Fridge (2026-09-22)
@@ -70,9 +70,10 @@ SHELL = re.compile(r"(^|_)(wall|floor|ceil|ground|road|slab|apron|sidewalk|curb|
 # Distant things stand on the ground like near ones.
 # butterfly|moth|firefly (2026-09-23): things drawn IN FLIGHT — the
 # kowalski butterfly is "the butterfly leaves", in the air on purpose.
+# rainstreak (pass 475): Pasadena's falling rain, in the air by design.
 # minnow (2026-09-24): swimmers — the frog tanks' water is a surface now,
 # not a solid block, and a shoal hangs in it
-SKY = re.compile(r"(^|_)(sky|horizon|mist|cloud|drone|skein|haze|fog|treeline|ridge|hill|glow|clearing|sundisc|moondisc|moon|shimmer|smear|mote|streak|void|sea|swamp_floor|lake_water|valley_floor|ribbon|butterfly|moth|firefly|minnow)(_|$)|(^|_)out_[a-z]+_(ground|street|facade|wall|sea|sky|roof|treeline|lawn|tower|freeway|brick|gallery|litwin)|garden_far", re.I)
+SKY = re.compile(r"(^|_)(sky|horizon|mist|cloud|drone|skein|haze|fog|treeline|ridge|hill|glow|clearing|sundisc|moondisc|moon|shimmer|smear|mote|streak|void|sea|swamp_floor|lake_water|valley_floor|ribbon|butterfly|moth|firefly|minnow|rainstreak)(_|$)|(^|_)out_[a-z]+_(ground|street|facade|wall|sea|sky|roof|treeline|lawn|tower|freeway|brick|gallery|litwin)|garden_far", re.I)
 
 # a diorama's land and sea plates are the TABLE its models stand on
 # (2026-09-23: "template_land|template_sea" sat in SKY, so every cedar,
@@ -84,6 +85,22 @@ SKY = re.compile(r"(^|_)(sky|horizon|mist|cloud|drone|skein|haze|fog|treeline|ri
 GROUNDLIKE = re.compile(r"(^|_)(hill|ridge|valley_floor|swamp_floor|lake_water|sea)(_|$)"
                         r"|(^|_)out_[a-z]+_(ground|street|facade|wall|roof|lawn|tower|freeway|brick|gallery)", re.I)
 TABLETOP = re.compile(r"^template_(land|sea)$", re.I)
+
+
+# (pass 475) SHELL words are WHOLE name parts now ("WallClock" is not a
+# wall, "Roadbed" not a road), and a SHELL-named piece grounds only when it IS a surface: its two
+# largest extents at least SURFACE_MIN. The name test matches a whole name
+# PART at the start, with no end boundary, so "Road_Marker" counted as road,
+# "Deck_0_3" (a skateboard deck) as a deck, "Stair_Baluster" as a stair and
+# "Porch_Light" as a porch: a green sign 5 cm over its post (the user, on the
+# Old Yachats Road marker), 26 skateboard decks off their backboard, balusters
+# beside their stair. A real floor, wall, road or tread is wide both ways.
+SURFACE_MIN = 0.40
+SURF = {}
+
+
+def is_shell(nm):
+    return bool(SHELL.search(nm)) and SURF.get(nm, True)
 
 
 def touching(a, b):
@@ -104,6 +121,8 @@ def audit(locale, boxes, show_all=False):
         if SKY.search(n) and not TABLETOP.search(n) and not GROUNDLIKE.search(n):
             continue
         keep.append((n, tuple(c[i] - h[i] for i in range(3)), tuple(c[i] + h[i] for i in range(3))))
+        ext = sorted(2.0 * h[i] for i in range(3))
+        SURF[n] = ext[1] >= SURFACE_MIN
     n = len(keep)
     parent = list(range(n))
 
@@ -130,14 +149,14 @@ def audit(locale, boxes, show_all=False):
         active.append(i)
     grounded = set()
     for i, (nm, lo, hi) in enumerate(keep):
-        if SHELL.search(nm) or GROUNDLIKE.search(nm) or lo[2] <= TOUCH:
+        if is_shell(nm) or GROUNDLIKE.search(nm) or lo[2] <= TOUCH:
             grounded.add(find(i))
     comps = defaultdict(list)
     for i in range(n):
         r = find(i)
         if r not in grounded:
             comps[r].append(i)
-    shells = [(keep[i][1], keep[i][2]) for i in range(n) if SHELL.search(keep[i][0]) or GROUNDLIKE.search(keep[i][0])]
+    shells = [(keep[i][1], keep[i][2]) for i in range(n) if is_shell(keep[i][0]) or GROUNDLIKE.search(keep[i][0])]
     floats = []
     for r, members in comps.items():
         members.sort(key=lambda i: keep[i][1][2])

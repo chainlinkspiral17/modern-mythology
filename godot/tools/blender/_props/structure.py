@@ -48,14 +48,21 @@ def make_floor(prefix, anchor, *, size_x, size_y, palette=None, style="grid", pl
                         make_box(f"{prefix}_Stock_SeamE_{i}_{j}", (vm, u, base_z + 0.005), (plank_w - 0.012, 0.012, 0.001), seam)
         return
     # N-S plank seams
+    # (pass 475) only the seams that fall ON the floor: the loops ran one
+    # metre past each end (a 13 m floor drew seams at +-7 m, hanging off its
+    # edges — support_audit, link_house's upstairs hall)
     n_x = int(size_x)
     for i in range(-n_x // 2, n_x // 2 + 1):
+        if abs(i) >= size_x / 2.0 - 0.01:
+            continue
         make_box(f"{prefix}_SeamX_{i}",
                  (cx + i, cy, base_z + 0.005),
                  (0.02, size_y, 0.001), seam)
     # E-W tile seams
     n_y = int(size_y)
     for j in range(int(cy - size_y / 2), int(cy + size_y / 2) + 1):
+        if not (cy - size_y / 2.0 + 0.01 < j < cy + size_y / 2.0 - 0.01):
+            continue
         make_box(f"{prefix}_SeamY_{j}",
                  (cx, j, base_z + 0.005),
                  (size_x, 0.02, 0.001), seam)

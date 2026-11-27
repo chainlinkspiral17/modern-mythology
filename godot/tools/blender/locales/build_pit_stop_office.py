@@ -117,9 +117,10 @@ def build_office_dressing():
         make_box(f"Supplier_Case_{ti}", (ROOM_W/2.0-0.5, 0.7, cz_), (cw, cd, ch), (0.62, 0.50, 0.34, 1.0))
         make_box(f"Supplier_Case_Tape_{ti}", (ROOM_W/2.0-0.5, 0.7, cz_ + 0.005), (cw+0.01, 0.08, ch), (0.74, 0.62, 0.42, 1.0))
     # Spare apron on a hook beside the door.
-    make_cyl("Apron_Hook", (1.35, 0.14, 1.65), 0.02, 0.06, P.METAL_STEEL, segments=6)
-    make_box("Apron_Hanging", (1.35, 0.17, 1.15), (0.34, 0.03, 0.95), (0.92, 0.92, 0.90, 1.0))
-    make_box("Apron_Straps", (1.35, 0.18, 1.62), (0.20, 0.02, 0.10), (0.84, 0.84, 0.82, 1.0))
+    make_cyl("Apron_Hook", (1.35, 0.12, 1.65), 0.02, 0.06,   # (pass 475) into the wall (2 cm off it)
+             P.METAL_STEEL, segments=6)
+    make_box("Apron_Hanging", (1.35, 0.15, 1.15), (0.34, 0.03, 0.95), (0.92, 0.92, 0.90, 1.0))
+    make_box("Apron_Straps", (1.35, 0.16, 1.62), (0.20, 0.02, 0.10), (0.84, 0.84, 0.82, 1.0))
 
 def build_ceiling_infra():
     for j in range(2):

@@ -164,7 +164,7 @@ def build_window():
 
 
 def build_ceiling_infra():
-    make_cyl("Ceiling_Dome", (0.0, ROOM_D/2.0, CEIL - 0.06), 0.16, 0.10, (0.94, 0.90, 0.78, 1.0), segments=12)
+    make_cyl("Ceiling_Dome", (0.0, ROOM_D/2.0, CEIL - 0.050), 0.16, 0.10, (0.94, 0.90, 0.78, 1.0), segments=12)
     make_smoke_detector("Smoke", (-0.8, ROOM_D/2.0, CEIL))
 
 

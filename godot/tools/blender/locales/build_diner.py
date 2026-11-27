@@ -4181,7 +4181,7 @@ def build_wall_decor():
     # hub, the maker's plate, and the single bent nail it sags from
     # (25 mm below the nail line, its twelve 4° off plumb).
     import math as _cm
-    wall_x = 4.91                      # the wall's west face
+    wall_x = 4.95                      # the wall's west face — the lintel over the doorway (pass 475: 4.91 hung the clock 4 cm off it)
     clock_cy = -3.25                   # just north of the galley, left of the expo
     clock_cz = D_H - 0.55              # high on the wall: the dial clears the doorway under it
                                        # (the Deck, 2026-10-02: "hanging too low, coming down into the doorway")
@@ -4247,8 +4247,8 @@ def build_wall_decor():
              0.012, 0.008, (0.80, 0.16, 0.14, 1.0), segments=8, axis='X')
     make_box("WallClock_Plate", (cx0 - 0.062, clock_cy, ccz - 0.155),
              (0.008, 0.11, 0.032), COL_BRASS)
-    make_box("WallClock_PlateLine", (0, clock_cy - 0.067, ccz - 0.155),
-             (0.085, 0.004, 0.010), (0.24, 0.18, 0.10, 1.0))
+    make_box("WallClock_PlateLine", (cx0 - 0.0665, clock_cy, ccz - 0.155),   # (pass 475) on the plate: it stood at x 0, mid-room
+             (0.002, 0.085, 0.010), (0.24, 0.18, 0.10, 1.0))
     # Framed photos relocated to the EAST ANNEX PARTITION WALL, facing
     # west into the main dining floor (south wall is now occupied by
     # the riverboat galley line). 5 photos along the upper Y range.
@@ -5576,9 +5576,9 @@ def build_diner_streetscape():
     # ── Street lights along River Road (4) ──
     for label, sx in [("R1", -10), ("R2", -2), ("R3", +6), ("R4", +14)]:
         sy = (ROAD_Y_N - 0.5)    # on the north sidewalk
-        make_cyl(f"StreetLight_{label}_Pole",
-                 (sx, sy, 2.8),
-                 0.05, 5.2, COL_POLE_DARK, segments=6, axis='Z')
+        make_cyl(f"StreetLight_{label}_Pole",      # (pass 475) from the walk up: it began 17 cm in the air
+                 (sx, sy, 2.7),
+                 0.05, 5.4, COL_POLE_DARK, segments=6, axis='Z')
         # Acorn-style fixture (sphere)
         make_sphere_low(f"StreetLight_{label}_Globe",
                         (sx, sy, 5.5),

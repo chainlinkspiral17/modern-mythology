@@ -200,8 +200,9 @@ def build_room_over_laundromat_2026_10():
     for c in range(6):
         for r in range(3):
             make_box(f"Across_Win_{c}_{r}", (-5.5 + c * 2.2, ROOM_D + 12.29, -1.5 + r * 2.8), (1.0, 0.02, 1.4), [(0.92, 0.78, 0.40, 1.0), (0.14, 0.16, 0.20, 1.0)][(c + r) % 2])
-    make_cyl("Street_Lamp", (-2.5, ROOM_D + 1.2, -1.6), 0.05, 4.0, (0.20, 0.22, 0.24, 1.0), segments=8)
-    make_box("Street_Lamp_Head", (-2.5, ROOM_D + 1.5, 0.35), (0.28, 0.40, 0.14), (0.96, 0.88, 0.60, 1.0))
+    make_cyl("Street_Lamp", (-2.5, ROOM_D + 1.2, -1.66), 0.05, 4.12,   # (pass 475) from the street up (7 cm over it)
+             (0.20, 0.22, 0.24, 1.0), segments=8)
+    make_box("Street_Lamp_Head", (-2.5, ROOM_D + 1.42, 0.35), (0.28, 0.40, 0.14), (0.96, 0.88, 0.60, 1.0))
     # ── a man living out of a duffle
     make_box("Hook_Towel_Hook", (ROOM_W / 2.0 - 0.115, 3.70, 1.60), (0.03, 0.03, 0.05), (0.62, 0.62, 0.60, 1.0))
     make_box("Hook_Towel", (ROOM_W / 2.0 - 0.145, 3.70, 1.30), (0.03, 0.30, 0.60), (0.72, 0.68, 0.58, 1.0))

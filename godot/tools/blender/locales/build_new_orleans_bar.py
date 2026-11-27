@@ -567,7 +567,7 @@ def build_street():
         for k in range(3):
             make_box(f"Out_Cottage_{c}_Post_{k}", (cx - 2.4 + k * 2.4, -16.7, 1.95), (0.10, 0.10, 3.9), (0.86, 0.84, 0.80, 1.0))
     make_cyl("Street_Lamp_Pole", (-1.6, -3.7, 2.0), 0.05, 4.0, (0.20, 0.22, 0.24, 1.0), segments=8)
-    make_box("Street_Lamp_Head", (-1.6, -4.1, 3.9), (0.28, 0.46, 0.14), (0.96, 0.88, 0.60, 1.0))
+    make_box("Street_Lamp_Head", (-1.6, -3.95, 3.9), (0.28, 0.46, 0.14), (0.96, 0.88, 0.60, 1.0))   # (pass 475) on its pole (12 cm off it)
     from _props.vehicles import make_car
     make_car("Parked_Car", 5.6, -6.0, 4.4, (0.26, 0.26, 0.30, 1.0), along="X", z0=-0.11)
     make_car("Parked_Car_1", -7.2, -6.0, 4.6, (0.48, 0.20, 0.18, 1.0), along="X", z0=-0.11)
