@@ -3835,6 +3835,25 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-27 · pass 477: the ch22 drive relit for the text's afternoon (the pass-475 canon knot, approved by the user: "Go ahead").**
+The drive was lit for dusk ([mood:dusk] on ch22_drive n8, a low west sun,
+an orange glow slab on the sea's horizon, the headlights on), but the text
+has them past Cape Perpetua at "three-eleven", past Yachats at
+"three-forty", the tower in "late-afternoon light". Now: n8 cued
+[mood:day_bright] (the chapter's day look); highway_101.tscn's sky a hazy
+coastal afternoon, the ambient and fog with it; the Sun SW at ~37 degrees
+(44 N, late September, ~3:40 PM daylight time), warm white; both presets
+(highway_101, highway_101_turn) carry the same env and strip the wagon's
+headlights; Far_Dusk_Glow (an orange slab on the sea's horizon) replaced
+by Far_Sea_Haze, the pale marine haze such an afternoon has there. The
+backlot picture laid over it, highway_101_far (never generated), rewritten
+in the roster from "the last sunset glow" to the afternoon haze band —
+TO GENERATE when convenient. The clearing at the tower
+(cedar_tower_exterior) was already "at three forty-three". KNOT RESOLVED.
+NEXT: a sun-glint band on the sea toward the SW. (The return drive plays
+on cabin_road, ch22_portal n84: "early evening ... at four fifty-six. The
+light over the ocean was the long gray-gold" — read that set's light.)
+
 **2026-11-27 · pass 476: the cedar tower's clearing, by the text (cedar_tower exterior draft 3); Tem's wagon is a wagon.**
 "More detail on the backgrounds", continued down ch22: the road ends in
 the tower's clearing. Read by render against vol7_ch22_drive n52-92:
@@ -3941,8 +3960,8 @@ The sign is hovering over the pole."
 - CANON KNOT (for Andy): ch22_drive n8 carries [mood:dusk] and the preset
   is lit for dusk, but the text has them past Cape Perpetua at
   "three-eleven" and past Yachats at "three-forty", and the tower in
-  "late-afternoon light" — a September afternoon, not dusk. Not changed
-  this pass.
+  "late-afternoon light" — a September afternoon, not dusk. (Resolved in
+  pass 477: relit for the afternoon.)
 Deck must REBUILD (stale GLBs): highway_101 and every builder named in
 the float list (the update command's --stale rebuild does it).
 NEXT (highway_101 draft 4): relight for the text's late afternoon if

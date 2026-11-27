@@ -3388,12 +3388,17 @@ const CAMERA_PRESETS := {
 	"highway_101": {
 		"scene": "res://scenes/locales/highway_101.tscn",
 		"requires_glb": "res://assets/3d/locales/highway_101.glb",
-		# Dusk. The truck's hood (eye 1.15) on the northbound lane, the
-		# guardrail and the ocean left, the cedar wall right, the
-		# headland rising ahead. (ch22_drive)
+		# (pass 477) Mid-afternoon — "They drove past Yachats at three-forty"
+		# — not the dusk it was lit for. The wagon's hood (eye 1.15) on the
+		# northbound lane, the guardrail and the ocean left, the cedar wall
+		# right, the headland rising ahead. (ch22_drive)
 		"camera_origin": Vector3(1.8, 1.15, -12.0),
 		"camera_rotation": Vector3(0.0, 0.0, 0.0),
 		"fov": 62.0,
+		"strip": ["Truck_Headlights"],
+		"env": {"sky_top": Color(0.40, 0.54, 0.72, 1), "sky_horizon": Color(0.84, 0.82, 0.74, 1),
+			"ground_horizon": Color(0.46, 0.46, 0.42, 1), "ground_bottom": Color(0.18, 0.18, 0.16, 1),
+			"ambient_color": Color(0.80, 0.80, 0.76, 1), "ambient_energy": 1.0, "fog_color": Color(0.76, 0.78, 0.78, 1)},
 		"suppress_input": true,
 		"far": 2000.0,   # (2026-11-01) the sea out to the horizon, the ridges behind
 	},
@@ -3426,6 +3431,10 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(-1.5, 1.6, -152.0),
 		"camera_rotation": Vector3(-0.04, 0.80, 0.0),
 		"fov": 52.0,
+		"strip": ["Truck_Headlights"],
+		"env": {"sky_top": Color(0.40, 0.54, 0.72, 1), "sky_horizon": Color(0.84, 0.82, 0.74, 1),
+			"ground_horizon": Color(0.46, 0.46, 0.42, 1), "ground_bottom": Color(0.18, 0.18, 0.16, 1),
+			"ambient_color": Color(0.80, 0.80, 0.76, 1), "ambient_energy": 1.0, "fog_color": Color(0.76, 0.78, 0.78, 1)},
 		"suppress_input": true,
 		"far": 2000.0,   # (2026-11-01) the sea out to the horizon, the ridges behind
 	},

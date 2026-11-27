@@ -130,12 +130,13 @@ shader_parameter/tint_amount = 0.18
 shader_parameter/tint_color = Color(0.96, 0.62, 0.28, 1)
 
 [sub_resource type="ProceduralSkyMaterial" id="SkyMat_Win"]
-; (2026-10-07: the window is cut — a dusk sky past it, not a flat backdrop)
-sky_top_color = Color(0.22, 0.24, 0.42, 1)
-sky_horizon_color = Color(0.86, 0.60, 0.46, 1)
-sky_curve = 0.25
-ground_bottom_color = Color(0.12, 0.11, 0.12, 1)
-ground_horizon_color = Color(0.34, 0.28, 0.28, 1)
+; (pass 477) the September afternoon the text gives — "They drove past Yachats at
+; three-forty" (ch22_drive n43) — not the dusk it was lit for: a hazy coastal sky
+sky_top_color = Color(0.40, 0.54, 0.72, 1)
+sky_horizon_color = Color(0.84, 0.82, 0.74, 1)
+sky_curve = 0.20
+ground_bottom_color = Color(0.18, 0.18, 0.16, 1)
+ground_horizon_color = Color(0.46, 0.46, 0.42, 1)
 sun_angle_max = 8.0
 
 [sub_resource type="Sky" id="Sky_Win"]
@@ -147,12 +148,12 @@ background_mode = 2
 sky = SubResource("Sky_Win")
 background_color = Color(0.62, 0.66, 0.72, 1.0)
 ambient_light_source = 2
-ambient_light_color = Color(0.72, 0.74, 0.70, 1)
-ambient_light_energy = 0.9
+ambient_light_color = Color(0.80, 0.80, 0.76, 1)
+ambient_light_energy = 1.0
 fog_enabled = true
 fog_sky_affect = 0.0
-fog_light_color = Color(0.70, 0.74, 0.72, 1)
-fog_light_energy = 0.15
+fog_light_color = Color(0.76, 0.78, 0.78, 1)
+fog_light_energy = 0.30
 fog_density = 0.001
 adjustment_enabled = true
 adjustment_brightness = 1.0
@@ -170,10 +171,12 @@ glow_hdr_scale = 2.4
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Locale")
 
+; (pass 477) mid-afternoon: the sun SW at ~37 degrees (44 N, late September,
+; ~3:40 PM daylight time), warm white; it was low in the west for dusk
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0, 0.37, -0.929, 0, 0.929, 0.37, 1, 0, 0, 0, 4, 0)
-light_color = Color(1, 0.80, 0.62, 1)
-light_energy = 0.8
+transform = Transform3D(0.766, 0.387, -0.513, -0.000, 0.799, 0.602, 0.643, -0.461, 0.612, 0, 30, 0)
+light_color = Color(1, 0.93, 0.82, 1)
+light_energy = 1.2
 shadow_enabled = false
 metadata/daylight = true
 

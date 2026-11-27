@@ -18,10 +18,11 @@ round, cedar to the cliff tops); the decommissioned turn with its chain
 and marker at y 160, Old Yachats Road climbing the headland from it.
 
 Presets (Background3D):
-  highway_101        dusk · the truck's hood height (1.15) on the
-                      northbound lane, the ocean left, cedars right,
-                      the headland ahead · 62°
-  highway_101_turn   dusk · at the chained turn, eye 1.6, NW at the
+  highway_101        mid-afternoon (pass 477; it was dusk) · the
+                      wagon's hood height (1.15) on the northbound
+                      lane, the ocean left, cedars right, the
+                      headland ahead · 62°
+  highway_101_turn   mid-afternoon · at the chained turn, eye 1.6, NW at the
                       chain and the green marker, the old road
                       climbing into the cedars, the sea left · 52°
 
@@ -231,7 +232,12 @@ def build_dusk_dressing_2026_09():
         y += 3.8
         i += 1
     make_car("Far_Sedan_Northbound", 1.8, 198.0, 4.6, (0.30, 0.32, 0.36, 1.0), along="Y", z0=0.02)
-    make_box("Far_Dusk_Glow", (-600.0, 0.0, SEA_Z + 30.0), (40.0, 2600.0, 28.0), (0.96, 0.66, 0.38, 1.0))
+    # (pass 477) no dusk glow: the text has the drive at "three-forty" on a
+    # September afternoon (ch22_drive n43). In its place the marine haze
+    # that sits on the coast's horizon on such an afternoon, 600 m out: a
+    # pale band where the sea meets the sky (the stand-in the backlot picture
+    # highway_101_far is laid over)
+    make_box("Far_Sea_Haze", (-600.0, 0.0, SEA_Z + 10.0), (40.0, 2600.0, 20.0), (0.76, 0.78, 0.76, 1.0))
 
 
 # ── (pass 475) THE HEADLAND: geography ─────────────────────────────────

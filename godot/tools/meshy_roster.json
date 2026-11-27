@@ -22178,7 +22178,7 @@
     {
       "slug": "highway_101_far",
       "kind": "art",
-      "name": "the last sunset glow over the Pacific (tiling band)",
+      "name": "the afternoon haze on the Pacific's horizon (tiling band)",
       "file": "highway_101_far.png",
       "vol": [
         7
@@ -22187,10 +22187,10 @@
         "highway_101_far"
       ],
       "tag": "backlot · highway_101 · 2600 x 28 m · 41 lines play here, 6 mention it",
-      "prompt": "A very long horizontal band of sky over the open Pacific seen from the Oregon coast highway north of Yachats just after sunset in September, straight-on. A warm low band of afterglow: apricot and soft amber (warm orange-peach) at the bottom fading up through dusty rose into cool violet-grey, thin streaks of stratus lit coral from below, the faint ragged top of a marine fog bank sitting on the horizon line at the very bottom edge. No sun disc, no birds, no land. Must tile seamlessly left-right: no single landmark or distinct cloud shape, colour constant across the width. Extremely wide (about 90:1 — paint a seamless wide strip).",
+      "prompt": "A very long horizontal band of the far Pacific horizon seen from the Oregon coast highway north of Yachats on a September afternoon, straight-on, no sun in frame. The bottom third the distant sea, grey-blue and flat with the faintest lines of swell; at the horizon a soft low bank of pale marine haze, warm grey-white, its top ragged and dissolving upward into a hazy pale blue sky. Even, soft late-afternoon light from the left. No birds, no ships, no land. Must tile seamlessly left-right: no single landmark or distinct cloud shape, colour constant across the width. Extremely wide.",
       "canon": [],
       "prompt_mode": "fallback",
-      "notes": "(2026-10-13, written from the builder, scenes and wiki) builder Far_Dusk_Glow (0.96,0.66,0.38): 'the sun gone but not its colour', 600 m out over the sea haze; preset is dusk (2026-10-19) size doubled: laid at half its stand-in by hero_art_candidates' half-extent bug.",
+      "notes": "(pass 477) the drive is at three-forty on a September afternoon (ch22_drive n43), no longer dusk: builder Far_Sea_Haze (0.76,0.78,0.76), 600 m out where the sea meets the sky. (was the sunset afterglow over Far_Dusk_Glow, 2026-10-13/19)",
       "fit": "tile",
       "art_cat": "BACKLOT",
       "score_lines": 41,
@@ -22202,15 +22202,15 @@
           "center": [
             -580.0,
             0.0,
-            8.0
+            -12.0
           ],
           "size": [
             2600.0,
-            28.0
+            20.0
           ],
           "facing": "+x",
           "hide": [
-            "Far_Dusk_Glow"
+            "Far_Sea_Haze"
           ],
           "fit": "tile"
         }
