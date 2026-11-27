@@ -88,7 +88,6 @@ KEPT_INSERT = {
     # (pass 446) the alcove IS the building's east end ("A brochure rack just inside the alcove")
     ("briar_falls_building", "shot_insert_flyer"): "the flyer taped inside the same alcove",
     ("graustark_cottage", "shot_insert_herbs"): "Joanna's herb patch outside",
-    ("highway_101", "shot_insert_marker"): "the mile marker up the road",
     # (pass 433) ch14 plays in its twin now
     ("new_auburn_strip_mall_early", "shot_insert_sedan"): "the white sedan in the FRONT lot (this camera is the back lot's)",
     ("daily_grind_interior", "shot_insert_tower"): "the tower on the hill, seen from town",

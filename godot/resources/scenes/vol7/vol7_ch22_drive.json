@@ -69,7 +69,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert guardrail]The bluff had been a fishing village in the early twentieth century. The village had emptied in the 1970s when the cannery in Newport closed. The bluff had been undeveloped land for forty years.",
+      "text": "The bluff had been a fishing village in the early twentieth century. The village had emptied in the 1970s when the cannery in Newport closed. The bluff had been undeveloped land for forty years.",
       "t": "narrate"
     },
     {
@@ -81,7 +81,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert marker]This was — Tem registered as she drove north past Cape Perpetua at three-eleven — what she knew about the tower.",
+      "text": "This was — Tem registered as she drove north past Cape Perpetua at three-eleven — what she knew about the tower.",
       "t": "narrate"
     },
     {
@@ -227,7 +227,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert chain]A green metal road-marker reading Old Yachats Road sat at the turn with a chain across it the way roads get when they have been county-decommissioned. The chain hung loose on one side. Tem turned off 101 onto the road.",
+      "text": "[shot:insert road_marker]A green metal road-marker reading Old Yachats Road sat at the turn with a chain across it the way roads get when they have been county-decommissioned. The chain hung loose on one side. Tem turned off 101 onto the road.",
       "t": "narrate"
     },
     {

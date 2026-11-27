@@ -160,9 +160,24 @@ def build_table():
         make_box(f"Stretcher_Bar_{k}", (tx, ty + 0.30, 0.215 + 0.025 + k * 0.05), (0.06, 1.10, 0.05), COL_WOOD)
     # the apron on its hook by the door
     make_box("Apron_Hook", (2.20, 0.13, 1.65), (0.04, 0.06, 0.04), COL_STEEL)
-    make_box("Apron", (2.20, 0.17, 1.25), (0.50, 0.04, 0.80), (0.42, 0.40, 0.34, 1.0))
+    # (pass 473) "She set up. The apron." (ch3_studio n11): a 50 x 80 cm slab
+    # in the door's shadow — a dark rectangle a stranger took for the doorway.
+    # An apron's shape in pale canvas: the neck strap over the hook, the bib,
+    # the wider skirt below the waist, the front pocket, the ties hanging,
+    # the paint wiped on it.
+    canvas, canvas_dk = (0.72, 0.68, 0.58, 1.0), (0.56, 0.52, 0.44, 1.0)
+    ay = 0.17
+    for sk, sx in enumerate((-0.07, 0.07)):
+        make_rot_box(f"Apron_Neck_Strap_{sk}", (2.20 + sx * 0.5, ay - 0.004, 1.57), (0.02, 0.008, 0.16), canvas_dk, yaw=0.0)
+    make_box("Apron_Bib", (2.20, ay, 1.38), (0.30, 0.012, 0.26), canvas)
+    make_box("Apron_Skirt", (2.20, ay, 0.98), (0.50, 0.012, 0.54), canvas)
+    make_box("Apron_Waist_Seam", (2.20, ay + 0.007, 1.245), (0.50, 0.003, 0.02), canvas_dk)
+    make_box("Apron_Pocket", (2.20, ay + 0.008, 1.06), (0.30, 0.004, 0.16), canvas_dk)
+    make_box("Apron_Pocket_Divider", (2.20, ay + 0.0105, 1.06), (0.006, 0.002, 0.16), canvas)
+    for tk, tx_ in enumerate((1.96, 2.44)):
+        make_box(f"Apron_Tie_{tk}", (tx_, ay + 0.002, 1.12), (0.025, 0.004, 0.24), canvas_dk)
     for k in range(4):
-        make_box(f"Apron_Smear_{k}", (2.08 + k * 0.08, 0.192, 1.15 + 0.08 * (k % 2)), (0.05, 0.002, 0.10), (COL_BONE_BLACK, COL_GREEN, COL_NAPLES, (0.46, 0.38, 0.30, 1.0))[k])
+        make_box(f"Apron_Smear_{k}", (2.08 + k * 0.08, ay + 0.0075, 1.15 + 0.03 * (k % 2) - (0.20 if k == 3 else 0.0)), (0.05, 0.002, 0.08), (COL_BONE_BLACK, COL_GREEN, COL_NAPLES, (0.46, 0.38, 0.30, 1.0))[k])
 
 
 def build_corners():

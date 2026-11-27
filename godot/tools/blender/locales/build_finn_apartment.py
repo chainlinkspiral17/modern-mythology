@@ -245,7 +245,10 @@ def build_kitchen_table():
     # fa_stick). They stood here in ch5, ch9 and ch12, months before.
     make_box("Stick_Sleeve__fa_stick", (tx + 0.44, ty + 0.18, T + 0.010), (0.26, 0.09, 0.020), (0.88, 0.84, 0.72, 1.0))
     make_box("Stick_Label__fa_stick", (tx + 0.44, ty + 0.18, T + 0.021), (0.10, 0.05, 0.002), (0.96, 0.95, 0.92, 1.0))
-    make_box("Paper_Bag__fa_stick", (tx + 0.50, ty + 0.30, T + 0.11), (0.16, 0.10, 0.22), (0.68, 0.54, 0.36, 1.0))
+    # (pass 473) the brown paper bread bag Tem handed him (ch18_stick n54: "He
+    # set the bag on the kitchen table"): the shared paper bag, not a box
+    from _props.objects import make_paper_bag
+    make_paper_bag("Paper_Bag__fa_stick", tx + 0.50, ty + 0.30, T, w=0.16, d=0.10, h=0.22, color=(0.68, 0.54, 0.36, 1.0))
     # (pass 397) no plate: in ch9 Finn has "forgot to eat since yesterday
     # morning" and Kai takes him OUT to eat ("Get up … they went down to the
     # truck"). The plate and sandwich "Kai put in front of him" were invented.
@@ -275,7 +278,12 @@ def build_living():
     make_smartphone("Finns_Phone", DESK_X + 0.20, DESK_Y - 0.10, (0.7655) - 0.0055, state="lock", along="Y", w=0.070, l=0.140)   # (pass 456) a phone, not a dark slab
     make_box("Finns_Notebook", (DESK_X - 0.02, DESK_Y + 0.02, 0.766), (0.150, 0.200, 0.012), (0.36, 0.30, 0.24, 1.0))
     make_box("Finns_Notebook_Wire", (DESK_X - 0.101, DESK_Y + 0.02, 0.767), (0.010, 0.200, 0.014), (0.55, 0.56, 0.58, 1.0))
-    make_box("Carved_Cedar", (DESK_X + 0.38, DESK_Y + 0.10, 0.785), (0.030, 0.020, 0.050), (0.52, 0.34, 0.22, 1.0))
+    # (pass 473) "The cedar with the carved hand holding the bell was on his
+    # palm ... The bell the size of a thimble. The hand open." (vol7 ch18_home
+    # n17): a 3 x 2 x 5 cm block — a speck on the desk. Olaf's carved hand
+    # with its bell (_props/cedar_bowls.make_cedar_hand), at 1.2x.
+    from _props.cedar_bowls import make_cedar_hand
+    make_cedar_hand("Carved_Cedar", DESK_X + 0.38, DESK_Y + 0.10, 0.76, "", bell=True, s=1.2)
     for bi in range(3):
         make_box(f"Desk_Book_{bi}", (DESK_X - 0.12 + bi * 0.08, DESK_Y - 0.20, 0.86), (0.06, 0.18, 0.20), P.SNACK_TINTS[bi % len(P.SNACK_TINTS)])
     make_wall_outlet("Outlet_Desk", (DESK_X - 0.60, 0.0), axis='X', face_sign=1, z=0.30, aged=True)

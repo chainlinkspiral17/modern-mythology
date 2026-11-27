@@ -3835,6 +3835,51 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-27 · pass 473: vol 7 one-line pairs 89–132.**
+44 rows; three were dropped from the line alone before the render ("This
+was — Tem registered as she drove north ... — what she knew about the
+tower", cue MARKER; "Tem at her door at six in April", a memory in another
+room, cue DOOR; "The crow had been on Finn's shoulder", cue CROW — the
+alley's only crow is the one on the dumpster). 41 frames read: 31 pass.
+Also dropped: GUARDRAIL on "The bluff had been a fishing village in the
+early twentieth century ..." (history; nothing in it to point at).
+Re-cued: ch1_morning n17 `cedar` → `dish` (below).
+Fixed at the object:
+- THE BROWN PAPER BAG ("a brown paper bag in her hand" — "the kind of
+  brown paper bag Hans had been selling bread in for forty years"): a box
+  in the bakery's back door and on Finn's table. A shared make_paper_bag
+  (objects.py): open at the mouth, thin kraft walls, the dark inside, a
+  lighter rim, the gusset creases and the centre folds. (A first try with
+  a rolled cuff read as a box with a lid.)
+- THE CLAY DISH ("the rosemary Tem had been burning in a clay dish on the
+  windowsill since Saturday"): the window above the bed had no sill and
+  there was no dish — the close-up showed beams. A sill board under the
+  window, the clay dish on it with its ash, the burnt rosemary sprig.
+- THE ROAD-MARKER ("A green metal road-marker reading Old Yachats Road"):
+  a white bar on a green board, out of the chain's frame. OLD YACHATS ROAD
+  as a Label3D and a white border; the line re-cued `chain` → `road_marker`
+  (the director's lift kept pushing the sign out of a chain frame), the
+  chain behind it.
+- The cabin's dish put the room 75 draw calls over its perf cap (19 small
+  parts): the rosemary and the dish are one mesh each (10,082 / 10,103).
+- THE CREDIT ("The credit read: \"Brandon T., with the Oneironautics Inc.
+  team, after a template submitted in 2046.\""): a 16 x 2.5 cm pale strip.
+  The words, printed on a strip sized for two lines of small print.
+- THE THERMOSTAT ("The thermostat above the bed read sixty-one"): a beige
+  box. A round dial thermostat on its plate with a display reading 61.
+- THE APRON ("She set up. The apron."): a 50 x 80 cm slab that read as the
+  doorway in its shadow. An apron: neck strap on the hook, bib, skirt,
+  pocket, ties, paint wiped on it, framed face-on.
+- THE CEDAR WITH THE CARVED HAND (Finn's desk, the bottom of the second
+  pool): blocks of 3-6 cm with a millimetre figure. Olaf's carved hand
+  holding its bell (the shared make_cedar_hand), the frames tightened.
+Draft 1 shipped for this band. DRAFT 2 TARGETS: the cabin's dawn rig
+again (ch1_morning's wood stove is a red square in black); the canvas
+bag at the vigil wall (a box with a strap — the paper bag's shape in
+canvas, with handles); the duffel in the Daily Grind is a boxy slab; the
+reception desk in the Cedar Tower lobby reads dark.
+NEXT: vol 7 one-line pairs 133–155 (the last 23).
+
 **2026-11-27 · pass 472: vol 7 one-line pairs 45–88.**
 44 frames rendered and read (plus pass 471's crow frame again): 34 pass.
 DROPPED (two, the cabin's gray-before-dawn): "She put on the wool SWEATER"

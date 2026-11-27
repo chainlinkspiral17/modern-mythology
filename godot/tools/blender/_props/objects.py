@@ -94,6 +94,45 @@ def make_mug(prefix, x, y, base_z, color,
              (0.016, 0.030, h * 0.55), color)
 
 
+def make_paper_bag(prefix, x, y, base_z, *, w=0.16, d=0.11, h=0.22,
+                   color=(0.70, 0.56, 0.38, 1.0), yaw=0.0, cuff=True):
+    """A brown paper bag standing on a surface (pass 473: "the kind of brown
+    paper bag Hans had been selling bread in for forty years" — two rooms
+    built it as a plain box, which a stranger reads as a box). Open at the
+    mouth (a rolled cuff read as a box's lid): thin kraft walls and floor,
+    the dark inside showing, a lighter rim; the side gussets' creases; the
+    centre fold down each wide face; the square bottom's crease. `yaw` turns it (radians); the wide faces are +-v.
+    Parts are `<Name>_<Part>[__tag]` (a view tag on the prefix stays last)."""
+    from .geometry import make_rot_box
+    name, tag = _split_tag(prefix)
+    c, s_ = math.cos(yaw), math.sin(yaw)
+    def P(u, v, z):
+        return (x + u * c - v * s_, y + u * s_ + v * c, z)
+    dk = _tint(color, 0.80)
+    crease = _tint(color, 0.62)
+    # an OPEN bag (a rolled cuff read as a lid on a box): four thin walls
+    # and a floor, the dark of the inside showing at the mouth, the mouth's
+    # edge a lighter rim a little proud of the walls.
+    t_ = 0.003
+    make_rot_box(f"{name}_Floor{tag}", P(0.0, 0.0, base_z + 0.002), (w, d, 0.004), dk, yaw=yaw)
+    for sg in (-1, 1):
+        make_rot_box(f"{name}_Wall_{'F' if sg < 0 else 'B'}{tag}", P(0.0, sg * (d / 2.0 - t_ / 2.0), base_z + h / 2.0), (w, t_, h), color, yaw=yaw)
+        make_rot_box(f"{name}_Wall_{'L' if sg < 0 else 'R'}{tag}", P(sg * (w / 2.0 - t_ / 2.0), 0.0, base_z + h / 2.0), (t_, d - 2 * t_, h), color, yaw=yaw)
+        make_rot_box(f"{name}_Rim_{'F' if sg < 0 else 'B'}{tag}", P(0.0, sg * (d / 2.0 - t_ / 2.0), base_z + h - 0.003), (w + 0.004, t_ + 0.003, 0.006), _tint(color, 1.12), yaw=yaw)
+        make_rot_box(f"{name}_Rim_{'L' if sg < 0 else 'R'}{tag}", P(sg * (w / 2.0 - t_ / 2.0), 0.0, base_z + h - 0.003), (t_ + 0.003, d - 2 * t_, 0.006), _tint(color, 1.12), yaw=yaw)
+    make_rot_box(f"{name}_Inside{tag}", P(0.0, 0.0, base_z + h - 0.055), (w - 2 * t_, d - 2 * t_, 0.003), _tint(color, 0.36), yaw=yaw)
+    for sg in (-1, 1):
+        # the centre fold on each wide face
+        make_rot_box(f"{name}_Fold_{'F' if sg < 0 else 'B'}{tag}", P(0.0, sg * (d / 2.0 + 0.0008), base_z + (h - 0.04) / 2.0),
+                     (0.003, 0.0012, h - 0.05), crease, yaw=yaw)
+        # the gusset's V on each narrow side: two leaning creases
+        for k, lean in enumerate((-1, 1)):
+            make_rot_box(f"{name}_Gusset_{'L' if sg < 0 else 'R'}_{k}{tag}",
+                         P(sg * (w / 2.0 + 0.0008), lean * d * 0.18, base_z + h * 0.40),
+                         (0.0012, 0.003, h * 0.62), crease, yaw=yaw)
+    make_rot_box(f"{name}_Bottom_Crease{tag}", P(0.0, -(d / 2.0 + 0.0008), base_z + 0.035), (w - 0.01, 0.0012, 0.003), crease, yaw=yaw)
+
+
 def make_jar(prefix, x, y, base_z, color=GLASS_CLEAR,
              h=0.14, r=0.05, lid_color=(0.62, 0.58, 0.50, 1.0),
              segments=8):

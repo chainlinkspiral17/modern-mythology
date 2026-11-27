@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://lena_apartment_locale"]
+[gd_scene load_steps=27 format=3 uid="uid://lena_apartment_locale"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/lena_apartment.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
+[ext_resource type="FontFile" path="res://resources/fonts/BebasNeue-Regular.ttf" id="473_print"]
 
 [sub_resource type="ShaderMaterial" id="Mat_Post"]
 shader = ExtResource("4_post")
@@ -617,6 +618,18 @@ metadata/fov = 35.0
 position = Vector3(2.200, 1.300, -0.900)
 rotation = Vector3(-0.2493, 1.4175, 0.0)
 metadata/fov = 35.0
+
+; (pass 473) "The thermostat above the bed read sixty-one" (vol7 ch3_apartment n5): its display
+[node name="Thermostat_Reading" type="Label3D" parent="."]
+position = Vector3(-2.50, 1.862, -6.4395)
+pixel_size = 0.000125
+shaded = false
+alpha_cut = 1
+modulate = Color(0.72, 0.94, 0.74, 1)
+outline_size = 0
+text = "61"
+font = ExtResource("473_print")
+font_size = 130
 
 ; (2026-11-10) "The thermostat above the bed read sixty-one" (ch3): it framed a
 ; second thermostat on the front room's E wall, since removed — from over the

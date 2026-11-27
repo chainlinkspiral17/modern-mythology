@@ -647,7 +647,11 @@ def build_hero_props_2026_09():
     # ON the poster's face, printed pale (2026-09-24: at y 0.105 it sat inside
     # the frame, behind the poster's face at 0.135 — the insert filmed a
     # dark poster and no credit)
-    make_box("Tideline_Credit", (1.95, 0.136, 5.42), (0.16, 0.002, 0.025), (0.88, 0.86, 0.80, 1.0))
+    # (pass 473) the credit line READS: "Brandon T., with the Oneironautics
+    # Inc. team, after a template submitted in 2046." (ch22_floors n44) — the
+    # strip widened for its two lines of small print, a Label3D in
+    # cedar_tower.tscn (Tideline_Credit_Words) printed on it
+    make_box("Tideline_Credit", (1.84, 0.136, 5.425), (0.36, 0.002, 0.05), (0.88, 0.86, 0.80, 1.0))
 
 
 def main():

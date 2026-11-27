@@ -351,7 +351,7 @@ line_spacing = -18.0
 ; insert: NO ENTRY EXCEPT BY AUTHORIZED PERSONNEL, stenciled, at the foot of the stairs
 [node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(13.270, -1.400, -14.030)
-rotation = Vector3(-0.2106, 1.0997, 0.0)
+rotation = Vector3(-0.0750, 1.0914, 0.0)
 metadata/fov = 42.0
 
 ; insert: the desk — the notebook in the hand from Cale's thumb, three pieces of cedar in a pattern

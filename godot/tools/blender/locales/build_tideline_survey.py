@@ -180,9 +180,12 @@ def build_second_pool():
     """Dining-table size. The old man kneels at its west edge (cast).
     At the bottom, the cedar: a hand, open, palm up, holding a bell."""
     cx, cy, fz = build_pool("Second_Pool", 3, 3, 0.65, 1.10)
-    make_box("Cedar", (cx + 0.2, cy - 0.3, fz + 0.012), (0.06, 0.03, 0.024), (0.60, 0.42, 0.26, 1.0))
-    make_box("Cedar_Hand_Figure", (cx + 0.2, cy - 0.3, fz + 0.0255), (0.04, 0.018, 0.003), (0.72, 0.54, 0.34, 1.0))
-    make_cyl("Cedar_Bell", (cx + 0.205, cy - 0.3, fz + 0.029), 0.005, 0.004, (0.80, 0.66, 0.40, 1.0), segments=6)
+    # (pass 473) "He took the cedar from the bottom" (vol7 ch18_pool n108): a
+    # 6 x 3 cm block with a 3 mm figure on it — an orange speck under water.
+    # Olaf's carved hand holding its bell (_props/cedar_bowls), the figure
+    # the cedar IS, at 1.3x.
+    from _props.cedar_bowls import make_cedar_hand
+    make_cedar_hand("Cedar", cx + 0.2, cy - 0.3, fz, "", bell=True, s=1.3)
     for i in range(6):
         make_blob(f"Second_Pool_Pebble_{i}", (cx - 1.0 + i * 0.4, cy + 0.6 - (i % 3) * 0.55, fz + 0.029), 0.045,
                   (0.32, 0.33, 0.31, 1.0), noise=0.2, seed=40 + i, squash=0.7)

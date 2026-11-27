@@ -196,10 +196,12 @@ shadow_enabled = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.350, 0.560, -7.320)
 rotation = Vector3(-0.0996, -1.4371, 0.0)
 
-; The cedar chest: blender (2.55, 3.55, 0.26) → godot (2.55, 0.26, -3.55).
-[node name="shot_insert_cedar" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.850, 0.820, -4.950)
-rotation = Vector3(-0.4252, -0.8622, 0.0)
+; (pass 473) "the rosemary Tem had been burning in a clay dish on the windowsill since Saturday"
+; (vol7 ch1_morning n17): the dish on the sill under the window above the bed
+[node name="shot_insert_dish" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.400, 1.180, -0.860)
+rotation = Vector3(-0.5345, -0.9645, 0.0)
+metadata/fov = 34.0
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 

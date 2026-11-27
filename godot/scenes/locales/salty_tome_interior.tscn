@@ -470,12 +470,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65, 0.85, -10.85)
 rotation = Vector3(-0.7001, -0.0805, 0.0)
 metadata/fov = 42.0
 
-; insert: the crow on the dumpster lid
-[node name="shot_insert_crow" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 1.5, -9.9)
-rotation = Vector3(-0.2030, -0.9671, 0.0)
-metadata/fov = 42.0
-
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10)
 ; every closeup of a person cued here cuts to it (the scene had no closeup marker)
 [node name="shot_closeup_person__salty_tome_alley" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -896,12 +890,6 @@ metadata/fov = 62.0
 position = Vector3(5.200, 2.200, -10.900)
 rotation = Vector3(-0.1106, 1.6124, 0.0)
 metadata/fov = 58.0
-
-; "The crow had been on Finn's shoulder since six-thirty in the cabin's kitchen"
-[node name="shot_insert_crow__salty_tome_twelve" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.950, 1.580, -10.400)
-rotation = Vector3(-0.0653, -0.2482, 0.0)
-metadata/fov = 34.0
 
 ; "The four bowls at the milk crate were now two ... Lindholm-Marina's was wrapped in the cloth Marina had left it in"
 [node name="shot_insert_bowls__salty_tome_twelve" type="Marker3D" parent="." groups=["vn_shot"]]

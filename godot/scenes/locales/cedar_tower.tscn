@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cedar_tower_v7"]
+[gd_scene load_steps=25 format=3 uid="uid://cedar_tower_v7"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/cedar_tower.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
+[ext_resource type="FontFile" path="res://resources/fonts/Literata-Variable.ttf" id="473_serif"]
 
 [sub_resource type="ShaderMaterial" id="Mat_Post"]
 shader = ExtResource("4_post")
@@ -400,12 +401,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.95, 6.45, -2.55)
 rotation = Vector3(0.05, -1.5708, 0.0)
 metadata/fov = 42.0
 
+; (pass 473) "The credit read: \"Brandon T., with the Oneironautics Inc. team, after a template
+; submitted in 2046.\"" (vol7 ch22_floors n44): printed on the poster's credit strip
+[node name="Tideline_Credit_Words" type="Label3D" parent="."]
+position = Vector3(1.84, 5.425, -0.1375)
+rotation = Vector3(0, 3.14159, 0)
+pixel_size = 0.000078
+shaded = true
+alpha_cut = 1
+modulate = Color(0.16, 0.15, 0.14, 1)
+outline_size = 0
+text = "Brandon T., with the Oneironautics Inc. team,\nafter a template submitted in 2046."
+font = ExtResource("473_serif")
+font_size = 130
+
 ; insert: the Tideline Survey poster's lower-right credit
 ; (2026-11-04) the credit is a 16 cm strip: the lens 70 cm off it, a tight lens
 [node name="shot_insert_credit" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.950, 5.280, -0.800)
-rotation = Vector3(0.2078, -3.1416, 0.0)
-metadata/fov = 24.0
+position = Vector3(1.840, 5.300, -0.950)
+rotation = Vector3(0.1526, -3.1416, 0.0)
+metadata/fov = 30.0
 
 ; insert: the unmarked cedar door
 [node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]

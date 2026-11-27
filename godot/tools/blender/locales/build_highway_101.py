@@ -132,7 +132,12 @@ def build_headland_and_turn():
     make_box("Chain_Sign", (-6.6, 160.0, 0.66), (0.02, 0.40, 0.26), (0.92, 0.88, 0.30, 1.0))
     make_cyl("Road_Marker_Post", (-5.0, 156.5, 1.0), 0.04, 2.0, (0.40, 0.42, 0.40, 1.0), segments=6)
     make_box("Road_Marker", (-5.0, 156.5, 2.2), (0.04, 0.90, 0.30), (0.16, 0.42, 0.24, 1.0))
-    make_box("Road_Marker_Text", (-4.97, 156.5, 2.2), (0.005, 0.76, 0.10), (0.94, 0.94, 0.90, 1.0))
+    # (pass 473) "A green metal road-marker reading Old Yachats Road" (ch22_drive
+    # n48): its words were a white bar. They are a Label3D on the east face in
+    # highway_101.tscn (Road_Marker_Words); the sign keeps a white border.
+    for bn, (bz, bh, by_, bw) in {"T": (2.34, 0.012, 0.0, 0.86), "B": (2.06, 0.012, 0.0, 0.86),
+                                  "S": (2.2, 0.27, -0.425, 0.012), "N": (2.2, 0.27, 0.425, 0.012)}.items():
+        make_box(f"Road_Marker_Border_{bn}", (-4.978, 156.5 + by_, bz), (0.004, bw, bh), (0.94, 0.94, 0.90, 1.0))
     # the guardrail has a gap at the spur
     make_box("Guardrail_End_S", (-5.4, 155.0, 0.72), (0.09, 0.5, 0.34), (0.86, 0.72, 0.20, 1.0))
     make_box("Guardrail_End_N", (-5.4, 165.5, 0.72), (0.09, 0.5, 0.34), (0.86, 0.72, 0.20, 1.0))

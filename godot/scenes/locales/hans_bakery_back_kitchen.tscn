@@ -614,8 +614,8 @@ metadata/fov = 60.0
 
 ; insert (back door): the brown paper bag on the truck's hood
 [node name="shot_insert_bag__hans_bakery_back_door" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-6.000, 1.300, -6.600)
-rotation = Vector3(-0.4383, -0.9332, 0.0)
+position = Vector3(-5.650, 1.150, -6.860)
+rotation = Vector3(-0.4603, -0.9339, 0.0)
 metadata/fov = 38.0
 
 ; ── named closeups at the communal table (pass 86): the table is at (0, 3.5) in the 7.6 m room (the

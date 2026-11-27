@@ -398,9 +398,9 @@ rotation = Vector3(-0.6400, 0.7069, 0.0)
 metadata/fov = 40.0
 
 [node name="shot_insert_cedar" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.400, 1.250, -1.200)
-rotation = Vector3(-0.5719, 2.8287, 0.0)
-metadata/fov = 38.0
+position = Vector3(-1.500, 1.020, -0.880)
+rotation = Vector3(-0.5833, 2.8198, 0.0)
+metadata/fov = 34.0
 
 [node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-1.600, 1.300, -1.000)

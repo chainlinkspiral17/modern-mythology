@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://highway_101_vol7"]
+[gd_scene load_steps=27 format=3 uid="uid://highway_101_vol7"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/highway_101.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
+[ext_resource type="FontFile" path="res://resources/fonts/BebasNeue-Regular.ttf" id="473_print"]
 
 [sub_resource type="ShaderMaterial" id="Mat_Post"]
 shader = ExtResource("4_post")
@@ -334,24 +335,27 @@ offset_bottom = 980.0
 script = ExtResource("14_dbgm")
 
 
+; (pass 473) "A green metal road-marker reading Old Yachats Road sat at the turn" (vol7
+; ch22_drive n48): the sign's words, white on its green, on the face the highway sees
+[node name="Road_Marker_Words" type="Label3D" parent="."]
+position = Vector3(-4.9755, 2.2, -156.5)
+rotation = Vector3(0, 1.5708, 0)
+pixel_size = 0.0007
+shaded = true
+alpha_cut = 1
+modulate = Color(0.94, 0.94, 0.90, 1)
+outline_size = 0
+text = "OLD YACHATS ROAD"
+font = ExtResource("473_print")
+font_size = 130
+
 ; ── vn_shot · highway_101 (2026-09-03) ──
-; insert: the chain across Old Yachats Road, the way roads get when they have been decommissioned
-[node name="shot_insert_chain" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0, 1.4, -157.0)
-rotation = Vector3(-0.1493, 0.8761, 0.0)
-metadata/fov = 42.0
-
-; insert: the green metal road-marker reading Old Yachats Road
-[node name="shot_insert_marker" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2, 1.5, -155.0)
-rotation = Vector3(0.2917, 0.8719, 0.0)
-metadata/fov = 42.0
-
-; insert: the guardrail, the swell line at the foot of the bluff below it
-[node name="shot_insert_guardrail" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6, 1.2, -30.0)
-rotation = Vector3(-0.2669, 0.8324, 0.0)
-metadata/fov = 42.0
+; insert (pass 473): "A green metal road-marker reading Old Yachats Road sat at the turn with a
+; chain across it" (ch22_drive n48) — the sign's words, the chain behind it
+[node name="shot_insert_road_marker" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.600, 1.900, -155.000)
+rotation = Vector3(0.1452, 0.7505, 0.0)
+metadata/fov = 50.0
 
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):

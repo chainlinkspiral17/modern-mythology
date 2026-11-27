@@ -756,6 +756,25 @@ def build_east_room():
         make_box("EBed_Win_Glass", (2.85, 1.45, 1.65), (0.02, 1.46, 1.40), (0.50, 0.58, 0.52, 1.0))
         make_box("EBed_Win_Muntin_V", (2.835, 1.45, 1.65), (0.01, 0.04, 1.40), COL_WOOD_DK)
         make_box("EBed_Win_Muntin_H", (2.835, 1.45, 1.65), (0.01, 1.46, 0.04), COL_WOOD_DK)
+        # (pass 473) "The cabin smelled like cedar smoke and kerosene and the
+        # rosemary Tem had been burning in a clay dish on the windowsill since
+        # Saturday" (vol7 ch1_morning n17): the window had no sill and there
+        # was no dish — the close-up found beams. A sill board under the
+        # window, the clay dish on it, the burnt rosemary sprig and its ash.
+        make_box("EBed_Win_Sill", (2.79, 1.45, 0.885), (0.18, 1.66, 0.03), COL_WOOD_DK)   # the glass stands at x 2.85: the sill runs 15 cm into the room
+        clay = (0.66, 0.36, 0.24, 1.0)
+        make_lathe("Clay_Dish_Bowl", (2.775, 1.12, 0.90), [(0.0, 0.0), (0.034, 0.0), (0.048, 0.018), (0.050, 0.024), (0.0, 0.024)], clay, segments=14)
+        make_cyl("Clay_Dish_Ash", (2.775, 1.12, 0.9245), 0.040, 0.001, (0.56, 0.54, 0.50, 1.0), segments=12)
+        make_tube("Rosemary_Sprig", [(2.765, 1.07, 0.926), (2.775, 1.11, 0.928), (2.787, 1.15, 0.929), (2.795, 1.18, 0.930)], 0.0025, (0.30, 0.36, 0.22, 1.0), segments=5)
+        for ni in range(7):
+            ny = 1.085 + ni * 0.013
+            for sd in (-1, 1):
+                make_box(f"Rosemary_Needle_{ni}_{'L' if sd < 0 else 'R'}", (2.775 + ni * 0.003 + sd * 0.006, ny, 0.9295), (0.012, 0.0025, 0.002), (0.26, 0.40, 0.26, 1.0))
+        make_tube("Rosemary_Burnt_Tip", [(2.763, 1.065, 0.926), (2.759, 1.052, 0.926)], 0.003, (0.12, 0.10, 0.09, 1.0), segments=5)
+        # one mesh each (perf_gate: 19 parts put the cabin 75 draw calls over its cap)
+        from _props.geometry import join_prefix
+        join_prefix("Rosemary")
+        join_prefix("Clay_Dish")
     with _shift(0.25, 0.0):   # the desk under its S window (+0.25)
         # Writing desk against the S wall + the south window over it —
         # the kit table: turned legs, an apron, a stretcher (draft 5)

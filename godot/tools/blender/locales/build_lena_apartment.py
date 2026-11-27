@@ -369,7 +369,14 @@ def build_bedroom():
                    (0.66, 0.52, 0.24, 1.0), segments=8)
         make_box("Clock", (bx+0.95, by+0.7, 0.66), (0.16, 0.10, 0.10), P.METAL_BLACK)
         # Thermostat above the bed (reads 61)
-        make_box("Thermostat", (bx, ROOM_D-0.125, 1.85), (0.14, 0.05, 0.10), (0.88, 0.86, 0.82, 1.0))
+        # (pass 473) "The thermostat above the bed read sixty-one" (ch3_apartment
+        # n5): a beige box. The round dial thermostat on its wall plate, the
+        # ring, the small display — its "61" a Label3D in lena_apartment.tscn
+        # (Thermostat_Reading)
+        make_box("Thermostat_Plate", (bx, ROOM_D-0.11, 1.85), (0.13, 0.02, 0.13), (0.86, 0.84, 0.80, 1.0))
+        make_cyl("Thermostat", (bx, ROOM_D-0.135, 1.85), 0.050, 0.03, (0.90, 0.88, 0.84, 1.0), axis='Y', segments=20)
+        make_cyl("Thermostat_Ring", (bx, ROOM_D-0.153, 1.85), 0.044, 0.006, (0.70, 0.68, 0.64, 1.0), axis='Y', segments=20)
+        make_box("Thermostat_Display", (bx, ROOM_D-0.157, 1.862), (0.044, 0.004, 0.022), (0.16, 0.20, 0.18, 1.0))
     with shifted(globals(), -1.0, 0.55, ROOM_W=OLD_W, ROOM_D=OLD_D):   # by the bedroom door
         # The small side table just OUTSIDE the bedroom door (Kai's cup)
         make_box("Hall_Table", (-1.05, 2.78, 0.34), (0.36, 0.30, 0.68), COL_WOOD)   # west of the door, on the partition (2026-09-25: it stood in the door's swing)

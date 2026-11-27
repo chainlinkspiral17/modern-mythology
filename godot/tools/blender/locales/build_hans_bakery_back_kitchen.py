@@ -721,7 +721,11 @@ def build_back_door_2026_10():
     make_box("Hemlock_Lot_Gravel", (-7.2, 5.0, -0.02), (5.2, 11.6, 0.03), (0.52, 0.50, 0.44, 1.0))
     with _VT.tagged("d", _VEH):        # (pass 406) ch18's lot only
         make_car("Pickup_Toyota", -8.6, 7.0, 4.9, (0.56, 0.54, 0.48, 1.0), pickup=True, along="Y")
-    make_box("Paper_Bag__hans_bakery_back_door", (-4.92, 7.4, 0.67), (0.16, 0.12, 0.22), (0.72, 0.60, 0.42, 1.0))   # on the bread crates by the door
+    # (pass 473) "a brown paper bag in her hand" (ch18_stick n8, n17): it was a
+    # plain box on the crates — a stranger read a box. The shared paper bag:
+    # rolled cuff, centre fold, gusset creases.
+    from _props.objects import make_paper_bag
+    make_paper_bag("Paper_Bag__hans_bakery_back_door", -4.92, 7.4, 0.56, w=0.16, d=0.12, h=0.22, color=(0.72, 0.60, 0.42, 1.0))   # on the bread crates by the door
     # the sidewalk, the curb, Hemlock Street with the wagon at the curb, Cale's empty spot, the houses across
     make_box("Hemlock_Sidewalk", (-10.4, 4.0, -0.02), (1.4, 40.0, 0.04), (0.60, 0.59, 0.58, 1.0))
     make_box("Hemlock_Curb", (-11.2, 4.0, -0.03), (0.2, 40.0, 0.10), (0.58, 0.57, 0.55, 1.0))
