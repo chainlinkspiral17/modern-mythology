@@ -7,7 +7,7 @@
  "nodes": [
   {
    "t": "bg",
-   "src": "3d:school_field_day"
+   "src": "3d:school_field_lot"
   },
   {
    "t": "hide",
@@ -106,7 +106,7 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert bleachers]This is a Coach K thing. Coach K does not, in the morning, perform greetings. He is at five fifty-three doing the work of getting the cart stocked,",
+   "text": "[shot:insert truck]This is a Coach K thing. Coach K does not, in the morning, perform greetings. He is at five fifty-three doing the work of getting the cart stocked,",
    "voice": "assets/audio/voice/vol6_ch13_two_a_days/020.ogg"
   },
   {
@@ -213,7 +213,7 @@
   },
   {
    "t": "narrate",
-   "text": "Coach K does not, this morning, run with them. Coach K runs with the team about half the time. The other half he stations himself at the infield where the asphalt road makes its closest pass to the football field, and watches them go past.",
+   "text": "[view:school_field_day]Coach K does not, this morning, run with them. Coach K runs with the team about half the time. The other half he stations himself at the infield where the asphalt road makes its closest pass to the football field, and watches them go past.",
    "voice": "assets/audio/voice/vol6_ch13_two_a_days/041.mp3"
   },
   {

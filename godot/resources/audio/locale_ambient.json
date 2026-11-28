@@ -85,6 +85,10 @@
       "bed": "assets/audio/bgm/vol6_live_oak_field.wav",
       "gain": 1.0
     },
+    "school_field_lot": {
+      "bed": "assets/audio/bgm/vol6_live_oak_field.wav",
+      "gain": 1.0
+    },
     "miller_back_porch": {
       "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.95

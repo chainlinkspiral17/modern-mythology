@@ -449,6 +449,7 @@
   "sapo_falls": "shot_closeup_person_b: void 23%→0%, sky 36%→75%",
   "sapo_falls_behind": "shot_closeup_person_b: void 23%→0%, sky 36%→75%",
   "school_field_day": "shot_establish_c: void 0%→0%, sky 80%→100%",
+  "school_field_lot": "shot_establish_c: void 0%→0%, sky 80%→100%",
   "school_field_evening": "shot_establish_c: void 0%→0%, sky 80%→100%",
   "shanghai_window_night": "the frame: void 6%→18%, sky 33%→44%",
   "shuttle_bench_bus": "the frame: void 0%→0%, sky 50%→69%",

@@ -84,6 +84,35 @@ henderson) got there by accumulating exactly these layers.
 
 ## Recent lessons
 
+### 2026-11-28 · a re-layout moves everything that points at the moved thing (pass 480)
+
+**What happened.** The school field gained its track, which pushed the
+lot, gate, field house, stands, poles, scoreboard and shed outward. The
+geometry moved in one builder edit; what broke was everything that
+pointed at the old places: the markers and lights in the .tscn, the
+hero-art placements in the roster, the far treeline ring (it now ran
+through the lot), a gate that had hung from a fence rail now split at
+its opening, and a ch22-only bus that stood in ch13's dawn lot. And a
+quick JSON fix-up script opened the chapter file for writing before the
+line that failed, leaving it empty (rebuilt from git with the two edits).
+
+**The rules.**
+- Before shifting a region, LIST what references it: markers and lights
+  (`grep 'name="' *.tscn` with positions), roster `apply` centers for the
+  locale, far bands, wear paths, and parts that lean on another part for
+  support. Move them with the same delta in the same pass.
+- Shift literals in the builder, not objects after the build: the
+  audits record the builder's calls, so a post-build move desyncs them.
+- A second view of the same set: `view_twin.py FROM TO --scenes …`
+  (copies the frames the moved lines cue, tags the lights, carries the
+  hero-art skips, view groups and the ambient entry). Then re-aim the
+  copied frames into the new view's area: closeups within 12 m of its
+  camera (wrong_room's FAR).
+- A prop a single chapter needs (Vinton's bus) is tagged to that
+  chapter's view, or every other chapter in the set shows it.
+- Write a file as the LAST step: compute the text, check it, then open
+  for writing. `open(p, 'w').write(f(...))` truncates before f runs.
+
 ### 2026-11-28 · the close-up's preposition names a second object; build it (pass 479)
 
 **What happened.** "She looked at the bell over the door for a long count."

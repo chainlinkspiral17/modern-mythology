@@ -15229,7 +15229,7 @@
           "locale": "school_field_evening",
           "label": "Bleach_PressBox_Sign",
           "center": [
-            37.622,
+            54.122,
             54.864,
             6.01
           ],
@@ -15272,7 +15272,7 @@
           "label": "Corkboard",
           "center": [
             -13.2,
-            -6.775,
+            -37.775,
             1.55
           ],
           "size": [
@@ -15324,7 +15324,7 @@
           "label": "DepthChart",
           "center": [
             -13.2,
-            -6.745,
+            -37.745,
             1.6
           ],
           "size": [
@@ -15367,7 +15367,7 @@
           "label": "Score_*",
           "center": [
             -3.4,
-            118.488,
+            145.488,
             7.4
           ],
           "size": [
@@ -15384,7 +15384,7 @@
           "label": "Score_*",
           "center": [
             -2.2,
-            118.488,
+            145.488,
             7.4
           ],
           "size": [
@@ -15401,7 +15401,7 @@
           "label": "Score_*",
           "center": [
             2.2,
-            118.488,
+            145.488,
             7.4
           ],
           "size": [
@@ -15418,7 +15418,7 @@
           "label": "Score_*",
           "center": [
             3.4,
-            118.488,
+            145.488,
             7.4
           ],
           "size": [
@@ -15435,7 +15435,7 @@
           "label": "Score_*",
           "center": [
             0.0,
-            118.488,
+            145.488,
             5.55
           ],
           "size": [
@@ -15452,7 +15452,7 @@
           "label": "Score_*",
           "center": [
             -1.35,
-            118.488,
+            145.488,
             6.1
           ],
           "size": [
@@ -15469,7 +15469,7 @@
           "label": "Score_*",
           "center": [
             -0.45,
-            118.488,
+            145.488,
             6.1
           ],
           "size": [
@@ -15486,7 +15486,7 @@
           "label": "Score_*",
           "center": [
             0.45,
-            118.488,
+            145.488,
             6.1
           ],
           "size": [
@@ -15503,7 +15503,7 @@
           "label": "Score_*",
           "center": [
             1.35,
-            118.488,
+            145.488,
             6.1
           ],
           "size": [
@@ -25189,7 +25189,7 @@
           "label": "Banner",
           "center": [
             -22.0,
-            112.266,
+            157.666,
             0.85
           ],
           "size": [
@@ -25207,7 +25207,7 @@
           "label": "Banner",
           "center": [
             -13.2,
-            112.266,
+            157.666,
             0.85
           ],
           "size": [
@@ -25225,7 +25225,7 @@
           "label": "Banner",
           "center": [
             -4.4,
-            112.266,
+            157.666,
             0.85
           ],
           "size": [
@@ -25243,7 +25243,7 @@
           "label": "Banner",
           "center": [
             4.4,
-            112.266,
+            157.666,
             0.85
           ],
           "size": [
@@ -25261,7 +25261,7 @@
           "label": "Banner",
           "center": [
             13.2,
-            112.266,
+            157.666,
             0.85
           ],
           "size": [
@@ -25279,7 +25279,7 @@
           "label": "Banner",
           "center": [
             22.0,
-            112.266,
+            157.666,
             0.85
           ],
           "size": [
@@ -64264,16 +64264,72 @@
           "facing": "+y",
           "hide": [],
           "not_presets": [
+            "salty_tome_alley_patch",
             "salty_tome_interior",
             "salty_tome_kitchenette",
+            "salty_tome_kitchenette_monday",
             "salty_tome_office",
             "salty_tome_alley",
-            "salty_tome_alley_patch"
+            "salty_tome_arrive",
+            "salty_tome_gather",
+            "salty_tome_vigil",
+            "salty_tome_leaving",
+            "salty_tome_thinning",
+            "salty_tome_twelve"
           ]
         }
       ],
       "lettering": "THE BLUE HERON",
       "text_body": "Small under the name: used & rare books"
+    },
+    {
+      "slug": "salty_tome_sign",
+      "kind": "art",
+      "name": "the Salty Tome's hanging sign, 2052",
+      "file": "salty_tome_sign.png",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "salty_tome_sign"
+      ],
+      "tag": "sign · salty_tome_interior · 1.90 x 0.40 m",
+      "prompt": "A hand-painted hanging wooden sign inside a small second-hand bookstore on the Oregon coast: a long cedar board painted deep sea-green, the shop's name in cream serif letters, a small painted open book at the left with a curl of surf rising off its pages, the paint a little worn at the edges from years over the door. Wide, flat-on, evenly lit.",
+      "canon": [
+        {
+          "src": "godot/resources/scenes/vol7/vol7_ch8_monday.json",
+          "text": "The bookstore was on the ground floor of the same building. Petra's front door was on Hemlock."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-11-28, pass 479) The board over the shop floor inside Petra's front door (builder SaltyTomeSign, FRONT_Y + 1.4) drew a teal frame round a blank gold field. Laid in every 2052 view of the set; the 1997 views strip the board and lay the Blue Heron's sign in its place.",
+      "art_cat": "SIGN",
+      "score_lines": 140,
+      "score_mentions": 9,
+      "apply": [
+        {
+          "locale": "salty_tome_interior",
+          "label": "salty_tome_sign",
+          "center": [
+            0.0,
+            -4.585,
+            2.38
+          ],
+          "size": [
+            1.9,
+            0.4
+          ],
+          "facing": "+y",
+          "hide": [],
+          "not_presets": [
+            "blue_heron_1997",
+            "blue_heron_1997_lounge",
+            "blue_heron_1997_sea_wall"
+          ]
+        }
+      ],
+      "lettering": "THE SALTY TOME",
+      "text_body": "Small under the name: SMOLVUD · HEMLOCK STREET"
     },
     {
       "slug": "new_orleans_apartment_window_w",

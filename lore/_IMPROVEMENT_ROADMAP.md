@@ -3835,6 +3835,57 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-28 · pass 480: the school field gets its track; ch13's lot at five fifty-three (school_field draft 6).**
+Picked by render: the opening frames of the 14 most-played sets read; the
+school field (240 lines, 5 chapters) was the weakest — a bare field, an
+empty horizon, and ch13's first thirty lines ("The truck is in the lot
+when Ben pulls in at five fifty-three") played on the field from the home
+bench, the lot out of frame behind the camera.
+- THE TRACK (canon: "the team in a single loose pack down the back stretch
+  of the synthetic track", ch19): 400 m, six lanes, its kerb, the lane
+  lines, the start line, a spectators' rail along both straights. It
+  moves everything outside it: the gate, the lot, the field house, the
+  cars and the bus 31 m south; both stands 16.5 m out (the press box,
+  Eileen's chair and the fans with them); the floodlight poles 24 m tall
+  behind the stands (the omnis 64 m range); the scoreboard, Coach Dale's
+  shed and truck and the banner fence north; the far treeline rings out
+  past the new perimeter road.
+- THE GROUNDS by ch13's run ("out the back gate, across the parking lot,
+  through the gap in the fence behind the field house, onto the asphalt
+  road that runs the perimeter of the school grounds"): the fence round
+  the whole grounds, the gate on its own hinge and latch posts (it hung
+  from a rail that ran across its opening), the lot's back fence with the
+  gap behind the field house and the worn path through it, the perimeter
+  road loop and the lot's drive to it.
+- "set his bag down at the end of the player bench by the field gate": a
+  bench inside the gate (the team bench was 45 m off on the sideline).
+- "The Civic is parked four spaces down from Coach K's truck": the Civic
+  stood 35 m off in another row; it is four stalls down now. The truck
+  straddled a stall line; it sits in its stall nearest the gate.
+- Vinton's bus (ch22, four oh-three) stood in every view, ch13's dawn lot
+  included: it is built for the day field view only.
+- THE LOT VIEW (school_field_lot, new, view_twin.py from school_field_day):
+  ch13 n0-n40 at five fifty-three — before sunrise, a peach horizon, the
+  two lot lamps lit; from behind Coach K's stall looking NE: the truck,
+  the gate and bench, the track, the field, the poles and stands beyond.
+  Its close-ups at the tailgate, its bench insert on the gate bench; n20's
+  cue "insert bleachers" (a 91 m cut out of the lot) is "insert truck"
+  (the line is Coach K at the cart); n41 [view:school_field_day] returns
+  to the field. Three field cues that look at the lot (the truck at ch13's
+  end, the corkboard ch19, the bus ch22) read and kept in wrong_room.
+- Hero art moved with its objects: the press-box sign, the corkboard and
+  depth chart, the scoreboard digits, the six banners.
+- Gates: support 0, prop_overlap 0 (2,336), furniture 0, marker aim 0/31,
+  vantage 0, wrong_room 0 (45 kept), hero_art 0.
+- Also this pass: a roster entry for the Salty Tome's hanging sign
+  (`salty_tome_sign`, THE SALTY TOME — the board was blank), the Blue
+  Heron's 1997 sign laid only in the three 1997 views.
+NEXT (draft 7): the school itself (the gym, its basement weight room)
+beyond the lot; Brent's F-150 and the others arriving at 5:56; the
+truck's driver's door open (n10: "The driver's-side door is open"); the
+D-zone events; figures with a pose; the scoreboard digits; the evening
+bench insert (ch22 n31) reads as bands of colour.
+
 **2026-11-28 · pass 479: the Salty Tome runs 12 m deep, with a door under its bell (salty_tome_interior draft 4).**
 Petra's bookstore on Hemlock (Lena's apartment is above it; ~850 lines of
 vol 7 play in it) was an 8 x 6 m office of a shop, and its front wall was a 2 m

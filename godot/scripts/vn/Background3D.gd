@@ -2163,6 +2163,10 @@ const CAMERA_PRESETS := {
 		# in front of the HOME stands at the home 40, eye height — looking
 		# across the bench and the practice at midfield to the visitors'
 		# stands, the lights both sides.
+		# (pass 480, draft 6) a 400 m track rings the field now ("the back
+		# stretch of the synthetic track"): this lens stands on the infield
+		# between the home bench and the track; ch13's first thirty lines
+		# play in the lot (school_field_lot).
 		"camera_origin": Vector3(29.4, 2.0, -46.0),
 		"camera_rotation": Vector3(-0.05, deg_to_rad(71.2), 0.0),
 		"fov": 60.0,
@@ -2172,6 +2176,29 @@ const CAMERA_PRESETS := {
 			"fog_density": 0.0012},   # (2026-10-27) the scene's 0.0045 greyed the turf across 110 m
 		"suppress_input": true,
 		"far": 700.0,   # (2026-10-31) its far scenery stood past the 200 m default
+	},
+	"school_field_lot": {
+		"scene": "res://scenes/locales/school_field_evening.tscn",
+		"requires_glb": "res://assets/3d/locales/school_field_evening.glb",
+		# (pass 480) ch13's LOT at five fifty-three: "The truck is in the lot
+		# when Ben pulls in"; "parked at the head of the lot, in the spot that
+		# has been Coach K's ... the spot closest to the field gate"; Coach K at
+		# the tailgate loading the cart; Brent's F-150, Tucker's Tacoma pulling
+		# in. Thirty lines played on the field from the home bench. From the
+		# lot behind Coach K's stall, looking NE: the white F-250 at the head of
+		# the lot right, the field gate centre, the track, the field and the
+		# home stands and poles beyond (its close-ups at the tailgate). Before sunrise: the
+		# lot lamps still lit. [view:school_field_day] at n41 ("Coach K does
+		# not, this morning, run with them") returns to the field.
+		"camera_origin": Vector3(2.0, 1.65, 45.5),
+		"camera_rotation": Vector3(-0.03, -0.785, 0.0),
+		"fov": 60.0,
+		"env": {"sky_top": Color(0.30, 0.40, 0.62, 1), "sky_horizon": Color(0.92, 0.76, 0.60, 1),
+			"ground_horizon": Color(0.40, 0.38, 0.36, 1), "ground_bottom": Color(0.16, 0.17, 0.16, 1),
+			"ambient_color": Color(0.70, 0.70, 0.78, 1), "ambient_energy": 0.75, "fog_color": Color(0.74, 0.68, 0.64, 1),
+			"fog_density": 0.0016},
+		"suppress_input": true,
+		"far": 700.0,
 	},
 	# ── VOL 2 — Small Wood High's field (build_small_wood_field.py, 2026-10-27) ──
 	# The Deck: "football field and stadium is still nonsense … it's all

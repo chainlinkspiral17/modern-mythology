@@ -80,6 +80,10 @@ _DIORAMA = "the Estuary 7 diorama: its parts, from above"
 _KESTREL = "Kestrel Mountain is one walk on several terraces"
 # (preset, marker): why — each read by render (pass 366) and kept.
 KEPT_INSERT = {
+    # (pass 480) the field's day view looking at the lot past the track: the line is the lot
+    ("school_field_day", "shot_insert_truck"): "\"The Civic is parked four spaces down from Coach K's truck\" — the lot, from the field (ch13's end)",
+    ("school_field_day", "shot_insert_corkboard"): "\"The corkboard is outside the field-house door\" — the field house by the lot (ch19)",
+    ("school_field_day", "shot_insert_bus"): "\"The Vinton bus pulls into the lot at four oh-three\" — the lot, from the field (ch22)",
     ("graustark_wreck", "shot_insert_notebook"): "Sofia's notebook in Rio — no set of its own; the shotgun house's notebook stands in",
     ("graustark_wreck", "shot_insert_smoke_ring"): "the Frog on the bank over the wreck",
     ("graustark_ruins", "shot_insert_sinkhole"): "the sinkhole, across the ruins",
