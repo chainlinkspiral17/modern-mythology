@@ -24,6 +24,12 @@ from _props.detail import (make_traffic_wear, make_floor_stain, make_scuff_band,
                            make_light_switch, make_cord_run)
 
 ROOM_W = 8.0; ROOM_D = 6.0; CEIL = 2.8
+# (pass 479) THE SHOP RUNS 12 m DEEP: the front wall stood at y 0, an 8 x 6 m
+# office of a shop. It stands at FRONT_Y now (the user: "Build BIG"); the
+# back half (y 0..6) keeps everything it had, the front half is new floor.
+FRONT_Y = -6.0
+SHOP_D = ROOM_D - FRONT_Y
+SHOP_CY = (ROOM_D + FRONT_Y) / 2.0
 PAL_WALL = {"wall": (0.80, 0.72, 0.58, 1.0), "baseboard": (0.42, 0.32, 0.22, 1.0)}
 COL_FLOOR = (0.52, 0.40, 0.28, 1.0); COL_SEAM = (0.32, 0.22, 0.14, 1.0)
 COL_WOOD = (0.42, 0.30, 0.20, 1.0); COL_WOOD_DK = (0.30, 0.20, 0.12, 1.0)
@@ -93,10 +99,10 @@ def make_bookshelf(prefix, anchor, *, run_len=4.0, height=2.2, depth=0.32,
 
 
 def build_shell():
-    make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
+    make_floor("Floor", (0.0, SHOP_CY, 0.0), size_x=ROOM_W+0.4, size_y=SHOP_D+0.4,
                palette={"vinyl": COL_FLOOR, "seam": COL_SEAM}, style="plank")
     for nm, x, bb in [("Wall_W", -ROOM_W/2.0, +1), ("Wall_E", +ROOM_W/2.0, -1)]:
-        make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y',
+        make_wall(nm, (x, SHOP_CY, 0), length=SHOP_D+0.4, height=CEIL, axis='Y',
                   palette=PAL_WALL, baseboard_face_sign=bb)
     # N wall split for the doorway into the back annex (x 2.4..3.4).
     make_wall("Wall_N_W", (-0.9, ROOM_D, 0), length=6.6, height=CEIL, axis='X',
@@ -104,19 +110,18 @@ def build_shell():
     make_wall("Wall_N_E", (3.8, ROOM_D, 0), length=0.8, height=CEIL, axis='X',
               palette=PAL_WALL, baseboard_face_sign=-1)
     make_box("Wall_N_AboveDoor", (2.9, ROOM_D, CEIL-0.30), (1.0, 0.20, 0.60), PAL_WALL["wall"])
-    make_wall_with_openings("Wall_S_W", (-2.5, 0.0, 0), length=3.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(-2.5, 1.55, 2.40, 1.30)])   # cut 2026-10-07: its window was a pane on a solid wall
-    make_wall("Wall_S_E", (+2.5, 0.0, 0), length=3.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
-    make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
+    # the shop front: a display window either side of the door ("Petra was at
+    # the bookstore window, putting a book on the display"), low sills
+    make_wall_with_openings("Wall_S_W", (-2.5, FRONT_Y, 0), length=3.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(-2.5, 1.45, 2.40, 1.70)])   # cut 2026-10-07: its window was a pane on a solid wall
+    make_wall_with_openings("Wall_S_E", (+2.5, FRONT_Y, 0), length=3.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(2.5, 1.45, 2.40, 1.70)])
+    make_box("Wall_S_AboveDoor", (0.0, FRONT_Y, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
     # THE BELL OVER THE DOOR (2026-10-26 — "she looked at the bell over the
     # door for a long count"; "the bell rang at eleven-fifty-eight"): a brass
     # shop bell on a spring arm off the header's inside face
-    make_box("DoorBell_Bracket", (0.0, 0.15, CEIL-0.58), (0.03, 0.12, 0.03), COL_BRASS)   # into the header (its face AND its underside)
-    make_cyl("DoorBell_Spring", (0.0, 0.22, CEIL-0.64), 0.012, 0.12, COL_BRASS, segments=8)
-    make_lathe("DoorBell", (0.0, 0.22, CEIL-0.765), [(0.0, 0.0), (0.045, 0.0), (0.038, 0.045), (0.014, 0.07), (0.0, 0.07)], COL_BRASS, segments=12)
-    make_cyl("DoorBell_Clapper", (0.0, 0.22, CEIL-0.775), 0.006, 0.03, COL_BRASS, segments=6)
-    make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
-    for nm, ax, length, wx, wy in [("Crown_W", 'Y', ROOM_D, -ROOM_W/2.0+0.10, ROOM_D/2.0),
-                                    ("Crown_E", 'Y', ROOM_D, +ROOM_W/2.0-0.10, ROOM_D/2.0),
+    # (the bell over the door is build_hero_props' Door_Bell; this one was its twin)
+    make_ceiling("Ceil", (0.0, SHOP_CY, CEIL), size_x=ROOM_W+0.4, size_y=SHOP_D+0.4)
+    for nm, ax, length, wx, wy in [("Crown_W", 'Y', SHOP_D, -ROOM_W/2.0+0.10, SHOP_CY),
+                                    ("Crown_E", 'Y', SHOP_D, +ROOM_W/2.0-0.10, SHOP_CY),
                                     ("Crown_N", 'X', ROOM_W, 0.0, ROOM_D-0.10)]:
         make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax,
                            ceil_z=CEIL, palette={"wood": COL_WOOD_DK})
@@ -234,7 +239,7 @@ def build_ceiling_and_sign():
     make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
     make_hvac_vent("Vent", (+2.0, 4.8, CEIL), width=1.00, depth=0.50, slats=5)
     # Hanging "THE SALTY TOME" shop sign near the entrance
-    make_hanging_banner("SaltyTomeSign", (0.0, 1.4, CEIL), width=1.90, height=0.40,
+    make_hanging_banner("SaltyTomeSign", (0.0, FRONT_Y + 1.4, CEIL), width=1.90, height=0.40,
                         bg_color=COL_TEAL, text_color=COL_BRASS)
 
 
@@ -242,11 +247,12 @@ def build_decor():
     make_wall_clock("Clock", (3.900, 1.2, 2.10), frozen_hour=5, frozen_min=10, facing='-X')
     make_calendar("Calendar", (-ROOM_W/2.0+0.1025, 5.4, 2.05))
     make_faded_poster("Poster", (+ROOM_W/2.0-0.05 - 0.0535, 5.6, 1.70), into_room=-1)
-    make_floor_plant("Plant", (+ROOM_W/2.0-0.40, 0.55, 0.0),
+    make_floor_plant("Plant", (+ROOM_W/2.0-0.45, -0.75, 0.0),
                      palette={"leaf": (0.36, 0.46, 0.32, 1.0)})
     # Front window on the S-W wall segment
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
-    make_window("Window_Front", (-2.5, 0.10, 1.55), width=2.4, height=1.30, room_dir=+1, see_through=True)
+    make_window("Window_Front", (-2.5, FRONT_Y + 0.10, 1.45), width=2.4, height=1.70, room_dir=+1, see_through=True)
+    make_window("Window_Front_E", (2.5, FRONT_Y + 0.10, 1.45), width=2.4, height=1.70, room_dir=+1, see_through=True)
 
 
 def build_back_annex_2026_08():
@@ -438,7 +444,7 @@ def build_detail_pass_2026_08():
     D4 (use states) next."""
     wear = (0.46, 0.35, 0.24, 1.0)
     # The aisle groove: door -> counter -> the N doorway -> annex.
-    make_traffic_wear("Wear_Aisle", [(0.0, 0.6), (0.0, 2.6), (2.0, 2.6)],
+    make_traffic_wear("Wear_Aisle", [(0.0, FRONT_Y + 0.6), (0.0, 2.6), (2.0, 2.6)],
                       width=0.75, tint=wear)
     make_traffic_wear("Wear_ToBack", [(2.9, 3.4), (2.9, 6.6)],
                       width=0.65, tint=wear)
@@ -460,12 +466,12 @@ def build_detail_pass_2026_08():
     make_scuff_band("Scuff_BackDoor", (-3.3, 8.90), length=0.9, axis='X',
                     band_z=0.09, tint=(0.26, 0.20, 0.14, 1.0))
     # Ceiling gather over the tall shelf walls.
-    make_wall_tint_band("Band_W", (-ROOM_W/2.0+0.105, 3.0, 0.0), length=5.4,
+    make_wall_tint_band("Band_W", (-ROOM_W/2.0+0.105, SHOP_CY, 0.0), length=SHOP_D - 0.6,
                         axis='Y', band_z=CEIL-0.16, tint=(0.72, 0.64, 0.50, 1.0))
-    make_wall_tint_band("Band_E", (ROOM_W/2.0-0.105, 3.0, 0.0), length=5.4,
+    make_wall_tint_band("Band_E", (ROOM_W/2.0-0.105, SHOP_CY, 0.0), length=SHOP_D - 0.6,
                         axis='Y', band_z=CEIL-0.16, tint=(0.72, 0.64, 0.50, 1.0))
     # Thresholds at every door the scenes use.
-    make_threshold("Threshold_Front", (0.0, 0.10), width=1.9, axis='X',
+    make_threshold("Threshold_Front", (0.0, FRONT_Y + 0.10), width=1.9, axis='X',
                    tint=(0.46, 0.32, 0.20, 1.0))
     make_threshold("Threshold_Annex", (2.9, ROOM_D), width=1.0, axis='X',
                    tint=(0.46, 0.32, 0.20, 1.0))
@@ -473,7 +479,7 @@ def build_detail_pass_2026_08():
                    tint=(0.46, 0.32, 0.20, 1.0))
     # First infrastructure: switch by the door, the kitchenette
     # outlet the kettle cord actually reaches.
-    make_light_switch("Switch_Front", (1.15, 0.0), axis='X', face_sign=1, aged=True)
+    make_light_switch("Switch_Front", (1.15, FRONT_Y), axis='X', face_sign=1, aged=True)
     make_wall_outlet("Outlet_Kitch", (-4.0, 7.6), axis='Y', face_sign=1, aged=True)
     make_cord_run("Cord_Kettle", (-3.55, 7.85, 0.98), (-3.89, 7.6, 0.30))
     # ── Alley truth ──
@@ -557,33 +563,33 @@ def build_beyond_glass_2026_08():
     facing building with one lit window, a mailbox, a street tree.
     The alley (N) was dressed in the annex pass; this closes the
     last raw edge. D6 coverage rides in the tscn markers."""
-    make_box("Hemlock_Sidewalk", (0.0, -1.6, -0.02), (14.0, 2.6, 0.04), (0.56, 0.55, 0.52, 1.0))
+    make_box("Hemlock_Sidewalk", (0.0, -7.60, -0.02), (14.0, 2.6, 0.04), (0.56, 0.55, 0.52, 1.0))
     for ji, jx in enumerate([-4.5, -1.5, 1.5, 4.5]):
-        make_box(f"Hemlock_Joint_{ji}", (jx, -1.6, 0.005), (0.04, 2.6, 0.01), (0.44, 0.43, 0.40, 1.0))
-    make_box("Hemlock_Asphalt", (0.0, -4.8, -0.02), (14.0, 3.8, 0.04), (0.27, 0.27, 0.29, 1.0))
-    make_box("Hemlock_Centerline", (0.0, -4.8, 0.005), (12.5, 0.10, 0.01), (0.85, 0.76, 0.30, 1.0))
+        make_box(f"Hemlock_Joint_{ji}", (jx, -7.60, 0.005), (0.04, 2.6, 0.01), (0.44, 0.43, 0.40, 1.0))
+    make_box("Hemlock_Asphalt", (0.0, -10.80, -0.02), (14.0, 3.8, 0.04), (0.27, 0.27, 0.29, 1.0))
+    make_box("Hemlock_Centerline", (0.0, -10.80, 0.005), (12.5, 0.10, 0.01), (0.85, 0.76, 0.30, 1.0))
     # The parked car framed by the front window (x=-2.5 glass).
-    make_box("Hemlock_Car_Body", (-2.7, -2.6, 0.55), (4.2, 1.75, 0.55), (0.30, 0.34, 0.30, 1.0))
+    make_box("Hemlock_Car_Body", (-2.7, -8.60, 0.55), (4.2, 1.75, 0.55), (0.30, 0.34, 0.30, 1.0))
     for wxo in (-1.4, 1.4):   # wheels (2026-09-22: the car hung 28 cm over the street)
         for sgn in (-1, 1):
-            make_cyl(f"Hemlock_Car_Wheel_{wxo:+.1f}_{sgn:+d}", (-2.7 + wxo, -2.6 + sgn * 0.82, 0.30), 0.30, 0.20,
+            make_cyl(f"Hemlock_Car_Wheel_{wxo:+.1f}_{sgn:+d}", (-2.7 + wxo, -8.60 + sgn * 0.82, 0.30), 0.30, 0.20,
                      (0.10, 0.10, 0.11, 1.0), segments=10, axis='Y')
-    make_box("Hemlock_Car_Cabin", (-3.0, -2.6, 1.02), (2.2, 1.6, 0.45), (0.30, 0.34, 0.30, 1.0))
+    make_box("Hemlock_Car_Cabin", (-3.0, -8.60, 1.02), (2.2, 1.6, 0.45), (0.30, 0.34, 0.30, 1.0))
     # Mailbox on the sidewalk + street tree between sightlines.
-    make_box("Hemlock_Mailbox_Body", (2.6, -1.0, 1.05), (0.5, 0.4, 0.5), (0.22, 0.30, 0.46, 1.0))
-    make_box("Hemlock_Mailbox_Leg", (2.6, -1.0, 0.4), (0.08, 0.08, 0.8), (0.30, 0.30, 0.32, 1.0))
-    make_cyl("Hemlock_Tree_Trunk", (4.3, -1.4, 1.2), 0.12, 2.4, (0.30, 0.24, 0.18, 1.0), segments=8)
+    make_box("Hemlock_Mailbox_Body", (2.6, -7.00, 1.05), (0.5, 0.4, 0.5), (0.22, 0.30, 0.46, 1.0))
+    make_box("Hemlock_Mailbox_Leg", (2.6, -7.00, 0.4), (0.08, 0.08, 0.8), (0.30, 0.30, 0.32, 1.0))
+    make_cyl("Hemlock_Tree_Trunk", (4.3, -7.40, 1.2), 0.12, 2.4, (0.30, 0.24, 0.18, 1.0), segments=8)
     # 2026-08-04: the street tree seen through the window had a BOX
     # crown. Blob now.
     from _props.geometry import make_blob
-    make_blob("Hemlock_Tree_Crown", (4.3, -1.4, 3.3), 1.05,
+    make_blob("Hemlock_Tree_Crown", (4.3, -7.40, 3.3), 1.05,
               (0.16, 0.24, 0.15, 1.0), noise=0.22, seed=5, squash=0.9)
     # The facing building: facade band, one lit window (the town is
     # awake), a dark doorway.
-    make_box("Hemlock_Across_Facade", (0.0, -7.6, 2.0), (13.0, 0.6, 4.0), (0.42, 0.36, 0.30, 1.0))
-    make_box("Hemlock_Across_Win_Dark", (-3.0, -7.27, 1.6), (1.6, 0.06, 1.3), (0.14, 0.15, 0.18, 1.0))   # on the facade
-    make_box("Hemlock_Across_Win_Lit", (1.8, -7.27, 1.6), (1.6, 0.06, 1.3), (0.88, 0.78, 0.52, 1.0))
-    make_box("Hemlock_Across_Door", (-0.6, -7.25, 1.15), (0.95, 0.06, 2.3), (0.24, 0.20, 0.18, 1.0))
+    make_box("Hemlock_Across_Facade", (0.0, -13.60, 2.0), (13.0, 0.6, 4.0), (0.42, 0.36, 0.30, 1.0))
+    make_box("Hemlock_Across_Win_Dark", (-3.0, -13.27, 1.6), (1.6, 0.06, 1.3), (0.14, 0.15, 0.18, 1.0))   # on the facade
+    make_box("Hemlock_Across_Win_Lit", (1.8, -13.27, 1.6), (1.6, 0.06, 1.3), (0.88, 0.78, 0.52, 1.0))
+    make_box("Hemlock_Across_Door", (-0.6, -13.25, 1.15), (0.95, 0.06, 2.3), (0.24, 0.20, 0.18, 1.0))
 
 
 def build_hero_props_2026_09():
@@ -601,11 +607,17 @@ def build_hero_props_2026_09():
       down."): on the counter south of the register.
     """
     brass = (0.72, 0.58, 0.28, 1.0)
-    make_box("Door_Bell_Bracket", (0.30, 0.14, 2.45), (0.030, 0.080, 0.030),
+    # (pass 479) a shop bell that reads as one: a brass bell 12 cm across on a
+    # curled spring arm off the header (it was a 7 cm cylinder — in its own
+    # close-up an orange dot on the wall)
+    make_box("Door_Bell_Bracket", (0.30, FRONT_Y + 0.14, 2.45), (0.030, 0.080, 0.030),
              (0.40, 0.34, 0.26, 1.0))
-    make_cyl("Door_Bell", (0.30, 0.18, 2.41), 0.035, 0.050, brass, segments=8)
-    make_cyl("Door_Bell_Clapper", (0.30, 0.18, 2.375), 0.008, 0.020,
-             (0.30, 0.26, 0.20, 1.0), segments=6)
+    make_tube("Door_Bell_Spring", [(0.30, FRONT_Y + 0.175, 2.45), (0.30, FRONT_Y + 0.23, 2.47), (0.30, FRONT_Y + 0.27, 2.43),
+                                   (0.30, FRONT_Y + 0.26, 2.385)], 0.006, (0.40, 0.34, 0.26, 1.0), segments=6)
+    make_lathe("Door_Bell", (0.30, FRONT_Y + 0.26, 2.29), [(0.0, 0.0), (0.060, 0.0), (0.056, 0.012), (0.046, 0.055),
+                                                           (0.026, 0.085), (0.010, 0.095), (0.0, 0.097)], brass, segments=16)
+    make_cyl("Door_Bell_Clapper", (0.30, FRONT_Y + 0.26, 2.285), 0.012, 0.024,
+             (0.30, 0.26, 0.20, 1.0), segments=8)
     make_cyl("Brass_Bell", (2.82, 2.35, 1.028), 0.030, 0.045, brass, segments=8)
     make_cyl("Brass_Bell_Handle", (2.82, 2.35, 1.065), 0.008, 0.030,
              (0.55, 0.44, 0.22, 1.0), segments=6)
@@ -1094,6 +1106,152 @@ def build_browsing_floor_2026_10():
                          BOOK_SPINES[(ti * 4 + mi + 1) % len(BOOK_SPINES)], pitch=-0.25)
 
 
+def build_front_half_2026_11():
+    """THE FRONT HALF (pass 479). The shop ran 6 m deep, an office of a
+    shop; it runs 12 m now (FRONT_Y). What a small-town second-hand shop
+    keeps between its door and its counter: the walls shelved to the
+    ceiling line both sides, a DISPLAY in each front window ("Petra was at
+    the bookstore window, putting a book on the display" — books stood on
+    little stands, a stack, the light on them), the new-arrivals table in
+    the entry where everyone stops, a spinner of paperbacks and a bargain
+    cart, an umbrella stand and a mat at the door for the coast's weather,
+    three more pendants down the length. Lanes kept ~1 m+ between fixtures.
+    NEXT: section boards with their names (the store's own categories, if
+    the text gives them); a ladder rail along the front shelves; the
+    building's upper floors seen from Hemlock (Lena's and Petra's
+    apartments are above the shop)."""
+    import random as _r
+    rnd = _r.Random(479)
+    fy = FRONT_Y
+    make_bookshelf("Shelf_W_Front", (-ROOM_W/2.0+0.22, fy + 3.0, 0.0), run_len=5.2, height=2.4, axis='Y', front_sign=+1)
+    make_bookshelf("Shelf_E_Front", (+ROOM_W/2.0-0.22, fy + 2.6, 0.0), run_len=4.4, height=2.4, axis='Y', front_sign=-1)
+    # the window displays: a low platform inside each front window
+    for side, wx in (("W", -2.5), ("E", 2.5)):
+        make_box(f"Window_Display_{side}", (wx, fy + 0.55, 0.25), (2.2, 0.70, 0.50), COL_WOOD_DK)
+        make_box(f"Window_Display_{side}_Cloth", (wx, fy + 0.55, 0.505), (2.1, 0.62, 0.01), (0.46, 0.22, 0.18, 1.0) if side == "W" else (0.22, 0.30, 0.36, 1.0))
+        for k, bx in enumerate((-0.80, -0.38, 0.05, 0.48, 0.86)):
+            if side == "W" and k >= 3:       # the cat's end of the display
+                continue
+            col = BOOK_SPINES[(k * 3 + (1 if side == "E" else 0)) % len(BOOK_SPINES)]
+            if k == 2:                       # a stack in the middle
+                z = 0.51
+                for j in range(3):
+                    make_box(f"Window_Display_{side}_Stack_{j}", (wx + bx, fy + 0.62, z + 0.02), (0.18, 0.25, 0.04), BOOK_SPINES[(j + 5) % len(BOOK_SPINES)])
+                    z += 0.04
+                continue
+            make_box(f"Window_Display_{side}_Book_{k}", (wx + bx, fy + 0.50, 0.65), (0.17, 0.03, 0.26), col)
+            make_box(f"Window_Display_{side}_Stand_{k}", (wx + bx, fy + 0.55, 0.555), (0.10, 0.08, 0.09), COL_BLACK)
+    # PETRA'S CAT in the west display (ch8: "the cat ... was on the small
+    # wool pillow in the front-window display where she always was"; "The
+    # cat in the front window opened one eye and looked at Tem"). ch14's
+    # morning has her on the kitchenette chair (Cat_Loaf); the ch8 kitchenette
+    # view (salty_tome_kitchenette_monday) strips that one.
+    from _props.creatures import make_cat
+    make_box("WindowCat_Pillow", (-1.84, fy + 0.58, 0.535), (0.42, 0.40, 0.05), (0.66, 0.58, 0.46, 1.0))
+    make_box("WindowCat_Pillow_Welt", (-1.84, fy + 0.58, 0.535), (0.44, 0.42, 0.012), (0.54, 0.46, 0.36, 1.0))
+    make_cat("WindowCat_Loaf", -1.84, fy + 0.58, 0.56, heading='+Y', pose='loaf', scale=1.05)
+    # the new-arrivals table in the entry
+    tx, ty = 0.0, fy + 2.9
+    make_box("Arrivals_Table_Top", (tx, ty, 0.76), (1.40, 0.90, 0.05), COL_WOOD)
+    make_box("Arrivals_Table_Apron", (tx, ty, 0.69), (1.30, 0.80, 0.09), COL_WOOD_DK)
+    for li, (lx, ly) in enumerate(((-0.64, -0.39), (0.64, -0.39), (-0.64, 0.39), (0.64, 0.39))):
+        make_box(f"Arrivals_Table_Leg_{li}", (tx + lx, ty + ly, 0.3225), (0.06, 0.06, 0.645), COL_WOOD_DK)
+    k = 0
+    for gx in (-0.45, -0.15, 0.15, 0.45):
+        for gy in (-0.22, 0.22):
+            z = 0.785
+            for j in range(rnd.choice((1, 2, 3))):
+                hgt = rnd.choice((0.025, 0.03, 0.04))
+                make_box(f"Arrivals_Book_{k}_{j}", (tx + gx + rnd.uniform(-0.02, 0.02), ty + gy + rnd.uniform(-0.02, 0.02), z + hgt / 2.0),
+                         (0.17, 0.24, hgt), BOOK_SPINES[(k * 5 + j) % len(BOOK_SPINES)])
+                z += hgt
+            k += 1
+    # a spinner of paperbacks and a bargain cart either side of the lane
+    sx, sy = 2.35, fy + 4.6
+    make_cyl("Spinner_Base", (sx, sy, 0.03), 0.28, 0.06, COL_BLACK, segments=12)
+    make_cyl("Spinner_Post", (sx, sy, 0.85), 0.025, 1.60, COL_BLACK, segments=8)
+    for ti, tz in enumerate((0.45, 0.85, 1.25)):
+        make_cyl(f"Spinner_Tier_{ti}", (sx, sy, tz), 0.26, 0.30, (0.30, 0.30, 0.32, 1.0), segments=8)
+        for bi in range(8):
+            a = bi * math.pi / 4.0
+            make_rot_box(f"Spinner_Book_{ti}_{bi}", (sx + 0.272 * math.cos(a), sy + 0.272 * math.sin(a), tz + 0.02), (0.11, 0.02, 0.17),
+                         BOOK_SPINES[(ti * 8 + bi) % len(BOOK_SPINES)], yaw=a + math.pi / 2.0)
+    cx, cy = -2.35, fy + 4.6
+    make_box("Bargain_Cart_Body", (cx, cy, 0.62), (0.95, 0.48, 0.30), COL_WOOD)
+    make_box("Bargain_Cart_Shelf", (cx, cy, 0.22), (0.74, 0.30, 0.03), COL_WOOD_DK)   # between the legs, not through them
+    for wi, (wx_, wy_) in enumerate(((-0.40, -0.18), (0.40, -0.18), (-0.40, 0.18), (0.40, 0.18))):
+        make_box(f"Bargain_Cart_Leg_{wi}", (cx + wx_, cy + wy_, 0.29), (0.04, 0.04, 0.46), COL_WOOD_DK)
+        make_cyl(f"Bargain_Cart_Wheel_{wi}", (cx + wx_, cy + wy_, 0.04), 0.04, 0.03, COL_BLACK, axis='X', segments=8)
+    for bi in range(9):
+        make_rot_box(f"Bargain_Book_{bi}", (cx - 0.40 + bi * 0.10, cy, 0.86), (0.03, 0.18, 0.21), BOOK_SPINES[(bi * 2 + 1) % len(BOOK_SPINES)], roll=0.0, pitch=0.12)
+    # the coast's weather at the door: a mat, an umbrella stand
+    make_box("Door_Mat", (0.0, fy + 0.70, 0.006), (1.20, 0.70, 0.012), (0.26, 0.22, 0.18, 1.0))
+    # (between the west display, which ends at x -1.40, and the door casing at -1.08)
+    ux0, uy0 = -1.24, fy + 0.40
+    make_cyl("Umbrella_Stand", (ux0, uy0, 0.25), 0.13, 0.50, (0.36, 0.34, 0.30, 1.0), segments=12)
+    for ui, (ux, uy, uc) in enumerate(((-0.04, 0.02, (0.16, 0.20, 0.30, 1.0)), (0.05, -0.03, (0.30, 0.12, 0.12, 1.0)))):
+        make_cyl(f"Umbrella_{ui}", (ux0 + ux, uy0 + uy, 0.58), 0.035, 0.66, uc, segments=8)
+        make_tube(f"Umbrella_{ui}_Handle", [(ux0 + ux, uy0 + uy, 0.91), (ux0 + ux, uy0 + uy, 0.99), (ux0 + ux, uy0 + uy + 0.06, 1.02)],
+                  0.012, (0.30, 0.22, 0.14, 1.0), segments=6)
+    # the light down the length: three more pendants over the front half
+    for pi, px in enumerate([-2.4, 0.0, +2.4]):
+        make_cyl(f"Pendant_Front_Cord_{pi}", (px, fy + 3.0, CEIL-0.25), 0.01, 0.50, COL_BLACK)
+        make_cyl(f"Pendant_Front_Shade_{pi}", (px, fy + 3.0, CEIL-0.57), 0.14, 0.14, COL_BRASS, segments=12)
+        make_cyl(f"Pendant_Front_Bulb_{pi}", (px, fy + 3.0, CEIL-0.67), 0.05, 0.06, COL_LAMP, segments=8)
+
+
+def build_shop_door_2026_11():
+    """THE DOOR (pass 479). "She looked at the bell over the door for a long
+    count"; "She came in at the bell"; "The bell rang as she came in" — and
+    the shop front was a 2 m hole in the wall under the bell, no door in it.
+    A shop door of the kind the bell is hung for: a glazed wood leaf hinged
+    on the west mullion, swinging in under the bell's spring arm (its latch
+    stile passes the bell at about twenty degrees open), a brass push bar
+    across the glass on the inside, glazed sidelights over kick panels
+    either side, the frame and the inside casing. The glass is faint
+    (LocaleGlass) so Hemlock shows through it.
+    NEXT: the reversed gilt name on the door glass; an OPEN card on a cord."""
+    fy = FRONT_Y
+    wood, wood_lt = COL_WOOD_DK, COL_WOOD
+    glass = (0.80, 0.86, 0.88, 0.22)
+    brass = COL_BRASS
+    # the frame in the opening (x -1..1, to the header at 2.20)
+    for s, nm in ((-1, "W"), (1, "E")):
+        make_box(f"ShopDoor_Jamb_{nm}", (s * 0.97, fy, 1.10), (0.06, 0.20, 2.20), wood)
+        make_box(f"ShopDoor_Mullion_{nm}", (s * 0.50, fy, 1.07), (0.06, 0.12, 2.14), wood)
+        cx = s * 0.735
+        make_box(f"ShopDoor_Kick_{nm}", (cx, fy, 0.225), (0.41, 0.06, 0.45), wood)
+        make_box(f"ShopDoor_Kick_{nm}_Field", (cx, fy + 0.035, 0.225), (0.31, 0.010, 0.33), wood_lt)
+        make_box(f"ShopDoor_Sill_{nm}", (cx, fy, 0.475), (0.41, 0.10, 0.05), wood)
+        make_box(f"ShopDoor_Sidelight_{nm}", (cx, fy, 1.32), (0.41, 0.008, 1.64), glass)
+    make_box("ShopDoor_Head", (0.0, fy, 2.17), (1.88, 0.20, 0.06), wood)
+    # the leaf, shut: stiles, rails, the light between them
+    lz = 0.01
+    for s, nm in ((-1, "Hinge"), (1, "Latch")):
+        make_box(f"ShopDoor_Leaf_Stile_{nm}", (s * 0.415, fy, lz + 1.055), (0.10, 0.045, 2.11), wood)
+    make_box("ShopDoor_Leaf_Rail_Top", (0.0, fy, lz + 2.055), (0.73, 0.045, 0.11), wood)
+    make_box("ShopDoor_Leaf_Rail_Bottom", (0.0, fy, lz + 0.165), (0.73, 0.045, 0.33), wood)
+    make_box("ShopDoor_Leaf_Rail_Bottom_Field", (0.0, fy + 0.0275, lz + 0.165), (0.60, 0.010, 0.22), wood_lt)
+    make_box("ShopDoor_Leaf_Light", (0.0, fy, lz + 1.165), (0.73, 0.008, 1.67), glass)
+    # inside: the push bar across the glass on two standoffs, the thumb-turn
+    make_box("ShopDoor_PushBar", (0.0, fy + 0.075, 1.05), (0.84, 0.024, 0.024), brass)
+    for s, nm in ((-1, "W"), (1, "E")):     # standoffs on the stiles, not on the glass
+        make_box(f"ShopDoor_PushBar_Post_{nm}", (s * 0.40, fy + 0.045, 1.05), (0.020, 0.045, 0.020), brass)
+    make_box("ShopDoor_Lock_Rose", (0.415, fy + 0.0275, 1.22), (0.06, 0.010, 0.10), brass)
+    make_box("ShopDoor_Lock_Turn", (0.415, fy + 0.040, 1.24), (0.014, 0.016, 0.040), brass)
+    for k, zz in enumerate((0.22, 1.06, 1.90)):
+        make_box(f"ShopDoor_Hinge_{k}", (-0.462, fy + 0.0255, zz), (0.016, 0.006, 0.10), (0.50, 0.48, 0.44, 1.0))
+    # outside: the pull handle on the latch stile
+    make_box("ShopDoor_Pull", (0.415, fy - 0.075, 1.05), (0.024, 0.024, 0.34), brass)
+    for k, zz in enumerate((0.90, 1.20)):
+        make_box(f"ShopDoor_Pull_Post_{k}", (0.415, fy - 0.045, zz), (0.020, 0.045, 0.020), brass)
+    # the inside casing round the opening, on the wall's face
+    cy = fy + 0.10 + 0.007
+    for s, nm in ((-1, "W"), (1, "E")):
+        make_box(f"ShopDoor_Casing_{nm}", (s * 1.04, cy, 1.145), (0.08, 0.014, 2.29), wood)
+    make_box("ShopDoor_Casing_Head", (0.0, cy, 2.245), (2.16, 0.014, 0.09), wood)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -1103,6 +1261,8 @@ def main():
     build_reading_nook()
     build_globe_and_catalog()
     build_browsing_floor_2026_10()
+    build_front_half_2026_11()
+    build_shop_door_2026_11()
     build_ceiling_and_sign()
     build_decor()
     build_back_annex_2026_08()

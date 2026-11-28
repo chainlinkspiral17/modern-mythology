@@ -9103,7 +9103,7 @@
           "label": "Hemlock_Across_Facade",
           "center": [
             0.0,
-            -7.3,
+            -13.3,
             2.0
           ],
           "size": [
@@ -61777,7 +61777,7 @@
       "keys": [
         "salty_tome_front_window"
       ],
-      "tag": "window · salty_tome_interior · 2.48 x 1.36 m · 844 lines play here, 3 mention it",
+      "tag": "window · salty_tome_interior · 2.48 x 1.76 m · 844 lines play here, 3 mention it",
       "prompt": "Exterior only, seen through a window from inside; no window frame, no glass reflections, no people in focus, no readable signs. Looking out through a second-hand bookshop's front display window onto the street in Smolvud, a small Oregon coast town in the 2050s (wood-frame and brick two-storey buildings, quiet electric cars, the odd small maintenance drone): the wet sidewalk right outside, a sandwich board leaning against the wall, the street with long reflections, and across it a row of old two-storey shopfronts — a café with its lights on, a small video shop, painted clapboard and brick, deep awnings dripping. Steady rain, slate-grey daylight, a few warm windows. 1.8:1 landscape.",
       "canon": [
         {
@@ -61786,7 +61786,7 @@
         }
       ],
       "prompt_mode": "append",
-      "notes": "(2026-10-27) Pass 203. The cat on her wool pillow sits in this display (inside, a prop). The street's neighbours from ch16's walk past.",
+      "notes": "(2026-10-27) Pass 203. The cat on her wool pillow sits in this display (inside, a prop). The street's neighbours from ch16's walk past. (2026-11-28, pass 479) The shop runs 12 m now: the front wall moved 6 m south and the window grew to 2.40 x 1.70 m — laid at the new front, 2.48 x 1.76.",
       "art_cat": "WINDOW",
       "score_lines": 844,
       "score_mentions": 3,
@@ -61796,12 +61796,12 @@
           "label": "salty_tome_front_window",
           "center": [
             -2.5,
-            0.07,
-            1.55
+            -5.93,
+            1.45
           ],
           "size": [
             2.48,
-            1.36
+            1.76
           ],
           "facing": "+y",
           "hide": [],
@@ -64254,7 +64254,7 @@
           "label": "blue_heron_sign",
           "center": [
             0.0,
-            1.415,
+            -4.585,
             2.38
           ],
           "size": [

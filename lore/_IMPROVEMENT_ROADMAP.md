@@ -3835,6 +3835,63 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-28 · pass 479: the Salty Tome runs 12 m deep, with a door under its bell (salty_tome_interior draft 4).**
+Petra's bookstore on Hemlock (Lena's apartment is above it; ~850 lines of
+vol 7 play in it) was an 8 x 6 m office of a shop, and its front wall was a 2 m
+hole with no door in it under "the bell over the door".
+- BUILD BIG: the front wall moves out to FRONT_Y = -6 — the shop runs
+  12 m from the door to the annex wall. The front half (new
+  build_front_half_2026_11): shelving the length of both walls, a display
+  in each front window ("Petra was at the bookstore window, putting a book
+  on the display" — books on stands, a stack, a cloth), the new-arrivals
+  table in the entry ("Petra at the Salty Tome had a copy in the new
+  arrivals last week"), a paperback spinner and a bargain cart, the door mat
+  and an umbrella stand for the coast's weather, three more pendants
+  (and their practicals) down the length. Lanes ~1 m+ (walkway 0 cramped).
+- THE DOOR (new build_shop_door_2026_11): a glazed wood leaf hinged on the
+  west mullion, swinging in under the bell's spring arm, a brass push bar
+  inside across the glass, a pull outside, glazed sidelights over kick
+  panels, the frame, the inside casing. The glass is faint, Hemlock through it.
+- THE BELL: one bell (the shell had a twin of the hero bell), larger, on a
+  bracket and coil spring off the header, clapper showing. The close-up
+  (ch8 aria, "She looked at the bell over the door for a long count")
+  re-aimed from under it to across the shop: the bell above the door's
+  head, the leaf and sidelights below.
+- PETRA'S CAT, by chapter: "the cat ... was on the small wool pillow in
+  the front-window display where she always was" (ch8 monday), "The cat in
+  the front window opened one eye and looked at Tem" (ch8 aria) — she was
+  only ever on the kitchenette chair (ch14's morning). Now a wool pillow and
+  the cat in the west display; `shot_insert_cat__salty_tome_interior` frames
+  her there (ch8 aria n50, n71 — the gate had flagged the plain cat marker
+  as a cut into the kitchenette). ch8 monday enters by the back door into
+  salty_tome_kitchenette_monday (new twin: her chair empty, the kitchenette's
+  three frames mirrored), n25 cuts [view:salty_tome_interior] to the window
+  cat, n27 [view:salty_tome_kitchenette_monday] back for the kettle; n24's
+  cat cue (on "She unlocked the back door") dropped. ch14 keeps her chair.
+- The umbrella stand stood 8 cm inside the west display; it stands between
+  the display and the door casing now.
+- Hero art moved with the wall: the Blue Heron's 1997 sign (it hung in air
+  at the old front), the front-window street picture (the window grew to
+  2.40 x 1.70: laid 2.48 x 1.76 — if the picture was made at 2.48 x 1.36 it
+  may want regenerating at the new shape), the Hemlock facade band 6 m out.
+- The establish moved to the front-west corner looking down the length
+  (counter, catalog, spinner, the back shelves); the window spill moved to
+  the new front, a second for the east window.
+- Gates: support 0, prop_overlap 0 (4,267 objects), furniture 0, marker
+  aim 0 / 87, vantage 0, walkway 0, wrong_room 0, hero_art 0.
+CANON KNOT for Andy: the face is "on the wall of her building" (ch14
+figure) and "The mural on the wall outside my back door" (ch14 petra) —
+the bookstore's own alley wall — but the set paints it on the building
+ACROSS the alley (the vigil's thirty-five stand facing it). Moving it
+means mirroring the alley set; not changed — asked.
+NEXT (draft 5): the hanging shop-name board inside the door is blank
+(a teal frame round a gold field: letter it THE SALTY TOME); the reversed
+gilt name on the door glass and an OPEN card on its cord; section boards with the store's own categories (if the text
+names any); a ladder rail along the front shelves; the building's upper
+floors (the apartments over the shop) seen from Hemlock; a pressed-tin
+ceiling in place of the drop tiles the wide shot shows; the cat is a
+faceted blob with box ears — a softer, rounder sleeping cat.
+
 **2026-11-27 · pass 478: the drive home on the right road at the right hour; the cabin road's Sitka stand rows deep (cabin_road draft 4).**
 - ch22_portal n84 — "by the time they passed Yachats at four fifty-six.
   The light over the ocean was the long gray-gold of a Pacific Northwest

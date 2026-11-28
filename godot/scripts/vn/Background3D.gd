@@ -3670,10 +3670,12 @@ const CAMERA_PRESETS := {
 		# Wall bookcases N/W/E, a double-sided center gondola (godot
 		# -0.4,-3.0, 3.4m E-W run), sales counter + antique register on the
 		# E side (godot 2.6,-2.6), reading nook + rug SW, rolling ladder,
-		# hanging shop sign, front window. Camera from the SW entrance
-		# looking NE down the shelf aisle to the sales counter.
-		"camera_origin": Vector3(-2.4, 1.75, -0.7),
-		"camera_rotation": Vector3(-0.05, deg_to_rad(-54.3), 0.0),
+		# hanging shop sign, front window. (pass 479) The shop runs 12 m
+		# deep now (godot z 6..-6): the camera just inside the door, the
+		# length of the shop ahead — the arrivals table, the gondola, the
+		# counter on the right, the doorway to the back at the far end.
+		"camera_origin": Vector3(-1.4, 1.65, 5.0),
+		"camera_rotation": Vector3(-0.05, -0.359, 0.0),
 		"fov": 62.0,
 		"suppress_input": true,
 	},
@@ -3689,6 +3691,19 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(0.5, 1.55, -6.4),
 		"camera_rotation": Vector3(-0.05, 1.03, 0.0),
 		"fov": 60.0,
+		"suppress_input": true,
+	},
+	# (pass 479) ch8 Monday's kitchenette: "The cat ... was on the small wool
+	# pillow in the front-window display where she always was" — her chair by
+	# the radiator is empty that morning (ch14 has her on it). Markers
+	# suffixed __salty_tome_kitchenette_monday mirror the kitchenette's.
+	"salty_tome_kitchenette_monday": {
+		"scene": "res://scenes/locales/salty_tome_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/salty_tome_interior.glb",
+		"camera_origin": Vector3(0.5, 1.55, -6.4),
+		"camera_rotation": Vector3(-0.05, 1.03, 0.0),
+		"fov": 60.0,
+		"strip": ["Cat_Loaf", "Cat_Cushion"],
 		"suppress_input": true,
 	},
 	"salty_tome_office": {

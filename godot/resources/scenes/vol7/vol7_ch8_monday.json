@@ -82,7 +82,7 @@
       "t": "narrate"
     },
     {
-      "src": "3d:salty_tome_kitchenette",
+      "src": "3d:salty_tome_kitchenette_monday",
       "t": "bg"
     },
     {
@@ -108,11 +108,11 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert cat]She unlocked the back door. The bookstore was at sixty-two.",
+      "text": "She unlocked the back door. The bookstore was at sixty-two.",
       "t": "narrate"
     },
     {
-      "text": "The cat — Petra's cat, who was old enough that her name had stopped getting used and the cat just got called the cat — was on the small wool pillow in the front-window display where she always was.",
+      "text": "[view:salty_tome_interior][shot:insert cat]The cat — Petra's cat, who was old enough that her name had stopped getting used and the cat just got called the cat — was on the small wool pillow in the front-window display where she always was.",
       "t": "narrate"
     },
     {
@@ -120,7 +120,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert kitchenette]Lena went to the small kitchenette in the back of the store and put Petra's kettle on. Petra liked her coffee made in the cone with the dark French Soren had been roasting, which was the same coffee Lena drank at home.",
+      "text": "[view:salty_tome_kitchenette_monday][shot:insert kitchenette]Lena went to the small kitchenette in the back of the store and put Petra's kettle on. Petra liked her coffee made in the cone with the dark French Soren had been roasting, which was the same coffee Lena drank at home.",
       "t": "narrate"
     },
     {

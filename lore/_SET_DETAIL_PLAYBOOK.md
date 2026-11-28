@@ -84,6 +84,29 @@ henderson) got there by accumulating exactly these layers.
 
 ## Recent lessons
 
+### 2026-11-28 · the close-up's preposition names a second object; build it (pass 479)
+
+**What happened.** "She looked at the bell over the door for a long count."
+The Salty Tome had a good bell — and no door: its shop front was a 2 m hole
+in the wall under the bell. Every gate passed (the bell was aimed at, lit,
+supported) and the stranger test had passed the bell close-up, because it
+asked only "is this a bell". The shop was also 8 x 6 m, an office of a
+shop, with ~850 lines of play in it.
+
+**The rules.**
+- Read a cue's whole phrase: "the bell OVER THE DOOR", "the cup BY THE
+  SINK", "the crow ON THE DASH". The second noun is part of the subject;
+  frame both, and check the set HAS both before re-aiming.
+- A doorway the text walks through gets a door: leaf, frame, hardware on
+  both faces, the casing on the wall. An empty opening reads as a set.
+- When a hero object hangs or sits near the camera's eye line, pull the
+  camera back across the room rather than under the object: from under
+  it the frame is the object against blank plaster; from across the room
+  it is the object in its place.
+- A much-played room gets the BUILD BIG check first: move the wall out and
+  furnish the new half from what such a shop keeps between its door and
+  its counter, before detailing what was already there.
+
 ### 2026-11-27 · a forest is rows deep; a facade the text describes is built face by face (pass 476)
 
 **What happened.** The cedar tower's clearing: one ring of tall cedars let
